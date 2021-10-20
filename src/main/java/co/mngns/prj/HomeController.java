@@ -56,5 +56,9 @@ public class HomeController {
 	public String Rlist() {
 		return "home/rList";
 	}
+	@RequestMapping(value="/cService.do")
+	   public String cService() {
+	      return "home/cService";
+	   }
 	
 }
