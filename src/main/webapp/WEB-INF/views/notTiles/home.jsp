@@ -30,7 +30,7 @@
 
 <script>
 	function login() {
-		alert("로그인 후 이용바랍니다.");
+		alert("로그인 후 이용해주세요.");
 		location.href = "login.do";
 	}
 </script>
