@@ -8172,8 +8172,16 @@ h1, h2, h3, h4, h5,
   padding-bottom: 0; }
 
 .heading-section {
+  font-weight: bold;
   font-size: 28px;
-  color: #000; }
+  color: #000;
+  padding-top: 100px;
+  }
+  
+.made {
+	font-weight: bold;
+	padding-top: 50px;
+}
 
 .img {
   background-size: cover;
@@ -8305,20 +8313,20 @@ h1, h2, h3, h4, h5,
   .btn:hover, .btn:active, .btn:focus {
     outline: none; }
   .btn.btn-primary {
-    background: #8d448b !important;
-    border: 1px solid #8d448b !important;
+    background: #f55042 !important;
+    border: 1px solid #f55042 !important;
     color: #fff !important; }
     .btn.btn-primary:hover {
-      border: 1px solid #8d448b;
+      border: 1px solid #f55042;
       background: transparent;
-      color: #8d448b; }
+      color: #f55042; }
     .btn.btn-primary.btn-outline-primary {
-      border: 1px solid #8d448b;
+      border: 1px solid #f55042;
       background: transparent;
-      color: #8d448b; }
+      color: #f55042; }
       .btn.btn-primary.btn-outline-primary:hover {
         border: 1px solid transparent;
-        background: #8d448b;
+        background: #f55042;
         color: #fff; }
 
 .form-group {

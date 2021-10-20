@@ -4,16 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="assets/css/rmain.css" />
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+
 <title>Insert title here</title>
 <style>
 .contents {
@@ -209,6 +200,17 @@ p {
 			}
 		}
 	</script>
+	<div class="bradcam_area breadcam_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="bradcam_text text-center">
+                        <h3>이용 후기</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 	<!-- END nav -->
 	<section class="hero-wrap hero-wrap-2"
 		style="background-image: url('images/bg_2.jpg');"
@@ -399,12 +401,5 @@ p {
 		</div>
 	</div>
 
-
-	<script src="assets/js/rjquery.min.js"></script>
-	<script src="assets/js/rjquery.dropotron.min.js"></script>
-	<script src="assets/js/rbrowser.min.js"></script>
-	<script src="assets/js/rbreakpoints.min.js"></script>
-	<script src="assets/js/rutil.js"></script>
-	<script src="assets/js/rmain.js"></script>
 </body>
 </html>

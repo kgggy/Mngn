@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
 <header>
         <div class="header-area ">
             <div id="sticky-header" class="main-header-area">
@@ -5,31 +7,32 @@
                     <div class="row align-items-center">
                         <div class="col-xl-3 col-lg-3">
                             <div class="logo">
-                                <a href="index.html">
-                                    <img src="img/logo.png" alt="">
-                                </a>
+                               <h1 style="font-weight:bolder"><a><img src="img/logo1.png" alt="home.do"> HEYYO</a></h1>
                             </div>
                         </div>
                         <div class="col-xl-9 col-lg-9">
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a  href="index.html">home</a></li>
-                                        <li><a href="about.html">about</a></li>
-                                        <li><a href="#">blog <i class="ti-angle-down"></i></a>
+                                        <li><a href="Tprofile.do">훈련사 프로필</a></li>
+                                        <li><a>서비스 예약 <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
-                                                <li><a href="blog.html">blog</a></li>
-                                                <li><a href="single-blog.html">single-blog</a></li>
+                                                <li><a href="cService.do">돌봄서비스</a></li>
+                                                <li><a href="wService.do">산책서비스</a></li>
+                                                <li><a href="tService.do">훈련서비스</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="#">pages <i class="ti-angle-down"></i></a>
+                                        <li><a href="rList.do">이용후기</a></li>
+                                        <li><a>마이페이지<i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
-                                                <li><a href="elements.html">elements</a></li>
+                                                <li><a href="mProfile.do">내 프로필 관리</a></li>
+                                                <li><a href="aProfile.do">반려동물 프로필</a></li>
+                                                <li><a href="uService.do">서비스 이용내역</a></li>
+                                                <li><a href="elements.html">내가 작성한 후기</a></li>
+                                                <li><a href="logout.do">로그아웃</a></li>
                                                 
                                             </ul>
                                         </li>
-                                        <li><a href="service.html">services</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
                                     </ul>
                                 </nav>
                             </div>
