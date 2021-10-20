@@ -360,5 +360,6 @@ input::-moz-placeholder {
 
 		}
 	</script>
+	<!-- 고침! -->
 </body>
 </html>
