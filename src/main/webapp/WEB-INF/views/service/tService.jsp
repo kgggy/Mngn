@@ -4,19 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>HEYYO - 돌봄</title>
-<script src="js1/jquery-latest.min.js"></script>
+<title>Insert title here</title>
 <script>
 	function resv() {
-		$("#fade").click(function() {
-		$("#fade").css('display', 'block');
-		$("#light").css('display', 'block');
-		}
-		$("#light").click(function() {
-			$("#fade").css('display', 'none');
-			$("#light").css('display', 'none');
-		
-	}
+		location.href = "tResv.do"
 	}
 </script>
 <style>
@@ -34,34 +25,33 @@ h2 {
 	top: 0%;
 	left: 0%;
 	width: 100%;
-	height: 100%;
+	height: 300%;
 	background-color: black;
 	z-index: 1001;
 	-moz-opacity: 0.8;
 	opacity: .80;
 	filter: alpha(opacity = 80);
+	overflow: hidden;
 }
 
 .white_content {
 	display: none;
 	position: absolute;
-	top: 25%;
-	left: 25%;
-	width: 50%;
-	height: 30%;
+	top: 130%;
+	left: 30%;
+	width: 35%;
+	height: 31%;
 	padding: 16px;
-	border: 16px solid #ff3500;
-	border-radius: 50px;
+	border-radius: 20px;
 	background-color: white;
 	z-index: 1002;
 	overflow: auto;
-	background-color: white;
-	width: 50%;
-	height: 30%;
-	padding: 16px;
-	border: 16px solid #ff3500;
-	border-radius: 50px;
-	background-color: white;
+	outline: none !important;
+}
+
+span {
+	padding: 10px 65px 0 70px !important;
+	margin-top: 5px;
 }
 </style>
 </head>
@@ -72,7 +62,7 @@ h2 {
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="bradcam_text text-center">
-						<h3>돌봄 서비스</h3>
+						<h3>훈련 서비스</h3>
 					</div>
 				</div>
 			</div>
@@ -92,11 +82,11 @@ h2 {
 					<div class="pet_info">
 						<div class="section_title">
 							<h3>
-								언제 어디서든 <br> 훈련사를 부르세요.
+								훈련사의 <br> 체계적인 교육!
 							</h3>
 							<p>
-								혼자 남겨진 반려동물을 생각하며, 외출을 망설인 적이 있으신가요? <br>이제는 헤이요에 맡기고, 여러분의
-								소중한 일상을 마음 편히 보내세요! <br>예약 돌봄으로 언제 어디서든 돌봄 서비스를 예약할 수 있어요.
+								문제행동을 하는 반려동물 때문에 막막하시던 적 있으신가요? <br> 이제는 헤이요에 맡기세요! <br>
+								체계적인 교육 경험을 통해 문제 행동의 개선뿐만 아니라 <br> 반려견의 평생 교육을 책임집니다.
 							</p>
 						</div>
 					</div>
@@ -113,13 +103,15 @@ h2 {
 					<div class="pet_info">
 						<div class="section_title">
 							<h3>
-								엄선된 훈련사가 <br> 방문합니다.
+								성향을 고려한 <br> 세심한 교육
 							</h3>
 							<p>
-								헤이요 모든 훈련사는 신분증 사본, 등초본, 신원보증 부대까지 3단계로 <br>까다롭게 신원을 검증하며,
-								훈련사로서 필요한 지식과 실력을 갖출 수 있도록 <br>훈련사 전문 교육을 수료합니다
+								성격 유형을 고려한 맞춤 교육은 반려견의 스트레스를 최소화하고, <br>즐거운 교육 참여를 돕습니다.
 							</p>
-							<a href="javascript:resv()" onclick="fade" id="fade"
+							<a href="javascript:void(0)"
+								onclick="document.getElementById
+                              ('light').style.display='block';
+                              document.getElementById('fade').style.display='block'"
 								class="boxed-btn3">예약하기</a>
 						</div>
 					</div>
@@ -134,9 +126,22 @@ h2 {
 	</div>
 
 	<!-- testmonial_area_start  -->
-
-	<div id="light" class="white_content">
-		<a href="javascript:resv()" id="light" class="boxed-btn3">예약돌봄</a>
+	<div id="light" class="white_content" align="center">
+		<div>
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<a class="genric-btn danger-border circle arrow">1시간</a> <a
+				class="genric-btn danger-border circle arrow">2시간</a> <a
+				class="genric-btn danger-border circle arrow">3시간</a>
+			<div>
+				<span>₩18,000</span><span>₩34,000</span><span>₩50,000</span>
+			</div>
+		</div>
+		<br />
+		<a href="javascript:resv()"
+			onclick="document.getElementById
+               ('light').style.display='none';
+               document.getElementById('fade').style.display='none'"
+			class="boxed-btn3">예약 돌봄</a>
 	</div>
 	<div id="fade" class="black_overlay"></div>
 </body>
