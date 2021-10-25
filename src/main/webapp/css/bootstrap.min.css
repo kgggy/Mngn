@@ -1395,16 +1395,16 @@ pre code {
         flex: 0 0 25%;
         max-width: 25%
     }
-    .col-lg-4 {
+    .col-lg-44 {
         -webkit-box-flex: 0;
         -ms-flex: 0 0 33.333333%;
         flex: 0 0 33.333333%;
-        max-width: 60%;
-		padding-left:20%;
+        max-width: 20%;
+		margin-left:750px;
 		top: 50%;
-		left: 10%
+		left: 50%
     }
-    .col-lg-44 {
+    .col-lg-4 {
         -webkit-box-flex: 0;
         -ms-flex: 0 0 33.333333%;
         flex: 0 0 33.333333%;
@@ -5657,12 +5657,14 @@ button.close {
     z-index: 1050;
     display: none;
     overflow: hidden;
-    outline: 0
+    outline: 0;
+    height: 800px;
+    width: 40%
 }
 
 .modal-open .modal {
     overflow-x: hidden;
-    overflow-y: auto
+    overflow-y: hidden;
 }
 
 .modal-dialog {
@@ -5797,6 +5799,7 @@ button.close {
 @media (min-width:576px) {
     .modal-dialog {
         max-width: 500px;
+        height: auto;
         margin: 1.75rem auto
     }
     .modal-dialog-centered {
@@ -5809,7 +5812,8 @@ button.close {
 
 @media (min-width:992px) {
     .modal-lg {
-        max-width: 800px
+        max-width: 800px;
+        height: 100%;
     }
 }
 

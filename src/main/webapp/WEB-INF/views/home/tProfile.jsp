@@ -30,7 +30,7 @@
 		</div>
 	</section>
 
-	<div class="col-lg-4">
+	<div class="col-lg-44">
 		<form action="#">
 			<div class="form-group">
 				<div class="input-group mb-3">
