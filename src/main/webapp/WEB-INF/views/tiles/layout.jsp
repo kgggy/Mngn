@@ -70,8 +70,9 @@
 <body>
 
 	<tiles:insertAttribute name="header" />
-	<div class="container"></div>
-	<tiles:insertAttribute name="body" />
+	<div class="maincontent">
+		<tiles:insertAttribute name="body" />
+	</div>
 	<section id="home"></section>
 	<footer class="footer">
 		<tiles:insertAttribute name="footer" />
