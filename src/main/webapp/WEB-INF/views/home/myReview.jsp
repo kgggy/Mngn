@@ -468,7 +468,7 @@ article {
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
 						</div>
 						<div class="modal-body">
-							<form role="form" id="signform" method="post" action="/email/register"
+							<form role="form" id="signform" name="signform" method="post" action="/email/register"
 								enctype="multipart/form-data">
 								<h2 align="center">
 									<strong>별점과 이용경험을 남겨주세요 :)</strong>
@@ -536,6 +536,7 @@ article {
 
 
 	<section id="content2">
+	<div>ddd</div>
 		<table class="table table-striped table-hover">
 				<thead>
 					<tr>
@@ -605,12 +606,11 @@ article {
 			document.signform.submit();
 		}
 
-		$('#camera_img').click(
-					document.signform.camera.value = document
-							.getElementById('camera_img').src;
-					e.preventDefault();
-					$('#file').click();
-				});
+		$('#camera_img').click(	function(e){
+			document.signform.camera.value = document.getElementById('camera_img').src;
+			e.preventDefault();
+			$('#file').click();
+		});
 	</script>
 
 </body>
