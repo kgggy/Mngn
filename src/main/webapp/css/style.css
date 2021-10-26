@@ -2562,8 +2562,8 @@ h3 {
 
 /* line 196, ../../Arafath/CL/january 2020/240. Animal/HTML/scss/_gallery.scss */
 .gj-datepicker input {
-  width: 100%;
-  height: 50px;
+  width: calc(100% - 10px);
+  height: 35px;
   border: 1px solid #ddd;
   padding: 17px;
   font-size: 12px;
@@ -2575,11 +2575,10 @@ h3 {
 .gj-datepicker-md [role="right-icon"] {
   position: absolute;
   right: 0px;
-  top: 0px;
-  font-size: 14px;
+  font-size: 20px;
   color: #919191;
   margin-right: 15px;
-  top: 16px;
+  top: 10px;
 }
 
 /* line 214, ../../Arafath/CL/january 2020/240. Animal/HTML/scss/_gallery.scss */
@@ -2593,6 +2592,12 @@ h3 {
   padding: 10px;
   padding: 20px;
   border: 1px solid #E0E0E0;
+} 
+
+.gj-picker-md input:hover {
+	border: 1px solid transparent;
+	box-shadow: 0 0 6px 0 #ff3500;
+	color: #ff3500;
 }
 
 /* line 225, ../../Arafath/CL/january 2020/240. Animal/HTML/scss/_gallery.scss */
@@ -2607,7 +2612,6 @@ h3 {
 
 /* line 233, ../../Arafath/CL/january 2020/240. Animal/HTML/scss/_gallery.scss */
 .gj-timepicker.gj-timepicker-md.gj-unselectable i {
-  top: 16px;
   right: 12px;
   font-size: 18px;
   color: #919191;

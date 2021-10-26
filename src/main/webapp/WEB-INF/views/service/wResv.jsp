@@ -4,10 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-	integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
-	crossorigin="anonymous">
 <title>서비스 예약</title>
 <style>
 html, body {
@@ -22,14 +18,6 @@ body, div, form, input, select, textarea, p {
 	font-size: 14px;
 	color: #666;
 	line-height: 22px;
-}
-
-h1 {
-	position: absolute;
-	margin: 0;
-	font-size: 32px;
-	color: #fff;
-	z-index: 2;
 }
 
 h3 {
@@ -281,17 +269,15 @@ button {
 .park {
 	float: right;
 	margin-right: 10px;
-	border: 2px solid #ff3500;
-	background: none;
-	color: #444;
+	background: #ff3500;
+	color: #fff;
 	font-size: 11px;
 	padding: 1px;
 	width: 80px;
 }
 
 .park:hover {
-	background: #ff3500;
-	color:#fff;
+	opacity: 0.8;
 }
 
 button
@@ -439,12 +425,25 @@ select {
 		$("#address_kakao").on("click", function() {
 			new daum.Postcode({
 				oncomplete : function(data) { //선택시 입력값 세팅
-					$("#address_kakao").value(data.address); // 주소 넣기
+					$("#address_kakao").val(data.address); // 주소 넣기
 					$("input[name=address_detail]").focus(); //상세입력 포커싱
 				}
 			}).open();
 		});
 	}
+	$(".park").on("click", function() {
+		modal.style.display = "block";
+	        //iframe url 삽입
+	        let id = { id };
+	        let href = '/map?id='+id
+	        $('#go-map').attr("src",href);
+	})
+		$(document).ready(function(e) {
+		$(".datepicker").datepicker({
+			dateFormat : 'yy-mm-dd',
+			minDate : 0,
+		});
+	});
 </script>
 </head>
 <body>
@@ -454,7 +453,7 @@ select {
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="bradcam_text text-center">
-						<h3>돌봄 서비스 상세 예약</h3>
+						<h3>산책 서비스 상세 예약</h3>
 					</div>
 				</div>
 			</div>
@@ -467,27 +466,24 @@ select {
 		<form action="/payment.do">
 			<div class="item">
 				<h3>
-					주소<span class="required">*</span><button class="park">근처공원선택</button>
+					주소<span class="required">*</span>
+					<button class="park">근처공원선택</button>
 				</h3>
-				
-				<input type="text" id="address_kakao" name="address" readonly />
+				<input type="text" id="address_kakao" name="address" readonly /> <input
+					type="text" id="address_detail" name="address_detail" />
 			</div>
-			<div class="item">
+			<div class="input_date date_time">
 				<h3>
-					날짜 선택<span class="required">*</span>
+					날짜 및 시간선택<span class="required">*</span>
 				</h3>
-				<input type="date" name="bdate" required /> <i
+				<input type="text" class="datepicker"> <span> <i
 					class="fas fa-calendar-alt"></i>
-			</div>
-			<div class="item">
-				<h3>
-					시간 선택<span class="required">*</span>
-				</h3>
-				<input type="time" name="btime" required /> <i class="fas fa-clock"></i>
+				</span>
 			</div>
 			<div class="question">
 				<h3>
-					산책 대상<span class="required">*</span>&nbsp;&nbsp;<small>*최대 2마리까지 가능합니다.</small>
+					산책 대상<span class="required">*</span>&nbsp;&nbsp;<small>*최대
+						2마리까지 가능합니다.</small>
 				</h3>
 
 				<div class="question-answer checkbox-item">
@@ -523,6 +519,32 @@ select {
 				<button type="submit" href="/">예약</button>
 			</div>
 		</form>
+	</div>
+
+	<div class="modal fade" id="map-modal" role="map" aria-labelledby="map"
+		aria-hidden="true" tabindex="-1">
+		<!--modal-dailog : 모달 창 영역 설정-->
+		<div class="modal-dialog">
+			<!--modal-content : 모달 창 콘텐츠 영역 설정-->
+			<div class="modal-content">
+				<!--modal-header : 모달 창 콘텐츠의 헤더영역-->
+				<div class="modal-header modal-header-custom">
+					<h4 class="modal-title modal-title-custom">지도</h4>
+				</div>
+				<!--modal-body : 모달 창 콘텐츠의 바디영역-->
+				<div class="modal-body" id="map-body">
+					<!-- iframe src="/map?id={id}" -->
+					<iframe id="go-map"></iframe>
+				</div>
+				<!--modal-footer : 모달 창 콘텐츠의 푸터영역-->
+				<div class="modal-footer">
+					<div class="modal-footer-custom">
+						<button type="button" class="btn btn-danger"
+							data-bs-dismiss="modal">닫기</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

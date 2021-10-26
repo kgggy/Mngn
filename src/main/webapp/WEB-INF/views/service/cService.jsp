@@ -7,8 +7,12 @@
 <title>HEYYO - 돌봄</title>
 <script>
 	function resv() {
-		alert($(".genric-btn.focus").html())
-		location.href = "cResv.do"
+		var time = $(".time .focus");
+		if (time.length == 0) {
+			alert("시간을 선택해주세요.")
+		} else {
+			location.href = "cResv.do";
+		}
 	}
 	$(function() {
 		// Get the modal
@@ -116,6 +120,10 @@ span {
 	color: #000;
 	text-decoration: none;
 	cursor: pointer;
+}
+
+#emp {
+	margin-left: 50px;
 }
 </style>
 </head>

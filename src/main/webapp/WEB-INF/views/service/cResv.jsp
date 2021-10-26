@@ -4,10 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-	integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
-	crossorigin="anonymous">
 <title>서비스 예약</title>
 <style>
 html, body {
@@ -22,14 +18,6 @@ body, div, form, input, select, textarea, p {
 	font-size: 14px;
 	color: #666;
 	line-height: 22px;
-}
-
-h1 {
-	position: absolute;
-	margin: 0;
-	font-size: 32px;
-	color: #fff;
-	z-index: 2;
 }
 
 h3 {
@@ -58,26 +46,6 @@ form {
 	padding: 20px;
 	border-radius: 6px;
 	background: #fff;
-}
-
-.banner {
-	position: relative;
-	height: 210px;
-	background-image:
-		url("/uploads/media/default/0001/01/c43630149befa5c9559813f72e99bcb6bf149e62.jpeg");
-	background-size: cover;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-}
-
-.banner::after {
-	content: "";
-	background-color: rgba(0, 0, 0, 0.5);
-	position: absolute;
-	width: 100%;
-	height: 100%;
 }
 
 input, select, textarea {
@@ -125,9 +93,9 @@ input[type="date"]::-webkit-inner-spin-button {
 .item i, input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webkit-time-picker-indicator
 	{
 	position: absolute;
-	max-width:1%;
+	max-width: 1%;
 	height: auto;
-	font-size: 25px;
+	font-size: 30px;
 	color: #a9a9a9;
 	right: 1%;
 }
@@ -140,14 +108,14 @@ input[type="date"]::-webkit-inner-spin-button {
 
 input[type="date"]::-webkit-calendar-picker-indicator {
 	right: 1%;
-	z-index: 2;
+	z-index: 10;
 	opacity: 0;
 	cursor: pointer;
 }
 
 input[type="time"]::-webkit-time-picker-indicator {
 	right: 1%;
-	z-index: 2;
+	z-index: 10;
 	opacity: 0;
 	cursor: pointer;
 }
@@ -423,13 +391,18 @@ select {
 		$("#address_kakao").on("click", function() {
 			new daum.Postcode({
 				oncomplete : function(data) { //선택시 입력값 세팅
-					$("#address_kakao").value(data.address); // 주소 넣기
-					$("input[name=address_detail]").focus(); //상세입력 포커싱
+					$("#address_kakao").val(data.address); // 주소 넣기
+					$("#input[name='address_detail']").focus();
 				}
 			}).open();
 		});
 	}
-	$("")
+	$(document).ready(function(e) {
+		$(".datepicker").datepicker({
+			dateFormat : 'yy-mm-dd',
+			minDate : 0,
+		});
+	});
 </script>
 </head>
 <body>
@@ -446,63 +419,60 @@ select {
 		</div>
 	</div>
 	<!-- bradcam_area_end -->
-	<br/><br/>
+	<br />
+	<br />
 	<div class="testbox">
 		<form action="/payment.do">
 			<div class="item">
 				<h3>
 					주소<span class="required">*</span>
 				</h3>
-				<input type="text" id="address_kakao" name="address" readonly />
+				<input type="text" id="address_kakao" name="address" readonly /> <input
+					type="text" id="address_detail" name="address_detail" />
 			</div>
-			<div class="item">
+			<div class="input_date date_time">
 				<h3>
-					날짜 선택<span class="required">*</span>
+					날짜 및 시간선택<span class="required">*</span>
 				</h3>
-				<input type="date" name="bdate" required /> <i
+				<input type="text" class="datepicker"> <span> <i
 					class="fas fa-calendar-alt"></i>
-			</div>
-			<div class="item">
-				<h3>
-					시간 선택<span class="required">*</span>
-				</h3>
-				<input type="time" name="btime" required /> <i class="fas fa-clock"></i>
+				</span>
 			</div>
 			<div class="question">
 				<h3>
-					돌봄 대상<span class="required">*</span>&nbsp;&nbsp;<small>*최대 2마리까지 가능합니다.</small>
+					돌봄 대상<span class="required">*</span>&nbsp;&nbsp;<small>*최대
+						2마리까지 가능합니다.</small>
 				</h3>
 				<div class="question-answer checkbox-item">
 					<div>
-						<input type="checkbox" value="none" id="check_1" name="checklist"
-							required /> <label for="check_1" class="check"><span>pet1</span></label>
-						<input type="checkbox" value="none" id="check_2" name="checklist"
-							required /> <label for="check_2" class="check"><span>pet2</span></label>
+						<input type="checkbox" value="none" id="check_1" name="checklist" />
+						<label for="check_1" class="check"><span>pet1</span></label> <input
+							type="checkbox" value="none" id="check_2" name="checklist" /> <label
+							for="check_2" class="check"><span>pet2</span></label>
 					</div>
 				</div>
 			</div>
-			<br/>
+			<br />
 			<div class="question">
 				<h3>
 					훈련사 선택<span class="required">*</span>
 				</h3>
 				<div class="question-answer">
-					<input type="radio" value="none" id="radio_4" name="research"
-						required /> <label for="radio_4" class="radio"><span>훈련사
-							A</span></label> <input type="radio" value="none" id="radio_5" name="research"
-						required /> <label for="radio_5" class="radio"><span>훈련사
-							B</span></label> <input type="radio" value="none" id="radio_6" name="research"
-						required /> <label for="radio_6" class="radio"><span>훈련사
-							C</span></label>
+					<input type="radio" value="none" id="radio_4" name="research" /> <label
+						for="radio_4" class="radio"><span>훈련사 A</span></label> <input
+						type="radio" value="none" id="radio_5" name="research" /> <label
+						for="radio_5" class="radio"><span>훈련사 B</span></label> <input
+						type="radio" value="none" id="radio_6" name="research" /> <label
+						for="radio_6" class="radio"><span>훈련사 C</span></label>
 				</div>
 			</div>
 			<div class="item">
 				<h3>특이사항</h3>
-				<textarea rows="10"  required placeholder="최대 1000자까지 입력가능합니다."></textarea>
+				<textarea rows="10" required placeholder="최대 1000자까지 입력가능합니다."></textarea>
 			</div>
 			<br />
 			<div class="btn-block">
-				<button type="submit" href="/">예약</button>
+				<button type="submit">예약</button>
 			</div>
 		</form>
 	</div>

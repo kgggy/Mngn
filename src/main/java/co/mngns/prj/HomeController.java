@@ -84,5 +84,9 @@ public class HomeController {
 	   public String payment() {
 	      return "service/payment";
 	   }
+	@RequestMapping(value="/logout.do")
+	   public String tMain() {
+	      return "tMain";
+	   }
 	
 }

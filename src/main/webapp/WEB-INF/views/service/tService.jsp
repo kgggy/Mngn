@@ -7,8 +7,12 @@
 <title>HEYYO - 훈련</title>
 <script>
 	function resv() {
-		alert($(".genric-btn.focus").html())
-		location.href = "tResv.do"
+		var time = $(".time .focus");
+		if (time.length == 0) {
+			alert("시간을 선택해주세요.")
+		} else {
+			location.href = "tResv.do";
+		}
 	}
 	$(function() {
 		// Get the modal
@@ -75,6 +79,10 @@ span {
 
 #three {
 	margin: 0 40px;
+}
+
+#emp {
+	margin-left: 50px;
 }
 
 /* The Modal (background) */
