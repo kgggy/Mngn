@@ -256,7 +256,7 @@ h3 {
 
 /* line 170, ../../Arafath/CL/january 2020/240. Animal/HTML/scss/_reset.scss */
 .section-padding {
-  padding-top: 120px;
+  padding-top: 50px;
   padding-bottom: 120px;
 }
 
@@ -5554,7 +5554,6 @@ h6 {
 /* line 647, ../../Arafath/CL/january 2020/240. Animal/HTML/scss/_blog.scss */
 .blog_right_sidebar .widget_title {
   font-size: 20px;
-  margin-bottom: 40px;
 }
 
 /* line 652, ../../Arafath/CL/january 2020/240. Animal/HTML/scss/_blog.scss */
@@ -5570,6 +5569,8 @@ h6 {
   background: #fbf9ff;
   padding: 30px;
   margin-bottom: 30px;
+  width: 420px;
+  height:550px;
 }
 
 /* line 664, ../../Arafath/CL/january 2020/240. Animal/HTML/scss/_blog.scss */
@@ -5947,9 +5948,9 @@ h6 {
 
 /* line 1182, ../../Arafath/CL/january 2020/240. Animal/HTML/scss/_blog.scss */
 .single-post-area .blog-author {
-  padding: 40px 30px;
+  padding: 35px 30px;
   background: #fbf9ff;
-  margin-top: 50px;
+  margin-top: 15px;
 }
 
 @media (max-width: 600px) {

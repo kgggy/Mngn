@@ -211,12 +211,12 @@
 		</div>
 	</section>
 
-	<div class="modal fade" id="myModal" data-backdrop="static"
+	<!-- <div class="modal fade" id="myModal" data-backdrop="static"
 		data-keyboard="false">
 		<div class="modal-dialog modal-xl modal-dialog-centered">
 			<div class="modal-content">
 
-				<!-- Modal Header -->
+				Modal Header
 				<div class="modal-header">
 					<h4 class="modal-title">대구시 달서구 이곡1동</h4>
 					<br>
@@ -225,7 +225,7 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 
-				<!-- Modal body -->
+				Modal body
 				<div class="modal-body">
 					<img class="card-img-top rounded img-fluid"
 						src="img/client/cat.jpg">
@@ -234,7 +234,7 @@
 						부탁드리고 싶네요 좋은하루 보내세요 펫시터님🤗</h6>
 				</div>
 
-				<!-- Modal footer -->
+				Modal footer
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">닫기</button>
@@ -242,7 +242,7 @@
 
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 	
 
