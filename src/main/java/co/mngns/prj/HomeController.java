@@ -58,7 +58,35 @@ public class HomeController {
 	}
 	@RequestMapping(value="/cService.do")
 	   public String cService() {
-	      return "home/cService";
+	      return "service/cService";
+	   }
+	@RequestMapping(value="/wService.do")
+	   public String wService() {
+	      return "service/wService";
+	   }
+	@RequestMapping(value="/tService.do")
+	   public String tService() {
+	      return "service/tService";
+	   }
+	@RequestMapping(value="/cResv.do")
+	   public String cResv() {
+	      return "service/cResv";
+	   }
+	@RequestMapping(value="/wResv.do")
+	   public String wResv() {
+	      return "service/wResv";
+	   }
+	@RequestMapping(value="/tResv.do")
+	   public String tResv() {
+	      return "service/tResv";
+	   }
+	@RequestMapping(value="/payment.do")
+	   public String payment() {
+	      return "service/payment";
+	   }
+	@RequestMapping(value="/logout.do")
+	   public String tMain() {
+	      return "tMain";
 	   }
 	
 }
