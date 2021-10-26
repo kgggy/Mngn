@@ -365,7 +365,7 @@ article {
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="bradcam_text text-center">
-						<h3>내가 작성한 후기</h3>
+						<h3>의뢰 및 정산 관리</h3>
 					</div>
 				</div>
 			</div>
@@ -386,9 +386,8 @@ article {
 	<div class="main">
 		<input id="tab1" type="radio" name="tabs" checked>
 		<!--디폴트 메뉴-->
-		<label id="tab1" for="tab1">서비스 이용 내역 조회</label> <input id="tab2"
-			type="radio" name="tabs"> <label id="tab2" for="tab2">내가
-			작성한 후기</label>
+		<label id="tab1" for="tab1">의뢰 관리</label> <input id="tab2"
+			type="radio" name="tabs"> <label id="tab2" for="tab2">정산 관리</label>
 		<section id="content1">
 			<select id="stts" name="stts">
 				<option value="접수완료">접수 완료</option>

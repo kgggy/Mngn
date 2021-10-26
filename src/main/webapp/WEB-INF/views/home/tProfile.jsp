@@ -19,13 +19,14 @@
 		</div>
 	</div>
 	<!-- END nav -->
-	<section class="hero-wrap hero-wrap-2"
-		style="background-image: "
+	<section class="hero-wrap hero-wrap-2" style="background-image:"
 		data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row no-gutters slider-text align-items-end">
-				<div class="col-md-9 ftco-animate pb-5"><br><br><br></div>
+				<div class="col-md-9 ftco-animate pb-5">
+					<br> <br> <br>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -34,12 +35,12 @@
 		<form action="#">
 			<div class="form-group">
 				<div class="input-group mb-3">
-					<input type="search" id="search" class="form-control"
-						onclick="execution_daum_address()" placeholder='주소를 입력해주세요.'
-						onfocus="this.placeholder = ''"
-						onblur="this.placeholder = '주소를 입력해주세요.'">
+					<input type="text" id="address_kakao" name="address"
+						class="form-control" onclick="execution_daum_address()"
+						placeholder='주소를 입력해주세요.' onfocus="this.placeholder = ''"
+						onblur="this.placeholder = '주소를 입력해주세요.'" >
 					<div class="input-group-append">
-						<button class="btn" type="button">
+						<button class="btn" type="button" >
 							<i class="ti-search"></i>
 						</button>
 					</div>
@@ -47,23 +48,24 @@
 			</div>
 			<button
 				class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-				type="submit">검색하기</button>
+				type="submit" onclick="search()">검색하기</button>
 		</form>
 	</div>
 
-	<div class="testmonial_area">
+
+	<div class="testmonial_area" id="tTable">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-lg-10">
 					<div class="testmonial_wrap">
-						<div class="single_testmonial d-flex align-items-center" onclick="location.href='tDetails.do'">
+						<div class="single_testmonial d-flex align-items-center"
+							onclick="location.href='tDetails.do'">
 							<div class="test_thumb">
 								<img src="img/testmonial/1.png" alt="">
 							</div>
 							<div class="test_content">
 								<h4>권가영 훈련사</h4>
-								<span>대구시 달서구</span>
-								<span>별점 넣기</span>
+								<span>대구시 달서구</span> <span>별점 넣기</span>
 								<p>안녕하세요. 동물을 사랑하는 훈련사 권가영 입니다 :)</p>
 							</div>
 						</div>
@@ -114,17 +116,16 @@
 						</div>
 					</div>
 					<br> <br>
-					<div class="testmonial_wrap">
-						<div class="single_testmonial d-flex align-items-center">
+					<div class="testmonial_wrap" >
+						<div class="single_testmonial d-flex align-items-center"
+							onclick="location.href='tDetails.do'">
 							<div class="test_thumb">
 								<img src="img/testmonial/1.png" alt="">
 							</div>
-							<div class="test_content">
-								<h4>Jhon Walker</h4>
-								<span>Head of web design</span>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-									sed do eiusmod tempor incididunt ut labore et dolore magna
-									aliqua. Ut enim ad minim veniam, quis nostrud exerci.</p>
+							<div class="test_content" id="tdiv">
+								<h4>권가영 훈련사</h4>
+								<span id="span1">대구시 달서구</span> <span>별점 넣기</span>
+								<p>안녕하세요. 동물을 사랑하는 훈련사 권가영 입니다 :)</p>
 							</div>
 						</div>
 					</div>
@@ -145,21 +146,46 @@
 			</a></li>
 		</ul>
 	</nav>
-	<br><br><br>
+	<br>
+	<br>
+	<br>
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
 		function execution_daum_address() {
 
-			new daum.Postcode({
-				oncomplete : function(data) {
-					// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
-
-				}
-			}).open();
+			new daum.Postcode(
+					{
+						oncomplete : function(data) {
+							// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+							document.getElementById("address_kakao").value = data.address; // 주소 넣기
+						}
+					}).open();
 
 		}
+		
+		function search() {
+		  // Declare variables
+		  var div, filter, span, txtValue;
+		  div = document.getElementById("tDiv");
+		  span = document.getElementsByTagName("span");
+		  filter = document.getElementById('span1').innerHTML;
+		  console.log(filter);
+
+		  // Loop through all table rows, and hide those who don't match the search query
+		  for (i = 0; i < span.length; i++) {
+		    td = tr[i].getElementsByTagName("td")[0];
+		    if (td) {
+		      txtValue = td.textContent || td.innerText;
+		      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+		        tr[i].style.display = "";
+		      } else {
+		        tr[i].style.display = "none";
+		      }
+		    }
+		  } 
+		}
 	</script>
-	<!-- 고침! -->
+
 </body>
 </html>

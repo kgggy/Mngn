@@ -10,5 +10,10 @@ public class UTController {
 	public String myReview() {
 		return "home/myReview";
 	}
+	
+	@RequestMapping(value = "/tResv.do")
+	public String tResv() {
+		return "home/tSal";
+	}
 
 }
