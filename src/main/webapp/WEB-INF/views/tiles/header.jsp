@@ -27,8 +27,7 @@
                                             <ul class="submenu">
                                                 <li><a href="mProfile.do">내 프로필 관리</a></li>
                                                 <li><a href="aProfile.do">반려동물 프로필</a></li>
-                                                <li><a href="uService.do">서비스 이용내역</a></li>
-                                                <li><a href="myReview.do">내가 작성한 후기</a></li>
+                                                <li><a href="myReview.do">서비스 이용 조회 및 후기</a></li>
                                                 <li><a href="logout.do">로그아웃</a></li>
                                                 
                                             </ul>
