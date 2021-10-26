@@ -82,7 +82,7 @@ h3 {
 							<div class="main-menu  d-none d-lg-block">
 								<nav>
 									<ul id="navigation">
-										<li><a href="tResv.do">의뢰 및 관리</a></li>
+										<li><a href="tSal.do">의뢰 및 관리</a></li>
 										<li><a>마이페이지<i class="ti-angle-down"></i></a>
 											<ul class="submenu">
 												<li><a href="mProfile.do">내 프로필 관리</a></li>
