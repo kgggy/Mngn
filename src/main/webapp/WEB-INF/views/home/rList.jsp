@@ -20,10 +20,6 @@
 <link rel="stylesheet" href="css/petsitting/owl.theme.default.min.css">
 <link rel="stylesheet" href="css/petsitting/magnific-popup.css">
 
-
-<link rel="stylesheet" href="css/petsitting/bootstrap-datepicker.css">
-<link rel="stylesheet" href="css/petsitting/jquery.timepicker.css">
-
 <link rel="stylesheet" href="css/petsitting/flaticon.css">
 <link rel="stylesheet" href="css/petsitting/style.css">
 <title>Insert title here</title>
