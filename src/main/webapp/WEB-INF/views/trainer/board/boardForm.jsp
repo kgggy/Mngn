@@ -62,7 +62,8 @@
                         Criss Donald <small class=""></small>
                     </span>
                 </a>
-        </div>
+       		 </div>
+           <!-- End User Profile -->
     </header>
     <!-- End Header (Topbar) -->
 
@@ -81,7 +82,7 @@
                     <ul class="u-sidebar-nav-menu u-sidebar-nav-menu--top-level">
                         <!-- 주간 리포트 -->
                         <li class="u-sidebar-nav-menu__item">
-                            <a class="u-sidebar-nav-menu__link active" href="mHome.do">
+                            <a class="u-sidebar-nav-menu__link" href="mHome.do">
                                 <i class="fas fa-th-large u-sidebar-nav-menu__item-icon"></i>
                                 <span class="u-sidebar-nav-menu__item-title">주간 리포트</span>
                             </a>
@@ -90,7 +91,7 @@
 
                         <!-- 공지사항 관리 -->
                         <li class="u-sidebar-nav-menu__item clearfix">
-                            <a class="u-sidebar-nav-menu__link" href="boardList.do" data-target="#baseUI">
+                            <a class="u-sidebar-nav-menu__link active" href="boardList.do" data-target="#baseUI">
                                 <i class="far fa-edit u-sidebar-nav-menu__item-icon"></i>
                                 <span class="u-sidebar-nav-menu__item-title">공지사항 관리</span>
                                 <i class="fa fa-angle-right u-sidebar-nav-menu__item-arrow"></i>

@@ -43,7 +43,7 @@
     <!-- Header (Topbar) -->
     <header class="astino-header u-header">
         <div class="u-header-left">
-            <a class="u-header-logo" href="home.do">
+            <a class="u-header-logo" href="mHome.do">
                <img src="assets/logo.png" width="160" >
                 <img class="img-fluid u-logo-mobile" src="assets/img/logo-mobile.png" width="50" alt="Stream Dashboard">
             </a>
@@ -54,302 +54,7 @@
                 <i class="fa fa-bars u-sidebar-invoker__icon--open"></i>
                 <i class="fa fa-times u-sidebar-invoker__icon--close"></i>
             </a>
-
-            <div class="astino-header-search u-header-search" data-search-mobile-invoker="#headerSearchMobileInvoker" data-search-target="#headerSearch">
-                <a id="headerSearchMobileInvoker" class="btn btn-link input-group-prepend u-header-search__mobile-invoker" href="#!">
-                    <i class="fa fa-search"></i>
-                </a>
-
-                <div id="headerSearch" class="u-header-search-form">
-                    <form>
-                        <div class="input-group">
-                            <span class="form-icon form-icon--right">
-                                <i class="fa fa-search form-icon__item"></i>
-                            </span>
-                            <input class="form-control u-header-search__field" type="search" placeholder="Search">
-                        </div>
-                    </form>
-                </div>
-            </div>
         </div>
-
-        <div class="u-header-right">
-            <!-- Activities -->
-            <div class="dropdown mr-4">
-                <div class="dropdown-menu dropdown-menu-right border-0 py-0 mt-4" aria-labelledby="dropdownMenuLink" style="width: 360px;">
-                    <div class="card">
-                        <div class="card-header d-flex align-items-center py-3">
-                            <h2 class="h4 card-header-title">Activities</h2>
-                            <a class="ml-auto" href="#">Clear all</a>
-                        </div>
-
-                        <div class="card-body p-0">
-                            <div class="list-group list-group-flush">
-                                <!-- Activity -->
-                                <a class="list-group-item list-group-item-action" href="#">
-                                    <div class="media align-items-center">
-                                        <img class="u-avatar--sm rounded-circle mr-3" src="assets/img/avatars/img1.jpg" alt="Image description">
-
-                                        <div class="media-body">
-                                            <div class="d-flex align-items-center">
-                                                <h4 class="mb-1">Chad Cannon</h4>
-                                                <small class="text-muted ml-auto">23 Jan 2018</small>
-                                            </div>
-
-                                            <p class="text-truncate mb-0" style="max-width: 250px;">
-                                                We've just done the project.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- End Activity -->
-
-                                <!-- Activity -->
-                                <a class="list-group-item list-group-item-action" href="#">
-                                    <div class="media align-items-center">
-                                        <img class="u-avatar--sm rounded-circle mr-3" src="assets/img/avatars/img2.jpg" alt="Image description">
-
-                                        <div class="media-body">
-                                            <div class="d-flex align-items-center">
-                                                <h4 class="mb-1">Jane Ortega</h4>
-                                                <small class="text-muted ml-auto">18 Jan 2018</small>
-                                            </div>
-
-                                            <p class="text-truncate mb-0" style="max-width: 250px;">
-                                                <span class="text-primary">@Bruce</span> advertising your project is not good idea.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- End Activity -->
-
-                                <!-- Activity -->
-                                <a class="list-group-item list-group-item-action" href="#">
-                                    <div class="media align-items-center">
-                                        <img class="u-avatar--sm rounded-circle mr-3" src="assets/img/avatars/user-unknown.jpg" alt="Image description">
-
-                                        <div class="media-body">
-                                            <div class="d-flex align-items-center">
-                                                <h4 class="mb-1">Stella Hoffman</h4>
-                                                <small class="text-muted ml-auto">15 Jan 2018</small>
-                                            </div>
-
-                                            <p class="text-truncate mb-0" style="max-width: 250px;">
-                                                When the release date is expexted for the advacned settings?
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- End Activity -->
-
-                                <!-- Activity -->
-                                <a class="list-group-item list-group-item-action" href="#">
-                                    <div class="media align-items-center">
-                                        <img class="u-avatar--sm rounded-circle mr-3" src="assets/img/avatars/img4.jpg" alt="Image description">
-
-                                        <div class="media-body">
-                                            <div class="d-flex align-items-center">
-                                                <h4 class="mb-1">Htmlstream</h4>
-                                                <small class="text-muted ml-auto">05 Jan 2018</small>
-                                            </div>
-
-                                            <p class="text-truncate mb-0" style="max-width: 250px;">
-                                                Adwords Keyword research for beginners
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- End Activity -->
-                            </div>
-                        </div>
-
-                        <div class="card-footer py-3">
-                            <a class="btn btn-block btn-outline-primary" href="#">View all activities</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Activities -->
-
-            <!-- Notifications -->
-            <div class="dropdown mr-4">
-                <div class="dropdown-menu dropdown-menu-right border-0 py-0 mt-4" aria-labelledby="dropdownMenuLink" style="width: 360px;">
-                    <div class="card">
-                        <div class="card-header d-flex align-items-center py-3">
-                            <h2 class="h4 card-header-title">Notifications</h2>
-                            <a class="ml-auto" href="#">Clear all</a>
-                        </div>
-
-                        <div class="card-body p-0">
-                            <div class="list-group list-group-flush">
-                                <!-- Notification -->
-                                <a class="list-group-item list-group-item-action" href="#">
-                                    <div class="media align-items-center">
-                                        <div class="u-icon u-icon--sm rounded-circle bg-danger text-white mr-3">
-                                            <i class="fab fa-dribbble"></i>
-                                        </div>
-
-                                        <div class="media-body">
-                                            <div class="d-flex align-items-center">
-                                                <h4 class="mb-1">Dribbble</h4>
-                                                <small class="text-muted ml-auto">23 Jan 2018</small>
-                                            </div>
-
-                                            <p class="text-truncate mb-0" style="max-width: 250px;">
-                                                <span class="text-primary">@htmlstream</span> just liked your post!
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- End Notification -->
-
-                                <!-- Notification -->
-                                <a class="list-group-item list-group-item-action" href="#">
-                                    <div class="media align-items-center">
-                                        <div class="u-icon u-icon--sm rounded-circle bg-info text-white mr-3">
-                                            <i class="fab fa-twitter"></i>
-                                        </div>
-
-                                        <div class="media-body">
-                                            <div class="d-flex align-items-center">
-                                                <h4 class="mb-1">Twitter</h4>
-                                                <small class="text-muted ml-auto">18 Jan 2018</small>
-                                            </div>
-
-                                            <p class="text-truncate mb-0" style="max-width: 250px;">
-                                                Someone mentioned you on the tweet.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- End Notification -->
-
-                                <!-- Notification -->
-                                <a class="list-group-item list-group-item-action" href="#">
-                                    <div class="media align-items-center">
-                                        <div class="u-icon u-icon--sm rounded-circle bg-success text-white mr-3">
-                                            <i class="fab fa-spotify"></i>
-                                        </div>
-
-                                        <div class="media-body">
-                                            <div class="d-flex align-items-center">
-                                                <h4 class="mb-1">Spotify</h4>
-                                                <small class="text-muted ml-auto">18 Jan 2018</small>
-                                            </div>
-
-                                            <p class="text-truncate mb-0" style="max-width: 250px;">
-                                                You've just recived $25 free gift card.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- End Notification -->
-
-                                <!-- Notification -->
-                                <a class="list-group-item list-group-item-action" href="#">
-                                    <div class="media align-items-center">
-                                        <div class="u-icon u-icon--sm rounded-circle bg-info text-white mr-3">
-                                            <i class="fab fa-facebook-f"></i>
-                                        </div>
-
-                                        <div class="media-body">
-                                            <div class="d-flex align-items-center">
-                                                <h4 class="mb-1">Facebook</h4>
-                                                <small class="text-muted ml-auto">18 Jan 2018</small>
-                                            </div>
-
-                                            <p class="text-truncate mb-0" style="max-width: 250px;">
-                                                <span class="text-primary">@htmlstream</span> commented in your post.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- End Notification -->
-                            </div>
-                        </div>
-
-                        <div class="card-footer py-3">
-                            <a class="btn btn-block btn-outline-primary" href="#">View all notifications</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Notifications -->
-
-            <!-- Apps -->
-            <div class="dropdown mr-4">
-                <div class="dropdown-menu dropdown-menu-right border-0 py-0 mt-4" aria-labelledby="dropdownMenuLink" style="width: 360px;">
-                    <div class="card">
-                        <div class="card-header d-flex align-items-center py-3">
-                            <h2 class="h4 card-header-title">Apps</h2>
-                            <a class="ml-auto" href="#">Learn more</a>
-                        </div>
-
-                        <div class="card-body py-3">
-                            <div class="row">
-                                <!-- App -->
-                                <div class="col-4 px-2 mb-2">
-                                    <a class="u-apps d-flex flex-column rounded" href="#!">
-                                        <img class="img-fluid u-avatar--xs mx-auto mb-2" src="assets/img/brands-sm/img1.png" alt="">
-                                        <span class="text-center">Assana</span>
-                                    </a>
-                                </div>
-                                <!-- End App -->
-
-                                <!-- App -->
-                                <div class="col-4 px-2 mb-2">
-                                    <a class="u-apps d-flex flex-column rounded" href="#!">
-                                        <img class="img-fluid u-avatar--xs mx-auto mb-2" src="assets/img/brands-sm/img2.png" alt="">
-                                        <span class="text-center">Slack</span>
-                                    </a>
-                                </div>
-                                <!-- End App -->
-
-                                <!-- App -->
-                                <div class="col-4 px-2 mb-2">
-                                    <a class="u-apps d-flex flex-column rounded" href="#!">
-                                        <img class="img-fluid u-avatar--xs mx-auto mb-2" src="assets/img/brands-sm/img3.png" alt="">
-                                        <span class="text-center">Cloud</span>
-                                    </a>
-                                </div>
-                                <!-- End App -->
-
-                                <!-- App -->
-                                <div class="col-4 px-2">
-                                    <a class="u-apps d-flex flex-column rounded" href="#!">
-                                        <img class="img-fluid u-avatar--xs mx-auto mb-2" src="assets/img/brands-sm/img5.png" alt="">
-                                        <span class="text-center">Facebook</span>
-                                    </a>
-                                </div>
-                                <!-- End App -->
-
-                                <!-- App -->
-                                <div class="col-4 px-2">
-                                    <a class="u-apps d-flex flex-column rounded" href="#!">
-                                        <img class="img-fluid u-avatar--xs mx-auto mb-2" src="assets/img/brands-sm/img4.png" alt="">
-                                        <span class="text-center">Spotify</span>
-                                    </a>
-                                </div>
-                                <!-- End App -->
-
-                                <!-- App -->
-                                <div class="col-4 px-2">
-                                    <a class="u-apps d-flex flex-column rounded" href="#!">
-                                        <img class="img-fluid u-avatar--xs mx-auto mb-2" src="assets/img/brands-sm/img6.png" alt="">
-                                        <span class="text-center">Twitter</span>
-                                    </a>
-                                </div>
-                                <!-- End App -->
-                            </div>
-                        </div>
-
-                        <div class="card-footer py-3">
-                            <a class="btn btn-block btn-outline-primary" href="#">View all apps</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Apps -->
 
             <!-- User Profile -->
             <div class="astino-user-top-corner dropdown ml-2">
@@ -361,7 +66,6 @@
                 </a>
             </div>
             <!-- End User Profile -->
-        </div>
     </header>
     <!-- End Header (Topbar) -->
 
@@ -371,7 +75,7 @@
         <aside id="sidebar" class="astino-sidebar u-sidebar">
             <div class="u-sidebar-inner">
                 <header class="u-sidebar-header">
-                    <a class="u-sidebar-logo" href="home.do">
+                    <a class="u-sidebar-logo" href="mHome.do">
                         <img class="img-fluid" src="assets/img/logo.png" width="124" alt="Stream Dashboard">
                     </a>
                 </header>
@@ -380,7 +84,7 @@
                     <ul class="u-sidebar-nav-menu u-sidebar-nav-menu--top-level">
                         <!-- 주간 리포트 -->
                         <li class="u-sidebar-nav-menu__item">
-                            <a class="u-sidebar-nav-menu__link active" href="home.do">
+                            <a class="u-sidebar-nav-menu__link" href="mHome.do">
                                 <i class="fas fa-th-large u-sidebar-nav-menu__item-icon"></i>
                                 <span class="u-sidebar-nav-menu__item-title">주간 리포트</span>
                             </a>
@@ -451,7 +155,7 @@
 
                         <!-- 정산 관리 -->
                         <li class="u-sidebar-nav-menu__item clearfix">
-                            <a class="u-sidebar-nav-menu__link" href="salesList.do" data-target="#subMenu2">
+                            <a class="u-sidebar-nav-menu__link active" href="salesList.do" data-target="#subMenu2">
                                 <i class="fas fa-ticket-alt u-sidebar-nav-menu__item-icon"></i>
                                 <span class="u-sidebar-nav-menu__item-title">정산 관리</span>
                                 <i class="fa fa-angle-right u-sidebar-nav-menu__item-arrow"></i>
@@ -700,7 +404,7 @@
                         <nav aria-label="Bootstrap Pagination Example">
                             <ul class="pagination mb-0">
                                 <li class="page-item">
-                                    <a class="page-link" href="#">← <span class="ml-1 d-none d-xl-inline-block">Previous</span></a>
+                                    <a class="page-link" href="mHome.do"><span class="ml-1 d-none d-xl-inline-block">이전으로</span></a>
                                 </li>
                                 <li class="page-item">
                                     <a class="page-link" href="#">1</a>
@@ -718,7 +422,7 @@
                                     <a class="page-link" href="#">5</a>
                                 </li>
                                 <li class="page-item">
-                                    <a class="page-link" href="#"><span class="mr-1 d-none d-xl-inline-block">Next</span> →</a>
+                                    <a class="page-link" href="#"><span class="mr-1 d-none d-xl-inline-block">다음으로</span></a>
                                 </li>
                             </ul>
                         </nav>

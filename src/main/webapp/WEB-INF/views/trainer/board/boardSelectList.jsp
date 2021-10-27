@@ -44,7 +44,7 @@
     <!-- Header (Topbar) -->
     <header class="astino-header u-header">
         <div class="u-header-left">
-            <a class="u-header-logo" href="home.do">
+            <a class="u-header-logo" href="mHome.do">
                 <img src="assets/logo.png" width="160" >
                 <img class="img-fluid u-logo-mobile" src="assets/img/logo-mobile.png" width="50" alt="Stream Dashboard">
             </a>
@@ -56,139 +56,7 @@
                 <i class="fa fa-times u-sidebar-invoker__icon--close"></i>
             </a>
         </div>
-
-        <div class="u-header-right">
-            <!-- Activities -->
-            <div class="dropdown mr-4">
-                <div class="dropdown-menu dropdown-menu-right border-0 py-0 mt-4" aria-labelledby="dropdownMenuLink" style="width: 360px;">
-                    <div class="card">
-                        <div class="card-header d-flex align-items-center py-3">
-                            <h2 class="h4 card-header-title">Activities</h2>
-                            <a class="ml-auto" href="#">Clear all</a>
-                        </div>
-
-                        <div class="card-body p-0">
-                            <div class="list-group list-group-flush">
-                                <!-- Activity -->
-                                <a class="list-group-item list-group-item-action" href="#">
-                                    <div class="media align-items-center">
-                                        <img class="u-avatar--sm rounded-circle mr-3" src="assets/img/avatars/img1.jpg" alt="Image description">
-
-                                        <div class="media-body">
-                                            <div class="d-flex align-items-center">
-                                                <h4 class="mb-1">Chad Cannon</h4>
-                                                <small class="text-muted ml-auto">23 Jan 2018</small>
-                                            </div>
-
-                                            <p class="text-truncate mb-0" style="max-width: 250px;">
-                                                We've just done the project.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- End Activity -->
-
-                                <!-- Activity -->
-                                <a class="list-group-item list-group-item-action" href="#">
-                                    <div class="media align-items-center">
-                                        <img class="u-avatar--sm rounded-circle mr-3" src="assets/img/avatars/img2.jpg" alt="Image description">
-
-                                        <div class="media-body">
-                                            <div class="d-flex align-items-center">
-                                                <h4 class="mb-1">Jane Ortega</h4>
-                                                <small class="text-muted ml-auto">18 Jan 2018</small>
-                                            </div>
-
-                                            <p class="text-truncate mb-0" style="max-width: 250px;">
-                                                <span class="text-primary">@Bruce</span> advertising your project is not good idea.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- End Activity -->
-
-                                <!-- Activity -->
-                                <a class="list-group-item list-group-item-action" href="#">
-                                    <div class="media align-items-center">
-                                        <img class="u-avatar--sm rounded-circle mr-3" src="assets/img/avatars/user-unknown.jpg" alt="Image description">
-
-                                        <div class="media-body">
-                                            <div class="d-flex align-items-center">
-                                                <h4 class="mb-1">Stella Hoffman</h4>
-                                                <small class="text-muted ml-auto">15 Jan 2018</small>
-                                            </div>
-
-                                            <p class="text-truncate mb-0" style="max-width: 250px;">
-                                                When the release date is expexted for the advacned settings?
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- End Activity -->
-
-                                <!-- Activity -->
-                                <a class="list-group-item list-group-item-action" href="#">
-                                    <div class="media align-items-center">
-                                        <img class="u-avatar--sm rounded-circle mr-3" src="assets/img/avatars/img4.jpg" alt="Image description">
-
-                                        <div class="media-body">
-                                            <div class="d-flex align-items-center">
-                                                <h4 class="mb-1">Htmlstream</h4>
-                                                <small class="text-muted ml-auto">05 Jan 2018</small>
-                                            </div>
-
-                                            <p class="text-truncate mb-0" style="max-width: 250px;">
-                                                Adwords Keyword research for beginners
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- End Activity -->
-                            </div>
-                        </div>
-
-                        <div class="card-footer py-3">
-                            <a class="btn btn-block btn-outline-primary" href="#">View all activities</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Activities -->
-
-            <!-- Notifications -->
-            <div class="dropdown mr-4">
-                <div class="dropdown-menu dropdown-menu-right border-0 py-0 mt-4" aria-labelledby="dropdownMenuLink" style="width: 360px;">
-                    <div class="card">
-                        <div class="card-header d-flex align-items-center py-3">
-                            <h2 class="h4 card-header-title">Notifications</h2>
-                            <a class="ml-auto" href="#">Clear all</a>
-                        </div>
-
-                        <div class="card-body p-0">
-                            <div class="list-group list-group-flush">
-                                <!-- Notification -->
-                                <a class="list-group-item list-group-item-action" href="#">
-                                    <div class="media align-items-center">
-                                        <div class="u-icon u-icon--sm rounded-circle bg-danger text-white mr-3">
-                                            <i class="fab fa-dribbble"></i>
-                                        </div>
-
-                                        <div class="media-body">
-                                            <div class="d-flex align-items-center">
-                                                <h4 class="mb-1">Dribbble</h4>
-                                                <small class="text-muted ml-auto">23 Jan 2018</small>
-                                            </div>
-
-                                            <p class="text-truncate mb-0" style="max-width: 250px;">
-                                                <span class="text-primary">@htmlstream</span> just liked your post!
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- End Notification -->
-
-
-
+       
             <!-- User Profile -->
             <div class="astino-user-top-corner dropdown ml-2">
                 <a class="link-muted d-flex align-items-center" href="#!" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">
@@ -197,8 +65,6 @@
                         Criss Donald <small class=""></small>
                     </span>
                 </a>
-            </div>
-            <!-- End User Profile -->
         </div>
     </header>
     <!-- End Header (Topbar) -->
@@ -209,7 +75,7 @@
         <aside id="sidebar" class="astino-sidebar u-sidebar">
             <div class="u-sidebar-inner">
                 <header class="u-sidebar-header">
-                    <a class="u-sidebar-logo" href="home.do">
+                    <a class="u-sidebar-logo" href="mHome.do">
                         <img class="img-fluid" src="assets/img/logo.png" width="124" alt="Stream Dashboard">
                     </a>
                 </header>
@@ -218,7 +84,7 @@
                     <ul class="u-sidebar-nav-menu u-sidebar-nav-menu--top-level">
                         <!-- 주간 리포트 -->
                         <li class="u-sidebar-nav-menu__item">
-                            <a class="u-sidebar-nav-menu__link active" href="home.do">
+                            <a class="u-sidebar-nav-menu__link" href="mHome.do">
                                 <i class="fas fa-th-large u-sidebar-nav-menu__item-icon"></i>
                                 <span class="u-sidebar-nav-menu__item-title">주간 리포트</span>
                             </a>
@@ -227,7 +93,7 @@
 
                         <!-- 공지사항 관리 -->
                         <li class="u-sidebar-nav-menu__item clearfix">
-                            <a class="u-sidebar-nav-menu__link" href="boardList.do" data-target="#baseUI">
+                            <a class="u-sidebar-nav-menu__link active" href="boardList.do" data-target="#baseUI">
                                 <i class="far fa-edit u-sidebar-nav-menu__item-icon"></i>
                                 <span class="u-sidebar-nav-menu__item-title">공지사항 관리</span>
                                 <i class="fa fa-angle-right u-sidebar-nav-menu__item-arrow"></i>
@@ -362,7 +228,7 @@
                         <nav aria-label="Bootstrap Pagination Example">
                             <ul class="pagination mb-0">
                                 <li class="page-item">
-                                    <a class="page-link" href="boardList.do"><span class="ml-1 d-none d-xl-inline-block">Previous</span></a>
+                                    <a class="page-link" href="boardList.do"><span class="ml-1 d-none d-xl-inline-block">이전으로</span></a>
                                 </li>
                             </ul>
                         </nav>
@@ -382,28 +248,6 @@
          </div>
     </main>
     
-    <!-- Vertically Centered Modals -->
-		<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLongTitle">Vertically Centered Modal</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						삭제 하시겠습니까?
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-						<button type="button" class="btn btn-primary">확인</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End Vertically Centered Modals -->
-
     <!-- Global Vendor -->
     <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
     <script src="assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
