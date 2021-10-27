@@ -1,0 +1,174 @@
+.btn-primary {
+	color: #fff;
+	background-color: #FF6E6E;
+	border-color: #FF6E6E;
+}
+.btn-outline-primary {
+	color: #FF6E6E;
+	border-color: #FF6E6E;
+}
+.btn.btn-large {
+    padding: 0.5rem 1.5rem !important;
+}
+.btn.btn-large i.fa {
+    margin-right: 5px;
+}
+.astino-header .u-sidebar-invoker {
+    color: #FF6E6E;
+}
+.astino-header .form-icon--right {
+    z-index: 4;    
+}
+.astino-header .form-icon__item {
+    color: #FF6E6E;
+}
+.astino-header ::placeholder {
+    color: #FF6E6E;
+}
+.astino-user-top-corner span {
+    color: #FF6E6E;
+}
+.astino-sidebar .u-sidebar-nav-menu__link {
+    box-shadow: 0 3px 6px #F9E1E1;
+}
+.astino-sidebar .u-sidebar-nav-menu__link:hover {
+    background-color: #f5f5f5;
+}
+.astino-sidebar .u-sidebar-nav-menu__link.active {
+    color: #fff;
+}
+.astino-sidebar .u-sidebar-nav-menu__link.active:hover {
+    background-color: #FF6E6E;;
+    opacity: .9;
+}
+.astino-sidebar .u-sidebar-nav-menu__link:hover .u-sidebar-nav-menu__item-icon {
+    color: #FF6E6E;
+}
+
+.astino-sidebar .u-sidebar-nav-menu__link.active:hover .u-sidebar-nav-menu__item-icon {
+    color: #fff;
+}
+
+
+
+
+
+.astino-sidebar .u-sidebar-nav-menu__link,
+.astino-sidebar .u-sidebar-nav-menu__item-icon,
+.astino-sidebar .u-sidebar-nav-menu__item-arrow {
+    color: #FF6E6E;
+}
+.u-sidebar-nav-menu--second-level {
+	width: 170px;
+	float: right;
+}
+.u-sidebar-nav-menu--second-level a {
+    text-align: center;
+}
+.u-sidebar-nav--opened:hover .u-sidebar-nav-menu__link {
+    color: #FF6E6E;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*product-add-area start*/
+.table thead th {
+    vertical-align: middle;
+}
+thead th {
+    font-weight: 700 !important;
+    color: #000;
+    font-size: 16px;
+}
+tr td {
+    color: #818181;
+    font-weight: 300 !important;
+/*    font-size: 13px;*/
+}
+.custom-control-label::before {
+    background: #fff !important;
+    border: 1px solid #272D3B;
+    border-radius: 100% !important;
+}
+.custom-control-input.is-invalid:checked ~ .custom-control-label::before {
+    background-color: #fb4143 !important;
+    border-color: #fb4143; 
+}
+.custom-control-label::before,
+.custom-control-label::after {
+    top: 0.4rem;
+}
+.custom-control-label::after {
+    
+}
+label span {
+    display: inline-block;
+}
+
+
+
+
+.best-products-wrap.card header {
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+.single-product td * {
+    line-height: 1;
+}
+.single-product td h4 {
+    color: #2D2D2D;
+}
+.single-product td span {
+    color: #999;
+    font-size: 13px;
+}
+.single-product td {
+    border-top: 0;
+}
+
+
+
+
+.astino-footer {
+    color: #A5A5A5;
+}
+/*product-add-area end*/
