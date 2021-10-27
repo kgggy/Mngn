@@ -5395,6 +5395,20 @@ button.close {
 	width: 40%
 }
 
+.modal {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1050;
+	display: none;
+	overflow: hidden;
+	outline: 0;
+	height: 800px;
+	width: 40%
+}
+
 .modal-open .modal {
 	overflow-x: hidden;
 	overflow-y: hidden;
@@ -5447,7 +5461,7 @@ button.close {
 	outline: 0
 }
 
-.modal-backdrop {
+/* .modal-backdrop {
 	position: fixed;
 	top: 0;
 	right: 0;
@@ -5455,7 +5469,7 @@ button.close {
 	left: 0;
 	z-index: 999999;
 	background-color: #000
-}
+} */
 
 .modal-backdrop.fade {
 	opacity: 0
