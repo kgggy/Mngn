@@ -36,10 +36,11 @@
             height: 70px !important;
         }
     </style>
+
 </head>
 <!-- End Head -->
 
-<body class="page-order-all">
+<body class="page-order-add">
     <!-- Header (Topbar) -->
     <header class="astino-header u-header">
         <div class="u-header-left">
@@ -490,22 +491,18 @@
                                         <label for="formGroupExampleInput4">내  용</label>
                                         <textarea class="form-control" id="formGroupExampleInput6" placeholder=""></textarea>
                                     </div>
-                                   <!--  <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput5">Tracking</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput5" placeholder="">
-                                    </div> -->
-                                    <a href="alert.do" class="btn btn-danger btn-large float-right">
-                                        수정
-                                    </a>
-                                     <a href="modals.do" class="btn btn-danger btn-large float-right">
-                                        삭제
-                                    </a>
+                                    <div align="right">
+	                                    <button type="button" class="btn btn-outline-danger" href="#" onClick="alert('수정하겠습니까?')">수정</button>
+										<button type="button" class="btn btn-outline-danger" href="#" onClick="alert('삭제하겠습니까?')">삭제</button>
+									</div>
                                 </form>
                             </div>
                         </div>
                     </div>
                     <!-- End Current Projects -->
-                </div>
+                    
+                  
+              </div>
                 <div class="row justify-content-between align-items-center mb-4">
                     <div class="col-sm">
                         <nav aria-label="Bootstrap Pagination Example">
@@ -517,7 +514,7 @@
                         </nav>
                     </div>
                 </div>
-            </div>
+              </div>
 
             <!-- Footer -->
             <footer class="astino-footer u-footer d-md-flex align-items-md-center text-center text-md-left">
@@ -528,8 +525,30 @@
                 </p>
             </footer>
             <!-- End Footer -->
-        </div>
+         </div>
     </main>
+    
+    <!-- Vertically Centered Modals -->
+		<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLongTitle">Vertically Centered Modal</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						삭제 하시겠습니까?
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+						<button type="button" class="btn btn-primary">확인</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Vertically Centered Modals -->
 
     <!-- Global Vendor -->
     <script src="assets/vendor/jquery/dist/jquery.min.js"></script>

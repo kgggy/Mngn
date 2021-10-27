@@ -493,8 +493,7 @@
                                         <input type="text" class="form-control" id="formGroupExampleInput5" placeholder="">
                                     </div> -->
                                     <a href="" class="btn btn-danger btn-large float-right">
-                                        <i class="fa fa-plus"></i>
-                                        공지사항 등록
+                                       등록
                                     </a>
                                 </form>
                             </div>
