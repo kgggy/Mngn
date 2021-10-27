@@ -7,14 +7,14 @@
                     <div class="row align-items-center">
                         <div class="col-xl-3 col-lg-3">
                             <div class="logo">
-                               <h1 style="font-weight:bolder"><a><img src="img/logo1.png" alt="home.do"> HEYYO</a></h1>
+                               <h1 style="font-weight:bolder"><a href="main.do"><img src="img/logo1.png"> HEYYO</a></h1>
                             </div>
                         </div>
                         <div class="col-xl-9 col-lg-9">
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a href="Tprofile.do">훈련사 프로필</a></li>
+                                        <li><a href="tProfile.do">훈련사 프로필</a></li>
                                         <li><a>서비스 예약 <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
                                                 <li><a href="cService.do">돌봄서비스</a></li>
@@ -27,8 +27,7 @@
                                             <ul class="submenu">
                                                 <li><a href="mProfile.do">내 프로필 관리</a></li>
                                                 <li><a href="aProfile.do">반려동물 프로필</a></li>
-                                                <li><a href="uService.do">서비스 이용내역</a></li>
-                                                <li><a href="elements.html">내가 작성한 후기</a></li>
+                                                <li><a href="myReview.do">이용 조회 및 후기</a></li>
                                                 <li><a href="logout.do">로그아웃</a></li>
                                                 
                                             </ul>
