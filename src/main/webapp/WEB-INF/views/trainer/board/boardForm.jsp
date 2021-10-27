@@ -41,7 +41,7 @@
     <!-- Header (Topbar) -->
     <header class="astino-header u-header">
         <div class="u-header-left">
-            <a class="u-header-logo" href="home.do">
+            <a class="u-header-logo" href="mHome.do">
                 <img src="assets/logo.png" width="160" >
                 <img class="img-fluid u-logo-mobile" src="assets/img/logo-mobile.png" width="50" alt="Stream Dashboard">
             </a>
@@ -72,7 +72,7 @@
         <aside id="sidebar" class="astino-sidebar u-sidebar">
             <div class="u-sidebar-inner">
                 <header class="u-sidebar-header">
-                    <a class="u-sidebar-logo" href="home.do">
+                    <a class="u-sidebar-logo" href="mHome.do">
                         <img class="img-fluid" src="assets/img/logo.png" width="124" alt="Stream Dashboard">
                     </a>
                 </header>
@@ -81,7 +81,7 @@
                     <ul class="u-sidebar-nav-menu u-sidebar-nav-menu--top-level">
                         <!-- 주간 리포트 -->
                         <li class="u-sidebar-nav-menu__item">
-                            <a class="u-sidebar-nav-menu__link active" href="home.do">
+                            <a class="u-sidebar-nav-menu__link active" href="mHome.do">
                                 <i class="fas fa-th-large u-sidebar-nav-menu__item-icon"></i>
                                 <span class="u-sidebar-nav-menu__item-title">주간 리포트</span>
                             </a>
@@ -180,8 +180,6 @@
         </aside>
         <!-- End Sidebar -->
 
-
-
         <div class="u-content">
             <div class="u-body">
                 <header class="astino-pr-form-header">
@@ -209,10 +207,6 @@
                                         <label for="formGroupExampleInput4">내  용</label>
                                         <textarea class="form-control" id="formGroupExampleInput6" placeholder=""></textarea>
                                     </div>
-                                   <!--  <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput5">Tracking</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput5" placeholder="">
-                                    </div> -->
                                     <a href="" onClick="alert('등록하겠습니까?')" class="btn btn-danger btn-large float-right">
                                        등록
                                     </a>
@@ -227,7 +221,7 @@
                         <nav aria-label="Bootstrap Pagination Example">
                             <ul class="pagination mb-0">
                                 <li class="page-item">
-                                    <a class="page-link" href="home.do"><span class="ml-1 d-none d-xl-inline-block">처음으로</span></a>
+                                    <a class="page-link" href="boardList.do"><span class="ml-1 d-none d-xl-inline-block">이전으로</span></a>
                                 </li>
                             </ul>
                         </nav>
