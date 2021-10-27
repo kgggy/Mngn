@@ -6,7 +6,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link rel="stylesheet" href="css/petsitting/table.css">
+
+<link rel="stylesheet" href="css/petsitting/style.css">
 <link
 	href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap"
 	rel="stylesheet">
@@ -588,22 +589,19 @@ article {
 			</div>
 		</section>
 
-		<div class="row justify-content-between align-items-center mb-4">
-			<div class="col-sm">
-				<nav aria-label="Bootstrap Pagination Example">
-					<ul class="pagination mb-0">
-						<li class="page-item"><a class="page-link" href="#">← <span
-								class="ml-1 d-none d-xl-inline-block">Previous</span></a></li>
-						<li class="page-item"><a class="page-link" href="#">1</a></li>
-						<li class="page-item active"><a class="page-link" href="#">2</a>
-						</li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item"><a class="page-link" href="#">4</a></li>
-						<li class="page-item"><a class="page-link" href="#">5</a></li>
-						<li class="page-item"><a class="page-link" href="#"><span
-								class="mr-1 d-none d-xl-inline-block">Next</span> →</a></li>
+		<div class="row mt-5">
+			<div class="col text-center">
+				<div class="block-27">
+					<ul>
+						<li><a href="#">&lt;</a></li>
+						<li class="active"><span>1</span></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">5</a></li>
+						<li><a href="#">&gt;</a></li>
 					</ul>
-				</nav>
+				</div>
 			</div>
 		</div>
 	</div>
