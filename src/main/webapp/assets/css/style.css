@@ -17,7 +17,7 @@ li {
 }
 ::selection {
     color: #fff;
-    background-color: #FF6E6E;
+    background-color: #f2551e;
 }
 .mb-4, .my-4 {
     margin-bottom: 30px !important;
@@ -27,12 +27,12 @@ li {
 }
 .btn-danger {
 	color: #fff;
-	background-color: #FF6E6E;
-	border-color: #FF6E6E;
+	background-color: #f2551e;
+	border-color: #f2551e;
 }
 .btn-outline-danger {
-	color: #FF6E6E;
-	border-color: #FF6E6E;
+	color: #f2551e;
+	border-color: #f2551e;
 }
 .btn.btn-large {
     padding: 0.5rem 1.5rem !important;
@@ -48,19 +48,19 @@ li {
 }
 
 .astino-header .u-sidebar-invoker {
-    color: #FF6E6E;
+    color: #f2551e;
 }
 .astino-header .form-icon--right {
     z-index: 4;    
 }
 .astino-header .form-icon__item {
-    color: #FF6E6E;
+    color: #f2551e;
 }
 .astino-header ::placeholder {
-    color: #FF6E6E;
+    color: #f2551e;
 }
 .astino-user-top-corner span {
-    color: #FF6E6E;
+    color: #f2551e;
 }
 .astino-sidebar .u-sidebar-nav-menu__link {
     box-shadow: 0 3px 6px #F9E1E1;
@@ -75,10 +75,10 @@ li {
 }
 .astino-sidebar .u-sidebar-nav-menu__link.active {
     color: #fff;
-    background-color: #FF6E6E;
+    background-color: #f2551e;
 }
 .astino-sidebar .u-sidebar-nav-menu__link.active:hover {
-    background-color: #FF6E6E;
+    background-color: #f2551e;
     opacity: .9;
 }
 .u-sidebar-nav-menu__link:hover {
@@ -86,7 +86,7 @@ li {
     background-color: transparent;
 }
 .astino-sidebar .u-sidebar-nav-menu__link:hover .u-sidebar-nav-menu__item-icon {
-    color: #FF6E6E;
+    color: #f2551e;
 }
 
 .astino-sidebar .u-sidebar-nav-menu__link.active:hover .u-sidebar-nav-menu__item-icon {
@@ -104,7 +104,7 @@ li {
 .astino-sidebar .u-sidebar-nav-menu__link,
 .astino-sidebar .u-sidebar-nav-menu__item-icon,
 .astino-sidebar .u-sidebar-nav-menu__item-arrow {
-    color: #FF6E6E;
+    color: #444444;
 }
 /*
 .u-sidebar-nav-menu--second-level {
@@ -117,23 +117,23 @@ li {
 }
 /*
 .u-sidebar-nav--opened:hover .u-sidebar-nav-menu__link {
-    color: #FF6E6E;
+    color: #f2551e;
 }
 */
 
 /*pagination*/
 .page-link {
-    color: #FF6E6E;
+    color: #f2551e;
 }
 .page-link:hover {
     color: #fff;
-    background-color: #FF6E6E;
-    border-color: #FF6E6E;
+    background-color: #f2551e;
+    border-color: #f2551e;
 }
 .page-item.active .page-link {
     color: #fff;
-    background-color: #FF6E6E;
-    border-color: #FF6E6E;
+    background-color: #f2551e;
+    border-color: #f2551e;
 }
 /*pagination*/
 
@@ -174,12 +174,12 @@ li {
     resize: none;
 }
 .astino-pr-form .form-control::placeholder {
-    color: #FF6E6E;
+    color: #f2551e;
 }
 
 .astino-pr-form .form-control:focus {
-    border: 1px solid #FF6E6E;
-/*    outline: 1px solid #FF6E6E;*/
+    border: 1px solid #f2551e;
+/*    outline: 1px solid #f2551e;*/
 }
 /*form*/
 
@@ -392,7 +392,7 @@ label span {
 }
 .page-coupon-add .astino-pr-form .form-icon--left {
     width: 3rem;
-    background: #FF6E6E;
+    background: #f2551e;
     border-top-left-radius: 0.25rem;
     border-bottom-left-radius: 0.25rem;
 }
@@ -464,7 +464,7 @@ label span {
 }
 .page-coupon-all .astino-pr-form .form-icon--left {
     width: 3rem;
-    background: #FF6E6E;
+    background: #f2551e;
     border-top-left-radius: 0.25rem;
     border-bottom-left-radius: 0.25rem;
 }
