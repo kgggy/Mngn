@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-</head>
+
 <style>
 
 /* ======== Calendar ======== */
@@ -122,8 +122,92 @@
 	height: 4px;
 	background: #FFC107;
 }
+
+#rbtn {
+	width: 200px;
+	margin: 0 auto;
+}
+
+#two {
+	margin-left: 43px;
+}
+
+#three {
+	margin: 0 40px;
+}
+
+/* The Modal (background) */
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	padding-top: 100px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+	z-index: 30;
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 38%;
+	height: auto;
+	top: 30%;
+	border-radius: 20px;
+	top: 30%;
+	background-color: #fefefe;
+}
+
+/* The Close Button */
+.close {
+	color: #aaaaaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover, .close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+#emp {
+	margin-left: 50px;
+}
+
+span {
+	padding: 10px 9%;
+	margin-top: 5px;
+}
 </style>
+</head>
 <body>
+	<!-- testmonial_area_start  -->
+	<div id="light" class="modal">
+		<div class="white_content modal-content" align="center">
+			<div>
+				<div class="time">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<a class="genric-btn danger-border circle arrow">1시간</a> <a
+						class="genric-btn danger-border circle arrow" id="two">2시간</a> <a
+						class="genric-btn danger-border circle arrow" id="three">3시간</a>
+				</div>
+				<div>
+					<span>₩18,000</span><span>₩34,000</span><span>₩50,000</span>
+				</div>
+			</div>
+			<br /> <a href="javascript:resv()" class="boxed-btn3" id="rbtn">예약
+				돌봄</a>
+		</div>
+	</div>
 	<div class="bradcam_area breadcam_bg">
 		<div class="container">
 			<div class="row">
@@ -317,43 +401,14 @@
 				</div>
 				<div class="col-lg-4">
 					<div class="blog_right_sidebar">
-						<!-- <aside class="single_sidebar_widget post_category_widget">
-							<h4 class="widget_title">Category</h4>
-							<ul class="list cat-list">
-								<li><a href="#" class="d-flex">
-										<p>Resaurant food</p>
-										<p>(37)</p>
-								</a></li>
-								<li><a href="#" class="d-flex">
-										<p>Travel news</p>
-										<p>(10)</p>
-								</a></li>
-								<li><a href="#" class="d-flex">
-										<p>Modern technology</p>
-										<p>(03)</p>
-								</a></li>
-								<li><a href="#" class="d-flex">
-										<p>Product</p>
-										<p>(11)</p>
-								</a></li>
-								<li><a href="#" class="d-flex">
-										<p>Inspiration</p>
-										<p>(21)</p>
-								</a></li>
-								<li><a href="#" class="d-flex">
-										<p>Health Care</p>
-										<p>(21)</p>
-								</a></li>
-							</ul>
-						</aside> -->
 						<aside class="single_sidebar_widget popular_post_widget">
 							<h3 class="widget_title" style="font-weight: bold" align="center">예약
 								가능 날짜</h3>
 							<div class="container">
 								<div class="my-calendar clearfix">
-									<div class="clicked-date" style="display:none">
-										<div class="cal-day" style="display:none"></div>
-										<div class="cal-date" style="display:none"></div>
+									<div class="clicked-date" style="display: none">
+										<div class="cal-day" style="display: none"></div>
+										<div class="cal-date" style="display: none"></div>
 									</div>
 									<div class="calendar-box">
 										<div class="ctr-box clearfix">
@@ -376,7 +431,11 @@
 												</tr>
 											</thead>
 											<tbody class="cal-body"></tbody>
+
 										</table>
+										<button id="abtn"
+											class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+											type="button" data-toggle="modal" data-target="#light">예약하기</button>
 									</div>
 								</div>
 								<!-- // .my-calendar -->
@@ -387,6 +446,8 @@
 			</div>
 		</div>
 	</section>
+
+
 	<script>
 	const init = {
 			  monList: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -516,9 +577,12 @@
 			    e.target.classList.add('day-active');
 			    init.activeDTag = e.target;
 			    init.activeDate.setDate(day);
-			    reloadTodo();
+			   /*  reloadTodo(); */
 			  }
-			});
+			  });
+			
+			
+			
 	</script>
 
 </body>

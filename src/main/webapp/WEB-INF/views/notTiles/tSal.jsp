@@ -7,6 +7,58 @@
 <title>Insert title here</title>
 
 <link rel="stylesheet" href="css/petsitting/table.css">
+<link
+	href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap"
+	rel="stylesheet">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <link rel="manifest" href="site.webmanifest"> -->
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+<!-- Place favicon.ico in the root directory -->
+
+<!-- CSS here -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/magnific-popup.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/themify-icons.css">
+<link rel="stylesheet" href="css/nice-select.css">
+<link rel="stylesheet" href="css/flaticon.css">
+<link rel="stylesheet" href="css/gijgo.css">
+<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="css/slicknav.css">
+<link rel="stylesheet" href="css/style.css">
+<!-- <link rel="stylesheet" href="css/responsive.css"> -->
+
+
+<!-- JS here -->
+<script src="js/vendor/modernizr-3.5.0.min.js"></script>
+<script src="js/vendor/jquery-1.12.4.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/isotope.pkgd.min.js"></script>
+<script src="js/ajax-form.js"></script>
+<script src="js/waypoints.min.js"></script>
+<script src="js/jquery.counterup.min.js"></script>
+<script src="js/imagesloaded.pkgd.min.js"></script>
+<script src="js/scrollIt.js"></script>
+<script src="js/jquery.scrollUp.min.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/nice-select.min.js"></script>
+<script src="js/jquery.slicknav.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/gijgo.min.js"></script>
+
+<!--contact js-->
+<script src="js/contact.js"></script>
+<script src="js/jquery.ajaxchimp.min.js"></script>
+<script src="js/jquery.form.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/mail-script.js"></script>
+
+<script src="js/main.js"></script>
 <style>
 body {
 	color: #555;
@@ -360,6 +412,41 @@ article {
 </script>
 </head>
 <body>
+	<header>
+		<div class="header-area ">
+			<div id="sticky-header" class="main-header-area">
+				<div class="container">
+					<div class="row align-items-center">
+						<div class="col-xl-3 col-lg-3">
+							<div class="logo">
+								<h1 style="font-weight: bolder">
+									<a href="logout.do"><img src="img/logo1.png"> HEYYO</a>
+								</h1>
+							</div>
+						</div>
+						<div class="col-xl-9 col-lg-9">
+							<div class="main-menu  d-none d-lg-block">
+								<nav>
+									<ul id="navigation">
+										<li><a href="tSal.do">의뢰 및 관리</a></li>
+										<li><a>마이페이지<i class="ti-angle-down"></i></a>
+											<ul class="submenu">
+												<li><a href="mProfile.do">내 프로필 관리</a></li>
+												<li><a href="home.do">로그아웃</a></li>
+
+											</ul></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="mobile_menu d-block d-lg-none"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
 	<div class="bradcam_area breadcam_bg">
 		<div class="container">
 			<div class="row">
@@ -387,7 +474,8 @@ article {
 		<input id="tab1" type="radio" name="tabs" checked>
 		<!--디폴트 메뉴-->
 		<label id="tab1" for="tab1">의뢰 관리</label> <input id="tab2"
-			type="radio" name="tabs"> <label id="tab2" for="tab2">정산 관리</label>
+			type="radio" name="tabs"> <label id="tab2" for="tab2">정산
+			관리</label>
 		<section id="content1">
 			<select id="stts" name="stts">
 				<option value="접수완료">접수 완료</option>
@@ -626,6 +714,43 @@ article {
 		</div>
 	</div>
 	<!-- 후기수정 Modal 종료 -->
+
+	<!-- footer_start  -->
+	<footer class="footer">
+		<div class="footer_top">
+			<div class="container">
+				<div class="row"></div>
+			</div>
+		</div>
+		<div class="copyright" align="center">
+			<h3>HEYYO</h3>
+			<p>고객센터 문의 : babyofbear@gmail.com</p>
+		</div>
+		<div class="copy-right_text">
+			<div class="container">
+				<div class="bordered_1px"></div>
+				<div class="row">
+					<div class="col-xl-12" align="center">
+						<p class="copy_right text-center">
+						<p>
+							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+							Copyright &copy;
+							<script>
+								document.write(new Date().getFullYear());
+							</script>
+							All rights reserved | This template is made with <i
+								class="ti-heart" aria-hidden="true"></i> by <a
+								href="https://colorlib.com" target="_blank">Colorlib</a>.Downloaded
+							from <a href="https://themeslab.org/" target="_blank">Themeslab</a>
+							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						</p>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- footer_end  -->
 	<script>
 		function fileCheck(obj) {
 			document.signform.submit();
@@ -643,28 +768,27 @@ article {
 		};
 
 		function status() {//console.log(status.value);
-			   // Declare variables
-			   var filter, table, tr, i, txtValue;
-			  stts = document.getElementById("stts");
-			  filter = stts.value;
-			  table = document.getElementById("myTable");
-			  tbody= table.getElementByTagName("tbody");
-			  tr = tbody.getElementsByTagName("tr"); 
-			  
-			  // Loop through all table rows, and hide those who don't match the search query
-			   for (i = 0; i < tr.length; i++) {
-			    td = tr[i].getElementsByTagName("td")[0];
-			    if (td) {
-			      txtValue = td.textContent || td.innerText;
-			      if (txtValue.indexOf(filter) > -1) {
-			        tr[i].style.display = "";
-			      } else {
-			        tr[i].style.display = "none";
-			      }
-			    }
-			  } 
-			} 
-	</script>
+			// Declare variables
+			var filter, table, tr, i, txtValue;
+			stts = document.getElementById("stts");
+			filter = stts.value;
+			table = document.getElementById("myTable");
+			tbody = table.getElementByTagName("tbody");
+			tr = tbody.getElementsByTagName("tr");
 
+			// Loop through all table rows, and hide those who don't match the search query
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[0];
+				if (td) {
+					txtValue = td.textContent || td.innerText;
+					if (txtValue.indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+				}
+			}
+		}
+	</script>
 </body>
 </html>

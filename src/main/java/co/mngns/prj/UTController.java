@@ -13,7 +13,7 @@ public class UTController {
 	
 	@RequestMapping(value = "/tSal.do")
 	public String tSal() {
-		return "home/tSal";
+		return "tSal";
 	}
 
 }
