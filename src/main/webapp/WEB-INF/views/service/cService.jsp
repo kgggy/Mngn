@@ -16,7 +16,7 @@
 	}
 	$(function() {
 		// Get the modal
-		var modal = document.getElementById("light");
+		var modal = document.getElementById("modal");
 
 		// Get the button that opens the modal
 		var btn = document.getElementById("abtn");
@@ -82,7 +82,7 @@ span {
 }
 
 /* The Modal (background) */
-.modal {
+#modal {
 	display: none; /* Hidden by default */
 	position: fixed; /* Stay in place */
 	padding-top: 100px; /* Location of the box */
@@ -96,7 +96,7 @@ span {
 }
 
 /* Modal Content */
-.modal-content {
+#modal-content {
 	background-color: #fefefe;
 	margin: auto;
 	padding: 20px;
@@ -199,8 +199,8 @@ span {
 	<br />
 
 	<!-- testmonial_area_start  -->
-	<div id="light" class="modal">
-		<div class="white_content modal-content" align="center">
+	<div class="light" id="modal">
+		<div class="white_content" align="center" id="modal-content">
 			<div>
 				<div class="time">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>

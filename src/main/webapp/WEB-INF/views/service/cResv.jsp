@@ -384,6 +384,8 @@ select {
 	}
 }
 </style>
+<script type="text/javascript"
+	src="https://form.jotform.com/jsform/212931977995475"></script>
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
@@ -397,10 +399,9 @@ select {
 			}).open();
 		});
 	}
-	$(document).ready(function(e) {
+	$(function() {
 		$(".datepicker").datepicker({
-			dateFormat : 'yy-mm-dd',
-			minDate : 0,
+			dateFormat : "yy-mm-dd"
 		});
 	});
 </script>
