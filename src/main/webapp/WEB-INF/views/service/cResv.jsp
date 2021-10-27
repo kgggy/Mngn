@@ -371,17 +371,88 @@ button:hover {
 	.city-item
  
 input {
-		width: calc(50% - 
- 
- 20px);
+		width: calc(50% -20px);
 	}
 	.city-item
  
 select {
-		width: calc(50% - 
- 
- 8px);
+		width: calc(50% -8px);
 	}
+}
+
+#rbtn {
+	width: 200px;
+	margin: 0 auto;
+}
+
+#two {
+	margin-left: 43px;
+}
+
+#three {
+	margin: 0 40px;
+}
+
+/* The Modal (background) */
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	padding-top: 100px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 30%;
+	height: auto;
+	top: 30%;
+	border-radius: 20px;
+	top: 30%;
+}
+
+/* The Close Button */
+.close {
+	color: #aaaaaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover, .close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+tr {
+	border-bottom: 1px solid #ff3500;
+	font-size: 15px;
+	height: 40px;
+}
+
+#content {
+	font-weight: bold;
+	font-size: 25px;
+	margin-left: 150px;
+}
+
+#card {
+	margin: 0 auto;
+	width: 100px;
+}
+
+.credit {
+	margin-left: 20px;
 }
 </style>
 <script
@@ -402,6 +473,45 @@ select {
 			dateFormat : "yy-mm-dd"
 		});
 	});
+	$(function() {
+		// Get the modal
+		var modal = document.getElementById("light");
+
+		// Get the button that opens the modal
+		var btn = document.getElementById("abtn");
+
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+
+		// When the user clicks the button, open the modal 
+		btn.onclick = function() {
+			modal.style.display = "block";
+			$('.maincontent').on('scroll touchmove mousewheel',
+					function(event) {
+						event.preventDefault();
+						event.stopPropagation();
+						return false;
+					});
+		}
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() {
+			modal.style.display = "none";
+			$('.maincontent').off('scroll touchmove mousewheel');
+
+		}
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				$('.maincontent').off('scroll touchmove mousewheel');
+				modal.style.display = "none";
+			}
+		}
+	});
+	
+	function notice() {
+		alert("결제 API가 나올 것입니다.")
+	}
 </script>
 </head>
 <body>
@@ -421,7 +531,7 @@ select {
 	<br />
 	<br />
 	<div class="testbox">
-		<form action="/payment.do">
+		<form>
 			<div class="item">
 				<h3>
 					주소<span class="required">*</span>
@@ -471,9 +581,46 @@ select {
 			</div>
 			<br />
 			<div class="btn-block">
-				<button type="submit">예약</button>
+				<button type="button" id="abtn">예약</button>
 			</div>
 		</form>
+	</div>
+	<!-- testmonial_area_start  -->
+	<div id="light" class="modal">
+		<div class="white_content modal-content" align="center">
+			<div align="center">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h3 id="content">예약 내역</h3>
+				<table>
+					<tr>
+						<th width="150px">서비스</th>
+						<td width="300px">서비스 (시간)</td>
+					</tr>
+					<tr>
+						<th width="150px">위치</th>
+						<td width="300px">대구 중구 중앙대로 403, 태왕아너스 타워</td>
+					</tr>
+					<tr>
+						<th width="150px">날짜 및 시간</th>
+						<td width="300px">0000/00/00 || 18:00(금)</td>
+					</tr>
+					<tr>
+						<th width="150px">대상</th>
+						<td width="300px">달이</td>
+					</tr>
+					<tr>
+						<th width="150px">훈련사</th>
+						<td width="300px">훈련사 ㅇㅇㅇ</td>
+					</tr>
+					<tr>
+						<th width="150px" style="font-weight: bold">결제수단</th>
+						<td width="400px"><input type="radio" class="card" /><span>신용카드</span><input
+							type="radio" class="card" /><span>휴대폰</span></td>
+					</tr>
+				</table>
+			</div>
+			<br /> <a href="javascript:notice()" class="boxed-btn3" id="rbtn">결제하기</a>
+		</div>
 	</div>
 </body>
 </html>
