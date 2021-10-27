@@ -195,6 +195,9 @@ span {
 		<div class="white_content modal-content" align="center">
 			<div>
 				<div class="time">
+			<input type="checkbox"><span>돌봄</span>
+			<input type="checkbox"><span>돌봄</span>
+			<input type="checkbox"><span>돌봄</span>
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<a class="genric-btn danger-border circle arrow">1시간</a> <a
 						class="genric-btn danger-border circle arrow" id="two">2시간</a> <a

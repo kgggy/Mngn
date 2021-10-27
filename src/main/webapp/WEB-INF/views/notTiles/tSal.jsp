@@ -6,7 +6,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link rel="stylesheet" href="css/petsitting/table.css">
+
+<link rel="stylesheet" href="css/petsitting/style.css">
 <link
 	href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap"
 	rel="stylesheet">
@@ -95,21 +96,10 @@ input {
 	display: none;
 }
 
-/* #tab1:checked+label {
-	z-index: 10;
-	padding: 15px 25px;
-	font-weight: 600;
-	text-align: center;
-	color: #bbb;
+#chbox {
+	display: block;
 }
 
-#tab2:checked+label {
-	z-index: 10;
-	padding: 15px 25px;
-	font-weight: 600;
-	text-align: center;
-	color: #bbb;
-} */
 label {
 	display: inline-block;
 	margin: 0 0 -1px;
@@ -376,7 +366,7 @@ article {
 	padding: 2em;
 }
 
-.ModalPopup {
+#ModalPopup {
 	border: 1px solid blue;
 	width: 100px;
 	height: 100px;
@@ -384,6 +374,14 @@ article {
 	position: absolute;
 	z-index: 10000;
 	background-color: #fff;
+}
+
+.modal first {
+	margin-right: 500px;
+}
+
+th {
+	height: 30px;
 }
 </style>
 <script>
@@ -478,76 +476,60 @@ article {
 			관리</label>
 		<section id="content1">
 			<select id="stts" name="stts">
-				<option value="접수완료">접수 완료</option>
-				<option value="서비스완료">서비스 완료</option>
-				<option value="취소및환불">취소 및 환불</option>
+				<option value="수락한의뢰">수락한 의뢰</option>
+				<option value="거절한의뢰">거절한 의뢰</option>
+				<option value="완료된의뢰">완료된 의뢰</option>
 			</select>
 
 			<button id="search" onclick="javascript:status()">조회</button>
 			<hr>
-			<input style="font-size: 7pt;">* 기본적으로 최근 3개월간의 자료가 조회되며, 기간
-			검색시 지난 이용내역을 조회하실 수 있습니다.<br> * 후기 작성 버튼을 클릭하시면 해당 서비스에 대한 후기를
-			작성하실 수 있으며, 자세한 내역은 내가 작성한 후기 탭에서 확인하실 수 있습니다.<br> <br>
+			<input style="font-size: 7pt;">* 기본적으로 최근 3개월간의 자료가 조회되며,
+			6개월이 지나면 정보가 사라집니다. <br> <br>
 
 			<table class="table table-striped table-hover">
-				<thead>
+				<thead align="center">
 					<tr>
-						<th>예약번호</th>
-						<th>이용일자</th>
-						<th>이용&nbsp;서비스</th>
-						<th>담당&nbsp;훈련사</th>
-						<th>금액</th>
-						<th>주문처리상태</th>
-						<th>이용후기</th>
+						<th><input type="checkbox" class="click_all" id="chbox"
+							name="all"></th>
+						<th>신청자</th>
+						<th>상세정보</th>
+						<th>신청일</th>
+						<th>상태</th>
 					</tr>
 				</thead>
 				<tbody align="center">
+					<tr data-status="inactive">
+						<td><input type="checkbox" class="chbox" id="chbox"
+							name="chbox1"></td>
+						<td>ㅇㅇㅇ</td>
+						<td><a href="#" data-toggle="modal"
+							data-target="#reviewModal">돌봄서비스(3시간)</a></td>
+						<td>2021-10-27</td>
+						<td><span class="label label-warning">수락한 의뢰</span></td>
+					</tr>
 					<tr data-status="active">
-						<td>1</td>
-						<td>04/10/2013</td>
-						<td>1</td>
-						<td><a href="#">loremvallis.com</a></td>
-						<td>Buenos Aires</td>
-						<td><span class="label label-success">서비스 완료</span></td>
-						<td><a href="#" class="btn btn-sm manage" data-toggle="modal"
-							data-target="#reviewModal">후기 작성</a></td>
+						<td><input type="checkbox" class="chbox" id="chbox"
+							name="chbox2"></td>
+						<td>ㅇㅇㅇ</td>
+						<td><a href="#">돌봄서비스(3시간)</a></td>
+						<td>2021-10-27</td>
+						<td><span class="label label-success">완료된 의뢰</span></td>
 					</tr>
 					<tr data-status="inactive">
-						<td>1</td>
-						<td>04/10/2013</td>
-						<td>1</td>
-						<td><a href="#">loremvallis.com</a></td>
-						<td>Buenos Aires</td>
-						<td><span class="label label-warning">접수 완료</span></td>
-						<td><a class="btn btn-sm complete">작성 완료</a></td>
-					</tr>
-					<tr data-status="active">
-						<td>1</td>
-						<td>04/10/2013</td>
-						<td>1</td>
-						<td><a href="#">loremvallis.com</a></td>
-						<td>Buenos Aires</td>
-						<td><span class="label label-success">서비스 완료</span></td>
-						<td><a class="btn btn-sm complete">작성 완료</a></td>
+						<td><input type="checkbox" class="chbox" id="chbox"
+							name="chbox3"></td>
+						<td>ㅇㅇㅇ</td>
+						<td><a href="#">돌봄서비스(3시간)</a></td>
+						<td>2021-10-27</td>
+						<td><span class="label label-warning">수락한 의뢰</span></td>
 					</tr>
 					<tr data-status="expired">
-						<td>1</td>
-						<td>04/10/2013</td>
-						<td>1</td>
-						<td><a href="#">loremvallis.com</a></td>
-						<td>Buenos Aires</td>
-						<td><span class="label label-danger">취소 및 환불</span></td>
-						<td><a class="btn btn-sm complete">작성 완료</a></td>
-					</tr>
-					<tr data-status="inactive">
-						<td>1</td>
-						<td>04/10/2013</td>
-						<td>1</td>
-						<td><a href="#">loremvallis.com</a></td>
-						<td>Buenos Aires</td>
-						<td><span class="label label-warning">접수 완료</span></td>
-						<td><a data-toggle="modal" data-target="#reviewModal"
-							class="btn btn-sm manage">후기 작성</a></td>
+						<td><input type="checkbox" class="chbox" id="chbox"
+							name="chbox4"></td>
+						<td>ㅇㅇㅇ</td>
+						<td><a href="#">돌봄서비스(3시간)</a></td>
+						<td>2021-10-27</td>
+						<td><span class="label label-danger">거절한 의뢰</span></td>
 					</tr>
 				</tbody>
 			</table>
@@ -558,162 +540,50 @@ article {
 		<section id="content2">
 			<div>
 				<table class="table table-striped table-hover">
-					<thead>
+					<thead align="center">
 						<tr>
 							<th>번호</th>
-							<th>이용&nbsp;서비스</th>
-							<th>담당&nbsp;훈련사</th>
-							<th>내용</th>
-							<th>별점</th>
-							<th>작성일자</th>
-							<th></th>
+							<th>주문자ID</th>
+							<th>이름</th>
+							<th>서비스</th>
+							<th>총금액</th>
+							<th>예약날짜</th>
+							<th>제공날짜</th>
+							<th>결제방법</th>
 						</tr>
 					</thead>
 					<tbody align="center">
 						<tr data-status="active">
 							<td>1</td>
+							<td>jojo</td>
+							<td>ㅇㅇㅇ</td>
 							<td>돌봄서비스(1시간)</td>
-							<td>xxx훈련사</td>
-							<td>아이들 잘 봐주셔서 감사합니다!! 다음에 또 이용할게요.</td>
-							<td>★★★★★</td>
+							<td>18,000원</td>
 							<td>21.10.25</td>
-							<td><a href="#" class="btn btn-sm manage"
-								data-toggle="modal" data-target="#reviewUpdate">수정</a>&nbsp;&nbsp;
-								<a href="javascript:window.alert('삭제하시겠습니까?')"
-								class="btn btn-sm manage">삭제</a></td>
-							<!-- <button onclick="rDelete()" class="btn btn-sm manage">삭제</button> -->
+							<td>21.10.26</td>
+							<td>카드</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 		</section>
 
-		<div class="row justify-content-between align-items-center mb-4">
-			<div class="col-sm">
-				<nav aria-label="Bootstrap Pagination Example">
-					<ul class="pagination mb-0">
-						<li class="page-item"><a class="page-link" href="#">← <span
-								class="ml-1 d-none d-xl-inline-block">Previous</span></a></li>
-						<li class="page-item"><a class="page-link" href="#">1</a></li>
-						<li class="page-item active"><a class="page-link" href="#">2</a>
-						</li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item"><a class="page-link" href="#">4</a></li>
-						<li class="page-item"><a class="page-link" href="#">5</a></li>
-						<li class="page-item"><a class="page-link" href="#"><span
-								class="mr-1 d-none d-xl-inline-block">Next</span> →</a></li>
+		<div class="row mt-5">
+			<div class="col text-center">
+				<div class="block-27">
+					<ul>
+						<li><a href="#">&lt;</a></li>
+						<li class="active"><span>1</span></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">5</a></li>
+						<li><a href="#">&gt;</a></li>
 					</ul>
-				</nav>
-			</div>
-		</div>
-	</div>
-
-	<!-- 후기작성 Modal 시작 -->
-	<div class="modal first" id="reviewModal" role="dialog">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title" style="text-align: left;">후기</h4>
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-				<div class="modal-body">
-					<form role="form" id="signform" name="signform" method="post"
-						action="/email/register" enctype="multipart/form-data">
-						<h2 align="center">
-							<strong>별점과 이용경험을 남겨주세요 :)</strong>
-						</h2>
-						<div class="modalpopup" align="center">
-							<div class="star-rating">
-								<input type="radio" id="5-stars" name="rating" value="5" /> <label
-									for="5-stars" class="star"
-									style="font-size: 30pt; width: 40px; height: 40px">&#9733;</label>
-								<input type="radio" id="4-stars" name="rating" value="4" /> <label
-									for="4-stars" class="star"
-									style="font-size: 30pt; width: 40px; height: 40px">&#9733;</label>
-								<input type="radio" id="3-stars" name="rating" value="3" /> <label
-									style="font-size: 30pt; width: 40px; height: 40px"
-									for="3-stars" class="star">&#9733;</label> <input type="radio"
-									id="2-stars" name="rating" value="2" /> <label
-									style="font-size: 30pt; width: 40px; height: 40px"
-									for="2-stars" class="star">&#9733;</label> <input type="radio"
-									id="1-star" name="rating" value="1" /> <label for="1-star"
-									class="star" style="font-size: 30pt; width: 40px; height: 40px">&#9733;</label>
-							</div>
-						</div>
-						<br> <br>
-						<textarea id="eml_cnt"
-							style="width: 100%; margin-top: 0px; margin-bottom: 0px; height: 286px; resize: none;"
-							name="eml_cnt" rows="10" class="form-control"
-							placeholder="내용을 입력해 주세요."></textarea>
-						<br> <br> <img id="camera_img" src="img/camera.png"
-							style="height: 90px; width: 130px"> <input type="file"
-							id="file" name="file" accept="image/gif,image/jpeg,image/png"
-							onchange="fileCheck(this)" style="display: none;"> <input
-							type="hidden" name="camera">
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" id="okbutton" class="btn btn-success"
-						data-dismiss="modal">입력</button>
-					<button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- 후기작성 Modal 종료 -->
-	<!-- 후기수정 Modal 시작 -->
-	<div class="modal first" id="reviewUpdate" role="dialog">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title" style="text-align: left;">후기 수정</h4>
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-				<div class="modal-body">
-					<form role="form" id="signform1" name="signform1" method="post"
-						action="/email/register" enctype="multipart/form-data">
-						<h2 align="center">
-							<strong>별점과 이용경험을 남겨주세요 :)</strong>
-						</h2>
-						<div class="modalpopup" align="center">
-							<div class="star-rating">
-								<input type="radio" id="5-stars" name="rating" value="5" /> <label
-									for="5-stars" class="star"
-									style="font-size: 30pt; width: 40px; height: 40px">&#9733;</label>
-								<input type="radio" id="4-stars" name="rating" value="4" /> <label
-									for="4-stars" class="star"
-									style="font-size: 30pt; width: 40px; height: 40px">&#9733;</label>
-								<input type="radio" id="3-stars" name="rating" value="3" /> <label
-									style="font-size: 30pt; width: 40px; height: 40px"
-									for="3-stars" class="star">&#9733;</label> <input type="radio"
-									id="2-stars" name="rating" value="2" /> <label
-									style="font-size: 30pt; width: 40px; height: 40px"
-									for="2-stars" class="star">&#9733;</label> <input type="radio"
-									id="1-star" name="rating" value="1" /> <label for="1-star"
-									class="star" style="font-size: 30pt; width: 40px; height: 40px">&#9733;</label>
-							</div>
-						</div>
-						<br> <br>
-						<textarea id="eml_cnt"
-							style="width: 100%; margin-top: 0px; margin-bottom: 0px; height: 286px; resize: none;"
-							name="eml_cnt" rows="10" class="form-control"
-							placeholder="내용을 입력해 주세요."></textarea>
-						<br> <br> <img id="camera_img" src="img/camera.png"
-							style="height: 90px; width: 130px"> <input type="file"
-							id="file" name="file" accept="image/gif,image/jpeg,image/png"
-							onchange="fileCheck(this)" style="display: none;"> <input
-							type="hidden" name="camera">
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" id="okbutton" class="btn btn-success"
-						data-dismiss="modal">입력</button>
-					<button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- 후기수정 Modal 종료 -->
 
 	<!-- footer_start  -->
 	<footer class="footer">
@@ -751,6 +621,55 @@ article {
 		</div>
 	</footer>
 	<!-- footer_end  -->
+
+	<!-- 후기작성 Modal 시작 -->
+	<div class="modal first" id="reviewModal" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content" style="margin: auto">
+				<div class="modal-header">
+					<h4 class="modal-title" style="text-align: left;">예약 상세정보</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<form role="form" id="signform" name="signform" method="post"
+						action="/email/register" enctype="multipart/form-data">
+						<table>
+							<tr>
+								<th width="180px">서비스 유형</th>
+								<td>돌봄 서비스(3시간)</td>
+							</tr>
+							<tr>
+								<th>날짜 및 시간</th>
+								<td>돌봄 서비스(3시간)</td>
+							</tr>
+							<tr>
+								<th>위치</th>
+								<td>돌봄 서비스(3시간)</td>
+							</tr>
+							<tr>
+								<th>특이사항</th>
+								<td>돌봄 서비스(3시간)</td>
+							</tr>
+							<tr>
+								<th>결제 금액</th>
+								<td>돌봄 서비스(3시간)</td>
+							</tr>
+							<tr>
+								<th>훈련 대상</th>
+								<td></td>
+							</tr>
+						</table>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="okbutton" class="btn btn-success"
+						data-dismiss="modal">확인</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 후기작성 Modal 종료 -->
 	<script>
 		function fileCheck(obj) {
 			document.signform.submit();
@@ -789,6 +708,12 @@ article {
 				}
 			}
 		}
+
+		$(document).ready(function() {
+			$('.click_all').click(function() {
+				$('.chbox').prop('checked', this.checked);
+			});
+		});
 	</script>
 </body>
 </html>
