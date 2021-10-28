@@ -72,7 +72,7 @@
 				</div>
 				<div class="card-body">
 
-				<form  name = "loginform" action="aProfile.do">
+				<form  name = "loginform" action="aniList.do">
 					<div class="form-row">
 						<div class="picture">냥이사진</div>
 						<div class="value">

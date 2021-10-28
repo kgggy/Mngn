@@ -730,9 +730,9 @@ h4 {
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h2 class="admin"> 어떤 동물과 함께하시나요? </h2>
 					<img src="img/dog.png" id="select"
-						onclick="location.href ='dogregister.do'"> <img
+						onclick="location.href ='dogForm.do'"> <img
 						src="img/cat.png" id="select"
-						onclick="location.href ='catregister.do'">
+						onclick="location.href ='catForm.do'">
 				</div>
 			</div>
 		</div>

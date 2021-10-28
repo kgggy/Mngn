@@ -68,7 +68,7 @@
 				</div>
 				<div class="card-body">
 
-					<form name = "loginForm" action = "aProfile.do">
+					<form name = "loginForm" action = "aniList.do">
 					<div class="form-row">
 						<div class="picture">멍이사진 *</div>
 						<div class="value">
