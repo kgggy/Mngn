@@ -34,7 +34,7 @@
     <header class="u-header">
       <div class="u-header-left">
         <a class="u-header-logo" href="mHome.do">
-					<img class="u-logo-desktop" src="assets/img/logo.png" width="160" alt="Stream Dashboard">
+					<img class="u-logo-desktop" src="assets/logo.png" width="160" alt="Stream Dashboard">
 					<img class="img-fluid u-logo-mobile" src="assets/img/logo-mobile.png" width="50" alt="Stream Dashboard">
         </a>
       </div>
@@ -228,7 +228,7 @@
                                                 <td>서울특별시 강남구 서초동 현대아파트 110-1206</td>
                                                 <td class="text-success">활동중</td>
                                                 <td>
-                                                	<button type="button" data-toggle="modal" href="#exampleModalCenter"class="btn btn-outline-danger btn-sm">상세보기</button>
+                                                	<button type="button" data-toggle="modal" href="#exampleModalCenter" class="btn btn-outline-danger btn-sm">상세보기</button>
                                                 </td>
                                             </tr>
                                             
@@ -249,7 +249,7 @@
                                                 <td>서울특별시 강남구 도곡동 대림이편한 101-206</td>
                                                 <td class="text-success">활동중</td>
                                                 <td>
-                                                    <button type="button" onclick="location.href='memberModal.do' "class="btn btn-outline-danger btn-sm">상세보기</button>
+                                                    <button type="button" data-toggle="modal" href="#exampleModalCenter" class="btn btn-outline-danger btn-sm">상세보기</button>
                                                 </td>
                                             </tr>
                                             
