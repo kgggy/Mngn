@@ -40,10 +40,10 @@
 <!-- End Head -->
 
 <body class="page-order-all">
-    <!-- Header (Topbar) -->
+        <!-- Header (Topbar) -->
     <header class="astino-header u-header">
         <div class="u-header-left">
-            <a class="u-header-logo" href="mHome.do">
+            <a class="u-header-logo" href="mngMain.do">
                 <img src="assets/logo.png" width="160" >
                 <img class="img-fluid u-logo-mobile" src="assets/img/logo-mobile.png" width="50" alt="Stream Dashboard">
             </a>
@@ -54,7 +54,7 @@
                 <i class="fa fa-bars u-sidebar-invoker__icon--open"></i>
                 <i class="fa fa-times u-sidebar-invoker__icon--close"></i>
             </a>
-        </div>
+        </div> 
         
             <!-- User Profile -->
             <div class="astino-user-top-corner dropdown ml-2">
@@ -71,11 +71,11 @@
 
     <main class="u-main" role="main">
         
-          <!-- Sidebar -->
+  <!-- Sidebar -->
         <aside id="sidebar" class="astino-sidebar u-sidebar">
             <div class="u-sidebar-inner">
                 <header class="u-sidebar-header">
-                    <a class="u-sidebar-logo" href="mHome.do">
+                    <a class="u-sidebar-logo" href="mngMain.do">
                         <img class="img-fluid" src="assets/img/logo.png" width="124" alt="Stream Dashboard">
                     </a>
                 </header>
@@ -84,7 +84,7 @@
                     <ul class="u-sidebar-nav-menu u-sidebar-nav-menu--top-level">
                         <!-- 주간 리포트 -->
                         <li class="u-sidebar-nav-menu__item">
-                            <a class="u-sidebar-nav-menu__link" href="mHome.do">
+                            <a class="u-sidebar-nav-menu__link" href="mngMain.do">
                                 <i class="fas fa-th-large u-sidebar-nav-menu__item-icon"></i>
                                 <span class="u-sidebar-nav-menu__item-title">주간 리포트</span>
                             </a>
@@ -92,32 +92,17 @@
                         <!-- End 주간 리포트 -->
 
                         <!-- 공지사항 관리 -->
-                        <li class="u-sidebar-nav-menu__item clearfix">
-                            <a class="u-sidebar-nav-menu__link" href="boardList.do" data-target="#baseUI">
+                        <li class="u-sidebar-nav-menu__item">
+                            <a class="u-sidebar-nav-menu__link" href="boardList.do">
                                 <i class="far fa-edit u-sidebar-nav-menu__item-icon"></i>
                                 <span class="u-sidebar-nav-menu__item-title">공지사항 관리</span>
-                                <i class="fa fa-angle-right u-sidebar-nav-menu__item-arrow"></i>
-                                <span class="u-sidebar-nav-menu__indicator"></span>
                             </a>
-
-                            <ul id="baseUI" class="u-sidebar-nav-menu u-sidebar-nav-menu--second-level text-center" style="display: none;">
-                                <li class="u-sidebar-nav-menu__item">
-                                    <a class="u-sidebar-nav-menu__link" href="boardList.do">
-                                        <span class="u-sidebar-nav-menu__item-title">공지사항 수정/삭제</span>
-                                    </a>
-                                </li>
-                                <li class="u-sidebar-nav-menu__item">
-                                    <a class="u-sidebar-nav-menu__link" href="boardForm.do">
-                                        <span class="u-sidebar-nav-menu__item-title">공지사항 등록</span>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                         <!-- End 공지사항 관리 -->
 
                         <!-- 회원 관리 -->
                         <li class="u-sidebar-nav-menu__item clearfix">
-                            <a class="u-sidebar-nav-menu__link" href="memberList.do" data-target="#subMenu22">
+                            <a class="u-sidebar-nav-menu__link" href="cntList.do" data-target="#subMenu22">
                                 <i class="fab fa-product-hunt u-sidebar-nav-menu__item-icon"></i>
                                 <span class="u-sidebar-nav-menu__item-title">회원관리</span>
                                 <i class="fa fa-angle-right u-sidebar-nav-menu__item-arrow"></i>
@@ -126,18 +111,18 @@
 
                             <ul id="subMenu22" class="u-sidebar-nav-menu u-sidebar-nav-menu--second-level text-center" style="display: none;">
                                 <li class="u-sidebar-nav-menu__item">
-                                    <a class="u-sidebar-nav-menu__link" href="memberList.do">
+                                    <a class="u-sidebar-nav-menu__link active" href="cntList.do">
                                         <span class="u-sidebar-nav-menu__item-title">사용자 관리</span>
                                     </a>
                                 </li>
                                 <li class="u-sidebar-nav-menu__item">
-                                    <a class="u-sidebar-nav-menu__link" href="trainerList.do">
+                                    <a class="u-sidebar-nav-menu__link" href="trnList.do">
                                         <span class="u-sidebar-nav-menu__item-title">훈련사 관리</span>
                                     </a>
                                 </li>
                                 <li class="u-sidebar-nav-menu__item">
-                                    <a class="u-sidebar-nav-menu__link" href="dropMemberList.do">
-                                        <span class="u-sidebar-nav-menu__item-title" style=text-align:right>탈퇴회원 관리</span>
+                                    <a class="u-sidebar-nav-menu__link" href="outList.do">
+                                        <span class="u-sidebar-nav-menu__item-title">탈퇴회원 관리</span>
                                     </a>
                                 </li>
                             </ul>
@@ -146,7 +131,7 @@
 
                         <!-- 서비스 관리-->
                         <li class="u-sidebar-nav-menu__item">
-                            <a class="u-sidebar-nav-menu__link" href="serviceList.do">
+                            <a class="u-sidebar-nav-menu__link" href="svcList.do">
                                 <i class="fas fa-cogs u-sidebar-nav-menu__item-icon"></i>
                                 <span class="u-sidebar-nav-menu__item-title">서비스 관리</span>
                             </a>
@@ -155,9 +140,9 @@
 
                         <!-- 정산 관리 -->
                         <li class="u-sidebar-nav-menu__item clearfix">
-                            <a class="u-sidebar-nav-menu__link active" href="salesList.do" data-target="#subMenu2">
+                            <a class="u-sidebar-nav-menu__link" href="salesList.do" data-target="#subMenu2">
                                 <i class="fas fa-ticket-alt u-sidebar-nav-menu__item-icon"></i>
-                                <span class="u-sidebar-nav-menu__item-title">정산 관리</span>
+                                <span class="u-sidebar-nav-menu__item-title">판매 및 정산 관리</span>
                                 <i class="fa fa-angle-right u-sidebar-nav-menu__item-arrow"></i>
                                 <span class="u-sidebar-nav-menu__indicator"></span>
                             </a>
@@ -165,12 +150,12 @@
                             <ul id="subMenu2" class="u-sidebar-nav-menu u-sidebar-nav-menu--second-level" style="display: none;">
                                 <li class="u-sidebar-nav-menu__item">
                                     <a class="u-sidebar-nav-menu__link" href="salesList.do">
-                                        <span class="u-sidebar-nav-menu__item-title">판매 정산</span>
+                                        <span class="u-sidebar-nav-menu__item-title">판매 내역</span>
                                     </a>
                                 </li>
                                 <li class="u-sidebar-nav-menu__item">
                                     <a class="u-sidebar-nav-menu__link" href="salaryList.do">
-                                        <span class="u-sidebar-nav-menu__item-title">급여 정산</span>
+                                        <span class="u-sidebar-nav-menu__item-title">정산 내역</span>
                                     </a>
                                 </li>
                             </ul>
@@ -182,7 +167,6 @@
             </div>
         </aside>
         <!-- End Sidebar -->
-
 
         <div class="u-content">
             <div class="u-body">
@@ -404,7 +388,7 @@
                         <nav aria-label="Bootstrap Pagination Example">
                             <ul class="pagination mb-0">
                                 <li class="page-item">
-                                    <a class="page-link" href="mHome.do"><span class="ml-1 d-none d-xl-inline-block">이전으로</span></a>
+                                    <a class="page-link" href="mngMain.do"><span class="ml-1 d-none d-xl-inline-block">이전으로</span></a>
                                 </li>
                                 <li class="page-item">
                                     <a class="page-link" href="#">1</a>

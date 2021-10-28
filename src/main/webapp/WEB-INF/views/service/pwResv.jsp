@@ -469,7 +469,7 @@ select {
 	<br />
 	<br />
 	<div class="testbox">
-		<form action="/payment.do">
+		<form action="/payResult.do">
 			<p class="notice">주소, 날짜, 훈련사</p>
 			<div class="item">
 				<h3>

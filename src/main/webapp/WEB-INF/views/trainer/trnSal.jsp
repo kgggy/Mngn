@@ -418,7 +418,7 @@ th {
 						<div class="col-xl-3 col-lg-3">
 							<div class="logo">
 								<h1 style="font-weight: bolder">
-									<a href="logout.do"><img src="img/logo1.png"> HEYYO</a>
+									<a href="trnMain.do"><img src="img/logo1.png"> HEYYO</a>
 								</h1>
 							</div>
 						</div>
@@ -426,10 +426,10 @@ th {
 							<div class="main-menu  d-none d-lg-block">
 								<nav>
 									<ul id="navigation">
-										<li><a href="tSal.do">의뢰 및 관리</a></li>
+										<li><a href="trnSal.do">의뢰 및 관리</a></li>
 										<li><a>마이페이지<i class="ti-angle-down"></i></a>
 											<ul class="submenu">
-												<li><a href="mProfile.do">내 프로필 관리</a></li>
+												<li><a href="trnProfile.do">내 프로필 관리</a></li>
 												<li><a href="home.do">로그아웃</a></li>
 
 											</ul></li>

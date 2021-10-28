@@ -500,7 +500,7 @@ select {
 			</div>
 			<br />
 			<div class="btn-block">
-				<button type="button" onclick="location.href='payment.do'">예약</button>
+				<button type="button" onclick="location.href='payResult.do'">예약</button>
 			</div>
 		</form>
 	</div>
