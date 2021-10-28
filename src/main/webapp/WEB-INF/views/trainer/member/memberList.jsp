@@ -237,7 +237,7 @@
                                                 <td>서울특별시 강남구 서초동 현대아파트 110-1206</td>
                                                 <td class="text-success">활동중</td>
                                                 <td>
-                                                    <button type="button" onclick="location.href='memberSelectList.do' "class="btn btn-outline-danger btn-sm">상세보기</button>
+                                                	<button type="button" data-toggle="modal" href="#exampleModalCenter">상세보기</button>
                                                 </td>
                                             </tr>
                                             
@@ -440,6 +440,66 @@
                     </div>
                 </div>
             </div>
+		<!-- Vertically Centered Modals -->
+		<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLongTitle"></h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">X</span>
+						</button>
+					</div>
+					<div class="modal-body">
+				<header class="astino-pr-form-header">
+                    <h2 class="h1 card-header-title">사용자 상세정보</h2>
+                </header>
+                <div class="row">
+                    <!-- Current Projects -->
+                    <div class="col-md-12 mb-4">
+                        <div class="card h-100">
+                            <div class="astino-pr-form card-body">
+                                <form>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput">아이디</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="heyyolove">
+                                    </div>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput2">이  름</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="고수">
+                                    </div>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput3">주  소</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="대구광역시 동구 안심로">
+                                    </div>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput4">가입날짜</label>
+                                        <span class="form-icon-wrapper">
+                                            <span class="form-icon form-icon--left">
+                                                <i class="fa fa-calendar form-icon__item"></i>
+                                            </span>
+                                            <input id="formGroupExampleInput4" class="form-control exp-date form-icon-input-left datepicker" type="email" placeholder="15 OCT 2021">
+                                        </span>
+                                    </div>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput5">특이사항</label>
+                                        <textarea class="form-control" id="formGroupExampleInput5" placeholder="달님(개), 별님(고양이) 돌봄서비스 자주 이용 고객"></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+					
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+						<button type="button" class="btn btn-primary">저장</button>
+					</div>
+				</div>
+			</div>
+		 </div>
+		</div>
+		<!-- End Vertically Centered Modals -->
 
             <!-- Footer -->
             <footer class="astino-footer u-footer d-md-flex align-items-md-center text-center text-md-left">
@@ -452,6 +512,96 @@
             <!-- End Footer -->
         </div>
     </main>
+    
+    <style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
+
+<body>
+
+<h2>Modal Example</h2>
+
+<!-- Trigger/Open The Modal -->
+<button id="myBtn">Open Modal</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
+
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+    
 
     <!-- Global Vendor -->
     <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
