@@ -14,7 +14,7 @@
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a href="trnProfile.do">훈련사 프로필</a></li>
+                                        <li><a href="tList.do">훈련사 프로필</a></li>
                                         <li><a>서비스 예약 <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
                                                 <li><a href="careDc.do">돌봄서비스</a></li>
