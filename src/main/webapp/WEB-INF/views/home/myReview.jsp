@@ -522,7 +522,7 @@ article {
 	<!-- 후기작성 Modal 시작 -->
 	<div class="modal first" id="reviewModal" role="dialog">
 		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
+			<div class="modal-content" style="height: 800px;">
 				<div class="modal-header">
 					<h4 class="modal-title" style="text-align: left;">후기</h4>
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
