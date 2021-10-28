@@ -443,7 +443,7 @@
                         <nav aria-label="Bootstrap Pagination Example">
                             <ul class="pagination mb-0">
                                 <li class="page-item">
-                                    <a class="page-link" href="home.do"><span class="ml-1 d-none d-xl-inline-block">처음으로</span></a>
+                                    <a class="page-link" href="mHome.do"><span class="ml-1 d-none d-xl-inline-block">이전으로</span></a>
                                 </li>
                             </ul>
                         </nav>

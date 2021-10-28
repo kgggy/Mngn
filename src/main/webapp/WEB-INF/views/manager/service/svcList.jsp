@@ -5,7 +5,7 @@
 <!-- Head -->
 
 <head>
-    <title>훈련사 상세 페이지</title>
+    <title>서비스 관리</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -39,12 +39,12 @@
 </head>
 <!-- End Head -->
 
-<body class="page-coupon-add">
+<body class="page-order-all">
     <!-- Header (Topbar) -->
     <header class="astino-header u-header">
         <div class="u-header-left">
             <a class="u-header-logo" href="mHome.do">
-              <img src="assets/logo.png" width="160" >
+               <img src="assets/logo.png" width="160" >
                 <img class="img-fluid u-logo-mobile" src="assets/img/logo-mobile.png" width="50" alt="Stream Dashboard">
             </a>
         </div>
@@ -55,7 +55,7 @@
                 <i class="fa fa-times u-sidebar-invoker__icon--close"></i>
             </a>
         </div> 
-
+        
             <!-- User Profile -->
             <div class="astino-user-top-corner dropdown ml-2">
                 <a class="link-muted d-flex align-items-center" href="#!" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">
@@ -63,7 +63,7 @@
                     <span class="d-none d-sm-inline-block">
                         Criss Donald <small class=""></small>
                     </span>
-                </a>
+                </a>                
             </div>
             <!-- End User Profile -->
     </header>
@@ -71,7 +71,7 @@
 
     <main class="u-main" role="main">
         
-          <!-- Sidebar -->
+  <!-- Sidebar -->
         <aside id="sidebar" class="astino-sidebar u-sidebar">
             <div class="u-sidebar-inner">
                 <header class="u-sidebar-header">
@@ -126,7 +126,7 @@
 
                             <ul id="subMenu22" class="u-sidebar-nav-menu u-sidebar-nav-menu--second-level text-center" style="display: none;">
                                 <li class="u-sidebar-nav-menu__item">
-                                    <a class="u-sidebar-nav-menu__link active" href="memberList.do">
+                                    <a class="u-sidebar-nav-menu__link" href="memberList.do">
                                         <span class="u-sidebar-nav-menu__item-title">사용자 관리</span>
                                     </a>
                                 </li>
@@ -137,7 +137,7 @@
                                 </li>
                                 <li class="u-sidebar-nav-menu__item">
                                     <a class="u-sidebar-nav-menu__link" href="dropMemberList.do">
-                                        <span class="u-sidebar-nav-menu__item-title" style=text-align:right>탈퇴회원 관리</span>
+                                        <span class="u-sidebar-nav-menu__item-title">탈퇴회원 관리</span>
                                     </a>
                                 </li>
                             </ul>
@@ -146,7 +146,7 @@
 
                         <!-- 서비스 관리-->
                         <li class="u-sidebar-nav-menu__item">
-                            <a class="u-sidebar-nav-menu__link" href="serviceList.do">
+                            <a class="u-sidebar-nav-menu__link active" href="serviceList.do">
                                 <i class="fas fa-cogs u-sidebar-nav-menu__item-icon"></i>
                                 <span class="u-sidebar-nav-menu__item-title">서비스 관리</span>
                             </a>
@@ -185,45 +185,106 @@
 
         <div class="u-content">
             <div class="u-body">
-                <header class="astino-pr-form-header">
-                    <h2 class="h1 card-header-title">훈련사 상세 정보</h2>
-                </header>
                 <div class="row">
                     <!-- Current Projects -->
                     <div class="col-md-12 mb-4">
                         <div class="card h-100">
-                            <div class="astino-pr-form card-body">
-                                <form>
-                                    <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput">Item Name</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="DS003452">
-                                    </div>
-                                    <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput2">Code</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Dg362323">
-                                    </div>
-                                    <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput3">Discount</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="100%">
-                                    </div>
-                                    <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput4">Expiary Date</label>
-                                        <span class="form-icon-wrapper">
-                                            <span class="form-icon form-icon--left">
-                                                <i class="fa fa-calendar form-icon__item"></i>
-                                            </span>
-                                            <input id="formGroupExampleInput4" class="form-control exp-date form-icon-input-left datepicker" type="email" placeholder="15 NOV 2020">
-                                        </span>
-                                    </div>
-                                    <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput5">Description</label>
-                                        <textarea class="form-control" id="formGroupExampleInput5" placeholder="Product Description"></textarea>
-                                    </div>
-                                    <a href="" class="btn btn-danger btn-large float-right">
-                                        <i class="fa fa-plus"></i>
-                                        확인
-                                    </a>
-                                </form>
+                            <header class="card-header d-flex align-items-center">
+                                <h2 class="h2 card-header-title">제공 서비스</h2>
+
+                                <!-- Card Header Icon -->
+                                <ul class="list-inline ml-auto mb-0">
+                                   <!--  <li class="list-inline-item mr-3">
+                                       <a class="link-muted h3" href="#!">
+                                        <i class="far fa-edit"></i>
+                                       </a>
+                                    </li> -->
+                                    <li class="list-inline-item">
+                              			 <!-- <a href="serviceSelectList.do" class="btn btn-danger btn-large">
+                                            <i class="far fa-edit"></i>
+                                             수정
+                                        </a> -->
+                                    </li>
+                                </ul>
+                                <!-- End Card Header Icon -->
+                            </header>
+
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" class="text-dark">
+                                                    <div class="custom-control custom-checkbox mb-2">
+                                                        <input id="" class="custom-control-input is-invalid" type="checkbox">
+                                                        <label class="custom-control-label" for=""><span></span></label>
+                                                    </div>
+                                                </th>
+                                                <th scope="col" class="text-dark">일련번호</th>
+                                                <th scope="col" class="text-dark">제공서비스</th>
+                                                <th scope="col" class="text-dark">최종수정일</th>
+                                                <th scope="col" class="text-dark">단  가</th>
+                                                <th scope="col" class="text-dark">특이사항</th>
+                                                <th scope="col" class="text-dark">상  태</th>
+                                                <th scope="col" class="text-dark"></th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="custom-control custom-checkbox mb-2">
+                                                        <input id="customCheck2" class="custom-control-input is-invalid" type="checkbox">
+                                                        <label class="custom-control-label" for="customCheck2"><span></span></label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-danger">003452</td>
+                                                <td>돌봄서비스</td>
+                                                <td>22 June 2020</td>
+                                                <td class="text-danger">18,000원/1H</td>
+                                                <td>보호자 자택</td>
+                                                <td class="text-success bg-soft-success inline">제공중</td>
+                                                <td>
+                                                    <button type="button" onclick="location.href='serviceSelectList_dol.do' "class="btn btn-outline-danger btn-sm">상세정보</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="custom-control custom-checkbox mb-2">
+                                                        <input id="customCheck2" class="custom-control-input is-invalid" type="checkbox">
+                                                        <label class="custom-control-label" for="customCheck2"><span></span></label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-danger">003453</td>
+                                                <td>산책서비스</td>
+                                                <td>23 June 2020</td>
+                                                <td class="text-danger">18,000원/1H</td>
+                                                <td>회원 요청 위치</td>
+                                                <td class="text-success bg-soft-success inline">제공중</td>
+                                                <td>
+                                                    <button type="button" onclick="location.href='serviceSelectList_walk.do' "class="btn btn-outline-danger btn-sm">상세정보</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="custom-control custom-checkbox mb-2">
+                                                        <input id="customCheck2" class="custom-control-input is-invalid" type="checkbox">
+                                                        <label class="custom-control-label" for="customCheck2"><span></span></label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-danger">003454</td>
+                                                <td>훈련서비스</td>
+                                                <td>24 June 2020</td>
+                                                <td class="text-danger">18,000원/1H</td>
+                                                <td>보호자와 반려동물 함께 실시</td>
+                                                <td class="text-success bg-soft-success inline">제공중</td>
+                                                <td>
+                                                    <button type="button" onclick="location.href='serviceSelectList_train.do' "class="btn btn-outline-danger btn-sm">상세정보</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -233,10 +294,10 @@
                     <div class="col-sm">
                         <nav aria-label="Bootstrap Pagination Example">
                             <ul class="pagination mb-0">
-                                <li class="page-item">
-                                    <a class="page-link" href="trainerList.do"><span class="ml-1 d-none d-xl-inline-block">Previous</span></a>
+                                 <li class="page-item">
+                                    <a class="page-link" href="mHome.do"><span class="ml-1 d-none d-xl-inline-block">이전으로</span></a>
                                 </li>
-                            </ul>
+                             </ul>
                         </nav>
                     </div>
                 </div>
@@ -268,5 +329,4 @@
     <script src="assets/js/sidebar-nav.js"></script>
     <script src="assets/js/dashboard-page-scripts.js"></script>
 </body>
-
 </html>

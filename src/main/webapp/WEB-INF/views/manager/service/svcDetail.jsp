@@ -3,10 +3,8 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <!-- Head -->
-
 <head>
-    <title>훈련사 상세 페이지</title>
-
+    <title>서비스 수정</title>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,21 +12,16 @@
     <meta name="keywords" content="Bootstrap Theme, Freebies, Dashboard, MIT license">
     <meta name="description" content="Stream - Dashboard UI Kit">
     <meta name="author" content="htmlstream.com">
-
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-
     <!-- Web Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Open+Sans&display=swap" rel="stylesheet">
-
     <!-- Components Vendor Styles -->
     <link rel="stylesheet" href="assets/vendor/font-awesome/css/all.min.css">
     <link rel="stylesheet" href="assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
-
     <!-- Theme Styles -->
     <link rel="stylesheet" href="assets/css/theme.css">
     <link rel="stylesheet" href="assets/css/style.css">
-
     <!-- Custom Charts -->
     <style>
         .js-doughnut-chart {
@@ -38,24 +31,22 @@
     </style>
 </head>
 <!-- End Head -->
-
 <body class="page-coupon-add">
     <!-- Header (Topbar) -->
     <header class="astino-header u-header">
         <div class="u-header-left">
             <a class="u-header-logo" href="mHome.do">
-              <img src="assets/logo.png" width="160" >
+                <img src="assets/logo.png" width="160" >
                 <img class="img-fluid u-logo-mobile" src="assets/img/logo-mobile.png" width="50" alt="Stream Dashboard">
             </a>
         </div>
-
         <div class="u-header-middle">
             <a class="js-sidebar-invoker u-sidebar-invoker" href="#!" data-is-close-all-except-this="true" data-target="#sidebar">
                 <i class="fa fa-bars u-sidebar-invoker__icon--open"></i>
                 <i class="fa fa-times u-sidebar-invoker__icon--close"></i>
             </a>
-        </div> 
-
+        </div>
+        
             <!-- User Profile -->
             <div class="astino-user-top-corner dropdown ml-2">
                 <a class="link-muted d-flex align-items-center" href="#!" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">
@@ -68,7 +59,7 @@
             <!-- End User Profile -->
     </header>
     <!-- End Header (Topbar) -->
-
+    
     <main class="u-main" role="main">
         
           <!-- Sidebar -->
@@ -126,7 +117,7 @@
 
                             <ul id="subMenu22" class="u-sidebar-nav-menu u-sidebar-nav-menu--second-level text-center" style="display: none;">
                                 <li class="u-sidebar-nav-menu__item">
-                                    <a class="u-sidebar-nav-menu__link active" href="memberList.do">
+                                    <a class="u-sidebar-nav-menu__link" href="memberList.do">
                                         <span class="u-sidebar-nav-menu__item-title">사용자 관리</span>
                                     </a>
                                 </li>
@@ -146,7 +137,7 @@
 
                         <!-- 서비스 관리-->
                         <li class="u-sidebar-nav-menu__item">
-                            <a class="u-sidebar-nav-menu__link" href="serviceList.do">
+                            <a class="u-sidebar-nav-menu__link active" href="serviceList.do">
                                 <i class="fas fa-cogs u-sidebar-nav-menu__item-icon"></i>
                                 <span class="u-sidebar-nav-menu__item-title">서비스 관리</span>
                             </a>
@@ -186,7 +177,7 @@
         <div class="u-content">
             <div class="u-body">
                 <header class="astino-pr-form-header">
-                    <h2 class="h1 card-header-title">훈련사 상세 정보</h2>
+                    <h2 class="h1 card-header-title">서비스 상세 정보</h2>
                 </header>
                 <div class="row">
                     <!-- Current Projects -->
@@ -195,19 +186,11 @@
                             <div class="astino-pr-form card-body">
                                 <form>
                                     <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput">Item Name</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="DS003452">
+                                        <label for="formGroupExampleInput">제공서비스</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="돌봄서비스">
                                     </div>
                                     <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput2">Code</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Dg362323">
-                                    </div>
-                                    <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput3">Discount</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="100%">
-                                    </div>
-                                    <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput4">Expiary Date</label>
+                                        <label for="formGroupExampleInput4">최종수정일</label>
                                         <span class="form-icon-wrapper">
                                             <span class="form-icon form-icon--left">
                                                 <i class="fa fa-calendar form-icon__item"></i>
@@ -216,12 +199,24 @@
                                         </span>
                                     </div>
                                     <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput5">Description</label>
-                                        <textarea class="form-control" id="formGroupExampleInput5" placeholder="Product Description"></textarea>
+                                        <label for="formGroupExampleInput2">1시간 단가</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="18,000원">
                                     </div>
-                                    <a href="" class="btn btn-danger btn-large float-right">
-                                        <i class="fa fa-plus"></i>
-                                        확인
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput2">2시간 단가</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="34,000원">
+                                    </div>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput2">3시간 단가</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="50,000원">
+                                    </div>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput5">특이사항</label>
+                                        <textarea class="form-control" id="formGroupExampleInput5" placeholder="돌봄서비스는 사용자의 자택에서 이루어진다. 사용자의 부재시 반려동물을 돌봄하는 것을 원칙으로 한다."></textarea>
+                                    </div>
+                                    <a href="" onClick="alert('수정하겠습니까?')" class="btn btn-danger btn-large float-right">
+                                        <i class="fa fa-edit"></i>
+                                        수정
                                     </a>
                                 </form>
                             </div>
@@ -229,23 +224,21 @@
                     </div>
                     <!-- End Current Projects -->
                 </div>
-                <div class="row justify-content-between align-items-center mb-4">
+                 <div class="row justify-content-between align-items-center mb-4">
                     <div class="col-sm">
                         <nav aria-label="Bootstrap Pagination Example">
                             <ul class="pagination mb-0">
                                 <li class="page-item">
-                                    <a class="page-link" href="trainerList.do"><span class="ml-1 d-none d-xl-inline-block">Previous</span></a>
+                                    <a class="page-link" href="serviceList.do"><span class="ml-1 d-none d-xl-inline-block">이전으로</span></a>
                                 </li>
                             </ul>
                         </nav>
                     </div>
                 </div>
             </div>
-
             <!-- Footer -->
             <footer class="astino-footer u-footer d-md-flex align-items-md-center text-center text-md-left">
                 <p class="h5 mb-2 mb-md-0">Made with love by <a class="text-danger" href="https://themespell.com/" target="_blank">Themespell</a></p>
-
                 <p class="h5 mb-0 ml-auto">
                     &copy; 2020 <a class="text-danger" href="https://themespell.com/" target="_blank">Themespell</a>. All Rights Reserved.
                 </p>
@@ -253,20 +246,16 @@
             <!-- End Footer -->
         </div>
     </main>
-
     <!-- Global Vendor -->
     <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
     <script src="assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
     <script src="assets/vendor/popper.js/dist/umd/popper.min.js"></script>
     <script src="assets/vendor/bootstrap/bootstrap.min.js"></script>
-
     <!-- Plugins -->
     <script src="assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="assets/vendor/chart.js/dist/Chart.min.js"></script>
-
     <!-- Initialization  -->
     <script src="assets/js/sidebar-nav.js"></script>
     <script src="assets/js/dashboard-page-scripts.js"></script>
 </body>
-
 </html>

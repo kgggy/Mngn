@@ -234,7 +234,7 @@
                         <nav aria-label="Bootstrap Pagination Example">
                             <ul class="pagination mb-0">
                                 <li class="page-item">
-                                    <a class="page-link" href="trainerList.do"><span class="ml-1 d-none d-xl-inline-block">Previous</span></a>
+                                    <a class="page-link" href="trainerList.do"><span class="ml-1 d-none d-xl-inline-block">이전으로</span></a>
                                 </li>
                             </ul>
                         </nav>
