@@ -28,7 +28,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/logout.do")
 	public String tMain() {
-		return "tMain";
+		return "trnMain";
 	}
 
 }
