@@ -379,34 +379,33 @@
         </div>
     </main>
 
-	<!-- Vertically Centered Modals -->
+		<!-- Large Size Modal-->
 		<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h3 class="modal-title" id="exampleModalLongTitle">사용자 상세 정보</h3>
+						<h3 class="modal-title" id="exampleModalLabel">탈퇴 회원 상세정보</h3>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-			<div class="modal-body">
-                <div class="row">
-                    <!-- Current Projects -->
+					<div class="modal-body">
+						<!-- Current Projects -->
                     <div class="col-md-12 mb-4">
                         <div class="card h-100">
                             <div class="astino-pr-form card-body">
                                 <form>
                                     <div class="form-group d-flex align-items-center">
                                         <label for="formGroupExampleInput">아이디</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="heyyolove">
+                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="dooly">
                                     </div>
                                     <div class="form-group d-flex align-items-center">
                                         <label for="formGroupExampleInput2">이  름</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="고수">
+                                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="김둘리">
                                     </div>
                                     <div class="form-group d-flex align-items-center">
                                         <label for="formGroupExampleInput3">주  소</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="대구광역시 동구 안심로">
+                                        <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="황도 갤럭시 금은동">
                                     </div>
                                     <div class="form-group d-flex align-items-center">
                                         <label for="formGroupExampleInput4">가입날짜</label>
@@ -414,27 +413,35 @@
                                             <span class="form-icon form-icon--left">
                                                 <i class="fa fa-calendar form-icon__item"></i>
                                             </span>
-                                            <input id="formGroupExampleInput4" class="form-control exp-date form-icon-input-left datepicker" type="email" placeholder="15 OCT 2021">
+                                            <input id="formGroupExampleInput4" class="form-control exp-date form-icon-input-left datepicker" type="email" placeholder="15 NOV 2021">
+                                        </span>
+                                    </div>
+                                     <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput4">탈퇴날짜</label>
+                                        <span class="form-icon-wrapper">
+                                            <span class="form-icon form-icon--left">
+                                                <i class="fa fa-calendar form-icon__item"></i>
+                                            </span>
+                                            <input id="formGroupExampleInput4" class="form-control exp-date form-icon-input-left datepicker" type="email" placeholder="10 OCT 2021">
                                         </span>
                                     </div>
                                     <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput4">특이사항</label>
-                                        <textarea class="form-control" id="formGroupExampleInput4" placeholder="달님(개), 별님(고양이) 돌봄서비스 자주 이용 고객"></textarea>
+                                        <label for="formGroupExampleInput5">탈퇴사유</label>
+                                        <textarea class="form-control" id="formGroupExampleInput5" placeholder="훈련사에게 폭언"></textarea>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-				</div>
+                    <!-- End Current Projects -->
+					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-dismiss="modal">확인</button>
-						<!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+						<button type="button" class="btn btn-danger" herf="dropMemberList.do" data-dismiss="modal">확인</button>
 					</div>
 				</div>
 			</div>
-		 </div>
 		</div>
-		<!-- End Vertically Centered Modals -->
+		<!-- Large Size Modal-->
 	
 
     <!-- Global Vendor -->

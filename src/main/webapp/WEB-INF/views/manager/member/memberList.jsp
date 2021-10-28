@@ -435,21 +435,32 @@
                     </div>
                 </div>
             </div>
-		<!-- Vertically Centered Modals -->
-		<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered" role="document">
+
+
+            <!-- Footer -->
+            <footer class="astino-footer u-footer d-md-flex align-items-md-center text-center text-md-left">
+                <p class="h5 mb-2 mb-md-0">Made with love by <a class="text-danger" href="https://themespell.com/" target="_blank">Themespell</a></p>
+
+                <p class="h5 mb-0 ml-auto">
+                    &copy; 2020 <a class="text-danger" href="https://themespell.com/" target="_blank">Themespell</a>. All Rights Reserved.
+                </p>
+            </footer>
+            <!-- End Footer -->
+        </div>
+    </main>
+    
+			<!-- Large Size Modal-->
+		<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLongTitle"></h5>
+						<h3 class="modal-title" id="exampleModalLongTitle">사용자 상세정보</h3>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">X</span>
 						</button>
 					</div>
-					<div class="modal-body">
-				<header class="astino-pr-form-header">
-                    <h2 class="h1 card-header-title">사용자 상세정보</h2>
-                </header>
-                <div class="row">
+				<div class="modal-body">
+              	  <div class="row"><!-- dropMemeberList.do 와 다른점 -->
                     <!-- Current Projects -->
                     <div class="col-md-12 mb-4">
                         <div class="card h-100">
@@ -484,119 +495,16 @@
                             </div>
                         </div>
                     </div>
-					
+					<!-- End Current Projects -->
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-						<button type="button" class="btn btn-primary">저장</button>
+						<button type="button" class="btn btn-danger" herf="dropMemberList.do" data-dismiss="modal">확인</button>
 					</div>
 				</div>
 			</div>
 		 </div>
 		</div>
-		<!-- End Vertically Centered Modals -->
-
-            <!-- Footer -->
-            <footer class="astino-footer u-footer d-md-flex align-items-md-center text-center text-md-left">
-                <p class="h5 mb-2 mb-md-0">Made with love by <a class="text-danger" href="https://themespell.com/" target="_blank">Themespell</a></p>
-
-                <p class="h5 mb-0 ml-auto">
-                    &copy; 2020 <a class="text-danger" href="https://themespell.com/" target="_blank">Themespell</a>. All Rights Reserved.
-                </p>
-            </footer>
-            <!-- End Footer -->
-        </div>
-    </main>
-    
-    <style>
-body {font-family: Arial, Helvetica, sans-serif;}
-
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content */
-.modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-}
-
-/* The Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-</style>
-
-<body>
-
-<h2>Modal Example</h2>
-
-<!-- Trigger/Open The Modal -->
-<button id="myBtn">Open Modal</button>
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>Some text in the Modal..</p>
-  </div>
-
-</div>
-
-<script>
-// Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-</script>
-    
+		<!-- End Large Size Modal-->
 
     <!-- Global Vendor -->
     <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
