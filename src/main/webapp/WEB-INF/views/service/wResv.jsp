@@ -432,7 +432,7 @@ select {
 		});
 
 	$(".park").on("click", function() {
-			window.open("map.do");
+			window.open("map.do", "근처공원 선택", "width=650px,height=800px,scrollbars=yes,left=600px,top=100px");
 		})
 	}
 	$(document).ready(function(e) {

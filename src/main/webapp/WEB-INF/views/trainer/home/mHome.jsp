@@ -858,11 +858,18 @@
 
             <!-- Footer -->
             <footer class="astino-footer u-footer d-md-flex align-items-md-center text-center text-md-left">
-                <p class="h5 mb-2 mb-md-0">Made with love by <a class="text-danger" href="https://themespell.com/" target="_blank">Themespell</a></p>
-
-                <p class="h5 mb-0 ml-auto">
-                    &copy; 2020 <a class="text-danger" href="https://themespell.com/" target="_blank">Themespell</a>. All Rights Reserved.
-                </p>
+                <p>
+                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                     Copyright &copy;
+                     <script>
+                        document.write(new Date().getFullYear());
+                     </script>
+                     All rights reserved | This template is made with <i
+                        class="ti-heart" aria-hidden="true"></i> by <a
+                        href="https://colorlib.com" target="_blank">Colorlib</a>.Downloaded
+                     from <a href="https://themeslab.org/" target="_blank">Themeslab</a>
+                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                  </p>
             </footer>
             <!-- End Footer -->
         </div>
