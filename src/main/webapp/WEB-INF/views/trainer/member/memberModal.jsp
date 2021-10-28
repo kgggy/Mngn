@@ -175,81 +175,252 @@
         </aside>
         <!-- End Sidebar -->
 
-			<div class="u-content">
-				<div class="u-body">
-          <!-- End Breadcrumb -->
-          <div class="mb-4">
-            <nav aria-label="breadcrumb">
-              <h1 class="h3">Modals</h1>
-              <ol class="breadcrumb bg-transparent small p-0">
-                <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">UI Components</li>
-              </ol>
-            </nav>
-          </div>
-          <!-- End Breadcrumb -->
+	<div class="u-content">
+		<div class="u-body">
+			<header class="product-all-content-header d-flex align-items-center">
+                    <h2 class="h1 card-header-title">사용자 목록</h2>
+            </header>
 
 					<!-- Modal Types & Positions -->
           <div class="card mb-4">
-            <div class="card-header">
-              <h2 class="h3 card-header-title">Modal Types &amp; Positions</h2>
-            </div>
-
-           
             <div class="card-body">
-							<div class="row">
-								<div class="col-md-4 mb-3 mb-md-0">
-									<a class="link-muted d-block text-center" data-toggle="modal" href="#exampleModal">
-										<img class="img-fluid d-block mb-3" src="./assets/img/ui-kit/modals/modal-basic.jpg" alt="Htmlstream">
-										<span class="font-weight-semibold">Basic modal</span>
-									</a>
-								</div>
+				<div class="row">
+					                    <!-- Current Projects -->
+                    <div class="col-md-12 mb-4">
+                        <div class="card h-100">
+                            
 
-								<div class="col-md-4 mb-3 mb-md-0">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" class="text-dark">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input id="" class="custom-control-input is-invalid" type="checkbox">
+                                                        <label class="custom-control-label" for=""><span class="text-dark"></span></label>
+                                                    </div>
+                                                </th>
+                                                <th scope="col" class="text-dark">ID</th>
+                                                <th scope="col" class="text-dark">이  름</th>
+                                                <th scope="col" class="text-dark">전화번호</th>
+                                                <th colspan="2" scope="col" class="text-dark">주  소</th>
+                                                <th scope="col" class="text-dark">상  태</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="custom-control custom-checkbox d-flex align-items-center">
+                                                        <input id="customCheck2" class="custom-control-input is-invalid" type="checkbox">
+                                                        <label class="custom-control-label" for="customCheck2">
+                                                           <span class="text-dark">
+                                                               <img class="rounded ml-4" src="assets/img/customers/cs-1.png" alt=""> 
+                                                           </span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>heylove</td>
+                                                <td>김사랑</td>
+                                                <td>010-5394-1787</td>
+                                                <td>서울특별시 강남구 서초동 현대아파트 110-1206</td>
+                                                <td class="text-success">활동중</td>
+                                                <td>
+                                                	<button type="button" data-toggle="modal" href="#exampleModalCenter"class="btn btn-outline-danger btn-sm">상세보기</button>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td>
+                                                    <div class="custom-control custom-checkbox d-flex align-items-center">
+                                                        <input id="customCheck2" class="custom-control-input is-invalid" type="checkbox">
+                                                        <label class="custom-control-label" for="customCheck2">
+                                                           <span class="text-dark">
+                                                               <img class="rounded ml-4" src="assets/img/customers/cs-2.png" alt=""> 
+                                                           </span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>heyyopeople</td>
+                                                <td>최수정</td>
+                                                <td>010-1548-6893</td>
+                                                <td>서울특별시 강남구 도곡동 대림이편한 101-206</td>
+                                                <td class="text-success">활동중</td>
+                                                <td>
+                                                    <button type="button" onclick="location.href='memberModal.do' "class="btn btn-outline-danger btn-sm">상세보기</button>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td>
+                                                    <div class="custom-control custom-checkbox d-flex align-items-center">
+                                                        <input id="customCheck2" class="custom-control-input is-invalid" type="checkbox">
+                                                        <label class="custom-control-label" for="customCheck2">
+                                                           <span class="text-dark">
+                                                               <img class="rounded ml-4" src="assets/img/customers/cs-3.png" alt=""> 
+                                                           </span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>heyyopeople</td>
+                                                <td>최수정</td>
+                                                <td>010-1548-6893</td>
+                                                <td>서울특별시 강남구 도곡동 대림이편한 101-206</td>
+                                                <td class="text-success">활동중</td>
+                                                <td>
+                                                    <button type="button" onclick="location.href='memberSelectList.do' "class="btn btn-outline-danger btn-sm">상세보기</button>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td>
+                                                    <div class="custom-control custom-checkbox d-flex align-items-center">
+                                                        <input id="customCheck2" class="custom-control-input is-invalid" type="checkbox">
+                                                        <label class="custom-control-label" for="customCheck2">
+                                                           <span class="text-dark">
+                                                               <img class="rounded ml-4" src="assets/img/customers/cs-4.png" alt=""> 
+                                                           </span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>heyyopeople</td>
+                                                <td>최수정</td>
+                                                <td>010-1548-6893</td>
+                                                <td>서울특별시 강남구 도곡동 대림이편한 101-206</td>
+                                                <td class="text-warning">휴면계정</td>
+                                                <td>
+                                                    <button type="button" onclick="location.href='memberSelectList.do' "class="btn btn-outline-danger btn-sm">상세보기</button>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td>
+                                                    <div class="custom-control custom-checkbox d-flex align-items-center">
+                                                        <input id="customCheck2" class="custom-control-input is-invalid" type="checkbox">
+                                                        <label class="custom-control-label" for="customCheck2">
+                                                           <span class="text-dark">
+                                                               <img class="rounded ml-4" src="assets/img/customers/cs-2.png" alt=""> 
+                                                           </span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>heyyopeople</td>
+                                                <td>최수정</td>
+                                                <td>010-1548-6893</td>
+                                                <td>서울특별시 강남구 도곡동 대림이편한 101-206</td>
+                                                <td class="text-success">활동중</td>
+                                                <td>
+                                                    <button type="button" onclick="location.href='memberSelectList.do' "class="btn btn-outline-danger btn-sm">상세보기</button>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td>
+                                                    <div class="custom-control custom-checkbox d-flex align-items-center">
+                                                        <input id="customCheck2" class="custom-control-input is-invalid" type="checkbox">
+                                                        <label class="custom-control-label" for="customCheck2">
+                                                           <span class="text-dark">
+                                                               <img class="rounded ml-4" src="assets/img/customers/cs-3.png" alt=""> 
+                                                           </span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>heyyopeople</td>
+                                                <td>최수정</td>
+                                                <td>010-1548-6893</td>
+                                                <td>서울특별시 강남구 도곡동 대림이편한 101-206</td>
+                                                <td class="text-success">활동중</td>
+                                                <td>
+                                                    <button type="button" onclick="location.href='memberSelectList.do' "class="btn btn-outline-danger btn-sm">상세보기</button>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td>
+                                                    <div class="custom-control custom-checkbox d-flex align-items-center">
+                                                        <input id="customCheck2" class="custom-control-input is-invalid" type="checkbox">
+                                                        <label class="custom-control-label" for="customCheck2">
+                                                           <span class="text-dark">
+                                                               <img class="rounded ml-4" src="assets/img/customers/cs-1.png" alt=""> 
+                                                           </span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>heyyopeople</td>
+                                                <td>최수정</td>
+                                                <td>010-1548-6893</td>
+                                                <td>서울특별시 강남구 도곡동 대림이편한 101-206</td>
+                                                <td class="text-success">활동중</td>
+                                                <td>
+                                                    <button type="button" onclick="location.href='memberSelectList.do' "class="btn btn-outline-danger btn-sm">상세보기</button>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td>
+                                                    <div class="custom-control custom-checkbox d-flex align-items-center">
+                                                        <input id="customCheck2" class="custom-control-input is-invalid" type="checkbox">
+                                                        <label class="custom-control-label" for="customCheck2">
+                                                           <span class="text-dark">
+                                                               <img class="rounded ml-4" src="assets/img/customers/cs-3.png" alt=""> 
+                                                           </span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>heyyopeople</td>
+                                                <td>최수정</td>
+                                                <td>010-1548-6893</td>
+                                                <td>서울특별시 강남구 도곡동 대림이편한 101-206</td>
+                                                <td class="text-success">활동중</td>
+                                                <td>
+                                                    <button type="button" onclick="location.href='memberSelectList.do' "class="btn btn-outline-danger btn-sm">상세보기</button>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td>
+                                                    <div class="custom-control custom-checkbox d-flex align-items-center">
+                                                        <input id="customCheck2" class="custom-control-input is-invalid" type="checkbox">
+                                                        <label class="custom-control-label" for="customCheck2">
+                                                           <span class="text-dark">
+                                                               <img class="rounded ml-4" src="assets/img/customers/cs-4.png" alt=""> 
+                                                           </span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td>heyyopeople</td>
+                                                <td>최수정</td>
+                                                <td>010-1548-6893</td>
+                                                <td>서울특별시 강남구 도곡동 대림이편한 101-206</td>
+                                                <td class="text-success">활동중</td>
+                                                <td>
+                                                    <button type="button" onclick="location.href='memberSelectList.do' "class="btn btn-outline-danger btn-sm">상세보기</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				
+				
+
+								<!-- <div class="col-md-4 mb-3 mb-md-0">
 									<a class="link-muted d-block text-center" data-toggle="modal" href="#exampleModalCenter">
 										<img class="img-fluid d-block mb-3" src="./assets/img/ui-kit/modals/modal-vertically-centered.jpg" alt="Htmlstream">
 										<span class="font-weight-semibold">Vertically centered modal</span>
 									</a>
 								</div>
-
-								<div class="col-md-4 mb-3 mb-md-0">
-									<a class="link-muted d-block text-center" data-toggle="modal" href="#exampleModalLong">
-										<img class="img-fluid d-block mb-3" src="./assets/img/ui-kit/modals/modal-long.jpg" alt="Htmlstream">
-										<span class="font-weight-semibold">Scrolling long content</span>
-									</a>
-								</div>
-							</div>
+ -->
+							
+				</div>
             </div>
           </div>
           <!-- End Modal Types & Positions -->
 
-					<!-- Modal Sizes -->
-          <div class="card">
-            <div class="card-header">
-              <h2 class="h3 card-header-title">Modal Sizes</h2>
-            </div>
-
-            <div class="card-body">
-							<div class="row">
-								<div class="col-md-4 mb-3 mb-md-0">
-									<a class="link-muted d-block text-center" data-toggle="modal" href=".bd-example-modal-sm">
-										<img class="img-fluid d-block mb-3" src="./assets/img/ui-kit/modals/modal-small.jpg" alt="Htmlstream">
-										<span class="font-weight-semibold">Small size</span>
-									</a>
-								</div>
-
-								<div class="col-md-4">
-									<a class="link-muted d-block text-center" data-toggle="modal" href=".bd-example-modal-lg">
-										<img class="img-fluid d-block mb-3" src="./assets/img/ui-kit/modals/modal-large.jpg" alt="Htmlstream">
-										<span class="font-weight-semibold">Large size</span>
-									</a>
-								</div>
-							</div>
-            </div>
-          </div>
-          <!-- End Modal Sizes -->
-				</div>
-
+				
 				<!-- Footer -->
 				<footer class="u-footer d-md-flex align-items-md-center text-center text-md-left text-muted">
 					<p class="h5 mb-2 mb-md-0">More freebies on <a class="link-muted" href="https://htmlstream.com/" target="_blank">Htmlstream</a></p>
@@ -260,44 +431,23 @@
 				</footer>
 				<!-- End Footer -->
 			</div>
-		</main>
-
-		<!-- Basic Modals -->
-		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Basic Modals</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						Woohoo, you're reading this text in a modal!
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save changes</button>
-					</div>
-				</div>
-			</div>
 		</div>
-		<!-- End Basic Modals -->
+		</main>
 
 		<!-- Vertically Centered Modals -->
 		<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLongTitle">Vertically Centered Modal</h5>
+						<h3 class="modal-title" id="exampleModalLongTitle">사용자 상세 정보</h3>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<div class="modal-body">
-						<header class="astino-pr-form-header">
+			<div class="modal-body">
+				<!-- <header class="astino-pr-form-header">
                     <h2 class="h1 card-header-title">사용자 상세 정보</h2>
-                </header>
+                </header> -->
                 <div class="row">
                     <!-- Current Projects -->
                     <div class="col-md-12 mb-4">
@@ -326,18 +476,18 @@
                                         </span>
                                     </div>
                                     <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput5">특이사항</label>
-                                        <textarea class="form-control" id="formGroupExampleInput5" placeholder="달님(개), 별님(고양이) 돌봄서비스 자주 이용 고객"></textarea>
+                                        <label for="formGroupExampleInput4">특이사항</label>
+                                        <textarea class="form-control" id="formGroupExampleInput4" placeholder="달님(개), 별님(고양이) 돌봄서비스 자주 이용 고객"></textarea>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-					
-					</div>
+				</div>
+				
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save changes</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal">확인</button>
+						<!-- <button type="button" class="btn btn-primary">Save changes</button> -->
 					</div>
 				</div>
 			</div>
@@ -345,85 +495,6 @@
 		</div>
 		<!-- End Vertically Centered Modals -->
 
-		<!-- Scrolling Long Content -->
-		<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-
-						<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-
-						<p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-
-						<p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-
-						<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-
-						<p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-
-						<p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-
-						<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save changes</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End Scrolling Long Content -->
-
-		<!-- Small Size -->
-		<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-sm" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Small Size</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						...
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save changes</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End Small Size -->
-
-		<!-- Large Size -->
-		<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-lg" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Large Size</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						...
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save changes</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End Large Size -->
 
     <!-- Global Vendor -->
     <script src="assets/vendor/jquery/dist/jquery.min.js"></script>

@@ -188,11 +188,6 @@
             <div class="u-body">
                 <header class="product-all-content-header d-flex align-items-center">
                     <h2 class="h1 card-header-title">사용자 목록</h2>
-
-                    <!-- Card Header Icon -->
-                    <ul class="list-inline ml-auto mb-0">
-                    </ul>
-                    <!-- End Card Header Icon -->
                 </header>
                 <div class="row">
                     <!-- Current Projects -->
@@ -258,7 +253,7 @@
                                                 <td>서울특별시 강남구 도곡동 대림이편한 101-206</td>
                                                 <td class="text-success">활동중</td>
                                                 <td>
-                                                    <button type="button" onclick="location.href='memberSelectList.do' "class="btn btn-outline-danger btn-sm">상세보기</button>
+                                                    <button type="button" onclick="location.href='memberModal.do' "class="btn btn-outline-danger btn-sm">상세보기</button>
                                                 </td>
                                             </tr>
                                             
