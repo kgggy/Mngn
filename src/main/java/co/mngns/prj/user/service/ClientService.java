@@ -4,7 +4,7 @@ import java.util.List;
 
 import co.mngns.prj.user.vo.ClientVO;
 
-public interface UserService {
+public interface ClientService {
 	List<ClientVO> clientSelectList(); //사용자 전체목록 가져오기
 	ClientVO clientSelect(ClientVO vo); //사용자 한명 세부정보 가져오기
 	int clientInsert(ClientVO vo);		//사용자 삽입
