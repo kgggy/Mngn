@@ -59,7 +59,7 @@
 				<div class="col-lg-10">
 					<div class="testmonial_wrap">
 						<div class="single_testmonial d-flex align-items-center"
-							onclick="location.href='tDetails.do'">
+							onclick="location.href='tDetail.do'">
 							<div class="test_thumb">
 								<img src="img/testmonial/1.png" alt="">
 							</div>
@@ -118,7 +118,7 @@
 					<br> <br>
 					<div class="testmonial_wrap" >
 						<div class="single_testmonial d-flex align-items-center"
-							onclick="location.href='tDetails.do'">
+							onclick="location.href='tDetail.do'">
 							<div class="test_thumb">
 								<img src="img/testmonial/1.png" alt="">
 							</div>
