@@ -663,7 +663,7 @@ footer p a:hover {
 						<br><br>
 						<br><br>
 						<div align="center">
-							멍냥꽁냥 회원을 탈퇴하시겠습니까? <a href="mOut.do" class="withdraw">회원탈퇴하기</a>
+							멍냥꽁냥 회원을 탈퇴하시겠습니까? <a href="#" class="withdraw">회원탈퇴하기</a>
 						</div>
 
 					</form>
