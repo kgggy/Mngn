@@ -43,7 +43,7 @@
     <!-- Header (Topbar) -->
     <header class="astino-header u-header">
         <div class="u-header-left">
-            <a class="u-header-logo" href="home.do">
+            <a class="u-header-logo" href="mHome.do">
                <img src="assets/logo.png" width="160" >
                 <img class="img-fluid u-logo-mobile" src="assets/img/logo-mobile.png" width="50" alt="Stream Dashboard">
             </a>
@@ -54,303 +54,8 @@
                 <i class="fa fa-bars u-sidebar-invoker__icon--open"></i>
                 <i class="fa fa-times u-sidebar-invoker__icon--close"></i>
             </a>
-
-            <div class="astino-header-search u-header-search" data-search-mobile-invoker="#headerSearchMobileInvoker" data-search-target="#headerSearch">
-                <a id="headerSearchMobileInvoker" class="btn btn-link input-group-prepend u-header-search__mobile-invoker" href="#!">
-                    <i class="fa fa-search"></i>
-                </a>
-
-                <div id="headerSearch" class="u-header-search-form">
-                    <form>
-                        <div class="input-group">
-                            <span class="form-icon form-icon--right">
-                                <i class="fa fa-search form-icon__item"></i>
-                            </span>
-                            <input class="form-control u-header-search__field" type="search" placeholder="Search">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <div class="u-header-right">
-            <!-- Activities -->
-            <div class="dropdown mr-4">
-                <div class="dropdown-menu dropdown-menu-right border-0 py-0 mt-4" aria-labelledby="dropdownMenuLink" style="width: 360px;">
-                    <div class="card">
-                        <div class="card-header d-flex align-items-center py-3">
-                            <h2 class="h4 card-header-title">Activities</h2>
-                            <a class="ml-auto" href="#">Clear all</a>
-                        </div>
-
-                        <div class="card-body p-0">
-                            <div class="list-group list-group-flush">
-                                <!-- Activity -->
-                                <a class="list-group-item list-group-item-action" href="#">
-                                    <div class="media align-items-center">
-                                        <img class="u-avatar--sm rounded-circle mr-3" src="assets/img/avatars/img1.jpg" alt="Image description">
-
-                                        <div class="media-body">
-                                            <div class="d-flex align-items-center">
-                                                <h4 class="mb-1">Chad Cannon</h4>
-                                                <small class="text-muted ml-auto">23 Jan 2018</small>
-                                            </div>
-
-                                            <p class="text-truncate mb-0" style="max-width: 250px;">
-                                                We've just done the project.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- End Activity -->
-
-                                <!-- Activity -->
-                                <a class="list-group-item list-group-item-action" href="#">
-                                    <div class="media align-items-center">
-                                        <img class="u-avatar--sm rounded-circle mr-3" src="assets/img/avatars/img2.jpg" alt="Image description">
-
-                                        <div class="media-body">
-                                            <div class="d-flex align-items-center">
-                                                <h4 class="mb-1">Jane Ortega</h4>
-                                                <small class="text-muted ml-auto">18 Jan 2018</small>
-                                            </div>
-
-                                            <p class="text-truncate mb-0" style="max-width: 250px;">
-                                                <span class="text-primary">@Bruce</span> advertising your project is not good idea.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- End Activity -->
-
-                                <!-- Activity -->
-                                <a class="list-group-item list-group-item-action" href="#">
-                                    <div class="media align-items-center">
-                                        <img class="u-avatar--sm rounded-circle mr-3" src="assets/img/avatars/user-unknown.jpg" alt="Image description">
-
-                                        <div class="media-body">
-                                            <div class="d-flex align-items-center">
-                                                <h4 class="mb-1">Stella Hoffman</h4>
-                                                <small class="text-muted ml-auto">15 Jan 2018</small>
-                                            </div>
-
-                                            <p class="text-truncate mb-0" style="max-width: 250px;">
-                                                When the release date is expexted for the advacned settings?
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- End Activity -->
-
-                                <!-- Activity -->
-                                <a class="list-group-item list-group-item-action" href="#">
-                                    <div class="media align-items-center">
-                                        <img class="u-avatar--sm rounded-circle mr-3" src="assets/img/avatars/img4.jpg" alt="Image description">
-
-                                        <div class="media-body">
-                                            <div class="d-flex align-items-center">
-                                                <h4 class="mb-1">Htmlstream</h4>
-                                                <small class="text-muted ml-auto">05 Jan 2018</small>
-                                            </div>
-
-                                            <p class="text-truncate mb-0" style="max-width: 250px;">
-                                                Adwords Keyword research for beginners
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- End Activity -->
-                            </div>
-                        </div>
-
-                        <div class="card-footer py-3">
-                            <a class="btn btn-block btn-outline-primary" href="#">View all activities</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Activities -->
-
-            <!-- Notifications -->
-            <div class="dropdown mr-4">
-                <div class="dropdown-menu dropdown-menu-right border-0 py-0 mt-4" aria-labelledby="dropdownMenuLink" style="width: 360px;">
-                    <div class="card">
-                        <div class="card-header d-flex align-items-center py-3">
-                            <h2 class="h4 card-header-title">Notifications</h2>
-                            <a class="ml-auto" href="#">Clear all</a>
-                        </div>
-
-                        <div class="card-body p-0">
-                            <div class="list-group list-group-flush">
-                                <!-- Notification -->
-                                <a class="list-group-item list-group-item-action" href="#">
-                                    <div class="media align-items-center">
-                                        <div class="u-icon u-icon--sm rounded-circle bg-danger text-white mr-3">
-                                            <i class="fab fa-dribbble"></i>
-                                        </div>
-
-                                        <div class="media-body">
-                                            <div class="d-flex align-items-center">
-                                                <h4 class="mb-1">Dribbble</h4>
-                                                <small class="text-muted ml-auto">23 Jan 2018</small>
-                                            </div>
-
-                                            <p class="text-truncate mb-0" style="max-width: 250px;">
-                                                <span class="text-primary">@htmlstream</span> just liked your post!
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- End Notification -->
-
-                                <!-- Notification -->
-                                <a class="list-group-item list-group-item-action" href="#">
-                                    <div class="media align-items-center">
-                                        <div class="u-icon u-icon--sm rounded-circle bg-info text-white mr-3">
-                                            <i class="fab fa-twitter"></i>
-                                        </div>
-
-                                        <div class="media-body">
-                                            <div class="d-flex align-items-center">
-                                                <h4 class="mb-1">Twitter</h4>
-                                                <small class="text-muted ml-auto">18 Jan 2018</small>
-                                            </div>
-
-                                            <p class="text-truncate mb-0" style="max-width: 250px;">
-                                                Someone mentioned you on the tweet.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- End Notification -->
-
-                                <!-- Notification -->
-                                <a class="list-group-item list-group-item-action" href="#">
-                                    <div class="media align-items-center">
-                                        <div class="u-icon u-icon--sm rounded-circle bg-success text-white mr-3">
-                                            <i class="fab fa-spotify"></i>
-                                        </div>
-
-                                        <div class="media-body">
-                                            <div class="d-flex align-items-center">
-                                                <h4 class="mb-1">Spotify</h4>
-                                                <small class="text-muted ml-auto">18 Jan 2018</small>
-                                            </div>
-
-                                            <p class="text-truncate mb-0" style="max-width: 250px;">
-                                                You've just recived $25 free gift card.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- End Notification -->
-
-                                <!-- Notification -->
-                                <a class="list-group-item list-group-item-action" href="#">
-                                    <div class="media align-items-center">
-                                        <div class="u-icon u-icon--sm rounded-circle bg-info text-white mr-3">
-                                            <i class="fab fa-facebook-f"></i>
-                                        </div>
-
-                                        <div class="media-body">
-                                            <div class="d-flex align-items-center">
-                                                <h4 class="mb-1">Facebook</h4>
-                                                <small class="text-muted ml-auto">18 Jan 2018</small>
-                                            </div>
-
-                                            <p class="text-truncate mb-0" style="max-width: 250px;">
-                                                <span class="text-primary">@htmlstream</span> commented in your post.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- End Notification -->
-                            </div>
-                        </div>
-
-                        <div class="card-footer py-3">
-                            <a class="btn btn-block btn-outline-primary" href="#">View all notifications</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Notifications -->
-
-            <!-- Apps -->
-            <div class="dropdown mr-4">
-                <div class="dropdown-menu dropdown-menu-right border-0 py-0 mt-4" aria-labelledby="dropdownMenuLink" style="width: 360px;">
-                    <div class="card">
-                        <div class="card-header d-flex align-items-center py-3">
-                            <h2 class="h4 card-header-title">Apps</h2>
-                            <a class="ml-auto" href="#">Learn more</a>
-                        </div>
-
-                        <div class="card-body py-3">
-                            <div class="row">
-                                <!-- App -->
-                                <div class="col-4 px-2 mb-2">
-                                    <a class="u-apps d-flex flex-column rounded" href="#!">
-                                        <img class="img-fluid u-avatar--xs mx-auto mb-2" src="assets/img/brands-sm/img1.png" alt="">
-                                        <span class="text-center">Assana</span>
-                                    </a>
-                                </div>
-                                <!-- End App -->
-
-                                <!-- App -->
-                                <div class="col-4 px-2 mb-2">
-                                    <a class="u-apps d-flex flex-column rounded" href="#!">
-                                        <img class="img-fluid u-avatar--xs mx-auto mb-2" src="assets/img/brands-sm/img2.png" alt="">
-                                        <span class="text-center">Slack</span>
-                                    </a>
-                                </div>
-                                <!-- End App -->
-
-                                <!-- App -->
-                                <div class="col-4 px-2 mb-2">
-                                    <a class="u-apps d-flex flex-column rounded" href="#!">
-                                        <img class="img-fluid u-avatar--xs mx-auto mb-2" src="assets/img/brands-sm/img3.png" alt="">
-                                        <span class="text-center">Cloud</span>
-                                    </a>
-                                </div>
-                                <!-- End App -->
-
-                                <!-- App -->
-                                <div class="col-4 px-2">
-                                    <a class="u-apps d-flex flex-column rounded" href="#!">
-                                        <img class="img-fluid u-avatar--xs mx-auto mb-2" src="assets/img/brands-sm/img5.png" alt="">
-                                        <span class="text-center">Facebook</span>
-                                    </a>
-                                </div>
-                                <!-- End App -->
-
-                                <!-- App -->
-                                <div class="col-4 px-2">
-                                    <a class="u-apps d-flex flex-column rounded" href="#!">
-                                        <img class="img-fluid u-avatar--xs mx-auto mb-2" src="assets/img/brands-sm/img4.png" alt="">
-                                        <span class="text-center">Spotify</span>
-                                    </a>
-                                </div>
-                                <!-- End App -->
-
-                                <!-- App -->
-                                <div class="col-4 px-2">
-                                    <a class="u-apps d-flex flex-column rounded" href="#!">
-                                        <img class="img-fluid u-avatar--xs mx-auto mb-2" src="assets/img/brands-sm/img6.png" alt="">
-                                        <span class="text-center">Twitter</span>
-                                    </a>
-                                </div>
-                                <!-- End App -->
-                            </div>
-                        </div>
-
-                        <div class="card-footer py-3">
-                            <a class="btn btn-block btn-outline-primary" href="#">View all apps</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Apps -->
-
+        </div> 
+        
             <!-- User Profile -->
             <div class="astino-user-top-corner dropdown ml-2">
                 <a class="link-muted d-flex align-items-center" href="#!" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">
@@ -361,7 +66,6 @@
                 </a>
             </div>
             <!-- End User Profile -->
-        </div>
     </header>
     <!-- End Header (Topbar) -->
 
@@ -371,7 +75,7 @@
         <aside id="sidebar" class="astino-sidebar u-sidebar">
             <div class="u-sidebar-inner">
                 <header class="u-sidebar-header">
-                    <a class="u-sidebar-logo" href="home.do">
+                    <a class="u-sidebar-logo" href="mHome.do">
                         <img class="img-fluid" src="assets/img/logo.png" width="124" alt="Stream Dashboard">
                     </a>
                 </header>
@@ -380,7 +84,7 @@
                     <ul class="u-sidebar-nav-menu u-sidebar-nav-menu--top-level">
                         <!-- 주간 리포트 -->
                         <li class="u-sidebar-nav-menu__item">
-                            <a class="u-sidebar-nav-menu__link active" href="home.do">
+                            <a class="u-sidebar-nav-menu__link" href="mHome.do">
                                 <i class="fas fa-th-large u-sidebar-nav-menu__item-icon"></i>
                                 <span class="u-sidebar-nav-menu__item-title">주간 리포트</span>
                             </a>
@@ -413,7 +117,7 @@
 
                         <!-- 회원 관리 -->
                         <li class="u-sidebar-nav-menu__item clearfix">
-                            <a class="u-sidebar-nav-menu__link" href="memberList.do" data-target="#subMenu22">
+                            <a class="u-sidebar-nav-menu__link active" href="memberList.do" data-target="#subMenu22">
                                 <i class="fab fa-product-hunt u-sidebar-nav-menu__item-icon"></i>
                                 <span class="u-sidebar-nav-menu__item-title">회원관리</span>
                                 <i class="fa fa-angle-right u-sidebar-nav-menu__item-arrow"></i>
@@ -533,7 +237,7 @@
                                                 <td>서울특별시 강남구 서초동 현대아파트 110-1206</td>
                                                 <td class="text-success">활동중</td>
                                                 <td>
-                                                    <button type="button" onclick="location.href='memberSelectList.do' "class="btn btn-outline-danger btn-sm">상세보기</button>
+                                                	<button type="button" data-toggle="modal" href="#exampleModalCenter">상세보기</button>
                                                 </td>
                                             </tr>
                                             
@@ -717,9 +421,9 @@
                         <nav aria-label="Bootstrap Pagination Example">
                             <ul class="pagination mb-0">
                                 <li class="page-item">
-                                    <a class="page-link" href="home.do"><span class="ml-1 d-none d-xl-inline-block">처음으로</span></a>
+                                    <a class="page-link" href="home.do"><span class="ml-1 d-none d-xl-inline-block">이전으로</span></a>
                                 </li>
-                                <li class="page-item active">
+                                <li class="page-item">
                                     <a class="page-link" href="#">1</a>
                                 </li>
                                 <li class="page-item">
@@ -729,13 +433,73 @@
                                     <a class="page-link" href="#">3</a>
                                 </li>
                                 <li class="page-item">
-                                    <a class="page-link" href="#"><span class="mr-1 d-none d-xl-inline-block">Next</span></a>
+                                    <a class="page-link" href="#"><span class="mr-1 d-none d-xl-inline-block">다음으로</span></a>
                                 </li>
                             </ul>
                         </nav>
                     </div>
                 </div>
             </div>
+		<!-- Vertically Centered Modals -->
+		<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLongTitle"></h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">X</span>
+						</button>
+					</div>
+					<div class="modal-body">
+				<header class="astino-pr-form-header">
+                    <h2 class="h1 card-header-title">사용자 상세정보</h2>
+                </header>
+                <div class="row">
+                    <!-- Current Projects -->
+                    <div class="col-md-12 mb-4">
+                        <div class="card h-100">
+                            <div class="astino-pr-form card-body">
+                                <form>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput">아이디</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="heyyolove">
+                                    </div>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput2">이  름</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="고수">
+                                    </div>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput3">주  소</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="대구광역시 동구 안심로">
+                                    </div>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput4">가입날짜</label>
+                                        <span class="form-icon-wrapper">
+                                            <span class="form-icon form-icon--left">
+                                                <i class="fa fa-calendar form-icon__item"></i>
+                                            </span>
+                                            <input id="formGroupExampleInput4" class="form-control exp-date form-icon-input-left datepicker" type="email" placeholder="15 OCT 2021">
+                                        </span>
+                                    </div>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput5">특이사항</label>
+                                        <textarea class="form-control" id="formGroupExampleInput5" placeholder="달님(개), 별님(고양이) 돌봄서비스 자주 이용 고객"></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+					
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+						<button type="button" class="btn btn-primary">저장</button>
+					</div>
+				</div>
+			</div>
+		 </div>
+		</div>
+		<!-- End Vertically Centered Modals -->
 
             <!-- Footer -->
             <footer class="astino-footer u-footer d-md-flex align-items-md-center text-center text-md-left">
@@ -748,6 +512,96 @@
             <!-- End Footer -->
         </div>
     </main>
+    
+    <style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
+
+<body>
+
+<h2>Modal Example</h2>
+
+<!-- Trigger/Open The Modal -->
+<button id="myBtn">Open Modal</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
+
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+    
 
     <!-- Global Vendor -->
     <script src="assets/vendor/jquery/dist/jquery.min.js"></script>

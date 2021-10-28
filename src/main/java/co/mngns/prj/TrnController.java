@@ -92,4 +92,9 @@ public class TrnController {
 		return "trainer/board/alert";
 	}
 
+	@RequestMapping(value="/memberModal.do", method = RequestMethod.GET)
+	public String memberModal() {
+		return "trainer/member/memberModal";
+	}
+
 }
