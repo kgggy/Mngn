@@ -11298,7 +11298,7 @@ body.mobile-mode .u-sidebar-nav-menu--second-level {
 .u-sidebar-nav-menu__link.active,
 .u-sidebar-nav-menu--top-level > .u-sidebar-nav--opened > .u-sidebar-nav-menu__link {
   color: #fff;
-  background-color: #FF6E6E;
+  background-color: #f2551e;
 }
 .u-sidebar-nav-menu--top-level > .u-sidebar-nav--opened > .u-sidebar-nav-menu__link:hover .u-sidebar-nav-menu__item-icon {
   color: #fff;

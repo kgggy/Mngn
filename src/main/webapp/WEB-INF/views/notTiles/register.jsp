@@ -71,7 +71,7 @@
 											type="text" name="name" id="name" />
 									</div>
 									<div class="form-input">
-										<label for="address" class="required">  주소 </label>
+										<label for="address" class="required"> 주소 </label>
 						
 										<input type="text" id="address_kakao" name="address"readonly />
 									</div>	

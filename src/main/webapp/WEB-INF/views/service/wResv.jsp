@@ -430,15 +430,12 @@ select {
 				}
 			}).open();
 		});
-	}
+
 	$(".park").on("click", function() {
-		modal.style.display = "block";
-	        //iframe url 삽입
-	        let id = { id };
-	        let href = '/map?id='+id
-	        $('#go-map').attr("src",href);
-	})
-		$(document).ready(function(e) {
+			window.open("map.do", "근처공원 선택", "width=650px,height=800px,scrollbars=yes,left=600px,top=100px");
+		})
+	}
+	$(document).ready(function(e) {
 		$(".datepicker").datepicker({
 			dateFormat : 'yy-mm-dd',
 			minDate : 0,
@@ -467,7 +464,7 @@ select {
 			<div class="item">
 				<h3>
 					주소<span class="required">*</span>
-					<button class="park">근처공원선택</button>
+					<button type="button" class="park">근처공원선택</button>
 				</h3>
 				<input type="text" id="address_kakao" name="address" readonly /> <input
 					type="text" id="address_detail" name="address_detail" />
