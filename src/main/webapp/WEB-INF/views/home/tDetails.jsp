@@ -189,6 +189,7 @@ span {
 }
 </style>
 </head>
+
 <body>
 	<!-- testmonial_area_start  -->
 	<div id="light" class="modal">
@@ -249,6 +250,7 @@ span {
 						</div>
 						<hr>
 						<h3>인적사항</h3>
+						<div><button type="submit" value="수정" onclick ="tEdit.do">정보수정</button></div>
 						<table>
 							<tr>
 								<td style="width: 130px;">이름</td>

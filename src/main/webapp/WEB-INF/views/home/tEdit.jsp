@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>내프로필 관리</title>
+<title> 훈련사 프로필 정보수정</title>
 <style>
 form {
 	width: 50%;
@@ -422,26 +422,6 @@ footer p a:hover {
 </head>
 
 <body>
-	<div class="bradcam_area breadcam_bg">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="bradcam_text text-center">
-						<h3>내 프로필 관리</h3>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- END nav -->
-	<section>
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row no-gutters slider-text align-items-end">
-				<div class="col-md-9 ftco-animate pb-5"></div>
-			</div>
-		</div>
-	</section>
 <body class="profile-page">
 	<nav
 		class="navbar navbar-color-on-scroll navbar-transparent    fixed-top  navbar-expand-lg "
@@ -585,6 +565,12 @@ footer p a:hover {
 								onfocus="this.placeholder = ''"
 								onblur="this.placeholder = '이메일'" required class="single-input">
 						</div>
+							<div class="mt-10">
+							<input type="text" name="license" placeholder="license"
+								onfocus="this.placeholder = ''"
+								onblur="this.placeholder = '보유자격증'" required class="single-input">
+						</div>
+						
 						<div class="input-group-icon mt-10">
 							<div class="icon">
 								<i class="fa fa-thumb-tack" aria-hidden="true"></i>
@@ -659,35 +645,12 @@ footer p a:hover {
 							&nbsp;
 							<button type="submit" value="수정">수정</button>
 						</div>
-						<br><br>
-						<br><br>
-						<br><br>
-						<div align="center">
-							멍냥꽁냥 회원을 탈퇴하시겠습니까? <a href="mOut.do" class="withdraw">회원탈퇴하기</a>
-						</div>
 
-					</form>
-				</div>
+			</form>
 			</div>
-		</div>
-	</div>
-
-
-
-	<script
-		src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-	<script
-		src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
-		integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
-		integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
-		crossorigin="anonymous"></script>
-
-
-</body>
+			</div>
+			</div>
+			</div>
+			
 </body>
 </html>
-<!-- End Align Area -->
