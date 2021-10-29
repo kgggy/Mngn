@@ -19,5 +19,6 @@ public class pjhControllerTest {
 	public void test1() {
 		ReserListVO rlist = new ReserListVO();
 		rlist.setReser_loc("중구");
+		reser.ReserSelectList();
 	}
 }
