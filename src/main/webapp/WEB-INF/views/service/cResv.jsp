@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -632,31 +633,34 @@ tr {
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h3 id="content">예약 내역</h3>
 				<table>
-					<tr>
-						<th width="150px">서비스</th>
-						<td width="300px">서비스 (시간)</td>
-					</tr>
-					<tr>
-						<th width="150px">위치</th>
-						<td width="300px">대구 중구 중앙대로 403, 태왕아너스 타워</td>
-					</tr>
-					<tr>
-						<th width="150px">날짜 및 시간</th>
-						<td width="300px">0000/00/00 || 18:00(금)</td>
-					</tr>
-					<tr>
-						<th width="150px">대상</th>
-						<td width="300px">달이</td>
-					</tr>
-					<tr>
-						<th width="150px">훈련사</th>
-						<td width="300px">훈련사 ㅇㅇㅇ</td>
-					</tr>
-					<tr>
-						<th width="150px" style="font-weight: bold">결제수단</th>
-						<td width="400px"><input type="radio" class="card" /><span>신용카드</span><input
-							type="radio" class="card" /><span>휴대폰</span></td>
-					</tr>
+					<c:forEach items="${payments }" var="payment">
+						<tr>
+							<th width="150px">서비스</th>
+							<td width="300px">${payment.svc_id }(${payment.svc_term })</td>
+						</tr>
+						<tr>
+							<th width="150px">위치</th>
+							<td width="300px">${payment.reser_loc }</td>
+						</tr>
+						<tr>
+							<th width="150px">날짜 및 시간</th>
+							<td width="300px">${payment.reser_dt } || ${payment.svc_bgn_tm }</td>
+						</tr>
+						<tr>
+							<th width="150px">대상</th>
+							<td width="300px">${payment.pet_id1}</td>
+						</tr>
+						<tr>
+							<th width="150px">훈련사</th>
+							<td width="300px">${payment.client_id }</td>
+						</tr>
+						<tr>
+							<th width="150px" style="font-weight: bold">결제수단</th>
+							<td width="400px"><input type
+							="radio" class="card" /><span>신용카드</span><input
+								type="radio" class="card" /><span>휴대폰</span></td>
+						</tr>
+					</c:forEach>
 				</table>
 			</div>
 			<br />
