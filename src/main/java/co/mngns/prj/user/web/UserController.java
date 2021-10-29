@@ -14,9 +14,8 @@ public class UserController {
 	@Autowired
 	TrainerService trnService;
 	
-	/*
-	 * @Autowired ClientService cntService;
-	 */
+	@Autowired
+	ClientService cntService;
 
 	@RequestMapping(value = "/login.do")
 	// 로그인 페이지
