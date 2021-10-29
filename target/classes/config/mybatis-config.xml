@@ -2,10 +2,25 @@
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
-<!-- <configuration>
-	<typeAliases>
-		<typeAlias type="co.kgggy.prj.user.vo.UserVO" alias="user" />
-		<package name="co.kgggy.prj"/>
-	</typeAliases>
-</configuration> -->
+<configuration>
+	<properties resource="config/db.properties" />
+	<settings>
+		<setting name="cacheEnabled" value="true" />
+	</settings>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="user" value="${user}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="co/kgggy/myhome/join/map/client-map.xml" />
+		<mapper resource="co/kgggy/myhome/board/map/trainer-map.xml" />
+	</mappers>
+</configuration>
   
