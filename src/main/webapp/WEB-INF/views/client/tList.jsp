@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,9 +39,9 @@
 					<input type="text" id="address_kakao" name="address"
 						class="form-control" onclick="execution_daum_address()"
 						placeholder='주소를 입력해주세요.' onfocus="this.placeholder = ''"
-						onblur="this.placeholder = '주소를 입력해주세요.'" >
+						onblur="this.placeholder = '주소를 입력해주세요.'">
 					<div class="input-group-append">
-						<button class="btn" type="button" >
+						<button class="btn" type="button">
 							<i class="ti-search"></i>
 						</button>
 					</div>
@@ -57,78 +58,23 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-lg-10">
-					<div class="testmonial_wrap">
-						<div class="single_testmonial d-flex align-items-center"
-							onclick="location.href='tDetail.do'">
-							<div class="test_thumb">
-								<img src="img/testmonial/1.png" alt="">
-							</div>
-							<div class="test_content">
-								<h4>권가영 훈련사</h4>
-								<span>대구시 달서구</span> <span>별점 넣기</span>
-								<p>안녕하세요. 동물을 사랑하는 훈련사 권가영 입니다 :)</p>
-							</div>
-						</div>
-					</div>
-					<br> <br>
-					<div class="testmonial_wrap">
-						<div class="single_testmonial d-flex align-items-center">
-							<div class="test_thumb">
-								<img src="img/testmonial/1.png" alt="">
-							</div>
-							<div class="test_content">
-								<h4>Jhon Walker</h4>
-								<span>Head of web design</span>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-									sed do eiusmod tempor incididunt ut labore et dolore magna
-									aliqua. Ut enim ad minim veniam, quis nostrud exerci.</p>
+					<c:forEach items="${trainers }" var="trainer">
+						<div class="testmonial_wrap">
+							<div class="single_testmonial d-flex align-items-center"
+								onclick="location.href='tDetail.do'">
+								<div class="test_thumb">
+									<img src="img/testmonial/1.png" alt="">
+								</div>
+								<div class="test_content">
+									<h4>${trainer.client_id }</h4>
+									<span>대구시 달서구</span> <span>${trainer.trn_avrg }</span>
+									<p>${trainer.intro_ttl }</p>
+								</div>
 							</div>
 						</div>
-					</div>
-					<br> <br>
-					<div class="testmonial_wrap">
-						<div class="single_testmonial d-flex align-items-center">
-							<div class="test_thumb">
-								<img src="img/testmonial/1.png" alt="">
-							</div>
-							<div class="test_content">
-								<h4>Jhon Walker</h4>
-								<span>Head of web design</span>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-									sed do eiusmod tempor incididunt ut labore et dolore magna
-									aliqua. Ut enim ad minim veniam, quis nostrud exerci.</p>
-							</div>
-						</div>
-					</div>
-					<br> <br>
-					<div class="testmonial_wrap">
-						<div class="single_testmonial d-flex align-items-center">
-							<div class="test_thumb">
-								<img src="img/testmonial/1.png" alt="">
-							</div>
-							<div class="test_content">
-								<h4>Jhon Walker</h4>
-								<span>Head of web design</span>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-									sed do eiusmod tempor incididunt ut labore et dolore magna
-									aliqua. Ut enim ad minim veniam, quis nostrud exerci.</p>
-							</div>
-						</div>
-					</div>
-					<br> <br>
-					<div class="testmonial_wrap" >
-						<div class="single_testmonial d-flex align-items-center"
-							onclick="location.href='tDetail.do'">
-							<div class="test_thumb">
-								<img src="img/testmonial/1.png" alt="">
-							</div>
-							<div class="test_content" id="tdiv">
-								<h4>권가영 훈련사</h4>
-								<span id="span1">대구시 달서구</span> <span>별점 넣기</span>
-								<p>안녕하세요. 동물을 사랑하는 훈련사 권가영 입니다 :)</p>
-							</div>
-						</div>
-					</div>
+						<br>
+						<br>
+					</c:forEach>
 				</div>
 			</div>
 		</div>
@@ -163,27 +109,27 @@
 					}).open();
 
 		}
-		
-		function search() {
-		  // Declare variables
-		  var div, filter, span, txtValue;
-		  div = document.getElementById("tDiv");
-		  span = document.getElementsByTagName("span");
-		  filter = document.getElementById('span1').innerHTML;
-		  console.log(filter);
 
-		  // Loop through all table rows, and hide those who don't match the search query
-		  for (i = 0; i < span.length; i++) {
-		    td = tr[i].getElementsByTagName("td")[0];
-		    if (td) {
-		      txtValue = td.textContent || td.innerText;
-		      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-		        tr[i].style.display = "";
-		      } else {
-		        tr[i].style.display = "none";
-		      }
-		    }
-		  } 
+		function search() {
+			// Declare variables
+			var div, filter, span, txtValue;
+			div = document.getElementById("tDiv");
+			span = document.getElementsByTagName("span");
+			filter = document.getElementById('span1').innerHTML;
+			console.log(filter);
+
+			// Loop through all table rows, and hide those who don't match the search query
+			for (i = 0; i < span.length; i++) {
+				td = tr[i].getElementsByTagName("td")[0];
+				if (td) {
+					txtValue = td.textContent || td.innerText;
+					if (txtValue.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+				}
+			}
 		}
 	</script>
 
