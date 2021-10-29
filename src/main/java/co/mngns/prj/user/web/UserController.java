@@ -5,13 +5,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import co.mngns.prj.user.service.ClientService;
 import co.mngns.prj.user.service.TrainerService;
 
 @Controller
 public class UserController {
 	
 	@Autowired
-	TrainerService service;
+	TrainerService trnService;
+	
+	@Autowired
+	ClientService cntService;
 
 	@RequestMapping(value = "/login.do")
 	// 로그인 페이지
@@ -52,7 +56,7 @@ public class UserController {
 	@RequestMapping(value = "/tList.do")
 	// 사용자 페이지의 훈련사 목록 페이지
 	public String tList(Model model) {
-		model.addAttribute("trainers", service.TrainerSelectList());
+		model.addAttribute("trainers", trnService.TrainerSelectList());
 		return "client/tList";
 	}
 	
