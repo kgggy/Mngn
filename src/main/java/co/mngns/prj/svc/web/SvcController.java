@@ -72,6 +72,13 @@ public class SvcController {
 		return "service/payResult";
 	}
 
+	@RequestMapping(value = "/payment.do")
+	// 결제창
+	public String payment() {
+		return "service/payment";
+	}
+
+
 	@RequestMapping(value = "/trnSal.do")
 	public String trnSal() {
 	// 훈련사 의뢰 및 정산 관리 페이지
