@@ -51,7 +51,7 @@ public class UserController {
 	@RequestMapping(value="/tDetail.do")
 	// 훈련사 상세보기 페이지
 	public String tDetail() {
-		return "client/tDetails";
+		return "client/tDetail";
 	}
 	
 	@RequestMapping(value = "/trnProfile.do")

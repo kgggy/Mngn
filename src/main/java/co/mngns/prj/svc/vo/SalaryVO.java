@@ -1,4 +1,4 @@
-package co.mngns.prj.serv.vo;
+package co.mngns.prj.svc.vo;
 
 import java.sql.Date;
 

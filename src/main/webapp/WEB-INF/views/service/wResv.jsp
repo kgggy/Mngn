@@ -460,7 +460,7 @@ select {
 	<br />
 	<br />
 	<div class="testbox">
-		<form action="/payment.do">
+		<form action="/payResult.do">
 			<div class="item">
 				<h3>
 					주소<span class="required">*</span>

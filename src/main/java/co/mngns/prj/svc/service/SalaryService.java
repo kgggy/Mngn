@@ -1,8 +1,8 @@
-package co.mngns.prj.serv.service;
+package co.mngns.prj.svc.service;
 
 import java.util.List;
 
-import co.mngns.prj.serv.vo.SalaryVO;
+import co.mngns.prj.svc.vo.SalaryVO;
 
 public interface SalaryService {
 	List<SalaryVO> SalSelectList();

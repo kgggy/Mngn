@@ -1,8 +1,8 @@
-package co.mngns.prj.serv.service;
+package co.mngns.prj.svc.service;
 
 import java.util.List;
 
-import co.mngns.prj.serv.vo.BillVO;
+import co.mngns.prj.svc.vo.BillVO;
 
 public interface BillService {
 	List<BillVO> BillSelectList();

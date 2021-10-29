@@ -112,7 +112,7 @@
 							<div><img src="img/naverlogin.png" id="naver_id_login"
 								onclick="openPopUp()"></div>					
 					<div>
-						회원이 아니신가요?<a href="register.do" class="reg">가입하기</a>
+						회원이 아니신가요?<a href="joinForm.do" class="reg">가입하기</a>
 					</div>
 				</div>
 				<div class="form-group">
@@ -132,7 +132,7 @@
 	<script src="js/lmain.js"></script>
 	<script>
 		function main() {
-			location.href = "main.do"
+			location.href = "cntMain.do"
 		}
 	</script>
 

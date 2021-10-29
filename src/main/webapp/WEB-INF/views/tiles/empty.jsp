@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title><tiles:getAsString name="title" /></title>
 </head>
 <body>
 <tiles:insertAttribute name="body" />

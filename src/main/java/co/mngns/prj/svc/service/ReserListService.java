@@ -1,9 +1,9 @@
-package co.mngns.prj.serv.service;
+package co.mngns.prj.svc.service;
 
 import java.util.List;
 
-import co.mngns.prj.serv.vo.ReserListVO;
-import co.mngns.prj.serv.vo.SvcVO;
+import co.mngns.prj.svc.vo.ReserListVO;
+import co.mngns.prj.svc.vo.SvcVO;
 
 public interface ReserListService {
 	List<ReserListVO> ReserSelectList();

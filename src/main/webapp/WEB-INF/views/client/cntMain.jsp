@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>서비스 예약</title>
 <script>
 	function login() {
 		alert('로그인 후 이용바랍니다.');
