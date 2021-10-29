@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -236,8 +237,7 @@ span {
 	<br>
 	<br>
 	<h2 align=center
-		style="font-weight: bold; width: fit-content; margin: auto;">동물을
-		사랑하는 훈련사 ㅇㅇㅇ 입니다.</h2>
+		style="font-weight: bold; width: fit-content; margin: auto;">${trainer.intro_ttl }</h2>
 	<!--================Blog Area =================-->
 	<section class="blog_area single-post-area section-padding">
 
@@ -250,42 +250,31 @@ span {
 						</div>
 						<hr>
 						<h3>인적사항</h3>
-						<div><button type="submit" value="수정" onclick ="tEdit.do">정보수정</button></div>
 						<table>
 							<tr>
 								<td style="width: 130px;">이름</td>
-								<td>xxx</td>
+								<td>${client.name }</td>
 							</tr>
 							<tr>
 								<td>출생년도</td>
-								<td>1993년생</td>
+								<td>${trainer.trn_birth_dt }</td>
 							</tr>
 							<tr>
 								<td>성별</td>
-								<td>남자</td>
+								<td>${trainer.gen }</td>
 							</tr>
 							<tr>
 								<td>방문지역</td>
-								<td>대구 달서구</td>
+								<td>${client.adres1 }</td>
 							</tr>
 							<tr>
 								<td>회원평점</td>
-								<td>★★★★★</td>
+								<td>${trainer.trn_avrg }</td>
 							</tr>
 						</table>
 						<hr>
 						<h3>자기소개</h3>
-						<p class="excert" style="color: black;">MCSE boot camps have
-							its supporters and its detractors. Some people do not understand
-							why you should have to spend money on boot camp when you can get
-							the MCSE study materials yourself at a fraction of the camp
-							price. However, who has the willpower</p>
-						<p style="color: black;">MCSE boot camps have its supporters
-							and its detractors. Some people do not understand why you should
-							have to spend money on boot camp when you can get the MCSE study
-							materials yourself at a fraction of the camp price. However, who
-							has the willpower to actually sit through a self-imposed MCSE
-							training. who has the willpower to actually</p>
+						<p class="excert" style="color: black;">${trainer.intro_ttl }</p>
 					</div>
 					<hr>
 
