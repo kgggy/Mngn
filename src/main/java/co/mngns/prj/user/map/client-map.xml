@@ -5,7 +5,7 @@
 		select * from client
 	</select>
 	<select resultType="co.mngns.prj.user.vo.ClientVO" id="clientSelect">
-		select 
+		select * from client where client_id = #{client_id}
 	</select>
 
 </mapper>

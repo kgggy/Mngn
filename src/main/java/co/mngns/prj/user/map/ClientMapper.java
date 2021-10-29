@@ -2,11 +2,8 @@ package co.mngns.prj.user.map;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import co.mngns.prj.user.vo.ClientVO;
 
-@Service
 public interface ClientMapper {
 	List<ClientVO> clientSelectList(); // 사용자 전체목록 가져오기
 
