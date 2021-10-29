@@ -3,17 +3,17 @@ package co.mngns.prj.user.serviceImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import co.mngns.prj.user.map.TrainerMapper;
 import co.mngns.prj.user.service.TrainerService;
 import co.mngns.prj.user.vo.ClientVO;
 import co.mngns.prj.user.vo.TrainerVO;
 
-@Repository("trnDao")
+@Service
 public class TrainerServiceImpl implements TrainerService {
 	@Autowired     
-	private TrainerMapper trnmap;
+	TrainerMapper trnmap;
 
 	@Override
 	public List<TrainerVO> TrainerSelectList() {

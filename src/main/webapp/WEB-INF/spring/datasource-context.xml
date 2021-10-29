@@ -8,28 +8,37 @@
 		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
-		
-	<context:property-placeholder location="classpath:config/db.properties"/>
+
+	<context:property-placeholder
+		location="classpath:config/db.properties" />
 
 	<!-- DBCP --> <!-- databace connection pool? -->
-	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp2.BasicDataSource"
+		destroy-method="close">
 		<property name="driverClassName" value="${driver}"></property>
 		<property name="url" value="${url}"></property>
 		<property name="username" value="${user}"></property>
 		<property name="password" value="${password}"></property>
 	</bean>
-	
-	<!-- Mybatis
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" /> 의존주입(sqlFactory안에 dataSource를 넣음.(DBCP를 마이바티스에서 사용하기위해
-		<property name="configLocation" value="classpath:config/mybatis-config.xml" />
-		<property name="mapperLocations" value="classpath*:co/mngn/prj/**/mapper/*-map.xml" /> 폴더명은 /
+
+	<!-- Mybatis -->
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+
+		<property name="configLocation"
+			value="classpath:config/mybatis-config.xml" />
+		<property name="mapperLocations"
+			value="classpath*:co/mngns/prj/**/map/*-map.xml" />
 	</bean>
-	
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg ref="sqlSessionFactory" /> sqlSession 생성시 sqlSessionFactory를 참조.
+
+	<bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
-	
-	<mybatis-spring:scan base-package="co.mngn.prj.**.mapper"/> -->
+
+	<mybatis-spring:scan
+		base-package="co.mngns.prj.**.map" />
 </beans>
 

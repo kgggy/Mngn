@@ -11,7 +11,7 @@ import co.mngns.prj.user.service.TrainerService;
 public class UserController {
 	
 	@Autowired
-	private TrainerService trnDao;
+	TrainerService service;
 
 	@RequestMapping(value = "/login.do")
 	// 로그인 페이지
@@ -52,7 +52,7 @@ public class UserController {
 	@RequestMapping(value = "/tList.do")
 	// 사용자 페이지의 훈련사 목록 페이지
 	public String tList(Model model) {
-		model.addAttribute("trainers", trnDao.TrainerSelectList());
+		model.addAttribute("trainers", service.TrainerSelectList());
 		return "client/tList";
 	}
 	
