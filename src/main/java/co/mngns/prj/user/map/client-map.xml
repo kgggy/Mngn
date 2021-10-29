@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.mngns.prj.user.map.ClientMapper">
+	<select resultType="co.mngns.prj.user.vo.ClientVO" id="clientSelectList">
+		select * from client
+	</select>
+	<select resultType="co.mngns.prj.user.vo.ClientVO" id="clientSelect">
+		select 
+	</select>
+
+</mapper>
