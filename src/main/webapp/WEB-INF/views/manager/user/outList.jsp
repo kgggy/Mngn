@@ -48,10 +48,8 @@
 	<!-- Header (Topbar) -->
 	<header class="astino-header u-header">
 		<div class="u-header-left">
-			<a class="u-header-logo" href="mngMain.do"> <img
-				src="assets/logo.png" width="160"> <img
-				class="img-fluid u-logo-mobile" src="assets/img/logo-mobile.png"
-				width="50" alt="Stream Dashboard">
+			<a class="u-header-logo" href="home.do"> <img
+				src="assets/logo.png" width="160"> 
 			</a>
 		</div>
 
@@ -111,7 +109,7 @@
 
 						<!-- 회원 관리 -->
 						<li class="u-sidebar-nav-menu__item clearfix"><a
-							class="u-sidebar-nav-menu__link" href="cntList.do"
+							class="u-sidebar-nav-menu__link active" href="cntList.do"
 							data-target="#subMenu22"> <i
 								class="fab fa-product-hunt u-sidebar-nav-menu__item-icon"></i> <span
 								class="u-sidebar-nav-menu__item-title">회원관리</span> <i
@@ -208,8 +206,9 @@
 												<th scope="col" class="text-dark">ID</th>
 												<th scope="col" class="text-dark">이 름</th>
 												<th scope="col" class="text-dark">전화번호</th>
-												<th colspan="2" scope="col" class="text-dark">주 소</th>
+												<th scope="col" class="text-dark">주 소</th>
 												<th scope="col" class="text-dark">상 태</th>
+												<th scope="col" class="text-dark"></th>
 											</tr>
 										</thead>
 
@@ -232,11 +231,9 @@
 												<td>010-1548-6893</td>
 												<td>서울특별시 강남구 도곡동 대림이편한 101-206</td>
 												<td class="text-danger">탈퇴완료</td>
-												<td>
-													<button type="button"
-														onclick="location.href='dropMemSelectList.do'"
-														class="btn btn-outline-danger btn-sm">상세보기</button>
-												</td>
+												 <td>
+                                                    <button type="button" data-toggle="modal" href="#exampleModalCenter" class="btn btn-outline-danger btn-sm">상세보기</button>
+                                                </td>
 											</tr>
 
 											<tr>
@@ -400,6 +397,70 @@
 			<!-- End Footer -->
 		</div>
 	</main>
+	
+	<!-- Large Size Modal-->
+		<div class="modal fade bd-example-modal-lg" id="exampleModalCenter"tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3 class="modal-title" id="exampleModalLabel">탈퇴 회원 상세정보</h3>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<!-- Current Projects -->
+                    <div class="col-md-12 mb-4">
+                        <div class="card h-100">
+                            <div class="astino-pr-form card-body">
+                                <form>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput">아이디</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="dooly">
+                                    </div>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput2">이  름</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="김둘리">
+                                    </div>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput3">주  소</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="황도 갤럭시 금은동">
+                                    </div>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput4">가입날짜</label>
+                                        <span class="form-icon-wrapper">
+                                            <span class="form-icon form-icon--left">
+                                                <i class="fa fa-calendar form-icon__item"></i>
+                                            </span>
+                                            <input id="formGroupExampleInput4" class="form-control exp-date form-icon-input-left datepicker" type="email" placeholder="15 NOV 2021">
+                                        </span>
+                                    </div>
+                                     <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput4">탈퇴날짜</label>
+                                        <span class="form-icon-wrapper">
+                                            <span class="form-icon form-icon--left">
+                                                <i class="fa fa-calendar form-icon__item"></i>
+                                            </span>
+                                            <input id="formGroupExampleInput4" class="form-control exp-date form-icon-input-left datepicker" type="email" placeholder="10 OCT 2021">
+                                        </span>
+                                    </div>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput5">탈퇴사유</label>
+                                        <textarea class="form-control" id="formGroupExampleInput5" placeholder="훈련사에게 폭언"></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Current Projects -->
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" herf="dropMemberList.do" data-dismiss="modal">확인</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Large Size Modal-->
 
 	<!-- Global Vendor -->
 	<script src="assets/vendor/jquery/dist/jquery.min.js"></script>

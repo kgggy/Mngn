@@ -50,10 +50,8 @@
 	<!-- Header (Topbar) -->
 	<header class="astino-header u-header">
 		<div class="u-header-left">
-			<a class="u-header-logo" href="mngMain.do"> <img
-				src="assets/logo.png" width="160"> <img
-				class="img-fluid u-logo-mobile" src="assets/img/logo-mobile.png"
-				width="50" alt="Stream Dashboard">
+			<a class="u-header-logo" href="home.do"> <img
+				src="assets/logo.png" width="160"> 
 			</a>
 		</div>
 
