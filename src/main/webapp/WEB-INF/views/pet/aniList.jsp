@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <style>
 body {
-	background: #DCDCDC;
+	background:  #fff;
 	margin-top: 20px;
 }
 
@@ -170,6 +170,28 @@ h4 {
 </head>
 
 <body>
+	<div class="bradcam_area breadcam_bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="bradcam_text text-center">
+						<h3>반려동물 프로필</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END nav -->
+	<section>
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row no-gutters slider-text align-items-end">
+				<div class="col-md-9 ftco-animate pb-5"></div>
+			</div>
+		</div>
+	</section>
+
+
 	<link
 		href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
 		rel="stylesheet" />
@@ -179,7 +201,7 @@ h4 {
 				<div class="col-sm-4">
 					<a class="btn btn-custom waves-effect waves-light mb-4"
 						data-animation="fadein" data-plugin="custommodal"
-						data-overlayspeed="200" data-overlaycolor="#36404a" id="abtn"><i
+						data-overlayspeed="200" data-overlaycolor="#fff" id="abtn"><i
 						class="mdi mdi-plus"></i> Add Pet</a>
 				</div>
 				<!-- end col -->

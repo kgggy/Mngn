@@ -64,12 +64,30 @@
 
 
 <body>
+	<div class="bradcam_area breadcam_bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="bradcam_text text-center">
+						<h3> 고양이 프로필등록 </h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END nav -->
+	<section>
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row no-gutters slider-text align-items-end">
+				<div class="col-md-9 ftco-animate pb-5"></div>
+			</div>
+		</div>
+	</section>
+
 	<div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
 		<div class="wrapper wrapper--w790">
 			<div class="card card-5">
-				<div class="card-heading">
-					<h2 class="title">Cat Registration Form</h2>
-				</div>
 				<div class="card-body">
 
 				<form  name = "loginform" action="aniList.do">

@@ -21,4 +21,10 @@ public class PetController {
 		return "pet/catForm";
 	}
 
+	@RequestMapping(value = "/mOut.do")
+	public String mOut() {
+		
+		return "client/mOut";
+	}
+
 }

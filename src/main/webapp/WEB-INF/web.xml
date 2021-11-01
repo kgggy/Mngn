@@ -16,12 +16,6 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
-	<!-- Tiles -->
-	<servlet>
-		<servlet-name>Tiles</servlet-name>
-		<servlet-class>org.apache.tiles.web.util.TilesDispatchServlet</servlet-class>
-	</servlet>
-
 	<!-- Processes application requests -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
