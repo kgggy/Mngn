@@ -16,13 +16,38 @@
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/lfont-awesome.min.css">
 
 <link rel="stylesheet" href="css/lstyle.css">
+<!-- 카카오 스크립트 -->
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script>
+Kakao.init('fd8bf1199af6014c16070f1498a5cfa6'); //발급받은 키 중 javascript키를 사용해준다.
+console.log(Kakao.isInitialized()); // sdk초기화여부판단
+//카카오로그인
+function kakaoLogin() {
+    Kakao.Auth.login({
+      success: function (response) {
+        Kakao.API.request({
+          url: '/v2/user/me',
+          success: function (response) {
+        	  console.log(response)
+          },
+          fail: function (error) {
+            console.log(error)
+          },
+        })
+      },
+      fail: function (error) {
+        console.log(error)
+      },
+    })
+  }
 
 
-<!-- 네이버 스크립트 -->
+<!-- 네이버 로그인 스크립트 -->
 <script
 	src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js"
 	charset="utf-8"></script>
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
 <script>
 	var naverLogin = new naver.LoginWithNaverId({
@@ -76,11 +101,22 @@
 		}, 1000);
 
 	}
+	
+	<!-- 구글 로그인 스크립트-->
+
 </script>
 <style>
-	.reg {
-		float: right;
-	}
+.reg {
+	float: right;
+}
+
+#kakao_id_login, #naver_id_login, #google_id_login, #facebook_id_login {
+  	cursor: pointer;
+	width: 45px;
+	height: 45px;
+}
+
+
 </style>
 </head>
 <body>
@@ -107,23 +143,28 @@
 								<input type="password" class="form-control rounded-left"
 									placeholder="Password" required>
 							</div>
-		
-							<div id="naver_id_login"></div>
-							<div><img src="img/naverlogin.png" id="naver_id_login"
-								onclick="openPopUp()"></div>					
-					<div>
-						회원이 아니신가요?<a href="joinForm.do" class="reg">가입하기</a>
-					</div>
-				</div>
-				<div class="form-group">
-					<button type="submit"
-						class="btn btn-primary rounded submit p-3 px-5"
-						id="naverIdLogin_loginButton" onclick="main()" align="center">로그인</button>
-				</div>
-				</form>
-			</div>
-		</div>
 
+							<div class="social_Login" >
+								<img src="img/kakaologin.svg" id="kakao_id_login"
+									onclick="">
+							    <img src="img/naverlogin.png" id="naver_id_login"
+									onclick="openPopUp()">
+								<img src="img/googleLogin.png" id="google_id_login" onclick="">
+								<img src="img/facebookLogin.png" id="facebook_id_login"
+									onclick="">
+							</div>
+							<div>
+								회원이 아니신가요?<a href="joinForm.do" class="reg">가입하기</a>
+							</div>
+					</div>
+					<div class="form-group">
+						<button type="submit"
+							class="btn btn-primary rounded submit p-3 px-5"
+							id="naverIdLogin_loginButton" onclick="main()" align="center">로그인</button>
+					</div>
+					</form>
+				</div>
+			</div>
 	</section>
 
 	<script src="js/ljquery.min.js"></script>
