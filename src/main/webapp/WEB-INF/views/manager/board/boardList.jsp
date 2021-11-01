@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <!-- Head -->
@@ -41,6 +43,81 @@
 	height: 70px !important;
 }
 </style>
+
+<script>
+	$(function() {
+		boardSelect();
+		boardSelectList();
+		boardInsert();
+		boardUpdate();
+		boardDelete();
+	});
+	
+	
+	//공지사항 단건조회
+	function boardSelect() {
+		$.ajax({
+			url : "/boardList.do",
+			method : "get",
+			dataType : "json",
+			success : userListResult
+		});
+	}//end 공지사항 단건조회
+	
+	//공지사항 단건조회 화면구현
+	function boardSelectResult(data) {
+		$("tbody").empty();
+		for (i=0, i< data.length; i++) {
+			var item = data[i];
+			$('tbody').append(makeTr(item));
+		}
+	}// end 공지사항 단건조회 화면구현
+	
+	
+	//공지사항 전체조회
+	
+	//공지사항 등록
+	function boardInsert() {
+		//등록 버튼 클릭
+		$(#'btnInsert').on('click', function() {
+			$.ajax({
+				url : "/boardList.do",
+				method : "post",
+				dataType : "json",
+				success : function(data) {
+					boardList();
+				}
+			})
+		});
+	} // end 공지사항 등록
+	
+	
+	//공지사항 수정
+	
+	//공지사항 삭제
+	/* function boardDelete() {
+		$(".table-responsive").on("click", "#btnDelete", function() {
+			var id = $(this).closest('tr').find('#hidden_board_no').val();
+			var result = confirm(id + "글을 삭제하시겠습니까?");
+			if (result) {
+				$.ajax({
+					url : "",
+					type : "DELETE",
+					dataType : "json",
+					sucess : function(data) {
+						boardList();
+					}
+				})
+			}
+		});
+	}//end 공지사항 삭제 */
+	
+	function boardDelete() {
+		window.alert('정말 삭제하시겠습니까?');
+	};
+	
+</script>
+
 </head>
 <!-- End Head -->
 
@@ -202,16 +279,45 @@
 													</div>
 												</th>
 												<th scope="col" class="text-dark">일련번호</th>
-												<th scope="col" class="text-dark">작성일자</th>
 												<th scope="col" class="text-dark">제목</th>
-												<th colspan="2" scope="col" class="text-dark">내용</th>
 												<th scope="col" class="text-dark">작성자</th>
+												<th scope="col" class="text-dark">작성일자</th>
 												<th scope="col" class="text-dark"></th>
 											</tr>
 										</thead>
 
 										<tbody>
-											<tr>
+										<tr>
+                                                <td>
+                                                    <div class="custom-control custom-checkbox mb-2">
+                                                        <input id="customCheck2" class="custom-control-input is-invalid" type="checkbox">
+                                                        <label class="custom-control-label" for="customCheck2"><span></span></label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-danger">${trainer.client_id }</td>
+                                                <td>Company Name</td>
+                                                <td>22 June 2020</td>
+                                                <td class="text-danger">$200.00</td>
+                                                <td class="text-success bg-soft-success inline">Delivered</td>
+                                                <td>IN332942</td>
+                                                <td><img src="assets/img/pr-menu-dot.png" alt=""></td>
+                                            </tr>
+										  <tr>
+												<td>
+													<div class="custom-control custom-checkbox mb-2">
+														<input id="customCheck2"
+															class="custom-control-input is-invalid" type="checkbox">
+														<label class="custom-control-label" for="customCheck2"><span></span></label>
+													</div>
+												</td>
+													<td class="text-danger">${board.board_no } </td>
+												 	<c:forEach var="board" items="${boards}"> 
+														<td>${board.board_no } </td>
+														<td>${board.ttl } </td>
+														<td>${board.ttl }</td>
+														<td>${board.reg_dt } </td>
+												 	</c:forEach>	 
+										 <tr>
 												<td>
 													<div class="custom-control custom-checkbox mb-2">
 														<input id="customCheck2"
@@ -220,19 +326,19 @@
 													</div>
 												</td>
 												<td class="text-danger">003456</td>
-												<td>22 June 2020</td>
 												<td>훈련서비스관련</td>
-												<td colspan="2" class="text-danger">안녕하세요. HEYYO의
+												<!-- <td colspan="2" class="text-danger">안녕하세요. HEYYO의
 													훈련서비스는 회원님과 반려동물이 함께 이용하는 서비스입니다.</td>
-												<td>Admin</td>
+												<td>관리자</td>
+												<td>22 June 2020</td>
 												<td>
-													<button type="button" class="btn btn-outline-danger" data-toggle="modal" href="#exampleModalCenter" 
-															class="btn btn-outline-danger btn-sm">수정</button>
-													<button type="button" class="btn btn-outline-danger" href="#"
-															onClick="alert('삭제하겠습니까?')">삭제</button>
+														<input type="button" class="btn btn-outline-danger" value="수정"
+																id="btnUpdate" data-toggle="modal" href="#exampleModalCenter"/>
+														<input type="button" class="btn btn-outline-danger" value="삭제"
+																id="btnDelete" href="#" onClick="alert('삭제하겠습니까?')"/>
 												</td>
-											</tr>
-											<tr>
+											</tr> -->
+											<!-- <tr>
 												<td>
 													<div class="custom-control custom-checkbox mb-2">
 														<input id="customCheck2"
@@ -241,130 +347,22 @@
 													</div>
 												</td>
 												<td class="text-danger">003455</td>
-												<td>22 June 2020</td>
 												<td>돌봄서비스관련</td>
 												<td colspan="2" class="text-danger">안녕하세요. HEYYO의
 													돌봄서비스는 회원님의 자택에서 이용하는 서비스입니다.</td>
-												<td>Admin</td>
-												<td>
-													<button type="button" class="btn btn-outline-danger" data-toggle="modal" href="#exampleModalCenter" 
-															class="btn btn-outline-danger btn-sm">수정</button>
-													<button type="button" class="btn btn-outline-danger" href="#"
-															onClick="alert('삭제하겠습니까?')">삭제</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="custom-control custom-checkbox mb-2">
-														<input id="customCheck2"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck2"><span></span></label>
-													</div>
-												</td>
-												<td class="text-danger">003454</td>
+												<td>관리자</td>
 												<td>22 June 2020</td>
-												<td>산책서비스관련</td>
-												<td colspan="2" class="text-danger">안녕하세요. HEYYO를
-													이용해주셔서 감사합니다. 산책서비스 이용시 목줄을 반드시 준비해주시기 바랍니다.</td>
-												<td>Admin</td>
 												<td>
-													<button type="button" class="btn btn-outline-danger" data-toggle="modal" href="#exampleModalCenter" 
-															class="btn btn-outline-danger btn-sm">수정</button>
-													<button type="button" class="btn btn-outline-danger" href="#"
-															onClick="alert('삭제하겠습니까?')">삭제</button>
+													<input type="button" class="btn btn-outline-danger" value="수정"
+																id="btnUpdate" data-toggle="modal" href="#exampleModalCenter"/>
+														<input type="button" class="btn btn-outline-danger" value="삭제"
+																 id="btnDelete" href="#" onClick="alert('삭제하겠습니까?')"/>
 												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="custom-control custom-checkbox mb-2">
-														<input id="customCheck2"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck2"><span></span></label>
-													</div>
-												</td>
-												<td class="text-danger">003453</td>
-												<td>22 June 2020</td>
-												<td>주말근무안내</td>
-												<td colspan="2" class="text-danger">안녕하세요. 주말 서비스 제공 관련
-													안내입니다.</td>
-												<td>Admin</td>
-												<td>
-													<button type="button" class="btn btn-outline-danger" data-toggle="modal" href="#exampleModalCenter" 
-															class="btn btn-outline-danger btn-sm">수정</button>
-													<button type="button" class="btn btn-outline-danger" href="#"
-															onClick="alert('삭제하겠습니까?')">삭제</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="custom-control custom-checkbox mb-2">
-														<input id="customCheck2"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck2"><span></span></label>
-													</div>
-												</td>
-												<td class="text-danger">003452</td>
-												<td>22 June 2020</td>
-												<td>훈련사모집안내</td>
-												<td colspan="2" class="text-danger">안녕하세요. HEYYO에서 훈련사를
-													모집합니다.</td>
-												<td>Admin</td>
-												<td>
-													<button type="button" class="btn btn-outline-danger" data-toggle="modal" href="#exampleModalCenter" 
-															class="btn btn-outline-danger btn-sm">수정</button>
-													<button type="button" class="btn btn-outline-danger" href="#"
-															onClick="alert('삭제하겠습니까?')">삭제</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="custom-control custom-checkbox mb-2">
-														<input id="customCheck2"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck2"><span></span></label>
-													</div>
-												</td>
-												<td class="text-danger">003451</td>
-												<td>22 June 2020</td>
-												<td>가입축하</td>
-												<td colspan="2" class="text-danger">안녕하세요. HEYYO 회원가입을
-													진심으로 감사드립니다.</td>
-												<td>Admin</td>
-												<td>
-													<button type="button" class="btn btn-outline-danger" data-toggle="modal" href="#exampleModalCenter" 
-															class="btn btn-outline-danger btn-sm">수정</button>
-													<button type="button" class="btn btn-outline-danger" href="#"
-															onClick="alert('삭제하겠습니까?')">삭제</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="custom-control custom-checkbox mb-2">
-														<input id="customCheck2"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck2"><span></span></label>
-													</div>
-												</td>
-												<td class="text-danger">003452</td>
-												<td>22 June 2020</td>
-												<td>홈페이지 오픈</td>
-												<td colspan="2" class="text-danger">안녕하세요. HEYYO가 서비스를
-													시작합니다.</td>
-												<td>Admin</td>
-												<td>
-													<button type="button" class="btn btn-outline-danger" data-toggle="modal" href="#exampleModalCenter" 
-															class="btn btn-outline-danger btn-sm">수정</button>
-													<button type="button" class="btn btn-outline-danger" href="#"
-															onClick="alert('삭제하겠습니까?')">삭제</button>
-												</td>
-											</tr>
+											</tr> -->
 										</tbody>
 									</table>
 								</div>
-								<a href="boardForm.do" class="btn btn-danger btn-large float-right">
-                                        <i class="fa fa-plus"></i>
-                                        등록
-                                    </a>
+            						<input type="button" onClick="window.open('boardForm.do')" class="btn btn-danger btn-large float-right" value="공지사항 등록"> 
 							</div>
 						</div>
 					</div>
@@ -462,8 +460,10 @@
 	<script src="assets/vendor/chart.js/dist/Chart.min.js"></script>
 
 	<!-- Initialization  -->
+	<script src="assets/js/main.js"></script>
 	<script src="assets/js/sidebar-nav.js"></script>
 	<script src="assets/js/dashboard-page-scripts.js"></script>
+	
 </body>
 
 </html>

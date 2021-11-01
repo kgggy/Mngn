@@ -3,9 +3,10 @@ package co.mngns.prj.board.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 @Controller
 public class BoardController {
-
+	
 	@RequestMapping(value = "/rList.do")
 	// 이용후기 목록
 	public String rList() {
