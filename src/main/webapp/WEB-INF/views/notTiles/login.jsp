@@ -17,9 +17,10 @@
 
 <link rel="stylesheet" href="css/lstyle.css">
 <!-- 카카오 스크립트 -->
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
+
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script>
 Kakao.init('fd8bf1199af6014c16070f1498a5cfa6'); //발급받은 키 중 javascript키를 사용해준다.
 console.log(Kakao.isInitialized()); // sdk초기화여부판단
@@ -42,7 +43,22 @@ function kakaoLogin() {
       },
     })
   }
-
+//카카오로그아웃  
+function kakaoLogout() {
+    if (Kakao.Auth.getAccessToken()) {
+      Kakao.API.request({
+        url: '/v1/user/unlink',
+        success: function (response) {
+        	console.log(response)
+        },
+        fail: function (error) {
+          console.log(error)
+        },
+      })
+      Kakao.Auth.setAccessToken(undefined)
+    }
+  }  
+</script>
 
 <!-- 네이버 로그인 스크립트 -->
 <script

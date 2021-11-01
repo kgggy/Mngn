@@ -4,26 +4,29 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import co.mngns.prj.pet.vo.PetVO;
 import co.mngns.prj.svc.vo.ReserListVO;
 import co.mngns.prj.svc.vo.SvcVO;
 
 @Service
 public interface ReserListMapper {
-	List<ReserListVO> ReserSelectList();
+	public List<ReserListVO> reserSelectList();
 
-	int ReserSelect(ReserListVO reser);
+	public ReserListVO reserSelect(ReserListVO reser);
 
-	int ReserInsert(ReserListVO reser);
+	public int reserInsert(ReserListVO reser);
 
-	int ReserDelete(ReserListVO reser);
+	public int reserDelete(ReserListVO reser);
 
-	List<SvcVO> ServiceSelectList();
+	public List<SvcVO> serviceSelectList();
 
-	int ServiceSelect(SvcVO svc);
+	public SvcVO serviceSelect(SvcVO svc);
 
-	int ServiceInsert(SvcVO svc);
+	public int serviceInsert(SvcVO svc);
 
-	int ServiceUpdate(SvcVO svc);
+	public int serviceUpdate(SvcVO svc);
 
-	int ServiceDelete(SvcVO svc);
+	public int serviceDelete(SvcVO svc);
+	
+	public List<PetVO> petSelectList(PetVO pet);
 }

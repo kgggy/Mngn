@@ -2,8 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.mngns.prj.svc.map.ReserListMapper">
 
-<select id="ReserSelectList" resultType="co.mngns.prj.svc.vo.ReserListVO">
-	select * from reser_list
-</select>
+	<select id="reserSelect"
+		resultType="co.mngns.prj.svc.vo.ReserListVO">
+		select r.reser_no,r.reser_dt, r.memo, r.reser_loc,
+			   p.pet_id, r.svc_bgn_tm, r.svc_end_tm,
+			   s.term, r.svc_stts, s.svc_id
+		  from reser_list r, svc s, pet p
+   		 where  r.reser_no = #{reser_no}
+	</select>
 
+	<select id="petSelectList" resultType="co.mngns.prj.pet.vo.PetVO">
+		select * from pet where client_id = #{client_id}
+	</select>
 </mapper>

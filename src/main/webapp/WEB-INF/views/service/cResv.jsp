@@ -497,9 +497,9 @@ tr {
 		});
 	}
 	$(function() {
-		$(".datepicker").datepicker({
-			dateFormat : "yy-mm-dd"
-		});
+		$( ".datepicker" ).datepicker({
+			  buttonText: "Choose"
+			});
 	});
 	$(function() {
 		// Get the modal
@@ -578,7 +578,7 @@ tr {
 					주소<span class="required">*</span>
 				</h3>
 				<input type="text" id="address_kakao" name="address" readonly /> <input
-					type="text" id="address_detail" name="address_detail" />
+					type="text" id="address_detail" name="address_detail" placeholder="주소"/>
 			</div>
 			<div class="input_date date_time">
 				<h3>
@@ -586,19 +586,21 @@ tr {
 				</h3>
 				<input type="text" class="datepicker"> <span> <i
 					class="fas fa-calendar-alt"></i>
+				</span> <input type="time" class="timepicker"> <span> <i
+					class="fas fa-time-alt"></i>
 				</span>
 			</div>
 			<div class="question">
 				<h3>
 					돌봄 대상<span class="required">*</span>&nbsp;&nbsp;<small>*최대
-						2마리까지 가능합니다.</small>
+						2마리만 가능하며, 초과 시 훈련사가 임의로 추가금을 요구할 수 있습니다. </small>
 				</h3>
 				<div class="question-answer checkbox-item">
 					<div>
 						<input type="checkbox" value="none" id="check_1" name="checklist" />
-						<label for="check_1" class="check"><span>pet1</span></label> <input
+						<label for="check_1" class="check"><span></span></label> <input
 							type="checkbox" value="none" id="check_2" name="checklist" /> <label
-							for="check_2" class="check"><span>pet2</span></label>
+							for="check_2" class="check"><span>${payment }</span></label>
 					</div>
 				</div>
 			</div>
@@ -633,10 +635,9 @@ tr {
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h3 id="content">예약 내역</h3>
 				<table>
-					<c:forEach items="${payments }" var="payment">
 						<tr>
 							<th width="150px">서비스</th>
-							<td width="300px">${payment.svc_id }(${payment.svc_term })</td>
+							<td width="300px">${payment.svc_id }(${payment.term })</td>
 						</tr>
 						<tr>
 							<th width="150px">위치</th>
@@ -644,7 +645,8 @@ tr {
 						</tr>
 						<tr>
 							<th width="150px">날짜 및 시간</th>
-							<td width="300px">${payment.reser_dt } || ${payment.svc_bgn_tm }</td>
+							<td width="300px">${payment.reser_dt }||
+								${payment.svc_bgn_tm }</td>
 						</tr>
 						<tr>
 							<th width="150px">대상</th>
@@ -656,18 +658,16 @@ tr {
 						</tr>
 						<tr>
 							<th width="150px" style="font-weight: bold">결제수단</th>
-							<td width="400px"><input type
-							="radio" class="card" /><span>신용카드</span><input
+							<td width="400px"><input type="radio" class="card" /><span>신용카드</span><input
 								type="radio" class="card" /><span>휴대폰</span></td>
 						</tr>
-					</c:forEach>
 				</table>
 			</div>
 			<br />
 			<button type="button" class="boxed-btn3" id="rbtn">결제하기</button>
 		</div>
 	</div>
-	<div class="modal2">
+	<!-- <div class="modal2">
 		<div class="modal2-content" align="center">
 			<form id="SendPayForm_id" name="" method="POST">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -677,7 +677,7 @@ tr {
 					type="text" name="buyeremail" value="test@inicis.com"> <input
 					type="text" name="price" value="1000"> <input type="hidden"
 					name="mid" value="INIpayTest">
-				<!-- 에스크로테스트 : iniescrow0, 빌링(정기과금)테스트 : INIBillTst -->
+				에스크로테스트 : iniescrow0, 빌링(정기과금)테스트 : INIBillTst
 				<input type="hidden" name="gopaymethod" value="Card"> <input
 					type="hidden" name="mKey"
 					value="3a9503069192f207491d4b19bd743fc249a761ed94246c8c42fed06c3cd15a33">
@@ -688,7 +688,7 @@ tr {
 				<input type="hidden" name="version" value="1.0"> <input
 					type="hidden" name="currency" value="WON"> <input
 					type="hidden" name="acceptmethod" value="below1000">
-				<!-- 에스크로옵션 : useescrow, 빌링(정기과금)옵션 : BILLAUTH(Card) -->
+				에스크로옵션 : useescrow, 빌링(정기과금)옵션 : BILLAUTH(Card)
 				<input type="hidden" name="returnUrl"
 					value="http://localhost/stdpay/INIStdPayReturn_simple.asp">
 				<input type="hidden" name="closeUrl"
@@ -697,6 +697,6 @@ tr {
 			<button onclick="INIStdPay.pay('SendPayForm_id')"
 				style="padding: 10px; margin-left: 10%">결제요청</button>
 		</div>
-	</div>
+	</div> -->
 </body>
 </html>

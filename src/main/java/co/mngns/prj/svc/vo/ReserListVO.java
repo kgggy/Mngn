@@ -18,6 +18,4 @@ public class ReserListVO {
 	private int client_id;
 	private int svc_id;
 
-	public ReserListVO() {
-	}
 }
