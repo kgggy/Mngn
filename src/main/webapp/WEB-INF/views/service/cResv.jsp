@@ -497,9 +497,9 @@ tr {
 		});
 	}
 	$(function() {
-		$( ".datepicker" ).datepicker({
-			  buttonText: "Choose"
-			});
+		$(".datepicker").datepicker({
+			buttonText : "Choose"
+		});
 	});
 	$(function() {
 		// Get the modal
@@ -577,8 +577,12 @@ tr {
 				<h3>
 					주소<span class="required">*</span>
 				</h3>
-				<input type="text" id="address_kakao" name="address" readonly /> <input
-					type="text" id="address_detail" name="address_detail" placeholder="주소"/>
+				<c:forEach items="${addList }" var="add">
+					<input type="text" id="address_kakao" name="address" readonly
+						placeholder="${add.adres1 }" />
+					<input type="text" id="address_detail" name="address_detail"
+						placeholder="${add.adres2 }" />
+				</c:forEach>
 			</div>
 			<div class="input_date date_time">
 				<h3>
@@ -597,10 +601,11 @@ tr {
 				</h3>
 				<div class="question-answer checkbox-item">
 					<div>
-						<input type="checkbox" value="none" id="check_1" name="checklist" />
-						<label for="check_1" class="check"><span></span></label> <input
-							type="checkbox" value="none" id="check_2" name="checklist" /> <label
-							for="check_2" class="check"><span>${payment }</span></label>
+						<c:forEach items="${petList }" var="pet" varStatus="sts">
+							<input type="checkbox" value="${pet.pet_id }"
+								id="check_${sts.count }" name="pet_id${sts.count }" />
+							<label for="check_${sts.count }" class="check"><span>${pet.name }</span></label>
+						</c:forEach>
 					</div>
 				</div>
 			</div>
@@ -610,12 +615,9 @@ tr {
 					훈련사 선택<span class="required">*</span>
 				</h3>
 				<div class="question-answer">
+
 					<input type="radio" value="none" id="radio_4" name="research" /> <label
-						for="radio_4" class="radio"><span>훈련사 A</span></label> <input
-						type="radio" value="none" id="radio_5" name="research" /> <label
-						for="radio_5" class="radio"><span>훈련사 B</span></label> <input
-						type="radio" value="none" id="radio_6" name="research" /> <label
-						for="radio_6" class="radio"><span>훈련사 C</span></label>
+						for="radio_4" class="radio"><span>훈련사 A</span></label>
 				</div>
 			</div>
 			<div class="item">
@@ -635,32 +637,31 @@ tr {
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h3 id="content">예약 내역</h3>
 				<table>
-						<tr>
-							<th width="150px">서비스</th>
-							<td width="300px">${payment.svc_id }(${payment.term })</td>
-						</tr>
-						<tr>
-							<th width="150px">위치</th>
-							<td width="300px">${payment.reser_loc }</td>
-						</tr>
-						<tr>
-							<th width="150px">날짜 및 시간</th>
-							<td width="300px">${payment.reser_dt }||
-								${payment.svc_bgn_tm }</td>
-						</tr>
-						<tr>
-							<th width="150px">대상</th>
-							<td width="300px">${payment.pet_id1}</td>
-						</tr>
-						<tr>
-							<th width="150px">훈련사</th>
-							<td width="300px">${payment.client_id }</td>
-						</tr>
-						<tr>
-							<th width="150px" style="font-weight: bold">결제수단</th>
-							<td width="400px"><input type="radio" class="card" /><span>신용카드</span><input
-								type="radio" class="card" /><span>휴대폰</span></td>
-						</tr>
+					<tr>
+						<th width="150px">서비스</th>
+						<td width="300px">${payment.svc_id }(${payment.term })</td>
+					</tr>
+					<tr>
+						<th width="150px">위치</th>
+						<td width="300px">${payment.reser_loc }</td>
+					</tr>
+					<tr>
+						<th width="150px">날짜 및 시간</th>
+						<td width="300px">${payment.reser_dt }||${payment.svc_bgn_tm }</td>
+					</tr>
+					<tr>
+						<th width="150px">대상</th>
+						<td width="300px">${payment.pet_id1}</td>
+					</tr>
+					<tr>
+						<th width="150px">훈련사</th>
+						<td width="300px">${payment.client_id }</td>
+					</tr>
+					<tr>
+						<th width="150px" style="font-weight: bold">결제수단</th>
+						<td width="400px"><input type="radio" class="card" /><span>신용카드</span><input
+							type="radio" class="card" /><span>휴대폰</span></td>
+					</tr>
 				</table>
 			</div>
 			<br />

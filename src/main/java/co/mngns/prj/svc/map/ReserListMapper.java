@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import co.mngns.prj.pet.vo.PetVO;
 import co.mngns.prj.svc.vo.ReserListVO;
 import co.mngns.prj.svc.vo.SvcVO;
+import co.mngns.prj.user.vo.ClientVO;
 
 @Service
 public interface ReserListMapper {
@@ -29,4 +30,7 @@ public interface ReserListMapper {
 	public int serviceDelete(SvcVO svc);
 	
 	public List<PetVO> petSelectList(PetVO pet);
+	
+	public List<ClientVO> clientAdd(ClientVO client);
+	
 }

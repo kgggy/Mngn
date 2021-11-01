@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import co.mngns.prj.pet.vo.PetVO;
 import co.mngns.prj.svc.service.ReserListService;
 import co.mngns.prj.svc.vo.ReserListVO;
+import co.mngns.prj.user.vo.ClientVO;
 
 @Controller
 public class SvcController {
@@ -41,8 +42,10 @@ public class SvcController {
 
 	@RequestMapping(value = "/cResv.do")
 	// 돌봄 상세 예약
-	public String cResv(Model model, ReserListVO reser, PetVO pet) {
+	public String cResv(Model model, ReserListVO reser, PetVO pet, ClientVO client) {
 		pet.setClient_id(1);
+		client.setClientId(3);
+		model.addAttribute("addList", rlist.clientAdd(client));
 		model.addAttribute("petList", rlist.petSelectList(pet));
 		model.addAttribute("payment", rlist.reserSelect(reser));
 		return "service/cResv";

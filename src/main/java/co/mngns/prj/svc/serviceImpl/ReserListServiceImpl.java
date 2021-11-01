@@ -10,6 +10,7 @@ import co.mngns.prj.svc.map.ReserListMapper;
 import co.mngns.prj.svc.service.ReserListService;
 import co.mngns.prj.svc.vo.ReserListVO;
 import co.mngns.prj.svc.vo.SvcVO;
+import co.mngns.prj.user.vo.ClientVO;
 
 @Service
 public class ReserListServiceImpl implements ReserListService {
@@ -66,6 +67,11 @@ public class ReserListServiceImpl implements ReserListService {
 	@Override
 	public List<PetVO> petSelectList(PetVO pet) {
 		return map.petSelectList(pet);
+	}
+
+	@Override
+	public List<ClientVO> clientAdd(ClientVO client) {
+		return map.clientAdd(client);
 	}
 
 }

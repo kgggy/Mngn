@@ -5,6 +5,7 @@ import java.util.List;
 import co.mngns.prj.pet.vo.PetVO;
 import co.mngns.prj.svc.vo.ReserListVO;
 import co.mngns.prj.svc.vo.SvcVO;
+import co.mngns.prj.user.vo.ClientVO;
 
 public interface ReserListService {
 	public List<ReserListVO> reserSelectList();
@@ -26,4 +27,6 @@ public interface ReserListService {
 	public int serviceDelete(SvcVO svc);
 	
 	public List<PetVO> petSelectList(PetVO pet);
+	
+	public List<ClientVO> clientAdd(ClientVO client);
 }
