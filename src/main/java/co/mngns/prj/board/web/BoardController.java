@@ -1,14 +1,22 @@
 package co.mngns.prj.board.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import co.mngns.prj.board.service.ReviewService;
 
 @Controller
 public class BoardController {
+	
+	@Autowired
+	ReviewService rService;
 
 	@RequestMapping(value = "/rList.do")
 	// 이용후기 목록
-	public String rList() {
+	public String rList(Model model) {
+		model.addAttribute("rLists", rService.reviewSelectList());
 		return "client/rList";
 	}
 
