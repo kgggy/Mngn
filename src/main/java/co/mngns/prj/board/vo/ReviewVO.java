@@ -2,6 +2,7 @@ package co.mngns.prj.board.vo;
 
 import java.sql.Date;
 
+import co.mngns.prj.user.vo.ClientVO;
 import lombok.Data;
 
 @Data
@@ -13,5 +14,8 @@ public class ReviewVO {
 	private int file_no;
 	private int reser_no;
 	private int client_no;
+	
+	private String name;
+	
 
 }

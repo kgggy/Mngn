@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +27,7 @@
 
 </head>
 <body>
-	
+
 	<div class="bradcam_area breadcam_bg">
 		<div class="container">
 			<div class="row">
@@ -38,156 +39,42 @@
 			</div>
 		</div>
 	</div>
-	<section class="ftco-section bg-light"><br><br><br>
+	<section class="ftco-section bg-light">
+		<br>
+		<br>
+		<br>
 		<div class="container">
 			<div class="row d-flex">
-				<div class="col-md-4 d-flex ftco-animate"  data-toggle="modal" data-target="#myModal">
-					<div class="blog-entry align-self-stretch"  data-toggle="modal" data-target="#myModal">
-						<div class="text p-4"  data-toggle="modal" data-target="#myModal">
-						<a href="blog-single.html" class="block-20 rounded"
-							style="background-image: url('images/image_1.jpg');"  data-toggle="modal" data-target="#myModal"> </a><br>
-							<div class="meta mb-2">
-								<div>
-									<a href="#">April 07, 2020</a>
+				<c:forEach items="${rLists }" var="rList">
+					<div class="col-md-4 d-flex ftco-animate" data-toggle="modal"
+						data-target="#myModal">
+						<div class="blog-entry align-self-stretch" data-toggle="modal"
+							data-target="#myModal">
+							<div class="text p-4" data-toggle="modal" data-target="#myModal">
+								<a href="blog-single.html" class="block-20 rounded"
+									style="background-image: url('images/image_1.jpg');"
+									data-toggle="modal" data-target="#myModal"> </a><br>
+								<div class="meta mb-2">
+									<div>
+										${rList.reg_dt }
+									</div>
+									<div>
+										${rList.name }
+									</div>
+									<div>
+										<a class="meta-chat">
+											${rList.star_rate }</a>
+									</div>
 								</div>
-								<div>
-									<a href="#">ㅇㅇㅇ 님</a>
-								</div>
-								<div>
-									<a href="#" class="meta-chat"><span class="fa fa-comment"></span>
-										별점넣기</a>
-								</div>
+								<h3 class="heading" data-toggle="modal" data-target="#myModal">
+									${rList.cntn} <!-- <a href="#" data-toggle="modal" data-target="#myModal"> </a>-->
+								</h3>
 							</div>
-							<h3 class="heading" data-toggle="modal" data-target="#myModal">
-								<a href="#" data-toggle="modal" data-target="#myModal">사진 너무 귀엽게 잘찍어주셨네요 ㅎㅎㅎ 라이브로 보니 오뜨가 좋아하는게 보여서 저도 웃을수 있었어요!
-						혼자 있는 아이가 너무 걱정 됐었는데 이렇게 마음 놓게 해주셔서 정말 감사드립니다ㅎㅎ 다음에도 기회가 된다면 또
-						부탁드리고 싶네요 좋은하루 보내세요 펫시터님🤗</a>
-							</h3>
 						</div>
+						<input type="hidden" id="review_no" name="review_no">
 					</div>
-				</div>
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry align-self-stretch">
-						<div class="text p-4">
-						<a href="blog-single.html" class="block-20 rounded"
-							style="background-image: url('images/image_2.jpg');"  data-toggle="modal" data-target="#myModal"> </a><br>
-							<div class="meta mb-2">
-								<div>
-									<a href="#">April 07, 2020</a>
-								</div>
-								<div>
-									<a href="#">Admin</a>
-								</div>
-								<div>
-									<a href="#" class="meta-chat"><span class="fa fa-comment"></span>
-										3</a>
-								</div>
-							</div>
-							<h3 class="heading">
-								<a href="#">Even the all-powerful Pointing has no control
-									about the blind texts</a>
-							</h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry align-self-stretch">
-						<div class="text p-4">
-						<a href="blog-single.html" class="block-20 rounded"
-							style="background-image: url('images/image_3.jpg');"  data-toggle="modal" data-target="#myModal"> </a><br>
-							<div class="meta mb-2">
-								<div>
-									<a href="#">April 07, 2020</a>
-								</div>
-								<div>
-									<a href="#">Admin</a>
-								</div>
-								<div>
-									<a href="#" class="meta-chat"><span class="fa fa-comment"></span>
-										3</a>
-								</div>
-							</div>
-							<h3 class="heading">
-								<a href="#">Even the all-powerful Pointing has no control
-									about the blind texts</a>
-							</h3>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry align-self-stretch">
-						<div class="text p-4">
-						<a href="blog-single.html" class="block-20 rounded"
-							style="background-image: url('images/image_4.jpg');"  data-toggle="modal" data-target="#myModal"> </a><br>
-							<div class="meta mb-2">
-								<div>
-									<a href="#">April 07, 2020</a>
-								</div>
-								<div>
-									<a href="#">Admin</a>
-								</div>
-								<div>
-									<a href="#" class="meta-chat"><span class="fa fa-comment"></span>
-										3</a>
-								</div>
-							</div>
-							<h3 class="heading">
-								<a href="#">사진 너무 귀엽게 잘찍어주셨네요 ㅎㅎㅎ 라이브로 보니 오뜨가 좋아하는게 보여서 저도 웃을수 있었어요!
-						혼자 있는 아이가 너무 걱정 됐었는데 이렇게 마음 놓게 해주셔서 정말 감사드립니다ㅎㅎ 다음에도 기회가 된다면 또
-						부탁드리고 싶네요 좋은하루 보내세요 펫시터님🤗</a>
-							</h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry align-self-stretch">
-						<div class="text p-4">
-						<a href="blog-single.html" class="block-20 rounded"
-							style="background-image: url('images/image_5.jpg');"  data-toggle="modal" data-target="#myModal"> </a><br>
-							<div class="meta mb-2">
-								<div>
-									<a href="#">April 07, 2020</a>
-								</div>
-								<div>
-									<a href="#">Admin</a>
-								</div>
-								<div>
-									<a href="#" class="meta-chat"><span class="fa fa-comment"></span>
-										3</a>
-								</div>
-							</div>
-							<h3 class="heading">
-								<a href="#">Even the all-powerful Pointing has no control
-									about the blind texts</a>
-							</h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry align-self-stretch">
-						<div class="text p-4">
-						<a href="blog-single.html" class="block-20 rounded"
-							style="background-image: url('images/image_6.jpg');"  data-toggle="modal" data-target="#myModal"> </a><br>
-							<div class="meta mb-2">
-								<div>
-									<a href="#">April 07, 2020</a>
-								</div>
-								<div>
-									<a href="#">Admin</a>
-								</div>
-								<div>
-									<a href="#" class="meta-chat"><span class="fa fa-comment"></span>
-										3</a>
-								</div>
-							</div>
-							<h3 class="heading">
-								<a href="#">Even the all-powerful Pointing has no control
-									about the blind texts</a>
-							</h3>
-						</div>
-					</div>
-				</div>
+				</c:forEach>
+				
 			</div>
 			<div class="row mt-5">
 				<div class="col text-center">
@@ -203,7 +90,9 @@
 						</ul>
 					</div>
 				</div>
-			</div><br><br>
+			</div>
+			<br>
+			<br>
 		</div>
 	</section>
 
@@ -240,7 +129,7 @@
 		</div>
 	</div> -->
 
-	
+
 
 	<script src="js/petsitting/jquery.min.js"></script>
 	<script src="js/petsitting/jquery-migrate-3.0.1.min.js"></script>

@@ -5,19 +5,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import co.mngns.prj.pet.vo.PetVO;
 import co.mngns.prj.svc.service.ReserListService;
+import co.mngns.prj.svc.vo.ReserListVO;
+import co.mngns.prj.user.vo.ClientVO;
 
 @Controller
 public class SvcController {
 
 	@Autowired
-	ReserListService reser;
-
-	@RequestMapping(value = "/cntReview.do")
-	// 사용자 서비스 이용 내역 및 후기
-	public String myReview() {
-		return "client/cntReview";
-	}
+	ReserListService rlist;
 
 	@RequestMapping(value = "/careDc.do")
 	// 돌봄서비스 설명
@@ -39,7 +36,13 @@ public class SvcController {
 
 	@RequestMapping(value = "/cResv.do")
 	// 돌봄 상세 예약
-	public String cResv() {
+	public String cResv(Model model, ReserListVO reser, PetVO pet, ClientVO client) {
+		pet.setClient_id(1);
+		client.setClient_id(3);
+		reser.setClient_id(1);
+		model.addAttribute("petList", rlist.petSelectList(pet));
+		model.addAttribute("payment", rlist.reserSelect(reser));
+		
 		return "service/cResv";
 	}
 
@@ -75,8 +78,7 @@ public class SvcController {
 
 	@RequestMapping(value = "/payResult.do")
 	// 결제완료 내역
-	public String payResult(Model model) {
-		model.addAttribute("payments", reser.ReserSelectList());
+	public String payResult() {
 		return "service/payResult";
 	}
 
@@ -89,7 +91,7 @@ public class SvcController {
 	@RequestMapping(value = "/trnSal.do")
 	public String trnSal() {
 		// 훈련사 의뢰 및 정산 관리 페이지
-		return "trainer/trnSal";
+		return "trnSal";
 	}
 
 	@RequestMapping(value = "/salesList.do")

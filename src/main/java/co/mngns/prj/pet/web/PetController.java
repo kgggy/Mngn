@@ -1,11 +1,17 @@
 package co.mngns.prj.pet.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import co.mngns.prj.pet.service.PetService;
+import co.mngns.prj.pet.vo.PetVO;
 
 @Controller
 public class PetController {
 
+	@Autowired PetService petService;
+	
 	@RequestMapping(value = "/aniList.do")
 	public String aniList() {
 		return "pet/aniList";
@@ -13,6 +19,7 @@ public class PetController {
 
 	@RequestMapping(value = "/dogForm.do")
 	public String dogForm() {
+	
 		return "pet/dogForm";
 	}
 
@@ -26,5 +33,14 @@ public class PetController {
 		
 		return "client/mOut";
 	}
+	
+	@RequestMapping (value = "/petInsert.do")
+	public String petInsert(PetVO vo) {
+		vo.setClient_id(1);
+		petService.PetInsert(vo);
+		return "redirect:aniList.do";
+	}
+	
+
 
 }

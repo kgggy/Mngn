@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class ClientVO {
-	private int clientId;
+	private int client_id;
 	private String pwd;
 	private String name;
 	private int post_no;
@@ -17,7 +17,4 @@ public class ClientVO {
 	private Date join_dt;
 	private int role;
 	
-	public ClientVO() {
-		
-	}
 }
