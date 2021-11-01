@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.mngns.prj.pet.map.PetMapper">
+
+	<select resultType="co.mngns.prj.pet.vo.PetVO"
+		id="petSelelctList">
+
+		select * from pet
+	</select>
+
+	<select resultType="co.mngns.prj.pet.vo.PetVO" id="petSelect">
+
+		select * from pet where pet_id = #{pet_id}
+
+	</select>
+	
+	<insert id = "petInsert">
+	
+	 insert into pet(pet_id, knd, name, gen, age, wgt, oper,memo,file_no, client_id, species)
+	  values(pet_seq.nextval, #{knd},#{name},#{gen}, #{age}, #{wgt}, #{oper}, #{memo}, 0, #{client_id}, #{species})
+	
+	 
+	</insert>
+
+
+</mapper>

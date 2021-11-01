@@ -4,15 +4,15 @@ import lombok.Data;
 
 @Data
 public class PetVO {
-	private int pet_id;
-	private int knd;
+	private Integer pet_id;
+	private Integer knd;
 	private String name;
-	private char gen;
-	private int age;
-	private int wgt;
-	private int oper;
+	private String gen;
+	private Integer age;
+	private Integer wgt;
+	private Integer oper;
 	private String memo;
-	private int file_no;
-	private int user_id;
-	private String spcies;
+	private Integer file_no;
+	private Integer client_id;
+	private String species;
 }

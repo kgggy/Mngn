@@ -2,11 +2,18 @@ package co.mngns.prj.pet.serviceImpl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import co.mngns.prj.pet.map.PetMapper;
 import co.mngns.prj.pet.service.PetService;
 import co.mngns.prj.pet.vo.PetVO;
 
+@Service
 public class PetServiceImpl implements PetService {
 
+	@Autowired PetMapper petMapper;
+	
 	@Override
 	public List<PetVO> PetSelectList() {
 		return null;
@@ -20,7 +27,7 @@ public class PetServiceImpl implements PetService {
 
 	@Override
 	public int PetInsert(PetVO pet) {
-		return 0;
+		return petMapper.petInsert(pet);
 	}
 
 	@Override

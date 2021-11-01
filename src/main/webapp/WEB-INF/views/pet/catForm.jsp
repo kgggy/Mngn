@@ -35,16 +35,16 @@
 	function result() {
 
 		var loginForm = document.loginForm;
-		var picture = loginForm.picture.value;
-		var breed = loginForm.breed.value;
+		var picture1 = loginForm.picture.value;
+		var knd = loginForm.knd.value;
 		var name = loginForm.name.value;
-		var gender = loginForm.gender.value;
+		var gen = loginForm.gen.value;
 		var age = loginForm.age.value;
-		var weight = loginForm.weight.value;
+		var wgt = loginForm.wgt.value;
 		var oper = loginForm.oper.value;
 
 
-		if (!picture ||!breed || !name || !gender || !age || !weight || !oper ) {
+		if (!picture ||!knd || !name || !gen || !age || !wgt || !oper ) {
 
 			alert("필수입력창을 모두 입력해주세요.");
 
@@ -90,7 +90,7 @@
 			<div class="card card-5">
 				<div class="card-body">
 
-				<form  name = "loginform" action="aniList.do">
+				<form  name = "loginform" action="petInsert.do">
 					<div class="form-row">
 						<div class="picture">냥이사진</div>
 						<div class="value">
@@ -100,14 +100,16 @@
 							</div>
 						</div>
 					</div>
-
+						<div> 
+					<input name = "knd" value = "2" type="hidden">
+					</div>
 
 					<div class="form-row">
-						<div class="breed">냥이 품종</div>
+						<div class="knd">냥이 품종</div>
 						<div class="value">
 							<div class="input-group">
 								<div class="rs-select2 js-select-simple select--no-search">
-									<select name="breed">
+									<select name="species">
 
 
 										<option disabled="disabled" selected="selected">Choose
@@ -147,13 +149,13 @@
 						</div>
 					</div>
 					<div class="form-row p-t-20">
-						<label class="gender"> 냥이 성별</label>
+						<label class="gen"> 냥이 성별</label>
 						<div class="p-t-15">
 							<label class="radio-container m-r-55"> 수컷 <input
-								type="radio" checked="checked" name="gender"> <span
+								type="radio" checked="checked" name="gen"> <span
 								class="checkmark"></span>
 							</label> <label class="radio-container"> 암컷 <input type="radio"
-								name="gender"> <span class="checkmark"></span>
+								name="gen"> <span class="checkmark"></span>
 							</label>
 						</div>
 					</div>
@@ -171,7 +173,7 @@
 						<div class="weight">몸무게</div>
 						<div class="value">
 							<div class="input-group">
-								<input class="input--style-5" type="text" name="weight"
+								<input class="input--style-5" type="text" name="wgt"
 									placeholder="kg">
 							</div>
 						</div>
@@ -195,12 +197,12 @@
 						<label class="label label--block"> 특이사항 </label>
 						<div class="value">
 							<div class="input-group">
-								<textarea rows="5" cols="180"></textarea>
+								<textarea rows="5" cols="180" name="memo"></textarea>
 							</div>
 						</div>
 					</div>
 					
-\					<div align="center">
+					<div align="center">
 						<button class="btn btn--radius-2 btn--red" type="submit">
 							이전</button>
 						<button class="btn btn--radius-2 btn--red" type="button" onclick ="result()">
