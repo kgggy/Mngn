@@ -35,7 +35,7 @@
 	function result() {
 
 		var loginForm = document.loginForm;
-		var picture1 = loginForm.picture.value;
+		var picture = loginForm.picture.value;
 		var knd = loginForm.knd.value;
 		var name = loginForm.name.value;
 		var gen = loginForm.gen.value;
@@ -90,7 +90,7 @@
 			<div class="card card-5">
 				<div class="card-body">
 
-				<form  name = "loginform" action="petInsert.do">
+				<form  name = "loginForm" action="petInsert.do">
 					<div class="form-row">
 						<div class="picture">냥이사진</div>
 						<div class="value">
@@ -105,7 +105,7 @@
 					</div>
 
 					<div class="form-row">
-						<div class="knd">냥이 품종</div>
+						<div class="species">냥이 품종</div>
 						<div class="value">
 							<div class="input-group">
 								<div class="rs-select2 js-select-simple select--no-search">
@@ -152,16 +152,16 @@
 						<label class="gen"> 냥이 성별</label>
 						<div class="p-t-15">
 							<label class="radio-container m-r-55"> 수컷 <input
-								type="radio" checked="checked" name="gen"> <span
+								type="radio" checked="checked" name="gen" value="M"> <span
 								class="checkmark"></span>
 							</label> <label class="radio-container"> 암컷 <input type="radio"
-								name="gen"> <span class="checkmark"></span>
+								name="gen" value="W"> <span class="checkmark" ></span>
 							</label>
 						</div>
 					</div>
 
 					<div class="form-row">
-						<div class="name">나이</div>
+						<div class="age">나이</div>
 						<div class="value">
 							<div class="input-group">
 								<input class="input--style-5" type="text" name="age"
@@ -170,7 +170,7 @@
 						</div>
 					</div>
 					<div class="form-row">
-						<div class="weight">몸무게</div>
+						<div class="wgt">몸무게</div>
 						<div class="value">
 							<div class="input-group">
 								<input class="input--style-5" type="text" name="wgt"
@@ -183,10 +183,10 @@
 						<label class="label label--block"> 중성화 여부 </label>
 						<div class="p-t-15">
 							<label class="radio-container m-r-55"> Y <input
-								type="radio" checked="checked" name="oper"> <span
+								type="radio" checked="checked" name="oper" value="1"> <span
 								class="checkmark"></span>
 							</label> <label class="radio-container"> N <input type="radio"
-								name="oper"> <span class="checkmark"></span>
+								name="oper" value="0"> <span class="checkmark"></span>
 							</label>
 						</div>
 					</div>

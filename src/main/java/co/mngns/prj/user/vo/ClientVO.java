@@ -6,8 +6,10 @@ import lombok.Data;
 
 @Data
 public class ClientVO {
-	private int clientId;
+	private int client_id;
+	private int client_idCheck;
 	private String pwd;
+	private String pwd_check;	
 	private String name;
 	private int post_no;
 	private String adres1;

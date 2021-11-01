@@ -8,4 +8,11 @@
 		select * from client where client_id = #{client_id}
 	</select>
 
+
+	<insert id="clientInsert">
+	
+	insert into client(client_id,client_idCheck, pwd, name, post_no,adres1,adres2, phone, email,join_dt, role)
+				values(#{client_seq.nextval}, #{client_idCheck}, #{pwd}, #{name},#{post_no},#{adres1},#{adres2},#{phone},#{email},#{join_dt},#{role})
+	
+	</insert>
 </mapper>
