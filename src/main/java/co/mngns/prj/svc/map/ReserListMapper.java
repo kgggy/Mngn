@@ -31,6 +31,5 @@ public interface ReserListMapper {
 	
 	public List<PetVO> petSelectList(PetVO pet);
 	
-	public List<ClientVO> clientAdd(ClientVO client);
-	
+	public ClientVO clientAdd(ClientVO client);
 }

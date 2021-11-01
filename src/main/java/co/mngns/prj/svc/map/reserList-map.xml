@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.mngns.prj.svc.map.ReserListMapper">
-
+		
 	<select id="reserSelect"
 		resultType="co.mngns.prj.svc.vo.ReserListVO">
 		select r.reser_no,r.reser_dt, r.memo, r.reser_loc,
@@ -20,4 +20,5 @@
 		resultType="co.mngns.prj.user.vo.ClientVO">
 		select adres1, adres2 from client where client_id = #{client_id}
 	</select>
+	
 </mapper>

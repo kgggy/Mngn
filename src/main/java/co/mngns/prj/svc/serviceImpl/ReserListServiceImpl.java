@@ -70,7 +70,7 @@ public class ReserListServiceImpl implements ReserListService {
 	}
 
 	@Override
-	public List<ClientVO> clientAdd(ClientVO client) {
+	public ClientVO clientAdd(ClientVO client) {
 		return map.clientAdd(client);
 	}
 

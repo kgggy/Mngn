@@ -20,5 +20,5 @@ public class ReserListVO {
 	private int svc_id;
 	
 	private ClientVO client;
-
+	
 }

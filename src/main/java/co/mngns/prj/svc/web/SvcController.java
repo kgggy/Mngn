@@ -44,10 +44,11 @@ public class SvcController {
 	// 돌봄 상세 예약
 	public String cResv(Model model, ReserListVO reser, PetVO pet, ClientVO client) {
 		pet.setClient_id(1);
-		client.setClientId(3);
-		model.addAttribute("addList", rlist.clientAdd(client));
+		client.setClient_id(3);
+		reser.setClient_id(1);
 		model.addAttribute("petList", rlist.petSelectList(pet));
 		model.addAttribute("payment", rlist.reserSelect(reser));
+		
 		return "service/cResv";
 	}
 

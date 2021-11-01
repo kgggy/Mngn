@@ -28,5 +28,6 @@ public interface ReserListService {
 	
 	public List<PetVO> petSelectList(PetVO pet);
 	
-	public List<ClientVO> clientAdd(ClientVO client);
+	public ClientVO clientAdd(ClientVO client);
+	
 }
