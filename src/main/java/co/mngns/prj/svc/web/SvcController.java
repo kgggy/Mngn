@@ -1,16 +1,20 @@
 package co.mngns.prj.svc.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import co.mngns.prj.pet.vo.PetVO;
+import co.mngns.prj.svc.service.ReserListService;
+import co.mngns.prj.svc.vo.ReserListVO;
+import co.mngns.prj.user.vo.ClientVO;
 
 @Controller
 public class SvcController {
-	
-	@RequestMapping(value = "/cntReview.do")
-	// 사용자 서비스 이용 내역 및 후기
-	public String myReview() {
-		return "client/cntReview";
-	}
+
+	@Autowired
+	ReserListService rlist;
 
 	@RequestMapping(value = "/careDc.do")
 	// 돌봄서비스 설명
@@ -32,7 +36,13 @@ public class SvcController {
 
 	@RequestMapping(value = "/cResv.do")
 	// 돌봄 상세 예약
-	public String cResv() {
+	public String cResv(Model model, ReserListVO reser, PetVO pet, ClientVO client) {
+		pet.setClient_id(1);
+		client.setClient_id(3);
+		reser.setClient_id(1);
+		model.addAttribute("petList", rlist.petSelectList(pet));
+		model.addAttribute("payment", rlist.reserSelect(reser));
+		
 		return "service/cResv";
 	}
 
@@ -78,34 +88,33 @@ public class SvcController {
 		return "service/payment";
 	}
 
-
 	@RequestMapping(value = "/trnSal.do")
 	public String trnSal() {
-	// 훈련사 의뢰 및 정산 관리 페이지
-		return "trainer/trnSal";
+		// 훈련사 의뢰 및 정산 관리 페이지
+		return "trnSal";
 	}
 
 	@RequestMapping(value = "/salesList.do")
 	public String salesList() {
-	// 판매관리
+		// 판매관리
 		return "manager/sales/salesList";
 	}
 
 	@RequestMapping(value = "/salaryList.do")
 	public String salaryList() {
-	// 정산관리
+		// 정산관리
 		return "manager/salary/salaryList";
 	}
 
 	@RequestMapping(value = "/svcList.do")
 	public String svcList() {
-	// 서비스관리
+		// 서비스관리
 		return "manager/service/svcList";
 	}
 
 	@RequestMapping(value = "/svcDetail.do")
 	public String svcDetail() {
-	// 서비스 상세보기/수정
+		// 서비스 상세보기/수정
 		return "manager/service/svcDetail";
 	}
 

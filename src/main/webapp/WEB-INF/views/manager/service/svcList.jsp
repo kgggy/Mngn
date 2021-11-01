@@ -48,10 +48,8 @@
 	<!-- Header (Topbar) -->
 	<header class="astino-header u-header">
 		<div class="u-header-left">
-			<a class="u-header-logo" href="mngMain.do"> <img
-				src="assets/logo.png" width="160"> <img
-				class="img-fluid u-logo-mobile" src="assets/img/logo-mobile.png"
-				width="50" alt="Stream Dashboard">
+			<a class="u-header-logo" href="home.do"> <img
+				src="assets/logo.png" width="160"> 
 			</a>
 		</div>
 
@@ -139,7 +137,7 @@
 
 						<!-- 서비스 관리-->
 						<li class="u-sidebar-nav-menu__item"><a
-							class="u-sidebar-nav-menu__link" href="svcList.do"> <i
+							class="u-sidebar-nav-menu__link active" href="svcList.do"> <i
 								class="fas fa-cogs u-sidebar-nav-menu__item-icon"></i> <span
 								class="u-sidebar-nav-menu__item-title">서비스 관리</span>
 						</a></li>
@@ -183,22 +181,6 @@
 						<div class="card h-100">
 							<header class="card-header d-flex align-items-center">
 								<h2 class="h2 card-header-title">제공 서비스</h2>
-
-								<!-- Card Header Icon -->
-								<ul class="list-inline ml-auto mb-0">
-									<!--  <li class="list-inline-item mr-3">
-                                       <a class="link-muted h3" href="#!">
-                                        <i class="far fa-edit"></i>
-                                       </a>
-                                    </li> -->
-									<li class="list-inline-item">
-										<!-- <a href="serviceSelectList.do" class="btn btn-danger btn-large">
-                                            <i class="far fa-edit"></i>
-                                             수정
-                                        </a> -->
-									</li>
-								</ul>
-								<!-- End Card Header Icon -->
 							</header>
 
 							<div class="card-body">
@@ -239,9 +221,8 @@
 												<td>보호자 자택</td>
 												<td class="text-success bg-soft-success inline">제공중</td>
 												<td>
-													<button type="button"
-														onclick="location.href='serviceSelectList_dol.do' "
-														class="btn btn-outline-danger btn-sm">상세정보</button>
+													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
+                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
 												</td>
 											</tr>
 											<tr>
@@ -259,9 +240,8 @@
 												<td>회원 요청 위치</td>
 												<td class="text-success bg-soft-success inline">제공중</td>
 												<td>
-													<button type="button"
-														onclick="location.href='serviceSelectList_walk.do' "
-														class="btn btn-outline-danger btn-sm">상세정보</button>
+													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
+                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
 												</td>
 											</tr>
 											<tr>
@@ -279,9 +259,8 @@
 												<td>보호자와 반려동물 함께 실시</td>
 												<td class="text-success bg-soft-success inline">제공중</td>
 												<td>
-													<button type="button"
-														onclick="location.href='serviceSelectList_train.do' "
-														class="btn btn-outline-danger btn-sm">상세정보</button>
+													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
+                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
 												</td>
 											</tr>
 										</tbody>
@@ -320,6 +299,69 @@
 			<!-- End Footer -->
 		</div>
 	</main>
+	
+				<!-- Large Size Modal-->
+		<div class="modal fade bd-example-modal-lg"  id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3 class="modal-title" id="exampleModalLabel">서비스 상세정보</h3>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<!-- Current Projects -->
+                    <div class="col-md-12 mb-4">
+                        <div class="card h-100">
+                            <div class="astino-pr-form card-body">
+                                           <form>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput">제공서비스</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="돌봄서비스">
+                                    </div>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput4">최종수정일</label>
+                                        <span class="form-icon-wrapper">
+                                            <span class="form-icon form-icon--left">
+                                                <i class="fa fa-calendar form-icon__item"></i>
+                                            </span>
+                                            <input id="formGroupExampleInput4" class="form-control exp-date form-icon-input-left datepicker" type="email" placeholder="15 NOV 2020">
+                                        </span>
+                                    </div>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput2">1시간 단가</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="18,000원">
+                                    </div>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput2">2시간 단가</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="34,000원">
+                                    </div>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput2">3시간 단가</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="50,000원">
+                                    </div>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput5">특이사항</label>
+                                        <textarea class="form-control" id="formGroupExampleInput5" placeholder="돌봄서비스는 사용자의 자택에서 이루어진다. 사용자의 부재시 반려동물을 돌봄하는 것을 원칙으로 한다."></textarea>
+                                    </div>
+                                    <a href="" onClick="alert('수정하겠습니까?')" class="btn btn-outline-danger btn-sm float-right" >
+                                        <i class="fa fa-edit"></i>
+                                        수정
+                                    </a>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+						<button type="button" class="btn btn-outline-danger btn-sm" herf="" data-dismiss="modal">닫기</button>
+					</div>
+                    </div>
+                    <!-- End Current Projects -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Large Size Modal-->
 
 	<!-- Global Vendor -->
 	<script src="assets/vendor/jquery/dist/jquery.min.js"></script>

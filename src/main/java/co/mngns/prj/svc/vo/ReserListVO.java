@@ -2,6 +2,7 @@ package co.mngns.prj.svc.vo;
 
 import java.sql.Date;
 
+import co.mngns.prj.user.vo.ClientVO;
 import lombok.Data;
 
 @Data
@@ -17,7 +18,7 @@ public class ReserListVO {
 	private int svc_stts;
 	private int client_id;
 	private int svc_id;
-
-	public ReserListVO() {
-	}
+	
+	private ClientVO client;
+	
 }

@@ -7,7 +7,10 @@ import lombok.Data;
 @Data
 public class ClientVO {
 	private int client_id;
+<<<<<<< HEAD
 	private int client_idCheck;
+=======
+>>>>>>> refs/heads/master
 	private String pwd;
 	private String pwd_check;	
 	private String name;
@@ -19,7 +22,4 @@ public class ClientVO {
 	private Date join_dt;
 	private int role;
 	
-	public ClientVO() {
-		
-	}
 }

@@ -50,10 +50,8 @@
 	<!-- Header (Topbar) -->
 	<header class="astino-header u-header">
 		<div class="u-header-left">
-			<a class="u-header-logo" href="mngMain.do"> <img
-				src="assets/logo.png" width="160"> <img
-				class="img-fluid u-logo-mobile" src="assets/img/logo-mobile.png"
-				width="50" alt="Stream Dashboard">
+			<a class="u-header-logo" href="home.do"> <img
+				src="assets/logo.png" width="160"> 
 			</a>
 		</div>
 
@@ -97,7 +95,7 @@
 					<ul class="u-sidebar-nav-menu u-sidebar-nav-menu--top-level">
 						<!-- 주간 리포트 -->
 						<li class="u-sidebar-nav-menu__item"><a
-							class="u-sidebar-nav-menu__link" href="mngMain.do"> <i
+							class="u-sidebar-nav-menu__link active" href="mngMain.do"> <i
 								class="fas fa-th-large u-sidebar-nav-menu__item-icon"></i> <span
 								class="u-sidebar-nav-menu__item-title">주간 리포트</span>
 						</a></li>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.mngns.prj.board.map.board-map">
+	<select id="boardSelectList" resultType="co.mngns.prj.board.vo.BoardVO">
+		select b.*
+		from board b
+		order by b.board_no desc
+	</select>
+	
+	<select id="boardSelect" resultType="co.mngns.prj.board.vo.BoardVO">
+		select b.board_no
+		from board b
+	</select>
+	
+	<insert id="boardInsert" parameterType="co.mngns.prj.board.vo.BoardVO">
+		insert into board(board_no, ttl, cntn, mngr_id, reg_dt)
+		values(#{board_no}, #{ttl}, #{cntn}, #{mngr_id}, #{reg_dt})
+	</insert>
+	
+	<update id="boardUpdate" parameterType="co.mngns.prj.board.vo.BoardVO">
+		update board set ttl = #{ttl}, cntn = #{cntn}
+		where 
+	</update>
+</mapper>

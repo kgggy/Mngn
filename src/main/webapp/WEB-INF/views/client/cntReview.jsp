@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -484,19 +485,21 @@ article {
 						</tr>
 					</thead>
 					<tbody align="center">
+					<c:forEach items="myReviews" var="myReview">
 						<tr data-status="active">
-							<td>1</td>
-							<td>돌봄서비스(1시간)</td>
-							<td>xxx훈련사</td>
-							<td>아이들 잘 봐주셔서 감사합니다!! 다음에 또 이용할게요.</td>
-							<td>★★★★★</td>
-							<td>21.10.25</td>
+							<td>${myReview.review_no }</td>
+							<td>(1시간)</td>
+							<td>${myReview.name }</td>
+							<td>${myReview.cntn }</td>
+							<td>${myReview.star_rate }</td>
+							<td>${myReview.reg_dt }</td>
 							<td><a href="#" class="btn btn-sm manage"
 								data-toggle="modal" data-target="#reviewUpdate">수정</a>&nbsp;&nbsp;
 								<a href="javascript:window.alert('삭제하시겠습니까?')"
 								class="btn btn-sm manage">삭제</a></td>
 							<!-- <button onclick="rDelete()" class="btn btn-sm manage">삭제</button> -->
 						</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>
