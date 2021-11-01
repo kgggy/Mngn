@@ -46,10 +46,8 @@
 	<!-- Header (Topbar) -->
 	<header class="astino-header u-header">
 		<div class="u-header-left">
-			<a class="u-header-logo" href="mngMain.do"> <img
-				src="assets/logo.png" width="160"> <img
-				class="img-fluid u-logo-mobile" src="assets/img/logo-mobile.png"
-				width="50" alt="Stream Dashboard">
+			<a class="u-header-logo" href="home.do"> <img
+				src="assets/logo.png" width="160"> 
 			</a>
 		</div>
 
@@ -101,7 +99,7 @@
 
 						<!-- 공지사항 관리 -->
 						<li class="u-sidebar-nav-menu__item"><a
-							class="u-sidebar-nav-menu__link" href="boardList.do"> <i
+							class="u-sidebar-nav-menu__link active" href="boardList.do"> <i
 								class="far fa-edit u-sidebar-nav-menu__item-icon"></i> <span
 								class="u-sidebar-nav-menu__item-title">공지사항 관리</span>
 						</a></li>
@@ -204,7 +202,7 @@
 										<textarea class="form-control" id="formGroupExampleInput6"
 											placeholder=""></textarea>
 									</div>
-									<a href="" onClick="alert('등록하겠습니까?')"
+									<a href="boardList.do" onClick="alert('등록하겠습니까?')"
 										class="btn btn-danger btn-large float-right"> 등록 </a>
 								</form>
 							</div>

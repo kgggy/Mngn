@@ -48,10 +48,8 @@
 	<!-- Header (Topbar) -->
 	<header class="astino-header u-header">
 		<div class="u-header-left">
-			<a class="u-header-logo" href="mngMain.do"> <img
-				src="assets/logo.png" width="160"> <img
-				class="img-fluid u-logo-mobile" src="assets/img/logo-mobile.png"
-				width="50" alt="Stream Dashboard">
+			<a class="u-header-logo" href="home.do"> <img
+				src="assets/logo.png" width="160"> 
 			</a>
 		</div>
 
@@ -103,7 +101,7 @@
 
 						<!-- 공지사항 관리 -->
 						<li class="u-sidebar-nav-menu__item"><a
-							class="u-sidebar-nav-menu__link" href="boardList.do"> <i
+							class="u-sidebar-nav-menu__link active" href="boardList.do"> <i
 								class="far fa-edit u-sidebar-nav-menu__item-icon"></i> <span
 								class="u-sidebar-nav-menu__item-title">공지사항 관리</span>
 						</a></li>
@@ -228,9 +226,10 @@
 													훈련서비스는 회원님과 반려동물이 함께 이용하는 서비스입니다.</td>
 												<td>Admin</td>
 												<td>
-													<button type="button"
-														onclick="location.href='boardDetail.do' "
-														class="btn btn-outline-danger btn-sm">수정/삭제</button>
+													<button type="button" class="btn btn-outline-danger" data-toggle="modal" href="#exampleModalCenter" 
+															class="btn btn-outline-danger btn-sm">수정</button>
+													<button type="button" class="btn btn-outline-danger" href="#"
+															onClick="alert('삭제하겠습니까?')">삭제</button>
 												</td>
 											</tr>
 											<tr>
@@ -248,9 +247,10 @@
 													돌봄서비스는 회원님의 자택에서 이용하는 서비스입니다.</td>
 												<td>Admin</td>
 												<td>
-													<button type="button"
-														onclick="location.href='boardDetail.do' "
-														class="btn btn-outline-danger btn-sm">수정/삭제</button>
+													<button type="button" class="btn btn-outline-danger" data-toggle="modal" href="#exampleModalCenter" 
+															class="btn btn-outline-danger btn-sm">수정</button>
+													<button type="button" class="btn btn-outline-danger" href="#"
+															onClick="alert('삭제하겠습니까?')">삭제</button>
 												</td>
 											</tr>
 											<tr>
@@ -268,9 +268,10 @@
 													이용해주셔서 감사합니다. 산책서비스 이용시 목줄을 반드시 준비해주시기 바랍니다.</td>
 												<td>Admin</td>
 												<td>
-													<button type="button"
-														onclick="location.href='boardDetail.do' "
-														class="btn btn-outline-danger btn-sm">수정/삭제</button>
+													<button type="button" class="btn btn-outline-danger" data-toggle="modal" href="#exampleModalCenter" 
+															class="btn btn-outline-danger btn-sm">수정</button>
+													<button type="button" class="btn btn-outline-danger" href="#"
+															onClick="alert('삭제하겠습니까?')">삭제</button>
 												</td>
 											</tr>
 											<tr>
@@ -288,9 +289,10 @@
 													안내입니다.</td>
 												<td>Admin</td>
 												<td>
-													<button type="button"
-														onclick="location.href='boardDetail.do' "
-														class="btn btn-outline-danger btn-sm">수정/삭제</button>
+													<button type="button" class="btn btn-outline-danger" data-toggle="modal" href="#exampleModalCenter" 
+															class="btn btn-outline-danger btn-sm">수정</button>
+													<button type="button" class="btn btn-outline-danger" href="#"
+															onClick="alert('삭제하겠습니까?')">삭제</button>
 												</td>
 											</tr>
 											<tr>
@@ -308,9 +310,10 @@
 													모집합니다.</td>
 												<td>Admin</td>
 												<td>
-													<button type="button"
-														onclick="location.href='boardDetail.do' "
-														class="btn btn-outline-danger btn-sm">수정/삭제</button>
+													<button type="button" class="btn btn-outline-danger" data-toggle="modal" href="#exampleModalCenter" 
+															class="btn btn-outline-danger btn-sm">수정</button>
+													<button type="button" class="btn btn-outline-danger" href="#"
+															onClick="alert('삭제하겠습니까?')">삭제</button>
 												</td>
 											</tr>
 											<tr>
@@ -328,9 +331,10 @@
 													진심으로 감사드립니다.</td>
 												<td>Admin</td>
 												<td>
-													<button type="button"
-														onclick="location.href='boardDetail.do' "
-														class="btn btn-outline-danger btn-sm">수정/삭제</button>
+													<button type="button" class="btn btn-outline-danger" data-toggle="modal" href="#exampleModalCenter" 
+															class="btn btn-outline-danger btn-sm">수정</button>
+													<button type="button" class="btn btn-outline-danger" href="#"
+															onClick="alert('삭제하겠습니까?')">삭제</button>
 												</td>
 											</tr>
 											<tr>
@@ -348,14 +352,19 @@
 													시작합니다.</td>
 												<td>Admin</td>
 												<td>
-													<button type="button"
-														onclick="location.href='boardDetail.do' "
-														class="btn btn-outline-danger btn-sm">수정/삭제</button>
+													<button type="button" class="btn btn-outline-danger" data-toggle="modal" href="#exampleModalCenter" 
+															class="btn btn-outline-danger btn-sm">수정</button>
+													<button type="button" class="btn btn-outline-danger" href="#"
+															onClick="alert('삭제하겠습니까?')">삭제</button>
 												</td>
 											</tr>
 										</tbody>
 									</table>
 								</div>
+								<a href="boardForm.do" class="btn btn-danger btn-large float-right">
+                                        <i class="fa fa-plus"></i>
+                                        등록
+                                    </a>
 							</div>
 						</div>
 					</div>
@@ -392,6 +401,54 @@
 			<!-- End Footer -->
 		</div>
 	</main>
+
+	<!-- Large Size Modal-->
+		<div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3 class="modal-title" id="exampleModalLabel">공지사항 수정</h3>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<!-- Current Projects -->
+                    <div class="col-md-12 mb-4">
+                        <div class="card h-100">
+                            <div class="astino-pr-form card-body">
+                                 <form>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput">제  목</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="훈련서비스관련 공지사항">
+                                    </div>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput2">작성자</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="관리자">
+                                    </div>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput3">작성 날짜</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="22 Oct 2021">
+                                    </div>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput4">내  용</label>
+                                        <textarea class="form-control" id="formGroupExampleInput6" 
+                                        		placeholder="안녕하세요. HEYYO의 훈련서비스는 회원님과 반려동물이 함께 이용하는 서비스입니다."></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+						<button type="button" class="btn btn-outline-dangerr" herf="#" onClick="alert('수정하겠습니까?')" data-dismiss="modal">수정</button>
+					</div>
+                    </div>
+                    <!-- End Current Projects -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Large Size Modal-->
+
 
 	<!-- Global Vendor -->
 	<script src="assets/vendor/jquery/dist/jquery.min.js"></script>

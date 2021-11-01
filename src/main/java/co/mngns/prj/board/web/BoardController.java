@@ -12,12 +12,6 @@ public class BoardController {
 		return "client/rList";
 	}
 
-	@RequestMapping(value = "/boardDetail.do")
-	// 관리자 공지사항 상세보기
-	public String boardDetail() {
-		return "manager/board/boardDetail";
-	}
-
 	@RequestMapping(value = "/boardForm.do")
 	// 관리자 공지사항 등록
 	public String boardForm() {
@@ -27,7 +21,7 @@ public class BoardController {
 	@RequestMapping(value = "/boardList.do")
 	// 관리자 공지사항 목록
 	public String boardList() {
-		return "manager/board/boardList";
+		return "manager/board/boardList";  
 	}
 
 }

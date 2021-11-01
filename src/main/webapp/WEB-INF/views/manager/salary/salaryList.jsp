@@ -48,10 +48,8 @@
 	<!-- Header (Topbar) -->
 	<header class="astino-header u-header">
 		<div class="u-header-left">
-			<a class="u-header-logo" href="mngMain.do"> <img
-				src="assets/logo.png" width="160"> <img
-				class="img-fluid u-logo-mobile" src="assets/img/logo-mobile.png"
-				width="50" alt="Stream Dashboard">
+			<a class="u-header-logo" href="home.do"> <img
+				src="assets/logo.png" width="160"> 
 			</a>
 		</div>
 
@@ -147,7 +145,7 @@
 
 						<!-- 정산 관리 -->
 						<li class="u-sidebar-nav-menu__item clearfix"><a
-							class="u-sidebar-nav-menu__link" href="salesList.do"
+							class="u-sidebar-nav-menu__link active" href="salesList.do"
 							data-target="#subMenu2"> <i
 								class="fas fa-ticket-alt u-sidebar-nav-menu__item-icon"></i> <span
 								class="u-sidebar-nav-menu__item-title">판매 및 정산 관리</span> <i
@@ -229,9 +227,8 @@
 												<td class="text-success bg-soft-success inline">Delivered</td>
 												<td>IN332942</td>
 												<td>
-													<button type="button"
-														onclick="location.href='salesList.do' "
-														class="btn btn-outline-danger btn-sm">상세보기</button>
+													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
+                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
 												</td>
 											</tr>
 											<tr>
@@ -249,9 +246,8 @@
 												<td class="text-success bg-soft-success inline">Delivered</td>
 												<td>IN332942</td>
 												<td>
-													<button type="button"
-														onclick="location.href='salesList.do' "
-														class="btn btn-outline-danger btn-sm">상세보기</button>
+													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
+                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
 												</td>
 											</tr>
 											<tr>
@@ -269,9 +265,8 @@
 												<td class="text-danger bg-soft-danger inline">Pending</td>
 												<td>IN332942</td>
 												<td>
-													<button type="button"
-														onclick="location.href='salesList.do' "
-														class="btn btn-outline-danger btn-sm">상세보기</button>
+													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
+                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
 												</td>
 											</tr>
 											<tr>
@@ -289,9 +284,8 @@
 												<td class="text-danger bg-soft-danger inline">Pending</td>
 												<td>IN332942</td>
 												<td>
-													<button type="button"
-														onclick="location.href='salesList.do' "
-														class="btn btn-outline-danger btn-sm">상세보기</button>
+													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
+                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
 												</td>
 											</tr>
 											<tr>
@@ -309,9 +303,8 @@
 												<td class="text-danger bg-soft-danger inline">Pending</td>
 												<td>IN332942</td>
 												<td>
-													<button type="button"
-														onclick="location.href='salesList.do' "
-														class="btn btn-outline-danger btn-sm">상세보기</button>
+													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
+                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
 												</td>
 											</tr>
 											<tr>
@@ -329,9 +322,8 @@
 												<td class="text-success bg-soft-success inline">Delivered</td>
 												<td>IN332942</td>
 												<td>
-													<button type="button"
-														onclick="location.href='salesList.do' "
-														class="btn btn-outline-danger btn-sm">상세보기</button>
+													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
+                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
 												</td>
 											</tr>
 											<tr>
@@ -349,9 +341,8 @@
 												<td class="text-success bg-soft-success inline">Delivered</td>
 												<td>IN332942</td>
 												<td>
-													<button type="button"
-														onclick="location.href='salesList.do' "
-														class="btn btn-outline-danger btn-sm">상세보기</button>
+													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
+                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
 												</td>
 											</tr>
 											<tr>
@@ -369,9 +360,8 @@
 												<td class="text-danger bg-soft-danger inline">Pending</td>
 												<td>IN332942</td>
 												<td>
-													<button type="button"
-														onclick="location.href='salesList.do' "
-														class="btn btn-outline-danger btn-sm">상세보기</button>
+													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
+                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
 												</td>
 											</tr>
 											<tr>
@@ -389,9 +379,8 @@
 												<td class="text-danger bg-soft-danger inline">Pending</td>
 												<td>IN332942</td>
 												<td>
-													<button type="button"
-														onclick="location.href='salesList.do' "
-														class="btn btn-outline-danger btn-sm">상세보기</button>
+													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
+                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
 												</td>
 											</tr>
 											<tr>
@@ -409,9 +398,8 @@
 												<td class="text-danger bg-soft-danger inline">Pending</td>
 												<td>IN332942</td>
 												<td>
-													<button type="button"
-														onclick="location.href='salesList.do' "
-														class="btn btn-outline-danger btn-sm">상세보기</button>
+													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
+                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
 												</td>
 											</tr>
 										</tbody>
@@ -458,6 +446,63 @@
 			<!-- End Footer -->
 		</div>
 	</main>
+	
+				<!-- Large Size Modal-->
+		<div class="modal fade bd-example-modal-lg"  id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3 class="modal-title" id="exampleModalLabel">훈련사 수당 상세정보</h3>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<!-- Current Projects -->
+                    <div class="col-md-12 mb-4">
+                        <div class="card h-100">
+                            <div class="astino-pr-form card-body">
+                                <form>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput">아이디</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="heyyolove">
+                                    </div>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput2">이  름</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="고수">
+                                    </div>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput3">주  소</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="대구광역시 동구 안심로">
+                                    </div>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput4">가입날짜</label>
+                                        <span class="form-icon-wrapper">
+                                            <span class="form-icon form-icon--left">
+                                                <i class="fa fa-calendar form-icon__item"></i>
+                                            </span>
+                                            <input id="formGroupExampleInput4" class="form-control exp-date form-icon-input-left datepicker" type="email" placeholder="15 OCT 2021">
+                                        </span>
+                                    </div>
+                                    <div class="form-group d-flex align-items-center">
+                                        <label for="formGroupExampleInput5">특이사항</label>
+                                        <textarea class="form-control" id="formGroupExampleInput5" placeholder="달님(개), 별님(고양이) 돌봄서비스 자주 이용 고객"></textarea>
+                                    </div>
+                                 </form>
+                            </div>
+                        </div>
+                     <div class="modal-footer">
+						<button type="button" class="btn btn-outline-danger btn-sm" herf="" data-dismiss="modal">확인</button>
+					</div>
+                   </div>
+                    <!-- End Current Projects -->
+			    </div>
+			 </div>
+		 </div>
+	  </div>
+		<!-- Large Size Modal-->
+
+	
 
 	<!-- Global Vendor -->
 	<script src="assets/vendor/jquery/dist/jquery.min.js"></script>
