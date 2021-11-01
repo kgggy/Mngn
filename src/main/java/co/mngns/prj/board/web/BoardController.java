@@ -5,20 +5,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-<<<<<<< HEAD
-=======
 import co.mngns.prj.board.service.ReviewService;
->>>>>>> branch 'master' of https://github.com/kgggy/Mngn.git
 
 @Controller
 public class BoardController {
 	
-<<<<<<< HEAD
-=======
 	@Autowired
 	ReviewService rService;
 
->>>>>>> branch 'master' of https://github.com/kgggy/Mngn.git
 	@RequestMapping(value = "/rList.do")
 	// 이용후기 목록
 	public String rList(Model model) {
