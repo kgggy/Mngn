@@ -47,6 +47,6 @@
 	</beans:bean>
 
 	<context:component-scan
-		base-package="co.mngns.prj" />
+		base-package="co.mngns" />
 
 </beans:beans>
