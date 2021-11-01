@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.mngns.prj.board.map.ReviewMapper">
+
+<!-- criteria 를 적용한 게시판 페이징 조회 -->
+<select id="getListWithPaging" resultType="co.mngns.prj.board.vo.ReviewVO">
+	select * from review where review_no > 0
+	order by review_no desc, reg_dt desc
+	limit #{pageStart}, #{perPageNum}
+</select>
+
+<select id="reviewSelect" resultType="co.mngns.prj.board.vo.ReviewVO">
+	select c.name from review r, client c where r.client_no = c.client_no and review_no = #{review_no}
+</select>
+
+</mapper>

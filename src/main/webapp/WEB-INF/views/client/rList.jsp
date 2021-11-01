@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,7 +52,7 @@
 									<a href="#">April 07, 2020</a>
 								</div>
 								<div>
-									<a href="#">ㅇㅇㅇ 님</a>
+									<a href="#">${rList.name }</a>
 								</div>
 								<div>
 									<a href="#" class="meta-chat"><span class="fa fa-comment"></span>
