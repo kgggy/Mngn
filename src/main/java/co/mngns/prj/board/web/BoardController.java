@@ -19,6 +19,13 @@ public class BoardController {
 		model.addAttribute("rLists", rService.reviewSelectList());
 		return "client/rList";
 	}
+	
+	@RequestMapping(value = "/cntReview.do")
+	// 사용자 서비스 이용 내역 및 후기
+	public String myReview(Model model) {
+		model.addAttribute("myReviews", rService.myReviewList());
+		return "client/cntReview";
+	}
 
 	@RequestMapping(value = "/boardForm.do")
 	// 관리자 공지사항 등록

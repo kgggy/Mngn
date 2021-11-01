@@ -46,4 +46,10 @@ public class ReviewServiceImpl implements ReviewService {
 		// 페이징 처리
 		return null;
 	}
+
+	@Override
+	public List<ReviewVO> myReviewList() {
+		// 내가 작성한 후기
+		return map.myReviewList();
+	}
 }

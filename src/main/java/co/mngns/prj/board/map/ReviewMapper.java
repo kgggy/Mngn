@@ -13,5 +13,6 @@ public interface ReviewMapper {
 	int reviewDelete(ReviewVO vo);
 	
 	List<ReviewVO> getListWithPaging(Criteria cri); //페이징처리
+	List<ReviewVO> myReviewList(); //내가 작성한 리뷰 리스트
 	
 }

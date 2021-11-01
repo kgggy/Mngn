@@ -16,12 +16,6 @@ public class SvcController {
 	@Autowired
 	ReserListService rlist;
 
-	@RequestMapping(value = "/cntReview.do")
-	// 사용자 서비스 이용 내역 및 후기
-	public String myReview() {
-		return "client/cntReview";
-	}
-
 	@RequestMapping(value = "/careDc.do")
 	// 돌봄서비스 설명
 	public String careDc() {
@@ -97,7 +91,7 @@ public class SvcController {
 	@RequestMapping(value = "/trnSal.do")
 	public String trnSal() {
 		// 훈련사 의뢰 및 정산 관리 페이지
-		return "trainer/trnSal";
+		return "trnSal";
 	}
 
 	@RequestMapping(value = "/salesList.do")
