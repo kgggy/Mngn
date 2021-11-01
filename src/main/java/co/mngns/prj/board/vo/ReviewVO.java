@@ -15,6 +15,7 @@ public class ReviewVO {
 	private int reser_no;
 	private int client_no;
 	
-	private ClientVO clientVo;
+	private String name;
+	
 
 }

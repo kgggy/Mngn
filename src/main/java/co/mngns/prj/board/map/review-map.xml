@@ -9,8 +9,12 @@
 	limit #{pageStart}, #{perPageNum}
 </select>
 
-<select id="reviewSelect" resultType="co.mngns.prj.board.vo.ReviewVO">
-	select c.name from review r, client c where r.client_no = c.client_no and review_no = #{review_no}
+<select id="reviewSelectList" resultType="co.mngns.prj.board.vo.ReviewVO">
+	select review.*, client.name from review left join client on review.client_id = client.client_id
+</select>
+
+<select id="myReviewList" resultType="co.mngns.prj.board.vo.ReviewVO">
+	select review.*, client.name from review left join client on review.client_id = client.client_id  where review.client_id = #{client_id} 
 </select>
 
 </mapper>
