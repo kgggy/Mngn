@@ -12,9 +12,9 @@
 	
 	<!-- 공지사항 전체보기 -->
 	<select id="boardSelectList" resultType="co.mngns.prj.board.vo.BoardVO">
-		select b.board_no, b.ttl, b.reg_dt
-		from board b
-		order by b.board_no desc
+		select board_no, ttl, reg_dt
+		from board 
+		order by board_no desc
 	</select>
 	
 	<!-- 공지사항 1건 상세보기 -->
