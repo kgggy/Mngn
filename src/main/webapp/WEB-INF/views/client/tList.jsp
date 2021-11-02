@@ -66,7 +66,7 @@
 									<img src="img/testmonial/1.png" alt="">
 								</div>
 								<div class="test_content">
-									<h4>${trainer.client_id }</h4>
+									<h4 style="heignt:'50px'">${trainer.name } 훈련사</h4>
 									<span>대구시 달서구</span> <span>${trainer.trn_avrg }</span>
 									<p>${trainer.intro_ttl }</p>
 								</div>
@@ -99,7 +99,6 @@
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
 		function execution_daum_address() {
-
 			new daum.Postcode(
 					{
 						oncomplete : function(data) {
@@ -107,7 +106,6 @@
 							document.getElementById("address_kakao").value = data.address; // 주소 넣기
 						}
 					}).open();
-
 		}
 
 		function search() {
@@ -149,6 +147,7 @@
 			success: function (d) {
 		   //totalData 구하기
 			   totalData = d.data.length;
+			}
 		 });
  
  		//글 목록 표시 호출 (테이블 생성)

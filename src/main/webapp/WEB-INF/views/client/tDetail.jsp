@@ -253,7 +253,7 @@ span {
 						<table>
 							<tr>
 								<td style="width: 130px;">이름</td>
-								<td>${client.name }</td>
+								<td>${trainer.name }</td>
 							</tr>
 							<tr>
 								<td>출생년도</td>

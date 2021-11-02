@@ -62,6 +62,104 @@
 		}
 	});
 </script>
+<style>
+.modal2 {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	padding-top: 100px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* The Modal (background) */
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	padding-top: 100px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 30%;
+	height: auto;
+	top: 30%;
+	border-radius: 20px;
+	top: 30%;
+}
+
+.modal2-content {
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 30%;
+	height: auto;
+	top: 30%;
+	border-radius: 20px;
+	top: 30%;
+}
+
+#card {
+	margin: 0 auto;
+	width: 100px;
+}
+
+.credit {
+	margin-left: 20px;
+}
+
+/* The Close Button */
+.close {
+	color: #aaaaaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover, .close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+
+#two {
+	margin-left: 43px;
+}
+
+#three {
+	margin: 0 40px;
+}
+
+tr {
+	border-bottom: 1px solid #ff3500;
+	font-size: 15px;
+	height: 40px;
+}
+
+#content {
+	font-weight: bold;
+	font-size: 25px;
+	margin-left: 150px;
+}
+
+</style>
 </head>
 <body>
 	<!-- testmonial_area_start  -->

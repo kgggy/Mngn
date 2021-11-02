@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import co.mngns.prj.board.service.BoardService;
 import co.mngns.prj.board.service.ReviewService;
+import co.mngns.prj.board.vo.ReviewVO;
 
 @Controller
 public class BoardController {
@@ -26,8 +27,9 @@ public class BoardController {
 	
 	@RequestMapping(value = "/cntReview.do")
 	// 사용자 서비스 이용 내역 및 후기
-	public String myReview(Model model) {
-		model.addAttribute("myReviews", rService.myReviewList());
+	public String myReview(Model model, ReviewVO vo) {
+		vo.setClient_id(1);
+		model.addAttribute("myReviews", rService.myReviewList(vo));
 		return "client/cntReview";
 	}
 

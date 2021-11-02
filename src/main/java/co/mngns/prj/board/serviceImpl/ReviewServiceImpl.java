@@ -48,8 +48,9 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public List<ReviewVO> myReviewList() {
+	public List<ReviewVO> myReviewList(ReviewVO vo) {
 		// 내가 작성한 후기
-		return map.myReviewList();
+		return map.myReviewList(vo);
 	}
+
 }

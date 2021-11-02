@@ -475,20 +475,20 @@ article {
 				<table class="table table-striped table-hover">
 					<thead>
 						<tr>
-							<th>번호</th>
-							<th>이용&nbsp;서비스</th>
-							<th>담당&nbsp;훈련사</th>
+							<th style="width:60px">번호</th>
+							<th style="width:150px">이용&nbsp;서비스</th>
+							<th style="width:130px">담당&nbsp;훈련사</th>
 							<th>내용</th>
-							<th>별점</th>
-							<th>작성일자</th>
-							<th></th>
+							<th style="width:100px">별점</th>
+							<th style="width:150px">작성일자</th>
+							<th style="width:150px"></th>
 						</tr>
 					</thead>
 					<tbody align="center">
-					<c:forEach items="myReviews" var="myReview">
+					<c:forEach items="${myReviews }" var="myReview">
 						<tr data-status="active">
 							<td>${myReview.review_no }</td>
-							<td>(1시간)</td>
+							<td>${myReview.knd_name }(${myReview.term }시간)</td>
 							<td>${myReview.name }</td>
 							<td>${myReview.cntn }</td>
 							<td>${myReview.star_rate }</td>
@@ -611,7 +611,7 @@ article {
 						<textarea id="eml_cnt"
 							style="width: 100%; margin-top: 0px; margin-bottom: 0px; height: 286px; resize: none;"
 							name="eml_cnt" rows="10" class="form-control"
-							placeholder="내용을 입력해 주세요."></textarea>
+							placeholder="주소입력하세요."></textarea>
 						<br> <br> <img id="camera_img" src="img/camera.png"
 							style="height: 90px; width: 130px"> <input type="file"
 							id="file" name="file" accept="image/gif,image/jpeg,image/png"
@@ -621,7 +621,7 @@ article {
 				</div>
 				<div class="modal-footer">
 					<button type="button" id="okbutton" class="btn btn-success"
-						data-dismiss="modal">입력</button>
+						data-dismiss="modal">수정</button>
 					<button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
 				</div>
 			</div>

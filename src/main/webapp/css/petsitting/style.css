@@ -84,7 +84,8 @@
 	border: 1px solid rgba(0, 0, 0, 0.2);
 	border-radius: 0.3rem;
 	outline: 0;
-	top: 300px;
+	top: 220px;
+	height: 697px;
 }
 
 .modal-backdrop {

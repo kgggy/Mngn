@@ -9,7 +9,5 @@ public class SvcVO {
 	private int term;
 	private int rpc;
 	
-	public SvcVO() {
-		
-	}
+	
 }

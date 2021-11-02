@@ -74,4 +74,9 @@ public class ReserListServiceImpl implements ReserListService {
 		return map.clientAdd(client);
 	}
 
+	@Override
+	public List<ClientVO> trnSelectList(ClientVO client) {
+		return map.trnSelectList(client);
+	}
+
 }
