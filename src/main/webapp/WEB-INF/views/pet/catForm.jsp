@@ -36,11 +36,7 @@
 
 		var loginForm = document.loginForm;
 		var picture = loginForm.picture.value;
-<<<<<<< HEAD
 		var knd = loginForm.knd.value;
-=======
-		var breed = loginForm.breed.value;
->>>>>>> refs/heads/master
 		var name = loginForm.name.value;
 		var gender = loginForm.gender.value;
 		var age = loginForm.age.value;
@@ -94,11 +90,8 @@
 			<div class="card card-5">
 				<div class="card-body">
 
-<<<<<<< HEAD
+
 				<form  name = "loginForm" action="petInsert.do">
-=======
-				<form  name = "loginform" action="aniList.do">
->>>>>>> refs/heads/master
 					<div class="form-row">
 						<div class="picture">냥이사진</div>
 						<div class="value">
@@ -161,7 +154,7 @@
 					<div class="form-row p-t-20">
 						<label class="gender"> 냥이 성별</label>
 						<div class="p-t-15">
-							<label class="radio-container m-r-55"> 수컷 <input
+							<label class="radio-container m-r-55"> 수컷 <input 
 <<<<<<< HEAD
 								type="radio" checked="checked" name="gen" value="M"> <span
 =======

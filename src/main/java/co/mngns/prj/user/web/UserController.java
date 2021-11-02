@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import co.mngns.prj.user.service.ClientService;
 import co.mngns.prj.user.service.TrainerService;
+import co.mngns.prj.user.vo.ClientVO;
 
 @Controller
 public class UserController {
@@ -14,20 +15,20 @@ public class UserController {
 	@Autowired
 	TrainerService trnService;
 	
-	/*
-	 * @Autowired ClientService cntService;
-	 */
-
+	@Autowired ClientService cntService;
+	 
 	@RequestMapping(value = "/login.do")
 	// 로그인 페이지
-	public String login() {
-		return "login";
+	public String login(Model model, ClientVO clientvo){
+		model.addAttribute("client",  cntService.clientSelectList());
+		return "notTiles/login";
 	}
 
 	@RequestMapping(value = "/joinForm.do")
 	// 회원가입 페이지
-	public String joinForm() {
-		return "joinForm";
+	public String joinForm(Model model, ClientVO clientvo) {
+		model.addAttribute("client", cntService.clientSelectList());
+		return "notTiles/joinForm";
 	}
 
 	@RequestMapping(value = "/cntProfile.do")
@@ -73,5 +74,6 @@ public class UserController {
 		return "trainer/trnProfile";
 	}
 
+	
 	
 }

@@ -6,11 +6,9 @@ import lombok.Data;
 
 @Data
 public class ClientVO {
+
 	private int client_id;
-<<<<<<< HEAD
 	private int client_idCheck;
-=======
->>>>>>> refs/heads/master
 	private String pwd;
 	private String pwd_check;	
 	private String name;
