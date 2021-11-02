@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import co.mngns.prj.board.service.BoardService;
 import co.mngns.prj.board.service.ReviewService;
 
 @Controller
@@ -12,7 +13,7 @@ public class BoardController {
 	
 	@Autowired
 	ReviewService rService;
-
+	
 	@RequestMapping(value = "/rList.do")
 	// 이용후기 목록
 	public String rList(Model model) {
@@ -27,16 +28,19 @@ public class BoardController {
 		return "client/cntReview";
 	}
 
-	@RequestMapping(value = "/boardForm.do")
-	// 관리자 공지사항 등록
-	public String boardForm() {
-		return "manager/board/boardForm";
-	}
-
+	@Autowired
+	BoardService bService;
+	
 	@RequestMapping(value = "/boardList.do")
 	// 관리자 공지사항 목록
 	public String boardList() {
 		return "manager/board/boardList";  
+	}
+	
+	@RequestMapping(value = "/boardForm.do")
+	// 관리자 공지사항 등록
+	public String boardForm() {
+		return "manager/board/boardForm";
 	}
 
 }
