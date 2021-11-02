@@ -34,7 +34,7 @@ public class BoardController {
 	// 사용자 서비스 이용 내역 및 후기
 	public String myReview(Model model, ReviewVO vo, ReserListVO reser) {
 		vo.setClient_id(1);
-		reser.setClient_id1(1);
+		reser.setClient_id1(3);
 		model.addAttribute("myReviews", rService.myReviewList(vo));
 		model.addAttribute("serviceUses", reserService.serviceUse(reser));
 		return "client/cntReview";

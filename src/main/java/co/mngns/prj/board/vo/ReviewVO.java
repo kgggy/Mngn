@@ -9,6 +9,7 @@ public class ReviewVO {
 	private int review_no;
 	private String cntn;
 	private int star_rate;
+	private String star_shape;
 	private Date reg_dt;
 	private int file_no;
 	private int reser_no;

@@ -16,6 +16,7 @@ public class ReserListVO {
 	private int svc_bgn_tm;
 	private int svc_end_tm;
 	private int svc_stts;
+	private String status;
 	private int client_id1;
 	private int svc_id;
 	private int client_id2;

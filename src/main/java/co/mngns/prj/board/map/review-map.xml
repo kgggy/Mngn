@@ -10,11 +10,16 @@
 </select>
 
 <select id="reviewSelectList" resultType="co.mngns.prj.board.vo.ReviewVO">
-	select review.*, client.name from review left join client on review.client_id = client.client_id
+	select review.*, 
+		   case review.star_rate when 1 then '★' when 2 then '★★' when 3 then '★★★' when 4 then '★★★★' else '★★★★★' end as star_shape,
+		   client.name 
+	  from review 
+	  left join client on review.client_id = client.client_id
 </select>
 
 <select id="myReviewList" resultType="co.mngns.prj.board.vo.ReviewVO">
 	select r.*, 
+			case r.star_rate when 1 then '★' when 2 then '★★' when 3 then '★★★' when 4 then '★★★★' else '★★★★★' end as star_shape,
 			c.name, 	
 			case s.knd when 1 then '돌봄 서비스' when 2 then '산책 서비스' else '훈련 서비스' end as knd_name, 
 			s.term

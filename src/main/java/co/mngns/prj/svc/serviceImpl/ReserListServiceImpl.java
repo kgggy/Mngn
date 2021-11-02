@@ -79,4 +79,10 @@ public class ReserListServiceImpl implements ReserListService {
 		return map.trnSelectList(client);
 	}
 
+	@Override
+	public List<ReserListVO> serviceUse(ReserListVO reser) {
+		// 서비스 이용 목록보기
+		return map.serviceUse(reser);
+	}
+
 }

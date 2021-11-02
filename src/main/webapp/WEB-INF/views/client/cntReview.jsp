@@ -424,7 +424,7 @@ article {
 							<td>${serUse. knd_name}(${serUse.term }시간)</td>
 							<td><a href="#">${serUse. name} 훈련사</a></td>
 							<td>${serUse. prc}원</td>
-							<td><span class="label label-success">${serUse. svc_stts}</span></td>
+							<td><span class="label label-success">${serUse. status}</span></td>
 							<td><a href="#" class="btn btn-sm manage"
 								data-toggle="modal" data-target="#reviewModal">후기 작성</a></td>
 						</tr>
@@ -476,7 +476,7 @@ article {
 								<td>${myReview.knd_name }(${myReview.term }시간)</td>
 								<td>${myReview.name }</td>
 								<td>${myReview.cntn }</td>
-								<td>${myReview.star_rate }</td>
+								<td>${myReview.star_shape }</td>
 								<td>${myReview.reg_dt }</td>
 								<td><a href="#" class="btn btn-sm manage"
 									data-toggle="modal" data-target="#reviewUpdate">수정</a>&nbsp;&nbsp;
