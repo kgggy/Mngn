@@ -11,7 +11,7 @@
 		if (time.length == 0) {
 			alert("시간을 선택해주세요.")
 		} else {
-			location.href = "tResv.do";
+			$("#form").submit();
 		}
 	}
 	$(function() {
@@ -56,6 +56,15 @@
 	});
 </script>
 <style>
+.boxed-btn3 {
+	border: none;
+}
+
+.boxed-btn3:hover {
+	opacity: 0.9;
+	cursor: pointer;
+}
+
 span {
 	padding: 10px 9%;
 	margin-top: 5px;
@@ -79,10 +88,6 @@ span {
 
 #three {
 	margin: 0 40px;
-}
-
-#emp {
-	margin-left: 50px;
 }
 
 /* The Modal (background) */
@@ -124,6 +129,10 @@ span {
 	color: #000;
 	text-decoration: none;
 	cursor: pointer;
+}
+
+#emp {
+	margin-left: 50px;
 }
 </style>
 </head>
@@ -207,19 +216,22 @@ span {
 	<!-- testmonial_area_start  -->
 	<div id="light" class="modal">
 		<div class="white_content modal-content" align="center">
-			<div>
-				<div class="time">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<a class="genric-btn danger-border circle arrow">1시간</a> <a
-						class="genric-btn danger-border circle arrow" id="two">2시간</a> <a
-						class="genric-btn danger-border circle arrow" id="three">3시간</a>
-				</div>
+			<form action="tResv.do" id="form">
 				<div>
-					<span>₩18,000</span><span>₩34,000</span><span>₩50,000</span>
+					<div class="time">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<a class="genric-btn danger-border circle arrow">1시간</a> <a
+							class="genric-btn danger-border circle arrow" id="two">2시간</a> <a
+							class="genric-btn danger-border circle arrow" id="three">3시간</a>
+					</div>
+					<div>
+						<span>₩18,000</span><span>₩34,000</span><span>₩50,000</span>
+					</div>
 				</div>
-			</div>
-			<br /> <a href="javascript:resv()" class="boxed-btn3" id="rbtn">예약
-				훈련</a>
+				<br />
+				<button type="button" class="boxed-btn3" onclick="resv()">예약
+					훈련</button>
+			</form>
 		</div>
 	</div>
 </body>

@@ -5,13 +5,13 @@ import java.util.List;
 import co.mngns.prj.svc.vo.SalaryVO;
 
 public interface SalaryService {
-	List<SalaryVO> SalSelectList();
+	public List<SalaryVO> SalSelectList();
 
-	int SalSelect(SalaryVO sal);
+	public int SalSelect(SalaryVO sal);
 
-	int SalInsert(SalaryVO sal);
+	public int SalInsert(SalaryVO sal);
 
-	int SalUpdate(SalaryVO sal);
+	public int SalUpdate(SalaryVO sal);
 	
-	int SalDelete(SalaryVO sal);
+	public int SalDelete(SalaryVO sal);
 }

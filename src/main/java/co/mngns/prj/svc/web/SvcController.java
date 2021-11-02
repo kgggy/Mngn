@@ -38,11 +38,9 @@ public class SvcController {
 	// 돌봄 상세 예약
 	public String cResv(Model model, ReserListVO reser, PetVO pet, ClientVO client) {
 		pet.setClient_id(1);
-		client.setClient_id(3);
-		reser.setClient_id(1);
+		client.setRole(2);
 		model.addAttribute("petList", rlist.petSelectList(pet));
-		model.addAttribute("payment", rlist.reserSelect(reser));
-		
+		model.addAttribute("trnSelect", rlist.trnSelectList(client));
 		return "service/cResv";
 	}
 
@@ -82,10 +80,11 @@ public class SvcController {
 		return "service/payResult";
 	}
 
-	@RequestMapping(value = "/payment.do")
+	@RequestMapping(value = "/payMethod.do")
 	// 결제창
-	public String payment() {
-		return "service/payment";
+	public String payment(Model model, ReserListVO reser) {
+		reser.setReser_no(1);
+		return "service/payMethod";
 	}
 
 	@RequestMapping(value = "/trnSal.do")
