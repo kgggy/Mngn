@@ -44,20 +44,82 @@
 }
 </style>
 
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-	$(function() {
+		function search() {
+			// Declare variables
+			var div, filter, span, txtValue;
+			div = document.getElementById("tDiv");
+			span = document.getElementsByTagName("span");
+			filter = document.getElementById('span1').innerHTML;
+			console.log(filter);
+		
+			// Loop through all table rows, and hide those who don't match the search query
+			for (i = 0; i < span.length; i++) {
+				td = tr[i].getElementsByTagName("td")[0];
+				if (td) {
+					txtValue = td.textContent || td.innerText;
+					if (txtValue.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+				}
+			}
+		}
+
+
+		//페이징 처리
+		let totalData; //총 데이터 수
+		let dataPerPage; //한 페이지에 나타낼 글 수
+		let pageCount = 10; //페이징에 나타낼 페이지 수
+		let globalCurrentPage=1; //현재 페이지
+		
+		$(document).ready(function () {
+		 //dataPerPage 선택값 가져오기
+		 dataPerPage = $("#dataPerPage").val();
+		
+		 $.ajax({ // ajax로 데이터 가져오기
+			method: "GET",
+			url: "https://url/data?" + data,
+			dataType: "json",
+			success: function (d) {
+		   //totalData 구하기
+			   totalData = d.data.length;
+		 });
+		
+			//글 목록 표시 호출 (테이블 생성)
+		 displayData(1, dataPerPage);
+		
+		 //페이징 표시 호출
+		 paging(totalData, dataPerPage, pageCount, 1);
+		});
+
+ 
+<!-- 	$(function() {
 		boardSelect();
-		boardSelectList();
+		boardList();
 		boardInsert();
 		boardUpdate();
 		boardDelete();
 	});
 	
+    //공지사항 전체조회
+	function boardList() {
+    	$.ajax({
+    		url : "/boardList.do",
+    		method : "get",
+    		dataType : "json",
+    		success : boardListResult
+    	});
+    }
+		 
+		
 	
 	//공지사항 단건조회
 	function boardSelect() {
 		$.ajax({
-			url : "/boardList.do",
+			url : "",
 			method : "get",
 			dataType : "json",
 			success : userListResult
@@ -74,7 +136,7 @@
 	}// end 공지사항 단건조회 화면구현
 	
 	
-	//공지사항 전체조회
+
 	
 	//공지사항 등록
 	function boardInsert() {
@@ -114,9 +176,9 @@
 	
 	function boardDelete() {
 		window.alert('정말 삭제하시겠습니까?');
-	};
+	};-->
 	
-</script>
+</script> 
 
 </head>
 <!-- End Head -->
@@ -259,16 +321,11 @@
 						<div class="card h-100">
 							<header class="card-header d-flex align-items-center">
 								<h2 class="h2 card-header-title">공지사항 List</h2>
-
-								<!-- Card Header Icon -->
-								<ul class="list-inline ml-auto mb-0">
-								</ul>
-								<!-- End Card Header Icon -->
 							</header>
 
 							<div class="card-body">
 								<div class="table-responsive">
-									<table class="table table-hover">
+									<table class="table table-hover" id="boardTable">
 										<thead>
 											<tr>
 												<th scope="col" class="text-dark">
@@ -294,7 +351,7 @@
                                                         <label class="custom-control-label" for="customCheck2"><span></span></label>
                                                     </div>
                                                 </td>
-                                                <td class="text-danger">${trainer.client_id }</td>
+                                                <td class="text-danger">"${trainer.client_id }"</td>
                                                 <td>Company Name</td>
                                                 <td>22 June 2020</td>
                                                 <td class="text-danger">$200.00</td>
@@ -302,22 +359,24 @@
                                                 <td>IN332942</td>
                                                 <td><img src="assets/img/pr-menu-dot.png" alt=""></td>
                                             </tr>
-										  <tr>
-												<td>
-													<div class="custom-control custom-checkbox mb-2">
-														<input id="customCheck2"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck2"><span></span></label>
+												<c:forEach items="${boards }" var="board">
+												 <tr>
+													<div class="testmonial_wrap">
+														<div class="single_testmonial d-flex align-items-center"
+															onclick="location.href='boardList.do'">
+															<div class="test_content">
+																<td>${board.board_id }</td>
+																<td>${board.ttl }</td> 
+																<td>${board.cntn }</td>
+																<td>${board.mngr_id }</td>
+																<td>${board.reg_dt }</td>
+															</div>
+														</div>
 													</div>
-												</td>
-													<td class="text-danger">${board.board_no } </td>
-												 	<c:forEach var="board" items="${boards}"> 
-														<td>${board.board_no } </td>
-														<td>${board.ttl } </td>
-														<td>${board.ttl }</td>
-														<td>${board.reg_dt } </td>
-												 	</c:forEach>	 
-										 <tr>
+													<br>
+													<br>
+												 </tr> 
+												</c:forEach>
 												<td>
 													<div class="custom-control custom-checkbox mb-2">
 														<input id="customCheck2"
@@ -327,7 +386,7 @@
 												</td>
 												<td class="text-danger">003456</td>
 												<td>훈련서비스관련</td>
-												<!-- <td colspan="2" class="text-danger">안녕하세요. HEYYO의
+												<td colspan="2" class="text-danger">안녕하세요. HEYYO의
 													훈련서비스는 회원님과 반려동물이 함께 이용하는 서비스입니다.</td>
 												<td>관리자</td>
 												<td>22 June 2020</td>
@@ -337,7 +396,7 @@
 														<input type="button" class="btn btn-outline-danger" value="삭제"
 																id="btnDelete" href="#" onClick="alert('삭제하겠습니까?')"/>
 												</td>
-											</tr> -->
+											</tr>
 											<!-- <tr>
 												<td>
 													<div class="custom-control custom-checkbox mb-2">
@@ -367,7 +426,6 @@
 						</div>
 					</div>
 					<!-- End Current Projects -->
-				</div>
 				<div class="row justify-content-between align-items-center mb-4">
 					<div class="col-sm">
 						<nav aria-label="Bootstrap Pagination Example">

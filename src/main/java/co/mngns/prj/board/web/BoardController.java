@@ -14,6 +14,9 @@ public class BoardController {
 	@Autowired
 	ReviewService rService;
 	
+	@Autowired
+	BoardService bService;
+	
 	@RequestMapping(value = "/rList.do")
 	// 이용후기 목록
 	public String rList(Model model) {
@@ -28,13 +31,13 @@ public class BoardController {
 		return "client/cntReview";
 	}
 
-	@Autowired
-	BoardService bService;
+
 	
 	@RequestMapping(value = "/boardList.do")
 	// 관리자 공지사항 목록
-	public String boardList() {
-		return "manager/board/boardList";  
+	public String boardList(Model model) {
+		model.addAttribute("boards", bService.boardList());
+		return "manager/board/boardList";
 	}
 	
 	@RequestMapping(value = "/boardForm.do")

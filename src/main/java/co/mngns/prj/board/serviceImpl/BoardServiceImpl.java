@@ -37,7 +37,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override //공지사항 목록조회
 	public List<BoardVO> boardList() {
-		return map.BoardList();
+		return map.boardList();
 	}
 	
 

@@ -11,14 +11,14 @@
 	</resultMap> -->
 	
 	<!-- 공지사항 전체보기 -->
-	<select id="boardSelectList" resultType="co.mngns.prj.board.vo.BoardVO">
-		select b.board_no, b.ttl, b.reg_dt
-		from board b
-		order by b.board_no desc
+	<select id="boardList" resultType="co.mngns.prj.board.vo.BoardVO">
+		select *
+		from board 
+		order by board_no desc
 	</select>
 	
 	<!-- 공지사항 1건 상세보기 -->
-	<select id="boardList" resultType="co.mngns.prj.board.vo.BoardVO">
+	<select id="boardSelect" resultType="co.mngns.prj.board.vo.BoardVO">
 		select *
 		from board 
 		<!-- where board_id = #{board_id} -->

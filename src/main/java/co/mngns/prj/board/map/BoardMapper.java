@@ -5,7 +5,7 @@ import java.util.List;
 import co.mngns.prj.board.vo.BoardVO;
 
 public interface BoardMapper {
-	List<BoardVO> BoardList();
+	List<BoardVO> boardList();
 	BoardVO boardSelect(BoardVO vo);
 	int boardInsert(BoardVO vo);
 	int boardUpdate(BoardVO vo);
