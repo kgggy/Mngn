@@ -13,9 +13,11 @@ public class ReviewVO {
 	private Date reg_dt;
 	private int file_no;
 	private int reser_no;
-	private int client_no;
+	private int client_id;
 	
 	private String name;
-	
+	private int knd;
+	private String knd_name;
+	private int term;
 
 }
