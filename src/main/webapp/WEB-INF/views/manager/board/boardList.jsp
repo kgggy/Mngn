@@ -44,100 +44,7 @@
 }
 </style>
 
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-		function search() {
-			// Declare variables
-			var div, filter, span, txtValue;
-			div = document.getElementById("tDiv");
-			span = document.getElementsByTagName("span");
-			filter = document.getElementById('span1').innerHTML;
-			console.log(filter);
-		
-			// Loop through all table rows, and hide those who don't match the search query
-			for (i = 0; i < span.length; i++) {
-				td = tr[i].getElementsByTagName("td")[0];
-				if (td) {
-					txtValue = td.textContent || td.innerText;
-					if (txtValue.toUpperCase().indexOf(filter) > -1) {
-						tr[i].style.display = "";
-					} else {
-						tr[i].style.display = "none";
-					}
-				}
-			}
-		}
-
-
-		//페이징 처리
-		let totalData; //총 데이터 수
-		let dataPerPage; //한 페이지에 나타낼 글 수
-		let pageCount = 10; //페이징에 나타낼 페이지 수
-		let globalCurrentPage=1; //현재 페이지
-		
-		$(document).ready(function () {
-		 //dataPerPage 선택값 가져오기
-		 dataPerPage = $("#dataPerPage").val();
-		
-		 $.ajax({ // ajax로 데이터 가져오기
-			method: "GET",
-			url: "https://url/data?" + data,
-			dataType: "json",
-			success: function (d) {
-		   //totalData 구하기
-			   totalData = d.data.length;
-		 });
-		
-			//글 목록 표시 호출 (테이블 생성)
-		 displayData(1, dataPerPage);
-		
-		 //페이징 표시 호출
-		 paging(totalData, dataPerPage, pageCount, 1);
-		});
-
- 
-<!-- 	$(function() {
-		boardSelect();
-		boardList();
-		boardInsert();
-		boardUpdate();
-		boardDelete();
-	});
-	
-    //공지사항 전체조회
-	function boardList() {
-    	$.ajax({
-    		url : "/boardList.do",
-    		method : "get",
-    		dataType : "json",
-    		success : boardListResult
-    	});
-    }
-		 
-		
-	
-	//공지사항 단건조회
-	function boardSelect() {
-		$.ajax({
-			url : "",
-			method : "get",
-			dataType : "json",
-			success : userListResult
-		});
-	}//end 공지사항 단건조회
-	
-	//공지사항 단건조회 화면구현
-	function boardSelectResult(data) {
-		$("tbody").empty();
-		for (i=0, i< data.length; i++) {
-			var item = data[i];
-			$('tbody').append(makeTr(item));
-		}
-	}// end 공지사항 단건조회 화면구현
-	
-	
-
-	
 	//공지사항 등록
 	function boardInsert() {
 		//등록 버튼 클릭
@@ -176,9 +83,9 @@
 	
 	function boardDelete() {
 		window.alert('정말 삭제하시겠습니까?');
-	};-->
+	};
 	
-</script> 
+</script>
 
 </head>
 <!-- End Head -->
@@ -188,7 +95,7 @@
 	<header class="astino-header u-header">
 		<div class="u-header-left">
 			<a class="u-header-logo" href="home.do"> <img
-				src="assets/logo.png" width="160"> 
+				src="assets/logo.png" width="160">
 			</a>
 		</div>
 
@@ -240,8 +147,8 @@
 
 						<!-- 공지사항 관리 -->
 						<li class="u-sidebar-nav-menu__item"><a
-							class="u-sidebar-nav-menu__link active" href="boardList.do"> <i
-								class="far fa-edit u-sidebar-nav-menu__item-icon"></i> <span
+							class="u-sidebar-nav-menu__link active" href="boardList.do">
+								<i class="far fa-edit u-sidebar-nav-menu__item-icon"></i> <span
 								class="u-sidebar-nav-menu__item-title">공지사항 관리</span>
 						</a></li>
 						<!-- End 공지사항 관리 -->
@@ -321,11 +228,16 @@
 						<div class="card h-100">
 							<header class="card-header d-flex align-items-center">
 								<h2 class="h2 card-header-title">공지사항 List</h2>
+
+								<!-- Card Header Icon -->
+								<ul class="list-inline ml-auto mb-0">
+								</ul>
+								<!-- End Card Header Icon -->
 							</header>
 
 							<div class="card-body">
 								<div class="table-responsive">
-									<table class="table table-hover" id="boardTable">
+									<table class="table table-hover">
 										<thead>
 											<tr>
 												<th scope="col" class="text-dark">
@@ -343,94 +255,44 @@
 											</tr>
 										</thead>
 
-										<tbody>
-										<tr>
-                                                <td>
-                                                    <div class="custom-control custom-checkbox mb-2">
-                                                        <input id="customCheck2" class="custom-control-input is-invalid" type="checkbox">
-                                                        <label class="custom-control-label" for="customCheck2"><span></span></label>
-                                                    </div>
-                                                </td>
-                                                <td class="text-danger">"${trainer.client_id }"</td>
-                                                <td>Company Name</td>
-                                                <td>22 June 2020</td>
-                                                <td class="text-danger">$200.00</td>
-                                                <td class="text-success bg-soft-success inline">Delivered</td>
-                                                <td>IN332942</td>
-                                                <td><img src="assets/img/pr-menu-dot.png" alt=""></td>
-                                            </tr>
-												<c:forEach items="${boards }" var="board">
-												 <tr>
-													<div class="testmonial_wrap">
-														<div class="single_testmonial d-flex align-items-center"
-															onclick="location.href='boardList.do'">
-															<div class="test_content">
-																<td>${board.board_id }</td>
-																<td>${board.ttl }</td> 
-																<td>${board.cntn }</td>
-																<td>${board.mngr_id }</td>
-																<td>${board.reg_dt }</td>
-															</div>
+										<c:forEach var="board" items="${boards}">
+											<tbody>
+												<tr>
+													<td>
+														<div class="custom-control custom-checkbox mb-2">
+															<input id="customCheck2"
+																class="custom-control-input is-invalid" type="checkbox">
+															<label class="custom-control-label" for="customCheck2"><span></span></label>
 														</div>
-													</div>
-													<br>
-													<br>
-												 </tr> 
-												</c:forEach>
-												<td>
-													<div class="custom-control custom-checkbox mb-2">
-														<input id="customCheck2"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck2"><span></span></label>
-													</div>
-												</td>
-												<td class="text-danger">003456</td>
-												<td>훈련서비스관련</td>
-												<td colspan="2" class="text-danger">안녕하세요. HEYYO의
-													훈련서비스는 회원님과 반려동물이 함께 이용하는 서비스입니다.</td>
-												<td>관리자</td>
-												<td>22 June 2020</td>
-												<td>
-														<input type="button" class="btn btn-outline-danger" value="수정"
-																id="btnUpdate" data-toggle="modal" href="#exampleModalCenter"/>
-														<input type="button" class="btn btn-outline-danger" value="삭제"
-																id="btnDelete" href="#" onClick="alert('삭제하겠습니까?')"/>
-												</td>
-											</tr>
-											<!-- <tr>
-												<td>
-													<div class="custom-control custom-checkbox mb-2">
-														<input id="customCheck2"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck2"><span></span></label>
-													</div>
-												</td>
-												<td class="text-danger">003455</td>
-												<td>돌봄서비스관련</td>
-												<td colspan="2" class="text-danger">안녕하세요. HEYYO의
-													돌봄서비스는 회원님의 자택에서 이용하는 서비스입니다.</td>
-												<td>관리자</td>
-												<td>22 June 2020</td>
-												<td>
-													<input type="button" class="btn btn-outline-danger" value="수정"
-																id="btnUpdate" data-toggle="modal" href="#exampleModalCenter"/>
-														<input type="button" class="btn btn-outline-danger" value="삭제"
-																 id="btnDelete" href="#" onClick="alert('삭제하겠습니까?')"/>
-												</td>
-											</tr> -->
-										</tbody>
+													</td>
+													<td>${board_no }</td>
+													<td>${ttl }</td>
+													<td>${cntn }</td>
+													<td>${mngr_id }</td>
+													<td>${reg_dt }</td>
+													<td><input type="button"
+														class="btn btn-outline-danger" value="수정" id="btnUpdate"
+														data-toggle="modal" href="#exampleModalCenter" /> <input
+														type="button" class="btn btn-outline-danger" value="삭제"
+														id="btnDelete" href="#" onClick="alert('삭제하겠습니까?')" /></td>
+												</tr>
+											</tbody>
+										</c:forEach>
 									</table>
 								</div>
-            						<input type="button" onClick="window.open('boardForm.do')" class="btn btn-danger btn-large float-right" value="공지사항 등록"> 
+								<input type="button" onClick="window.open('boardForm.do')"
+									class="btn btn-danger btn-large float-right" value="공지사항 등록">
 							</div>
 						</div>
 					</div>
 					<!-- End Current Projects -->
+				</div>
 				<div class="row justify-content-between align-items-center mb-4">
 					<div class="col-sm">
 						<nav aria-label="Bootstrap Pagination Example">
 							<ul class="pagination mb-0">
-								<li class="page-item"><a class="page-link" href="mngMain.do"><span
+								<li class="page-item"><a class="page-link"
+									href="mngMain.do"><span
 										class="ml-1 d-none d-xl-inline-block">처음으로</span></a></li>
 								<li class="page-item"><a class="page-link" href="#">1</a></li>
 								<li class="page-item"><a class="page-link" href="#"><span
@@ -459,51 +321,58 @@
 	</main>
 
 	<!-- Large Size Modal-->
-		<div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-lg" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h3 class="modal-title" id="exampleModalLabel">공지사항 수정</h3>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
+	<div class="modal fade bd-example-modal-lg" id="exampleModalCenter"
+		tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title" id="exampleModalLabel">공지사항 수정</h3>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<!-- Current Projects -->
+					<div class="col-md-12 mb-4">
+						<div class="card h-100">
+							<div class="astino-pr-form card-body">
+								<form>
+									<div class="form-group d-flex align-items-center">
+										<label for="formGroupExampleInput">제 목</label> <input
+											type="text" class="form-control" id="formGroupExampleInput"
+											placeholder="훈련서비스관련 공지사항">
+									</div>
+									<div class="form-group d-flex align-items-center">
+										<label for="formGroupExampleInput2">작성자</label> <input
+											type="text" class="form-control" id="formGroupExampleInput2"
+											placeholder="관리자">
+									</div>
+									<div class="form-group d-flex align-items-center">
+										<label for="formGroupExampleInput3">작성 날짜</label> <input
+											type="text" class="form-control" id="formGroupExampleInput3"
+											placeholder="22 Oct 2021">
+									</div>
+									<div class="form-group d-flex align-items-center">
+										<label for="formGroupExampleInput4">내 용</label>
+										<textarea class="form-control" id="formGroupExampleInput6"
+											placeholder="안녕하세요. HEYYO의 훈련서비스는 회원님과 반려동물이 함께 이용하는 서비스입니다."></textarea>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-outline-dangerr" herf="#"
+								onClick="alert('수정하겠습니까?')" data-dismiss="modal">수정</button>
+						</div>
 					</div>
-					<div class="modal-body">
-						<!-- Current Projects -->
-                    <div class="col-md-12 mb-4">
-                        <div class="card h-100">
-                            <div class="astino-pr-form card-body">
-                                 <form>
-                                    <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput">제  목</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="훈련서비스관련 공지사항">
-                                    </div>
-                                    <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput2">작성자</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="관리자">
-                                    </div>
-                                    <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput3">작성 날짜</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="22 Oct 2021">
-                                    </div>
-                                    <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput4">내  용</label>
-                                        <textarea class="form-control" id="formGroupExampleInput6" 
-                                        		placeholder="안녕하세요. HEYYO의 훈련서비스는 회원님과 반려동물이 함께 이용하는 서비스입니다."></textarea>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-						<button type="button" class="btn btn-outline-dangerr" herf="#" onClick="alert('수정하겠습니까?')" data-dismiss="modal">수정</button>
-					</div>
-                    </div>
-                    <!-- End Current Projects -->
-					</div>
+					<!-- End Current Projects -->
 				</div>
 			</div>
 		</div>
-		<!-- Large Size Modal-->
+	</div>
+	<!-- Large Size Modal-->
 
 
 	<!-- Global Vendor -->
@@ -521,7 +390,7 @@
 	<script src="assets/js/main.js"></script>
 	<script src="assets/js/sidebar-nav.js"></script>
 	<script src="assets/js/dashboard-page-scripts.js"></script>
-	
+
 </body>
 
 </html>

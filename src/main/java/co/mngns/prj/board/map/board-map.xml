@@ -11,6 +11,7 @@
 	</resultMap> -->
 	
 	<!-- 공지사항 전체보기 -->
+
 	<select id="boardList" resultType="co.mngns.prj.board.vo.BoardVO">
 		select *
 		from board 
