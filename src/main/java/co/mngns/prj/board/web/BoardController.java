@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import co.mngns.prj.board.service.BoardService;
 import co.mngns.prj.board.service.ReviewService;
 import co.mngns.prj.board.vo.ReviewVO;
+import co.mngns.prj.svc.service.ReserListService;
+import co.mngns.prj.svc.vo.ReserListVO;
 
 @Controller
 public class BoardController {
@@ -18,6 +20,9 @@ public class BoardController {
 	@Autowired
 	BoardService bService;
 	
+	@Autowired
+	ReserListService reserService;
+	
 	@RequestMapping(value = "/rList.do")
 	// 이용후기 목록
 	public String rList(Model model) {
@@ -27,13 +32,13 @@ public class BoardController {
 	
 	@RequestMapping(value = "/cntReview.do")
 	// 사용자 서비스 이용 내역 및 후기
-	public String myReview(Model model, ReviewVO vo) {
+	public String myReview(Model model, ReviewVO vo, ReserListVO reser) {
 		vo.setClient_id(1);
+		reser.setClient_id1(1);
 		model.addAttribute("myReviews", rService.myReviewList(vo));
+		model.addAttribute("serviceUses", reserService.serviceUse(reser));
 		return "client/cntReview";
 	}
-
-
 	
 	@RequestMapping(value = "/boardList.do")
 	// 관리자 공지사항 목록

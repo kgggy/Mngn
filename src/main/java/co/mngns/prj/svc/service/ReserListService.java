@@ -32,4 +32,6 @@ public interface ReserListService {
 	
 	public List<ClientVO> trnSelectList(ClientVO client);
 	
+	public List<ReserListVO> serviceUse(ReserListVO reser);
+	
 }

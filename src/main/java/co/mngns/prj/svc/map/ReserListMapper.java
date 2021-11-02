@@ -34,4 +34,6 @@ public interface ReserListMapper {
 	public ClientVO clientAdd(ClientVO client);
 
 	public List<ClientVO> trnSelectList(ClientVO client);
+	
+	public List<ReserListVO> serviceUse(ReserListVO reser);
 }

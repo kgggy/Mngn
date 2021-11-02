@@ -2,7 +2,6 @@ package co.mngns.prj.board.vo;
 
 import java.sql.Date;
 
-import co.mngns.prj.user.vo.ClientVO;
 import lombok.Data;
 
 @Data

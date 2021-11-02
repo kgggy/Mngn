@@ -417,16 +417,18 @@ article {
 					</tr>
 				</thead>
 				<tbody align="center">
-					<tr data-status="active">
-						<td>1</td>
-						<td>04/10/2013</td>
-						<td>1</td>
-						<td><a href="#">loremvallis.com</a></td>
-						<td>Buenos Aires</td>
-						<td><span class="label label-success">서비스 완료</span></td>
-						<td><a href="#" class="btn btn-sm manage" data-toggle="modal"
-							data-target="#reviewModal">후기 작성</a></td>
-					</tr>
+					<c:forEach items="${serviceUses }" var="serUse">
+						<tr data-status="active">
+							<td>${serUse. reser_no}</td>
+							<td>${serUse. reser_dt}</td>
+							<td>${serUse. knd_name}(${serUse.term }시간)</td>
+							<td><a href="#">${serUse. name} 훈련사</a></td>
+							<td>${serUse. prc}원</td>
+							<td><span class="label label-success">${serUse. svc_stts}</span></td>
+							<td><a href="#" class="btn btn-sm manage"
+								data-toggle="modal" data-target="#reviewModal">후기 작성</a></td>
+						</tr>
+					</c:forEach>
 					<tr data-status="inactive">
 						<td>1</td>
 						<td>04/10/2013</td>
@@ -436,15 +438,7 @@ article {
 						<td><span class="label label-warning">접수 완료</span></td>
 						<td><a class="btn btn-sm complete">작성 완료</a></td>
 					</tr>
-					<tr data-status="active">
-						<td>1</td>
-						<td>04/10/2013</td>
-						<td>1</td>
-						<td><a href="#">loremvallis.com</a></td>
-						<td>Buenos Aires</td>
-						<td><span class="label label-success">서비스 완료</span></td>
-						<td><a class="btn btn-sm complete">작성 완료</a></td>
-					</tr>
+
 					<tr data-status="expired">
 						<td>1</td>
 						<td>04/10/2013</td>
@@ -454,16 +448,7 @@ article {
 						<td><span class="label label-danger">취소 및 환불</span></td>
 						<td><a class="btn btn-sm complete">작성 완료</a></td>
 					</tr>
-					<tr data-status="inactive">
-						<td>1</td>
-						<td>04/10/2013</td>
-						<td>1</td>
-						<td><a href="#">loremvallis.com</a></td>
-						<td>Buenos Aires</td>
-						<td><span class="label label-warning">접수 완료</span></td>
-						<td><a data-toggle="modal" data-target="#reviewModal"
-							class="btn btn-sm manage">후기 작성</a></td>
-					</tr>
+
 				</tbody>
 			</table>
 
@@ -475,30 +460,30 @@ article {
 				<table class="table table-striped table-hover">
 					<thead>
 						<tr>
-							<th style="width:60px">번호</th>
-							<th style="width:150px">이용&nbsp;서비스</th>
-							<th style="width:130px">담당&nbsp;훈련사</th>
+							<th style="width: 60px">번호</th>
+							<th style="width: 150px">이용&nbsp;서비스</th>
+							<th style="width: 130px">담당&nbsp;훈련사</th>
 							<th>내용</th>
-							<th style="width:100px">별점</th>
-							<th style="width:150px">작성일자</th>
-							<th style="width:150px"></th>
+							<th style="width: 100px">별점</th>
+							<th style="width: 150px">작성일자</th>
+							<th style="width: 150px"></th>
 						</tr>
 					</thead>
 					<tbody align="center">
-					<c:forEach items="${myReviews }" var="myReview">
-						<tr data-status="active">
-							<td>${myReview.review_no }</td>
-							<td>${myReview.knd_name }(${myReview.term }시간)</td>
-							<td>${myReview.name }</td>
-							<td>${myReview.cntn }</td>
-							<td>${myReview.star_rate }</td>
-							<td>${myReview.reg_dt }</td>
-							<td><a href="#" class="btn btn-sm manage"
-								data-toggle="modal" data-target="#reviewUpdate">수정</a>&nbsp;&nbsp;
-								<a href="javascript:window.alert('삭제하시겠습니까?')"
-								class="btn btn-sm manage">삭제</a></td>
-							<!-- <button onclick="rDelete()" class="btn btn-sm manage">삭제</button> -->
-						</tr>
+						<c:forEach items="${myReviews }" var="myReview">
+							<tr data-status="active">
+								<td>${myReview.review_no }</td>
+								<td>${myReview.knd_name }(${myReview.term }시간)</td>
+								<td>${myReview.name }</td>
+								<td>${myReview.cntn }</td>
+								<td>${myReview.star_rate }</td>
+								<td>${myReview.reg_dt }</td>
+								<td><a href="#" class="btn btn-sm manage"
+									data-toggle="modal" data-target="#reviewUpdate">수정</a>&nbsp;&nbsp;
+									<a href="javascript:window.alert('삭제하시겠습니까?')"
+									class="btn btn-sm manage">삭제</a></td>
+								<!-- <button onclick="rDelete()" class="btn btn-sm manage">삭제</button> -->
+							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
@@ -506,20 +491,21 @@ article {
 		</section>
 
 		<div class="row mt-5">
-				<div class="col text-center">
-					<div class="block-27">
-						<ul>
-							<li><a href="#">&lt;</a></li>
-							<li class="active"><span>1</span></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="#">&gt;</a></li>
-						</ul>
-					</div>
+			<div class="col text-center">
+				<div class="block-27">
+					<ul>
+						<li><a href="#">&lt;</a></li>
+						<li class="active"><span>1</span></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">5</a></li>
+						<li><a href="#">&gt;</a></li>
+					</ul>
 				</div>
-			</div><br><br>
+			</div>
+		</div>
+		<br> <br>
 	</div>
 
 	<!-- 후기작성 Modal 시작 -->
@@ -645,27 +631,27 @@ article {
 		};
 
 		function status() {//console.log(status.value);
-			   // Declare variables
-			   var filter, table, tr, i, txtValue;
-			  stts = document.getElementById("stts");
-			  filter = stts.value;
-			  table = document.getElementById("myTable");
-			  tbody= table.getElementByTagName("tbody");
-			  tr = tbody.getElementsByTagName("tr"); 
-			  
-			  // Loop through all table rows, and hide those who don't match the search query
-			   for (i = 0; i < tr.length; i++) {
-			    td = tr[i].getElementsByTagName("td")[0];
-			    if (td) {
-			      txtValue = td.textContent || td.innerText;
-			      if (txtValue.indexOf(filter) > -1) {
-			        tr[i].style.display = "";
-			      } else {
-			        tr[i].style.display = "none";
-			      }
-			    }
-			  } 
-			} 
+			// Declare variables
+			var filter, table, tr, i, txtValue;
+			stts = document.getElementById("stts");
+			filter = stts.value;
+			table = document.getElementById("myTable");
+			tbody = table.getElementByTagName("tbody");
+			tr = tbody.getElementsByTagName("tr");
+
+			// Loop through all table rows, and hide those who don't match the search query
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[0];
+				if (td) {
+					txtValue = td.textContent || td.innerText;
+					if (txtValue.indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+				}
+			}
+		}
 	</script>
 
 </body>
