@@ -52,7 +52,7 @@ public class BoardController {
 		return "client/cntReview";
 	}
 	
-	@RequestMapping(value = "/reviewInsert.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/reviewInsert.do")
 	@ResponseBody
 	// 리뷰 입력
 	public int reviewInsert(@RequestBody ReviewVO reviewVo, Model model) throws Exception {

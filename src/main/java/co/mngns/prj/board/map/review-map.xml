@@ -47,8 +47,20 @@
 </delete>
 
 <insert id="reviewInsert" parameterType="co.mngns.prj.board.vo.ReviewVO">
-	insert into review (review_seq.nextval, cntn, star_rate, reg_dt, file_no, reser_no, client_id)
-		   values(#{review_no}, #{cntn}, #{star_rate}, sysdate, #{file_no}, #{reser_no}, #{client_no})
+	insert into review (review_no, 
+						cntn, 
+						star_rate, 
+						reg_dt, 
+						<if test="file_no != null">file_no,</if>	
+						reser_no, 
+						client_id)
+		   values(review_seq.nextval, 
+					   #{cntn}, 
+					   #{star_rate}, 
+					   sysdate, 
+					   <if test="file_no != null">#{file_no},</if>
+					   #{reser_no}, 
+					   #{client_no})
 </insert>
 
 </mapper>

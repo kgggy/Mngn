@@ -656,6 +656,7 @@ article {
 				url : "reviewInsert.do",
 				type : "post",
 				data : JSON.stringify($("#signform").serialize()),
+				contentType: 'application/json',
 				success : function(data) {
 					if (data == 1)
 						alert("후기가 등록되었습니다.");

@@ -217,7 +217,7 @@ span {
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="bradcam_text text-center">
-						<h3>${trainer.name } 훈련사 프로필</h3>
+						<h3>${trainer.name }훈련사프로필</h3>
 					</div>
 				</div>
 			</div>
@@ -264,7 +264,7 @@ span {
 							</tr>
 							<tr>
 								<td>방문지역</td>
-								<td>${trainer.work_loc1 } ${trainer.work_loc2 }</td>
+								<td>${trainer.work_loc1 }${trainer.work_loc2 }</td>
 							</tr>
 							<tr>
 								<td>회원평점</td>
@@ -328,6 +328,7 @@ span {
 												<div class="d-flex align-items-center">
 													<h5>
 														<a>${review.name }</a>
+														<a>${review.star_shape }</a>
 													</h5>
 													<p class="date">${review.reg_dt }</p>
 												</div>
@@ -402,6 +403,7 @@ span {
 			  activeDate: new Date(),
 			  getFirstDay: (yy, mm) => new Date(yy, mm, 1),
 			  getLastDay: (yy, mm) => new Date(yy, mm + 1, 0),
+			  minDate:new Date(tomorrowDate),
 			  nextMonth: function () {
 			    let d = new Date();
 			    d.setDate(1);
@@ -426,10 +428,26 @@ span {
 			    return index;
 			  }
 			};
+	
+		function tomorrowDate(){ 
+			var tomorrowDate =""; 
+			var dd = today.getDate()+1; 
+			var mm = today.getMonth()+1; //January is 0! 
+			var yyyy = today.getFullYear(); 
+			if(dd<10) { 
+			dd='0'+dd 
+			} 
+			if(mm<10) { 
+			mm='0'+mm 
+			}
+			tomorrowDate = yyyy+'-'+mm+'-'+dd; 
+			return tomorrowDate; 
+			};
 
 			const $calBody = document.querySelector('.cal-body');
 			const $btnNext = document.querySelector('.btn-cal.next');
 			const $btnPrev = document.querySelector('.btn-cal.prev');
+			
 
 			/**
 			 * @param {number} date
@@ -525,8 +543,7 @@ span {
 			   /*  reloadTodo(); */
 			  }
 			  });
-			
-			
+
 			
 	</script>
 
