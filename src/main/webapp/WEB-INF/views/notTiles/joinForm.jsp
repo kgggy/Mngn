@@ -26,8 +26,10 @@
 	        //카카오 지도 발생
 	        new daum.Postcode({
 	            oncomplete: function(data) { //선택시 입력값 세팅
-	                document.getElementById("adres1").value = data.address; // 주소 넣기
-	                document.querySelector("input[name=address_detail]").focus(); //상세입력 포커싱
+	    			console.log(data);
+	            	document.getElementById("post_no").value = data.zonecode; // 주소 넣기
+	            	document.getElementById("adres1").value = data.address; // 주소 넣기
+	                document.querySelector("input[name=adres2]").focus(); //상세입력 포커싱
 	            }
 	        }).open();
 	    });
@@ -42,16 +44,13 @@ function result() {
 	var joinForm = document.joinForm;
 	var pwd = joinForm.pwd.value;
 	var name = joinForm.name.value;
-	var post_no = joinForm.post_no.value;
 	var adres1 = joinForm.adres1.value;
 	var adres2 = joinForm.adres2.value;
 	var phone = joinForm.phone.value;
 	var email = joinForm.email.value;
-	var join_dt = joinForm.join_dt.value;
-	var role = joinForm.role.value;
 
 
-	if (!client_id ||!pwd || !name || !post_no || !adres1|| !adres2 || !phone || !email ) {
+	if (!client_id ||!pwd || !name || !adres1|| !adres2 || !phone || !email ) {
 
 		alert("필수입력창을 모두 입력해주세요.");
 
@@ -78,7 +77,7 @@ function result() {
 			<div class="col-md-5 border-right">
 
 				<div class="signup-form">
-					<form method="POST" class="joinForm" id="joinForm">
+					<form method="POST" class="joinForm" id="joinForm" name="joinForm" action ="cntReg.do">
 						<div class="form-row">
 							<div class="form-group">
 
@@ -102,6 +101,10 @@ function result() {
 										type="text" name="name" id="name" />
 								</div>
 								<div class="form-input">
+									<label for="post_no" class="required"> POST_NO </label> <input
+										type="text" id="post_no" name="post_no" readonly />
+								</div>
+								<div class="form-input">
 									<label for="address" class="required"> 주소 </label> <input
 										type="text" id="adres1" name="adres1" readonly />
 								</div>
@@ -123,9 +126,9 @@ function result() {
 							</div>
 
 							<div class="form-submit">
-								<input type="button" value="Submit" class="submit" id="submit"
-									name="submit" onclick="result()" /> <input type="submit"
-									value="Reset" class="submit" id="reset" name="reset" />
+								<input type="button" value="Submit" class="submit" 
+									 onclick="result()" /> <input type="submit"
+									value="Reset" class="submit" />
 							</div>
 						</div>
 					</form>

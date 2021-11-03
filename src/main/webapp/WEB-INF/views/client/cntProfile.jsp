@@ -583,17 +583,27 @@ footer p a:hover {
 						<div class="mt-10">
 							<input type="email" name="EMAIL" placeholder="Email address"
 								onfocus="this.placeholder = ''"
-								onblur="this.placeholder = '이메일'" required class="single-input">
+								onblur="this.placeholder = '이메일'" required class="EMAIL">
 						</div>
+								<div class="mt-10">
+							<input type="email" name="post_no" placeholder="post_no"
+								onfocus="this.placeholder = ''"
+								onblur="this.placeholder = '우편번호'" required class="post_no">
+						</div>
+						
 						<div class="input-group-icon mt-10">
 							<div class="icon">
 								<i class="fa fa-thumb-tack" aria-hidden="true"></i>
 							</div>
-							<input type="text" name="address" placeholder="Address"
+							<input type="text" name="adres1" placeholder="Adres1"
 								onfocus="this.placeholder = '주소'"
-								onblur="this.placeholder = 'Address'" required
-								class="single-input">
+								onblur="this.placeholder = 'Address'" required class="adres1">
 						</div>
+						<input type="text" name="adres2" placeholder="Adres2"
+								onfocus="this.placeholder = '주소'"
+								onblur="this.placeholder = 'Address'" required class="adres1">
+						</div>
+						
 						<div class="input-group-icon mt-10">
 							<div class="icon">
 								<i class="fa fa-plane" aria-hidden="true"></i>

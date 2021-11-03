@@ -4,18 +4,17 @@
 	<select resultType="co.mngns.prj.user.vo.ClientVO" id="clientSelectList">
 		select * from client
 	</select>
+	
 	<select resultType="co.mngns.prj.user.vo.ClientVO" id="clientSelect">
 		select * from client where client_id = #{client_id}
 	</select>
-	<select resultType="co.mngns.prj.user.vo.ClientVO" id="clientSelect">
-		select * from client where client_id = #{client_id} and #{client_pw}
-	</select>
+	
 
 
 	<insert id="clientInsert">
 	
-	insert into client(client_id,client_idCheck, pwd, name, post_no,adres1,adres2, phone, email,join_dt, role)
-				values(#{client_seq.nextval}, #{client_idCheck}, #{pwd}, #{name},#{post_no},#{adres1},#{adres2},#{phone},#{email},#{join_dt},#{role})
+	insert into client(client_id, pwd, name, post_no,adres1,adres2, phone, email,join_dt, role)
+				values(#{client_id}, #{pwd}, #{name},#{post_no},#{adres1},#{adres2},#{phone},#{email},sysdate,1)
 	
 	</insert>
 	

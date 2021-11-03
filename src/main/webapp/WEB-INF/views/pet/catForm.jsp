@@ -104,11 +104,7 @@
 
 
 					<div class="form-row">
-<<<<<<< HEAD
 						<div class="species">냥이 품종</div>
-=======
-						<div class="breed">냥이 품종</div>
->>>>>>> refs/heads/master
 						<div class="value">
 							<div class="input-group">
 								<div class="rs-select2 js-select-simple select--no-search">
@@ -155,18 +151,14 @@
 						<label class="gender"> 냥이 성별</label>
 						<div class="p-t-15">
 							<label class="radio-container m-r-55"> 수컷 <input 
-<<<<<<< HEAD
-								type="radio" checked="checked" name="gen" value="M"> <span
-=======
-								type="radio" checked="checked" name="gender"> <span
->>>>>>> refs/heads/master
-								class="checkmark"></span>
+								type="radio" checked="checked" name="gen" value="M"> 
+								<span type="radio" checked="checked" name="gender">
+								
+								 <span 	class="checkmark"></span>
 							</label> <label class="radio-container"> 암컷 <input type="radio"
-<<<<<<< HEAD
 								name="gen" value="W"> <span class="checkmark" ></span>
-=======
-								name="gender"> <span class="checkmark"></span>
->>>>>>> refs/heads/master
+                            <span class="checkmark"></span>
+
 							</label>
 						</div>
 					</div>
