@@ -651,11 +651,14 @@ article {
 		}
 		
 		function insert() {
+			
+			var data = JSON.stringify($("#signform").serialize());
+			
 			alert("저장하시겠습니까?");
 			$.ajax({
 				url : "reviewInsert.do",
 				type : "post",
-				data : JSON.stringify($("#signform").serialize()),
+				data : data,
 				contentType: 'application/json',
 				success : function(data) {
 					if (data == 1)
