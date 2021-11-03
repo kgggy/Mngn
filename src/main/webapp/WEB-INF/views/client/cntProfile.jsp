@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -2092,5 +2091,4 @@ footer p a:hover {
 </body>
 </body>
 </html>
->>>>>>> refs/heads/jh2
 <!-- End Align Area -->
