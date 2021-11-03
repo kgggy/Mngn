@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class TrainerVO {
-	private char gen;
+	private int gen;
 	private Date trn_birth_dt;
 	private int mon;
 	private int tue;
@@ -20,7 +20,16 @@ public class TrainerVO {
 	private int file_no;
 	private int client_id;
 	private int trn_avrg;
+	private String work_time;
+	private String work_loc1;
+	private String work_loc2;
+	
 	
 	public String name;
+	public String gender;
+	public String cntn;
+	public int star_rate;
+	public String star_shape;
+	public Date reg_dt;
 }
 

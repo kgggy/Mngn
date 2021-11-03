@@ -5,14 +5,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import co.mngns.prj.board.service.ReviewService;
+import co.mngns.prj.board.vo.ReviewVO;
 import co.mngns.prj.user.service.ClientService;
 import co.mngns.prj.user.service.TrainerService;
+import co.mngns.prj.user.vo.TrainerVO;
 
 @Controller
 public class UserController {
 	
 	@Autowired
 	TrainerService trnService;
+	
+	@Autowired
+	ReviewService reviewService;
 	
 	/*
 	 * @Autowired ClientService cntService;
@@ -63,7 +69,9 @@ public class UserController {
 	
 	@RequestMapping(value="/tDetail.do")
 	// 훈련사 상세보기 페이지
-	public String tDetail() {
+	public String tDetail(Model model, TrainerVO trn, ReviewVO review) {
+		model.addAttribute("trainer", trnService.TrainerSelect(trn));
+		model.addAttribute("reviews", reviewService.trnReviewList(review));
 		return "client/tDetail";
 	}
 	

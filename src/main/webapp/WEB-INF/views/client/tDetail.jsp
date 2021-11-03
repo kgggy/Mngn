@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -197,9 +197,8 @@ span {
 		<div class="white_content modal-content" align="center">
 			<div>
 				<div class="time">
-			<input type="checkbox"><span>돌봄</span>
-			<input type="checkbox"><span>돌봄</span>
-			<input type="checkbox"><span>돌봄</span>
+					<input type="checkbox"><span>돌봄</span> <input
+						type="checkbox"><span>돌봄</span> <input type="checkbox"><span>돌봄</span>
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<a class="genric-btn danger-border circle arrow">1시간</a> <a
 						class="genric-btn danger-border circle arrow" id="two">2시간</a> <a
@@ -218,7 +217,7 @@ span {
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="bradcam_text text-center">
-						<h3>xxx 훈련사 프로필</h3>
+						<h3>${trainer.name } 훈련사 프로필</h3>
 					</div>
 				</div>
 			</div>
@@ -261,15 +260,15 @@ span {
 							</tr>
 							<tr>
 								<td>성별</td>
-								<td>${trainer.gen }</td>
+								<td>${trainer.gender }</td>
 							</tr>
 							<tr>
 								<td>방문지역</td>
-								<td>${client.adres1 }</td>
+								<td>${trainer.work_loc1 } ${trainer.work_loc2 }</td>
 							</tr>
 							<tr>
 								<td>회원평점</td>
-								<td>${trainer.trn_avrg }</td>
+								<td>${trainer.trn_avrg }점</td>
 							</tr>
 						</table>
 						<hr>
@@ -316,77 +315,29 @@ span {
 					<div class="comments-area">
 						<h3>고객 후기</h3>
 						<br>
-						<div class="comment-list">
-							<div class="single-comment justify-content-between d-flex">
-								<div class="user justify-content-between d-flex">
-									<div class="thumb">
-										<img src="img/comment/comment_1.png" alt="">
-									</div>
-									<div class="desc">
-										<p class="comment">성향 파악과 문제점 파악 그리고 그에 맞는 솔루션을 쉽게 알려주셔서
-											도움이 정말 많이 됐어요 ! 조금 더 어렸을 때부터 교육을 받을 껄 후회가 되네요 고민 되시는 분들은
-											고민하지마시고 꼭 훈련받아보세요 !! 정말 정말 감사합니다</p>
-										<div class="d-flex justify-content-between">
-											<div class="d-flex align-items-center">
-												<h5>
-													<a href="#">xxx 님</a>
-												</h5>
-												<p class="date">December 4, 2017 at 3:12 pm</p>
-											</div>
+						<c:forEach items="${reviews }" var="review">
+							<div class="comment-list">
+								<div class="single-comment justify-content-between d-flex">
+									<div class="user justify-content-between d-flex">
+										<div class="thumb">
+											<img src="img/comment/comment_3.png" alt="">
+										</div>
+										<div class="desc">
+											<p class="comment">${review.cntn }</p>
+											<div class="d-flex justify-content-between">
+												<div class="d-flex align-items-center">
+													<h5>
+														<a>${review.name }</a>
+													</h5>
+													<p class="date">${review.reg_dt }</p>
+												</div>
 
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="comment-list">
-							<div class="single-comment justify-content-between d-flex">
-								<div class="user justify-content-between d-flex">
-									<div class="thumb">
-										<img src="img/comment/comment_2.png" alt="">
-									</div>
-									<div class="desc">
-										<p class="comment">Multiply sea night grass fourth day sea
-											lesser rule open subdue female fill which them Blessed, give
-											fill lesser bearing multiply sea night grass fourth day sea
-											lesser</p>
-										<div class="d-flex justify-content-between">
-											<div class="d-flex align-items-center">
-												<h5>
-													<a href="#">ㅇㅇㅇ 님</a>
-												</h5>
-												<p class="date">December 4, 2017 at 3:12 pm</p>
-											</div>
-
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="comment-list">
-							<div class="single-comment justify-content-between d-flex">
-								<div class="user justify-content-between d-flex">
-									<div class="thumb">
-										<img src="img/comment/comment_3.png" alt="">
-									</div>
-									<div class="desc">
-										<p class="comment">Multiply sea night grass fourth day sea
-											lesser rule open subdue female fill which them Blessed, give
-											fill lesser bearing multiply sea night grass fourth day sea
-											lesser</p>
-										<div class="d-flex justify-content-between">
-											<div class="d-flex align-items-center">
-												<h5>
-													<a href="#">ㅁㅁㅁ 님</a>
-												</h5>
-												<p class="date">December 4, 2017 at 3:12 pm</p>
-											</div>
-
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+						</c:forEach>
 						<button
 							class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
 							type="button" onclick="location.href='rList.do'">+ 더보기</button>

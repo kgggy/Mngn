@@ -30,4 +30,25 @@
 	   and r.client_id = #{client_id}
 </select>
 
+<select id="trnReviewList" resultType="co.mngns.prj.board.vo.ReviewVO">
+	select distinct c.name,
+			r.cntn, 
+			case r.star_rate when 1 then '★' when 2 then '★★' when 3 then '★★★' when 4 then '★★★★' else '★★★★★' end as star_shape, 
+			r.reg_dt
+	  from trainer t, review r, reser_list l, client c 
+ 	 where l.client_id2 = t.client_id
+		    and l.client_id1 = r.client_id
+		    and r.client_id = c.client_id
+		    and t.client_id = #{client_id} 
+</select>
+
+<delete id="reviewDelete" parameterType="co.mngns.prj.board.vo.ReviewVO">
+	delete from review where client_id = #{client_id}
+</delete>
+
+<insert id="reviewInsert" parameterType="co.mngns.prj.board.vo.ReviewVO">
+	insert into review (review_seq.nextval, cntn, star_rate, reg_dt, file_no, reser_no, client_id)
+		   values(#{review_no}, #{cntn}, #{star_rate}, sysdate, #{file_no}, #{reser_no}, #{client_no})
+</insert>
+
 </mapper>

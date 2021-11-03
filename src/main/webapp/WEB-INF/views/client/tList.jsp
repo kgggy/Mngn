@@ -59,19 +59,25 @@
 			<div class="row justify-content-center">
 				<div class="col-lg-10">
 					<c:forEach items="${trainers }" var="trainer">
-						<div class="testmonial_wrap">
-							<div class="single_testmonial d-flex align-items-center"
-								onclick="location.href='tDetail.do'">
-								<div class="test_thumb">
-									<img src="img/testmonial/1.png" alt="">
-								</div>
-								<div class="test_content">
-									<h4 style="heignt:'50px'">${trainer.name } 훈련사</h4>
-									<span>대구시 달서구</span> <span>${trainer.trn_avrg }</span>
-									<p>${trainer.intro_ttl }</p>
+						<form action="tDetail.do" id="tlistForm" name="tlistForm"
+							method="post">
+							<div class="testmonial_wrap">
+								<div class="single_testmonial d-flex align-items-center"
+									onclick="$(this).closest('form').submit()">
+									<input type="hidden" id="client_id" name="client_id"
+										value="${trainer.client_id }">
+									<div class="test_thumb">
+										<img src="img/testmonial/1.png" alt="">
+									</div>
+									<div class="test_content">
+										<h4>${trainer.name } 훈련사</h4>
+										<span>${trainer.work_loc1 } ${trainer.work_loc2 }</span> <span>평점
+											${trainer.trn_avrg }점</span>
+										<p>${trainer.intro_ttl }</p>
+									</div>
 								</div>
 							</div>
-						</div>
+						</form>
 						<br>
 						<br>
 					</c:forEach>
@@ -129,33 +135,37 @@
 				}
 			}
 		}
-		
+
 		//페이징 처리
-		let totalData; //총 데이터 수
+		/* let totalData; //총 데이터 수
 		let dataPerPage; //한 페이지에 나타낼 글 수
 		let pageCount = 10; //페이징에 나타낼 페이지 수
-		let globalCurrentPage=1; //현재 페이지
+		let globalCurrentPage = 1; //현재 페이지
 
-		$(document).ready(function () {
-		 //dataPerPage 선택값 가져오기
-		 dataPerPage = $("#dataPerPage").val();
- 
-		 $.ajax({ // ajax로 데이터 가져오기
-			method: "GET",
-			url: "https://url/data?" + data,
-			dataType: "json",
-			success: function (d) {
-		   //totalData 구하기
-			   totalData = d.data.length;
-			}
-		 });
- 
- 		//글 목록 표시 호출 (테이블 생성)
-		 displayData(1, dataPerPage);
- 
-		 //페이징 표시 호출
-		 paging(totalData, dataPerPage, pageCount, 1);
-		});
+		$(document).ready(function() {
+			//dataPerPage 선택값 가져오기
+			dataPerPage = $("#dataPerPage").val();
+
+			$.ajax({ // ajax로 데이터 가져오기
+				method : "GET",
+				url : "https://url/data?" + data,
+				dataType : "json",
+				success : function(d) {
+					//totalData 구하기
+					totalData = d.data.length;
+				}
+			});
+
+			//글 목록 표시 호출 (테이블 생성)
+			displayData(1, dataPerPage);
+
+			//페이징 표시 호출
+			paging(totalData, dataPerPage, pageCount, 1);
+		}); */
+
+		/* function run(id) {
+			location.href="tDetails?client_id="+id
+		} */
 	</script>
 
 </body>
