@@ -6,6 +6,7 @@ import co.mngns.prj.pet.vo.PetVO;
 import co.mngns.prj.svc.vo.ReserListVO;
 import co.mngns.prj.svc.vo.SvcVO;
 import co.mngns.prj.user.vo.ClientVO;
+import co.mngns.prj.user.vo.TrainerVO;
 
 public interface ReserListService {
 	public List<ReserListVO> reserSelectList();
@@ -30,7 +31,7 @@ public interface ReserListService {
 	
 	public ClientVO clientAdd(ClientVO client);
 	
-	public List<ClientVO> trnSelectList(ClientVO client);
+	public List<TrainerVO> trnSelectList(ReserListVO reser);
 	
 	public List<ReserListVO> serviceUse(ReserListVO reser);
 	
