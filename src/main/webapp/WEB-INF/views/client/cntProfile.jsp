@@ -565,23 +565,23 @@ footer p a:hover {
 					<div align="center">회원정보수정</div>
 					<form action="#">
 						<div class="mt-10">
-							<input type="text" name="id" placeholder="id"
-								onfocus="this.placeholder = ''" onblur="this.placeholder = 'id'"
+							<input type="text" name="id" 
+								onfocus="this.placeholder = '${client.client_id()}'" onblur="this.placeholder = 'id'"
 								required class="single-input">
 						</div>
 						<div class="mt-10">
-							<input type="text" name="password" placeholder="password"
+							<input type="text" name="password" value = ${client.pwd()}
 								onfocus="this.placeholder = ''"
 								onblur="this.placeholder = 'password'" required
 								class="single-input">
 						</div>
 						<div class="mt-10">
-							<input type="text" name="name" placeholder="name"
+							<input type="text" name="name" value = ${client.name()}
 								onfocus="this.placeholder = ''"
 								onblur="this.placeholder = 'Name'" required class="single-input">
 						</div>
 						<div class="mt-10">
-							<input type="email" name="EMAIL" placeholder="Email address"
+							<input type="email" name="EMAIL" value = ${client.email()}
 								onfocus="this.placeholder = ''"
 								onblur="this.placeholder = '이메일'" required class="single-input">
 						</div>
@@ -589,7 +589,11 @@ footer p a:hover {
 							<div class="icon">
 								<i class="fa fa-thumb-tack" aria-hidden="true"></i>
 							</div>
-							<input type="text" name="address" placeholder="Address"
+							<input type="text" name="address" value = ${client.adres1()}
+								onfocus="this.placeholder = '주소'"
+								onblur="this.placeholder = 'Address'" required
+								class="single-input">
+								<input type="text" name="address" value = ${client.adres1()}
 								onfocus="this.placeholder = '주소'"
 								onblur="this.placeholder = 'Address'" required
 								class="single-input">
