@@ -6,7 +6,7 @@ import co.mngns.prj.board.vo.BoardVO;
 
 public interface BoardService {
 	
-	List<BoardVO> boardSelectList();
+	List<BoardVO> boardList();
 	BoardVO boardSelect(BoardVO vo);
 	int boardInsert(BoardVO vo);
 	int boardUpdate(BoardVO vo);

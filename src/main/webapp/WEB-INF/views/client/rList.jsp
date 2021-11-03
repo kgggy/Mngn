@@ -23,6 +23,26 @@
 
 <link rel="stylesheet" href="css/petsitting/flaticon.css">
 <link rel="stylesheet" href="css/petsitting/style.css">
+
+
+
+<script src="js/petsitting/jquery.min.js"></script>
+<script src="js/petsitting/jquery-migrate-3.0.1.min.js"></script>
+<script src="js/petsitting/popper.min.js"></script>
+<script src="js/petsitting/bootstrap.min.js"></script>
+<script src="js/petsitting/jquery.easing.1.3.js"></script>
+<script src="js/petsitting/jquery.waypoints.min.js"></script>
+<script src="js/petsitting/jquery.stellar.min.js"></script>
+<script src="js/petsitting/jquery.animateNumber.min.js"></script>
+<script src="js/petsitting/bootstrap-datepicker.js"></script>
+<script src="js/petsitting/jquery.timepicker.min.js"></script>
+<script src="js/petsitting/owl.carousel.min.js"></script>
+<script src="js/petsitting/jquery.magnific-popup.min.js"></script>
+<script src="js/petsitting/scrollax.min.js"></script>
+<script
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="js/petsitting/google-map.js"></script>
+<script src="js/petsitting/main.js"></script>
 <title>Insert title here</title>
 
 </head>
@@ -40,9 +60,7 @@
 		</div>
 	</div>
 	<section class="ftco-section bg-light">
-		<br>
-		<br>
-		<br>
+		<br> <br> <br>
 		<div class="container">
 			<div class="row d-flex">
 				<c:forEach items="${rLists }" var="rList">
@@ -55,26 +73,22 @@
 									style="background-image: url('images/image_1.jpg');"
 									data-toggle="modal" data-target="#myModal"> </a><br>
 								<div class="meta mb-2">
+									<div>${rList.reg_dt }</div>
+									<div>${rList.name }</div>
 									<div>
-										${rList.reg_dt }
-									</div>
-									<div>
-										${rList.name }
-									</div>
-									<div>
-										<a class="meta-chat">
-											${rList.star_rate }</a>
+										<a class="meta-chat"> ${rList.star_shape }</a>
 									</div>
 								</div>
 								<h3 class="heading" data-toggle="modal" data-target="#myModal">
-									${rList.cntn} <!-- <a href="#" data-toggle="modal" data-target="#myModal"> </a>-->
+									${rList.cntn}
+									<!-- <a href="#" data-toggle="modal" data-target="#myModal"> </a>-->
 								</h3>
 							</div>
 						</div>
 						<input type="hidden" id="review_no" name="review_no">
 					</div>
 				</c:forEach>
-				
+
 			</div>
 			<div class="row mt-5">
 				<div class="col text-center">
@@ -91,8 +105,7 @@
 					</div>
 				</div>
 			</div>
-			<br>
-			<br>
+			<br> <br>
 		</div>
 	</section>
 
@@ -130,24 +143,6 @@
 	</div> -->
 
 
-
-	<script src="js/petsitting/jquery.min.js"></script>
-	<script src="js/petsitting/jquery-migrate-3.0.1.min.js"></script>
-	<script src="js/petsitting/popper.min.js"></script>
-	<script src="js/petsitting/bootstrap.min.js"></script>
-	<script src="js/petsitting/jquery.easing.1.3.js"></script>
-	<script src="js/petsitting/jquery.waypoints.min.js"></script>
-	<script src="js/petsitting/jquery.stellar.min.js"></script>
-	<script src="js/petsitting/jquery.animateNumber.min.js"></script>
-	<script src="js/petsitting/bootstrap-datepicker.js"></script>
-	<script src="js/petsitting/jquery.timepicker.min.js"></script>
-	<script src="js/petsitting/owl.carousel.min.js"></script>
-	<script src="js/petsitting/jquery.magnific-popup.min.js"></script>
-	<script src="js/petsitting/scrollax.min.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="js/petsitting/google-map.js"></script>
-	<script src="js/petsitting/main.js"></script>
 
 
 

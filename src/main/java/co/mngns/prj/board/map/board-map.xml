@@ -1,24 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="co.mngns.prj.board.map.board-map">
-	<select id="boardSelectList" resultType="co.mngns.prj.board.vo.BoardVO">
-		select b.*
-		from board b
-		order by b.board_no desc
+<mapper namespace="co.mngns.prj.board.map.BoardMapper">
+
+<!-- 	<resultMap type="BoardVO" id="BoardVO">
+		<result column="BOARD_NO" property="board_no"/>
+		<result column="TTL" property="ttl"/>
+		<result column="CNTN" property="cntn"/>
+		<result column="MNGR_ID" property="mngr_id"/>
+		<result column="REG_DT" property="reg_dt" />
+	</resultMap> -->
+	
+	<!-- 공지사항 전체보기 -->
+
+	<select id="boardList" resultType="co.mngns.prj.board.vo.BoardVO">
+		select *
+		from board 
+		order by board_no desc
 	</select>
 	
+	<!-- 공지사항 1건 상세보기 -->
 	<select id="boardSelect" resultType="co.mngns.prj.board.vo.BoardVO">
-		select b.board_no
-		from board b
+		select *
+		from board 
+		<!-- where board_id = #{board_id} -->
 	</select>
 	
+	<!-- 공지사항 등록 -->
 	<insert id="boardInsert" parameterType="co.mngns.prj.board.vo.BoardVO">
 		insert into board(board_no, ttl, cntn, mngr_id, reg_dt)
 		values(#{board_no}, #{ttl}, #{cntn}, #{mngr_id}, #{reg_dt})
 	</insert>
 	
+	<!-- 공지사항 수정 -->
 	<update id="boardUpdate" parameterType="co.mngns.prj.board.vo.BoardVO">
 		update board set ttl = #{ttl}, cntn = #{cntn}
-		where 
+		where  board_id = #{id}
 	</update>
+	
+	<!-- 공지사항 삭제 -->
+	<delete id="boardDelete" parameterType="co.mngns.prj.board.vo.BoardVO">
+		delete from board
+		where board_id = #{board_id}
+	
+	</delete>
 </mapper>

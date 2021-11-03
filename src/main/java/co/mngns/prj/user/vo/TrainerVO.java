@@ -21,8 +21,6 @@ public class TrainerVO {
 	private int client_id;
 	private int trn_avrg;
 	
-	public TrainerVO() {
-		
-	}
+	public String name;
 }
 

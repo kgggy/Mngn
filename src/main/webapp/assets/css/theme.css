@@ -305,6 +305,17 @@ input[type="month"] {
   -webkit-appearance: listbox;
 }
 
+input-div {
+    position: relative;
+}
+  
+.inputDiv i{
+    position: absolute;
+    left: 180px;
+    top: 5px;
+    color: gray;
+}  
+  
 textarea {
   overflow: auto;
   resize: vertical;

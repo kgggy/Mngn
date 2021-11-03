@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <!-- Head -->
@@ -41,6 +43,50 @@
 	height: 70px !important;
 }
 </style>
+
+<script>
+	//공지사항 등록
+	function boardInsert() {
+		//등록 버튼 클릭
+		$(#'btnInsert').on('click', function() {
+			$.ajax({
+				url : "/boardList.do",
+				method : "post",
+				dataType : "json",
+				success : function(data) {
+					boardList();
+				}
+			})
+		});
+	} // end 공지사항 등록
+	
+	
+	//공지사항 수정
+	
+	//공지사항 삭제
+	/* function boardDelete() {
+		$(".table-responsive").on("click", "#btnDelete", function() {
+			var id = $(this).closest('tr').find('#hidden_board_no').val();
+			var result = confirm(id + "글을 삭제하시겠습니까?");
+			if (result) {
+				$.ajax({
+					url : "",
+					type : "DELETE",
+					dataType : "json",
+					sucess : function(data) {
+						boardList();
+					}
+				})
+			}
+		});
+	}//end 공지사항 삭제 */
+	
+	function boardDelete() {
+		window.alert('정말 삭제하시겠습니까?');
+	};
+	
+</script>
+
 </head>
 <!-- End Head -->
 
@@ -49,7 +95,7 @@
 	<header class="astino-header u-header">
 		<div class="u-header-left">
 			<a class="u-header-logo" href="home.do"> <img
-				src="assets/logo.png" width="160"> 
+				src="assets/logo.png" width="160">
 			</a>
 		</div>
 
@@ -101,8 +147,8 @@
 
 						<!-- 공지사항 관리 -->
 						<li class="u-sidebar-nav-menu__item"><a
-							class="u-sidebar-nav-menu__link active" href="boardList.do"> <i
-								class="far fa-edit u-sidebar-nav-menu__item-icon"></i> <span
+							class="u-sidebar-nav-menu__link active" href="boardList.do">
+								<i class="far fa-edit u-sidebar-nav-menu__item-icon"></i> <span
 								class="u-sidebar-nav-menu__item-title">공지사항 관리</span>
 						</a></li>
 						<!-- End 공지사항 관리 -->
@@ -202,169 +248,40 @@
 													</div>
 												</th>
 												<th scope="col" class="text-dark">일련번호</th>
-												<th scope="col" class="text-dark">작성일자</th>
 												<th scope="col" class="text-dark">제목</th>
-												<th colspan="2" scope="col" class="text-dark">내용</th>
 												<th scope="col" class="text-dark">작성자</th>
+												<th scope="col" class="text-dark">작성일자</th>
 												<th scope="col" class="text-dark"></th>
 											</tr>
 										</thead>
 
-										<tbody>
-											<tr>
-												<td>
-													<div class="custom-control custom-checkbox mb-2">
-														<input id="customCheck2"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck2"><span></span></label>
-													</div>
-												</td>
-												<td class="text-danger">003456</td>
-												<td>22 June 2020</td>
-												<td>훈련서비스관련</td>
-												<td colspan="2" class="text-danger">안녕하세요. HEYYO의
-													훈련서비스는 회원님과 반려동물이 함께 이용하는 서비스입니다.</td>
-												<td>Admin</td>
-												<td>
-													<button type="button" class="btn btn-outline-danger" data-toggle="modal" href="#exampleModalCenter" 
-															class="btn btn-outline-danger btn-sm">수정</button>
-													<button type="button" class="btn btn-outline-danger" href="#"
-															onClick="alert('삭제하겠습니까?')">삭제</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="custom-control custom-checkbox mb-2">
-														<input id="customCheck2"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck2"><span></span></label>
-													</div>
-												</td>
-												<td class="text-danger">003455</td>
-												<td>22 June 2020</td>
-												<td>돌봄서비스관련</td>
-												<td colspan="2" class="text-danger">안녕하세요. HEYYO의
-													돌봄서비스는 회원님의 자택에서 이용하는 서비스입니다.</td>
-												<td>Admin</td>
-												<td>
-													<button type="button" class="btn btn-outline-danger" data-toggle="modal" href="#exampleModalCenter" 
-															class="btn btn-outline-danger btn-sm">수정</button>
-													<button type="button" class="btn btn-outline-danger" href="#"
-															onClick="alert('삭제하겠습니까?')">삭제</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="custom-control custom-checkbox mb-2">
-														<input id="customCheck2"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck2"><span></span></label>
-													</div>
-												</td>
-												<td class="text-danger">003454</td>
-												<td>22 June 2020</td>
-												<td>산책서비스관련</td>
-												<td colspan="2" class="text-danger">안녕하세요. HEYYO를
-													이용해주셔서 감사합니다. 산책서비스 이용시 목줄을 반드시 준비해주시기 바랍니다.</td>
-												<td>Admin</td>
-												<td>
-													<button type="button" class="btn btn-outline-danger" data-toggle="modal" href="#exampleModalCenter" 
-															class="btn btn-outline-danger btn-sm">수정</button>
-													<button type="button" class="btn btn-outline-danger" href="#"
-															onClick="alert('삭제하겠습니까?')">삭제</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="custom-control custom-checkbox mb-2">
-														<input id="customCheck2"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck2"><span></span></label>
-													</div>
-												</td>
-												<td class="text-danger">003453</td>
-												<td>22 June 2020</td>
-												<td>주말근무안내</td>
-												<td colspan="2" class="text-danger">안녕하세요. 주말 서비스 제공 관련
-													안내입니다.</td>
-												<td>Admin</td>
-												<td>
-													<button type="button" class="btn btn-outline-danger" data-toggle="modal" href="#exampleModalCenter" 
-															class="btn btn-outline-danger btn-sm">수정</button>
-													<button type="button" class="btn btn-outline-danger" href="#"
-															onClick="alert('삭제하겠습니까?')">삭제</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="custom-control custom-checkbox mb-2">
-														<input id="customCheck2"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck2"><span></span></label>
-													</div>
-												</td>
-												<td class="text-danger">003452</td>
-												<td>22 June 2020</td>
-												<td>훈련사모집안내</td>
-												<td colspan="2" class="text-danger">안녕하세요. HEYYO에서 훈련사를
-													모집합니다.</td>
-												<td>Admin</td>
-												<td>
-													<button type="button" class="btn btn-outline-danger" data-toggle="modal" href="#exampleModalCenter" 
-															class="btn btn-outline-danger btn-sm">수정</button>
-													<button type="button" class="btn btn-outline-danger" href="#"
-															onClick="alert('삭제하겠습니까?')">삭제</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="custom-control custom-checkbox mb-2">
-														<input id="customCheck2"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck2"><span></span></label>
-													</div>
-												</td>
-												<td class="text-danger">003451</td>
-												<td>22 June 2020</td>
-												<td>가입축하</td>
-												<td colspan="2" class="text-danger">안녕하세요. HEYYO 회원가입을
-													진심으로 감사드립니다.</td>
-												<td>Admin</td>
-												<td>
-													<button type="button" class="btn btn-outline-danger" data-toggle="modal" href="#exampleModalCenter" 
-															class="btn btn-outline-danger btn-sm">수정</button>
-													<button type="button" class="btn btn-outline-danger" href="#"
-															onClick="alert('삭제하겠습니까?')">삭제</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="custom-control custom-checkbox mb-2">
-														<input id="customCheck2"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck2"><span></span></label>
-													</div>
-												</td>
-												<td class="text-danger">003452</td>
-												<td>22 June 2020</td>
-												<td>홈페이지 오픈</td>
-												<td colspan="2" class="text-danger">안녕하세요. HEYYO가 서비스를
-													시작합니다.</td>
-												<td>Admin</td>
-												<td>
-													<button type="button" class="btn btn-outline-danger" data-toggle="modal" href="#exampleModalCenter" 
-															class="btn btn-outline-danger btn-sm">수정</button>
-													<button type="button" class="btn btn-outline-danger" href="#"
-															onClick="alert('삭제하겠습니까?')">삭제</button>
-												</td>
-											</tr>
-										</tbody>
+										<c:forEach var="board" items="${boards}">
+											<tbody>
+												<tr>
+													<td>
+														<div class="custom-control custom-checkbox mb-2">
+															<input id="customCheck2"
+																class="custom-control-input is-invalid" type="checkbox">
+															<label class="custom-control-label" for="customCheck2"><span></span></label>
+														</div>
+													</td>
+													<td>${board_no }</td>
+													<td>${ttl }</td>
+													<td>${cntn }</td>
+													<td>${mngr_id }</td>
+													<td>${reg_dt }</td>
+													<td><input type="button"
+														class="btn btn-outline-danger" value="수정" id="btnUpdate"
+														data-toggle="modal" href="#exampleModalCenter" /> <input
+														type="button" class="btn btn-outline-danger" value="삭제"
+														id="btnDelete" href="#" onClick="alert('삭제하겠습니까?')" /></td>
+												</tr>
+											</tbody>
+										</c:forEach>
 									</table>
 								</div>
-								<a href="boardForm.do" class="btn btn-danger btn-large float-right">
-                                        <i class="fa fa-plus"></i>
-                                        등록
-                                    </a>
+								<input type="button" onClick="window.open('boardForm.do')"
+									class="btn btn-danger btn-large float-right" value="공지사항 등록">
 							</div>
 						</div>
 					</div>
@@ -374,7 +291,8 @@
 					<div class="col-sm">
 						<nav aria-label="Bootstrap Pagination Example">
 							<ul class="pagination mb-0">
-								<li class="page-item"><a class="page-link" href="mngMain.do"><span
+								<li class="page-item"><a class="page-link"
+									href="mngMain.do"><span
 										class="ml-1 d-none d-xl-inline-block">처음으로</span></a></li>
 								<li class="page-item"><a class="page-link" href="#">1</a></li>
 								<li class="page-item"><a class="page-link" href="#"><span
@@ -403,51 +321,58 @@
 	</main>
 
 	<!-- Large Size Modal-->
-		<div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-lg" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h3 class="modal-title" id="exampleModalLabel">공지사항 수정</h3>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
+	<div class="modal fade bd-example-modal-lg" id="exampleModalCenter"
+		tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title" id="exampleModalLabel">공지사항 수정</h3>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<!-- Current Projects -->
+					<div class="col-md-12 mb-4">
+						<div class="card h-100">
+							<div class="astino-pr-form card-body">
+								<form>
+									<div class="form-group d-flex align-items-center">
+										<label for="formGroupExampleInput">제 목</label> <input
+											type="text" class="form-control" id="formGroupExampleInput"
+											placeholder="훈련서비스관련 공지사항">
+									</div>
+									<div class="form-group d-flex align-items-center">
+										<label for="formGroupExampleInput2">작성자</label> <input
+											type="text" class="form-control" id="formGroupExampleInput2"
+											placeholder="관리자">
+									</div>
+									<div class="form-group d-flex align-items-center">
+										<label for="formGroupExampleInput3">작성 날짜</label> <input
+											type="text" class="form-control" id="formGroupExampleInput3"
+											placeholder="22 Oct 2021">
+									</div>
+									<div class="form-group d-flex align-items-center">
+										<label for="formGroupExampleInput4">내 용</label>
+										<textarea class="form-control" id="formGroupExampleInput6"
+											placeholder="안녕하세요. HEYYO의 훈련서비스는 회원님과 반려동물이 함께 이용하는 서비스입니다."></textarea>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-outline-dangerr" herf="#"
+								onClick="alert('수정하겠습니까?')" data-dismiss="modal">수정</button>
+						</div>
 					</div>
-					<div class="modal-body">
-						<!-- Current Projects -->
-                    <div class="col-md-12 mb-4">
-                        <div class="card h-100">
-                            <div class="astino-pr-form card-body">
-                                 <form>
-                                    <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput">제  목</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="훈련서비스관련 공지사항">
-                                    </div>
-                                    <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput2">작성자</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="관리자">
-                                    </div>
-                                    <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput3">작성 날짜</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="22 Oct 2021">
-                                    </div>
-                                    <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput4">내  용</label>
-                                        <textarea class="form-control" id="formGroupExampleInput6" 
-                                        		placeholder="안녕하세요. HEYYO의 훈련서비스는 회원님과 반려동물이 함께 이용하는 서비스입니다."></textarea>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-						<button type="button" class="btn btn-outline-dangerr" herf="#" onClick="alert('수정하겠습니까?')" data-dismiss="modal">수정</button>
-					</div>
-                    </div>
-                    <!-- End Current Projects -->
-					</div>
+					<!-- End Current Projects -->
 				</div>
 			</div>
 		</div>
-		<!-- Large Size Modal-->
+	</div>
+	<!-- Large Size Modal-->
 
 
 	<!-- Global Vendor -->
@@ -462,8 +387,10 @@
 	<script src="assets/vendor/chart.js/dist/Chart.min.js"></script>
 
 	<!-- Initialization  -->
+	<script src="assets/js/main.js"></script>
 	<script src="assets/js/sidebar-nav.js"></script>
 	<script src="assets/js/dashboard-page-scripts.js"></script>
+
 </body>
 
 </html>

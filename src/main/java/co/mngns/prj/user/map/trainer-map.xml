@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.mngns.prj.user.map.TrainerMapper">
 	<select resultType="co.mngns.prj.user.vo.TrainerVO" id="trainerSelectList">
-		select * from trainer
+		select trainer.*, client.name from trainer left join client on trainer.client_id = client.client_id
 	</select>
 	<select resultType="co.mngns.prj.user.vo.TrainerVO" id="trainerSelect">
 		<!-- select * from trainer where client_id = #{client_id} -->
