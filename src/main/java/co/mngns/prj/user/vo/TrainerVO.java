@@ -20,6 +20,7 @@ public class TrainerVO {
 	private int file_no;
 	private int client_id;
 	private int trn_avrg;
+	private String work_time;
 	
 	public String name;
 }

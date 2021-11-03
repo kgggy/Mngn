@@ -1,14 +1,18 @@
 package co.mngns.prj.svc.web;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import co.mngns.prj.pet.vo.PetVO;
 import co.mngns.prj.svc.service.ReserListService;
 import co.mngns.prj.svc.vo.ReserListVO;
 import co.mngns.prj.user.vo.ClientVO;
+import co.mngns.prj.user.vo.TrainerVO;
 
 @Controller
 public class SvcController {
@@ -38,10 +42,17 @@ public class SvcController {
 	// 돌봄 상세 예약
 	public String cResv(Model model, ReserListVO reser, PetVO pet, ClientVO client) {
 		pet.setClient_id(1);
-		client.setRole(2);
+		client.setClient_id(3);
+		reser.setClient_id2(1);
 		model.addAttribute("petList", rlist.petSelectList(pet));
-		model.addAttribute("trnSelect", rlist.trnSelectList(client));
+		model.addAttribute("addlist", rlist.clientAdd(client));
 		return "service/cResv";
+	}
+	
+	@RequestMapping(value = "/trnSelectList.do")
+	@ResponseBody
+	public List<TrainerVO> trnSelectList(ReserListVO reser) {
+		return rlist.trnSelectList(reser);
 	}
 
 	@RequestMapping(value = "/wResv.do")

@@ -28,5 +28,6 @@ public class ReserListVO {
 	private String knd_name;
 	private int term;
 	private int prc;
+	private String work_time;
 
 }

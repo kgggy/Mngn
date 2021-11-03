@@ -11,17 +11,18 @@ import co.mngns.prj.svc.service.ReserListService;
 import co.mngns.prj.svc.vo.ReserListVO;
 import co.mngns.prj.svc.vo.SvcVO;
 import co.mngns.prj.user.vo.ClientVO;
+import co.mngns.prj.user.vo.TrainerVO;
 
 @Service
 public class ReserListServiceImpl implements ReserListService {
 
 	@Autowired
 	ReserListMapper map;
-	
+
 	@Override
 	public List<ReserListVO> reserSelectList() {
 		return map.reserSelectList();
-		
+
 	}
 
 	@Override
@@ -75,8 +76,8 @@ public class ReserListServiceImpl implements ReserListService {
 	}
 
 	@Override
-	public List<ClientVO> trnSelectList(ClientVO client) {
-		return map.trnSelectList(client);
+	public List<TrainerVO> trnSelectList(ReserListVO reser) {
+		return map.trnSelectList(reser);
 	}
 
 	@Override
