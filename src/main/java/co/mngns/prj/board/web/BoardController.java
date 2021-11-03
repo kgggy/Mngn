@@ -1,9 +1,15 @@
 package co.mngns.prj.board.web;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import co.mngns.prj.board.service.BoardService;
 import co.mngns.prj.board.service.ReviewService;
@@ -38,6 +44,24 @@ public class BoardController {
 		model.addAttribute("myReviews", rService.myReviewList(vo));
 		model.addAttribute("serviceUses", reserService.serviceUse(reser));
 		return "client/cntReview";
+	}
+	
+	@RequestMapping(value = "/reviewDelete.do")
+	// 리뷰 삭제
+	public String reviewDelete(Model model) {
+		return "client/cntReview";
+	}
+	
+	@RequestMapping(value = "/reviewInsert.do")
+	@ResponseBody
+	// 리뷰 입력
+	public int reviewInsert(@RequestBody ReviewVO reviewVo, Model model) throws Exception {
+//	public Map reviewInsert(@RequestBody ReviewVO reviewVo, Model model) throws Exception {
+//		reviewVo.setClient_id(1);
+//		HashMap<String, Object> map = new HashMap<String, Object>();
+//		map.put("review", reviewVo);
+//		return map; 
+		return rService.reviewInsert(reviewVo);
 	}
 	
 	@RequestMapping(value = "/boardList.do")

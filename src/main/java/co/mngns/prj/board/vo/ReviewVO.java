@@ -11,7 +11,7 @@ public class ReviewVO {
 	private int star_rate;
 	private String star_shape;
 	private Date reg_dt;
-	private int file_no;
+	private Integer file_no;
 	private int reser_no;
 	private int client_id;
 	

@@ -5,7 +5,7 @@
 	<select id="reserSelect"
 		resultType="co.mngns.prj.svc.vo.ReserListVO">
 		select r.reser_no, r.reser_dt, r.memo, r.reser_loc,
-			   p.pet_id, r.svc_bgn_tm, r.svc_end_tm,
+			   p.pet_id, r.svc_bgn_tm
 			   s.term, r.svc_stts, s.svc_id
 		  from reser_list r, svc s, pet p
 		 where r.svc_id = s.svc_id 

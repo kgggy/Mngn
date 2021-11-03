@@ -425,7 +425,7 @@ article {
 							<td><a href="#">${serUse. name} 훈련사</a></td>
 							<td>${serUse. prc}원</td>
 							<td><span class="label label-success">${serUse. status}</span></td>
-							<td><a href="#" class="btn btn-sm manage"
+							<td><a href="#" class="btn btn-sm manage" data-reserno="${serUse. reser_no}"
 								data-toggle="modal" data-target="#reviewModal">후기 작성</a></td>
 						</tr>
 					</c:forEach>
@@ -482,7 +482,6 @@ article {
 									data-toggle="modal" data-target="#reviewUpdate">수정</a>&nbsp;&nbsp;
 									<a href="javascript:window.alert('삭제하시겠습니까?')"
 									class="btn btn-sm manage">삭제</a></td>
-								<!-- <button onclick="rDelete()" class="btn btn-sm manage">삭제</button> -->
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -508,59 +507,60 @@ article {
 		<br> <br>
 	</div>
 
-	<!-- 후기작성 Modal 시작 -->
+	<!-- 후기작성 등록 Modal 시작 -->
 	<div class="modal first" id="reviewModal" role="dialog">
 		<div class="modal-dialog modal-lg">
-			<div class="modal-content" style="height: 800px;">
+			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title" style="text-align: left;">후기</h4>
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body">
-					<form role="form" id="signform" name="signform" method="post"
-						action="/email/register" enctype="multipart/form-data">
+					<form role="form" id="signform" name="signform" method="post">
+					<input type="hidden" id="reser_no" name="reser_no">
 						<h2 align="center">
 							<strong>별점과 이용경험을 남겨주세요 :)</strong>
 						</h2>
 						<div class="modalpopup" align="center">
 							<div class="star-rating">
-								<input type="radio" id="5-stars" name="rating" value="5" /> <label
+								<input type="radio" id="5-stars" name="star_rate" value="5" /> <label
 									for="5-stars" class="star"
 									style="font-size: 30pt; width: 40px; height: 40px">&#9733;</label>
-								<input type="radio" id="4-stars" name="rating" value="4" /> <label
+								<input type="radio" id="4-stars" name="star_rate" value="4" /> <label
 									for="4-stars" class="star"
 									style="font-size: 30pt; width: 40px; height: 40px">&#9733;</label>
-								<input type="radio" id="3-stars" name="rating" value="3" /> <label
+								<input type="radio" id="3-stars" name="star_rate" value="3" /> <label
 									style="font-size: 30pt; width: 40px; height: 40px"
 									for="3-stars" class="star">&#9733;</label> <input type="radio"
-									id="2-stars" name="rating" value="2" /> <label
+									id="2-stars" name="star_rate" value="2" /> <label
 									style="font-size: 30pt; width: 40px; height: 40px"
 									for="2-stars" class="star">&#9733;</label> <input type="radio"
-									id="1-star" name="rating" value="1" /> <label for="1-star"
+									id="1-star" name="star_rate" value="1" /> <label for="1-star"
 									class="star" style="font-size: 30pt; width: 40px; height: 40px">&#9733;</label>
 							</div>
 						</div>
 						<br> <br>
 						<textarea id="eml_cnt"
 							style="width: 100%; margin-top: 0px; margin-bottom: 0px; height: 286px; resize: none;"
-							name="eml_cnt" rows="10" class="form-control"
+							name="cntn" rows="10" class="form-control"
 							placeholder="내용을 입력해 주세요."></textarea>
 						<br> <br> <img id="camera_img" src="img/camera.png"
 							style="height: 90px; width: 130px"> <input type="file"
 							id="file" name="file" accept="image/gif,image/jpeg,image/png"
 							onchange="fileCheck(this)" style="display: none;"> <input
-							type="hidden" name="camera">
+							type="hidden" name="file_no">
 					</form>
 				</div>
 				<div class="modal-footer">
 					<button type="button" id="okbutton" class="btn btn-success"
-						data-dismiss="modal">입력</button>
+						data-dismiss="modal" onclick="insert()">입력</button>
 					<button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- 후기작성 Modal 종료 -->
+	
 	<!-- 후기수정 Modal 시작 -->
 	<div class="modal first" id="reviewUpdate" role="dialog">
 		<div class="modal-dialog modal-lg">
@@ -570,26 +570,25 @@ article {
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body">
-					<form role="form" id="signform1" name="signform1" method="post"
-						action="/email/register" enctype="multipart/form-data">
+					<form role="form" id="signform1" name="signform1" method="post">
 						<h2 align="center">
 							<strong>별점과 이용경험을 남겨주세요 :)</strong>
 						</h2>
 						<div class="modalpopup" align="center">
 							<div class="star-rating">
-								<input type="radio" id="5-stars" name="rating" value="5" /> <label
+								<input type="radio" id="5-stars" name="star_rate" value="5" /> <label
 									for="5-stars" class="star"
 									style="font-size: 30pt; width: 40px; height: 40px">&#9733;</label>
-								<input type="radio" id="4-stars" name="rating" value="4" /> <label
+								<input type="radio" id="4-stars" name="star_rate" value="4" /> <label
 									for="4-stars" class="star"
 									style="font-size: 30pt; width: 40px; height: 40px">&#9733;</label>
-								<input type="radio" id="3-stars" name="rating" value="3" /> <label
+								<input type="radio" id="3-stars" name="star_rate" value="3" /> <label
 									style="font-size: 30pt; width: 40px; height: 40px"
 									for="3-stars" class="star">&#9733;</label> <input type="radio"
-									id="2-stars" name="rating" value="2" /> <label
+									id="2-stars" name="star_rate" value="2" /> <label
 									style="font-size: 30pt; width: 40px; height: 40px"
 									for="2-stars" class="star">&#9733;</label> <input type="radio"
-									id="1-star" name="rating" value="1" /> <label for="1-star"
+									id="1-star" name="star_rate" value="1" /> <label for="1-star"
 									class="star" style="font-size: 30pt; width: 40px; height: 40px">&#9733;</label>
 							</div>
 						</div>
@@ -597,7 +596,7 @@ article {
 						<textarea id="eml_cnt"
 							style="width: 100%; margin-top: 0px; margin-bottom: 0px; height: 286px; resize: none;"
 							name="eml_cnt" rows="10" class="form-control"
-							placeholder="주소입력하세요."></textarea>
+							placeholder="${review.cntn }"></textarea>
 						<br> <br> <img id="camera_img" src="img/camera.png"
 							style="height: 90px; width: 130px"> <input type="file"
 							id="file" name="file" accept="image/gif,image/jpeg,image/png"
@@ -615,9 +614,7 @@ article {
 	</div>
 	<!-- 후기수정 Modal 종료 -->
 	<script>
-		function fileCheck(obj) {
-			document.signform.submit();
-		}
+
 		$('#camera_img').click(
 				function(e) {
 					document.signform.camera.value = document
@@ -652,6 +649,36 @@ article {
 				}
 			}
 		}
+		
+		function insert() {
+			
+			var data = JSON.stringify($("#signform").serialize());
+			
+			alert("저장하시겠습니까?");
+			$.ajax({
+				url : "reviewInsert.do",
+				type : "post",
+				data : data,
+				contentType: 'application/json',
+				success : function(data) {
+					if (data == 1)
+						alert("후기가 등록되었습니다.");
+					else
+						alert("후기 등록에 실패하였습니다.");
+				},
+				error: function() {
+					alert("후기 등록에 실패하였습니다.");
+				}
+			});
+		};
+		
+	
+		
+		$('#reviewModal').on('show.bs.modal', function (e) {
+			  $('#reser_no').val( $(event.target).data('reserno'))
+			})
+		
+		
 	</script>
 
 </body>

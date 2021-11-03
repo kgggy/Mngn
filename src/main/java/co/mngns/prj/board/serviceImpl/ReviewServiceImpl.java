@@ -53,4 +53,10 @@ public class ReviewServiceImpl implements ReviewService {
 		return map.myReviewList(vo);
 	}
 
+	@Override
+	public List<ReviewVO> trnReviewList(ReviewVO vo) {
+		// 해당훈련사의 리뷰목록
+		return map.trnReviewList(vo);
+	}
+
 }

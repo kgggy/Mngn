@@ -2,10 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.mngns.prj.user.map.TrainerMapper">
 	<select resultType="co.mngns.prj.user.vo.TrainerVO" id="trainerSelectList">
-		select trainer.*, client.name from trainer left join client on trainer.client_id = client.client_id
+		select trainer.*, client.name 
+		  from trainer left join client on trainer.client_id = client.client_id
 	</select>
 	<select resultType="co.mngns.prj.user.vo.TrainerVO" id="trainerSelect">
-		<!-- select * from trainer where client_id = #{client_id} -->
+		  select distinct t.*,
+	     		 case t.gen when 1 then '여자' else '남자' end as gender,
+		       	 c.name
+		    from trainer t, client c, review r, reser_list l 
+		   where t.client_id = c.client_id 
+			    and l.client_id2 = t.client_id
+			    and l.client_id1 = r.client_id
+			    and c.client_id = #{client_id}
+			    
+			    
 	</select>
 
 </mapper>

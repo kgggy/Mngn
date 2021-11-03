@@ -22,7 +22,7 @@ public class TrainerServiceImpl implements TrainerService {
 	}
 
 	@Override
-	public ClientVO TrainerSelect(TrainerVO trn) {
+	public TrainerVO TrainerSelect(TrainerVO trn) {
 		// 훈련사 세부 조회
 		return trnmap.trainerSelect(trn);
 	}
