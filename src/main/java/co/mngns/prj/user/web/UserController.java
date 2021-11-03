@@ -9,9 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import co.mngns.prj.board.service.ReviewService;
+import co.mngns.prj.board.vo.ReviewVO;
 import co.mngns.prj.user.service.ClientService;
 import co.mngns.prj.user.service.TrainerService;
 import co.mngns.prj.user.vo.ClientVO;
+import co.mngns.prj.user.vo.TrainerVO;
 
 @Controller
 public class UserController {
@@ -20,7 +23,7 @@ public class UserController {
 	TrainerService trnService;
 	
 	@Autowired ClientService cntService;
-	 
+	@Autowired ReviewService reviewService;
 	@PostMapping(value = "/login.do")
 	// 로그인 처리페이지
 	public String login(Model model, ClientVO clientvo, HttpSession session){
@@ -96,6 +99,7 @@ public class UserController {
 		model.addAttribute("trainers", trnService.TrainerSelectList());
 		return "client/tList";
 	}
+	
 	
 	@RequestMapping(value="/tDetail.do")
 	// 훈련사 상세보기 페이지
