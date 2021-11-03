@@ -36,6 +36,7 @@
 <link rel="stylesheet" href="assets/css/theme.css">
 <link rel="stylesheet" href="assets/css/style.css">
 
+
 <!-- Custom Charts -->
 <style>
 .js-doughnut-chart {
@@ -43,14 +44,41 @@
 	height: 70px !important;
 }
 </style>
+<!-- Global Vendor -->
+<script src="assets/vendor/jquery/dist/jquery.min.js"></script>
+<script src="assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
+<script src="assets/vendor/popper.js/dist/umd/popper.min.js"></script>
+<script src="assets/vendor/bootstrap/bootstrap.min.js"></script>
 
+<!-- Plugins -->
+<script
+	src="assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="assets/vendor/chart.js/dist/Chart.min.js"></script>
+
+<!-- Initialization  -->
+<script src="assets/js/main.js"></script>
+<script src="assets/js/sidebar-nav.js"></script>
+<script src="assets/js/dashboard-page-scripts.js"></script>
 <script>
+	$(document).ready(function() {
+		$('#exampleModalCenter').on('show.bs.modal', function(event) {
+			var tr = $(event.relatedTarget).closest('tr') // Button that triggered the modal
+			var data1 = tr.find('td:eq(1)').html()
+			var data3 = tr.find('td:eq(3)').html()
+			var data5 = tr.find('td:eq(5)').html()
+			$(this).find('.modal-body #boardTtl').val(data1)
+			$(this).find('.modal-body #boardDt').val(data3)
+			$(this).find('.modal-body #boardCntn').val(data5)
+		})
+	});
+
 	//공지사항 등록
 	function boardInsert() {
 		//등록 버튼 클릭
-		$(#'btnInsert').on('click', function() {
+		$('#btnInsert').on('click', function() {
+			var id = $(this).closest('tr').find()
 			$.ajax({
-				url : "/boardList.do",
+				url : "/boardForm.do",
 				method : "post",
 				dataType : "json",
 				success : function(data) {
@@ -59,10 +87,7 @@
 			})
 		});
 	} // end 공지사항 등록
-	
-	
-	//공지사항 수정
-	
+
 	//공지사항 삭제
 	/* function boardDelete() {
 		$(".table-responsive").on("click", "#btnDelete", function() {
@@ -73,18 +98,17 @@
 					url : "",
 					type : "DELETE",
 					dataType : "json",
-					sucess : function(data) {
+					success : function(data) {
 						boardList();
 					}
 				})
 			}
 		});
 	}//end 공지사항 삭제 */
-	
+
 	function boardDelete() {
 		window.alert('정말 삭제하시겠습니까?');
 	};
-	
 </script>
 
 </head>
@@ -228,11 +252,6 @@
 						<div class="card h-100">
 							<header class="card-header d-flex align-items-center">
 								<h2 class="h2 card-header-title">공지사항 List</h2>
-
-								<!-- Card Header Icon -->
-								<ul class="list-inline ml-auto mb-0">
-								</ul>
-								<!-- End Card Header Icon -->
 							</header>
 
 							<div class="card-body">
@@ -240,13 +259,6 @@
 									<table class="table table-hover">
 										<thead>
 											<tr>
-												<th scope="col" class="text-dark">
-													<div class="custom-control custom-checkbox mb-2">
-														<input id="" class="custom-control-input is-invalid"
-															type="checkbox"> <label
-															class="custom-control-label" for=""><span></span></label>
-													</div>
-												</th>
 												<th scope="col" class="text-dark">일련번호</th>
 												<th scope="col" class="text-dark">제목</th>
 												<th scope="col" class="text-dark">작성자</th>
@@ -255,34 +267,31 @@
 											</tr>
 										</thead>
 
-										<c:forEach var="board" items="${boards}">
-											<tbody>
+										<tbody>
+											<c:forEach var="board" items="${boards}">
 												<tr>
-													<td>
-														<div class="custom-control custom-checkbox mb-2">
-															<input id="customCheck2"
-																class="custom-control-input is-invalid" type="checkbox">
-															<label class="custom-control-label" for="customCheck2"><span></span></label>
-														</div>
-													</td>
-													<td>${board_no }</td>
-													<td>${ttl }</td>
-													<td>${cntn }</td>
-													<td>${mngr_id }</td>
-													<td>${reg_dt }</td>
+													<td>${board.board_no }</td>
+													<td>${board.ttl }</td>
+													<td>관리자</td>
+													<td>${board.reg_dt }</td>
 													<td><input type="button"
 														class="btn btn-outline-danger" value="수정" id="btnUpdate"
-														data-toggle="modal" href="#exampleModalCenter" /> <input
-														type="button" class="btn btn-outline-danger" value="삭제"
-														id="btnDelete" href="#" onClick="alert('삭제하겠습니까?')" /></td>
+														data-toggle="modal" data-target="#exampleModalCenter" />
+														<input type="button" class="btn btn-outline-danger"
+														value="삭제" id="btnDelete" href="#"
+														onClick="alert('삭제하겠습니까?')" /></td>
+													<td style="display: none;">${board.cntn}</td>
 												</tr>
-											</tbody>
-										</c:forEach>
+											</c:forEach>
+										</tbody>
 									</table>
 								</div>
-								<input type="button" onClick="window.open('boardForm.do')"
-									class="btn btn-danger btn-large float-right" value="공지사항 등록">
 							</div>
+						</div>
+						<br>
+						<div>
+							<input type="button" onClick="window.open('boardForm.do')"
+								class="btn btn-danger btn-large float-right" value="공지사항 등록">
 						</div>
 					</div>
 					<!-- End Current Projects -->
@@ -341,29 +350,28 @@
 								<form>
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput">제 목</label> <input
-											type="text" class="form-control" id="formGroupExampleInput"
-											placeholder="훈련서비스관련 공지사항">
+											type="text" class="form-control" id="boardTtl" placeholder="">
 									</div>
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput2">작성자</label> <input
-											type="text" class="form-control" id="formGroupExampleInput2"
-											placeholder="관리자">
+											type="text" class="form-control" id="boardMngr"
+											placeholder="관리자" readonly>
 									</div>
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput3">작성 날짜</label> <input
-											type="text" class="form-control" id="formGroupExampleInput3"
-											placeholder="22 Oct 2021">
+											type="date" class="form-control" id="boardDt" placeholder=""
+											readonly>
 									</div>
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput4">내 용</label>
-										<textarea class="form-control" id="formGroupExampleInput6"
-											placeholder="안녕하세요. HEYYO의 훈련서비스는 회원님과 반려동물이 함께 이용하는 서비스입니다."></textarea>
+										<textarea class="form-control" id="boardCntn"
+											placeholder="내용을 입력하세요"></textarea>
 									</div>
 								</form>
 							</div>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-outline-dangerr" herf="#"
+							<button type="button" class="btn btn-outline-danger" herf="#"
 								onClick="alert('수정하겠습니까?')" data-dismiss="modal">수정</button>
 						</div>
 					</div>
@@ -373,23 +381,6 @@
 		</div>
 	</div>
 	<!-- Large Size Modal-->
-
-
-	<!-- Global Vendor -->
-	<script src="assets/vendor/jquery/dist/jquery.min.js"></script>
-	<script src="assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
-	<script src="assets/vendor/popper.js/dist/umd/popper.min.js"></script>
-	<script src="assets/vendor/bootstrap/bootstrap.min.js"></script>
-
-	<!-- Plugins -->
-	<script
-		src="assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
-	<script src="assets/vendor/chart.js/dist/Chart.min.js"></script>
-
-	<!-- Initialization  -->
-	<script src="assets/js/main.js"></script>
-	<script src="assets/js/sidebar-nav.js"></script>
-	<script src="assets/js/dashboard-page-scripts.js"></script>
 
 </body>
 

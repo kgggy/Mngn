@@ -14,9 +14,9 @@ public class UserController {
 	@Autowired
 	TrainerService trnService;
 	
-	/*
-	 * @Autowired ClientService cntService;
-	 */
+
+	@Autowired 
+	ClientService cntService;
 
 	@RequestMapping(value = "/login.do")
 	// 로그인 페이지
@@ -38,13 +38,15 @@ public class UserController {
 
 	@RequestMapping(value = "/cntList.do")
 	// 회원 목록 페이지
-	public String cntList() {
+	public String cntList(Model model) {
+		model.addAttribute("clients", cntService.clientSelectList());
 		return "manager/user/cntList";
 	}
 
 	@RequestMapping(value = "/trnList.do")
-	// 훈련사 목록 페이지
-	public String trnList() {
+	// 관리자 페이지의 훈련사 목록 페이지
+	public String trnList(Model model) {
+		model.addAttribute("trainer", trnService.mTrainerSelectList());
 		return "manager/user/trnList";
 	}
 

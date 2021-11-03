@@ -45,4 +45,10 @@ public class TrainerServiceImpl implements TrainerService {
 		return 0;
 	}
 
+	@Override
+	public List<TrainerVO> mTrainerSelectList() {
+		// 관리자 페이지 훈련사 전체 조회
+		return trnmap.mtrainerSelectList();
+	}
+
 }

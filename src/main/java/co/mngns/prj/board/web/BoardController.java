@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import co.mngns.prj.board.service.BoardService;
 import co.mngns.prj.board.service.ReviewService;
+import co.mngns.prj.board.vo.BoardVO;
 import co.mngns.prj.board.vo.ReviewVO;
 
 @Controller
@@ -32,8 +33,6 @@ public class BoardController {
 		model.addAttribute("myReviews", rService.myReviewList(vo));
 		return "client/cntReview";
 	}
-
-
 	
 	@RequestMapping(value = "/boardList.do")
 	// 관리자 공지사항 목록

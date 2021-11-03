@@ -11,4 +11,6 @@ public interface TrainerService {
 	int TrainerInsert(TrainerVO trn);		//사용자 삽입
 	int TrainerUpdate(TrainerVO trn);		//사용자 수정
 	int TrainerDelete(TrainerVO trn);		//사용자 삭제
+	
+	List<TrainerVO> mTrainerSelectList(); //관리자 페이지 전체목록 가져오기
 }
