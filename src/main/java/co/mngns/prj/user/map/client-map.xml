@@ -4,8 +4,31 @@
 	<select resultType="co.mngns.prj.user.vo.ClientVO" id="clientSelectList">
 		select * from client
 	</select>
+	
 	<select resultType="co.mngns.prj.user.vo.ClientVO" id="clientSelect">
 		select * from client where client_id = #{client_id}
 	</select>
+	
 
+
+	<insert id="clientInsert">
+	
+	insert into client(client_id, pwd, name, post_no,adres1,adres2, phone, email,join_dt, role)
+				values(#{client_id}, #{pwd}, #{name},#{post_no},#{adres1},#{adres2},#{phone},#{email},sysdate,1)
+	
+	</insert>
+	
+		<select id="clientLogin" resultType="co.mngns.prj.user.vo.ClientVO">
+		 select * from client where client_id =#{client_id} and pwd =#{pwd}
+		 
+	</select>
+	
+	<!-- 
+	<insert id="insertLogin" parameterType="user">
+		INSERT into users (id, password, name, role)
+		VALUES ( #{id},#{password},#{name},#{role} )
+	</insert>
+	 -->
+	
+	
 </mapper>
