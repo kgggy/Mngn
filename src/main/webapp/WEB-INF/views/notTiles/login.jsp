@@ -127,12 +127,10 @@ function kakaoLogout() {
 }
 
 #kakao_id_login, #naver_id_login, #google_id_login, #facebook_id_login {
-  	cursor: pointer;
+	cursor: pointer;
 	width: 45px;
 	height: 45px;
 }
-
-
 </style>
 </head>
 <body>
@@ -141,46 +139,46 @@ function kakaoLogout() {
 
 			<div class="row justify-content-center">
 				<div class="col-md-6 col-lg-5">
-					<div class="login-wrap p-4 p-md-5">
-						<div class="logo">
-							<h2 style="font-weight: bolder">
-								<a><img src="img/logo1.png"> HEYYO</a>
-							</h2>
-						</div>
-						<div class="made">
-							<h5 style="font-weight: bolder">로 그 인</h5>
-						</div>
-						<form action="#" class="login-form">
+					<form action="login.do" class="login-form" method = "post">
+						<div class="login-wrap p-4 p-md-5">
+							<div class="logo">
+								<h2 style="font-weight: bolder">
+									<a><img src="img/logo1.png"> HEYYO</a>
+								</h2>
+							</div>
+							<div class="made">
+								<h5 style="font-weight: bolder">로 그 인</h5>
+							</div>
 							<div class="form-group">
-								<input type="text" class="form-control rounded-left"
+								<input type="number"  name ="client_id"class="form-control rounded-left"
 									placeholder="Username" required>
 							</div>
 							<div class="form-group d-flex">
-								<input type="password" class="form-control rounded-left"
+								<input  name ="pwd" type="password" class="form-control rounded-left"
 									placeholder="Password" required>
 							</div>
 
-							<div class="social_Login" >
-								<img src="img/kakaologin.svg" id="kakao_id_login"
-									onclick="">
-							    <img src="img/naverlogin.png" id="naver_id_login"
-									onclick="openPopUp()">
-								<img src="img/googleLogin.png" id="google_id_login" onclick="">
-								<img src="img/facebookLogin.png" id="facebook_id_login"
-									onclick="">
+							<div class="social_Login">
+								<img src="img/kakaologin.svg" id="kakao_id_login" onclick="">
+								<img src="img/naverlogin.png" id="naver_id_login"
+									onclick="openPopUp()"> <img src="img/googleLogin.png"
+									id="google_id_login" onclick=""> <img
+									src="img/facebookLogin.png" id="facebook_id_login" onclick="">
 							</div>
 							<div>
 								회원이 아니신가요?<a href="joinForm.do" class="reg">가입하기</a>
 							</div>
-					</div>
-					<div class="form-group">
-						<button type="submit"
-							class="btn btn-primary rounded submit p-3 px-5"
-							id="naverIdLogin_loginButton" onclick="main()" align="center">로그인</button>
-					</div>
+						</div>
+						<div class="form-group">
+							<button type="submit"
+								class="btn btn-primary rounded submit p-3 px-5"
+								id="naverIdLogin_loginButton" align="center">로그인</button>
+						</div>
 					</form>
 				</div>
 			</div>
+		</div>
+
 	</section>
 
 	<script src="js/ljquery.min.js"></script>
@@ -188,9 +186,7 @@ function kakaoLogout() {
 	<script src="js/lbootstrap.min.js"></script>
 	<script src="js/lmain.js"></script>
 	<script>
-		function main() {
-			location.href = "cntMain.do"
-		}
+
 	</script>
 
 </body>

@@ -29,25 +29,25 @@ public class ClientServiceImpl implements ClientService {
 	@Override
 	public int clientInsert(ClientVO cnt) {
 		// TODO Auto-generated method stub
-		return 0;
+		return cntmap.clientInsert(cnt);
 	}
 
 	@Override
 	public int clientUpdate(ClientVO cnt) {
 		// TODO Auto-generated method stub
-		return 0;
+		return cntmap.clientUpdate(cnt);
 	}
 
 	@Override
 	public int clientDelete(ClientVO cnt) {
 		// TODO Auto-generated method stub
-		return 0;
+		return cntmap.clientDelete(cnt);
 	}
 
 	@Override
 	public ClientVO clientLogin(ClientVO cnt) {
 		// TODO Auto-generated method stub
-		return null;
+		return cntmap.clientLogin(cnt);
 	}
 
 	@Override

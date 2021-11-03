@@ -5,7 +5,7 @@
 	<select id="reserSelect"
 		resultType="co.mngns.prj.svc.vo.ReserListVO">
 		select r.reser_no, r.reser_dt, r.memo, r.reser_loc,
-			   p.pet_id, r.svc_bgn_tm, r.svc_end_tm,
+			   p.pet_id, r.svc_bgn_tm
 			   s.term, r.svc_stts, s.svc_id
 		  from reser_list r, svc s, pet p
 		 where r.svc_id = s.svc_id 
@@ -27,5 +27,18 @@
 		resultType="co.mngns.prj.user.vo.ClientVO">
 		select name from client where  role='2'
 	</select>
+	
+	<select id="serviceUse" resultType="co.mngns.prj.svc.vo.ReserListVO">
+      select l.*, 
+      		 case l.svc_stts when 1 then '접수 완료' when 2 then '서비스 완료' else '취소 및 환불' end as status,
+      		 c.name, 
+      		 case s.knd when 1 then '돌봄 서비스' when 2 then '산책 서비스' else '훈련 서비스' end as knd_name, 
+      		 s.term, 
+      		 s.prc
+        from reser_list l, svc s, client c
+       where l.client_id2 = c.client_id
+         and s.svc_id = l.svc_id
+         and l.client_id1 = #{client_id1}
+   </select>
 	
 </mapper>

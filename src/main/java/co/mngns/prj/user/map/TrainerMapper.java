@@ -8,7 +8,7 @@ import co.mngns.prj.user.vo.TrainerVO;
 public interface TrainerMapper {
 	List<TrainerVO> trainerSelectList(); // 훈련사 전체목록 가져오기
 
-	ClientVO trainerSelect(TrainerVO trn); // 훈련사 한명 세부정보 가져오기
+	TrainerVO trainerSelect(TrainerVO trn); // 훈련사 한명 세부정보 가져오기
 
 	int trainerInsert(TrainerVO trn); // 훈련사 삽입
 
