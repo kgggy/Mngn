@@ -22,5 +22,19 @@
 	<select resultType="co.mngns.prj.user.vo.TrainerVO" id="mtrainerSelectList">
 		select t.*, c.* from trainer t join client c on t.client_id = c.client_id
 	</select>
+	
+	<select id="getSearchList" resultType="co.mngns.prj.user.vo.TrainerVO">
+		select t. *, c.name
+		  from trainer t, client c, client_quit q
+		 where t.client_id = c.client_id and c.client_id
+		 <choose>
+		 	<when test="type !=null and type.equals('name')">
+		 	and name = #{name}
+		 	</when>
+		 	<when test="type !=null and type.equals('adres')">
+		 	and adres = #{work_loc2}
+		 	</when>
+		 </choose>
+	</select>
 
 </mapper>
