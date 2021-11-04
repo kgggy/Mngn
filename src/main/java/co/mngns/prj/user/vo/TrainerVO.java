@@ -31,5 +31,9 @@ public class TrainerVO {
 	public int star_rate;
 	public String star_shape;
 	public Date reg_dt;
+	
+	//검색필터
+	public String type; //검색타입
+	public String keyword; //검색내용
 }
 

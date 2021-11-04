@@ -33,23 +33,22 @@
 	</section>
 
 	<div class="col-lg-44">
-		<form action="#">
+		<form action="search-form">
 			<div class="form-group">
 				<div class="input-group mb-3">
-					<input type="text" id="address_kakao" name="address"
-						class="form-control" onclick="execution_daum_address()"
-						placeholder='주소를 입력해주세요.' onfocus="this.placeholder = ''"
-						onblur="this.placeholder = '주소를 입력해주세요.'">
-					<div class="input-group-append">
-						<button class="btn" type="button">
-							<i class="ti-search"></i>
-						</button>
-					</div>
+					<select name="type">
+						<option selected value="">선택</option>
+						<option value="name">이름</option>
+						<option value="adres">주소</option>
+					</select> <input type="text" id="address_kakao" name="address"
+						class="form-control" placeholder='내용을 입력해주세요.'
+						onfocus="this.placeholder = ''"
+						onblur="this.placeholder = '내용을 입력해주세요.'">
 				</div>
 			</div>
 			<button
 				class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-				type="submit" onclick="search()">검색하기</button>
+				type="submit" onclick="getSearchList()">검색하기</button>
 		</form>
 	</div>
 
@@ -70,7 +69,7 @@
 										<img src="img/testmonial/1.png" alt="">
 									</div>
 									<div class="test_content">
-										<h4>${trainer.name } 훈련사</h4>
+										<h4>${trainer.name }훈련사</h4>
 										<span>${trainer.work_loc1 } ${trainer.work_loc2 }</span> <span>평점
 											${trainer.trn_avrg }점</span>
 										<p>${trainer.intro_ttl }</p>
@@ -104,7 +103,41 @@
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
-		function execution_daum_address() {
+		function getSearchList() {
+			$.ajax({
+				type : 'GET',
+				url : "/getSearchList.do",
+				data : $("form[name=search-form]").serialize(),
+				success : function(result) {
+					//테이블 초기화
+					$('.col-lg-10').empty();
+					if (result.length >= 1) {
+						result.forEach(function(item) {
+							str + "<c:forEach items='${trainers }' var='trainer'>";
+							str += "<form action='tDetail.do' id='tlistForm' name='tlistForm'
+							method='post'>";
+							str += "<div class='testmonial_wrap'>";
+							str += "<div class='single_testmonial d-flex align-items-center'
+								onclick='$(this).closest("form").submit()'>";
+							str += "<input type='hidden' id='client_id' name='client_id'
+							value='${trainer.client_id }'>" + trainer.client_id;
+							str += "<div class='test_thumb'>" + "<img src='img/testmonial/1.png' alt=''>" + "</div>";
+							str += "<div class='test_content'>";
+							str += "<h4>" + ${trainer.name } 훈련사 + "</h4>" + "<span>" 
+									+ ${trainer.work_loc1 } ${trainer.work_loc2 } + "</span>"
+									+ "<span>" + 평점 ${trainer.trn_avrg }점 + "</span>"
+									+ "<p>" + ${trainer.intro_ttl } + "</p>";
+							str += "</div>";
+							str += "</form>";
+							str += "<br>" + "<br>";
+							str += "</c:forEach>";
+							$('.col-lg-10').append(str);
+						})
+					}
+				}
+			})
+		}
+		/* function execution_daum_address() {
 			new daum.Postcode(
 					{
 						oncomplete : function(data) {
@@ -134,7 +167,7 @@
 					}
 				}
 			}
-		}
+		} */
 
 		//페이징 처리
 		/* let totalData; //총 데이터 수
