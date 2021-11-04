@@ -247,7 +247,7 @@
 		<div class="u-content">
 			<div class="u-body">
 				<div class="row">
-					<!-- Current Projects -->
+					<!-- 공지사항 목록 -->
 					<div class="col-md-12 mb-4">
 						<div class="card h-100">
 							<header class="card-header d-flex align-items-center">
@@ -286,12 +286,13 @@
 										</tbody>
 									</table>
 								</div>
-							</div>
-						</div>
 						<br>
 						<div>
 							<input type="button" onClick="window.open('boardForm.do')"
 								class="btn btn-danger btn-large float-right" value="공지사항 등록">
+						</div>
+						<br>
+							</div>
 						</div>
 					</div>
 					<!-- End Current Projects -->
@@ -381,7 +382,5 @@
 		</div>
 	</div>
 	<!-- Large Size Modal-->
-
 </body>
-
 </html>

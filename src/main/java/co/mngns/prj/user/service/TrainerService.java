@@ -11,4 +11,6 @@ public interface TrainerService {
 	int TrainerInsert(TrainerVO trn);		//훈련사 삽입
 	int TrainerUpdate(TrainerVO trn);		//훈련사 수정
 	int TrainerDelete(TrainerVO trn);		//훈련사 삭제
+	
+	List<TrainerVO> getSearchList(TrainerVO trn); // 훈련사 검색
 }

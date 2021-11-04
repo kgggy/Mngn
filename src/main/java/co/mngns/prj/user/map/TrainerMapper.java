@@ -17,4 +17,6 @@ public interface TrainerMapper {
 	int trainerDelete(TrainerVO trn); // 훈련사 삭제
 	
 	List<TrainerVO> mtrainerSelectList(); // 관리자 페이지 훈련사 전체목록 가져오기
+	
+	List<TrainerVO> getSearchList(TrainerVO trn); // 훈련사 검색
 }

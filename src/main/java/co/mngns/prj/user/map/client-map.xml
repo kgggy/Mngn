@@ -9,6 +9,10 @@
 		select * from client where client_id = #{client_id}
 	</select>
 	
+	<select resultType="co.mngns.prj.user.vo.ClientVO" id="mclientSelectList">
+		select * from client
+	</select>
+	
 
 
 	<insert id="clientInsert">

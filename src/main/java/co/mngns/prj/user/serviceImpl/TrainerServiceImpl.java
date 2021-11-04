@@ -51,4 +51,10 @@ public class TrainerServiceImpl implements TrainerService {
 		return trnmap.mtrainerSelectList();
 	}
 
+	@Override
+	public List<TrainerVO> getSearchList(TrainerVO trn) {
+		// 훈련사 검색
+		return trnmap.getSearchList(trn);
+	}
+
 }

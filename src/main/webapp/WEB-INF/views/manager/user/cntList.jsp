@@ -209,13 +209,13 @@
 
 		<div class="u-content">
 			<div class="u-body">
-				<header class="product-all-content-header d-flex align-items-center">
-					<h2 class="h1 card-header-title">사용자 목록</h2>
-				</header>
 				<div class="row">
-					<!-- Current Projects -->
 					<div class="col-md-12 mb-4">
 						<div class="card h-100">
+				<header class="card-header d-flex align-items-center">
+					<h2 class="h2 card-header-title">사용자 목록</h2>
+				</header>
+					<!-- 사용자 정보 -->
 							<div class="card-body">
 								<div class="table-responsive">
 									<table class="table table-hover">

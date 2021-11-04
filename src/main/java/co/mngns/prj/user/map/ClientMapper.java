@@ -18,4 +18,6 @@ public interface ClientMapper {
 	ClientVO clientLogin(ClientVO vo); // 로그인 처리
 
 	boolean idCheck(String str); // 아이디 중복 체크
+	
+	List<ClientVO> mclientSelectList(); // 관리자 페이지 사용자 전체목록 가져오기
 }
