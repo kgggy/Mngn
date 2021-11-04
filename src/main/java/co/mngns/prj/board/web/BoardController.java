@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import co.mngns.prj.board.service.BoardService;
 import co.mngns.prj.board.service.ReviewService;
+import co.mngns.prj.board.vo.BoardVO;
 import co.mngns.prj.board.vo.ReviewVO;
 import co.mngns.prj.svc.service.ReserListService;
 import co.mngns.prj.svc.vo.ReserListVO;
@@ -45,7 +46,7 @@ public class BoardController {
 		model.addAttribute("serviceUses", reserService.serviceUse(reser));
 		return "client/cntReview";
 	}
-	
+
 	@RequestMapping(value = "/reviewDelete.do")
 	// 리뷰 삭제
 	public String reviewDelete(Model model) {

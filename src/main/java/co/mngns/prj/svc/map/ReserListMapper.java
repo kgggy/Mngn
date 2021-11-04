@@ -8,6 +8,7 @@ import co.mngns.prj.pet.vo.PetVO;
 import co.mngns.prj.svc.vo.ReserListVO;
 import co.mngns.prj.svc.vo.SvcVO;
 import co.mngns.prj.user.vo.ClientVO;
+import co.mngns.prj.user.vo.TrainerVO;
 
 @Service
 public interface ReserListMapper {
@@ -33,7 +34,7 @@ public interface ReserListMapper {
 	
 	public ClientVO clientAdd(ClientVO client);
 
-	public List<ClientVO> trnSelectList(ClientVO client);
-	
 	public List<ReserListVO> serviceUse(ReserListVO reser);
+	
+	public List<TrainerVO> trnSelectList(ReserListVO reser);
 }

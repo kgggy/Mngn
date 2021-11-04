@@ -10,22 +10,32 @@
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-	window.onload = function() {
-		$("#address_kakao").on("click", function() {
-			new daum.Postcode({
-				oncomplete : function(data) { //선택시 입력값 세팅
-					$("#address_kakao").val(data.address); // 주소 넣기
-					$("input[name=address_detail]").focus(); //상세입력 포커싱
-				}
-			}).open();
-		});
-	}
-	$(document).ready(function(e) {
+window.onload = function() {
+	$("#address_kakao").on("click", function() {
+		new daum.Postcode({
+			oncomplete : function(data) { //선택시 입력값 세팅
+				$("#address_kakao").val(data.address); // 주소 넣기
+				$("#input[name='address_detail']").focus();
+			}
+		}).open();
+	});
+
+	$("input[type='checkbox']").on("click", function() {
+		var count = $("input:checked[type='checkbox']").length;
+		if (count > 2) {
+			this.checked = false;
+			alert("최대 2마리까지만 선택가능합니다.");
+		}
+	});
+}
+	$(function() {
 		$(".datepicker").datepicker({
-			dateFormat : 'yy-mm-dd',
+			dateFormat : "yyyy-mm-dd",
 			minDate : 0,
+			
 		});
 	});
+
 </script>
 </head>
 <body>

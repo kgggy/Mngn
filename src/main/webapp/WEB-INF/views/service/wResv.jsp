@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,9 +22,18 @@
 
 	$(".park").on("click", function() {
 			window.open("map.do", "근처공원 선택", "width=650px,height=800px,scrollbars=yes,left=600px,top=100px");
-		})
+		});
+		
+	$("input[type='checkbox']").on("click", function() {
+		var count = $("input:checked[type='checkbox']").length;
+		if (count > 2) {
+			this.checked = false;
+			alert("최대 2마리까지만 선택가능합니다.");
+			}
+		});
 	}
-	$(document).ready(function(e) {
+	
+	$(function() {
 		$(".datepicker").datepicker({
 			dateFormat : 'yy-mm-dd',
 			minDate : 0,
@@ -62,8 +71,8 @@
 				<h3>
 					날짜 및 시간선택<span class="required">*</span>
 				</h3>
-				<input type="text" class="datepicker" required> <span> <i
-					class="fas fa-calendar-alt"></i>
+				<input type="text" class="datepicker" required> <span>
+					<i class="fas fa-calendar-alt"></i>
 				</span>
 			</div>
 			<div class="question">
@@ -89,18 +98,22 @@
 				</h3>
 				<div class="question-answer">
 					<c:forEach items="${trnSelect }" var="trn" varStatus="stts">
-						<input type="radio" value="${trn.role }" id="radio_${stts.count }" name="client_id${stts.count }" />
-						<label for="radio_${stts.count }" class="radio" onclick="trnSelect()"><span>${trn.name } 훈련사</span></label>
+						<input type="radio" value="${trn.role }" id="radio_${stts.count }"
+							name="client_id${stts.count }" />
+						<label for="radio_${stts.count }" class="radio"
+							onclick="trnSelect()"><span>${trn.name } 훈련사</span></label>
 					</c:forEach>
 				</div>
 			</div>
 			<div class="item">
 				<h3>특이사항</h3>
 				<textarea rows="10" required placeholder="최대 1000자까지 입력가능합니다."></textarea>
+				<small class="caution">⚠️ 맹견 5종 [도사견, 핏불테리어, 스태퍼드셔 (불)태리어,
+					로트와일러] 은 필수로 입마개 착용할 것을 알려드립니다.</small>
 			</div>
 			<br />
 			<div class="btn-block">
-				<button type="submit" >예약</button>
+				<button type="submit">예약</button>
 			</div>
 		</form>
 	</div>

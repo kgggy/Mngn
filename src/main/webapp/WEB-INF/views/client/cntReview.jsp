@@ -652,7 +652,7 @@ article {
 		
 		function insert() {
 			
-			var data = JSON.stringify($("#signform").serialize());
+			var data = JSON.stringify($("#signform").serializeArray());
 			
 			alert("저장하시겠습니까?");
 			$.ajax({

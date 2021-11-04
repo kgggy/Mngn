@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <head>
     <title>훈련사 목록</title>
 
@@ -32,6 +33,23 @@
             height: 70px !important;
         }
     </style>
+    
+    <!-- Global Vendor -->
+    <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
+    <script src="assets/vendor/popper.js/dist/umd/popper.min.js"></script>
+    <script src="assets/vendor/bootstrap/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="assets/vendor/chart.js/dist/Chart.min.js"></script>
+
+    <!-- Initialization  -->
+    <script src="assets/js/sidebar-nav.js"></script>
+    <script src="assets/js/dashboard-page-scripts.js"></script>
+    <script>
+
+     </script>
 </head>
 <!-- End Head -->
 
@@ -170,279 +188,48 @@
                 </header>
                 <div class="row">
                         
-                    <!-- single-coupon -->
+                    <!-- 훈련사 정보 -->
                     <div class="col-md-6 mb-4">
                         <article class="single-coupon card">
                             <div class="card-body">
                                 <div class="row align-items-center">
                                     <aside class="col-xl-4">
                                         <div class="offer-range">
-                                            <span class="offer-percent rounded-circle bg-soft-success image-success align-items-center">
-												<img class="u-avatar--xs img-fluid rounded-circle mr-2" src="assets/img/avatars/img.png" alt="User Profile">										
+                                            <span>
+												<img class="img-fluid" src="assets/img/avatars/img3.png">										
                                             </span>
                                         </div>
                                     </aside> <!-- col.// -->
                                     <main class="col-xl-8">
+							<%-- <c:forEach var="trainer" items="${trainers }"> --%>
                                         <div class="astino-pr-form pr-form-sm card-body">
-                                            <form class="clearfix">
-                                                <div class="form-group d-flex align-items-center mb-2">
-                                                    <label for="formGroupExampleInput">Item Name</label>
-                                                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Headphone">
-                                                </div>
-                                                <div class="form-group d-flex align-items-center mb-2">
-                                                    <label for="formGroupExampleInput2">Code</label>
-                                                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="FG346788">
-                                                </div>                                                
-                                                <div class="form-group d-flex align-items-center">
-                                                    <label for="formGroupExampleInput4">Expiary Date</label>
-                                                    <span class="form-icon-wrapper">
-                                                        <span class="form-icon form-icon--left">
-                                                            <i class="fa fa-calendar form-icon__item"></i>
-                                                        </span>
-                                                        <input id="formGroupExampleInput4" class="form-control exp-date form-icon-input-left datepicker" type="email" placeholder="15 NOV 2020">
-                                                    </span>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div>
-											<button type="button" data-toggle="modal" href="#exampleModalCenter" 
-                                                    class="btn btn-outline-danger btn-sm float-right">상세보기</button>
+												<form class="clearfix">
+													<div class="form-group d-flex align-items-center mb-2">
+														<label for="formGroupExampleInput">이 름</label> <input
+															type="text" class="form-control" id="trnName" />
+													</div>
+													<div class="form-group d-flex align-items-center mb-2">
+														<label for="formGroupExampleInput2">전화번호</label> <input
+															type="text" class="form-control" id="trnPhone"
+															placeholder="" />
+													</div>
+													<div class="form-group d-flex align-items-center">
+														<label for="formGroupExampleInput4">입사날짜</label> <input
+															type="text" class="form-control" id="trnJdate"
+															placeholder="" />
+													</div>
+												</form>
 											</div>
+                                        <input type="button" class="btn btn-outline-danger float-right" value="상세보기" id="btnSearch"
+														data-toggle="modal" data-target="#exampleModalCenter" />
                                     </main> <!-- col.// -->
                                 </div> <!-- row.// -->
+						 <%--  </c:forEach> --%>
                             </div> <!-- card-body .// -->
                         </article>
                     </div>
-                    <!-- End Single Coupon -->
-                    
-                    <!-- single-coupon -->
-                    <div class="col-md-6 mb-4">
-                        <article class="single-coupon card">
-                            <div class="card-body">
-                                <div class="row align-items-center no-gutters">
-                                    <aside class="col-xl-4">
-                                        <div class="offer-range">
-                                            <a href="" class="offer-edit text-danger">Edit</a>
-                                            <span class="offer-percent rounded-circle bg-soft-warning text-warning align-items-center">
-                                                50%
-                                            </span>
-                                        </div>
-                                    </aside> <!-- col.// -->
-                                    <main class="col-xl-8">
-                                        <div class="astino-pr-form pr-form-sm card-body">
-                                            <form class="clearfix">
-                                                <div class="form-group d-flex align-items-center mb-2">
-                                                    <label for="formGroupExampleInput">Item Name</label>
-                                                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Headphone">
-                                                </div>
-                                                <div class="form-group d-flex align-items-center mb-2">
-                                                    <label for="formGroupExampleInput2">Code</label>
-                                                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="FG346788">
-                                                </div>                                                
-                                                <div class="form-group d-flex align-items-center">
-                                                    <label for="formGroupExampleInput4">Expiary Date</label>
-                                                    <span class="form-icon-wrapper">
-                                                        <span class="form-icon form-icon--left">
-                                                            <i class="fa fa-calendar form-icon__item"></i>
-                                                        </span>
-                                                        <input id="formGroupExampleInput4" class="form-control exp-date form-icon-input-left datepicker" type="email" placeholder="15 NOV 2020">
-                                                    </span>
-                                                </div>
-                                           </form>
-                                        </div>
-                                        <div>
-											<button type="button" data-toggle="modal" href="#exampleModalCenter" 
-                                                    class="btn btn-outline-danger btn-sm float-right">상세보기</button>
-											</div>
-                                    </main> <!-- col.// -->
-                                </div> <!-- row.// -->
-                            </div> <!-- card-body .// -->
-                        </article>
-                    </div>
-                    <!-- End Single Coupon -->
-                    
-                    <!-- single-coupon -->
-                    <div class="col-md-6 mb-4">
-                        <article class="single-coupon card">
-                            <div class="card-body">
-                                <div class="row align-items-center no-gutters">
-                                    <aside class="col-xl-4">
-                                        <div class="offer-range">
-                                            <span class="offer-percent rounded-circle bg-soft-danger text-danger align-items-center">
-                                                50%
-                                            </span>
-                                        </div>
-                                    </aside> <!-- col.// -->
-                                    <main class="col-xl-8">
-                                        <div class="astino-pr-form pr-form-sm card-body">
-                                            <form class="clearfix">
-                                                <div class="form-group d-flex align-items-center mb-2">
-                                                    <label for="formGroupExampleInput">Item Name</label>
-                                                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Headphone">
-                                                </div>
-                                                <div class="form-group d-flex align-items-center mb-2">
-                                                    <label for="formGroupExampleInput2">Code</label>
-                                                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="FG346788">
-                                                </div>                                                
-                                                <div class="form-group d-flex align-items-center">
-                                                    <label for="formGroupExampleInput4">Expiary Date</label>
-                                                    <span class="form-icon-wrapper">
-                                                        <span class="form-icon form-icon--left">
-                                                            <i class="fa fa-calendar form-icon__item"></i>
-                                                        </span>
-                                                        <input id="formGroupExampleInput4" class="form-control exp-date form-icon-input-left datepicker" type="email" placeholder="15 NOV 2020">
-                                                    </span>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div>
-											<button type="button" data-toggle="modal" href="#exampleModalCenter" 
-                                                    class="btn btn-outline-danger btn-sm float-right">상세보기</button>
-											</div>
-                                    </main> <!-- col.// -->
-                                </div> <!-- row.// -->
-                            </div> <!-- card-body .// -->
-                        </article>
-                    </div>
-                    <!-- End Single Coupon -->
-                    
-                    <!-- single-coupon -->
-                    <div class="col-md-6 mb-4">
-                        <article class="single-coupon card">
-                            <div class="card-body">
-                                <div class="row align-items-center no-gutters">
-                                    <aside class="col-xl-4">
-                                        <div class="offer-range">
-                                            <a href="" class="offer-edit text-danger">Edit</a>
-                                            <span class="offer-percent rounded-circle bg-soft-success text-success align-items-center">
-                                              <img class="u-avatar--xs img-fluid rounded-circle mr-2" src="assets/img/avatars/img.png" alt="User Profile">
-                                            </span>
-                                        </div>
-                                    </aside> <!-- col.// -->
-                                    <main class="col-xl-8">
-                                        <div class="astino-pr-form pr-form-sm card-body">
-                                            <form class="clearfix">
-                                                <div class="form-group d-flex align-items-center mb-2">
-                                                    <label for="formGroupExampleInput">Item Name</label>
-                                                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Headphone">
-                                                </div>
-                                                <div class="form-group d-flex align-items-center mb-2">
-                                                    <label for="formGroupExampleInput2">Code</label>
-                                                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="FG346788">
-                                                </div>                                                
-                                                <div class="form-group d-flex align-items-center">
-                                                    <label for="formGroupExampleInput4">Expiary Date</label>
-                                                    <span class="form-icon-wrapper">
-                                                        <span class="form-icon form-icon--left">
-                                                            <i class="fa fa-calendar form-icon__item"></i>
-                                                        </span>
-                                                        <input id="formGroupExampleInput4" class="form-control exp-date form-icon-input-left datepicker" type="email" placeholder="15 NOV 2020">
-                                                    </span>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div>
-											<button type="button" data-toggle="modal" href="#exampleModalCenter" 
-                                                    class="btn btn-outline-danger btn-sm float-right">상세보기</button>
-											</div>
-                                    </main> <!-- col.// -->
-                                </div> <!-- row.// -->
-                            </div> <!-- card-body .// -->
-                        </article>
-                    </div>
-                    <!-- End Single Coupon -->
-                    
-                    <!-- single-coupon -->
-                    <div class="col-md-6 mb-4">
-                        <article class="single-coupon card">
-                            <div class="card-body">
-                                <div class="row d-flex align-items-center no-gutters">
-                                    <aside class="col-xl-4">
-                                        <div class="offer-range">
-                                            <a href="" class="offer-edit text-danger">Edit</a>
-                                            <span class="offer-percent rounded-circle bg-soft-warning text-warning align-items-center">
-                                                50%
-                                            </span>
-                                        </div>
-                                    </aside> <!-- col.// -->
-                                    <main class="col-xl-8">
-                                        <div class="astino-pr-form pr-form-sm card-body">
-                                            <form class="clearfix">
-                                                <div class="form-group d-flex align-items-center mb-2">
-                                                    <label for="formGroupExampleInput">Item Name</label>
-                                                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Headphone">
-                                                </div>
-                                                <div class="form-group d-flex align-items-center mb-2">
-                                                    <label for="formGroupExampleInput2">Code</label>
-                                                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="FG346788">
-                                                </div>                                                
-                                                <div class="form-group d-flex align-items-center">
-                                                    <label for="formGroupExampleInput4">Expiary Date</label>
-                                                    <span class="form-icon-wrapper">
-                                                        <span class="form-icon form-icon--left">
-                                                            <i class="fa fa-calendar form-icon__item"></i>
-                                                        </span>
-                                                        <input id="formGroupExampleInput4" class="form-control exp-date form-icon-input-left datepicker" type="email" placeholder="15 NOV 2020">
-                                                    </span>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div>
-											<button type="button" data-toggle="modal" href="#exampleModalCenter" 
-                                                    class="btn btn-outline-danger btn-sm float-right">상세보기</button>
-											</div>
-                                    </main> <!-- col.// -->
-                                </div> <!-- row.// -->
-                            </div> <!-- card-body .// -->
-                        </article>
-                    </div>
-                    <!-- End Single Coupon -->
-                    
-                    <!-- single-coupon -->
-                    <div class="col-md-6 mb-4">
-                        <article class="single-coupon card">
-                            <div class="card-body">
-                                <div class="row d-flex align-items-center no-gutters">
-                                    <aside class="col-xl-4">
-                                        <div class="offer-range">
-                                            <a href="" class="offer-edit text-danger">Edit</a>
-                                            <span class="offer-percent rounded-circle bg-soft-danger text-danger align-items-center">
-                                                50%
-                                            </span>
-                                        </div>
-                                    </aside> <!-- col.// -->
-                                    <main class="col-xl-8">
-                                        <div class="astino-pr-form pr-form-sm card-body">
-                                            <form class="clearfix">
-                                                <div class="form-group d-flex align-items-center mb-2">
-                                                    <label for="formGroupExampleInput">Item Name</label>
-                                                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Headphone">
-                                                </div>
-                                                <div class="form-group d-flex align-items-center mb-2">
-                                                    <label for="formGroupExampleInput2">Code</label>
-                                                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="FG346788">
-                                                </div>                                                
-                                                <div class="form-group d-flex align-items-center">
-                                                    <label for="formGroupExampleInput4">Expiary Date</label>
-                                                    <span class="form-icon-wrapper">
-                                                        <span class="form-icon form-icon--left">
-                                                            <i class="fa fa-calendar form-icon__item"></i>
-                                                        </span>
-                                                        <input id="formGroupExampleInput4" class="form-control exp-date form-icon-input-left datepicker" type="email" placeholder="15 NOV 2020">
-                                                    </span>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div>
-											<button type="button" data-toggle="modal" href="#exampleModalCenter" 
-                                                    class="btn btn-outline-danger btn-sm float-right">상세보기</button>
-											</div>
-                                    </main> <!-- col.// -->
-                                </div> <!-- row.// -->
-                            </div> <!-- card-body .// -->
-                        </article>
-                    </div>
-                    <!-- End Single Coupon -->
+                    <!-- End 훈련사 정보 -->
+                 
                 </div>
                 <div class="row justify-content-between align-items-center mb-4">
                     <div class="col-sm">
@@ -468,75 +255,80 @@
             <!-- End Footer -->
         </div>
     </main>
-    
-    			<!-- Large Size Modal-->
-		<div class="modal fade bd-example-modal-lg"  id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-lg" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h3 class="modal-title" id="exampleModalLabel">훈련사 상세정보</h3>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
+    <!-- Large Size Modal-->
+	<div class="modal fade bd-example-modal-lg" id="exampleModalCenter"
+		tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title" id="exampleModalLabel">훈련사 상세정보</h3>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<!-- Current Projects -->
+					<div class="col-md-12 mb-4">
+						<div class="card h-100">
+							<div class="astino-pr-form card-body">
+								<form>
+									<div class="form-group d-flex align-items-center">
+										<label for="formGroupExampleInput">아이디</label> <input
+											type="text"  class="form-control" id="trnId"
+											placeholder="" readonly>
+										<label for="formGroupExampleInput2">이 름</label> <input
+											type="text" class="form-control" id="trnName"
+											placeholder="" readonly>
+									</div>
+									<div class="form-group d-flex align-items-center">
+										<label for="formGroupExampleInput4">서비스평점</label> <input
+											type="text" class="form-control" id="trnScore"
+											placeholder="" readonly>
+										<label for="formGroupExampleInput4">서비스지역</label> <input
+											type="text" class="form-control" id="trnJdate"
+											placeholder="" readonly>
+									</div>
+									<div class="form-group d-flex align-items-center">
+										<label for="formGroupExampleInput4">휴 무</label> <input
+											type="text" class="form-control" id="trnJdate"
+											placeholder="" readonly>
+										<label for="formGroupExampleInput3">연락처</label> <input
+											type="text" class="form-control" id="trnPhone"
+											placeholder="" readonly>
+									</div>
+									<div class="form-group d-flex align-items-center">
+										<label for="formGroupExampleInput3">주 소</label> <input
+											type="text" class="form-control" id="trnAdres"
+											placeholder="" readonly>
+									</div>
+									<div class="form-group d-flex align-items-center">
+										<label for="formGroupExampleInput3">이메일</label> <input
+											type="text" class="form-control" id="trnEmail"
+											placeholder="" readonly>
+										<label for="formGroupExampleInput4">입사날짜</label> <input
+											type="text" class="form-control" id="trnJdate"
+											placeholder="" readonly>
+									</div>
+									<div class="form-group d-flex align-items-center">
+										<label for="formGroupExampleInput5">특이사항</label>
+										<textarea class="form-control" id="formGroupExampleInput5"
+											placeholder="특이사항 table에 column 없음 달님(개), 별님(고양이) 돌봄서비스 자주 이용 고객"></textarea>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-outline-danger btn-sm"
+							 data-dismiss="modal">확인</button>
+						</div>
 					</div>
-					<div class="modal-body">
-						<!-- Current Projects -->
-                    <div class="col-md-12 mb-4">
-                        <div class="card h-100">
-                            <div class="astino-pr-form card-body">
-                                <form>
-                                    <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput">아이디</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="heyyolove">
-                                    </div>
-                                    <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput2">이  름</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="고수">
-                                    </div>
-                                    <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput3">주  소</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="대구광역시 동구 안심로">
-                                    </div>
-                                    <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput4">가입날짜</label>
-                                        <span class="form-icon-wrapper">
-                                            <span class="form-icon form-icon--left">
-                                                <i class="fa fa-calendar form-icon__item"></i>
-                                            </span>
-                                            <input id="formGroupExampleInput4" class="form-control exp-date form-icon-input-left datepicker" type="email" placeholder="15 OCT 2021">
-                                        </span>
-                                    </div>
-                                    <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput5">특이사항</label>
-                                        <textarea class="form-control" id="formGroupExampleInput5" placeholder="달님(개), 별님(고양이) 돌봄서비스 자주 이용 고객"></textarea>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                     <div class="modal-footer">
-						<button type="button" class="btn btn-outline-danger btn-sm" herf="" data-dismiss="modal">확인</button>
-					</div>
-                   </div>
-                    <!-- End Current Projects -->
-			    </div>
-			 </div>
-		 </div>
-	  </div>
-		<!-- Large Size Modal-->
-
-    <!-- Global Vendor -->
-    <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
-    <script src="assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
-    <script src="assets/vendor/popper.js/dist/umd/popper.min.js"></script>
-    <script src="assets/vendor/bootstrap/bootstrap.min.js"></script>
-
-    <!-- Plugins -->
-    <script src="assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="assets/vendor/chart.js/dist/Chart.min.js"></script>
-
-    <!-- Initialization  -->
-    <script src="assets/js/sidebar-nav.js"></script>
-    <script src="assets/js/dashboard-page-scripts.js"></script>
+					<!-- End Current Projects -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Large Size Modal-->
 </body>
-
 </html>

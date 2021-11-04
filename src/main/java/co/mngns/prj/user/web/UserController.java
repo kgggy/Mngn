@@ -37,6 +37,9 @@ public class UserController {
 			session.setAttribute("id", vo.getClient_id()); //세션객체에 아이디와 권한을 담는다.
 			session.setAttribute("password", vo.getPwd());
 			session.setAttribute("name", vo.getName());
+			session.setAttribute("adres1", vo.getAdres1());
+			session.setAttribute("adres1", vo.getAdres2());
+
 		}else {
 			page = "redirect:login.do";
 			message = clientvo.getClient_id() + "는 존재하지 않거나 패스워드가 틀렸습니다.";
@@ -51,7 +54,9 @@ public class UserController {
 	public String loginForm(Model model, ClientVO clientvo){
 		//model.addAttribute("client",  cntService.clientSelectList());
 		return "notTiles/login";
+		
 	}
+	
 
 	@RequestMapping(value = "/joinForm.do")
 	// 회원가입 페이지

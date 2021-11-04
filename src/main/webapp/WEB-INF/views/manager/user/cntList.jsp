@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <!-- Head -->
@@ -41,6 +42,39 @@
 	height: 70px !important;
 }
 </style>
+<!-- Global Vendor -->
+<script src="assets/vendor/jquery/dist/jquery.min.js"></script>
+<script src="assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
+<script src="assets/vendor/popper.js/dist/umd/popper.min.js"></script>
+<script src="assets/vendor/bootstrap/bootstrap.min.js"></script>
+
+<!-- Plugins -->
+<script
+	src="assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="assets/vendor/chart.js/dist/Chart.min.js"></script>
+
+<!-- Initialization  -->
+<script src="assets/js/sidebar-nav.js"></script>
+<script src="assets/js/dashboard-page-scripts.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#exampleModalCenter').on('show.bs.modal', function(event) {
+			var tr = $(event.relatedTarget).closest('tr')
+			var data0 = tr.find('td:eq(0)').html()
+			var data1 = tr.find('td:eq(1)').html()
+			var data2 = tr.find('td:eq(2)').html()
+			var data5 = tr.find('td:eq(5)').html()
+			var data6 = tr.find('td:eq(6)').html()
+			var data7 = tr.find('td:eq(7)').html()
+			$(this).find('.modal-body #clientId').val(data0)
+			$(this).find('.modal-body #clientName').val(data1)
+			$(this).find('.modal-body #clientPhone').val(data2)
+			$(this).find('.modal-body #clientAdres').val(data5)
+			$(this).find('.modal-body #clientJdate').val(data6)
+			$(this).find('.modal-body #clientEmail').val(data7)
+		})
+	});
+</script>
 </head>
 <!-- End Head -->
 
@@ -49,7 +83,7 @@
 	<header class="astino-header u-header">
 		<div class="u-header-left">
 			<a class="u-header-logo" href="home.do"> <img
-				src="assets/logo.png" width="160"> 
+				src="assets/logo.png" width="160">
 			</a>
 		</div>
 
@@ -121,8 +155,8 @@
 								class="u-sidebar-nav-menu u-sidebar-nav-menu--second-level text-center"
 								style="display: none;">
 								<li class="u-sidebar-nav-menu__item"><a
-									class="u-sidebar-nav-menu__link" href="cntList.do">
-										<span class="u-sidebar-nav-menu__item-title">사용자 관리</span>
+									class="u-sidebar-nav-menu__link" href="cntList.do"> <span
+										class="u-sidebar-nav-menu__item-title">사용자 관리</span>
 								</a></li>
 								<li class="u-sidebar-nav-menu__item"><a
 									class="u-sidebar-nav-menu__link" href="trnList.do"> <span
@@ -173,7 +207,6 @@
 		</aside>
 		<!-- End Sidebar -->
 
-
 		<div class="u-content">
 			<div class="u-body">
 				<header class="product-all-content-header d-flex align-items-center">
@@ -183,246 +216,36 @@
 					<!-- Current Projects -->
 					<div class="col-md-12 mb-4">
 						<div class="card h-100">
-
-
 							<div class="card-body">
 								<div class="table-responsive">
 									<table class="table table-hover">
 										<thead>
 											<tr>
-												<th scope="col" class="text-dark">
-													<div class="custom-control custom-checkbox">
-														<input id="" class="custom-control-input is-invalid"
-															type="checkbox"> <label
-															class="custom-control-label" for=""><span
-															class="text-dark"></span></label>
-													</div>
-												</th>
 												<th scope="col" class="text-dark">ID</th>
 												<th scope="col" class="text-dark">이 름</th>
 												<th scope="col" class="text-dark">전화번호</th>
-												<th scope="col" class="text-dark">주 소</th>
 												<th scope="col" class="text-dark">상 태</th>
 												<th scope="col" class="text-dark"></th>
 											</tr>
 										</thead>
 
 										<tbody>
-											<tr>
-												<td>
-													<div
-														class="custom-control custom-checkbox d-flex align-items-center">
-														<input id="customCheck2"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck2">
-															<span class="text-dark"> <img class="rounded ml-4"
-																src="assets/img/customers/cs-1.png" alt="">
-														</span>
-														</label>
-													</div>
-												</td>
-												<td>heylove</td>
-												<td>김사랑</td>
-												<td>010-5394-1787</td>
-												<td>서울특별시 강남구 서초동 현대아파트 110-1206</td>
-												<td class="text-success">활동중</td>
-												<td>
-													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
-                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
-												</td>
-											</tr>
-
-											<tr>
-												<td>
-													<div
-														class="custom-control custom-checkbox d-flex align-items-center">
-														<input id="customCheck2"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck2">
-															<span class="text-dark"> <img class="rounded ml-4"
-																src="assets/img/customers/cs-2.png" alt="">
-														</span>
-														</label>
-													</div>
-												</td>
-												<td>heyyopeople</td>
-												<td>최수정</td>
-												<td>010-1548-6893</td>
-												<td>서울특별시 강남구 도곡동 대림이편한 101-206</td>
-												<td class="text-success">활동중</td>
-												<td>
-													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
-                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
-												</td>
-											</tr>
-
-											<tr>
-												<td>
-													<div
-														class="custom-control custom-checkbox d-flex align-items-center">
-														<input id="customCheck2"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck2">
-															<span class="text-dark"> <img class="rounded ml-4"
-																src="assets/img/customers/cs-3.png" alt="">
-														</span>
-														</label>
-													</div>
-												</td>
-												<td>heyyopeople</td>
-												<td>최수정</td>
-												<td>010-1548-6893</td>
-												<td>서울특별시 강남구 도곡동 대림이편한 101-206</td>
-												<td class="text-success">활동중</td>
-												<td>
-													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
-                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
-												</td>
-											</tr>
-
-											<tr>
-												<td>
-													<div
-														class="custom-control custom-checkbox d-flex align-items-center">
-														<input id="customCheck2"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck2">
-															<span class="text-dark"> <img class="rounded ml-4"
-																src="assets/img/customers/cs-4.png" alt="">
-														</span>
-														</label>
-													</div>
-												</td>
-												<td>heyyopeople</td>
-												<td>최수정</td>
-												<td>010-1548-6893</td>
-												<td>서울특별시 강남구 도곡동 대림이편한 101-206</td>
-												<td class="text-warning">휴면계정</td>
-												<td>
-													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
-                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
-												</td>
-											</tr>
-
-											<tr>
-												<td>
-													<div
-														class="custom-control custom-checkbox d-flex align-items-center">
-														<input id="customCheck2"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck2">
-															<span class="text-dark"> <img class="rounded ml-4"
-																src="assets/img/customers/cs-2.png" alt="">
-														</span>
-														</label>
-													</div>
-												</td>
-												<td>heyyopeople</td>
-												<td>최수정</td>
-												<td>010-1548-6893</td>
-												<td>서울특별시 강남구 도곡동 대림이편한 101-206</td>
-												<td class="text-success">활동중</td>
-												<td>
-													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
-                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
-												</td>
-											</tr>
-
-											<tr>
-												<td>
-													<div
-														class="custom-control custom-checkbox d-flex align-items-center">
-														<input id="customCheck2"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck2">
-															<span class="text-dark"> <img class="rounded ml-4"
-																src="assets/img/customers/cs-3.png" alt="">
-														</span>
-														</label>
-													</div>
-												</td>
-												<td>heyyopeople</td>
-												<td>최수정</td>
-												<td>010-1548-6893</td>
-												<td>서울특별시 강남구 도곡동 대림이편한 101-206</td>
-												<td class="text-success">활동중</td>
-												<td>
-													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
-                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
-												</td>
-											</tr>
-
-											<tr>
-												<td>
-													<div
-														class="custom-control custom-checkbox d-flex align-items-center">
-														<input id="customCheck2"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck2">
-															<span class="text-dark"> <img class="rounded ml-4"
-																src="assets/img/customers/cs-1.png" alt="">
-														</span>
-														</label>
-													</div>
-												</td>
-												<td>heyyopeople</td>
-												<td>최수정</td>
-												<td>010-1548-6893</td>
-												<td>서울특별시 강남구 도곡동 대림이편한 101-206</td>
-												<td class="text-success">활동중</td>
-												<td>
-													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
-                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
-												</td>
-											</tr>
-
-											<tr>
-												<td>
-													<div
-														class="custom-control custom-checkbox d-flex align-items-center">
-														<input id="customCheck2"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck2">
-															<span class="text-dark"> <img class="rounded ml-4"
-																src="assets/img/customers/cs-3.png" alt="">
-														</span>
-														</label>
-													</div>
-												</td>
-												<td>heyyopeople</td>
-												<td>최수정</td>
-												<td>010-1548-6893</td>
-												<td>서울특별시 강남구 도곡동 대림이편한 101-206</td>
-												<td class="text-success">활동중</td>
-												<td>
-													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
-                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
-												</td>
-											</tr>
-
-											<tr>
-												<td>
-													<div
-														class="custom-control custom-checkbox d-flex align-items-center">
-														<input id="customCheck2"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck2">
-															<span class="text-dark"> <img class="rounded ml-4"
-																src="assets/img/customers/cs-4.png" alt="">
-														</span>
-														</label>
-													</div>
-												</td>
-												<td>heyyopeople</td>
-												<td>최수정</td>
-												<td>010-1548-6893</td>
-												<td>서울특별시 강남구 도곡동 대림이편한 101-206</td>
-												<td class="text-success">활동중</td>
-												<td>
-													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
-                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
-												</td>
-											</tr>
+											<c:forEach var="client" items="${clients}">
+												<tr>
+													<td>${client.client_id }</td>
+													<td>${client.name }</td>
+													<td>${client.phone }</td>
+													<td class="text-success">활동중</td>
+													<td>
+														<input type="button"
+														class="btn btn-outline-danger" value="상세보기" id="btnSearch"
+														data-toggle="modal" data-target="#exampleModalCenter" />
+													</td>
+													<td style="display: none;">${client.adres1} ${client.adres2}</td>
+													<td style="display: none;">${client.join_dt }</td>
+													<td style="display: none;">${client.email}</td>
+												</tr>
+											</c:forEach>
 										</tbody>
 									</table>
 								</div>
@@ -435,7 +258,8 @@
 					<div class="col-sm">
 						<nav aria-label="Bootstrap Pagination Example">
 							<ul class="pagination mb-0">
-								<li class="page-item"><a class="page-link" href="mngMain.do"><span
+								<li class="page-item"><a class="page-link"
+									href="mngMain.do"><span
 										class="ml-1 d-none d-xl-inline-block">이전으로</span></a></li>
 								<li class="page-item"><a class="page-link" href="#">1</a></li>
 								<li class="page-item"><a class="page-link" href="#">2</a></li>
@@ -465,75 +289,73 @@
 		</div>
 	</main>
 
-			<!-- Large Size Modal-->
-		<div class="modal fade bd-example-modal-lg"  id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-lg" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h3 class="modal-title" id="exampleModalLabel">회원 상세정보</h3>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
+	<!-- Large Size Modal-->
+	<div class="modal fade bd-example-modal-lg" id="exampleModalCenter"
+		tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title" id="exampleModalLabel">회원 상세정보</h3>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<!-- Current Projects -->
+					<div class="col-md-12 mb-4">
+						<div class="card h-100">
+							<div class="astino-pr-form card-body">
+								<form>
+									<div class="form-group d-flex align-items-center">
+										<label for="formGroupExampleInput">아이디</label> <input
+											type="text" class="form-control" id="clientId"
+											placeholder="" readonly>
+									</div>
+									<div class="form-group d-flex align-items-center">
+										<label for="formGroupExampleInput2">이 름</label> <input
+											type="text" class="form-control" id="clientName"
+											placeholder="" readonly>
+									</div>
+									<div class="form-group d-flex align-items-center">
+										<label for="formGroupExampleInput3">주 소</label> <input
+											type="text" class="form-control" id="clientAdres"
+											placeholder="" readonly>
+									</div>
+									<div class="form-group d-flex align-items-center">
+										<label for="formGroupExampleInput3">연락처</label> <input
+											type="text" class="form-control" id="clientPhone"
+											placeholder="" readonly>
+									</div>
+									<div class="form-group d-flex align-items-center">
+										<label for="formGroupExampleInput3">이메일</label> <input
+											type="text" class="form-control" id="clientEmail"
+											placeholder="" readonly>
+									</div>
+									<div class="form-group d-flex align-items-center">
+										<label for="formGroupExampleInput4">가입날짜</label> <input
+											type="text" class="form-control" id="clientJdate"
+											placeholder="" readonly>
+									</div>
+									<div class="form-group d-flex align-items-center">
+										<label for="formGroupExampleInput5">특이사항</label>
+										<textarea class="form-control" id="formGroupExampleInput5"
+											placeholder="특이사항 table에 column 없음 달님(개), 별님(고양이) 돌봄서비스 자주 이용 고객"></textarea>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-outline-danger btn-sm"
+								data-dismiss="modal">확인</button>
+						</div>
 					</div>
-					<div class="modal-body">
-						<!-- Current Projects -->
-                    <div class="col-md-12 mb-4">
-                        <div class="card h-100">
-                            <div class="astino-pr-form card-body">
-                                <form>
-                                    <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput">아이디</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="heyyolove">
-                                    </div>
-                                    <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput2">이  름</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="고수">
-                                    </div>
-                                    <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput3">주  소</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="대구광역시 동구 안심로">
-                                    </div>
-                                    <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput4">가입날짜</label>
-                                        <span class="form-icon-wrapper">
-                                            <span class="form-icon form-icon--left">
-                                                <i class="fa fa-calendar form-icon__item"></i>
-                                            </span>
-                                            <input id="formGroupExampleInput4" class="form-control exp-date form-icon-input-left datepicker" type="email" placeholder="15 OCT 2021">
-                                        </span>
-                                    </div>
-                                    <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput5">특이사항</label>
-                                        <textarea class="form-control" id="formGroupExampleInput5" placeholder="달님(개), 별님(고양이) 돌봄서비스 자주 이용 고객"></textarea>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                     <div class="modal-footer">
-						<button type="button" class="btn btn-outline-danger btn-sm" herf="" data-dismiss="modal">확인</button>
-					</div>
-                   </div>
-                    <!-- End Current Projects -->
-			    </div>
-			 </div>
-		 </div>
-	  </div>
-		<!-- Large Size Modal-->
-
-	<!-- Global Vendor -->
-	<script src="assets/vendor/jquery/dist/jquery.min.js"></script>
-	<script src="assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
-	<script src="assets/vendor/popper.js/dist/umd/popper.min.js"></script>
-	<script src="assets/vendor/bootstrap/bootstrap.min.js"></script>
-
-	<!-- Plugins -->
-	<script
-		src="assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
-	<script src="assets/vendor/chart.js/dist/Chart.min.js"></script>
-
-	<!-- Initialization  -->
-	<script src="assets/js/sidebar-nav.js"></script>
-	<script src="assets/js/dashboard-page-scripts.js"></script>
+					<!-- End Current Projects -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Large Size Modal-->
 </body>
-
 </html>
