@@ -30,5 +30,10 @@ public class HomeController {
 	public String tMain() {
 		return "trnMain";
 	}
+	
+	@RequestMapping(value = "/map.do")
+	public String map() {
+		return "map";
+	}
 
 }

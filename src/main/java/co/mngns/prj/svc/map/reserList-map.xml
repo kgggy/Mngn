@@ -12,8 +12,8 @@
 		where r.svc_id = s.svc_id
 		and r.pet_id1 = p.pet_id
 		and r.client_id2 = c.client_id
-		and r.reser_no = 1
-		Connect By Regexp_Substr(svc_bgn_tm, '[^,]+', 1,level) Is Not Null;
+		and r.reser_no = #{reser_no}
+		Connect By Regexp_Substr(svc_bgn_tm, '[^,]+', 1,level) Is Not Null
 	</select>
 
 	<select id="petSelectList"
@@ -27,8 +27,10 @@
 		#{client_id}
 	</select>
 
-
-
+	<select id="serviceTerm" resultType="co.mngns.prj.svc.vo.SvcVO">
+		select term from svc where knd = 2
+	</select>
+	
 	<select id="serviceUse"
 		resultType="co.mngns.prj.svc.vo.ReserListVO">
 		select l.*,
