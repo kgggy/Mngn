@@ -400,59 +400,48 @@ article {
 
 			<button id="search" onclick="javascript:status()">조회</button>
 			<hr>
-			<input style="font-size: 7pt;">* 기본적으로 최근 3개월간의 자료가 조회되며, 기간
-			검색시 지난 이용내역을 조회하실 수 있습니다.<br> * 후기 작성 버튼을 클릭하시면 해당 서비스에 대한 후기를
-			작성하실 수 있으며, 자세한 내역은 내가 작성한 후기 탭에서 확인하실 수 있습니다.<br> <br>
+			<input style="font-size: 7pt;">* 후기 작성 버튼을 클릭하시면 해당 서비스에 대한
+			후기를 작성하실 수 있으며, 자세한 내역은 내가 작성한 후기 탭에서 확인하실 수 있습니다.<br> <br>
 
-			<table class="table table-striped table-hover">
-				<thead>
-					<tr>
-						<th>예약번호</th>
-						<th>이용일자</th>
-						<th>이용&nbsp;서비스</th>
-						<th>담당&nbsp;훈련사</th>
-						<th>금액</th>
-						<th>주문처리상태</th>
-						<th>이용후기</th>
-					</tr>
-				</thead>
-				<tbody align="center">
-					<c:forEach items="${serviceUses }" var="serUse">
-						<tr data-status="active">
-							<td>${serUse. reser_no}</td>
-							<td>${serUse. reser_dt}</td>
-							<td>${serUse. knd_name}(${serUse.term }시간)</td>
-							<td><a href="#">${serUse. name} 훈련사</a></td>
-							<td>${serUse. prc}원</td>
-							<td><span class="label label-success">${serUse. status}</span></td>
-							<td><a href="#" class="btn btn-sm manage" data-reserno="${serUse. reser_no}"
-								data-toggle="modal" data-target="#reviewModal">후기 작성</a></td>
-						</tr>
-					</c:forEach>
-					<tr data-status="inactive">
-						<td>1</td>
-						<td>04/10/2013</td>
-						<td>1</td>
-						<td><a href="#">loremvallis.com</a></td>
-						<td>Buenos Aires</td>
-						<td><span class="label label-warning">접수 완료</span></td>
-						<td><a class="btn btn-sm complete">작성 완료</a></td>
-					</tr>
-
-					<tr data-status="expired">
-						<td>1</td>
-						<td>04/10/2013</td>
-						<td>1</td>
-						<td><a href="#">loremvallis.com</a></td>
-						<td>Buenos Aires</td>
-						<td><span class="label label-danger">취소 및 환불</span></td>
-						<td><a class="btn btn-sm complete">작성 완료</a></td>
-					</tr>
-
-				</tbody>
-			</table>
-
-
+			<form action="tDetail.do" id="tlistForm" name="tlistForm"
+				method="post">
+				<div onclick="$(this).closest('form').submit()">
+					<table class="table table-striped table-hover">
+						<thead>
+							<tr>
+								<th>예약번호</th>
+								<th>이용일자</th>
+								<th>이용 서비스</th>
+								<th>담당 훈련사</th>
+								<th>금액</th>
+								<th>주문처리상태</th>
+								<th>이용후기</th>
+							</tr>
+						</thead>
+						<tbody align="center">
+							<c:forEach items="${serviceUses }" var="serUse">
+								<input type="hidden" id="client_id" name="client_id"
+									value="${serUse.client_id2 }">
+								<tr>
+									<td>${serUse. reser_no}</td>
+									<td>${serUse. reser_dt}</td>
+									<td>${serUse. knd_name}(${serUse.term }시간)</td>
+									<td><a href="#">${serUse. name} 훈련사</a></td>
+									<td>${serUse. prc}원</td>
+									<td><span class="label label-success">${serUse. status}</span></td>
+									<td><c:if test="${serUse.reviewyn == '0'}">
+											<a href="#" class="btn btn-sm manage"
+												data-reserno="${serUse. reser_no}" data-toggle="modal"
+												data-target="#reviewModal">후기 작성</a>
+										</c:if> <c:if test="${serUse.reviewyn > '0'}">
+											<a class="btn btn-sm complete">작성 완료</a>
+										</c:if></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</form>
 		</section>
 
 		<section id="content2">
@@ -517,20 +506,20 @@ article {
 				</div>
 				<div class="modal-body">
 					<form role="form" id="signform" name="signform" method="post">
-					<input type="hidden" id="reser_no" name="reser_no">
+						<input type="hidden" id="reser_no" name="reser_no">
 						<h2 align="center">
 							<strong>별점과 이용경험을 남겨주세요 :)</strong>
 						</h2>
 						<div class="modalpopup" align="center">
 							<div class="star-rating">
-								<input type="radio" id="5-stars" name="star_rate" value="5" /> <label
-									for="5-stars" class="star"
+								<input type="radio" id="5-stars" name="star_rate" value="5" />
+								<label for="5-stars" class="star"
 									style="font-size: 30pt; width: 40px; height: 40px">&#9733;</label>
-								<input type="radio" id="4-stars" name="star_rate" value="4" /> <label
-									for="4-stars" class="star"
+								<input type="radio" id="4-stars" name="star_rate" value="4" />
+								<label for="4-stars" class="star"
 									style="font-size: 30pt; width: 40px; height: 40px">&#9733;</label>
-								<input type="radio" id="3-stars" name="star_rate" value="3" /> <label
-									style="font-size: 30pt; width: 40px; height: 40px"
+								<input type="radio" id="3-stars" name="star_rate" value="3" />
+								<label style="font-size: 30pt; width: 40px; height: 40px"
 									for="3-stars" class="star">&#9733;</label> <input type="radio"
 									id="2-stars" name="star_rate" value="2" /> <label
 									style="font-size: 30pt; width: 40px; height: 40px"
@@ -547,8 +536,9 @@ article {
 						<br> <br> <img id="camera_img" src="img/camera.png"
 							style="height: 90px; width: 130px"> <input type="file"
 							id="file" name="file" accept="image/gif,image/jpeg,image/png"
-							onchange="fileCheck(this)" style="display: none;"> <input
-							type="hidden" name="file_no">
+							onchange="fileCheck(this)" style="display: none;">
+						<!-- <input
+							type="hidden" name="file_no"> -->
 					</form>
 				</div>
 				<div class="modal-footer">
@@ -560,7 +550,7 @@ article {
 		</div>
 	</div>
 	<!-- 후기작성 Modal 종료 -->
-	
+
 	<!-- 후기수정 Modal 시작 -->
 	<div class="modal first" id="reviewUpdate" role="dialog">
 		<div class="modal-dialog modal-lg">
@@ -576,14 +566,14 @@ article {
 						</h2>
 						<div class="modalpopup" align="center">
 							<div class="star-rating">
-								<input type="radio" id="5-stars" name="star_rate" value="5" /> <label
-									for="5-stars" class="star"
+								<input type="radio" id="5-stars" name="star_rate" value="5" />
+								<label for="5-stars" class="star"
 									style="font-size: 30pt; width: 40px; height: 40px">&#9733;</label>
-								<input type="radio" id="4-stars" name="star_rate" value="4" /> <label
-									for="4-stars" class="star"
+								<input type="radio" id="4-stars" name="star_rate" value="4" />
+								<label for="4-stars" class="star"
 									style="font-size: 30pt; width: 40px; height: 40px">&#9733;</label>
-								<input type="radio" id="3-stars" name="star_rate" value="3" /> <label
-									style="font-size: 30pt; width: 40px; height: 40px"
+								<input type="radio" id="3-stars" name="star_rate" value="3" />
+								<label style="font-size: 30pt; width: 40px; height: 40px"
 									for="3-stars" class="star">&#9733;</label> <input type="radio"
 									id="2-stars" name="star_rate" value="2" /> <label
 									style="font-size: 30pt; width: 40px; height: 40px"
@@ -614,7 +604,6 @@ article {
 	</div>
 	<!-- 후기수정 Modal 종료 -->
 	<script>
-
 		$('#camera_img').click(
 				function(e) {
 					document.signform.camera.value = document
@@ -649,36 +638,33 @@ article {
 				}
 			}
 		}
-		
+
 		function insert() {
-			
-			var data = JSON.stringify($("#signform").serializeArray());
-			
+
+			var data = $("#signform").serialize();
+
 			alert("저장하시겠습니까?");
 			$.ajax({
 				url : "reviewInsert.do",
 				type : "post",
 				data : data,
-				contentType: 'application/json',
 				success : function(data) {
-					if (data == 1)
+					if (data == 1) {
 						alert("후기가 등록되었습니다.");
-					else
+						location.reload();
+					} else {
 						alert("후기 등록에 실패하였습니다.");
+					}
 				},
-				error: function() {
+				error : function() {
 					alert("후기 등록에 실패하였습니다.");
 				}
 			});
 		};
-		
-	
-		
-		$('#reviewModal').on('show.bs.modal', function (e) {
-			  $('#reser_no').val( $(event.target).data('reserno'))
-			})
-		
-		
+
+		$('#reviewModal').on('show.bs.modal', function(e) {
+			$('#reser_no').val($(event.target).data('reserno'))
+		})
 	</script>
 
 </body>

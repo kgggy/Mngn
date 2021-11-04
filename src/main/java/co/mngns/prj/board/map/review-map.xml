@@ -60,7 +60,7 @@
 					   sysdate, 
 					   <if test="file_no != null">#{file_no},</if>
 					   #{reser_no}, 
-					   #{client_no})
+					   #{client_id})
 </insert>
 
 </mapper>

@@ -28,5 +28,5 @@ public class ReserListVO {
 	private int term;
 	private int prc;
 	private String work_time;
-
+	private String reviewyn;
 }

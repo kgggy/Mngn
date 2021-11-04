@@ -2,7 +2,6 @@ package co.mngns.prj.user.map;
 
 import java.util.List;
 
-import co.mngns.prj.user.vo.ClientVO;
 import co.mngns.prj.user.vo.TrainerVO;
 
 public interface TrainerMapper {
@@ -19,4 +18,6 @@ public interface TrainerMapper {
 	List<TrainerVO> mtrainerSelectList(); // 관리자 페이지 훈련사 전체목록 가져오기
 	
 	List<TrainerVO> getSearchList(TrainerVO trn); // 훈련사 검색
+	
+	TrainerVO nWork(TrainerVO trn); //훈련사 휴무일
 }

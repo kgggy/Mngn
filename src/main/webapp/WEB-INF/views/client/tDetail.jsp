@@ -101,6 +101,12 @@
 	cursor: pointer;
 }
 
+.cal-table td.tlDate {
+	color: #ededec;
+	
+}
+
+
 .cal-table td.today {
 	background: #ffd255;
 	border-radius: 50%;
@@ -192,13 +198,13 @@ span {
 </head>
 
 <body>
-	<!-- testmonial_area_start  -->
+	<!-- 예약하기 모달 시작 -->
 	<div id="light" class="modal">
 		<div class="white_content modal-content" align="center">
 			<div>
 				<div class="time">
 					<input type="checkbox"><span>돌봄</span> <input
-						type="checkbox"><span>돌봄</span> <input type="checkbox"><span>돌봄</span>
+						type="checkbox"><span>산책</span> <input type="checkbox"><span>훈련</span>
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<a class="genric-btn danger-border circle arrow">1시간</a> <a
 						class="genric-btn danger-border circle arrow" id="two">2시간</a> <a
@@ -212,6 +218,8 @@ span {
 				돌봄</a>
 		</div>
 	</div>
+	<!-- 예약하기 모달 종료  -->
+	
 	<div class="bradcam_area breadcam_bg">
 		<div class="container">
 			<div class="row">
@@ -275,6 +283,7 @@ span {
 						<h3>자기소개</h3>
 						<p class="excert" style="color: black;">${trainer.intro_ttl }</p>
 					</div>
+					
 					<hr>
 
 					<h3>경력 및 자격</h3>
@@ -327,12 +336,11 @@ span {
 											<div class="d-flex justify-content-between">
 												<div class="d-flex align-items-center">
 													<h5>
-														<a>${review.name }</a>
-														<a>${review.star_shape }</a>
+														<a>${review.name }</a> <a>${review.star_shape }</a>
 													</h5>
 													<p class="date">${review.reg_dt }</p>
 												</div>
-
+													<input type="hidden" id="client_id" name="client_id">
 											</div>
 										</div>
 									</div>
@@ -381,7 +389,7 @@ span {
 										</table>
 										<button id="abtn"
 											class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-											type="button" data-toggle="modal" data-target="#light">예약하기</button>
+											type="button" data-toggle="modal" data-target="#light" data-trnId="${trainer.client_id }">예약하기</button>
 									</div>
 								</div>
 								<!-- // .my-calendar -->
@@ -395,7 +403,7 @@ span {
 
 
 	<script>
-	const init = {
+		const init = {
 			  monList: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 			  dayList: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
 			  today: new Date(),
@@ -403,7 +411,6 @@ span {
 			  activeDate: new Date(),
 			  getFirstDay: (yy, mm) => new Date(yy, mm, 1),
 			  getLastDay: (yy, mm) => new Date(yy, mm + 1, 0),
-			  minDate:new Date(tomorrowDate),
 			  nextMonth: function () {
 			    let d = new Date();
 			    d.setDate(1);
@@ -427,41 +434,26 @@ span {
 			    }
 			    return index;
 			  }
-			};
-	
-		function tomorrowDate(){ 
-			var tomorrowDate =""; 
-			var dd = today.getDate()+1; 
-			var mm = today.getMonth()+1; //January is 0! 
-			var yyyy = today.getFullYear(); 
-			if(dd<10) { 
-			dd='0'+dd 
-			} 
-			if(mm<10) { 
-			mm='0'+mm 
-			}
-			tomorrowDate = yyyy+'-'+mm+'-'+dd; 
-			return tomorrowDate; 
-			};
+		};
 
-			const $calBody = document.querySelector('.cal-body');
-			const $btnNext = document.querySelector('.btn-cal.next');
-			const $btnPrev = document.querySelector('.btn-cal.prev');
+		const $calBody = document.querySelector('.cal-body');
+		const $btnNext = document.querySelector('.btn-cal.next');
+		const $btnPrev = document.querySelector('.btn-cal.prev');
 			
 
-			/**
-			 * @param {number} date
-			 * @param {number} dayIn
-			*/
-			function loadDate (date, dayIn) {
-			  document.querySelector('.cal-date').textContent = date;
-			  document.querySelector('.cal-day').textContent = init.dayList[dayIn];
-			}
+		/**
+		 * @param {number} date
+		 * @param {number} dayIn
+		*/
+		function loadDate (date, dayIn) {
+		  document.querySelector('.cal-date').textContent = date;
+		  document.querySelector('.cal-day').textContent = init.dayList[dayIn];
+		}
 
-			/**
-			 * @param {date} fullDate
-			 */
-			function loadYYMM (fullDate) {
+		/**
+		 * @param {date} fullDate
+		 */
+		function loadYYMM (fullDate) {
 			  let yy = fullDate.getFullYear();
 			  let mm = fullDate.getMonth();
 			  let firstDay = init.getFirstDay(yy, mm);
@@ -487,10 +479,14 @@ span {
 			      if (!startCount) {
 			        trtd += '<td>'
 			      } else {
-			        let fullDate = yy + '.' + init.addZero(mm + 1) + '.' + init.addZero(countDay + 1);
-			        trtd += '<td class="day';
+			        let fullDate = yy + "" + init.addZero(mm + 1) + "" + init.addZero(countDay + 1);
+			        let tdDisable="";
+			    	  if(fullDate < lastDate()) {
+							tdDisable="tlDate"
+					}
+			        trtd += '<td class="day '+tdDisable+'';
 			        trtd += (markToday && markToday === countDay + 1) ? ' today" ' : '"';
-			        trtd += ` data-date="${countDay + 1}" data-fdate="${fullDate}">`;
+			        trtd += `data-date="\${countDay + 1}" data-fdate="\${fullDate}">`;
 			      }
 			      trtd += (startCount) ? ++countDay : '';
 			      if (countDay === lastDay.getDate()) { 
@@ -500,8 +496,24 @@ span {
 			    }
 			    trtd += '</tr>';
 			  }
+			  
 			  $calBody.innerHTML = trtd;
-			}
+			  
+			  function lastDate() {
+					 var date = new Date();
+					 var yyyy = date.getFullYear();
+					 var mm = date.getMonth() + 1;
+					 var dd = date.getDate();
+					 
+					 if(mm<10) mm = "0" + mm;
+					 if(dd < 10) dd = "0" + dd;
+					 
+					 return yyyy + "" +  mm + "" + dd;
+			  }
+				 
+				 
+			
+		}
 
 			/**
 			 * @param {string} val
@@ -514,7 +526,7 @@ span {
 			  const $target = $calBody.querySelector(`.day[data-date="${dd}"]`);
 
 			  let date = yy + '.' + init.addZero(mm) + '.' + init.addZero(dd);
-
+			  
 			  let eventData = {};
 			  eventData['date'] = date;
 			  eventData['memo'] = val;
@@ -522,16 +534,23 @@ span {
 			  eventData['id'] = id;
 			  init.event.push(eventData);
 			  $todoList.appendChild(createLi(id, val, date));
+			  
+			  
 			}
+			 
+			 
 
+			 
+			 
 			loadYYMM(init.today);
+			
 			loadDate(init.today.getDate(), init.today.getDay());
 
 			$btnNext.addEventListener('click', () => loadYYMM(init.nextMonth()));
 			$btnPrev.addEventListener('click', () => loadYYMM(init.prevMonth()));
 
 			$calBody.addEventListener('click', (e) => {
-			  if (e.target.classList.contains('day')) {
+			  if (e.target.classList.contains('day') && !e.target.classList.contains('tlDate')) {
 			    if (init.activeDTag) {
 			      init.activeDTag.classList.remove('day-active');
 			    }
@@ -543,6 +562,10 @@ span {
 			   /*  reloadTodo(); */
 			  }
 			  });
+			
+			$('#light').on('show.bs.modal', function (e) {
+				  $('#client_id').val($(event.target).data('trnId'))
+				})
 
 			
 	</script>

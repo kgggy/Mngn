@@ -35,5 +35,6 @@ public class TrainerVO {
 	//검색필터
 	public String type; //검색타입
 	public String keyword; //검색내용
+	public String trndate; //
 }
 

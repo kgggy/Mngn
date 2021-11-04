@@ -25,16 +25,34 @@
 	
 	<select id="getSearchList" resultType="co.mngns.prj.user.vo.TrainerVO">
 		select t. *, c.name
-		  from trainer t, client c, client_quit q
-		 where t.client_id = c.client_id and c.client_id
+		  from trainer t, client c
+		 where not exists 
+			 (
+				 select * from client_quit q
+		   		 where c.client_id = q.client_id
+			 )
+		 	and t.client_id = c.client_id 
 		 <choose>
 		 	<when test="type !=null and type.equals('name')">
-		 	and name = #{name}
+		 	and c.name = #{keyword}
 		 	</when>
 		 	<when test="type !=null and type.equals('adres')">
-		 	and adres = #{work_loc2}
+		 	and work_loc2 = #{keyword}
 		 	</when>
 		 </choose>
+	</select>
+	
+	<!-- 훈련사 휴무일 조회 -->
+	<select resultType="co.mngns.prj.user.vo.TrainerVO" id="nWork">
+		select * 
+		  from trainer
+		 where 
+		 <choose>
+		 <when test="trnWork == 1">
+		 	and substr(mon || tue || wed || thu || fri || sat || sun, to_char(to_date(#{trndate},'yy-mm-dd'), 'D'),1 ) = 1;
+		 </when>
+		 </choose>
+		 
 	</select>
 
 </mapper>

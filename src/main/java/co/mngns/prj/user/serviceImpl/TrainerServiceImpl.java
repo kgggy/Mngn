@@ -57,4 +57,10 @@ public class TrainerServiceImpl implements TrainerService {
 		return trnmap.getSearchList(trn);
 	}
 
+	@Override
+	public TrainerVO nWork(TrainerVO trn) {
+		// 훈련사 휴무일
+		return trnmap.nWork(trn);
+	}
+
 }

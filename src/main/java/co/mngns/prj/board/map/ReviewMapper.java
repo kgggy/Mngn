@@ -8,7 +8,7 @@ import co.mngns.prj.board.vo.ReviewVO;
 public interface ReviewMapper {
 	List<ReviewVO> reviewSelectList();
 	ReviewVO reviewSelect(ReviewVO vo);
-	List<ReviewVO> reviewInsert(ReviewVO vo);
+	int reviewInsert(ReviewVO vo);
 	int reviewUpdate(ReviewVO vo);
 	int reviewDelete(ReviewVO vo);
 	
