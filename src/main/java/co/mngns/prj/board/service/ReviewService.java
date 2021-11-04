@@ -9,7 +9,7 @@ public interface ReviewService {
 	
 	List<ReviewVO> reviewSelectList();
 	ReviewVO reviewSelect(ReviewVO vo);
-	int reviewInsert(ReviewVO vo);
+	List<ReviewVO> reviewInsert(ReviewVO vo);
 	int reviewUpdate(ReviewVO vo);
 	int reviewDelete(ReviewVO vo);
 	

@@ -54,7 +54,9 @@ public class UserController {
 	public String loginForm(Model model, ClientVO clientvo){
 		//model.addAttribute("client",  cntService.clientSelectList());
 		return "notTiles/login";
+		
 	}
+	
 
 	@RequestMapping(value = "/joinForm.do")
 	// 회원가입 페이지
