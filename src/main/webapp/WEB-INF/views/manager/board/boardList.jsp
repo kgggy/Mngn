@@ -286,12 +286,13 @@
 										</tbody>
 									</table>
 								</div>
-							</div>
-						</div>
 						<br>
 						<div>
 							<input type="button" onClick="window.open('boardForm.do')"
 								class="btn btn-danger btn-large float-right" value="공지사항 등록">
+						</div>
+						<br>
+							</div>
 						</div>
 					</div>
 					<!-- End Current Projects -->
@@ -381,7 +382,5 @@
 		</div>
 	</div>
 	<!-- Large Size Modal-->
-
 </body>
-
 </html>

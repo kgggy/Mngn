@@ -37,6 +37,9 @@ public class UserController {
 			session.setAttribute("id", vo.getClient_id()); //세션객체에 아이디와 권한을 담는다.
 			session.setAttribute("password", vo.getPwd());
 			session.setAttribute("name", vo.getName());
+			session.setAttribute("adres1", vo.getAdres1());
+			session.setAttribute("adres1", vo.getAdres2());
+
 		}else {
 			page = "redirect:login.do";
 			message = clientvo.getClient_id() + "는 존재하지 않거나 패스워드가 틀렸습니다.";
@@ -66,11 +69,11 @@ public class UserController {
 		return "client/cntProfile";
 	}
 
-	@RequestMapping(value = "/cntList.do")
-	// 회원 목록 페이지
-	public String cntList() {
-		return "manager/user/cntList";
-	}
+//	@RequestMapping(value = "/cntList.do")
+//	// 회원 목록 페이지
+//	public String cntList() {
+//		return "manager/user/cntList";
+//	}
 	
 	
 	@RequestMapping(value = "/cntReg.do")
@@ -81,11 +84,11 @@ public class UserController {
 		return "redirect:login.do";
 	}
 
-	@RequestMapping(value = "/trnList.do")
-	// 훈련사 목록 페이지
-	public String trnList() {
-		return "manager/user/trnList";
-	}
+//	@RequestMapping(value = "/trnList.do")
+//	// 훈련사 목록 페이지
+//	public String trnList() {
+//		return "manager/user/trnList";
+//	}
 
 	@RequestMapping(value = "/outList.do")
 	// 탈퇴 회원 목록 페이지

@@ -56,6 +56,12 @@ public class ClientServiceImpl implements ClientService {
 		return false;
 	}
 
+	@Override
+	public List<ClientVO> mclientSelectList() {
+		// 관리자 페이지 사용자 목록 페이지
+		return cntmap.mclientSelectList();
+	}
+
 	
 
 }
