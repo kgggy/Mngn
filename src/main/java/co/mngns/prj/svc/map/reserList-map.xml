@@ -42,7 +42,10 @@
 		서비스' when 2 then '산책 서비스' else '훈련 서비스' end as
 		knd_name,
 		s.term,
-		s.prc
+		s.prc,
+		(	select count(*) from review r
+			where r.reser_no = l.reser_no ) as reviewyn
+		
 		from reser_list l, svc s, client c
 		where l.client_id2 = c.client_id
 		and

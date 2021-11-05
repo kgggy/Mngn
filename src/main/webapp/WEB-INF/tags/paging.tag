@@ -11,18 +11,18 @@
 	<div class="col text-center">
 		<div class="block-27">
 			<ul>
-				<li><a class="page-link"
+				<li><a
 					href="javascript:${jsFunc}(${paging.startPage>2?paging.startPage-1:1})">&lt;</a></li>
 				<c:forEach begin="${paging.startPage}" end="${paging.endPage}"
 					var="i">
 					<c:if test="${i != paging.page}">
-						<li><a class="page-link" href="javascript:${jsFunc}(${i})">${i}</a></li>
+						<li><a href="javascript:${jsFunc}(${i})">${i}</a></li>
 					</c:if>
 					<c:if test="${i == paging.page}">
-						<li class="active">${i}
+						<li class="active"><span>${i}</span>
 					</c:if>
 				</c:forEach>
-				<li><a class="page-link"
+				<li><a
 					href="javascript:${jsFunc}(${paging.endPage<paging.lastPage?paging.endPage+1:paging.endPage})">&gt;</a></li>
 			</ul>
 		</div>
