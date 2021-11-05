@@ -56,6 +56,7 @@ public class BoardController {
 	
 //	@RequestMapping(value = "/reviewInsert.do")
 //	@ResponseBody
+<<<<<<< HEAD
 //	// 리뷰 입력
 //	public int reviewInsert(@RequestBody ReviewVO reviewVo, Model model) throws Exception {
 ////	public Map reviewInsert(@RequestBody ReviewVO reviewVo, Model model) throws Exception {
@@ -64,6 +65,16 @@ public class BoardController {
 ////		map.put("review", reviewVo);
 ////		return map; 
 //		return 0;
+=======
+	// 리뷰 입력
+//	public int reviewInsert(@RequestBody ReviewVO reviewVo, Model model) throws Exception {
+//	public Map reviewInsert(@RequestBody ReviewVO reviewVo, Model model) throws Exception {
+//		reviewVo.setClient_id(1);
+//		HashMap<String, Object> map = new HashMap<String, Object>();
+//		map.put("review", reviewVo);
+//		return map; 
+//		return rService.reviewInsert(reviewVo);
+>>>>>>> refs/remotes/origin/EJ
 //	}
 	
 	@RequestMapping(value = "/boardList.do")
@@ -71,7 +82,7 @@ public class BoardController {
 	public String boardList(Model model) {
 		model.addAttribute("boards", bService.boardList());
 		return "manager/board/boardList";
-	}
+	}   
 	
 	@RequestMapping(value = "/boardForm.do")
 	// 관리자 공지사항 등록

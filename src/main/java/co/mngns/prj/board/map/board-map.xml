@@ -34,7 +34,7 @@
 	<!-- 공지사항 수정 -->
 	<update id="boardUpdate" parameterType="co.mngns.prj.board.vo.BoardVO">
 		update board set ttl = #{ttl}, cntn = #{cntn}
-		where  board_no = #{id}
+		where  board_no = #{board_no}
 	</update>
 	
 	<!-- 공지사항 삭제 -->
