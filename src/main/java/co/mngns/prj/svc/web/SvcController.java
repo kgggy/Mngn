@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -63,27 +64,21 @@ public class SvcController {
 
 	@RequestMapping(value = "/wResv.do")
 	// 산책 상세 예약
-	public String wResv(Model model, HttpSession session, ClientVO client, PetVO pet, ReserListVO reser) {
+	public String wResv(Model model, HttpSession session, ClientVO client, PetVO pet, SvcVO svc) {
 		client.setClient_id((Integer) session.getAttribute("id"));
 		pet.setClient_id((Integer) session.getAttribute("id"));
 		model.addAttribute("addList", rlist.clientAdd(client));
 		model.addAttribute("petList", rlist.petSelectList(pet));
-
-		session.setAttribute("knd", reser.getKnd());
-		session.setAttribute("reser_loc", reser.getReser_loc());
-		session.setAttribute("reser_dt", reser.getReser_dt());
-		session.setAttribute("svc_bgn_tm", reser.getSvc_bgn_tm());
-		session.setAttribute("pet_id1", reser.getPet_id1());
-		session.setAttribute("pet_id2", reser.getPet_id2());
-		session.setAttribute("client_id2", reser.getClient_id2());
+		
+		
 
 		return "service/wResv";
 	}
 
 	@RequestMapping(value = "/payMethod.do")
 	// 결제창
-	public String payment(Model model, HttpSession session, ReserListVO reser) {
-		reser.setKnd((Integer) session.getAttribute("id"));
+	public String payment(Model model, HttpSession session, @ModelAttribute("reser") ReserListVO reser,SvcVO svc) {
+		session.setAttribute("reser", reser);
 		return "service/payMethod";
 	}
 

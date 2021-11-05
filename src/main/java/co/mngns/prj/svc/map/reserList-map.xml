@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.mngns.prj.svc.map.ReserListMapper">
 
-	<select id="reserSelect"
+	<select id="petMethod"
 		resultType="co.mngns.prj.svc.vo.ReserListVO">
 		select case s.knd when 1 then '돌봄 서비스' when 2 then '산책 서비스'
 		when 3 then '훈련 서비스' end as service,
@@ -28,7 +28,7 @@
 	</select>
 
 	<select id="serviceTerm" resultType="co.mngns.prj.svc.vo.SvcVO">
-		select term from svc where knd = 2
+		select prc,term from svc where knd = 2
 	</select>
 	
 	<select id="serviceUse"
@@ -42,7 +42,10 @@
 		서비스' when 2 then '산책 서비스' else '훈련 서비스' end as
 		knd_name,
 		s.term,
-		s.prc
+		s.prc,
+		(	select count(*) from review r
+			where r.reser_no = l.reser_no ) as reviewyn
+		
 		from reser_list l, svc s, client c
 		where l.client_id2 = c.client_id
 		and

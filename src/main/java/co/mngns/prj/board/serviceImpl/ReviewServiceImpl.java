@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import co.mngns.prj.board.map.ReviewMapper;
-import co.mngns.prj.board.paging.Criteria;
 import co.mngns.prj.board.service.ReviewService;
 import co.mngns.prj.board.vo.ReviewVO;
 
@@ -17,8 +16,8 @@ public class ReviewServiceImpl implements ReviewService {
 	private ReviewMapper map;
 
 	@Override
-	public List<ReviewVO> reviewSelectList() {
-		return map.reviewSelectList();
+	public List<ReviewVO> reviewSelectList(ReviewVO vo) {
+		return map.reviewSelectList(vo);
 	}
 
 	@Override
@@ -42,12 +41,6 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public List<ReviewVO> getListWithPaging(Criteria cri) {
-		// 페이징 처리
-		return null;
-	}
-
-	@Override
 	public List<ReviewVO> myReviewList(ReviewVO vo) {
 		// 내가 작성한 후기
 		return map.myReviewList(vo);
@@ -57,6 +50,12 @@ public class ReviewServiceImpl implements ReviewService {
 	public List<ReviewVO> trnReviewList(ReviewVO vo) {
 		// 해당훈련사의 리뷰목록
 		return map.trnReviewList(vo);
+	}
+
+	@Override
+	public int reviewCount(ReviewVO vo) {
+		// 전체 후기 건수
+		return map.reviewCount(vo);
 	}
 
 }
