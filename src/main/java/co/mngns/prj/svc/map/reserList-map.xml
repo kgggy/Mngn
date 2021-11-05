@@ -12,7 +12,7 @@
 		where r.svc_id = s.svc_id
 		and r.pet_id1 = p.pet_id
 		and r.client_id2 = c.client_id
-		and r.reser_no = 1
+		and r.reser_no = #{reser_no}
 		Connect By Regexp_Substr(svc_bgn_tm, '[^,]+', 1,level) Is Not Null
 	</select>
 
@@ -27,21 +27,22 @@
 		#{client_id}
 	</select>
 
-
-	<!-- 사용자 서비스 이용 목록 -->
+	<select id="serviceTerm" resultType="co.mngns.prj.svc.vo.SvcVO">
+		select term from svc where knd = 2
+	</select>
+	
 	<select id="serviceUse"
 		resultType="co.mngns.prj.svc.vo.ReserListVO">
 		select l.*,
-				case l.svc_stts when 1 then '접수 완료' when 2 then
-				'서비스 완료' else '취소 및 환불'
-				end as status,
-				c.name,
-				case s.knd when 1 then '돌봄
-				서비스' when 2 then '산책 서비스' else '훈련 서비스' end as
-				knd_name,
-				s.term,
-				s.prc,
-				(select count(*) from review where l.reser_no = review.reser_no) as reviewyn
+		case l.svc_stts when 1 then '접수 완료' when 2 then
+		'서비스 완료' else '취소 및 환불'
+		end as status,
+		c.name,
+		case s.knd when 1 then '돌봄
+		서비스' when 2 then '산책 서비스' else '훈련 서비스' end as
+		knd_name,
+		s.term,
+		s.prc
 		from reser_list l, svc s, client c
 		where l.client_id2 = c.client_id
 		and

@@ -20,8 +20,8 @@ public class ReserListServiceImpl implements ReserListService {
 	ReserListMapper map;
 
 	@Override
-	public List<ReserListVO> reserSelectList() {
-		return map.reserSelectList();
+	public List<ReserListVO> reserSelectList(ReserListVO reser) {
+		return map.reserSelectList(reser);
 
 	}
 
@@ -74,7 +74,7 @@ public class ReserListServiceImpl implements ReserListService {
 	public ClientVO clientAdd(ClientVO client) {
 		return map.clientAdd(client);
 	}
-
+	
 	@Override
 	public List<TrainerVO> trnSelectList(ReserListVO reser) {
 		return map.trnSelectList(reser);
@@ -84,6 +84,11 @@ public class ReserListServiceImpl implements ReserListService {
 	public List<ReserListVO> serviceUse(ReserListVO reser) {
 		// 서비스 이용 목록보기
 		return map.serviceUse(reser);
+	}
+
+	@Override
+	public List<SvcVO> serviceTerm(ReserListVO reser) {
+		return map.serviceTerm(reser);
 	}
 
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -220,8 +221,9 @@ span {
 				<div>
 					<div class="time">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<a class="genric-btn danger-border circle arrow">1시간</a> <a
-							class="genric-btn danger-border circle arrow" id="two">2시간</a>
+						<c:forEach items="${serviceTerm }" var="time" varStatus="sts">
+						<a class="genric-btn danger-border circle arrow" id="term">${time.term }시간</a>
+						</c:forEach>
 					</div>
 					<div>
 						<span>₩18,000</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>₩34,000</span>
