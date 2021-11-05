@@ -5,10 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <script>
-	function login() {
-		alert('로그인 후 이용바랍니다.');
-		location.href = "login.do";
-	}
+
+if ('${param.message}' != '')
+	 alert("${message}");
+
 </script>
 </head>
 <body>

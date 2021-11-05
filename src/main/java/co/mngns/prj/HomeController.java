@@ -1,7 +1,9 @@
 package co.mngns.prj;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HomeController {
@@ -12,8 +14,12 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/cntMain.do")
-	public String cntMain() {
+	public String cntMain(@RequestParam(required = false) String message, Model model) {
+		
+		model.addAttribute("message", message);
+		
 		return "client/cntMain";
+		
 	}
 
 	@RequestMapping(value = "/mngMain.do")

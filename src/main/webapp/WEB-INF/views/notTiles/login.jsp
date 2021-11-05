@@ -18,8 +18,6 @@
 <link rel="stylesheet" href="css/lstyle.css">
 <!-- 카카오 스크립트 -->
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script>
 Kakao.init('fd8bf1199af6014c16070f1498a5cfa6'); //발급받은 키 중 javascript키를 사용해준다.
@@ -118,8 +116,24 @@ function kakaoLogout() {
 
 	}
 	
-	<!-- 구글 로그인 스크립트-->
+		
+	function login() {
+		
+		var loginForm = document.loginForm;
+		var client_id = loginForm.client_id.value;
+		var pwd = loginForm.pwd.value;		
+		
+		if (!client_id || !pwd ) {			
+			alert("id또는 password가 입력해주세요.")
+		} else {		 
+		 loginForm.submit();
 
+	 	}
+ 
+	 }
+
+	
+	
 </script>
 <style>
 .reg {
@@ -139,7 +153,7 @@ function kakaoLogout() {
 
 			<div class="row justify-content-center">
 				<div class="col-md-6 col-lg-5">
-					<form action="login.do" class="login-form" method = "post">
+					<form action="login.do" class="login-form" name="loginForm" method="post">
 						<div class="login-wrap p-4 p-md-5">
 							<div class="logo">
 								<h2 style="font-weight: bolder">
@@ -150,16 +164,18 @@ function kakaoLogout() {
 								<h5 style="font-weight: bolder">로 그 인</h5>
 							</div>
 							<div class="form-group">
-								<input type="number"  name ="client_id"class="form-control rounded-left"
-									placeholder="Username" required>
+								<input type="number" name="client_id"
+									class="form-control rounded-left" placeholder="Username"
+									required>
 							</div>
 							<div class="form-group d-flex">
-								<input  name ="pwd" type="password" class="form-control rounded-left"
-									placeholder="Password" required>
+								<input name="pwd" type="password"
+									class="form-control rounded-left" placeholder="Password"
+									required>
 							</div>
 
 							<div class="social_Login">
-								<img src="img/kakaologin.svg" id="kakao_id_login" onclick="">
+								<img src="img/kakaologin.svg" id="kakao_id_login" onclick="kakaoLogin()">
 								<img src="img/naverlogin.png" id="naver_id_login"
 									onclick="openPopUp()"> <img src="img/googleLogin.png"
 									id="google_id_login" onclick=""> <img
@@ -170,9 +186,9 @@ function kakaoLogout() {
 							</div>
 						</div>
 						<div class="form-group">
-							<button type="submit"
+							<button type="button"
 								class="btn btn-primary rounded submit p-3 px-5"
-								id="naverIdLogin_loginButton" align="center">로그인</button>
+								id="naverIdLogin_loginButton" align="center" onclick="login()">로그인</button>
 						</div>
 					</form>
 				</div>
