@@ -405,7 +405,7 @@ article {
 
 			<form action="tDetail.do" id="tlistForm" name="tlistForm"
 				method="post">
-				<div onclick="$(this).closest('form').submit()">
+				<!-- <div onclick="$(this).closest('form').submit()"> -->
 					<table class="table table-striped table-hover">
 						<thead>
 							<tr>
@@ -426,7 +426,7 @@ article {
 									<td>${serUse. reser_no}</td>
 									<td>${serUse. reser_dt}</td>
 									<td>${serUse. knd_name}(${serUse.term }시간)</td>
-									<td><a href="#">${serUse. name} 훈련사</a></td>
+									<td><a href="$(this).closest('form').submit()">${serUse. name} 훈련사</a></td>
 									<td>${serUse. prc}원</td>
 									<td><span class="label label-success">${serUse. status}</span></td>
 									<td><c:if test="${serUse.reviewyn == '0'}">
@@ -440,7 +440,7 @@ article {
 							</c:forEach>
 						</tbody>
 					</table>
-				</div>
+				<!-- </div> -->
 			</form>
 		</section>
 

@@ -2,7 +2,6 @@ package co.mngns.prj.board.map;
 
 import java.util.List;
 
-import co.mngns.prj.board.paging.Criteria;
 import co.mngns.prj.board.vo.ReviewVO;
 
 public interface ReviewMapper {
@@ -12,7 +11,6 @@ public interface ReviewMapper {
 	int reviewUpdate(ReviewVO vo);
 	int reviewDelete(ReviewVO vo);
 	
-	List<ReviewVO> getListWithPaging(Criteria cri); //페이징처리
 	List<ReviewVO> myReviewList(ReviewVO vo); //내가 작성한 리뷰 리스트
 	List<ReviewVO> trnReviewList(ReviewVO vo); //해당 훈련사의 리뷰 리스트
 	

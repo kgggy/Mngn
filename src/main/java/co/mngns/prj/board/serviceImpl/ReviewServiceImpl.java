@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import co.mngns.prj.board.map.ReviewMapper;
-import co.mngns.prj.board.paging.Criteria;
 import co.mngns.prj.board.service.ReviewService;
 import co.mngns.prj.board.vo.ReviewVO;
 
@@ -39,12 +38,6 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public int reviewDelete(ReviewVO vo) {
 		return map.reviewDelete(vo);
-	}
-
-	@Override
-	public List<ReviewVO> getListWithPaging(Criteria cri) {
-		// 페이징 처리
-		return null;
 	}
 
 	@Override
