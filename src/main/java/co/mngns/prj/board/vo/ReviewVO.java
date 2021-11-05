@@ -20,5 +20,7 @@ public class ReviewVO {
 	private String knd_name;
 	private int term;
 	
-
+	private int start;
+	private int end;
+	
 }

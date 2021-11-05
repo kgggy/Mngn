@@ -46,7 +46,13 @@
 		<!-- tiles 사용시 추가.(order -> 동작순서. 2-> 두번째로 태워라. -->
 	</beans:bean>
 
-	<context:component-scan
-		base-package="co.mngns" />
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="200000000" />
+		<beans:property name="maxInMemorySize"
+			value="200000000" />
+	</beans:bean>
+
+	<context:component-scan base-package="co.mngns" />
 
 </beans:beans>

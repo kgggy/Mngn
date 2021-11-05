@@ -16,8 +16,8 @@ public class ReviewServiceImpl implements ReviewService {
 	private ReviewMapper map;
 
 	@Override
-	public List<ReviewVO> reviewSelectList() {
-		return map.reviewSelectList();
+	public List<ReviewVO> reviewSelectList(ReviewVO vo) {
+		return map.reviewSelectList(vo);
 	}
 
 	@Override
@@ -50,6 +50,12 @@ public class ReviewServiceImpl implements ReviewService {
 	public List<ReviewVO> trnReviewList(ReviewVO vo) {
 		// 해당훈련사의 리뷰목록
 		return map.trnReviewList(vo);
+	}
+
+	@Override
+	public int reviewCount(ReviewVO vo) {
+		// 전체 후기 건수
+		return map.reviewCount(vo);
 	}
 
 }
