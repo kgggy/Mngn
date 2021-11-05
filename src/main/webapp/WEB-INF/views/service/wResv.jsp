@@ -19,28 +19,28 @@
                     return;
                 }
                 $.ajax({
-                    url: "trnSelectList.do",
-                    type: "get",
-                    data: {
-                        reser_dt: date,
-                        work_time: svc
-                    },
-                    dataType: "json",
-                    success: function (data) {
-                        let str = "";
-                        for (i = 0; i < data.length; i++) {
-                            str += '<input type="radio" id="client_id' + i +
-                                '" name="client_id" value="' + data[i].client_id2 +
-                                '"/> <label for="client_id' + i + '" class="radio"><span>' +
-                                data[i].name + '</span></label>'
+                        url: "trnSelectList.do",
+                        type: "get",
+                        data: {
+                            reser_dt: date,
+                            work_time: svc
+                        },
+                        dataType: "json",
+                        success: function (data) {
+                            let str = "";
+                            for (i = 0; i < data.length; i++) {
+                                str += '<input type="radio" id="client_id' + i +
+                                    '" name="client_id2" value="' + data[i].client_id2 +
+                                    '"/> <label for="client_id' + i + '" class="radio"><span>' +
+                                    data[i].name + '</span></label>'
+                            }
+                            $("#trnSelect").empty();
+                            if (data.length == 0) {
+                                str = "훈련사가 없습니다! 다른 시간을 선택해주세요.";
+                            }
+                            $("#trnSelect").append(str);
                         }
-                        $("#trnSelect").empty();
-                        if (data.length == 0) {
-                            str = "훈련사가 없습니다! 다른 시간을 선택해주세요.";
-                        }
-                        $("#trnSelect").append(str);
-                    }
-                });
+                    });
             };
 
             $("#address_kakao").on("click", function () {
@@ -72,10 +72,14 @@
                 trn();
             })
 
-            $(".park").on("click", function () {
-                window.open("map.do", "근처공원 선택",
-                    "width=1000px,height=700px,scrollbars=yes,left=450px,top=120px");
-            });
+            $(".park")
+                .on(
+                    "click",
+                    function () {
+                        window
+                            .open("map.do", "근처공원 선택",
+                                "width=1000px,height=700px,scrollbars=yes,left=450px,top=120px");
+                    });
 
         }
 
@@ -83,27 +87,9 @@
             $("#address_kakao").val(data1);
             $("#address_detail").val(data2);
         }
-        $("#abtn").on("click", function () {
-            $.ajax({
-                url: "payMethod.do",
-                data: $("#payForm").serialize(),
-                type: "post",
-                success: function (data) {
-                    if (data == 1) {
-                        location.href = "payMethod.do";
-                    } else {
-                        alert("예약에 실패하였습니다. 다시 예약해주세요.");
-                    }
-                },
-                error: function () {
-                    alert("예약에 실패하였습니다. 다시 예약해주세요.");
 
-                }
-
-            });
-        });
         //요구 속성 추가
-        function form() {
+        function Rform() {
             if ($("input[name='svc_bgn_tm']:checked").length == 0) {
                 alert("시간을 선택하세요.");
                 return;
@@ -112,11 +98,19 @@
                 alert("반려동물을 선택하세요.");
                 return;
             }
-            if ($("input[name='client_id']:checked").length == 0) {
+            if ($("input[name='client_id2']:checked").length == 0) {
                 alert("훈련사를 선택하세요.");
                 return;
             } else {
-                $("#payForm").submit();
+            	$("<input>").attr("name","name").attr("type","hidden")
+            				.attr("value", $("input[name='client_id2']:checked").next().text())
+            	.appendTo( $("#payForm"))
+            	$("input[name='pet_id']:checked").each(function( index ) {
+            		$("<input>").attr("name","pet_name").attr("type","hidden")
+    							.attr("value", $(this).next().text())
+    				.appendTo( $("#payForm"))
+            	});
+               $("#payForm").submit();
             }
         };
     </script>
@@ -137,7 +131,9 @@
     </div>
     <!-- bradcam_area_end -->
     <div class="testbox">
-        <form action="payMethod.do" id="payForm" method="post">
+        <form action="payMethod.do" method="post" id="payForm">
+        <input type="hidden" id="service" name="term" value="${svcVO.term }" readonly> 
+        <input type="hidden" id="service" name="prc" value="${svcVO.prc }" readonly>
             <div class="item">
                 <h3>
                     주소<span class="required">*</span>&nbsp;&nbsp;<small>*입력한
@@ -197,8 +193,7 @@
                     훈련사 선택<span class="required">*</span>
                 </h3>
                 <div class="question-answer" id="trnSelect">
-                    <input type="radio" id="client_id0" name="client_id" /> <label for="client_id0"
-                        class="radio"><span></span></label>
+                	
                 </div>
             </div>
             <div class="item">
@@ -209,7 +204,7 @@
             </div>
             <br />
             <div class="btn-block">
-                <button type="button" id="abtn" onclick="form()">예약</button>
+                <button type="button" id="abtn" onclick="Rform()">예약</button>
             </div>
         </form>
     </div>

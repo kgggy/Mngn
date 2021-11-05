@@ -7,7 +7,7 @@ public class SvcVO {
 	private int svc_id;
 	private int knd;
 	private int term;
-	private int rpc;
+	private int prc;
 	
 	
 }
