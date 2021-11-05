@@ -8191,7 +8191,7 @@ h1, h2, h3, h4, h5,
 .login-wrap {
   position: relative;
   background: #fff;
-  border-radius: 10px;
+  border-radius: 0px;
   -webkit-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
   -moz-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
   box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24); }
@@ -8211,7 +8211,7 @@ h1, h2, h3, h4, h5,
       color: #fff; }
 
 .form-control {
-  height: 48px;
+  height: 55px;
   background: rgba(0, 0, 0, 0.05);
   color: #000;
   font-size: 16px;

@@ -53,7 +53,7 @@ public class UserController {
 	// 로그인 페이지
 	public String loginForm(Model model, ClientVO clientvo){
 		//model.addAttribute("client",  cntService.clientSelectList());
-		return "notTiles/login";
+		return "login";
 		
 	}
 	
@@ -62,7 +62,7 @@ public class UserController {
 	// 회원가입 페이지
 	public String joinForm(Model model, ClientVO clientvo) {
 		model.addAttribute("client", cntService.clientSelectList());
-		return "notTiles/joinForm";
+		return "joinForm";
 	}
 
 	@RequestMapping(value = "/cntProfile.do")

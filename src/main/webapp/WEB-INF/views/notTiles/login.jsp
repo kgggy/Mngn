@@ -139,7 +139,7 @@ function kakaoLogout() {
 
 			<div class="row justify-content-center">
 				<div class="col-md-6 col-lg-5">
-					<form action="login.do" class="login-form" method="post">
+					<form action="login.do" class="login-form" method = "post">
 						<div class="login-wrap p-4 p-md-5">
 							<div class="logo">
 								<h2 style="font-weight: bolder">
@@ -150,14 +150,12 @@ function kakaoLogout() {
 								<h5 style="font-weight: bolder">로 그 인</h5>
 							</div>
 							<div class="form-group">
-								<input type="number" name="client_id"
-									class="form-control rounded-left" placeholder="Username"
-									required>
+								<input type="number"  name ="client_id"class="form-control rounded-left"
+									placeholder="Username" required>
 							</div>
 							<div class="form-group d-flex">
-								<input name="pwd" type="password"
-									class="form-control rounded-left" placeholder="Password"
-									required>
+								<input  name ="pwd" type="password" class="form-control rounded-left"
+									placeholder="Password" required>
 							</div>
 
 							<div class="social_Login">
@@ -170,11 +168,11 @@ function kakaoLogout() {
 							<div>
 								회원이 아니신가요?<a href="joinForm.do" class="reg">가입하기</a>
 							</div>
-							<div class="form-group">
-								<button type="submit"
-									class="btn btn-primary rounded submit p-3 px-5"
-									id="naverIdLogin_loginButton" align="center">로그인</button>
-							</div>
+						</div>
+						<div class="form-group">
+							<button type="submit"
+								class="btn btn-primary rounded submit p-3 px-5"
+								id="naverIdLogin_loginButton" align="center">로그인</button>
 						</div>
 					</form>
 				</div>
