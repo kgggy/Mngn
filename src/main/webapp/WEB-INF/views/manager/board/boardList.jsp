@@ -43,6 +43,9 @@
 	width: 70px !important;
 	height: 70px !important;
 }
+</
+head
+>
 </style>
 <!-- Global Vendor -->
 <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
@@ -71,22 +74,62 @@
 			$(this).find('.modal-body #boardCntn').val(data5)
 		})
 	});
+</script>
+<script>
+	var NOTIFYID = "";
+	var NONNOTIFYID = "";
+	var NCONTENT = "";
 
-	//공지사항 등록
-	function boardInsert() {
-		//등록 버튼 클릭
-		$('#btnInsert').on('click', function() {
-			var id = $(this).closest('tr').find()
-			$.ajax({
-				url : "/boardForm.do",
-				method : "post",
-				dataType : "json",
-				success : function(data) {
-					boardList();
-				}
-			})
+	$(document).ready(function() {
+		$('#insertBlack').on('show.bs.modal', function(event) {
+			NOTIFYID = $(event.relatedTarget).data('notifyid');
+			NONNOTIFYID = $(event.relatedTarget).data('nonnotifyid');
+			NCONTENT = $(event.relatedTarget).data('ncontent');
 		});
-	} // end 공지사항 등록
+	});
+
+	function deleteNotify(notifyid, nonnotifyid, ncontent) {
+		location.href = '${path}/admin/deleteNotify.do?notifyId=' + notifyid
+				+ '&nonNotifyId=' + nonnotifyid + '&nContent=' + ncontent;
+	}
+
+	function insertBlack() {
+		var blackCount = $('#blackCount').val();
+		location.href = '${path}/admin/insertBlack.do?notifyId=' + NOTIFYID
+				+ '&nonNotifyId=' + NONNOTIFYID + '&nContent=' + NCONTENT
+				+ '&blackCount=' + blackCount;
+	}
+
+	/* 	function boardDelete(board_no, ttl,  )
+	
+	
+	 var boardTtl = "";
+	 var boardCntn = "";
+	
+	 $(document).function() {
+	 $('#boardInsert')
+	 } */
+
+	/* 	$(document).ready(function() {
+	 $(".btnUpdate").click(function() {
+	 var inputValue = $(this).find("input").val();
+	 if (inputValue != 'all') {
+	 var target = $('table tr[data-status="' + inputValue + '"]');
+	 $("table tbody tr").not(target).hide();
+	 target.fadeIn();
+	 } else {
+	 $("table tbody tr").fadeIn();
+	 }
+	 }); */
+
+	//공지사항 수정
+	/* 	$(document).ready(function() {
+	 $("#exampleModalCenter").on("click", "form", function(event) {
+	
+	 $(this).toggleClass('checked');
+	 });
+	 }
+	 });  */
 
 	//공지사항 삭제
 	/* function boardDelete() {
@@ -105,15 +148,13 @@
 			}
 		});
 	}//end 공지사항 삭제 */
-
-	function boardDelete() {
-		window.alert('정말 삭제하시겠습니까?');
-	};
+	/* 
+	 function boardDelete() {
+	 window.alert('정말 삭제하시겠습니까?');
+	 }; */
 </script>
 
-</head>
 <!-- End Head -->
-
 <body class="page-order-all">
 	<!-- Header (Topbar) -->
 	<header class="astino-header u-header">
@@ -275,23 +316,24 @@
 													<td>관리자</td>
 													<td>${board.reg_dt }</td>
 													<td><input type="button"
-														class="btn btn-outline-danger" value="수정" id="btnUpdate"
-														data-toggle="modal" data-target="#exampleModalCenter" />
+															class="btn btn-outline-danger" value="수정" id="btnUpdate"
+															data-toggle="modal" data-target="#exampleModalCenter" />
 														<input type="button" class="btn btn-outline-danger"
-														value="삭제" id="btnDelete" href="#"
-														onClick="alert('삭제하겠습니까?')" /></td>
+															value="삭제" id="btnDelete" href="#"
+															onClick="alert('삭제가 완료되었습니다.')" /></td>
 													<td style="display: none;">${board.cntn}</td>
+													<td style="display: none;">${board.mngr_id })</td>
 												</tr>
 											</c:forEach>
 										</tbody>
 									</table>
 								</div>
-						<br>
-						<div>
-							<input type="button" onClick="window.open('boardForm.do')"
-								class="btn btn-danger btn-large float-right" value="공지사항 등록">
-						</div>
-						<br>
+								<br>
+								<div>
+									<input type="button" onClick="window.open('boardForm.do')"
+										class="btn btn-danger btn-large float-right" value="공지사항 등록">
+								</div>
+								<br>
 							</div>
 						</div>
 					</div>
@@ -368,12 +410,18 @@
 										<textarea class="form-control" id="boardCntn"
 											placeholder="내용을 입력하세요"></textarea>
 									</div>
+									<div style="display : none;" >
+										<label for="formGroupExampleInput4">일련번호</label>
+										<input type="text" class="form-control"id="boardNo"></input>
+									</div>
 								</form>
 							</div>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-outline-danger" herf="#"
-								onClick="alert('수정하겠습니까?')" data-dismiss="modal">수정</button>
+							<input type="button" class="btn btn-outline-danger" value="수정"
+								id="btnUpdate" onClick="alert('수정이 완료되었습니다.')" />
+							<button type="button" class="btn btn-outline-danger"
+								data-dismiss="modal">닫기</button>
 						</div>
 					</div>
 					<!-- End Current Projects -->
@@ -383,4 +431,41 @@
 	</div>
 	<!-- Large Size Modal-->
 </body>
+<script>
+	$(function() {
+		boardUpdate();
+		boardDelete();
+	});
+
+	function boardUpdate() {
+		$("btnUpdate").on("click", function(event) {
+			$.ajax({
+				url : "",
+				type : 'PUT',
+				dataType : 'json',
+				data : JSON.stringify($('#form').serializeObject()),
+				contextType : 'application/json',
+				success : function(data) {
+					boardList();
+				}
+			});
+		});
+	}
+
+	function boardDelete() {
+		$("#btnDelete").on("click", function() {
+			window.event.stopPropagation();
+			var board_no = $(this).closest("li").find("#todoNo").val();
+			$.ajax({
+				url : "todos/" + todoNo,
+				type : 'DELETE',
+				dataType : "json",
+				success : function(data) {
+					todoList();
+				}
+			});
+			$(this).parent().remove();
+		});
+	}
+</script>
 </html>

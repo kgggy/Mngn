@@ -3,6 +3,8 @@ package co.mngns.prj.board.web;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,9 +40,9 @@ public class BoardController {
 	
 	@RequestMapping(value = "/cntReview.do")
 	// 사용자 서비스 이용 내역 및 후기
-	public String myReview(Model model, ReviewVO vo, ReserListVO reser) {
-		vo.setClient_id(1);
-		reser.setClient_id1(3);
+	public String myReview(Model model, HttpSession session, ReviewVO vo, ReserListVO reser) {
+		vo.setClient_id((Integer)session.getAttribute("id"));
+		reser.setClient_id1((Integer)session.getAttribute("id"));
 		model.addAttribute("myReviews", rService.myReviewList(vo));
 		model.addAttribute("serviceUses", reserService.serviceUse(reser));
 		return "client/cntReview";
@@ -52,24 +54,35 @@ public class BoardController {
 		return "client/cntReview";
 	}
 	
-	@RequestMapping(value = "/reviewInsert.do")
-	@ResponseBody
+//	@RequestMapping(value = "/reviewInsert.do")
+//	@ResponseBody
+<<<<<<< HEAD
+//	// 리뷰 입력
+//	public int reviewInsert(@RequestBody ReviewVO reviewVo, Model model) throws Exception {
+////	public Map reviewInsert(@RequestBody ReviewVO reviewVo, Model model) throws Exception {
+////		reviewVo.setClient_id(1);
+////		HashMap<String, Object> map = new HashMap<String, Object>();
+////		map.put("review", reviewVo);
+////		return map; 
+//		return 0;
+=======
 	// 리뷰 입력
-	public int reviewInsert(@RequestBody ReviewVO reviewVo, Model model) throws Exception {
+//	public int reviewInsert(@RequestBody ReviewVO reviewVo, Model model) throws Exception {
 //	public Map reviewInsert(@RequestBody ReviewVO reviewVo, Model model) throws Exception {
 //		reviewVo.setClient_id(1);
 //		HashMap<String, Object> map = new HashMap<String, Object>();
 //		map.put("review", reviewVo);
 //		return map; 
-		return rService.reviewInsert(reviewVo);
-	}
+//		return rService.reviewInsert(reviewVo);
+>>>>>>> refs/remotes/origin/EJ
+//	}
 	
 	@RequestMapping(value = "/boardList.do")
 	// 관리자 공지사항 목록
 	public String boardList(Model model) {
 		model.addAttribute("boards", bService.boardList());
 		return "manager/board/boardList";
-	}
+	}   
 	
 	@RequestMapping(value = "/boardForm.do")
 	// 관리자 공지사항 등록

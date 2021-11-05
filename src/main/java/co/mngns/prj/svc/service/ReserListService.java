@@ -9,13 +9,15 @@ import co.mngns.prj.user.vo.ClientVO;
 import co.mngns.prj.user.vo.TrainerVO;
 
 public interface ReserListService {
-	public List<ReserListVO> reserSelectList();
+	public List<ReserListVO> reserSelectList(ReserListVO reser);
 
 	public ReserListVO reserSelect(ReserListVO reser);
 
 	public int reserInsert(ReserListVO reser);
 
 	public int reserDelete(ReserListVO reser);
+	
+	public List<SvcVO> serviceTerm(ReserListVO reser);
 
 	public List<SvcVO> serviceSelectList();
 

@@ -23,7 +23,13 @@ public class TrainerVO {
 	private String work_time;
 	private String work_loc1;
 	private String work_loc2;
-	
+	//관리자 페이지에서 호출
+	private String phone;
+	private String email;
+	private Date join_dt;
+	private String adres1;
+	private String adres2;
+
 	
 	public String name;
 	public String gender;
@@ -35,5 +41,6 @@ public class TrainerVO {
 	//검색필터
 	public String type; //검색타입
 	public String keyword; //검색내용
+	public String trndate; //
 }
 

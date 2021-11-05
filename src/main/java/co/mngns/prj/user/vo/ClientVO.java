@@ -20,4 +20,6 @@ public class ClientVO {
 	private Date join_dt;
 	private int role;
 	
+	private int pet_id;
+	
 }

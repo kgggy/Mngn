@@ -38,7 +38,8 @@ public class UserController {
 			session.setAttribute("password", vo.getPwd());
 			session.setAttribute("name", vo.getName());
 			session.setAttribute("adres1", vo.getAdres1());
-			session.setAttribute("adres1", vo.getAdres2());
+			session.setAttribute("adres2", vo.getAdres2());
+			
 
 		}else {
 			page = "redirect:login.do";

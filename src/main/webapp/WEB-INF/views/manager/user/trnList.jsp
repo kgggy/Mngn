@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<!-- Head -->
+
 <head>
-<title>훈련사 목록</title>
+<title>사용자 목록</title>
 
 <!-- Meta -->
 <meta charset="utf-8">
@@ -38,7 +42,6 @@
 	height: 70px !important;
 }
 </style>
-
 <!-- Global Vendor -->
 <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
 <script src="assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
@@ -54,7 +57,37 @@
 <script src="assets/js/sidebar-nav.js"></script>
 <script src="assets/js/dashboard-page-scripts.js"></script>
 <script>
-	
+	$(document).ready(function() {
+		$('#exampleModalCenter').on('show.bs.modal', function(event) {
+			var tr = $(event.relatedTarget).closest('tr')
+			var data0 = tr.find('td:eq(0)').html() //훈련사ID
+			var data1 = tr.find('td:eq(1)').html() //훈련사 이름
+			var data2 = tr.find('td:eq(2)').html() //훈련사 전화번호
+			var data3 = tr.find('td:eq(3)').html() //훈련사 가입날짜
+			var data5 = tr.find('td:eq(5)').html() //훈련사 주소1
+			var data6 = tr.find('td:eq(6)').html() //훈련사 주소2
+			var data7 = tr.find('td:eq(7)').html() //훈련사 생일
+			var data8 = tr.find('td:eq(8)').html() //훈련사 근무지1
+			var data9 = tr.find('td:eq(9)').html() //훈련사 근무지2
+			//var data10 = tr.find('td:eq(10)').html() //훈련사 근무시간
+			var data11 = tr.find('td:eq(11)').html() //훈련사 별점평균
+			var data12 = tr.find('td:eq(12)').html() //훈련사 별점평균
+
+			$(this).find('.modal-body #trnId').val(data0)
+			$(this).find('.modal-body #trnName').val(data1)
+			$(this).find('.modal-body #trnPhone').val(data2)
+			$(this).find('.modal-body #trnJdate').val(data3)
+			$(this).find('.modal-body #trnAdres1').val(data5)
+			$(this).find('.modal-body #trnAdres2').val(data6)
+			$(this).find('.modal-body #trnBdate').val(data7)
+			$(this).find('.modal-body #trnLoc1').val(data8)
+			$(this).find('.modal-body #trnLoc2').val(data9)
+			//$(this).find('.modal-body #').val(data10)
+			$(this).find('.modal-body #trnStar').val(data11)
+			$(this).find('.modal-body #trnEmail').val(data12)
+
+		})
+	});
 </script>
 </head>
 <!-- End Head -->
@@ -191,11 +224,11 @@
 		<div class="u-content">
 			<div class="u-body">
 				<div class="row">
-					<!-- 훈련사 정보 -->
-					<div class="col-md-6 mb-4">
+					<!-- 공지사항 목록 -->
+					<div class="col-md-12 mb-4">
 						<div class="card h-100">
-							<header class="astino-pr-form-header">
-								<h2 class="h1 card-header-title">훈련사 목록</h2>
+							<header class="card-header d-flex align-items-center">
+								<h2 class="h2 card-header-title">훈련사 목록</h2>
 							</header>
 
 							<div class="card-body">
@@ -206,7 +239,7 @@
 												<th scope="col" class="text-dark">ID</th>
 												<th scope="col" class="text-dark">이 름</th>
 												<th scope="col" class="text-dark">전화번호</th>
-												<th scope="col" class="text-dark">상 태</th>
+												<th scope="col" class="text-dark">가입날짜</th>
 												<th scope="col" class="text-dark"></th>
 											</tr>
 										</thead>
@@ -219,23 +252,22 @@
 													<td>${trainer.phone }</td>
 													<td>${trainer.join_dt }</td>
 													<td><input type="button"
-														class="btn btn-outline-danger" value="수정" id="btnUpdate"
+														class="btn btn-outline-danger" value="상세보기" id="btnSearch"
 														data-toggle="modal" data-target="#exampleModalCenter" />
-														<input type="button" class="btn btn-outline-danger"
-														value="삭제" id="btnDelete" href="#"
-														onClick="alert('삭제하겠습니까?')" /></td>
-													<td style="display: none;">${board.cntn}</td>
+													</td>
+													<td style="display: none;">${trainer.adres1}</td>
+													<td style="display: none;">${trainer.adres2}</td>
+													<td style="display: none;">${trainer.trn_birth_dt}</td>
+													<td style="display: none;">${trainer.work_loc1}</td>
+													<td style="display: none;">${trainer.work_loc2}</td>
+													<td style="display: none;">${trainer.work_time}</td>
+													<td style="display: none;">${trainer.trn_avrg}</td>
+													<td style="display: none;">${trainer.email}</td>
 												</tr>
 											</c:forEach>
 										</tbody>
 									</table>
 								</div>
-								<br>
-								<div>
-									<input type="button" onClick="window.open('boardForm.do')"
-										class="btn btn-danger btn-large float-right" value="공지사항 등록">
-								</div>
-								<br>
 							</div>
 						</div>
 					</div>
@@ -249,6 +281,9 @@
 								<li class="page-item"><a class="page-link"
 									href="mngMain.do"><span
 										class="ml-1 d-none d-xl-inline-block">이전으로</span></a></li>
+								<li class="page-item"><a class="page-link" href="#">1</a></li>
+								<li class="page-item"><a class="page-link" href="#"><span
+										class="mr-1 d-none d-xl-inline-block">다음으로</span></a></li>
 							</ul>
 						</nav>
 					</div>
@@ -292,36 +327,58 @@
 								<form>
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput">아이디</label> <input
-											type="text" class="form-control" id="trnId" placeholder=""
-											readonly> <label for="formGroupExampleInput2">이
-											름</label> <input type="text" class="form-control" id="trnName"
-											placeholder="" readonly>
+											type="text" class="form-control" id="trnId" readonly>
 									</div>
 									<div class="form-group d-flex align-items-center">
-										<label for="formGroupExampleInput4">서비스평점</label> <input
-											type="text" class="form-control" id="trnScore" placeholder=""
-											readonly> <label for="formGroupExampleInput4">서비스지역</label>
-										<input type="text" class="form-control" id="trnJdate"
-											placeholder="" readonly>
-									</div>
-									<div class="form-group d-flex align-items-center">
-										<label for="formGroupExampleInput4">휴 무</label> <input
-											type="text" class="form-control" id="trnJdate" placeholder=""
-											readonly> <label for="formGroupExampleInput3">연락처</label>
-										<input type="text" class="form-control" id="trnPhone"
-											placeholder="" readonly>
-									</div>
-									<div class="form-group d-flex align-items-center">
-										<label for="formGroupExampleInput3">주 소</label> <input
-											type="text" class="form-control" id="trnAdres" placeholder=""
+										<label for="formGroupExampleInput2">이 름</label> <input
+											type="text" class="form-control" id="trnName" placeholder=""
 											readonly>
 									</div>
 									<div class="form-group d-flex align-items-center">
-										<label for="formGroupExampleInput3">이메일</label> <input
+										<label for="formGroupExampleInput4">생일</label> <input
+											type="text" class="form-control" id="trnBdate" placeholder=""
+											readonly>
+									</div>
+									<div class="form-group d-flex align-items-center">
+										<label for="formGroupExampleInput4">입사날짜</label> <input
+											type="text" class="form-control" id="trnJdate" placeholder=""
+											readonly>
+									</div>
+									<div class="form-group d-flex align-items-center">
+										<label for="formGroupExampleInput4">연락처</label> <input
+											type="text" class="form-control" id="trnPhone" placeholder=""
+											readonly>
+									</div>
+									<div class="form-group d-flex align-items-center">
+										<label for="formGroupExampleInput4">이메일</label> <input
 											type="text" class="form-control" id="trnEmail" placeholder=""
-											readonly> <label for="formGroupExampleInput4">입사날짜</label>
-										<input type="text" class="form-control" id="trnJdate"
-											placeholder="" readonly>
+											readonly>
+									</div>
+									<div class="form-group d-flex align-items-center">
+										<label for="formGroupExampleInput4">서비스평점</label> <input
+											type="text" class="form-control" id="trnStar" placeholder=""
+											readonly>
+									</div>
+									<div class="form-group d-flex align-items-center">
+										<label for="formGroupExampleInput4">근무지역1</label> <input
+											type="text" class="form-control" id="trnLoc1" placeholder=""
+											readonly>
+									</div>
+									<div class="form-group d-flex align-items-center">
+										<label for="formGroupExampleInput4">근무지역2</label> <input
+											type="text" class="form-control" id="trnLoc2" placeholder=""
+											readonly>
+									</div>
+									<div class="form-group d-flex align-items-center">
+										<label for="formGroupExampleInput4">휴 무</label> <input
+											type="text" class="form-control" id="trnOff" placeholder=""
+											readonly>
+									</div>
+									<div class="form-group d-flex align-items-center">
+										<label for="formGroupExampleInput3">주 소</label> <input
+											type="text" class="form-control" id="trnAdres1"
+											placeholder="" readonly> <input type="text"
+											class="form-control" id="trnAdres2" placeholder="" readonly>
 									</div>
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput5">특이사항</label>
@@ -341,6 +398,6 @@
 			</div>
 		</div>
 	</div>
-	<!-- Large Size Modal-->
+	<!-- End Large Size Modal-->
 </body>
 </html>

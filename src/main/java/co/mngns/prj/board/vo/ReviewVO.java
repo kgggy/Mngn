@@ -1,6 +1,6 @@
 package co.mngns.prj.board.vo;
 
-import java.sql.Date;
+import java.util.Date;
 
 import lombok.Data;
 
@@ -19,5 +19,6 @@ public class ReviewVO {
 	private int knd;
 	private String knd_name;
 	private int term;
+	
 
 }
