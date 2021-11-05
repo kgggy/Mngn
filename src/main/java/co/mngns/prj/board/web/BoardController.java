@@ -52,24 +52,24 @@ public class BoardController {
 		return "client/cntReview";
 	}
 	
-	@RequestMapping(value = "/reviewInsert.do")
-	@ResponseBody
+//	@RequestMapping(value = "/reviewInsert.do")
+//	@ResponseBody
 	// 리뷰 입력
-	public int reviewInsert(@RequestBody ReviewVO reviewVo, Model model) throws Exception {
+//	public int reviewInsert(@RequestBody ReviewVO reviewVo, Model model) throws Exception {
 //	public Map reviewInsert(@RequestBody ReviewVO reviewVo, Model model) throws Exception {
 //		reviewVo.setClient_id(1);
 //		HashMap<String, Object> map = new HashMap<String, Object>();
 //		map.put("review", reviewVo);
 //		return map; 
-		return rService.reviewInsert(reviewVo);
-	}
+//		return rService.reviewInsert(reviewVo);
+//	}
 	
 	@RequestMapping(value = "/boardList.do")
 	// 관리자 공지사항 목록
 	public String boardList(Model model) {
 		model.addAttribute("boards", bService.boardList());
 		return "manager/board/boardList";
-	}
+	}   
 	
 	@RequestMapping(value = "/boardForm.do")
 	// 관리자 공지사항 등록

@@ -252,7 +252,7 @@
 							</div>
 						</div>
 					</div>
-					<!-- End Current Projects -->
+					<!-- End 사용자 정보 -->
 				</div>
 				<div class="row justify-content-between align-items-center mb-4">
 					<div class="col-sm">

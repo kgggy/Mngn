@@ -39,6 +39,41 @@
 	height: 70px !important;
 }
 </style>
+<!-- Global Vendor -->
+	<script src="assets/vendor/jquery/dist/jquery.min.js"></script>
+	<script src="assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
+	<script src="assets/vendor/popper.js/dist/umd/popper.min.js"></script>
+	<script src="assets/vendor/bootstrap/bootstrap.min.js"></script>
+
+	<!-- Plugins -->
+	<script
+		src="assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script src="assets/vendor/chart.js/dist/Chart.min.js"></script>
+
+	<!-- Initialization  -->
+	<script src="assets/js/sidebar-nav.js"></script>
+	<script src="assets/js/dashboard-page-scripts.js"></script>
+<script>
+
+//공지사항 등록
+function boardInsert() {
+	//등록 버튼 클릭
+	$('#btnInsert').on('click', function() {
+		var id = $(this).closest('tr').find()
+		$.ajax({
+			url : "/boardForm.do",
+			method : "post",
+			dataType : "json",
+			success : function(data) {
+				boardList();
+			}
+		})
+	});
+} // end 공지사항 등록
+
+
+
+</script>
 </head>
 <!-- End Head -->
 
@@ -240,20 +275,7 @@
 		</div>
 	</main>
 
-	<!-- Global Vendor -->
-	<script src="assets/vendor/jquery/dist/jquery.min.js"></script>
-	<script src="assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
-	<script src="assets/vendor/popper.js/dist/umd/popper.min.js"></script>
-	<script src="assets/vendor/bootstrap/bootstrap.min.js"></script>
-
-	<!-- Plugins -->
-	<script
-		src="assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
-	<script src="assets/vendor/chart.js/dist/Chart.min.js"></script>
-
-	<!-- Initialization  -->
-	<script src="assets/js/sidebar-nav.js"></script>
-	<script src="assets/js/dashboard-page-scripts.js"></script>
+	
 </body>
 
 </html>
