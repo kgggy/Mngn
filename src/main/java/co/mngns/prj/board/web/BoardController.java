@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import co.mngns.prj.board.service.BoardService;
 import co.mngns.prj.board.service.ReviewService;
 import co.mngns.prj.board.vo.ReviewVO;
+import co.mngns.prj.common.vo.Paging;
 import co.mngns.prj.svc.service.ReserListService;
 import co.mngns.prj.svc.vo.ReserListVO;
 
@@ -28,8 +29,13 @@ public class BoardController {
 	
 	@RequestMapping(value = "/rList.do")
 	// 이용후기 목록
-	public String rList(Model model) {
-		model.addAttribute("rLists", rService.reviewSelectList());
+	public String rList(ReviewVO review, Paging paging, Model model) {
+		//페이징 처리
+		paging.setPageUnit(6);
+		review.setStart(paging.getFirst());
+		review.setEnd(paging.getLast());
+		paging.setTotalRecord(rService.reviewCount(review));
+		model.addAttribute("rLists", rService.reviewSelectList(review));
 		return "client/rList";
 	}
 	
