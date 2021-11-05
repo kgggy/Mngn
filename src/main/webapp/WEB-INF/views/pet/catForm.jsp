@@ -43,8 +43,7 @@
 		var weight = loginForm.weight.value;
 		var oper = loginForm.oper.value;
 
-
-		if (!picture ||!breed || !name || !gender || !age || !weight || !oper ) {
+		if (!picture || !breed || !name || !gender || !age || !weight || !oper) {
 
 			alert("필수입력창을 모두 입력해주세요.");
 
@@ -57,8 +56,6 @@
 
 	}
 </script>
-
-
 </head>
 
 
@@ -69,7 +66,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="bradcam_text text-center">
-						<h3> 고양이 프로필등록 </h3>
+						<h3>고양이 프로필등록</h3>
 					</div>
 				</div>
 			</div>
@@ -90,122 +87,121 @@
 			<div class="card card-5">
 				<div class="card-body">
 
-				<form  name = "loginform" action="aniList.do">
-					<div class="form-row">
-						<div class="picture">냥이사진</div>
-						<div class="value">
-							<div class="input-group">
-								<input class="input--style-5" type="file" name="picture"
-									value="">
-							</div>
-						</div>
-					</div>
-
-
-					<div class="form-row">
-						<div class="breed">냥이 품종</div>
-						<div class="value">
-							<div class="input-group">
-								<div class="rs-select2 js-select-simple select--no-search">
-									<select name="breed">
-
-
-										<option disabled="disabled" selected="selected">Choose
-											option</option>
-										<optgroup label="고양이">
-											
-											<option>코리안숏헤어</option>
-											<option>봄베이</option>
-											<option>먼치킨</option>
-											<option>랙돌</option>
-											<option>러시안블루</option>
-											<option>폴드</option>
-											<option>터키쉬 앙고라</option>
-											<option>엑죠틱</option>
-											<option>벵갈</option>
-											<option>페르시안</option>
-											<option>노르웨이숲</option>
-											<option>아비시니안</option>
-											<option>샴</option>
-										</optgroup>
-
-									</select>
-									<div class="select-dropdown"></div>
+					<form name="loginform" action="aniList.do">
+						<div class="form-row">
+							<div class="picture">냥이사진</div>
+							<div class="value">
+								<div class="input-group">
+									<input class="input--style-5" type="file" name="picture"
+										value="">
 								</div>
 							</div>
 						</div>
-					</div>
 
-					<div class="form-row">
 
-						<div class="name">냥이 이름</div>
-						<div class="value">
-							<div class="input-group">
-								<input class="input--style-5" type="text" name="name"
-									placeholder="냥이이름을 입력해주세요.">
+						<div class="form-row">
+							<div class="breed">냥이 품종</div>
+							<div class="value">
+								<div class="input-group">
+									<div class="rs-select2 js-select-simple select--no-search">
+										<select name="breed">
+
+
+											<option disabled="disabled" selected="selected">Choose
+												option</option>
+											<optgroup label="고양이">
+
+												<option>코리안숏헤어</option>
+												<option>봄베이</option>
+												<option>먼치킨</option>
+												<option>랙돌</option>
+												<option>러시안블루</option>
+												<option>폴드</option>
+												<option>터키쉬 앙고라</option>
+												<option>엑죠틱</option>
+												<option>벵갈</option>
+												<option>페르시안</option>
+												<option>노르웨이숲</option>
+												<option>아비시니안</option>
+												<option>샴</option>
+											</optgroup>
+
+										</select>
+										<div class="select-dropdown"></div>
+									</div>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="form-row p-t-20">
-						<label class="gender"> 냥이 성별</label>
-						<div class="p-t-15">
-							<label class="radio-container m-r-55"> 수컷 <input
-								type="radio" checked="checked" name="gender"> <span
-								class="checkmark"></span>
-							</label> <label class="radio-container"> 암컷 <input type="radio"
-								name="gender"> <span class="checkmark"></span>
-							</label>
-						</div>
-					</div>
 
-					<div class="form-row">
-						<div class="name">나이</div>
-						<div class="value">
-							<div class="input-group">
-								<input class="input--style-5" type="text" name="age"
-									placeholder="살">
+						<div class="form-row">
+
+							<div class="name">냥이 이름</div>
+							<div class="value">
+								<div class="input-group">
+									<input class="input--style-5" type="text" name="name"
+										placeholder="냥이이름을 입력해주세요.">
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="form-row">
-						<div class="weight">몸무게</div>
-						<div class="value">
-							<div class="input-group">
-								<input class="input--style-5" type="text" name="weight"
-									placeholder="kg">
+						<div class="form-row p-t-20">
+							<label class="gender"> 냥이 성별</label>
+							<div class="p-t-15">
+								<label class="radio-container m-r-55"> 수컷 <input
+									type="radio" checked="checked" name="gender"> <span
+									class="checkmark"></span>
+								</label> <label class="radio-container"> 암컷 <input type="radio"
+									name="gender"> <span class="checkmark"></span>
+								</label>
 							</div>
 						</div>
-					</div>
 
-					<div class="form-row p-t-20">
-						<label class="label label--block"> 중성화 여부 </label>
-						<div class="p-t-15">
-							<label class="radio-container m-r-55"> Y <input
-								type="radio" checked="checked" name="oper"> <span
-								class="checkmark"></span>
-							</label> <label class="radio-container"> N <input type="radio"
-								name="oper"> <span class="checkmark"></span>
-							</label>
-						</div>
-					</div>
-
-
-
-					<div class="form-row p-t-20">
-						<label class="label label--block"> 특이사항 </label>
-						<div class="value">
-							<div class="input-group">
-								<textarea rows="5" cols="180"></textarea>
+						<div class="form-row">
+							<div class="name">나이</div>
+							<div class="value">
+								<div class="input-group">
+									<input class="input--style-5" type="text" name="age"
+										placeholder="살">
+								</div>
 							</div>
 						</div>
-					</div>
-					
-\					<div align="center">
-						<button class="btn btn--radius-2 btn--red" type="submit">
-							이전</button>
-						<button class="btn btn--radius-2 btn--red" type="button" onclick ="result()">
-							등록</button>
-					</div>
+						<div class="form-row">
+							<div class="weight">몸무게</div>
+							<div class="value">
+								<div class="input-group">
+									<input class="input--style-5" type="text" name="weight"
+										placeholder="kg">
+								</div>
+							</div>
+						</div>
+
+						<div class="form-row p-t-20">
+							<label class="label label--block"> 중성화 여부 </label>
+							<div class="p-t-15">
+								<label class="radio-container m-r-55"> Y <input
+									type="radio" checked="checked" name="oper"> <span
+									class="checkmark"></span>
+								</label> <label class="radio-container"> N <input type="radio"
+									name="oper"> <span class="checkmark"></span>
+								</label>
+							</div>
+						</div>
+
+
+
+						<div class="form-row p-t-20">
+							<label class="label label--block"> 특이사항 </label>
+							<div class="value">
+								<div class="input-group">
+									<textarea rows="5" cols="180"></textarea>
+								</div>
+							</div>
+						</div>
+						<div align="center">
+							<button class="btn btn--radius-2 btn--red" type="submit">
+								이전</button>
+							<button class="btn btn--radius-2 btn--red" type="button"
+								onclick="result()">등록</button>
+						</div>
 					</form>
 				</div>
 			</div>
