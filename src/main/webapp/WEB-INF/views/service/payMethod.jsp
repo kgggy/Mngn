@@ -11,9 +11,10 @@
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <title>Insert title here</title>
 <script>
+	
+	
 	var IMP = window.IMP; // 생략 가능
 	IMP.init("{imp82633653}"); // 예: imp00000000
-
 	function iamport() {
 		//가맹점 식별코드
 		IMP.init('imp30146952');
