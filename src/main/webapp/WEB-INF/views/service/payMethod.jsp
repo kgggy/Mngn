@@ -5,28 +5,27 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script type="text/javascript"
+	src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <!-- 아래 제이쿼리는 1.0이상이면 원하는 버전을 사용하셔도 무방합니다. -->
 <title>Insert title here</title>
 <script>
 	IMP.init("imp82633653"); // 예: imp00000000
-	
+
 	function requestPay() {
 		// IMP.request_pay(param, callback) 결제창 호출
 		IMP.request_pay({ // param
 			pg : "html5_inicis",
 			pay_method : "card",
-			merchant_uid : "ORD20180131-0000011",
-			name : "산책서비스 (${reser.term}시간)",
-			amount : ${reser.prc},
-			buyer_addr : "${reser.adres1} ${reser.adres2}",
-			buyer_postcode : "000011"
+			merchant_uid : "13",  //결제 시마다 번호 바꿔서 넣기
+			name : "산책서비스",
+			amount : 100,
 		}, function(rsp) { // callback
 			if (rsp.success) {
 				location.href="payResult.do";
-			} else {
-				alert("결제에 실패하였습니다. 다시 결제해주시길 바랍니다.")
-			}
+		      } else {
+		        alert("결제에 실패하였습니다. 다시 결제하여 주시길 바랍니다.");
+		      }
 		});
 	}
 </script>
@@ -88,13 +87,22 @@ tr {
 				<th width="300px">훈련사</th>
 				<td width="500px">${reser.name }</td>
 			</tr>
+			<tr>
+				<th width="300px">결제금액</th>
+				<td width="500px">${reser.prc}</td>
+			</tr>
+				<tr>
+				<th width="300px">특이사항</th>
+				<td width="500px">${reser.memo}</td>
+			</tr>
 		</table>
 	</div>
 	<br />
 	<br />
 	<br />
 	<div align="center">
-		<button type="button" class="boxed-btn3" id="rbtn" onclick="requestPay()">결제하기</button>
+		<button type="button" class="boxed-btn3" id="rbtn"
+			onclick="requestPay()">결제하기</button>
 	</div>
 
 </body>

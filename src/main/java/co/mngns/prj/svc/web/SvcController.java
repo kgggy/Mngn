@@ -69,8 +69,6 @@ public class SvcController {
 		pet.setClient_id((Integer) session.getAttribute("id"));
 		model.addAttribute("addList", rlist.clientAdd(client));
 		model.addAttribute("petList", rlist.petSelectList(pet));
-		
-		
 
 		return "service/wResv";
 	}
@@ -80,6 +78,18 @@ public class SvcController {
 	public String payment(Model model, HttpSession session, @ModelAttribute("reser") ReserListVO reser,SvcVO svc) {
 		session.setAttribute("reser", reser);
 		return "service/payMethod";
+	}
+	/*
+	 * @RequestMapping(value = "/rinsert.do") // 결제완료 내역 public String
+	 * rinsert(ReserListVO reser) { rlist.reserInsert(reser); return
+	 * "service/payResult"; }
+	 */
+	
+	@RequestMapping(value = "/payResult.do")
+	// 결제완료 내역
+	public String payResult(ReserListVO reser) {
+		rlist.reserInsert(reser);
+		return "service/payResult";
 	}
 
 	@RequestMapping(value = "/tResv.do")
@@ -104,12 +114,6 @@ public class SvcController {
 	// 프로필을 통한 훈련 상세 예약
 	public String ptResv() {
 		return "service/ptResv";
-	}
-
-	@RequestMapping(value = "/payResult.do")
-	// 결제완료 내역
-	public String payResult() {
-		return "service/payResult";
 	}
 
 	@RequestMapping(value = "/trnSal.do")

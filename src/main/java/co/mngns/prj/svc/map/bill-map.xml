@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.mngns.prj.svc.map.BillMapper">
+<insert id="billInsert">
+	insert into bill(bill_card, bill_phone, bill_amt, bill_no, reser_no)
+	values(#{bill_card}, #{bill_phone}, #{bill_amt}, bill_seq.nextval, reser_seq.nextval)
+</insert>
 
+<delete id="billDelete">
+	delete from bill where reser_no = #{reser_no}
+</delete>
 
 </mapper>
