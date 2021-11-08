@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -11,196 +11,198 @@
 
 /* ======== Calendar ======== */
 .my-calendar {
-	width: 700px;
-	margin: 30px;
-	padding: 0px 20px 10px;
-	text-align: center;
-	font-weight: 800;
-	border: none;
-	cursor: default;
+   width: 700px;
+   margin: 30px;
+   padding: 0px 20px 10px;
+   text-align: center;
+   font-weight: 800;
+   border: none;
+   cursor: default;
 }
 
 .my-calendar .clicked-date {
-	
+   
 }
 
 .my-calendar .calendar-box {
-	width: 58%;
-	background: white;
-	margin-left: -75px;
+   width: 58%;
+   background: white;
+   margin-left: -75px;
 }
 
 .clicked-date .cal-day {
-	font-size: 24px;
+   font-size: 24px;
 }
 
 .clicked-date .cal-date {
-	font-size: 130px;
+   font-size: 130px;
 }
 
 .ctr-box {
-	padding: 16px;
-	margin-bottom: 20px;
-	font-size: 20px;
-	background: #f45c25;
-	color: white;
+   padding: 16px;
+   margin-bottom: 20px;
+   font-size: 20px;
+   background: #f45c25;
+   color: white;
 }
 
 .ctr-box .btn-cal {
-	position: relative;
-	float: left;
-	width: 25px;
-	height: 25px;
-	margin-top: 5px;
-	font-size: 16px;
-	cursor: pointer;
-	border: none;
-	background: none;
+   position: relative;
+   float: left;
+   width: 25px;
+   height: 25px;
+   margin-top: 5px;
+   font-size: 16px;
+   cursor: pointer;
+   border: none;
+   background: none;
 }
 
 .ctr-box .btn-cal:after {
-	content: '<';
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	line-height: 25px;
-	font-weight: bold;
-	font-size: 20px;
+   content: '<';
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   line-height: 25px;
+   font-weight: bold;
+   font-size: 20px;
 }
 
 .ctr-box .btn-cal.next {
-	float: right;
+   float: right;
 }
 
 .ctr-box .btn-cal.next:after {
-	content: '>';
+   content: '>';
 }
 
 .cal-table {
-	width: 100%;
+   width: 100%;
 }
 
 .cal-table th {
-	width: 14.2857%;
-	padding-bottom: 5px;
-	font-size: 16px;
-	font-weight: 900;
+   width: 14.2857%;
+   padding-bottom: 5px;
+   font-size: 16px;
+   font-weight: 900;
 }
 
 .cal-table td {
-	padding: 3px 0;
-	height: 50px;
-	font-size: 15px;
-	vertical-align: middle;
+   padding: 3px 0;
+   height: 50px;
+   font-size: 15px;
+   vertical-align: middle;
 }
 
 .cal-table td.day {
-	position: relative;
-	cursor: pointer;
+   position: relative;
+   cursor: pointer;
 }
 
 .cal-table td.tlDate {
-	color: #ededec;
+   color: #ededec;
+   
 }
 
+
 .cal-table td.today {
-	background: #ffd255;
-	border-radius: 50%;
-	color: #fff;
+   background: #ffd255;
+   border-radius: 50%;
+   color: #fff;
 }
 
 .cal-table td.day-active {
-	background: #ff8585;
-	border-radius: 50%;
-	color: #fff;
+   background: #ff8585;
+   border-radius: 50%;
+   color: #fff;
 }
 
 .cal-table td.has-event:after {
-	content: '';
-	display: block;
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	height: 4px;
-	background: #FFC107;
+   content: '';
+   display: block;
+   position: absolute;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   height: 4px;
+   background: #FFC107;
 }
 
 #rbtn {
-	width: 200px;
-	margin: 0 auto;
+   width: 200px;
+   margin: 0 auto;
 }
 
 #two {
-	margin-left: 43px;
+   margin-left: 43px;
 }
 
 #three {
-	margin: 0 40px;
+   margin: 0 40px;
 }
 
 /* The Modal (background) */
 .modal {
-	display: none; /* Hidden by default */
-	position: fixed; /* Stay in place */
-	padding-top: 100px; /* Location of the box */
-	left: 0;
-	top: 0;
-	width: 100%; /* Full width */
-	height: 100%; /* Full height */
-	overflow: auto; /* Enable scroll if needed */
-	background-color: rgb(0, 0, 0); /* Fallback color */
-	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+   display: none; /* Hidden by default */
+   position: fixed; /* Stay in place */
+   padding-top: 100px; /* Location of the box */
+   left: 0;
+   top: 0;
+   width: 100%; /* Full width */
+   height: 100%; /* Full height */
+   overflow: auto; /* Enable scroll if needed */
+   background-color: rgb(0, 0, 0); /* Fallback color */
+   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 /* Modal Content */
 .modal-content {
-	z-index: 30;
-	background-color: #fefefe;
-	margin: auto;
-	padding: 20px;
-	border: 1px solid #888;
-	width: 38%;
-	height: auto;
-	top: 30%;
-	border-radius: 20px;
-	top: 30%;
-	background-color: #fefefe;
+   z-index: 30;
+   background-color: #fefefe;
+   margin: auto;
+   padding: 20px;
+   border: 1px solid #888;
+   width: 38%;
+   height: auto;
+   top: 30%;
+   border-radius: 20px;
+   top: 30%;
+   background-color: #fefefe;
 }
 
 /* The Close Button */
 .close {
-	color: #aaaaaa;
-	float: right;
-	font-size: 28px;
-	font-weight: bold;
+   color: #aaaaaa;
+   float: right;
+   font-size: 28px;
+   font-weight: bold;
 }
 
 .close:hover, .close:focus {
-	color: #000;
-	text-decoration: none;
-	cursor: pointer;
+   color: #000;
+   text-decoration: none;
+   cursor: pointer;
 }
 
 #emp {
-	margin-left: 50px;
+   margin-left: 50px;
 }
 
 span {
-	padding: 10px 9%;
-	margin-top: 5px;
+   padding: 10px 9%;
+   margin-top: 5px;
 }
 
 .list_img {
-	display: inline-block;
-	width: 202px;
-	height: 170px;
-	overflow: hidden;
-	object-fit: cover;
-	border-radius: 5px;
-	float: left;
+    display: inline-block;
+    width: 202px;
+    height: 170px;
+    overflow: hidden;
+    object-fit: cover;
+    border-radius: 5px;
+    float:left;
 }
 </style>
 </head>
@@ -238,188 +240,209 @@ span {
    </div>
    <!-- 예약하기 모달 종료  -->
 
-	<div class="bradcam_area breadcam_bg">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="bradcam_text text-center">
-						<h3>${trainer.name }훈련사프로필</h3>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- END nav -->
-	<section class="hero-wrap hero-wrap-2">
+   <!-- 예약하기 모달 시작 -->
+   <div id="light" class="modal">
+      <div class="white_content modal-content" align="center">
+         <div>
+            <div class="time">
+               <input type="checkbox"><span>돌봄</span> <input
+                  type="checkbox"><span>산책</span> <input type="checkbox"><span>훈련</span>
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+               <a class="genric-btn danger-border circle arrow">1시간</a> <a
+                  class="genric-btn danger-border circle arrow" id="two">2시간</a> <a
+                  class="genric-btn danger-border circle arrow" id="three">3시간</a>
+            </div>
+            <div>
+               <span>₩18,000</span><span>₩34,000</span><span>₩50,000</span>
+            </div>
+         </div>
+         <br /> <a href="javascript:resv()" class="boxed-btn3" id="rbtn">예약
+            돌봄</a>
+      </div>
+   </div>
+   <!-- 예약하기 모달 종료  -->
+   
+   <div class="bradcam_area breadcam_bg">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12">
+               <div class="bradcam_text text-center">
+                  <h3>${trainer.name }훈련사프로필</h3>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- END nav -->
+   <section class="hero-wrap hero-wrap-2">
+      <div class="overlay"></div>
+      <div class="container">
+         <div class="row no-gutters slider-text align-items-end">
+            <div class="col-md-9 ftco-animate pb-5"></div>
+         </div>
+      </div>
+   </section>
+   <br>
+   <br>
+   <h2 align=center
+      style="font-weight: bold; width: fit-content; margin: auto;">${trainer.intro_ttl }</h2>
+   <!--================Blog Area =================-->
+   <section class="blog_area single-post-area section-padding">
+      <br><br>
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-8 posts-list">
+               <div class="single-post">
+                  <div class="feature-img">
+                     <img class="list_img" src="img/blog/single_blog_1.png" alt="">
+                  </div>
+                  <h3>&nbsp;&nbsp;&nbsp;인적사항</h3>
+                  <table>
+                     <tr>
+                        <td style="width: 140px; padding-left:20px;">이름</td>
+                        <td>${trainer.name }</td>
+                     </tr>
+                     <tr>
+                        <td style="width: 140px; padding-left:20px;">출생년도</td>
+                        <td>${trainer.trn_birth_dt }</td>
+                     </tr>
+                     <tr>
+                        <td style="width: 140px; padding-left:20px;">성별</td>
+                        <td>${trainer.gender }</td>
+                     </tr>
+                     <tr>
+                        <td style="width: 140px; padding-left:20px;">방문지역</td>
+                        <td>${trainer.work_loc1 }${trainer.work_loc2 }</td>
+                     </tr>
+                     <tr>
+                        <td style="width: 140px; padding-left:20px;">회원평점</td>
+                        <td>${trainer.trn_avrg }점</td>
+                     </tr>
+                  </table>
+                  <hr>
+                  <h3>자기소개</h3>
+                  <p class="excert" style="color: black;">${trainer.intro_ttl }</p>
+               </div>
+               
+               <hr>
 
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row no-gutters slider-text align-items-end">
-				<div class="col-md-9 ftco-animate pb-5"></div>
-			</div>
-		</div>
-	</section>
-	<br>
-	<br>
-	<h2 align=center
-		style="font-weight: bold; width: fit-content; margin: auto;">${trainer.intro_ttl }</h2>
-	<!--================Blog Area =================-->
-	<section class="blog_area single-post-area section-padding">
-		<br> <br>
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 posts-list">
-					<div class="single-post">
-						<div class="feature-img">
-							<img class="list_img" src="img/blog/single_blog_1.png" alt="">
-						</div>
-						<h3>&nbsp;&nbsp;&nbsp;인적사항</h3>
-						<table>
-							<tr>
-								<td style="width: 140px; padding-left: 20px;">이름</td>
-								<td>${trainer.name }</td>
-							</tr>
-							<tr>
-								<td style="width: 140px; padding-left: 20px;">출생년도</td>
-								<td>${trainer.trn_birth_dt }</td>
-							</tr>
-							<tr>
-								<td style="width: 140px; padding-left: 20px;">성별</td>
-								<td>${trainer.gender }</td>
-							</tr>
-							<tr>
-								<td style="width: 140px; padding-left: 20px;">방문지역</td>
-								<td>${trainer.work_loc1 }${trainer.work_loc2 }</td>
-							</tr>
-							<tr>
-								<td style="width: 140px; padding-left: 20px;">회원평점</td>
-								<td>${trainer.trn_avrg }점</td>
-							</tr>
-						</table>
-						<hr>
-						<h3>자기소개</h3>
-						<p class="excert" style="color: black;">${trainer.intro_ttl }</p>
-					</div>
+               <h3>경력 및 자격</h3>
+               <div class="blog-author">
+                  <div class="media align-items-center">
+                     <img src="img/blog/author.png" alt="">
+                     <div class="media-body">
+                        <a href="#">
+                           <h4>xxx 자격증</h4>
+                        </a>
+                        <p>한국애견협회(KKC)</p>
+                     </div>
+                  </div>
+               </div>
+               <div class="blog-author">
+                  <div class="media align-items-center">
+                     <img src="img/blog/author.png" alt="">
+                     <div class="media-body">
+                        <a href="#">
+                           <h4>xxx 자격증</h4>
+                        </a>
+                        <p>한국애견협회(KKC)</p>
+                     </div>
+                  </div>
+               </div>
+               <div class="blog-author">
+                  <div class="media align-items-center">
+                     <img src="img/blog/author.png" alt="">
+                     <div class="media-body">
+                        <a href="#">
+                           <h4>xxx 자격증</h4>
+                        </a>
+                        <p>한국애견협회(KKC)</p>
+                     </div>
+                  </div>
+               </div>
 
-					<hr>
+               <div class="comments-area">
+                  <h3>고객 후기</h3>
+                  <br>
+                  <c:forEach items="${reviews }" var="review">
+                     <div class="comment-list">
+                        <div class="single-comment justify-content-between d-flex">
+                           <div class="user justify-content-between d-flex">
+                              <div class="thumb">
+                                 <img src="img/comment/comment_3.png" alt="">
+                              </div>
+                              <div class="desc">
+                                 <p class="comment">${review.cntn }</p>
+                                 <div class="d-flex justify-content-between">
+                                    <div class="d-flex align-items-center">
+                                       <h5>
+                                          <a>${review.name }</a> <a>${review.star_shape }</a>
+                                       </h5>
+                                       <p class="date">${review.reg_dt }</p>
+                                    </div>
+                                       <input type="hidden" id="client_id" name="client_id">
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </c:forEach>
+                  <button
+                     class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                     type="button" onclick="location.href='rList.do'">+ 더보기</button>
+               </div>
 
-					<h3>경력 및 자격</h3>
-					<div class="blog-author">
-						<div class="media align-items-center">
-							<img src="img/blog/author.png" alt="">
-							<div class="media-body">
-								<a href="#">
-									<h4>xxx 자격증</h4>
-								</a>
-								<p>한국애견협회(KKC)</p>
-							</div>
-						</div>
-					</div>
-					<div class="blog-author">
-						<div class="media align-items-center">
-							<img src="img/blog/author.png" alt="">
-							<div class="media-body">
-								<a href="#">
-									<h4>xxx 자격증</h4>
-								</a>
-								<p>한국애견협회(KKC)</p>
-							</div>
-						</div>
-					</div>
-					<div class="blog-author">
-						<div class="media align-items-center">
-							<img src="img/blog/author.png" alt="">
-							<div class="media-body">
-								<a href="#">
-									<h4>xxx 자격증</h4>
-								</a>
-								<p>한국애견협회(KKC)</p>
-							</div>
-						</div>
-					</div>
+            </div>
+            <div class="col-lg-4">
+               <div class="blog_right_sidebar">
+                  <aside class="single_sidebar_widget popular_post_widget">
+                     <h3 class="widget_title" style="font-weight: bold" align="center">예약
+                        가능 날짜</h3>
+                     <div class="container">
+                        <div class="my-calendar clearfix">
+                           <div class="clicked-date" style="display: none">
+                              <div class="cal-day" style="display: none"></div>
+                              <div class="cal-date" style="display: none"></div>
+                           </div>
+                           <div class="calendar-box">
+                              <div class="ctr-box clearfix">
+                                 <button type="button" title="prev" class="btn-cal prev">
+                                 </button>
+                                 <span class="cal-month"></span> <span class="cal-year"></span>
+                                 <button type="button" title="next" class="btn-cal next">
+                                 </button>
+                              </div>
+                              <table class="cal-table">
+                                 <thead>
+                                    <tr>
+                                       <th>S</th>
+                                       <th>M</th>
+                                       <th>T</th>
+                                       <th>W</th>
+                                       <th>T</th>
+                                       <th>F</th>
+                                       <th>S</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody class="cal-body"></tbody>
 
-					<div class="comments-area">
-						<h3>고객 후기</h3>
-						<br>
-						<c:forEach items="${reviews }" var="review">
-							<div class="comment-list">
-								<div class="single-comment justify-content-between d-flex">
-									<div class="user justify-content-between d-flex">
-										<div class="thumb">
-											<img src="img/comment/comment_3.png" alt="">
-										</div>
-										<div class="desc">
-											<p class="comment">${review.cntn }</p>
-											<div class="d-flex justify-content-between">
-												<div class="d-flex align-items-center">
-													<h5>
-														<a>${review.name }</a> <a>${review.star_shape }</a>
-													</h5>
-													<p class="date">${review.reg_dt }</p>
-												</div>
-												<input type="hidden" id="client_id" name="client_id">
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</c:forEach>
-						<button
-							class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-							type="button" onclick="location.href='rList.do'">+ 더보기</button>
-					</div>
-
-				</div>
-				<div class="col-lg-4">
-					<div class="blog_right_sidebar">
-						<aside class="single_sidebar_widget popular_post_widget">
-							<h3 class="widget_title" style="font-weight: bold" align="center">예약
-								가능 날짜</h3>
-							<div class="container">
-								<div class="my-calendar clearfix">
-									<div class="clicked-date" style="display: none">
-										<div class="cal-day" style="display: none"></div>
-										<div class="cal-date" style="display: none"></div>
-									</div>
-									<div class="calendar-box">
-										<div class="ctr-box clearfix">
-											<button type="button" title="prev" class="btn-cal prev">
-											</button>
-											<span class="cal-month"></span> <span class="cal-year"></span>
-											<button type="button" title="next" class="btn-cal next">
-											</button>
-										</div>
-										<table class="cal-table">
-											<thead>
-												<tr>
-													<th>S</th>
-													<th>M</th>
-													<th>T</th>
-													<th>W</th>
-													<th>T</th>
-													<th>F</th>
-													<th>S</th>
-												</tr>
-											</thead>
-											<tbody class="cal-body"  onclick="ckBtn()"></tbody>
-
-										</table>
-										<input id="abtn"
-											class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn1"
-											type="button" value="예약하기">
-									</div>
-								</div>
-								<!-- // .my-calendar -->
-							</div>
-						</aside>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+                              </table>
+                              <button id="abtn"
+                                 class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                 type="button" data-toggle="modal" data-target="#light" data-trnId="${trainer.client_id }">예약하기</button>
+                           </div>
+                        </div>
+                        <!-- // .my-calendar -->
+                     </div>
+                  </aside>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
 
 
-	<script>
+   <script>
       const init = {
            monList: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
            dayList: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
@@ -556,6 +579,9 @@ span {
          }
           
           
+
+          
+          
          loadYYMM(init.today);
          
          loadDate(init.today.getDate(), init.today.getDay());
@@ -579,14 +605,8 @@ span {
          
          $('#light').on('show.bs.modal', function (e) {
               $('#client_id').val($(event.target).data('trnId'))
-            });
-         
-         //예약하기 버튼 활성화
-         function ckBtn() {
-        	 if($('.cal-table').hasClass("day day-active"))
-        		 console.log("dd");
-        		 $('#abtn').attr({"class": "boxed-btn", "data-toggle":"modal", "data-target":"#light", "data-trnId": "${trainer.client_id }"});
-         }
+            })
+
          
          function resv() {
              var time = $(".time .focus");
@@ -606,6 +626,5 @@ span {
           }
          
    </script>
-
 </body>
 </html>
