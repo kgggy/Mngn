@@ -16,16 +16,20 @@
 </select>
 
 <select id="myReviewList" resultType="co.mngns.prj.board.vo.ReviewVO">
-	select r.*, 
-			case r.star_rate when 1 then '★' when 2 then '★★' when 3 then '★★★' when 4 then '★★★★' else '★★★★★' end as star_shape,
-			c.name, 	
-			case s.knd when 1 then '돌봄 서비스' when 2 then '산책 서비스' else '훈련 서비스' end as knd_name, 
-			s.term
-	  from reser_list l, svc s, review r, client c
-	 where r.reser_no = l.reser_no 
-	   and l.client_id2 = c.client_id
-	   and s.svc_id = l.svc_id
-	   and r.client_id = #{client_id}
+	SELECT B.* FROM ( SELECT A.* , ROWNUM RN FROM (
+		select r.*, 
+				case r.star_rate when 1 then '★' when 2 then '★★' when 3 then '★★★' when 4 then '★★★★' else '★★★★★' end as star_shape,
+				c.name, 	
+				case s.knd when 1 then '돌봄 서비스' when 2 then '산책 서비스' else '훈련 서비스' end as knd_name, 
+				s.term
+		  from reser_list l, svc s, review r, client c
+		 where r.reser_no = l.reser_no 
+		   and l.client_id2 = c.client_id
+		   and s.svc_id = l.svc_id
+		   and r.client_id = #{client_id}
+	   <![CDATA[ 
+	       ) A ) B WHERE RN >= #{start} and RN <= #{end}
+	       ]]>
 </select>
 
 <select id="trnReviewList" resultType="co.mngns.prj.board.vo.ReviewVO">
@@ -63,6 +67,15 @@
 
 <select id="reviewCount" resultType="int">
 	select count(*) from review
+</select>
+
+<select id="myReviewCount" resultType="int">
+	select count(*)
+      from reser_list l, svc s, review r, client c
+     where r.reser_no = l.reser_no 
+   			and l.client_id2 = c.client_id
+   			and s.svc_id = l.svc_id
+   			and r.client_id = #{client_id}
 </select>
 
 </mapper>

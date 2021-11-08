@@ -23,7 +23,7 @@
 	</insert>
 	
 		<select id="clientLogin" resultType="co.mngns.prj.user.vo.ClientVO">
-		 select * from users where client_id =#{client_id} and pwd =#{pwd}
+		 select * from client where client_id =#{client_id} and pwd =#{pwd}
 		 
 	</select>
 	

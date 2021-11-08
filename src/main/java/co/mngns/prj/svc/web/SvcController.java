@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import co.mngns.prj.pet.vo.PetVO;
+import co.mngns.prj.svc.service.BillService;
 import co.mngns.prj.svc.service.ReserListService;
+import co.mngns.prj.svc.vo.BillVO;
 import co.mngns.prj.svc.vo.ReserListVO;
 import co.mngns.prj.svc.vo.SvcVO;
 import co.mngns.prj.user.service.ClientService;
@@ -26,6 +28,8 @@ public class SvcController {
 	ReserListService rlist;
 	@Autowired
 	ClientService clist;
+	@Autowired
+	BillService blist;
 
 	@RequestMapping(value = "/careDc.do")
 	// 돌봄서비스 설명
@@ -69,17 +73,34 @@ public class SvcController {
 		pet.setClient_id((Integer) session.getAttribute("id"));
 		model.addAttribute("addList", rlist.clientAdd(client));
 		model.addAttribute("petList", rlist.petSelectList(pet));
-		
-		
 
 		return "service/wResv";
 	}
 
 	@RequestMapping(value = "/payMethod.do")
 	// 결제창
-	public String payment(Model model, HttpSession session, @ModelAttribute("reser") ReserListVO reser,SvcVO svc) {
+	public String payment(Model model, HttpSession session, @ModelAttribute("reser") ReserListVO reser,SvcVO svc, BillVO bill) {
 		session.setAttribute("reser", reser);
+		session.setAttribute("bill", bill);
 		return "service/payMethod";
+	}
+	/*
+	 * @RequestMapping(value = "/rinsert.do") // 결제완료 내역 public String
+	 * rinsert(ReserListVO reser) { rlist.reserInsert(reser); return
+	 * "service/payResult"; }
+	 */
+	
+	@RequestMapping(value = "/payResult.do")
+	// 결제완료 내역
+	public String payResult(ReserListVO reser, HttpSession session, BillVO bill) {
+		
+		reser.setClient_id1((Integer)session.getAttribute("id"));
+		reser = (ReserListVO)session.getAttribute("reser");
+		bill = (BillVO)session.getAttribute("bill");
+		System.out.println(reser);
+		rlist.reserInsert(reser);
+		blist.BillInsert(bill);
+		return "service/payResult";
 	}
 
 	@RequestMapping(value = "/tResv.do")
@@ -104,12 +125,6 @@ public class SvcController {
 	// 프로필을 통한 훈련 상세 예약
 	public String ptResv() {
 		return "service/ptResv";
-	}
-
-	@RequestMapping(value = "/payResult.do")
-	// 결제완료 내역
-	public String payResult() {
-		return "service/payResult";
 	}
 
 	@RequestMapping(value = "/trnSal.do")

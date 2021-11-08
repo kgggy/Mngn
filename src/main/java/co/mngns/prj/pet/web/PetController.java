@@ -37,8 +37,7 @@ public class PetController {
 	@RequestMapping (value = "/petInsert.do")
 	public String petInsert(PetVO vo) {
 		vo.setClient_id(1);
-		
-		petService.petInsert(vo);
+		petService.PetInsert(vo);
 		return "redirect:aniList.do";
 	}
 	
