@@ -42,5 +42,8 @@ public class TrainerVO {
 	public String type; //검색타입
 	public String keyword; //검색내용
 	public String trndate; //
+	
+	private int start;
+	private int end;
 }
 

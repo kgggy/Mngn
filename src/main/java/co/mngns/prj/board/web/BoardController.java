@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import co.mngns.prj.board.service.BoardService;
 import co.mngns.prj.board.service.ReviewService;
@@ -45,11 +46,38 @@ public class BoardController {
 
 	@RequestMapping(value = "/cntReview.do")
 	// 사용자 서비스 이용 내역 및 후기
-	public String myReview(Model model, HttpSession session, ReviewVO vo, ReserListVO reser) {
-		vo.setClient_id((Integer) session.getAttribute("id"));
+	public String myReview(Model model, HttpSession session, @RequestParam(required=false, defaultValue = "1")int page1, @RequestParam(required=false, defaultValue = "1")int page2, ReviewVO vo, ReserListVO reser) {
+		//서비스 목록 페이징 처리
+		 Paging svcpaging = new Paging();
+		 Paging rvpaging = new Paging();
+		svcpaging.setPage(page1);
+		svcpaging.setPageUnit(5);
 		reser.setClient_id1((Integer) session.getAttribute("id"));
+		reser.setStart(svcpaging.getFirst());
+		reser.setEnd(svcpaging.getLast());
+		svcpaging.setTotalRecord(reserService.reserCount(reser));
+		model.addAttribute("serviceUses", reserService.serviceUse(reser));
+		model.addAttribute("svcPaging", svcpaging);		
+		//이용후기 페이징
+		rvpaging.setPage(page2);
+		rvpaging.setPageUnit(5);
+		vo.setClient_id((Integer) session.getAttribute("id"));
+		vo.setStart(rvpaging.getFirst());
+		vo.setEnd(rvpaging.getLast());
+		rvpaging.setTotalRecord(rService.myReviewCount(vo));		
 		model.addAttribute("myReviews", rService.myReviewList(vo));
 		model.addAttribute("serviceUses", reserService.serviceUse(reser));
+		model.addAttribute("svcPaging", svcpaging);		
+		//이용후기 페이징
+		rvpaging.setPage(page2);
+		rvpaging.setPageUnit(5);
+		vo.setClient_id((Integer) session.getAttribute("id"));
+		vo.setStart(rvpaging.getFirst());
+		vo.setEnd(rvpaging.getLast());
+		rvpaging.setTotalRecord(rService.myReviewCount(vo));		
+		model.addAttribute("myReviews", rService.myReviewList(vo));
+		model.addAttribute("rvPaging", rvpaging);		
+		
 		return "client/cntReview";
 	}
 

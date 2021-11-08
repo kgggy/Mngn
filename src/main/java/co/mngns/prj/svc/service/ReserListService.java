@@ -37,4 +37,6 @@ public interface ReserListService {
 	
 	public List<ReserListVO> serviceUse(ReserListVO reser);
 	
+	public int reserCount(ReserListVO reser);
+	
 }

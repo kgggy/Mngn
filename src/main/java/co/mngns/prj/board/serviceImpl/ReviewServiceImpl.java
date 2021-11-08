@@ -58,4 +58,10 @@ public class ReviewServiceImpl implements ReviewService {
 		return map.reviewCount(vo);
 	}
 
+	@Override
+	public int myReviewCount(ReviewVO vo) {
+		// 내가 쓴 리뷰 건수
+		return map.myReviewCount(vo);
+	}
+
 }

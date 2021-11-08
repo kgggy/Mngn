@@ -40,4 +40,5 @@ public interface ReserListMapper {
 
 	public List<TrainerVO> trnSelectList(ReserListVO reser);
 
+	public int reserCount(ReserListVO reser);
 }

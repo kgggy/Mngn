@@ -208,6 +208,38 @@ span {
 </head>
 
 <body>
+	<!-- 예약하기 모달 시작 -->
+   <div id="light" class="modal">
+      <div class="white_content modal-content" align="center">
+         <input type="hidden" name="term"> <input type="hidden"
+            name="prc"><input type="hidden" name="knd">
+         <form>
+            <div>
+               <input type="checkbox" name="knd" data-knd="${serviceTerm.knd }"
+                  value="${serviceTerm.knd }">
+            </div>
+            <br />
+            <div>
+               <div class="time">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <c:forEach items="${serviceTerm }" var="time">
+                     <a class="genric-btn danger-border circle arrow" id="term"
+                        data-prc="${time.prc}" data-time="${time.term }">${time.term }시간</a>
+                  </c:forEach>
+               </div>
+               <div>
+                  <c:forEach items="${serviceTerm }" var="time">
+                  &nbsp;&nbsp;<span>₩${time.prc }</span>&nbsp;
+                  </c:forEach>
+               </div>
+            </div>
+            <br />
+            <button type="button" class="boxed-btn3" onclick="resv()">예약하기</button>
+         </form>
+      </div>
+   </div>
+   <!-- 예약하기 모달 종료  -->
+
    <!-- 예약하기 모달 시작 -->
    <div id="light" class="modal">
       <div class="white_content modal-content" align="center">
@@ -243,7 +275,6 @@ span {
    </div>
    <!-- END nav -->
    <section class="hero-wrap hero-wrap-2">
-
       <div class="overlay"></div>
       <div class="container">
          <div class="row no-gutters slider-text align-items-end">
@@ -577,7 +608,23 @@ span {
             })
 
          
+         function resv() {
+             var time = $(".time .focus");
+             if ($("input[name=knd]):checked").length == 0) {
+                alert("서비스를 선택해주세요.");
+                return;
+             }
+             if (time.length == 0) {
+                alert("시간을 선택해주세요.");
+                return;
+             } else {
+                $("input[name=knd]:checked").val(time.data("knd"));
+                $("input[name=prc]").val(time.data("prc"));
+                $("input[name=term]").val(time.data("time"));
+                $("#form").submit();
+             }
+          }
+         
    </script>
-
 </body>
 </html>
