@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
 
@@ -485,22 +486,7 @@
 				</table>
 			</div>
 		</section>
-
-		<div class="row mt-5">
-			<div class="col text-center">
-				<div class="block-27">
-					<ul>
-						<li><a href="#">&lt;</a></li>
-						<li class="active"><span>1</span></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
-						<li><a href="#">&gt;</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
+		<my:paging jsFunc="goList" paging="${paging}" />
 		<br> <br>
 	</div>
 
@@ -539,10 +525,10 @@
 						<textarea id="eml_cnt"
 							style="width: 100%; margin-top: 0px; margin-bottom: 0px; height: 286px; resize: none;"
 							name="cntn" rows="10" class="form-control" placeholder="내용을 입력해 주세요."></textarea>
-						<br> <br> <img id="camera_img" src="img/camera.png" style="height: 90px; width: 130px"> <input
+						<br> <br> <!-- <img id="camera_img" src="img/camera.png" style="height: 90px; width: 130px"> <input
 							type="file" id="uploadFile" name="uploadFile" accept="image/gif,image/jpeg,image/png"
 							 style="display: none;" multiple>
-						<input type="hidden" name="camera">
+						<input type="hidden" name="camera"> -->
 					</form>
 				</div>
 				<div class="modal-footer">
@@ -641,14 +627,14 @@
 
 		function insert() {
 
-			var data = $("#signform").serialize();
-			var form = new FormData();
+			 var data = $("#signform").serialize();
+			/*var form = new FormData();
 			var inputFile = $("input[name='uploadFile']");
 			var files = inputFile[0].files;
 			
-			console.log(files);
+			console.log(files); */
 
-			/*alert("저장하시겠습니까?");
+			alert("저장하시겠습니까?");
 			
 			 $.ajax({
 				url: "reviewInsert.do",
@@ -665,7 +651,7 @@
 				error: function () {
 					alert("후기 등록에 실패하였습니다.");
 				}
-			}); */
+			});
 		};
 
 		$('#reviewModal').on('show.bs.modal', function (e) {
@@ -699,6 +685,13 @@
 				}
 				reader.readAsDataURL(f);
 			});
+		}
+		
+		//페이징 처리
+		function goList(p) {
+			//searchFrm.page.value=p; //페이지 번호 받아서 폼태그에 넣어서 submit(폼 안에 페이지번호가 히든으로, 검색조건과 정렬방식도 가지고 넘어감)
+			//searchFrm.submit();
+			location.href = "tList.do?page=" + p
 		}
 	</script>
 
