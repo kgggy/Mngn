@@ -33,8 +33,8 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/logout.do")
-	public String tMain() {
-		return "trnMain";
+	public String logout() {
+		return "redirect:login.do";
 	}
 	
 	@RequestMapping(value = "/map.do")

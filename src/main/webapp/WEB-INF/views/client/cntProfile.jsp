@@ -566,22 +566,22 @@ footer p a:hover {
                <form action="#">
                   <div class="mt-10">
                      <input type="text" name="id" 
-                        onfocus="this.placeholder = '${client.client_id()}'" onblur="this.placeholder = 'id'"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'id'"
                         required class="single-input">
                   </div>
                   <div class="mt-10">
-                     <input type="text" name="password" value = ${client.pwd()}
+                     <input type="text" name="password" value = ""
                         onfocus="this.placeholder = ''"
                         onblur="this.placeholder = 'password'" required
                         class="single-input">
                   </div>
                   <div class="mt-10">
-                     <input type="text" name="name" value = ${client.name()}
+                     <input type="text" name="name" value = ""
                         onfocus="this.placeholder = ''"
                         onblur="this.placeholder = 'Name'" required class="single-input">
                   </div>
                   <div class="mt-10">
-                     <input type="email" name="EMAIL" value = ${client.email()}
+                     <input type="email" name="EMAIL" value = ""
                         onfocus="this.placeholder = ''"
                         onblur="this.placeholder = '이메일'" required class="single-input">
                   </div>
@@ -589,11 +589,11 @@ footer p a:hover {
                      <div class="icon">
                         <i class="fa fa-thumb-tack" aria-hidden="true"></i>
                      </div>
-                     <input type="text" name="address" value = ${client.adres1()}
+                     <input type="text" name="address" value = ""
                         onfocus="this.placeholder = '주소'"
                         onblur="this.placeholder = 'Address'" required
                         class="single-input">
-                        <input type="text" name="address" value = ${client.adres1()}
+                        <input type="text" name="address" value = ""
                         onfocus="this.placeholder = '주소'"
                         onblur="this.placeholder = 'Address'" required
                         class="single-input">

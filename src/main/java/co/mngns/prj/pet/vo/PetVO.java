@@ -11,7 +11,7 @@ public class PetVO {
 	private Integer age;
 	private Integer wgt;
 	private Integer oper;
-	private String memo;
+	private String memo; 
 	private Integer file_no;
 	private Integer client_id;
 	private String species;

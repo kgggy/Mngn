@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.context.annotation.SessionScope;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import co.mngns.prj.board.service.ReviewService;
@@ -32,7 +33,19 @@ public class UserController {
 		String message= "";
 		String page = "";
 		if (vo != null) {
-			page = "redirect:cntMain.do";
+			
+			if (vo.getRole() ==1) {
+				
+				page = "redirect:cntMain.do";
+			}
+			else if(vo.getRole()==2) {
+				page = "redirect:trnMain.do";
+				
+			} else if (vo.getRole()==3) {
+				
+				page = "redirect:mngMain.do";
+
+			}
 			message = vo.getName()  + "님 환영합니다.";
 			redirectAttributes.addAttribute("message", message);
 			session.setAttribute("id", vo.getClient_id()); //세션객체에 아이디와 권한을 담는다.
@@ -69,7 +82,9 @@ public class UserController {
 
 	@RequestMapping(value = "/cntProfile.do")
 	// 사용자 개인 프로필 페이지
-	public String cntProfile() {
+	public String cntProfile(ClientVO clientvo, HttpSession session) {
+		
+		clientvo.setClient_id((Integer)session.getAttribute("id"));
 		return "client/cntProfile";
 	}
 

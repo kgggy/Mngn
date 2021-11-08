@@ -13,31 +13,36 @@ import co.mngns.prj.pet.vo.PetVO;
 public class PetServiceImpl implements PetService {
 
 	@Autowired PetMapper petMapper;
-	
-	@Override
-	public List<PetVO> PetSelectList() {
-		return null;
-	}
 
 	@Override
-	public PetVO PetSelect(PetVO pet) {
+	public List<PetVO> petSelectList(PetVO pet) {
 		// TODO Auto-generated method stub
-		return null;
+		return petMapper.petSelectList(pet);
 	}
 
 	@Override
-	public int PetInsert(PetVO pet) {
+	public PetVO petSelect(PetVO pet) {
+		// TODO Auto-generated method stub
+		return petMapper.petSelect(pet);
+	}
+
+	@Override
+	public int petInsert(PetVO pet) {
+		// TODO Auto-generated method stub
 		return petMapper.petInsert(pet);
 	}
 
 	@Override
-	public int PetUpdate(PetVO pet) {
-		return 0;
+	public int petUpdate(PetVO pet) {
+		// TODO Auto-generated method stub
+		return petMapper.petUpdate(pet);
 	}
 
 	@Override
-	public int PetDelete(PetVO pet) {
-		return 0;
+	public int petDelete(PetVO pet) {
+		// TODO Auto-generated method stub
+		return petMapper.petDelete(pet);
 	}
+	
 
 }
