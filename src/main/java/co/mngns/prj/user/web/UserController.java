@@ -104,12 +104,12 @@ public class UserController {
 
 	@RequestMapping(value = "/tList.do")
 	// 사용자 페이지의 훈련사 목록 페이지
-	public String tList(Model model, Paging paging, TrainerVO vo) {
+	public String tList(Model model, Paging trnpaging, TrainerVO vo) {
 		// 페이징 처리
-		paging.setPageUnit(5);
-		vo.setStart(paging.getFirst());
-		vo.setEnd(paging.getLast());
-		paging.setTotalRecord(trnService.trnCount(vo));
+		trnpaging.setPageUnit(3);
+		vo.setStart(trnpaging.getFirst());
+		vo.setEnd(trnpaging.getLast());
+		trnpaging.setTotalRecord(trnService.trnCount(vo));
 		model.addAttribute("trainers", trnService.TrainerSelectList(vo));
 		return "client/tList";
 	}

@@ -33,4 +33,7 @@ public class ReserListVO {
 	private int prc;
 	private String work_time;
 	private String reviewyn;
+	
+	private int start;
+	private int end;
 }

@@ -7,6 +7,16 @@
 		SELECT B.* FROM ( SELECT A.* , ROWNUM RN FROM (
 			select trainer.*, client.name 
 			  from trainer left join client on trainer.client_id = client.client_id
+			  <where>
+				 <choose>
+			 	<when test="type !=null and type.equals('name')">
+			 	and c.name = #{keyword}
+			 	</when>
+			 	<when test="type !=null and type.equals('adres')">
+			 	and work_loc2 = #{keyword}
+			 	</when>
+			 	</choose>
+		 </where>
 	  <![CDATA[ 
 	      ) A ) B WHERE RN >= #{start} and RN <= #{end}
 	      ]]>
@@ -31,7 +41,7 @@
 	
 	<!-- 훈련사 검색 -->
 	<select id="getSearchList" resultType="co.mngns.prj.user.vo.TrainerVO">
-		select t. *, c.name
+		select distinct t. *, c.name
 		  from trainer t, client c
 		 where not exists 
 			 (
@@ -63,6 +73,16 @@
 	
 	<select id="trnCount" resultType="int">
 		select count(*) from trainer
+				  <where>
+				 <choose>
+			 	<when test="type !=null and type.equals('name')">
+			 	and c.name = #{keyword}
+			 	</when>
+			 	<when test="type !=null and type.equals('adres')">
+			 	and work_loc2 = #{keyword}
+			 	</when>
+			 	</choose>
+		 </where>
 	</select>
 
 </mapper>

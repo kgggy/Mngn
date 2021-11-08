@@ -91,4 +91,10 @@ public class ReserListServiceImpl implements ReserListService {
 		return map.serviceTerm(reser);
 	}
 
+	@Override
+	public int reserCount(ReserListVO reser) {
+		// 전체 서비스 이용 내역 건수
+		return map.reserCount(reser);
+	}
+
 }
