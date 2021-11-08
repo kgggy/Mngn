@@ -2,20 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.mngns.prj.svc.map.ReserListMapper">
 
-	<select id="petMethod"
-		resultType="co.mngns.prj.svc.vo.ReserListVO">
-		select case s.knd when 1 then '돌봄 서비스' when 2 then '산책 서비스'
-		when 3 then '훈련 서비스' end as service,
-		s.term, r.reser_loc, r.reser_dt, Regexp_Substr(svc_bgn_tm,'[^,]+', 1,level)
-		as start_tm, p.name as p_name, c.name as c_name
-		from reser_list r, svc s, pet p, client c
-		where r.svc_id = s.svc_id
-		and r.pet_id1 = p.pet_id
-		and r.client_id2 = c.client_id
-		and r.reser_no = #{reser_no}
-		Connect By Regexp_Substr(svc_bgn_tm, '[^,]+', 1,level) Is Not Null
-	</select>
-
 	<select id="petSelectList"
 		resultType="co.mngns.prj.pet.vo.PetVO">
 		select * from pet where client_id = #{client_id}
@@ -28,9 +14,11 @@
 	</select>
 
 	<select id="serviceTerm" resultType="co.mngns.prj.svc.vo.SvcVO">
-		select prc,term from svc where knd = 2
+		select prc,term
+		from svc
+		where knd=2
 	</select>
-	
+
 	<select id="serviceUse"
 		resultType="co.mngns.prj.svc.vo.ReserListVO">
 		select l.*,
@@ -43,11 +31,14 @@
 		knd_name,
 		s.term,
 		s.prc,
-		(	select count(*) from review r
-			where r.reser_no = l.reser_no ) as reviewyn
-		
+		(
+		select count(*) from review r
+		where r.reser_no = l.reser_no ) as
+		reviewyn
+
 		from reser_list l, svc s, client c
-		where l.client_id2 = c.client_id
+		where l.client_id2 =
+		c.client_id
 		and
 		s.svc_id = l.svc_id
 		and l.client_id1 = #{client_id1}
@@ -57,24 +48,46 @@
 		resultType="co.mngns.prj.svc.vo.ReserListVO">
 		with svc_time as
 		(
-		select distinct client_id , Regexp_Substr(work_time,'[^,]+', 1,level)
+		select distinct client_id ,
+		Regexp_Substr(work_time,'[^,]+', 1,level)
 		work_time
 		From trainer
-		where work_time Is Not Null
-		and substr(mon || tue || wed || thu || fri || sat || sun,
+		where
+		work_time Is Not Null
+		and substr(mon || tue || wed || thu || fri || sat
+		|| sun,
 		to_char(to_date('21-10-29','yy-mm-dd'), 'D'),1 ) = 1
-		Connect By Regexp_Substr('10,11,12,13,14,15', '[^,]+', 1,level) Is Not Null
+		Connect By
+		Regexp_Substr('10,11,12,13,14,15', '[^,]+', 1,level) Is Not Null
 		MINUS
-		select client_id2, Regexp_Substr(svc_bgn_tm,'[^,]+', 1,level) work_time
+		select client_id2, Regexp_Substr(svc_bgn_tm,'[^,]+', 1,level)
+		work_time
 		from reser_list
 		where reser_dt = #{reser_dt}
-		Connect By Regexp_Substr(svc_bgn_tm, '[^,]+', 1,level) is not null
+		Connect By
+		Regexp_Substr(svc_bgn_tm, '[^,]+', 1,level) is not null
 		)
 
-		Select distinct c.client_id as client_id2, c.name
+		Select
+		distinct c.client_id as client_id2, c.name
 		from svc_time s, client c
 		where work_time = #{work_time}
 		and s.client_id = c.client_id
 	</select>
 
+	<insert id="reserInsert">
+		insert into reser_list(reser_no, reser_dt, memo,
+							   reser_loc, pet_id1, svc_bgn_tm, 
+							   svc_stts, client_id1, svc_id, pet_id2, client_id2)
+		values(reser_seq.nextval, #{reser_dt}, #{memo},
+			  (SELECT CONCAT(concat(adres1, ', '), adres2) 
+			   AS reser_loc 
+			   FROM client where client_id = #{client_id1}),
+			   #{pet_id1}, #{svc_bgn_tm}, 1,
+			   #{client_id1}, #{svc_id},#{pet_id2},#{client_id2})
+	</insert>
+
+	<delete id="reserDelete">
+		delete from reser_list where reser_no = #{reser_no}
+	</delete>
 </mapper>
