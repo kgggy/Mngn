@@ -72,14 +72,10 @@
                 trn();
             })
 
-            $(".park")
-                .on(
-                    "click",
-                    function () {
-                        window
-                            .open("map.do", "근처공원 선택",
-                                "width=1000px,height=700px,scrollbars=yes,left=450px,top=120px");
-                    });
+            $(".park").on("click", function () {
+                 window.open("map.do", "근처공원 선택",
+                  "width=1000px,height=700px,scrollbars=yes,left=450px,top=120px");
+            });
 
         }
 

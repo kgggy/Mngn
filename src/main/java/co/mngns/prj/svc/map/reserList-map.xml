@@ -87,7 +87,7 @@
 		values(reser_seq.nextval, #{reser_dt}, #{memo},
 			  (SELECT CONCAT(concat(adres1, ', '), adres2) 
 			   AS reser_loc 
-			   FROM client where client_id = #{client_id1}),
+			   FROM client where client_id1 = #{client_id1}),
 			   #{pet_id1}, #{svc_bgn_tm}, 1,
 			   #{client_id1}, #{svc_id},#{pet_id2},#{client_id2})
 	</insert>
