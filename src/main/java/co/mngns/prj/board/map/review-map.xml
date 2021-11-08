@@ -45,7 +45,7 @@
 </select>
 
 <delete id="reviewDelete" parameterType="co.mngns.prj.board.vo.ReviewVO">
-	delete from review where client_id = #{client_id}
+	delete from review where review_no = #{review_no}
 </delete>
 
 <insert id="reviewInsert" parameterType="co.mngns.prj.board.vo.ReviewVO">
