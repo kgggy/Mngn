@@ -565,73 +565,48 @@ footer p a:hover {
                <div align="center">회원정보수정</div>
                <form action="#">
                   <div class="mt-10">
-                     <input type="text" name="id" 
-                        onfocus="this.placeholder = '${client.client_id()}'" onblur="this.placeholder = 'id'"
+                     <input type="text" name="id" placeholder="id"
+                     		value="${client.id}"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'id'"
                         required class="single-input">
                   </div>
                   <div class="mt-10">
-                     <input type="text" name="password" value = ${client.pwd()}
+                     <input type="text" name="pwd" placeholder="pwd"
+                        value="${client.pwd}"
                         onfocus="this.placeholder = ''"
                         onblur="this.placeholder = 'password'" required
                         class="single-input">
                   </div>
                   <div class="mt-10">
-                     <input type="text" name="name" value = ${client.name()}
+                     <input type="text" name="name" placeholder="name"
+                        	value="${client.name}"
                         onfocus="this.placeholder = ''"
                         onblur="this.placeholder = 'Name'" required class="single-input">
                   </div>
                   <div class="mt-10">
-                     <input type="email" name="EMAIL" value = ${client.email()}
+                     <input type="post_no" name="post_no" placeholder="post_no"
+                     	value="${client.post_no}"
                         onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = '이메일'" required class="single-input">
+                        onblur="this.placeholder = 'post_no'" required class="single-input">
                   </div>
                   <div class="input-group-icon mt-10">
                      <div class="icon">
                         <i class="fa fa-thumb-tack" aria-hidden="true"></i>
                      </div>
-                     <input type="text" name="address" value = ${client.adres1()}
+                     <input type="text" name="adres1" placeholder="adres1"
+                       value="${client.adres1}"
                         onfocus="this.placeholder = '주소'"
-                        onblur="this.placeholder = 'Address'" required
+                        onblur="this.placeholder = 'adres1'" required
                         class="single-input">
-                        <input type="text" name="address" value = ${client.adres1()}
+                        <input type="text" name="adres2" placeholder="adres2" 
+                        value="${client.adres2}"
                         onfocus="this.placeholder = '주소'"
-                        onblur="this.placeholder = 'Address'" required
+                        onblur="this.placeholder = 'adres2'" required
                         class="single-input">
                   </div>
-                  <div class="input-group-icon mt-10">
-                     <div class="icon">
-                        <i class="fa fa-plane" aria-hidden="true"></i>
-                     </div>
-                     <div class="form-select" id="default-select"">
-                        <select>
-                           <option value=" 1">City</option>
-                           <option value="1">Dhaka</option>
-                           <option value="1">Dilli</option>
-                           <option value="1">Newyork</option>
-                           <option value="1">Islamabad</option>
-                        </select>
-                     </div>
-                  </div>
-                  <div class="input-group-icon mt-10">
-                     <div class="icon">
-                        <i class="fa fa-globe" aria-hidden="true"></i>
-                     </div>
-                     <div class="form-select" id="default-select"">
-                        <select>
-                           <option value="1">Country</option>
-                           <option value="1">Bangladesh</option>
-                           <option value="1">India</option>
-                           <option value="1">England</option>
-                           <option value="1">Srilanka</option>
-                        </select>
-                     </div>
-                  </div>
+                       
 
-                  <div class="mt-10">
-                     <textarea class="single-textarea" placeholder="Message"
-                        onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = 'Message'" required></textarea>
-                  </div>
+             
                   <!-- For Gradient Border Use -->
                   <!-- <div class="mt-10">
                               <div class="primary-input">
@@ -640,23 +615,21 @@ footer p a:hover {
                               </div>
                            </div> -->
                   <div class="mt-10">
-                     <input type="text" name="first_name" placeholder="Primary color"
+                     <input type="text" name="phone" placeholder="phone"
+                     	value = "${client.phone}"
                         onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = 'Primary color'" required
+                        onblur="this.placeholder = 'phone'" required
                         class="single-input-primary">
                   </div>
                   <div class="mt-10">
-                     <input type="text" name="first_name" placeholder="Accent color"
+                     <input type="text" name="Email" placeholder="Email"
+                     	value = "${client.Email}"
                         onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = 'Accent color'" required
-                        class="single-input-accent">
+                        onblur="this.placeholder = 'Email'" required
+                        class="single-input-primary">
                   </div>
-                  <div class="mt-10">
-                     <input type="text" name="first_name"
-                        placeholder="Secondary color" onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = 'Secondary color'" required
-                        class="single-input-secondary">
-                  </div>
+                 
+                
                   <br><br>
                   <div align="center">
                      <button type="submit" value="취소">취소</button>

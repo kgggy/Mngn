@@ -36,7 +36,19 @@ public class UserController {
 		String message = "";
 		String page = "";
 		if (vo != null) {
-			page = "redirect:cntMain.do";
+
+			if (vo.getRole() == 1) {
+
+				page = "redirect:cntMain.do";
+			} else if (vo.getRole() == 2) {
+				page = "redirect:trnMain.do";
+
+			} else if (vo.getRole() == 3) {
+
+				page = "redirect:mngMain.do";
+
+			}
+
 			message = vo.getName() + "님 환영합니다.";
 			redirectAttributes.addAttribute("message", message);
 			session.setAttribute("id", vo.getClient_id()); // 세션객체에 아이디와 권한을 담는다.
