@@ -68,7 +68,8 @@ public class BoardController {
 
 	@RequestMapping(value = "/reviewDelete.do")
 	// 리뷰 삭제
-	public String reviewDelete(Model model) {
+	public String reviewDelete(Model model, ReviewVO vo) {
+		model.addAttribute("rDelete", rService.reviewDelete(vo));
 		return "client/cntReview";
 	}
 
