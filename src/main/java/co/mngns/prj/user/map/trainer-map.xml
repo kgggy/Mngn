@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.mngns.prj.user.map.TrainerMapper">
+
+	<!-- 전체 훈련사 목록조회 -->
 	<select resultType="co.mngns.prj.user.vo.TrainerVO" id="trainerSelectList">
-		select trainer.*, client.name 
-		  from trainer left join client on trainer.client_id = client.client_id
+		SELECT B.* FROM ( SELECT A.* , ROWNUM RN FROM (
+			select trainer.*, client.name 
+			  from trainer left join client on trainer.client_id = client.client_id
+	  <![CDATA[ 
+	      ) A ) B WHERE RN >= #{start} and RN <= #{end}
+	      ]]>
 	</select>
+	
+	<!-- 훈련사 상세조회 -->
 	<select resultType="co.mngns.prj.user.vo.TrainerVO" id="trainerSelect">
 		  select distinct t.*,
 	     		 case t.gen when 1 then '여자' else '남자' end as gender,
@@ -14,8 +22,6 @@
 			    and l.client_id2 = t.client_id
 			    and l.client_id1 = r.client_id
 			    and c.client_id = #{client_id}
-			    
-			    
 	</select>
 	
 	<!-- 관리자 페이지의 훈련사 전체목록 조회 -->
@@ -23,6 +29,7 @@
 		select t.*, c.* from trainer t join client c on t.client_id = c.client_id
 	</select>
 	
+	<!-- 훈련사 검색 -->
 	<select id="getSearchList" resultType="co.mngns.prj.user.vo.TrainerVO">
 		select t. *, c.name
 		  from trainer t, client c
@@ -52,7 +59,10 @@
 		 	and substr(mon || tue || wed || thu || fri || sat || sun, to_char(to_date(#{trndate},'yy-mm-dd'), 'D'),1 ) = 1;
 		 </when>
 		 </choose>
-		 
+	</select>
+	
+	<select id="trnCount" resultType="int">
+		select count(*) from trainer
 	</select>
 
 </mapper>

@@ -19,8 +19,10 @@
 		where knd=2
 	</select>
 
+	<!-- 서비스 이용내역 -->
 	<select id="serviceUse"
 		resultType="co.mngns.prj.svc.vo.ReserListVO">
+		SELECT B.* FROM ( SELECT A.* , ROWNUM RN FROM (
 		select l.*,
 		case l.svc_stts when 1 then '접수 완료' when 2 then
 		'서비스 완료' else '취소 및 환불'
@@ -42,6 +44,9 @@
 		and
 		s.svc_id = l.svc_id
 		and l.client_id1 = #{client_id1}
+		<![CDATA[ 
+	      ) A ) B WHERE RN >= #{start} and RN <= #{end}
+	      ]]>
 	</select>
 
 	<select id="trnSelectList"
@@ -90,4 +95,12 @@
 	<delete id="reserDelete">
 		delete from reser_list where reser_no = #{reser_no}
 	</delete>
+	
+	   <select id="reserCount" resultType="int">
+      select count(*) 
+        from reser_list l, svc s, client c
+       where l.client_id2 = c.client_id
+         and s.svc_id = l.svc_id
+         and l.client_id1 = #{client_id1}
+   </select>
 </mapper>

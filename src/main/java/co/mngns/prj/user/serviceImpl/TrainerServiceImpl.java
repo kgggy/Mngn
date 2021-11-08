@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import co.mngns.prj.user.map.TrainerMapper;
 import co.mngns.prj.user.service.TrainerService;
-import co.mngns.prj.user.vo.ClientVO;
 import co.mngns.prj.user.vo.TrainerVO;
 
 @Service
@@ -16,9 +15,9 @@ public class TrainerServiceImpl implements TrainerService {
 	TrainerMapper trnmap;
 
 	@Override
-	public List<TrainerVO> TrainerSelectList() {
+	public List<TrainerVO> TrainerSelectList(TrainerVO trn) {
 		// 훈련사 전체 목록
-		return trnmap.trainerSelectList();
+		return trnmap.trainerSelectList(trn);
 	}
 
 	@Override
@@ -61,6 +60,12 @@ public class TrainerServiceImpl implements TrainerService {
 	public TrainerVO nWork(TrainerVO trn) {
 		// 훈련사 휴무일
 		return trnmap.nWork(trn);
+	}
+	
+	@Override
+	public int trnCount(TrainerVO vo) {
+		// 전체 훈련사 건수
+		return trnmap.trnCount(vo);
 	}
 
 }
