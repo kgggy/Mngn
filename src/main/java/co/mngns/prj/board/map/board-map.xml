@@ -28,7 +28,7 @@
 	<!-- 공지사항 등록 -->
 	<insert id="boardInsert" parameterType="co.mngns.prj.board.vo.BoardVO">
 		insert into board(board_no, ttl, cntn, mngr_id, reg_dt)
-		values(#{board_no}, #{ttl}, #{cntn}, #{mngr_id}, #{reg_dt})
+		values(board_seq.nextval, #{ttl}, #{cntn}, 1004, sysdate)
 	</insert>
 	
 	<!-- 공지사항 수정 -->

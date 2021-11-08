@@ -75,84 +75,6 @@ head
 		})
 	});
 </script>
-<script>
-	var NOTIFYID = "";
-	var NONNOTIFYID = "";
-	var NCONTENT = "";
-
-	$(document).ready(function() {
-		$('#insertBlack').on('show.bs.modal', function(event) {
-			NOTIFYID = $(event.relatedTarget).data('notifyid');
-			NONNOTIFYID = $(event.relatedTarget).data('nonnotifyid');
-			NCONTENT = $(event.relatedTarget).data('ncontent');
-		});
-	});
-
-	function deleteNotify(notifyid, nonnotifyid, ncontent) {
-		location.href = '${path}/admin/deleteNotify.do?notifyId=' + notifyid
-				+ '&nonNotifyId=' + nonnotifyid + '&nContent=' + ncontent;
-	}
-
-	function insertBlack() {
-		var blackCount = $('#blackCount').val();
-		location.href = '${path}/admin/insertBlack.do?notifyId=' + NOTIFYID
-				+ '&nonNotifyId=' + NONNOTIFYID + '&nContent=' + NCONTENT
-				+ '&blackCount=' + blackCount;
-	}
-
-	/* 	function boardDelete(board_no, ttl,  )
-	
-	
-	 var boardTtl = "";
-	 var boardCntn = "";
-	
-	 $(document).function() {
-	 $('#boardInsert')
-	 } */
-
-	/* 	$(document).ready(function() {
-	 $(".btnUpdate").click(function() {
-	 var inputValue = $(this).find("input").val();
-	 if (inputValue != 'all') {
-	 var target = $('table tr[data-status="' + inputValue + '"]');
-	 $("table tbody tr").not(target).hide();
-	 target.fadeIn();
-	 } else {
-	 $("table tbody tr").fadeIn();
-	 }
-	 }); */
-
-	//공지사항 수정
-	/* 	$(document).ready(function() {
-	 $("#exampleModalCenter").on("click", "form", function(event) {
-	
-	 $(this).toggleClass('checked');
-	 });
-	 }
-	 });  */
-
-	//공지사항 삭제
-	/* function boardDelete() {
-		$(".table-responsive").on("click", "#btnDelete", function() {
-			var id = $(this).closest('tr').find('#hidden_board_no').val();
-			var result = confirm(id + "글을 삭제하시겠습니까?");
-			if (result) {
-				$.ajax({
-					url : "",
-					type : "DELETE",
-					dataType : "json",
-					success : function(data) {
-						boardList();
-					}
-				})
-			}
-		});
-	}//end 공지사항 삭제 */
-	/* 
-	 function boardDelete() {
-	 window.alert('정말 삭제하시겠습니까?');
-	 }; */
-</script>
 
 <!-- End Head -->
 <body class="page-order-all">
@@ -316,11 +238,11 @@ head
 													<td>관리자</td>
 													<td>${board.reg_dt }</td>
 													<td><input type="button"
-															class="btn btn-outline-danger" value="수정" id="btnUpdate"
+															class="btn btn-outline-danger delete_board" value="수정" id="btnUpdate"
 															data-toggle="modal" data-target="#exampleModalCenter" />
-														<input type="button" class="btn btn-outline-danger"
-															value="삭제" id="btnDelete" href="#"
-															onClick="alert('삭제가 완료되었습니다.')" /></td>
+														<input type="button" class="btn btn-outline-danger delete_board_item" value="삭제" 
+														data-index="<?=$row['board_no']?>" />
+													</td>
 													<td style="display: none;">${board.cntn}</td>
 													<td style="display: none;">${board.mngr_id })</td>
 												</tr>
@@ -390,7 +312,7 @@ head
 					<div class="col-md-12 mb-4">
 						<div class="card h-100">
 							<div class="astino-pr-form card-body">
-								<form>
+								<form role="form" id="boardModifyForm" name="boardModifyForm" method="post">
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput">제 목</label> <input
 											type="text" class="form-control" id="boardTtl" placeholder="">
@@ -419,7 +341,7 @@ head
 						</div>
 						<div class="modal-footer">
 							<input type="button" class="btn btn-outline-danger" value="수정"
-								id="btnUpdate" onClick="alert('수정이 완료되었습니다.')" />
+								id="btnUpdate" />
 							<button type="button" class="btn btn-outline-danger"
 								data-dismiss="modal">닫기</button>
 						</div>
@@ -431,37 +353,45 @@ head
 	</div>
 	<!-- Large Size Modal-->
 </body>
+
 <script>
-	$(function() {
-		boardUpdate();
-		boardDelete();
-	});
+	$(document).on("click", "button.delete_board_item", function() {
+		var index = $(this).attr("data-index");
+		if(confirm("선택한 공지사항을 삭제 하시겠습니까?")) {
+			var itemList = [];
+			itemList[0] = index;
+			deleteBoard(itemList);
+			
+			}
+		}
+	})
 
-	function boardUpdate() {
-		$("btnUpdate").on("click", function(event) {
-			$.ajax({
-				url : "",
-				type : 'PUT',
-				dataType : 'json',
-				data : JSON.stringify($('#form').serializeObject()),
-				contextType : 'application/json',
-				success : function(data) {
-					boardList();
-				}
-			});
+	function deleteBoard(itemList) {
+		var inputData = {
+				csrf : '<?=$this->board_no?>',
+				itemList : itemList
+		};
+		
+		$.ajax({
+			url :'<?=$this->lib->getUrl("manager/board/boardForm")?>',
+			type : "POST",
+			data : inputData,
+			dataType : "json",
+			error : function(re)
+			
 		});
-	}
-
-	function boardDelete() {
+		
+		
+		
 		$("#btnDelete").on("click", function() {
 			window.event.stopPropagation();
-			var board_no = $(this).closest("li").find("#todoNo").val();
+			var board_no = $(this).closest("form").find("#boardNo").val();
 			$.ajax({
-				url : "todos/" + todoNo,
+				url : "",
 				type : 'DELETE',
 				dataType : "json",
 				success : function(data) {
-					todoList();
+					boardList();
 				}
 			});
 			$(this).parent().remove();

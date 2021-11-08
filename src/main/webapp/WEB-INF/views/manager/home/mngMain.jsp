@@ -45,6 +45,12 @@
 </style>
 </head>
 <!-- End Head -->
+<script>
+
+	if ('${param.message}' != '')
+    	alert("${message}");
+
+</script>
 
 <body>
 	<!-- Header (Topbar) -->

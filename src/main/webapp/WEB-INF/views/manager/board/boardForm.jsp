@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
@@ -40,40 +41,29 @@
 }
 </style>
 <!-- Global Vendor -->
-	<script src="assets/vendor/jquery/dist/jquery.min.js"></script>
-	<script src="assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
-	<script src="assets/vendor/popper.js/dist/umd/popper.min.js"></script>
-	<script src="assets/vendor/bootstrap/bootstrap.min.js"></script>
+<script src="assets/vendor/jquery/dist/jquery.min.js"></script>
+<script src="assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
+<script src="assets/vendor/popper.js/dist/umd/popper.min.js"></script>
+<script src="assets/vendor/bootstrap/bootstrap.min.js"></script>
 
-	<!-- Plugins -->
-	<script
-		src="assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
-	<script src="assets/vendor/chart.js/dist/Chart.min.js"></script>
+<!-- Plugins -->
+<script
+	src="assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="assets/vendor/chart.js/dist/Chart.min.js"></script>
 
-	<!-- Initialization  -->
-	<script src="assets/js/sidebar-nav.js"></script>
-	<script src="assets/js/dashboard-page-scripts.js"></script>
+<!-- Initialization  -->
+<script src="assets/js/sidebar-nav.js"></script>
+<script src="assets/js/dashboard-page-scripts.js"></script>
+
 <script>
 
-//공지사항 등록
-function boardInsert() {
-	//등록 버튼 클릭
-	$('#btnInsert').on('click', function() {
-		var id = $(this).closest('tr').find()
-		$.ajax({
-			url : "/boardForm.do",
-			method : "post",
-			dataType : "json",
-			success : function(data) {
-				boardList();
-			}
-		})
-	});
-} // end 공지사항 등록
+function result() {
 
-
-
+		alert("등록하시겠습니까?");
+		insertForm.submit();
+}
 </script>
+
 </head>
 <!-- End Head -->
 
@@ -82,7 +72,7 @@ function boardInsert() {
 	<header class="astino-header u-header">
 		<div class="u-header-left">
 			<a class="u-header-logo" href="home.do"> <img
-				src="assets/logo.png" width="160"> 
+				src="assets/logo.png" width="160">
 			</a>
 		</div>
 
@@ -134,8 +124,8 @@ function boardInsert() {
 
 						<!-- 공지사항 관리 -->
 						<li class="u-sidebar-nav-menu__item"><a
-							class="u-sidebar-nav-menu__link active" href="boardList.do"> <i
-								class="far fa-edit u-sidebar-nav-menu__item-icon"></i> <span
+							class="u-sidebar-nav-menu__link active" href="boardList.do">
+								<i class="far fa-edit u-sidebar-nav-menu__item-icon"></i> <span
 								class="u-sidebar-nav-menu__item-title">공지사항 관리</span>
 						</a></li>
 						<!-- End 공지사항 관리 -->
@@ -216,29 +206,35 @@ function boardInsert() {
 					<div class="col-md-12 mb-4">
 						<div class="card h-100">
 							<div class="astino-pr-form card-body">
-								<form>
+								<form action="boardList.do" role="form" id="insertForm" name="insertForm"
+									method="post">
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput">제 목</label> <input
 											type="text" class="form-control" id="formGroupExampleInput"
-											placeholder="">
+											name="ttl">
 									</div>
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput2">작성자</label> <input
-											type="text" class="form-control" id="formGroupExampleInput2"
-											placeholder="관리자">
+											type="text" class="form-control" name="" id="formGroupExampleInput2"
+											value="관리자">
 									</div>
 									<div class="form-group d-flex align-items-center">
-										<label for="formGroupExampleInput3">작성 날짜</label> <input
-											type="text" class="form-control" id="formGroupExampleInput3"
-											placeholder="22 Oct 2021">
+										<label for="formGroupExampleInput3">작성 날짜</label> 
+										<fmt:formatDate value="${sysdate }" pattern="yyyy년 MM월 dd일 HH시ss분"  />
 									</div>
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput4">내 용</label>
 										<textarea class="form-control" id="formGroupExampleInput6"
-											placeholder=""></textarea>
+											name="cntn"></textarea>
 									</div>
-									<a href="boardList.do" onClick="alert('등록하겠습니까?')"
-										class="btn btn-danger btn-large float-right"> 등록 </a>
+									<div style="display: none;">
+										<label for="formGroupExampleInput4">일련번호</label> <input
+											type="text" class="form-control" id="boardNo"></input>
+									</div>
+									<div class="form-submit">
+										<input type="button" class="btn btn-outline-danger float-right" value="등록하기" class="submit"
+											onclick="result()" />
+									</div>
 								</form>
 							</div>
 						</div>
@@ -274,8 +270,5 @@ function boardInsert() {
 			<!-- End Footer -->
 		</div>
 	</main>
-
-	
 </body>
-
 </html>
