@@ -82,9 +82,10 @@ public class UserController {
 
 	@RequestMapping(value = "/cntProfile.do")
 	// 사용자 개인 프로필 페이지
-	public String cntProfile(ClientVO clientvo, HttpSession session) {
+	public String cntProfile(Model model, ClientVO clientvo, HttpSession session) {
 		
 		clientvo.setClient_id((Integer)session.getAttribute("id"));
+		model.addAttribute("client", cntService.clientSelect(clientvo));
 		return "client/cntProfile";
 	}
 
