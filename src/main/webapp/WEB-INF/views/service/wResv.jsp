@@ -130,6 +130,7 @@
         <form action="payMethod.do" method="post" id="payForm">
         <input type="hidden" id="service" name="term" value="${svcVO.term }" readonly> 
         <input type="hidden" id="service" name="prc" value="${svcVO.prc }" readonly>
+        <input type="hidden" id="service" name="svc_id" value="${svcVO.svc_id }" readonly>
             <div class="item">
                 <h3>
                     주소<span class="required">*</span>&nbsp;&nbsp;<small>*입력한

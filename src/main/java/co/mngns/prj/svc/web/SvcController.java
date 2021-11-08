@@ -79,9 +79,9 @@ public class SvcController {
 
 	@RequestMapping(value = "/payMethod.do")
 	// 결제창
-	public String payment(Model model, HttpSession session, @ModelAttribute("reser") ReserListVO reser,SvcVO svc, BillVO bill) {
+	public String payment(Model model, HttpSession session, @ModelAttribute("reser") ReserListVO reser) {
 		session.setAttribute("reser", reser);
-		session.setAttribute("bill", bill);
+		System.out.println("======================="+reser);
 		return "service/payMethod";
 	}
 	/*
@@ -93,13 +93,18 @@ public class SvcController {
 	@RequestMapping(value = "/payResult.do")
 	// 결제완료 내역
 	public String payResult(ReserListVO reser, HttpSession session, BillVO bill) {
-		
-		reser.setClient_id1((Integer)session.getAttribute("id"));
 		reser = (ReserListVO)session.getAttribute("reser");
-		bill = (BillVO)session.getAttribute("bill");
+		String[] pet = reser.getPet_id();
+		if(pet != null && pet.length > 0) {
+			reser.setPet_id1(Integer.parseInt(pet[0]));
+			if(pet.length == 2)
+				reser.setPet_id2(Integer.parseInt(pet[1]));
+		}
+		reser.setClient_id1((Integer)session.getAttribute("id"));
 		System.out.println(reser);
 		rlist.reserInsert(reser);
-		blist.BillInsert(bill);
+		bill.setReser_no(reser.getReser_no());
+		blist.billInsert(bill);
 		return "service/payResult";
 	}
 
