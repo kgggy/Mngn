@@ -1,7 +1,9 @@
 package co.mngns.prj.board.vo;
 
 import java.util.Date;
+import java.util.List;
 
+import co.mngns.prj.common.vo.FilesVO;
 import lombok.Data;
 
 @Data
@@ -22,5 +24,7 @@ public class ReviewVO {
 	
 	private int start;
 	private int end;
+	
+	private String fileorg;
 	
 }

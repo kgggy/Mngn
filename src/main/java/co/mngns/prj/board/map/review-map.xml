@@ -7,7 +7,10 @@
 	SELECT B.* FROM ( SELECT A.* , ROWNUM RN FROM (
 		select review.*, 
 			   case review.star_rate when 1 then '★' when 2 then '★★' when 3 then '★★★' when 4 then '★★★★' else '★★★★★' end as star_shape,
-			   client.name 
+			   client.name ,
+			   (
+			   	select org from files where files.file_no = review.file_no and rownum = 1
+			   ) as fileorg
 		  from review 
 		  left join client on review.client_id = client.client_id
 	<![CDATA[ 
@@ -76,6 +79,14 @@
    			and l.client_id2 = c.client_id
    			and s.svc_id = l.svc_id
    			and r.client_id = #{client_id}
+</select>
+
+<insert id="rvFileInsert" parameterType="co.mngns.prj.common.vo.FilesVO">
+	insert into files (org, use_yn, file_no, no, reg_dt) values (#{org}, 1, #{file_no}, file_seq.nextval, sysdate)
+</insert>
+
+<select id="rvFilenoSelect" resultType="int">
+	select nvl(max(file_no),0)+1 from files
 </select>
 
 </mapper>

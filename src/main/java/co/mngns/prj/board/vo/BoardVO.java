@@ -17,4 +17,6 @@ public class BoardVO {
 	private int start;
 	private int end;
 	
+	private int start;
+	private int end;
 }

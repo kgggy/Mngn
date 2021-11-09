@@ -33,7 +33,7 @@ public class loginFilter implements Filter{
 			if(session.getAttribute("id") != null) {
 				login = true;
 			}
-			if(page.equals("login.do") || page.equals("home.do") || page.equals("joinForm.do")) {
+			if(page.equals("/login.do") || page.equals("/home.do") || page.equals("/joinForm.do")) {
 				login = true;
 			}
 		}

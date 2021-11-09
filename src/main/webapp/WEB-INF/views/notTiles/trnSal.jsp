@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -484,53 +486,33 @@ th {
 			<button id="search" onclick="javascript:status()">조회</button>
 			<hr>
 			<input style="font-size: 7pt;">* 기본적으로 최근 3개월간의 자료가 조회되며,
-			6개월이 지나면 정보가 사라집니다. <br> <br>
-
+			6개월이 지나면 정보가 사라집니다. <br> <br> <input name="client_id"
+				type="hidden">
 			<table class="table table-striped table-hover">
 				<thead align="center">
 					<tr>
-						<th><input type="checkbox" class="click_all" id="chbox"
-							name="all"></th>
 						<th>신청자</th>
-						<th>상세정보</th>
+						<th>신청서비스</th>
 						<th>신청일</th>
 						<th>상태</th>
 					</tr>
 				</thead>
 				<tbody align="center">
-					<tr data-status="inactive">
-						<td><input type="checkbox" class="chbox" id="chbox"
-							name="chbox1"></td>
-						<td>ㅇㅇㅇ</td>
-						<td><a href="#" data-toggle="modal"
-							data-target="#reviewModal">돌봄서비스(3시간)</a></td>
-						<td>2021-10-27</td>
-						<td><span class="label label-warning">수락한 의뢰</span></td>
-					</tr>
-					<tr data-status="active">
-						<td><input type="checkbox" class="chbox" id="chbox"
-							name="chbox2"></td>
-						<td>ㅇㅇㅇ</td>
-						<td><a href="#">돌봄서비스(3시간)</a></td>
-						<td>2021-10-27</td>
-						<td><span class="label label-success">완료된 의뢰</span></td>
-					</tr>
-					<tr data-status="inactive">
-						<td><input type="checkbox" class="chbox" id="chbox"
-							name="chbox3"></td>
-						<td>ㅇㅇㅇ</td>
-						<td><a href="#">돌봄서비스(3시간)</a></td>
-						<td>2021-10-27</td>
-						<td><span class="label label-warning">수락한 의뢰</span></td>
-					</tr>
-					<tr data-status="expired">
-						<td><input type="checkbox" class="chbox" id="chbox"
-							name="chbox4"></td>
-						<td>ㅇㅇㅇ</td>
-						<td><a href="#">돌봄서비스(3시간)</a></td>
-						<td>2021-10-27</td>
-						<td><span class="label label-danger">거절한 의뢰</span></td>
-					</tr>
+					<c:forEach items="${requestTrn }" var="rqTrn">
+						<tr>
+							<td>${rqTrn.name }</td>
+							<td>${rqTrn. knd_name}(${rqTrn.term }시간)</td>
+							<td>${rqTrn.reser_dt }</td>
+							<td><span class="label label-warning">${rqTrn.status }</span></td>
+						<td><c:if test="${rqTrn.reviewyn == '0'}">
+								<a href="#" class="btn btn-sm manage"
+									data-reserno="${rqTrn. reser_no}" data-toggle="modal"
+									data-target="#reviewModal">후기 작성</a>
+							</c:if> <c:if test="${rqTrn.reviewyn > '0'}">
+								<a class="btn btn-sm complete">작성 완료</a>
+							</c:if></td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 

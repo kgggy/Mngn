@@ -6,7 +6,7 @@ import co.mngns.prj.pet.vo.PetVO;
 
 public interface PetService {
 
-	List<PetVO> PetSelectList();
+	List<PetVO> PetList(PetVO pet);
 
 	PetVO PetSelect(PetVO pet);
 
