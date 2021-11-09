@@ -14,7 +14,7 @@
 	</select>
 
 	<select id="serviceTerm" resultType="co.mngns.prj.svc.vo.SvcVO">
-		select prc,term
+		select prc,term, svc_id
 		from svc
 		where knd=2
 	</select>
@@ -81,15 +81,14 @@
 	</select>
 
 	<insert id="reserInsert">
+	    <selectKey keyProperty="reser_no" resultType="int" order="BEFORE">
+        SELECT reser_seq.nextval FROM dual
+    </selectKey>
 		insert into reser_list(reser_no, reser_dt, memo,
 							   reser_loc, pet_id1, svc_bgn_tm, 
 							   svc_stts, client_id1, svc_id, pet_id2, client_id2)
-		values(reser_seq.nextval, #{reser_dt}, #{memo},
-			  (SELECT CONCAT(concat(adres1, ', '), adres2) 
-			   AS reser_loc 
-			   FROM client where client_id = #{client_id1}),
-			   #{pet_id1}, #{svc_bgn_tm}, 1,
-			   #{client_id1}, #{svc_id},#{pet_id2},#{client_id2})
+		values(#{reser_no}, #{reser_dt}, #{memo},#{adres1}||','||#{adres2},
+		   #{pet_id1}, #{svc_bgn_tm}, 1, #{client_id1}, #{svc_id},#{pet_id2},#{client_id2})
 	</insert>
 
 	<delete id="reserDelete">

@@ -13,24 +13,24 @@
 	IMP.init("imp82633653"); // 예: imp00000000
 	function requestPay() {
 		// IMP.request_pay(param, callback) 결제창 호출
-/* 		IMP.request_pay({ // param
-			pg : "html5_inicis",
-			pay_method : "card",
-			merchant_uid : "19", //결제 시마다 번호 바꿔서 넣기7 
-			name : "산책서비스",
-			amount : ${reser.prc},
-			buyer_email : "@gmail.com",
-			buyer_name : "${name}",
-			buyer_phone : "${phone}",
-		}, function(rsp) { // callback
-			if (rsp.success) {
-				$("#billForm").submit();
-			} else {
-				alert("결제에 실패하였습니다. 다시 결제하여 주시길 바랍니다.");
-			}
-		}); */
-		
-		$("#billForm").submit();
+		/* 		IMP.request_pay({ // param
+		 pg : "html5_inicis",
+		 pay_method : "card",
+		 merchant_uid : "19", //결제 시마다 번호 바꿔서 넣기7 
+		 name : "산책서비스",
+		 amount : ${reser.prc},
+		 buyer_email : "@gmail.com",
+		 buyer_name : "${name}",
+		 buyer_phone : "${phone}",
+		 }, function(rsp) { // callback
+		 if (rsp.success) {
+		 $("#billForm").submit();
+		 } else {
+		 alert("결제에 실패하였습니다. 다시 결제하여 주시길 바랍니다.");
+		 }
+		 }); */
+
+		$("#pmForm").submit();
 	}
 </script>
 <style>
@@ -70,45 +70,47 @@ tr {
 	<!-- bradcam_area_end -->
 	<!-- testmonial_area_start  -->
 	<div align="center" class="div">
-		<table>
-			<tr>
-				<th width="300px">서비스</th>
-				<td width="500px">산책서비스 ${reser.term }시간</td>
-			</tr>
-			<tr>
-				<th width="300px">위치</th>
-				<td width="500px">${reser.adres1 }, ${reser.adres2 }</td>
-			</tr>
-			<tr>
-				<th width="300px">날짜 및 시간</th>
-				<td width="500px">${reser.reser_dt } 🐾 ${reser.svc_bgn_tm }:00</td>
-			</tr>
-			<tr>
-				<th width="300px">대상</th>
-				<td width="500px">${reser.pet_name[0] }${reser.pet_name[1] }</td>
-			</tr>
-			<tr>
-				<th width="300px">훈련사</th>
-				<td width="500px">${reser.name }</td>
-			</tr>
-			<tr>
-				<th width="300px">결제금액</th>
-				<td width="500px">${reser.prc}</td>
-			</tr>
-			<tr>
-				<th width="300px">특이사항</th>
-				<td width="500px">${reser.memo}</td>
-			</tr>
-		</table>
+		<form id="pmForm" action="payResult.do" method="post">
+			<input type="hidden" name="client_id1" value="${reser.client_id1 }">
+			<table>
+				<tr>
+					<th width="300px">서비스</th>
+					<td width="500px">산책서비스 ${reser.term }시간</td>
+				</tr>
+				<tr>
+					<th width="300px">위치</th>
+					<td width="500px">${reser.adres1 },${reser.adres2 }</td>
+				</tr>
+				<tr>
+					<th width="300px">날짜 및 시간</th>
+					<td width="500px">${reser.reser_dt }🐾${reser.svc_bgn_tm }:00</td>
+				</tr>
+				<tr>
+					<th width="300px">대상</th>
+					<td width="500px">${reser.pet_name[0] }${reser.pet_name[1] }</td>
+				</tr>
+				<tr>
+					<th width="300px">훈련사</th>
+					<td width="500px">${reser.name }</td>
+				</tr>
+				<tr>
+					<th width="300px">결제금액</th>
+					<td width="500px">${reser.prc}</td>
+				</tr>
+				<tr>
+					<th width="300px">특이사항</th>
+					<td width="500px">${reser.memo}</td>
+				</tr>
+			</table>
+			<input type="hidden" name="bill_amt" value="${reser.prc }"> <input
+				type="hidden" name="bill_phone" value="010-1234-1234"><input
+				type="hidden" name="bill_card" value="19">
+		</form>
 	</div>
 	<br />
 	<br />
 	<br />
-	<form id="billForm" action="payResult.do" method="post">
-	<input	type="hidden" name="bill_amt" value="${reser.prc }"> <input
-			type="hidden" name="bill_phone" value="010-1234-1234"><input
-			type="hidden" name="bill_card" value="19">
-	</form>
+
 	<div align="center">
 		<button type="button" class="boxed-btn3" id="rbtn"
 			onclick="requestPay()">결제하기</button>

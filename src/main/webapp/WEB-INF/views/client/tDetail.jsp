@@ -424,11 +424,11 @@ span {
                                        <th>S</th>
                                     </tr>
                                  </thead>
-                                 <tbody class="cal-body"></tbody>
+                                 <tbody class="cal-body"  onclick="ckBtn()"></tbody>
 
                               </table>
                               <button id="abtn"
-                                 class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                 class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn1"
                                  type="button" data-toggle="modal" data-target="#light" data-trnId="${trainer.client_id }">예약하기</button>
                            </div>
                         </div>
@@ -574,13 +574,7 @@ span {
            eventData['id'] = id;
            init.event.push(eventData);
            $todoList.appendChild(createLi(id, val, date));
-           
-           
          }
-          
-          
-
-          
           
          loadYYMM(init.today);
          
@@ -624,6 +618,13 @@ span {
                 $("#form").submit();
              }
           }
+         
+         //예약하기 버튼 활성화
+         function ckBtn() {
+        	 if($('.cal-table').hasClass("day day-active"))
+        		 console.log("dd");
+        		 $('#abtn').attr({"class": "boxed-btn", "data-toggle":"modal", "data-target":"#light", "data-trnId": "${trainer.client_id }"});
+         }
          
    </script>
 </body>

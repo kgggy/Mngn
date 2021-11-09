@@ -21,5 +21,5 @@ public class ClientVO {
 	private int role;
 	
 	private int pet_id;
-	
+	private int client_id1;
 }

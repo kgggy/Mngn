@@ -72,14 +72,10 @@
                 trn();
             })
 
-            $(".park")
-                .on(
-                    "click",
-                    function () {
-                        window
-                            .open("map.do", "근처공원 선택",
-                                "width=1000px,height=700px,scrollbars=yes,left=450px,top=120px");
-                    });
+            $(".park").on("click", function () {
+                 window.open("map.do", "근처공원 선택",
+                  "width=1000px,height=700px,scrollbars=yes,left=450px,top=120px");
+            });
 
         }
 
@@ -134,6 +130,7 @@
         <form action="payMethod.do" method="post" id="payForm">
         <input type="hidden" id="service" name="term" value="${svcVO.term }" readonly> 
         <input type="hidden" id="service" name="prc" value="${svcVO.prc }" readonly>
+        <input type="hidden" id="service" name="svc_id" value="${svcVO.svc_id }" readonly>
             <div class="item">
                 <h3>
                     주소<span class="required">*</span>&nbsp;&nbsp;<small>*입력한

@@ -16,23 +16,23 @@ public class BillServiceImpl implements BillService {
 	private BillMapper bill;
 	
 	@Override
-	public List<BillVO> BillSelectList() {
-		return bill.BillSelectList();
+	public List<BillVO> billSelectList() {
+		return bill.billSelectList();
 	}
 
 	@Override 
-	public int BillSelect(BillVO bill) {
-		return BillSelect(bill);
+	public BillVO billSelect(BillVO billvo) {
+		return bill.billSelect(billvo);
 	}
 
 	@Override
-	public int BillInsert(BillVO bill) {
-		return BillInsert(bill);
+	public int billInsert(BillVO billvo) {
+		return bill.billInsert(billvo);
 	}
 
 	@Override
-	public int BillDelete(BillVO bill) {
-		return BillDelete(bill);
+	public int billDelete(BillVO billvo) {
+		return bill.billDelete(billvo);
 	}
 
 }

@@ -12,6 +12,7 @@
 		if (time.length == 0) {
 			alert("시간을 선택해주세요.")
 		} else {
+			$("input[name=svc_id]").val(time.data("svc_id"));
 			$("input[name=prc]").val(time.data("prc"));
 			$("input[name=term]").val(time.data("time"));
 			$("#form").submit();
@@ -221,13 +222,13 @@ span {
 		<div class="white_content modal-content" align="center">
 			<form action="wResv.do" id="form">
 				<input type="hidden" name="term"> <input type="hidden"
-					name="prc">
+					name="prc"><input type="hidden" name="svc_id">
 				<div>
 					<div class="time">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<c:forEach items="${serviceTerm }" var="time">
 							<a class="genric-btn danger-border circle arrow" id="term"
-								data-prc="${time.prc}" data-time="${time.term }">${time.term }시간</a>
+								data-prc="${time.prc}" data-svc_id="${time.svc_id }" data-time="${time.term }">${time.term }시간</a>
 						</c:forEach>
 					</div>
 					<div>

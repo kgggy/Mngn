@@ -478,35 +478,38 @@ article {
 
 		<section id="content2">
 			<div>
-				<table class="table table-striped table-hover">
-					<thead>
-						<tr>
-							<th style="width: 60px">번호</th>
-							<th style="width: 150px">이용&nbsp;서비스</th>
-							<th style="width: 130px">담당&nbsp;훈련사</th>
-							<th>내용</th>
-							<th style="width: 100px">별점</th>
-							<th style="width: 150px">작성일자</th>
-							<th style="width: 150px"></th>
-						</tr>
-					</thead>
-					<tbody align="center">
-						<c:forEach items="${myReviews }" var="myReview">
-							<tr data-status="active">
-								<td>${myReview.review_no }</td>
-								<td>${myReview.knd_name }(${myReview.term }시간)</td>
-								<td>${myReview.name }</td>
-								<td>${myReview.cntn }</td>
-								<td>${myReview.star_shape }</td>
-								<td>${myReview.reg_dt }</td>
-								<td><a href="#" class="btn btn-sm manage"
-									data-toggle="modal" data-target="#reviewUpdate">수정</a>&nbsp;&nbsp;
-									<a href="javascript:window.alert('삭제하시겠습니까?')"
-									class="btn btn-sm manage">삭제</a></td>
+				<form action="reviewDelete.do" id="rvDelete" name="rvDelete"
+					method="post">
+					<table class="table table-striped table-hover">
+						<thead>
+							<tr>
+								<th style="width: 60px">번호</th>
+								<th style="width: 150px">이용&nbsp;서비스</th>
+								<th style="width: 130px">담당&nbsp;훈련사</th>
+								<th>내용</th>
+								<th style="width: 100px">별점</th>
+								<th style="width: 150px">작성일자</th>
+								<th style="width: 150px"></th>
 							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+						</thead>
+						<tbody align="center">
+							<c:forEach items="${myReviews }" var="myReview">
+								<tr data-status="active">
+									<td>${myReview.review_no }</td>
+									<td>${myReview.knd_name }(${myReview.term }시간)</td>
+									<td>${myReview.name }</td>
+									<td>${myReview.cntn }</td>
+									<td>${myReview.star_shape }</td>
+									<td>${myReview.reg_dt }</td>
+									<td><a href="#" class="btn btn-sm manage"
+										data-toggle="modal" data-target="#reviewUpdate">수정</a>&nbsp;&nbsp;
+										<a href="javascript:rDelete(${myReview.review_no })"
+										class="btn btn-sm manage">삭제</a></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</form>
 			</div>
 			<my:paging jsFunc="goList2" paging="${rvPaging}" />
 		</section>
@@ -519,7 +522,7 @@ article {
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title" style="text-align: left;">후기</h4>
-					<button type="button" class="close" >&times;</button>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body">
 					<form role="form" id="signform" name="signform" method="post">
@@ -559,7 +562,7 @@ article {
 				</div>
 				<div class="modal-footer">
 					<button type="button" id="okbutton" class="btn btn-success"
-						data-dismiss="modal" onclick="insert()">입력</button>
+						onclick="insert()">입력</button>
 					<button type="button" id="uploadBtn" class="btn btn-danger"
 						data-dismiss="modal">취소</button>
 				</div>
@@ -569,12 +572,12 @@ article {
 	<!-- 후기 등록 Modal 종료 -->
 
 	<!-- 후기 수정 Modal 시작 -->
-	<div class="modal first" id="reviewUpdate" role="dialog">
+	<div class="modal first" id="reviewUpdate"">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title" style="text-align: left;">후기 수정</h4>
-					<button type="button" class="close">&times;</button>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body">
 					<form role="form" id="rvUpdate" name="rvUpdate" method="post">
@@ -612,8 +615,7 @@ article {
 					</form>
 				</div>
 				<div class="modal-footer">
-					<button type="button" id="okbutton" class="btn btn-success"
-						data-dismiss="modal">수정</button>
+					<button type="button" id="okbutton" class="btn btn-success">수정</button>
 					<button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
 				</div>
 			</div>
@@ -621,129 +623,135 @@ article {
 	</div>
 	<!-- 후기 수정 Modal 종료 -->
 	<script>
-		$('#camera_img').click(function(e) {
-			document.signform.camera.value = $(this).attr('src');
-			e.preventDefault();
-			$('#file').click();
-		});
+	$('#camera_img').click(function (e) {
+		document.signform.camera.value = $(this).attr('src');
+		e.preventDefault();
+		$('#file').click();
+	});
 
-		function rDelete() {
-			window.alert('정말 삭제하시겠습니까?');
-		};
+	function rDelete() {
+		alert('정말 삭제하시겠습니까?');
 
-		function status() { //console.log(status.value);
-			// Declare variables
-			var filter, table, tr, i, txtValue;
-			stts = document.getElementById("stts");
-			filter = stts.value;
-			table = document.getElementById("myTable");
-			tbody = table.getElementByTagName("tbody");
-			tr = tbody.getElementsByTagName("tr");
+	};
 
-			// Loop through all table rows, and hide those who don't match the search query
-			for (i = 0; i < tr.length; i++) {
-				td = tr[i].getElementsByTagName("td")[0];
-				if (td) {
-					txtValue = td.textContent || td.innerText;
-					if (txtValue.indexOf(filter) > -1) {
-						tr[i].style.display = "";
-					} else {
-						tr[i].style.display = "none";
-					}
+	function status() { //console.log(status.value);
+		// Declare variables
+		var filter, table, tr, i, txtValue;
+		stts = document.getElementById("stts");
+		filter = stts.value;
+		table = document.getElementById("myTable");
+		tbody = table.getElementByTagName("tbody");
+		tr = tbody.getElementsByTagName("tr");
+
+		// Loop through all table rows, and hide those who don't match the search query
+		for (i = 0; i < tr.length; i++) {
+			td = tr[i].getElementsByTagName("td")[0];
+			if (td) {
+				txtValue = td.textContent || td.innerText;
+				if (txtValue.indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				} else {
+					tr[i].style.display = "none";
 				}
 			}
 		}
-
-		function insert() {
-
-			var data = $("#signform").serialize();
-			/*var form = new FormData();
-			var inputFile = $("input[name='uploadFile']");
-			var files = inputFile[0].files;
-			
-			console.log(files); */
-
-			if($("input[name='star_rate']:checked").length == 0) {
-				alert("별점을 입력해주세요.");
-				return;
-				} 
-			if($('#cntn').val() == 0 ) {
-				alert("내용을 입력해주세요.");
-				return;
-			} else {
-				alert("저장하시겠습니까?");
-			
-			$.ajax({
-				url : "reviewInsert.do",
-				type : "post",
-				data : data,
-				success : function(data) {
-					if (data == 1) {
-						alert("후기가 등록되었습니다.");
-						location.reload();
-					} else {
-						alert("후기 등록에 실패하였습니다.");
-					}
-				},
-				error : function() {
-					alert("후기 등록에 실패하였습니다.");
-				}
-			});
-		};
 	};
-		$('#reviewModal').on('show.bs.modal', function(e) {
-			$('#reser_no').val($(event.target).data('reserno'))
-		})
 
-		//이미지 미리보기
-		var sel_file;
+	//후기 등록하기
+	function insert() {
+		var data = $("#signform").serialize();
+		/* var form = new FormData();
+		var inputFile = $("input[name='uploadFile']");
+		var files = inputFile[0].files;
 
-		$(document).ready(function() {
-			$("#file1").on("change", handleImgFileSelect);
+		console.log(files); */
+
+		if ($("input[name='star_rate']:checked").length == 0) {
+			alert("별점을 입력해주세요.");
+			return;
+		}
+		if ($('#cntn').val() == 0) {
+			alert("내용을 입력해주세요.");
+			return;
+		} else {
+			alert("저장하시겠습니까?");
+
+		$.ajax({
+			url: "reviewInsert.do",
+			type: "post",
+			data: data,
+			success: function (data) {
+				if (data == 1) {
+					alert("후기가 등록되었습니다.");
+					location.reload();
+				} else {
+					alert("후기 X");
+				}
+			},
+			error: function () {
+				alert("후기 등록에 실패하였습니다.");
+			}
 		});
-
-		function handleImgFileSelect(e) {
-			var files = e.target.files;
-			var filesArr = Array.prototype.slice.call(files);
-
-			var reg = /(.*?)\/(jpg|jpeg|png|bmp)$/;
-
-			filesArr.forEach(function(f) {
-				if (!f.type.match(reg)) {
-					alert("확장자는 이미지 확장자만 가능합니다.");
-					return;
-				}
-
-				sel_file = f;
-
-				var reader = new FileReader();
-				reader.onload = function(e) {
-					$("#img").attr("src", e.target.result);
-				}
-				reader.readAsDataURL(f);
-			});
 		}
+	};
 
-		//페이징 처리
-		function goList1(p) {
-			//searchFrm.page.value=p; //페이지 번호 받아서 폼태그에 넣어서 submit(폼 안에 페이지번호가 히든으로, 검색조건과 정렬방식도 가지고 넘어감)
-			//searchFrm.submit();
-			location.href = "cntReview.do?page1=" + p
+	$('#reviewModal').on('show.bs.modal', function (e) {
+		$('#reser_no').val($(event.target).data('reserno'))
+	})
 
-		}
+	//이미지 미리보기
+	var sel_file;
 
-		function goList2(p) {
-			//searchFrm.page.value=p; //페이지 번호 받아서 폼태그에 넣어서 submit(폼 안에 페이지번호가 히든으로, 검색조건과 정렬방식도 가지고 넘어감)
-			//searchFrm.submit();
-			location.href = "cntReview.do?page2=" + p
-    
-		}
+	$(document).ready(function () {
+		$("#file1").on("change", handleImgFileSelect);
+	});
 
-		function tDetailSm(id) {
-			tlistForm.client_id.value = id
-			$('#tlistForm').submit();
-		}
-	</script>
+	function handleImgFileSelect(e) {
+		var files = e.target.files;
+		var filesArr = Array.prototype.slice.call(files);
+
+		var reg = /(.*?)\/(jpg|jpeg|png|bmp)$/;
+
+		filesArr.forEach(function (f) {
+			if (!f.type.match(reg)) {
+				alert("확장자는 이미지 확장자만 가능합니다.");
+				return;
+			}
+
+			sel_file = f;
+
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				$("#img").attr("src", e.target.result);
+			}
+			reader.readAsDataURL(f);
+		});
+	}
+
+	//페이징 처리
+	function goList1(p) {
+		//searchFrm.page.value=p; //페이지 번호 받아서 폼태그에 넣어서 submit(폼 안에 페이지번호가 히든으로, 검색조건과 정렬방식도 가지고 넘어감)
+		//searchFrm.submit();
+		location.href = "cntReview.do?page1=" + p
+
+	}
+
+	function goList2(p) {
+		//searchFrm.page.value=p; //페이지 번호 받아서 폼태그에 넣어서 submit(폼 안에 페이지번호가 히든으로, 검색조건과 정렬방식도 가지고 넘어감)
+		//searchFrm.submit();
+		location.href = "cntReview.do?page2=" + p
+
+	}
+
+	function tDetailSm(id) {
+		tlistForm.client_id.value = id
+		$('#tlistForm').submit();
+	}
+
+	 function rDelete(rid) {
+		 $('#rvDelete').submit();
+	} 
+</script>
 
 </body>
 

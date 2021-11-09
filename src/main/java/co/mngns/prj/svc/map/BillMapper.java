@@ -8,11 +8,11 @@ import co.mngns.prj.svc.vo.BillVO;
 
 @Service
 public interface BillMapper {
-	public List<BillVO> BillSelectList();
+	public List<BillVO> billSelectList();
 
-	public int BillSelect(BillVO bill);
+	public BillVO billSelect(BillVO bill);
 
-	public int BillInsert(BillVO bill);
+	public int billInsert(BillVO bill);
 
-	public int BillDelete(BillVO bill);
+	public int billDelete(BillVO bill);
 }
