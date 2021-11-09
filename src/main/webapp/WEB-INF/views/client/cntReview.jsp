@@ -504,7 +504,7 @@ article {
 									<td>${myReview.reg_dt }</td>
 									<td><a href="#" class="btn btn-sm manage"
 										data-toggle="modal" data-target="#reviewUpdate">수정</a>&nbsp;&nbsp;
-										<a href="javascript:rDelete(${myReview.review_no })"
+										<a href="javascript:reviewDelete(${myReview.review_no })"
 										class="btn btn-sm manage">삭제</a></td>
 								</tr>
 							</c:forEach>
@@ -554,7 +554,7 @@ article {
 							style="width: 100%; margin-top: 0px; margin-bottom: 0px; height: 286px; resize: none;"
 							name="cntn" rows="10" class="form-control"
 							placeholder="내용을 입력해 주세요."></textarea>
-						<br> <br> <img id="camera_img" src="img/camera.png"
+						<br> <br> <img id="insertC" src="img/camera.png"
 							style="height: 90px; width: 130px"> <input type="file"
 							id="uploadFile" name="uploadFile"
 							accept="image/gif,image/jpeg,image/png" style="display: none;"
@@ -606,9 +606,9 @@ article {
 							style="width: 100%; margin-top: 0px; margin-bottom: 0px; height: 286px; resize: none;"
 							name="eml_cnt" rows="10" class="form-control"
 							placeholder="${cntn }"></textarea>
-						<br> <br> <img id="camera_img" src="img/camera.png"
+						<br> <br> <img id="updateC" src="img/camera.png"
 							style="height: 90px; width: 130px"> <input type="file"
-							id="file" name="file" accept="image/gif,image/jpeg,image/png"
+							id="uploadFile" name="uploadFile" accept="image/gif,image/jpeg,image/png"
 							style="display: none;"> <input type="hidden"
 							name="camera">
 					</form>
@@ -622,10 +622,14 @@ article {
 	</div>
 	<!-- 후기 수정 Modal 종료 -->
 	<script>
-	$('#camera_img').click(function (e) {
-		document.signform.camera.value = $(this).attr('src');
+	$('#insertC').click(function (e) {
 		e.preventDefault();
-		$('#file').click();
+		$('#signform #uploadFile').click();
+	});
+	
+	$('#updateC').click(function (e) {
+		e.preventDefault();
+		$('#rvUpdate #uploadFile').click();
 	});
 
 	
@@ -735,16 +739,17 @@ article {
 
 	}
 
+	//훈련사 상세보기로 이동
 	function tDetailSm(id) {
 		tlistForm.client_id.value = id
 		$('#tlistForm').submit();
 	}
 
-	 function rDelete(rid) {
+	//후기 삭제 처리
+	 function reviewDelete(rid) {
 		 alert('정말 삭제하시겠습니까?');
-		 rvDelete.review_no.value =rid
+		 rvDelete.review_no.value = rid
 		 $('#rvDelete').submit();
-		 location.reload();
 	} 
 </script>
 

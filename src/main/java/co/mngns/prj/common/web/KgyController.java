@@ -1,5 +1,6 @@
 package co.mngns.prj.common.web;
 
+import java.io.Console;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,26 +47,36 @@ public class KgyController {
 	@RequestMapping(value = "/reviewInsert.do")
 	@ResponseBody
 	// 리뷰 입력
-	public ResponseEntity<List<FilesVO>> reviewInsert(MultipartFile[] uploadFile, ReviewVO reviewVo, HttpSession session, Model model) throws Exception {
+	public int reviewInsert(MultipartFile[] uploadFile, ReviewVO reviewVo, HttpSession session, Model model) throws Exception {
 		List<FilesVO> list = new ArrayList<>();
 		String uploadFolder = "d:\\fileUp";
 		
 		reviewVo.setClient_id((Integer)session.getAttribute("id"));
+		int file_no = reviewService.rvFilenoSelect();
 		for (MultipartFile multipartFile : uploadFile) {
 			FilesVO filesVO = new FilesVO();
-			String fileName = multipartFile.getOriginalFilename();
-			File saveFile = new File(uploadFolder, fileName);
-			try {
-				multipartFile.transferTo(saveFile);
-				filesVO.setOrg(fileName);
-				reviewService.rvFilenoSelect();
-				reviewService.rvFileInsert(filesVO);
-			} catch (Exception e) {
-				e.printStackTrace();
+			if(multipartFile != null && multipartFile.getSize()>0  ) {
+				String uploadFileName = multipartFile.getOriginalFilename();
+				System.out.println(uploadFileName+"==============");
+				
+				
+				String fileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
+				File saveFile = new File(uploadFolder, fileName);
+				try {
+					multipartFile.transferTo(saveFile);
+					filesVO.setOrg(fileName);
+					filesVO.setFile_no(file_no);
+					reviewService.rvFileInsert(filesVO);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			} else {
+				System.out.println(multipartFile);
 			}
 		} // end for
-		reviewService.reviewInsert(reviewVo);
-		return new ResponseEntity<List<FilesVO>>(list, HttpStatus.OK);
+		reviewVo.setFile_no(file_no);
+		int a = reviewService.reviewInsert(reviewVo);
+		return a;
 	}
 	
 }

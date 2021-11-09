@@ -79,11 +79,11 @@
 </select>
 
 <insert id="rvFileInsert" parameterType="co.mngns.prj.common.vo.FilesVO">
-	insert into review
+	insert into files (org, use_yn, file_no, no, reg_dt) values (#{org}, 1, #{file_no}, file_seq.nextval, sysdate)
 </insert>
 
 <select id="rvFilenoSelect" resultType="int">
-	select max(file_no)+1 from files
+	select nvl(max(file_no),0)+1 from files
 </select>
 
 </mapper>

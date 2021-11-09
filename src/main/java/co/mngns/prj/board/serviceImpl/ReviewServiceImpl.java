@@ -66,7 +66,7 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public List<FilesVO> rvFileInsert(FilesVO filesVO) {
+	public int rvFileInsert(FilesVO filesVO) {
 		// 리뷰 파일 업로드
 		return map.rvFileInsert(filesVO);
 	}

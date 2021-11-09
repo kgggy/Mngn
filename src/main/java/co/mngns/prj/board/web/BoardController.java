@@ -70,7 +70,7 @@ public class BoardController {
 	// 리뷰 삭제
 	public String reviewDelete(Model model, ReviewVO vo) {
 		model.addAttribute("rDelete", rService.reviewDelete(vo));
-		return "client/cntReview";
+		return "redirect:cntReview.do";
 	}
 
 	@RequestMapping(value = "/boardList.do")
