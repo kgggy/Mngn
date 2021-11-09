@@ -1,5 +1,6 @@
 package co.mngns.prj.user.web;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class UserController {
 	@Autowired
 	ReviewService reviewService;
 
-	@PostMapping(value = "/login.do")
+	@PostMapping(value = "/login.do") 
 	// 로그인 처리페이지
 	public String login(Model model, ClientVO clientvo, HttpSession session, RedirectAttributes redirectAttributes) {
 		ClientVO vo = cntService.clientLogin(clientvo);
@@ -78,13 +79,15 @@ public class UserController {
 	@RequestMapping(value = "/joinForm.do")
 	// 회원가입 페이지
 	public String joinForm(Model model, ClientVO clientvo) {
-		model.addAttribute("client", cntService.clientSelectList());
 		return "joinForm";
 	}
 
 	@RequestMapping(value = "/cntProfile.do")
 	// 사용자 개인 프로필 페이지
-	public String cntProfile() {
+	public String cntProfile(Model model, ClientVO clientvo, HttpSession session) {
+		
+		clientvo.setClient_id((Integer)session.getAttribute("id"));
+		model.addAttribute("client", cntService.clientSelect(clientvo));
 		return "client/cntProfile";
 	}
 
@@ -136,8 +139,13 @@ public class UserController {
 
 	@RequestMapping(value = "/trnProfile.do")
 	// 훈련사 개인 프로필 페이지
-	public String trnProfile() {
-		return "trainer/trnProfile";
+	public String trnProfile(Model model, ClientVO clientvo, TrainerVO trainervo, HttpSession session) {
+		clientvo.setClient_id((Integer)session.getAttribute("id"));
+		trainervo.setClient_id((Integer)session.getAttribute("id"));
+		model.addAttribute("client", cntService.clientSelect(clientvo));
+		model.addAttribute("trainer", trnService.TrainerSelect(trainervo));
+
+		return "client/trnProfile";
 	}
 
 }
