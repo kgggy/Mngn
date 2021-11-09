@@ -7,7 +7,10 @@
 	SELECT B.* FROM ( SELECT A.* , ROWNUM RN FROM (
 		select review.*, 
 			   case review.star_rate when 1 then '★' when 2 then '★★' when 3 then '★★★' when 4 then '★★★★' else '★★★★★' end as star_shape,
-			   client.name 
+			   client.name ,
+			   (
+			   	select org from files where files.file_no = review.file_no and rownum = 1
+			   ) as fileorg
 		  from review 
 		  left join client on review.client_id = client.client_id
 	<![CDATA[ 

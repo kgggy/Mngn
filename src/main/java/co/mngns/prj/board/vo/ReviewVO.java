@@ -25,6 +25,6 @@ public class ReviewVO {
 	private int start;
 	private int end;
 	
-	private List<FilesVO> fileList;
+	private String fileorg;
 	
 }

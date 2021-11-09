@@ -71,11 +71,10 @@
 							data-target="#myModal">
 							<div class="text p-4" data-toggle="modal" data-target="#myModal">
 								<a href="blog-single.html" class="block-20 rounded"
-									style="background-image: url('images/image_1.jpg');"
-									data-toggle="modal" data-target="#myModal"> </a><br>
+									style="background-image: url('download.do?fileName=${rList.fileorg}');"></a><br>
 								<div class="meta mb-2">
 									<div>${rList.reg_dt }</div>
-									<div>${rList.name }</div>
+									<div>${rList.name } </div>
 									<div>
 										<a class="meta-chat"> ${rList.star_shape }</a>
 									</div>
