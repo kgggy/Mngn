@@ -480,6 +480,7 @@ article {
 			<div>
 				<form action="reviewDelete.do" id="rvDelete" name="rvDelete"
 					method="post">
+					<input type="hidden" name="review_no" id="review_no">
 					<table class="table table-striped table-hover">
 						<thead>
 							<tr>
@@ -503,7 +504,7 @@ article {
 									<td>${myReview.reg_dt }</td>
 									<td><a href="#" class="btn btn-sm manage"
 										data-toggle="modal" data-target="#reviewUpdate">수정</a>&nbsp;&nbsp;
-										<a href="javascript:rDelete(${myReview.review_no })"
+										<a href="javascript:reviewDelete(${myReview.review_no })"
 										class="btn btn-sm manage">삭제</a></td>
 								</tr>
 							</c:forEach>
@@ -525,7 +526,7 @@ article {
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body">
-					<form role="form" id="signform" name="signform" method="post">
+					<form role="form" id="signform" name="signform" method="post" enctype="multipart/form-data">
 						<input type="hidden" id="reser_no" name="reser_no">
 						<h2 align="center">
 							<strong>별점과 이용경험을 남겨주세요 :)</strong>
@@ -553,7 +554,7 @@ article {
 							style="width: 100%; margin-top: 0px; margin-bottom: 0px; height: 286px; resize: none;"
 							name="cntn" rows="10" class="form-control"
 							placeholder="내용을 입력해 주세요."></textarea>
-						<br> <br> <img id="camera_img" src="img/camera.png"
+						<br> <br> <img id="insertC" src="img/camera.png"
 							style="height: 90px; width: 130px"> <input type="file"
 							id="uploadFile" name="uploadFile"
 							accept="image/gif,image/jpeg,image/png" style="display: none;"
@@ -561,10 +562,8 @@ article {
 					</form>
 				</div>
 				<div class="modal-footer">
-					<button type="button" id="okbutton" class="btn btn-success"
-						onclick="insert()">입력</button>
-					<button type="button" id="uploadBtn" class="btn btn-danger"
-						data-dismiss="modal">취소</button>
+					<button type="button" id="uploadBtn" class="btn btn-success">입력</button>
+					<button type="button" id="cancel" class="btn btn-danger" data-dismiss="modal">취소</button>
 				</div>
 			</div>
 		</div>
@@ -572,7 +571,7 @@ article {
 	<!-- 후기 등록 Modal 종료 -->
 
 	<!-- 후기 수정 Modal 시작 -->
-	<div class="modal first" id="reviewUpdate"">
+	<div class="modal first" id="reviewUpdate">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -607,9 +606,9 @@ article {
 							style="width: 100%; margin-top: 0px; margin-bottom: 0px; height: 286px; resize: none;"
 							name="eml_cnt" rows="10" class="form-control"
 							placeholder="${cntn }"></textarea>
-						<br> <br> <img id="camera_img" src="img/camera.png"
+						<br> <br> <img id="updateC" src="img/camera.png"
 							style="height: 90px; width: 130px"> <input type="file"
-							id="file" name="file" accept="image/gif,image/jpeg,image/png"
+							id="uploadFile" name="uploadFile" accept="image/gif,image/jpeg,image/png"
 							style="display: none;"> <input type="hidden"
 							name="camera">
 					</form>
@@ -623,49 +622,24 @@ article {
 	</div>
 	<!-- 후기 수정 Modal 종료 -->
 	<script>
-	$('#camera_img').click(function (e) {
-		document.signform.camera.value = $(this).attr('src');
+	$('#insertC').click(function (e) {
 		e.preventDefault();
-		$('#file').click();
+		$('#signform #uploadFile').click();
+	});
+	
+	$('#updateC').click(function (e) {
+		e.preventDefault();
+		$('#rvUpdate #uploadFile').click();
 	});
 
-	function rDelete() {
-		alert('정말 삭제하시겠습니까?');
-
-	};
-
-	function status() { //console.log(status.value);
-		// Declare variables
-		var filter, table, tr, i, txtValue;
-		stts = document.getElementById("stts");
-		filter = stts.value;
-		table = document.getElementById("myTable");
-		tbody = table.getElementByTagName("tbody");
-		tr = tbody.getElementsByTagName("tr");
-
-		// Loop through all table rows, and hide those who don't match the search query
-		for (i = 0; i < tr.length; i++) {
-			td = tr[i].getElementsByTagName("td")[0];
-			if (td) {
-				txtValue = td.textContent || td.innerText;
-				if (txtValue.indexOf(filter) > -1) {
-					tr[i].style.display = "";
-				} else {
-					tr[i].style.display = "none";
-				}
-			}
-		}
-	};
-
-	//후기 등록하기
-	function insert() {
-		var data = $("#signform").serialize();
-		/* var form = new FormData();
-		var inputFile = $("input[name='uploadFile']");
-		var files = inputFile[0].files;
-
-		console.log(files); */
-
+	
+	//모달창 뜰때 예약번호 넘기기
+	$('#reviewModal').on('show.bs.modal', function (e) {
+		$('#reser_no').val($(event.target).data('reserno'))
+	})
+		
+	//후기 등록하기 및 파일업로드
+	$("#uploadBtn").on("click", function(e) {
 		if ($("input[name='star_rate']:checked").length == 0) {
 			alert("별점을 입력해주세요.");
 			return;
@@ -673,13 +647,16 @@ article {
 		if ($('#cntn').val() == 0) {
 			alert("내용을 입력해주세요.");
 			return;
-		} else {
-			alert("저장하시겠습니까?");
-
+		} 
+		if (!confirm("저장하시겠습니까?"))
+			return;
+		var form = new FormData(signform);
 		$.ajax({
 			url: "reviewInsert.do",
+			processData: false,
+			contentType: false,
 			type: "post",
-			data: data,
+			data: form,
 			success: function (data) {
 				if (data == 1) {
 					alert("후기가 등록되었습니다.");
@@ -691,20 +668,15 @@ article {
 			error: function () {
 				alert("후기 등록에 실패하였습니다.");
 			}
-		});
-		}
-	};
-
-	$('#reviewModal').on('show.bs.modal', function (e) {
-		$('#reser_no').val($(event.target).data('reserno'))
-	})
+		}); //ajax
+	}); //btn click
+	
+	
 
 	//이미지 미리보기
 	var sel_file;
 
-	$(document).ready(function () {
-		$("#file1").on("change", handleImgFileSelect);
-	});
+	$("#file1").on("change", handleImgFileSelect);
 
 	function handleImgFileSelect(e) {
 		var files = e.target.files;
@@ -728,6 +700,30 @@ article {
 		});
 	}
 
+	//조회하기 버튼
+	function status() { //console.log(status.value);
+		// Declare variables
+		var filter, table, tr, i, txtValue;
+		stts = document.getElementById("stts");
+		filter = stts.value;
+		table = document.getElementById("myTable");
+		tbody = table.getElementByTagName("tbody");
+		tr = tbody.getElementsByTagName("tr");
+
+		// Loop through all table rows, and hide those who don't match the search query
+		for (i = 0; i < tr.length; i++) {
+			td = tr[i].getElementsByTagName("td")[0];
+			if (td) {
+				txtValue = td.textContent || td.innerText;
+				if (txtValue.indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				} else {
+					tr[i].style.display = "none";
+				}
+			}
+		}
+	};
+	
 	//페이징 처리
 	function goList1(p) {
 		//searchFrm.page.value=p; //페이지 번호 받아서 폼태그에 넣어서 submit(폼 안에 페이지번호가 히든으로, 검색조건과 정렬방식도 가지고 넘어감)
@@ -743,12 +739,16 @@ article {
 
 	}
 
+	//훈련사 상세보기로 이동
 	function tDetailSm(id) {
 		tlistForm.client_id.value = id
 		$('#tlistForm').submit();
 	}
 
-	 function rDelete(rid) {
+	//후기 삭제 처리
+	 function reviewDelete(rid) {
+		 alert('정말 삭제하시겠습니까?');
+		 rvDelete.review_no.value = rid
 		 $('#rvDelete').submit();
 	} 
 </script>

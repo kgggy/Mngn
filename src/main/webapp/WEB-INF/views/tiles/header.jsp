@@ -36,7 +36,7 @@
 										 role="button" id="dropdownMenuLink"
 										aria-haspopup="true" aria-expanded="false"
 										data-toggle="dropdown"> <span
-											class="d-none d-sm-inline-block" > <strong>${name }님, 환영합니다!</strong>
+											class="d-none d-sm-inline-block" style="width:200px;" > <strong>${name }님, 환영합니다!</strong>
 										</span>
 									</a></li>
 								</ul>
