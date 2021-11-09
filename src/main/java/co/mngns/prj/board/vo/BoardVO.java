@@ -10,6 +10,11 @@ public class BoardVO {
 	private String ttl;
 	private String cntn;
 	private int mngr_id;
-	private Date reg_dt;	
+	private Date reg_dt;
+	
+	
+	//페이징 처리
+	private int start;
+	private int end;
 	
 }

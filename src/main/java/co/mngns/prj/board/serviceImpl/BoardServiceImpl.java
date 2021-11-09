@@ -39,6 +39,11 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardVO> boardList() {
 		return map.boardList();
 	}
+
+	@Override //공지사항 전체 건수
+	public int bCount(BoardVO vo) {
+		return map.bCount(vo);
+	}
 	
 
 }

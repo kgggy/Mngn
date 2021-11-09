@@ -43,4 +43,18 @@
 		where board_no = #{board_no}
 	
 	</delete>
+	
+	<!-- 공지사항 전체 건수 -->
+	<select id="bCount" resultType="int">
+		select count(*) from board
+	</select>
+	
+	<!-- 공지사항 페이징 -->
+	<select id="myBoardList" resultType="co.mngns.prj.board.vo.BoardVO">
+		SELECT * 
+		FROM( SELECT T1.*, ROWNUM AS RNUM, COUNT(*) OVER() AS TOTAL_CNT FROM( SELECT * FROM TB_BOARD ORDER BY IDX DESC) T1 ) WHERE RNUM > 0 AND RNUM <= 20
+
+	
+	</select>
+	
 </mapper>

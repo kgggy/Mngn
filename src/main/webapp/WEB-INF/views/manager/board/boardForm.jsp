@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
@@ -197,35 +197,36 @@
 					<div class="col-md-12 mb-4">
 						<div class="card h-100">
 							<div class="astino-pr-form card-body">
-								<form action="boardInsert.do" role="form" id="insertForm" name="insertForm"
-									method="post">
+								<form action="boardInsert.do" role="form" id="insertForm"
+									name="insertForm" method="post">
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput">제 목</label> <input
-											type="text" class="form-control" id="${ttl }"
-											name="ttl" placeholder="제목을 입력하세요.">
+											type="text" class="form-control" id="${ttl }" name="ttl"
+											placeholder="제목을 입력하세요.">
 									</div>
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput2">작성자</label> <input
-											type="text" class="form-control" name="" id="formGroupExampleInput2"
-											placeholder="관리자">
+											type="text" class="form-control" name=""
+											id="formGroupExampleInput2" placeholder="관리자" readonly>
 									</div>
 									<div class="form-group d-flex align-items-center">
-										<label for="formGroupExampleInput3">작성 날짜</label> 
-										<fmt:formatDate value="${sysdate }" pattern="yyyy년 MM월 dd일 HH시ss분"  />
+										<label for="formGroupExampleInput3">작성 날짜</label>
+										<fmt:formatDate value="${sysdate }"
+											pattern="yyyy년 MM월 dd일 HH시ss분" />
 									</div>
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput4">내 용</label>
-										<textarea class="form-control" id="${cntn }"
-											name="cntn" placeholder="내용을 입력하세요."></textarea>
+										<textarea class="form-control" id="${cntn }" name="cntn"
+											placeholder="내용을 입력하세요."></textarea>
 									</div>
 									<div style="display: none;">
 										<label for="formGroupExampleInput4">일련번호</label> <input
 											type="text" class="form-control" id="boardNo"></input>
 									</div>
 									<div class="form-submit">
-										<input type="button" onClick="boardInsert()" 
-										class="btn btn-outline-danger float-right" value="등록하기"
-								id="boardUpdate" />
+										<input type="submit" onClick="boardInsert()"
+											class="btn btn-outline-danger float-right" value="등록하기"
+											id="boardUpdate" />
 									</div>
 								</form>
 							</div>
@@ -264,8 +265,7 @@
 	</main>
 </body>
 <script>
-	function boardInsert() {
-		var data = $("#insertForm").serialize();
+	$("#uploadBtn").on("click", function(){
 			if($('#ttl').val() == 0) {
 				alert('제목을 입력하세요.');
 				return;
@@ -273,26 +273,29 @@
 			if($('#cntn').var() == 0) {
 				alert('내용을 입력하세요.');
 				return;
-			} else {
-				alert('저장하시겠습니까?');
-				
-			
+			} 
+			if (!confirm('저장하시겠습니까?'))
+				return;
+			var form = new FormData(insertForm);
 			$.ajax({
-				url : "boardInsert.do",
+				url : "boardList.do",
+				processData : false,
+				contentType : false,
 				type : "post",
+				data : form,
 				success : function(data) {
 					if(data == 1) {
 						alert("공지사항이 등록되었습니다.");
 						location.reload();
 					} else {
-						alert("공지사항 등록에 실패했습니다.");
+						alert("공지사항 X");
 					}
 				},
 				error : function () {
 					alert("공지사항 등록에 실패했습니다.")
 				}
-			});
-		}
+			}); //end ajax
+		} // end btn click
 	}
 </script>
 </html>

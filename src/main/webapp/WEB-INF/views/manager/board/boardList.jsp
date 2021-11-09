@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags" %>
 
 <!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -219,36 +220,38 @@ head
 
 							<div class="card-body">
 								<div class="table-responsive">
-									<table class="table table-hover">
-										<thead>
-											<tr>
-												<th scope="col" class="text-dark">일련번호</th>
-												<th scope="col" class="text-dark">제목</th>
-												<th scope="col" class="text-dark">작성자</th>
-												<th scope="col" class="text-dark">작성일자</th>
-												<th scope="col" class="text-dark"></th>
-											</tr>
-										</thead>
-
-										<tbody>
-											<c:forEach var="board" items="${boards}">
+									<form action="">
+										<table id="myTable" class="table table-hover">
+											<thead>
 												<tr>
-													<td>${board.board_no }</td>
-													<td>${board.ttl }</td>
-													<td>관리자</td>
-													<td>${board.reg_dt }</td>
-													<td><input type="button"
-															class="btn btn-outline-danger delete_board" value="수정" id="btnUpdate"
-															data-toggle="modal" data-target="#exampleModalCenter" />
-														<input type="button" class="btn btn-outline-danger " value="삭제"
-														id="btnDelete" >
-													</td>
-													<td style="display: none;">${board.cntn}</td>
-													<td style="display: none;">${board.mngr_id })</td>
+													<th scope="col" class="text-dark">일련번호</th>
+													<th scope="col" class="text-dark">제목</th>
+													<th scope="col" class="text-dark">작성자</th>
+													<th scope="col" class="text-dark">작성일자</th>
+													<th scope="col" class="text-dark"></th>
 												</tr>
-											</c:forEach>
-										</tbody>
-									</table>
+											</thead>
+
+											<tbody>
+												<c:forEach var="board" items="${boards}">
+													<tr>
+														<td>${board.board_no }</td>
+														<td>${board.ttl }</td>
+														<td>관리자</td>
+														<td>${board.reg_dt }</td>
+														<td><a href="#"
+															class="btn btn-outline-danger delete_board"
+															data-toggle="modal" data-target="#exampleModalCenter">수정</a>&nbsp;&nbsp;
+															<a href="javascript:bDelete(${board.board_no })"
+															class="btn btn-outline-danger">삭제</a></td>
+														<td style="display: none;">${board.cntn}</td>
+														<td style="display: none;">${board.mngr_id })</td>
+													</tr>
+												</c:forEach>
+											</tbody>
+										</table>
+									</form>
+									<my:paging jsFunc="goList" paging="${bpaging }" />
 								</div>
 								<br>
 								<div>
@@ -312,10 +315,12 @@ head
 					<div class="col-md-12 mb-4">
 						<div class="card h-100">
 							<div class="astino-pr-form card-body">
-								<form role="form" acrtion="boardUpdate.do" id="boardModifyForm" name="boardModifyForm" method="post">
+								<form role="form" action="boardUpdate.do" id="boardModifyForm"
+									name="boardModifyForm" method="post">
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput">제 목</label> <input
-											type="text" class="form-control" id="boardTtl" placeholder="제목을 입력하세요">
+											type="text" class="form-control" id="boardTtl"
+											placeholder="제목을 입력하세요">
 									</div>
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput2">작성자</label> <input
@@ -324,25 +329,24 @@ head
 									</div>
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput3">작성 날짜</label> <input
-											type="date" class="form-control" id="boardDt"
-											readonly>
+											type="date" class="form-control" id="boardDt" readonly>
 									</div>
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput4">내 용</label>
 										<textarea class="form-control" id="boardCntn"
 											placeholder="내용을 입력하세요"></textarea>
 									</div>
-									<div style="display : none;" >
-										<label for="formGroupExampleInput4">일련번호</label>
-										<input type="text" class="form-control"id="boardNo"></input>
+									<div style="display: none;">
+										<label for="formGroupExampleInput4">일련번호</label> <input
+											type="text" class="form-control" id="boardNo"></input>
 									</div>
 								</form>
 							</div>
 						</div>
 						<div class="modal-footer">
-							<input type="button"  class="btn btn-outline-danger" value="수정"
-								id="boardUpdate" />
-							<button type="button"  class="btn btn-outline-danger"
+							<input type="button" class="btn btn-outline-danger" value="수정"
+								name="boardUpdate" id="boardUpdate" />
+							<button type="button" class="btn btn-outline-danger"
 								data-dismiss="modal">닫기</button>
 						</div>
 					</div>
@@ -352,22 +356,25 @@ head
 		</div>
 	</div>
 	<!-- Large Size Modal-->
-</body>
-<script>
-	document.getElementById("boardUpdate").onclick = function() {bUpdate()};
-		
-		function bUpdate() {
-			alert('공지사항을 수정하시겠습니까?');
-			location.reload();
-			
-		};
-	
-	document.getElementById("btnDelete").onclick = function() {bDelete()};
-		
-		function bDelete() {
-			alert('공지사항을 삭제하시겠습니까?');
-			location.reload();
-		};
+	<script>
+		//modal 뜰 때 공지사항 번호 넘기기
+		$('#exampleModalCenter').on('show.bs.modal', function(e) {
+			$('#board_no').val($(event.target).data('boardno'))
+		});
 
-</script>
+		//공지사항 삭제
+		function bDelete(bno) {
+			alert('정말 삭제하시겠습니까?');
+			myTable.board_no.value = bno
+			$('#myTable').submit();
+			location.reload();
+		}
+		
+		//페이징 처리
+		function goList(p) {
+			location.href = "boardList.do?page=" + p
+		}
+	</script>
+</body>
+
 </html>
