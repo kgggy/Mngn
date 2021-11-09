@@ -3,23 +3,25 @@
 <mapper namespace="co.mngns.prj.pet.map.PetMapper">
 
 	<select resultType="co.mngns.prj.pet.vo.PetVO"
-		id="petSelelctList">
-
-		select * from pet
+		id="petList">
+	select p.* ,case gen when 'M' then '♂' when 'W' then '♀' end as gen_wm
+	from pet p, client c 
+	where p.client_id = c.client_id 
+	and	p.client_id = #{client_id}
 	</select>
 
-	<select resultType="co.mngns.prj.pet.vo.PetVO" id="petSelect">
+	<!-- <select resultType="co.mngns.prj.pet.vo.PetVO" id="petSelect">
+		select * from
+		pet where pet_id = #{pet_id}
+	</select> -->
 
-		select * from pet where pet_id = #{pet_id}
+	<insert id="petInsert">
 
-	</select>
-	
-	<insert id = "petInsert">
-	
-	 insert into pet(pet_id, knd, name, gen, age, wgt, oper,memo,file_no, client_id, species)
-	  values(pet_seq.nextval, #{knd},#{name},#{gen}, #{age}, #{wgt}, #{oper}, #{memo}, 0, #{client_id}, #{species})
-	
-	 
+		insert into pet(pet_id, knd, name, gen, age, wgt, oper,memo,file_no,
+		client_id, species)
+		values(pet_seq.nextval, #{knd},#{name},#{gen}, #{age}, #{wgt}, #{oper}, #{memo}, 0,
+		#{client_id}, #{species})
+
 	</insert>
 
 

@@ -12,11 +12,11 @@
 <script>
 	IMP.init("imp82633653"); // 예: imp00000000
 	function requestPay() {
-		// IMP.request_pay(param, callback) 결제창 호출
-		/* 		IMP.request_pay({ // param
+		 IMP.request_pay(param, callback) 결제창 호출
+		 		IMP.request_pay({ // param
 		 pg : "html5_inicis",
 		 pay_method : "card",
-		 merchant_uid : "19", //결제 시마다 번호 바꿔서 넣기7 
+		 merchant_uid : "20", //결제 시마다 번호 바꿔서 넣기7 
 		 name : "산책서비스",
 		 amount : ${reser.prc},
 		 buyer_email : "@gmail.com",
@@ -28,7 +28,7 @@
 		 } else {
 		 alert("결제에 실패하였습니다. 다시 결제하여 주시길 바랍니다.");
 		 }
-		 }); */
+		 }); 
 
 		$("#pmForm").submit();
 	}
@@ -104,7 +104,7 @@ tr {
 			</table>
 			<input type="hidden" name="bill_amt" value="${reser.prc }"> <input
 				type="hidden" name="bill_phone" value="010-1234-1234"><input
-				type="hidden" name="bill_card" value="19">
+				type="hidden" name="bill_card" value="20">
 		</form>
 	</div>
 	<br />

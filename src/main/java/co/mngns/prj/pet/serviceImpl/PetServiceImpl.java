@@ -12,11 +12,12 @@ import co.mngns.prj.pet.vo.PetVO;
 @Service
 public class PetServiceImpl implements PetService {
 
-	@Autowired PetMapper petMapper;
-	
+	@Autowired
+	PetMapper petMapper;
+
 	@Override
-	public List<PetVO> PetSelectList() {
-		return null;
+	public List<PetVO> PetList(PetVO pet) {
+		return petMapper.petList(pet);
 	}
 
 	@Override
@@ -39,5 +40,6 @@ public class PetServiceImpl implements PetService {
 	public int PetDelete(PetVO pet) {
 		return 0;
 	}
+
 
 }

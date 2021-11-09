@@ -15,4 +15,6 @@ public class PetVO {
 	private Integer file_no;
 	private Integer client_id;
 	private String species;
+	
+	private String gen_wm;
 }
