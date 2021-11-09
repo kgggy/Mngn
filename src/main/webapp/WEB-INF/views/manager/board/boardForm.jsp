@@ -55,15 +55,6 @@
 <script src="assets/js/sidebar-nav.js"></script>
 <script src="assets/js/dashboard-page-scripts.js"></script>
 
-<script>
-
-function result() {
-
-		alert("등록하시겠습니까?");
-		insertForm.submit();
-}
-</script>
-
 </head>
 <!-- End Head -->
 
@@ -206,17 +197,17 @@ function result() {
 					<div class="col-md-12 mb-4">
 						<div class="card h-100">
 							<div class="astino-pr-form card-body">
-								<form action="boardList.do" role="form" id="insertForm" name="insertForm"
+								<form action="boardInsert.do" role="form" id="insertForm" name="insertForm"
 									method="post">
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput">제 목</label> <input
-											type="text" class="form-control" id="formGroupExampleInput"
-											name="ttl">
+											type="text" class="form-control" id="${ttl }"
+											name="ttl" placeholder="제목을 입력하세요.">
 									</div>
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput2">작성자</label> <input
 											type="text" class="form-control" name="" id="formGroupExampleInput2"
-											value="관리자">
+											placeholder="관리자">
 									</div>
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput3">작성 날짜</label> 
@@ -224,16 +215,17 @@ function result() {
 									</div>
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput4">내 용</label>
-										<textarea class="form-control" id="formGroupExampleInput6"
-											name="cntn"></textarea>
+										<textarea class="form-control" id="${cntn }"
+											name="cntn" placeholder="내용을 입력하세요."></textarea>
 									</div>
 									<div style="display: none;">
 										<label for="formGroupExampleInput4">일련번호</label> <input
 											type="text" class="form-control" id="boardNo"></input>
 									</div>
 									<div class="form-submit">
-										<input type="button" class="btn btn-outline-danger float-right" value="등록하기" class="submit"
-											onclick="result()" />
+										<input type="button" onClick="boardInsert()" 
+										class="btn btn-outline-danger float-right" value="등록하기"
+								id="boardUpdate" />
 									</div>
 								</form>
 							</div>
@@ -271,4 +263,36 @@ function result() {
 		</div>
 	</main>
 </body>
+<script>
+	function boardInsert() {
+		var data = $("#insertForm").serialize();
+			if($('#ttl').val() == 0) {
+				alert('제목을 입력하세요.');
+				return;
+			}
+			if($('#cntn').var() == 0) {
+				alert('내용을 입력하세요.');
+				return;
+			} else {
+				alert('저장하시겠습니까?');
+				
+			
+			$.ajax({
+				url : "boardInsert.do",
+				type : "post",
+				success : function(data) {
+					if(data == 1) {
+						alert("공지사항이 등록되었습니다.");
+						location.reload();
+					} else {
+						alert("공지사항 등록에 실패했습니다.");
+					}
+				},
+				error : function () {
+					alert("공지사항 등록에 실패했습니다.")
+				}
+			});
+		}
+	}
+</script>
 </html>

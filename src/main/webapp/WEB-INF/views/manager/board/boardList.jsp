@@ -240,8 +240,8 @@ head
 													<td><input type="button"
 															class="btn btn-outline-danger delete_board" value="수정" id="btnUpdate"
 															data-toggle="modal" data-target="#exampleModalCenter" />
-														<input type="button" class="btn btn-outline-danger delete_board_item" value="삭제" 
-														data-index="<?=$row['board_no']?>" />
+														<input type="button" class="btn btn-outline-danger " value="삭제"
+														id="btnDelete" >
 													</td>
 													<td style="display: none;">${board.cntn}</td>
 													<td style="display: none;">${board.mngr_id })</td>
@@ -312,10 +312,10 @@ head
 					<div class="col-md-12 mb-4">
 						<div class="card h-100">
 							<div class="astino-pr-form card-body">
-								<form role="form" id="boardModifyForm" name="boardModifyForm" method="post">
+								<form role="form" acrtion="boardUpdate.do" id="boardModifyForm" name="boardModifyForm" method="post">
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput">제 목</label> <input
-											type="text" class="form-control" id="boardTtl" placeholder="">
+											type="text" class="form-control" id="boardTtl" placeholder="제목을 입력하세요">
 									</div>
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput2">작성자</label> <input
@@ -324,7 +324,7 @@ head
 									</div>
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput3">작성 날짜</label> <input
-											type="date" class="form-control" id="boardDt" placeholder=""
+											type="date" class="form-control" id="boardDt"
 											readonly>
 									</div>
 									<div class="form-group d-flex align-items-center">
@@ -340,9 +340,9 @@ head
 							</div>
 						</div>
 						<div class="modal-footer">
-							<input type="button" class="btn btn-outline-danger" value="수정"
-								id="btnUpdate" />
-							<button type="button" class="btn btn-outline-danger"
+							<input type="button"  class="btn btn-outline-danger" value="수정"
+								id="boardUpdate" />
+							<button type="button"  class="btn btn-outline-danger"
 								data-dismiss="modal">닫기</button>
 						</div>
 					</div>
@@ -353,49 +353,21 @@ head
 	</div>
 	<!-- Large Size Modal-->
 </body>
-
 <script>
-	$(document).on("click", "button.delete_board_item", function() {
-		var index = $(this).attr("data-index");
-		if(confirm("선택한 공지사항을 삭제 하시겠습니까?")) {
-			var itemList = [];
-			itemList[0] = index;
-			deleteBoard(itemList);
+	document.getElementById("boardUpdate").onclick = function() {bUpdate()};
+		
+		function bUpdate() {
+			alert('공지사항을 수정하시겠습니까?');
+			location.reload();
 			
-			}
-		}
-	})
-
-	function deleteBoard(itemList) {
-		var inputData = {
-				csrf : '<?=$this->board_no?>',
-				itemList : itemList
 		};
+	
+	document.getElementById("btnDelete").onclick = function() {bDelete()};
 		
-		$.ajax({
-			url :'<?=$this->lib->getUrl("manager/board/boardForm")?>',
-			type : "POST",
-			data : inputData,
-			dataType : "json",
-			error : function(re)
-			
-		});
-		
-		
-		
-		$("#btnDelete").on("click", function() {
-			window.event.stopPropagation();
-			var board_no = $(this).closest("form").find("#boardNo").val();
-			$.ajax({
-				url : "",
-				type : 'DELETE',
-				dataType : "json",
-				success : function(data) {
-					boardList();
-				}
-			});
-			$(this).parent().remove();
-		});
-	}
+		function bDelete() {
+			alert('공지사항을 삭제하시겠습니까?');
+			location.reload();
+		};
+
 </script>
 </html>

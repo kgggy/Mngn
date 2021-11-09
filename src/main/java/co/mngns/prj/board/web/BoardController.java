@@ -80,31 +80,41 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/boardList.do")
-	// 관리자 공지사항 목록
+	// 관리자 공지사항 목록보기
 	public String boardList(Model model) {
 		model.addAttribute("boards", bService.boardList());
 		return "manager/board/boardList";
 	}
 
-	@PostMapping(value = "/boardInsertForm.do")
-	// 관리자 공지사항 등록 페이지 호출
-	public String boardInsertForm() {
-		return "manager/board/boardList";
-	}
-
 	@GetMapping(value = "/boardForm.do")
-	// 관리자 공지사항 등록
-	public String boardForm(Model model) {
+	// 관리자 공지사항 등록 페이지 호출
+	public String boardInsertForm(Model model) {
 		Date sysdate = new Date();
 		model.addAttribute("sysdate", sysdate);
 		return "manager/board/boardForm";
 	}
+
+	@PostMapping(value = "/boardInsert.do")
+	// 관리자 공지사항 등록
+	public String boardForm(Model model, BoardVO vo) {
+		bService.boardInsert(vo);
+		return "manager/board/boardList";
+	}
 	
 	@RequestMapping(value = "/boardDelete.do") 
 	// 공지사항 삭제 
-	public String boardDelete(BoardVO vo) {
-		bService.boardDelete(vo.getBoard_no());
-		return "redirect:/boardList.do"; 
+	public String boardDelete(Model model, BoardVO vo) {
+		model.addAttribute("bDelete", bService.boardDelete(vo));
+		return "manager/board/boardList"; 
+	}
+	
+	@RequestMapping(value = "/boardUpdate.do")
+	//공지사항 수정
+	public String boardUpdate(Model model, BoardVO vo) {
+		bService.boardUpdate(vo);
+		model.addAttribute("boardTtl", bService.boardUpdate(vo));
+		model.addAttribute("boardCntn", bService.boardUpdate(vo));
+		return "manager/board/boardList";
 	}
 	 
 }
