@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import co.mngns.prj.board.map.ReviewMapper;
 import co.mngns.prj.board.service.ReviewService;
 import co.mngns.prj.board.vo.ReviewVO;
+import co.mngns.prj.common.vo.FilesVO;
 
 @Repository("ReviewVO")//후기
 public class ReviewServiceImpl implements ReviewService {
@@ -62,6 +63,18 @@ public class ReviewServiceImpl implements ReviewService {
 	public int myReviewCount(ReviewVO vo) {
 		// 내가 쓴 리뷰 건수
 		return map.myReviewCount(vo);
+	}
+
+	@Override
+	public List<FilesVO> rvFileInsert(FilesVO filesVO) {
+		// 리뷰 파일 업로드
+		return map.rvFileInsert(filesVO);
+	}
+
+	@Override
+	public int rvFilenoSelect() {
+		// 파일번호 검색
+		return map.rvFilenoSelect();
 	}
 
 }

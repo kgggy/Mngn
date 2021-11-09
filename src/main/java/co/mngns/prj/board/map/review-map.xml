@@ -78,4 +78,12 @@
    			and r.client_id = #{client_id}
 </select>
 
+<insert id="rvFileInsert" parameterType="co.mngns.prj.common.vo.FilesVO">
+	insert into review
+</insert>
+
+<select id="rvFilenoSelect" resultType="int">
+	select max(file_no)+1 from files
+</select>
+
 </mapper>

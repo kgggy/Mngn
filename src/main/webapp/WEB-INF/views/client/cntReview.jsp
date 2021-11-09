@@ -480,6 +480,7 @@ article {
 			<div>
 				<form action="reviewDelete.do" id="rvDelete" name="rvDelete"
 					method="post">
+					<input type="hidden" name="review_no" id="review_no">
 					<table class="table table-striped table-hover">
 						<thead>
 							<tr>
@@ -525,7 +526,7 @@ article {
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body">
-					<form role="form" id="signform" name="signform" method="post">
+					<form role="form" id="signform" name="signform" method="post" enctype="multipart/form-data">
 						<input type="hidden" id="reser_no" name="reser_no">
 						<h2 align="center">
 							<strong>별점과 이용경험을 남겨주세요 :)</strong>
@@ -561,10 +562,8 @@ article {
 					</form>
 				</div>
 				<div class="modal-footer">
-					<button type="button" id="okbutton" class="btn btn-success"
-						onclick="insert()">입력</button>
-					<button type="button" id="uploadBtn" class="btn btn-danger"
-						data-dismiss="modal">취소</button>
+					<button type="button" id="uploadBtn" class="btn btn-success">입력</button>
+					<button type="button" id="cancel" class="btn btn-danger" data-dismiss="modal">취소</button>
 				</div>
 			</div>
 		</div>
@@ -572,7 +571,7 @@ article {
 	<!-- 후기 등록 Modal 종료 -->
 
 	<!-- 후기 수정 Modal 시작 -->
-	<div class="modal first" id="reviewUpdate"">
+	<div class="modal first" id="reviewUpdate">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -629,43 +628,14 @@ article {
 		$('#file').click();
 	});
 
-	function rDelete() {
-		alert('정말 삭제하시겠습니까?');
-
-	};
-
-	function status() { //console.log(status.value);
-		// Declare variables
-		var filter, table, tr, i, txtValue;
-		stts = document.getElementById("stts");
-		filter = stts.value;
-		table = document.getElementById("myTable");
-		tbody = table.getElementByTagName("tbody");
-		tr = tbody.getElementsByTagName("tr");
-
-		// Loop through all table rows, and hide those who don't match the search query
-		for (i = 0; i < tr.length; i++) {
-			td = tr[i].getElementsByTagName("td")[0];
-			if (td) {
-				txtValue = td.textContent || td.innerText;
-				if (txtValue.indexOf(filter) > -1) {
-					tr[i].style.display = "";
-				} else {
-					tr[i].style.display = "none";
-				}
-			}
-		}
-	};
-
-	//후기 등록하기
-	function insert() {
-		var data = $("#signform").serialize();
-		/* var form = new FormData();
-		var inputFile = $("input[name='uploadFile']");
-		var files = inputFile[0].files;
-
-		console.log(files); */
-
+	
+	//모달창 뜰때 예약번호 넘기기
+	$('#reviewModal').on('show.bs.modal', function (e) {
+		$('#reser_no').val($(event.target).data('reserno'))
+	})
+		
+	//후기 등록하기 및 파일업로드
+	$("#uploadBtn").on("click", function(e) {
 		if ($("input[name='star_rate']:checked").length == 0) {
 			alert("별점을 입력해주세요.");
 			return;
@@ -673,13 +643,16 @@ article {
 		if ($('#cntn').val() == 0) {
 			alert("내용을 입력해주세요.");
 			return;
-		} else {
-			alert("저장하시겠습니까?");
-
+		} 
+		if (!confirm("저장하시겠습니까?"))
+			return;
+		var form = new FormData(signform);
 		$.ajax({
 			url: "reviewInsert.do",
+			processData: false,
+			contentType: false,
 			type: "post",
-			data: data,
+			data: form,
 			success: function (data) {
 				if (data == 1) {
 					alert("후기가 등록되었습니다.");
@@ -691,20 +664,15 @@ article {
 			error: function () {
 				alert("후기 등록에 실패하였습니다.");
 			}
-		});
-		}
-	};
-
-	$('#reviewModal').on('show.bs.modal', function (e) {
-		$('#reser_no').val($(event.target).data('reserno'))
-	})
+		}); //ajax
+	}); //btn click
+	
+	
 
 	//이미지 미리보기
 	var sel_file;
 
-	$(document).ready(function () {
-		$("#file1").on("change", handleImgFileSelect);
-	});
+	$("#file1").on("change", handleImgFileSelect);
 
 	function handleImgFileSelect(e) {
 		var files = e.target.files;
@@ -728,6 +696,30 @@ article {
 		});
 	}
 
+	//조회하기 버튼
+	function status() { //console.log(status.value);
+		// Declare variables
+		var filter, table, tr, i, txtValue;
+		stts = document.getElementById("stts");
+		filter = stts.value;
+		table = document.getElementById("myTable");
+		tbody = table.getElementByTagName("tbody");
+		tr = tbody.getElementsByTagName("tr");
+
+		// Loop through all table rows, and hide those who don't match the search query
+		for (i = 0; i < tr.length; i++) {
+			td = tr[i].getElementsByTagName("td")[0];
+			if (td) {
+				txtValue = td.textContent || td.innerText;
+				if (txtValue.indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				} else {
+					tr[i].style.display = "none";
+				}
+			}
+		}
+	};
+	
 	//페이징 처리
 	function goList1(p) {
 		//searchFrm.page.value=p; //페이지 번호 받아서 폼태그에 넣어서 submit(폼 안에 페이지번호가 히든으로, 검색조건과 정렬방식도 가지고 넘어감)
@@ -749,7 +741,10 @@ article {
 	}
 
 	 function rDelete(rid) {
+		 alert('정말 삭제하시겠습니까?');
+		 rvDelete.review_no.value =rid
 		 $('#rvDelete').submit();
+		 location.reload();
 	} 
 </script>
 
