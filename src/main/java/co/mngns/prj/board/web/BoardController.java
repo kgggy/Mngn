@@ -58,28 +58,19 @@ public class BoardController {
 		svcpaging.setTotalRecord(reserService.reserCount(reser));
 		model.addAttribute("serviceUses", reserService.serviceUse(reser));
 		model.addAttribute("svcPaging", svcpaging);		
-		//이용후기 페이징
-		rvpaging.setPage(page2);
-		rvpaging.setPageUnit(5);
-		vo.setClient_id((Integer) session.getAttribute("id"));
-		vo.setStart(rvpaging.getFirst());
-		vo.setEnd(rvpaging.getLast());
-		rvpaging.setTotalRecord(rService.myReviewCount(vo));		
-		model.addAttribute("myReviews", rService.myReviewList(vo));
-		model.addAttribute("serviceUses", reserService.serviceUse(reser));
-		model.addAttribute("svcPaging", svcpaging);		
-		//이용후기 페이징
-		rvpaging.setPage(page2);
-		rvpaging.setPageUnit(5);
-		vo.setClient_id((Integer) session.getAttribute("id"));
-		vo.setStart(rvpaging.getFirst());
-		vo.setEnd(rvpaging.getLast());
-		rvpaging.setTotalRecord(rService.myReviewCount(vo));		
-		model.addAttribute("myReviews", rService.myReviewList(vo));
-		model.addAttribute("rvPaging", rvpaging);		
-		
-		return "client/cntReview";
-	}
+		 //이용후기 페이징
+	      rvpaging.setPage(page2);
+	      rvpaging.setPageUnit(5);
+	      vo.setClient_id((Integer) session.getAttribute("id"));
+	      vo.setStart(rvpaging.getFirst());
+	      vo.setEnd(rvpaging.getLast());
+	      rvpaging.setTotalRecord(rService.myReviewCount(vo));      
+	      model.addAttribute("myReviews", rService.myReviewList(vo));
+	      model.addAttribute("rvPaging", rvpaging);      
+	      
+	      return "client/cntReview";
+	   }
+
 
 	@RequestMapping(value = "/reviewDelete.do")
 	// 리뷰 삭제
@@ -108,13 +99,6 @@ public class BoardController {
 		return "manager/board/boardForm";
 	}
 	
-	
-	/*
-	 * @RequestMapping(value = "/boardInsertForm.do") public String
-	 * boardInsertForm(BoardVO vo) { bService.boardInsert(vo); return
-	 * "manager/board/boardInsertForm"; }
-	 */
-	
 	@RequestMapping(value = "/boardDelete.do") 
 	// 공지사항 삭제 
 	public String boardDelete(BoardVO vo) {
@@ -122,5 +106,4 @@ public class BoardController {
 		return "redirect:/boardList.do"; 
 	}
 	 
-
 }
