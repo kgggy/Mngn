@@ -9,7 +9,7 @@
 
 	<select id="clientAdd"
 		resultType="co.mngns.prj.user.vo.ClientVO">
-		select adres1, adres2 from client where client_id =
+		select * from client where client_id =
 		#{client_id}
 	</select>
 

@@ -3,7 +3,7 @@
 <mapper namespace="co.mngns.prj.svc.map.BillMapper">
 <insert id="billInsert">
 	insert into bill(bill_card, bill_phone, bill_amt, bill_no, reser_no)
-	values(#{bill_card}, #{bill_phone}, #{bill_amt}, bill_seq.nextval, #{reser_no})
+	values(card_seq.nextval, #{bill_phone}, #{bill_amt}, bill_seq.nextval, #{reser_no})
 </insert>
 
 <delete id="billDelete">
