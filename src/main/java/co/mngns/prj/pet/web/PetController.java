@@ -42,8 +42,9 @@ public class PetController {
 
 	@RequestMapping(value = "/petInsert.do")
 	public String petInsert(HttpSession session, PetVO pet) {
+		pet.setClient_id((Integer) session.getAttribute("id"));
 		petService.PetInsert(pet);
-		return "redirect:aniList.do";
+		return "redirect:petInsert.do";
 	}
 
 }
