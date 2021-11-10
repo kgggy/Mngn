@@ -12,25 +12,25 @@
 <script>
 	IMP.init("imp82633653"); // 예: imp00000000
 	function requestPay() {
-		 IMP.request_pay(param, callback) 결제창 호출
-		 		IMP.request_pay({ // param
+		 //IMP.request_pay(param, callback) 결제창 호출
+		 IMP.request_pay({ // param
 		 pg : "html5_inicis",
 		 pay_method : "card",
-		 merchant_uid : "20", //결제 시마다 번호 바꿔서 넣기7 
+		 merchant_uid : "", //결제 시마다 번호 바꿔서 넣기7 
 		 name : "산책서비스",
 		 amount : ${reser.prc},
-		 buyer_email : "@gmail.com",
+		 buyer_email : "${reser.email}",
 		 buyer_name : "${name}",
-		 buyer_phone : "${phone}",
+		 buyer_phone : "${reser.phone}",
 		 }, function(rsp) { // callback
 		 if (rsp.success) {
-		 $("#billForm").submit();
+			 $("#pmForm").submit();
 		 } else {
 		 alert("결제에 실패하였습니다. 다시 결제하여 주시길 바랍니다.");
 		 }
-		 }); 
+		 });
 
-		$("#pmForm").submit();
+		
 	}
 </script>
 <style>
@@ -72,6 +72,8 @@ tr {
 	<div align="center" class="div">
 		<form id="pmForm" action="payResult.do" method="post">
 			<input type="hidden" name="client_id1" value="${reser.client_id1 }">
+			<input type="hidden" name="client_id1" value="${reser.phone }">
+			<input type="hidden" name="client_id1" value="${reser.email }">
 			<table>
 				<tr>
 					<th width="300px">서비스</th>
@@ -83,7 +85,7 @@ tr {
 				</tr>
 				<tr>
 					<th width="300px">날짜 및 시간</th>
-					<td width="500px">${reser.reser_dt }🐾${reser.svc_bgn_tm }:00</td>
+					<td width="500px">${reser.reser_dt } 🐾 ${reser.svc_bgn_tm }:00</td>
 				</tr>
 				<tr>
 					<th width="300px">대상</th>
@@ -103,8 +105,7 @@ tr {
 				</tr>
 			</table>
 			<input type="hidden" name="bill_amt" value="${reser.prc }"> <input
-				type="hidden" name="bill_phone" value="010-1234-1234"><input
-				type="hidden" name="bill_card" value="20">
+				type="hidden" name="bill_phone" value="${reser.phone }">
 		</form>
 	</div>
 	<br />

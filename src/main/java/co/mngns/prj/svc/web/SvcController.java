@@ -80,6 +80,7 @@ public class SvcController {
 	@RequestMapping(value = "/payMethod.do")
 	// 결제창
 	public String payment(Model model, HttpSession session, @ModelAttribute("reser") ReserListVO reser) {
+		reser.setClient_id1((Integer) session.getAttribute("id"));
 		session.setAttribute("reser", reser);
 		System.out.println("======================="+reser);
 		return "service/payMethod";

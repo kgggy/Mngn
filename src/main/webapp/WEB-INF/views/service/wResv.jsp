@@ -131,6 +131,8 @@
         <input type="hidden" id="service" name="term" value="${svcVO.term }" readonly> 
         <input type="hidden" id="service" name="prc" value="${svcVO.prc }" readonly>
         <input type="hidden" id="service" name="svc_id" value="${svcVO.svc_id }" readonly>
+        <input type="hidden" id="bill" name="phone" value="${addList.phone }" readonly>
+        <input type="hidden" id="bill" name="email" value="${addList.email }" readonly>
             <div class="item">
                 <h3>
                     주소<span class="required">*</span>&nbsp;&nbsp;<small>*입력한
