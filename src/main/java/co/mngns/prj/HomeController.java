@@ -6,7 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttribute;
+
+import co.mngns.prj.user.vo.ClientVO;
 
 @Controller
 public class HomeController {
@@ -18,11 +19,11 @@ public class HomeController {
 
 	@RequestMapping(value = "/cntMain.do")
 	public String cntMain(@RequestParam(required = false) String message, Model model) {
-		
+
 		model.addAttribute("message", message);
-		
+
 		return "client/cntMain";
-		
+
 	}
 
 	@RequestMapping(value = "/mngMain.do")
@@ -31,7 +32,8 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/trnMain.do")
-	public String trnMain() {
+	public String trnMain(ClientVO client, HttpSession session) {
+		client.setClient_id((Integer) session.getAttribute("id"));
 		return "trnMain";
 	}
 
@@ -40,7 +42,7 @@ public class HomeController {
 		session.invalidate();
 		return "home";
 	}
-	
+
 	@RequestMapping(value = "/map.do")
 	public String map() {
 		return "map";

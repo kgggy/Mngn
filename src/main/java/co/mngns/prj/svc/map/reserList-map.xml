@@ -57,13 +57,12 @@
 		Regexp_Substr(work_time,'[^,]+', 1,level)
 		work_time
 		From trainer
-		where
-		work_time Is Not Null
-		and substr(mon || tue || wed || thu || fri || sat
-		|| sun,
-		to_char(to_date('21-10-29','yy-mm-dd'), 'D'),1 ) = 1
+		where work_time Is Not Null
+		and t.work_loc1||' '||t.work_loc2 = #{adres1}
+		and substr(sun || mon || tue || wed || thu || fri || sat,
+		to_char(to_date('21-11-17','yy-mm-dd'), 'D'),1 ) = 1
 		Connect By
-		Regexp_Substr('10,11,12,13,14,15', '[^,]+', 1,level) Is Not Null
+		Regexp_Substr('10,11,12,13,14', '[^,]+', 1,level) Is Not Null
 		MINUS
 		select client_id2, Regexp_Substr(svc_bgn_tm,'[^,]+', 1,level)
 		work_time
