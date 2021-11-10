@@ -23,6 +23,13 @@
 		#{client_id}, #{species})
 
 	</insert>
+	
+	<update id = "petUpdate">
+	
+		update pet set ( name, gen, age, wgt,oper,memo,species )
+		where pet_id = #{pet_id};
+	
+	</update>
 
 
 </mapper>

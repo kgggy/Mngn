@@ -446,7 +446,7 @@ footer p a:hover {
 	</div>
 	<!-- END nav -->
 <body>
-	<div class="row">
+	<div class="row" align="center">
 		<div class="col-md-6 ml-auto mr-auto">
 			<div class="profile">
 				<div class="avatar" align="center">
@@ -463,10 +463,8 @@ footer p a:hover {
 				</div>
 			</div>
 		</div>
-	</div>
-
-
-	<div class="section-top-border">
+	
+	<div class="section-top-border" align="center">
 		<form action="#" method="post">
 			<div class="mt-10">
 				<input type="text" name="id" placeholder="id"
@@ -474,7 +472,7 @@ footer p a:hover {
 					onblur="this.placeholder = 'id'" required class="single-input">
 			</div>
 			<div class="mt-10">
-				<input type="text" name="pwd" placeholder="pwd"
+				<input type="password" name="pwd" placeholder="pwd"
 					value="${client.pwd}" onfocus="this.placeholder = ''"
 					onblur="this.placeholder = 'password'" class="single-input">
 			</div>
@@ -563,8 +561,8 @@ footer p a:hover {
 			<div align="center">
 				멍냥꽁냥 회원을 탈퇴하시겠습니까? <a href="mOut.do" class="withdraw">회원탈퇴하기</a>
 			</div>
-
 		</form>
+		</div>
 	</div>
 	
 

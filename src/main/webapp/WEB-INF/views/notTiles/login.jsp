@@ -20,42 +20,34 @@
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script>
-Kakao.init('fd8bf1199af6014c16070f1498a5cfa6'); //발급받은 키 중 javascript키를 사용해준다.
-console.log(Kakao.isInitialized()); // sdk초기화여부판단
-//카카오로그인
-function kakaoLogin() {
-    Kakao.Auth.login({
-      success: function (response) {
-        Kakao.API.request({
-          url: '/v2/user/me',
-          success: function (response) {
-        	  console.log(response)
-          },
-          fail: function (error) {
-            console.log(error)
-          },
-        })
-      },
-      fail: function (error) {
-        console.log(error)
-      },
-    })
-  }
-//카카오로그아웃  
-function kakaoLogout() {
-    if (Kakao.Auth.getAccessToken()) {
-      Kakao.API.request({
-        url: '/v1/user/unlink',
-        success: function (response) {
-        	console.log(response)
-        },
-        fail: function (error) {
-          console.log(error)
-        },
-      })
-      Kakao.Auth.setAccessToken(undefined)
-    }
-  }  
+	Kakao.init('fd8bf1199af6014c16070f1498a5cfa6'); //발급받은 키 중 javascript키를 사용해준다.
+	console.log(Kakao.isInitialized()); // sdk초기화여부판단
+	//카카오로그인
+	function kakaoLogin() {
+		$.ajax({
+			url : '/login/getKakaoAuthUrl',
+			type : 'get',
+			async : false,
+			dataType : 'text',
+			success : function(res) {
+				location.href = res;
+			}
+		});
+	}
+	$(document).ready(
+			function() {
+
+				var kakaoInfo = '${kakaoInfo}';
+
+				if (kakaoInfo != "") {
+					var data = JSON.parse(kakaoInfo);
+
+					alert("카카오로그인 성공 \n accessToken : " + data['accessToken']);
+					alert("user : \n" + "email : " + data['email']
+							+ "\n nickname : " + data['nickname']);
+				}
+			});
+	a
 </script>
 
 <!-- 네이버 로그인 스크립트 -->
@@ -66,7 +58,7 @@ function kakaoLogout() {
 <script>
 	var naverLogin = new naver.LoginWithNaverId({
 		clientId : "FcJJbV7LY4ta0I1OPbFa", //내 애플리케이션 정보에 cliendId를 입력해줍니다.
-		callbackUrl : "http://localhost/naverLogin", // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
+		callbackUrl :"http://localhost/naverLogin", // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
 		isPopup : false,
 		callbackHandle : true
 	});
@@ -78,7 +70,7 @@ function kakaoLogout() {
 			if (status) {
 				var name = naverLogin.user.getName();
 				var email = naverLogin.user.getEmail(); // 필수로 설정할것을 받아와 아래처럼 조건문을 줍니다.
-	
+
 				console.log(naverLogin.user);
 
 				if (email == undefined || email == null) {
@@ -93,17 +85,19 @@ function kakaoLogout() {
 	});
 
 	var testPopUp;
-	
+
 	function openPopUp() {
-		testPopUp = window.open("https://nid.naver.com/nidlogin.logout","_blank",
-				"toolbar=yes,scrollbars=yes,resizable=yes,width=800,height=850,top=580,left=580");
-			}
-	function resizePopUp(){
-		 window.resizeTo(1400, 740);
-		 window.focus();
+		testPopUp = window
+				.open(
+						"https://nid.naver.com/nidlogin.logout",
+						"_blank",
+						"toolbar=yes,scrollbars=yes,resizable=yes,width=800,height=850,top=580,left=580");
 	}
-	 
-	
+	function resizePopUp() {
+		window.resizeTo(1400, 740);
+		window.focus();
+	}
+
 	function closePopUp() {
 		testPopUp.close();
 	}
@@ -115,25 +109,21 @@ function kakaoLogout() {
 		}, 1000);
 
 	}
-	
-		
+
 	function login() {
-		
+
 		var loginForm = document.loginForm;
 		var client_id = loginForm.client_id.value;
-		var pwd = loginForm.pwd.value;		
-		
-		if (!client_id || !pwd ) {			
+		var pwd = loginForm.pwd.value;
+
+		if (!client_id || !pwd) {
 			alert("id또는 password가 입력해주세요.")
-		} else {		 
-		 loginForm.submit();
+		} else {
+			loginForm.submit();
 
-	 	}
- 
-	 }
+		}
 
-	
-	
+	}
 </script>
 <style>
 .reg {
@@ -153,7 +143,8 @@ function kakaoLogout() {
 
 			<div class="row justify-content-center">
 				<div class="col-md-6 col-lg-5">
-					<form action="login.do" class="login-form" name="loginForm" method="post">
+					<form action="login.do" class="login-form" name="loginForm"
+						method="post">
 						<div class="login-wrap p-4 p-md-5">
 							<div class="logo">
 								<h2 style="font-weight: bolder">
@@ -175,11 +166,12 @@ function kakaoLogout() {
 							</div>
 
 							<div class="social_Login">
-								<img src="img/kakaologin.svg" id="kakao_id_login" onclick="kakaoLogin()">
-								<img src="img/naverlogin.png" id="naver_id_login"
-									onclick="openPopUp()"> <img src="img/googleLogin.png"
-									id="google_id_login" onclick=""> <img
-									src="img/facebookLogin.png" id="facebook_id_login" onclick="">
+								<img src="img/kakaologin.svg" id="kakao_id_login"
+									onclick="kakaoLogin()"> <img src="img/naverlogin.png"
+									id="naver_id_login" onclick="openPopUp()"> <img
+									src="img/googleLogin.png" id="google_id_login" onclick="">
+								<img src="img/facebookLogin.png" id="facebook_id_login"
+									onclick="">
 							</div>
 							<div>
 								회원이 아니신가요?<a href="joinForm.do" class="reg">가입하기</a>
@@ -202,7 +194,7 @@ function kakaoLogout() {
 	<script src="js/lbootstrap.min.js"></script>
 	<script src="js/lmain.js"></script>
 	<script>
-
+		
 	</script>
 
 </body>

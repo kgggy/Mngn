@@ -167,6 +167,18 @@ h4 {
 			}
 		}
 	});
+	
+	
+	function(){
+		
+		if(role==1){
+			
+			return catForm
+		} else (role==2){
+			
+			return dogForm
+		}
+	}
 </script>
 
 </head>
@@ -207,7 +219,7 @@ h4 {
 				<!-- end col -->
 			</div>
 			<!-- end row -->
-			
+
 			<div class="row">
 				<c:forEach items="${petForm }" var="pet">
 					<div class="col-lg-4">
@@ -215,7 +227,8 @@ h4 {
 							<div class="member-card pt-2 pb-2">
 								<div class="thumb-lg member-thumb mx-auto">
 									<img src="https://bootdey.com/img/Content/avatar/avatar2.png"
-										class="rounded-circle img-thumbnail" alt="profile-image">
+										class="rounded-circle img-thumbnail"
+										alt="profile-image: url('download.do?fileName=${aniList.fileorg}');">
 								</div>
 								<div class="">
 									<h4>${pet.name }</h4>
@@ -240,6 +253,10 @@ h4 {
 												<p class="mb-0 text-muted">${pet.wgt }</p>
 											</div>
 										</div>
+										<div align = "center">
+										<button onclick="location.href ='formReg.do'">수정</button>
+										<button>삭제</button>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -248,22 +265,22 @@ h4 {
 					<!-- end col -->
 				</c:forEach>
 				<!-- container -->
-		</div>
-		<!-- testmonial_area_start  -->
-		<div id="light" class="modal">
-			<div class="white_content modal-content" align="center">
-				<div>
-					<div class="aprofile-select">
+			</div>
+			<!-- testmonial_area_start  -->
+			<div id="light" class="modal">
+				<div class="white_content modal-content" align="center">
+					<div>
+						<div class="aprofile-select">
 
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h2 class="admin">어떤 동물과 함께하시나요?</h2>
-						<img src="img/dog.png" id="select"
-							onclick="location.href ='dogForm.do'"> <img
-							src="img/cat.png" id="select"
-							onclick="location.href ='catForm.do'">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h2 class="admin">어떤 동물과 함께하시나요?</h2>
+							<img src="img/dog.png" id="select"
+								onclick="location.href ='dogForm.do'"> <img
+								src="img/cat.png" id="select"
+								onclick="location.href ='catForm.do'">
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 </body>
 </html>
