@@ -86,7 +86,7 @@ tr {
 				</tr>
 				<tr>
 					<th width="300px">날짜 및 시간</th>
-					<td width="500px">${reser.reser_dt }🐾${reser.svc_bgn_tm }:00</td>
+					<td width="500px">${reser.reser_dt } 🐾 ${reser.svc_bgn_tm }:00</td>
 				</tr>
 				<tr>
 					<th width="300px">대상</th>
@@ -117,7 +117,7 @@ tr {
 		<button type="button" class="boxed-btn3" id="rbtn"
 			onclick="requestPay()">결제하기</button>
 	</div>
-	<button type="button" onclick="rqPay()">req</button>
+	<a href="javascript:rqPay()">req</a>
 
 </body>
 </html>

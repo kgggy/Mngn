@@ -23,6 +23,7 @@ public class ReserListVO {
 	private int svc_id;
 	private int client_id2;
 	private int client_id;
+	private Date enroll_dt;
 
 	private ClientVO client;
 
