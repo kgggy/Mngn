@@ -6,14 +6,15 @@ import co.mngns.prj.pet.vo.PetVO;
 
 public interface PetService {
 
-	List<PetVO> PetList(PetVO pet);
+	List<PetVO> petList(PetVO pet);
 
-	PetVO PetSelect(PetVO pet);
+	PetVO petSelect(PetVO pet);
 
-	int PetInsert(PetVO pet);
+	int petInsert(PetVO pet);
 
-	int PetUpdate(PetVO pet);
+	int petUpdate(PetVO pet);
 
-	int PetDelete(PetVO pet);
+	int petDelete(PetVO pet);
+
 
 }

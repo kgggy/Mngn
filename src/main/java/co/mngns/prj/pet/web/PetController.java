@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import co.mngns.prj.pet.service.PetService;
 import co.mngns.prj.pet.vo.PetVO;
+import co.mngns.prj.user.vo.ClientVO;
 
 @Controller
 public class PetController {
@@ -19,7 +20,7 @@ public class PetController {
 	@RequestMapping(value = "/aniList.do")
 	public String aniList(Model model, PetVO pet, HttpSession session) {
 		pet.setClient_id((Integer) session.getAttribute("id"));
-		model.addAttribute("petForm", petService.PetList(pet));
+		model.addAttribute("petForm", petService.petList(pet));
 		return "pet/aniList";
 	}
                                                                                                                 
@@ -35,7 +36,11 @@ public class PetController {
 	}
 	
 	@RequestMapping(value = "/formReg.do")
-	public String formReg() {
+	public String formReg(Model model, PetVO petvo, HttpSession session) {
+		
+		petvo.setPet_id((Integer)session.getAttribute("id"));
+		model.addAttribute("pet", petService.petSelect(petvo));
+		
 		return "pet/formReg";
 	}
 
@@ -47,17 +52,27 @@ public class PetController {
 	}
 
 	@RequestMapping(value = "/petInsert.do")
-	public String petInsert(HttpSession session, PetVO pet) {
+	public String petInsert(HttpSession session, PetVO pet, Model model) {
 		pet.setClient_id((Integer) session.getAttribute("id"));
-		petService.PetInsert(pet);
+		model.addAttribute(petService.petInsert(pet));
 		return "redirect:petInsert.do";
 	}
 	
 	@RequestMapping(value = "/petUpdate.do")
-	public String petUpdate(HttpSession session, PetVO pet) {
-		pet.setPet_id((Integer) session.getAttribute("id"));
-		petService.PetInsert(pet);
-		return "redirect:petUpdate.do";
+	public String petUpdate(HttpSession session, PetVO pet, Model model) {
+		pet.setClient_id((Integer) session.getAttribute("id"));
+		model.addAttribute(petService.petUpdate(pet));
+		
+		return "redirect:cntList.do";
 	}
+	
+	@RequestMapping(value = "/petDelete.do")
+	public String petDelete(HttpSession session, PetVO pet, Model model) {
+		pet.setClient_id((Integer) session.getAttribute("id"));
+		model.addAttribute(petService.petDelete(pet));
+		
+		return "redirect:aniList.do";
+	}
+           
                                                                                                                           
 }
