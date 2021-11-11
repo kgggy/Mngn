@@ -9,8 +9,20 @@
 		select * from client where client_id = #{client_id}
 	</select>
 	
-	<select resultType="co.mngns.prj.user.vo.ClientVO" id="mclientSelectList">
-		select * from client
+	<!-- 관리자 페이지 사용자 목록 조회(페이징) -->
+	<select id="mclientSelectList" resultType="co.mngns.prj.user.vo.ClientVO" >
+		SELECT B.* FROM ( SELECT A.* , ROWNUM RN FROM (
+			select * from client where role = 1
+	  <![CDATA[ 
+	      ) A ) B WHERE RN >= #{start} and RN <= #{end}
+	      ]]>
+	</select>
+	
+
+	
+	<!-- 관리자 페이지 사용자 명수 -->
+	<select id="cntCount" resultType="int">
+		select count(*) from client where role = 1
 	</select>
 	
 

@@ -15,11 +15,13 @@ public interface TrainerMapper {
 
 	int trainerDelete(TrainerVO trn); // 훈련사 삭제
 	
-	List<TrainerVO> mtrainerSelectList(); // 관리자 페이지 훈련사 전체목록 가져오기
+	List<TrainerVO> mtrainerSelectList(TrainerVO vo); // 관리자 페이지 훈련사 전체목록 가져오기
 	
 	List<TrainerVO> getSearchList(TrainerVO trn); // 훈련사 검색
 	
 	TrainerVO nWork(TrainerVO trn); //훈련사 휴무일
 	
 	int trnCount(TrainerVO vo); //전체 훈련사 건수
+	
+	int mtrnCount(TrainerVO vo); //관리자 페이지 전체 훈련사 건수
 }

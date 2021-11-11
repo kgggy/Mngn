@@ -22,4 +22,7 @@ public class ClientVO {
 	
 	private int pet_id;
 	private int client_id1;
+	
+	private int start;
+	private int end;
 }

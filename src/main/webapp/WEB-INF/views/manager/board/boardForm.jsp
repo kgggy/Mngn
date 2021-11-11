@@ -62,32 +62,19 @@
 	<!-- Header (Topbar) -->
 	<header class="astino-header u-header">
 		<div class="u-header-left">
-			<a class="u-header-logo" href="home.do"> <img
-				src="assets/logo.png" width="160">
+			<a class="u-header-logo" href="mngMain.do"> <img
+				src="assets/logo.png" width="160"> 
 			</a>
 		</div>
 
-		<div class="u-header-middle">
+		<div class="u-header-middle" >
 			<a class="js-sidebar-invoker u-sidebar-invoker" href="#!"
 				data-is-close-all-except-this="true" data-target="#sidebar"> <i
 				class="fa fa-bars u-sidebar-invoker__icon--open"></i> <i
 				class="fa fa-times u-sidebar-invoker__icon--close"></i>
 			</a>
+				<span class="js-sidebar-invoker u-sidebar-invoker" > 관리자님 환영합니다. </span>
 		</div>
-
-		<!-- User Profile -->
-		<div class="astino-user-top-corner dropdown ml-2">
-			<a class="link-muted d-flex align-items-center" href="#!"
-				role="button" id="dropdownMenuLink" aria-haspopup="true"
-				aria-expanded="false" data-toggle="dropdown"> <img
-				class="u-avatar--xs img-fluid rounded-circle mr-2"
-				src="assets/img/avatars/img.png" alt="User Profile"> <span
-				class="d-none d-sm-inline-block"> Criss Donald <small
-					class=""></small>
-			</span>
-			</a>
-		</div>
-		<!-- End User Profile -->
 	</header>
 	<!-- End Header (Topbar) -->
 
@@ -149,38 +136,21 @@
 							</ul></li>
 						<!-- End 회원 관리 -->
 
-						<!-- 서비스 관리-->
+						<!-- 훈련사 수당 관리-->
 						<li class="u-sidebar-nav-menu__item"><a
-							class="u-sidebar-nav-menu__link" href="svcList.do"> <i
-								class="fas fa-cogs u-sidebar-nav-menu__item-icon"></i> <span
-								class="u-sidebar-nav-menu__item-title">서비스 관리</span>
+							class="u-sidebar-nav-menu__link" href="salaryList.do"> <i
+								class="fas fa-list-alt u-sidebar-nav-menu__item-icon"></i> <span
+								class="u-sidebar-nav-menu__item-title">훈련사 수당 관리</span>
 						</a></li>
-						<!-- End 서비스 관리 -->
-
-						<!-- 정산 관리 -->
-						<li class="u-sidebar-nav-menu__item clearfix"><a
-							class="u-sidebar-nav-menu__link" href="salesList.do"
-							data-target="#subMenu2"> <i
-								class="fas fa-ticket-alt u-sidebar-nav-menu__item-icon"></i> <span
-								class="u-sidebar-nav-menu__item-title">판매 및 정산 관리</span> <i
-								class="fa fa-angle-right u-sidebar-nav-menu__item-arrow"></i> <span
-								class="u-sidebar-nav-menu__indicator"></span>
-						</a>
-
-							<ul id="subMenu2"
-								class="u-sidebar-nav-menu u-sidebar-nav-menu--second-level"
-								style="display: none;">
-								<li class="u-sidebar-nav-menu__item"><a
-									class="u-sidebar-nav-menu__link" href="salesList.do"> <span
-										class="u-sidebar-nav-menu__item-title">판매 내역</span>
-								</a></li>
-								<li class="u-sidebar-nav-menu__item"><a
-									class="u-sidebar-nav-menu__link" href="salaryList.do"> <span
-										class="u-sidebar-nav-menu__item-title">정산 내역</span>
-								</a></li>
-							</ul></li>
-						<!-- End 정산 관리 -->
-
+						<!-- End 훈련사 수당 관리 -->
+						
+						<!-- 관리자 로그아웃-->
+						<li class="u-sidebar-nav-menu__item"><a
+							class="u-sidebar-nav-menu__link" href="home.do"> <i
+								class="fas fa-cogs u-sidebar-nav-menu__item-icon"></i> <span
+								class="u-sidebar-nav-menu__item-title">로그아웃</span>
+						</a></li>
+						<!-- End 관리자 로그아웃 -->
 					</ul>
 				</nav>
 			</div>
@@ -189,14 +159,14 @@
 
 		<div class="u-content">
 			<div class="u-body">
-				<header class="astino-pr-form-header">
-					<h2 class="h1 card-header-title">공지사항 등록</h2>
-				</header>
 				<div class="row">
 					<!-- Current Projects -->
 					<div class="col-md-12 mb-4">
 						<div class="card h-100">
 							<div class="astino-pr-form card-body">
+				<header class="astino-pr-form-header">
+					<h2 class="h3 card-header-title">공지사항 등록</h2>
+				</header>
 								<form action="boardInsert.do" role="form" id="insertForm"
 									name="insertForm" method="post">
 									<div class="form-group d-flex align-items-center">
@@ -224,7 +194,7 @@
 											type="text" class="form-control" id="boardNo"></input>
 									</div>
 									<div class="form-submit">
-										<input type="submit" onClick="boardInsert()"
+										<input type="submit" onClick="boardList.do"
 											class="btn btn-outline-danger float-right" value="등록하기"
 											id="boardUpdate" />
 									</div>
@@ -233,17 +203,6 @@
 						</div>
 					</div>
 					<!-- End Current Projects -->
-				</div>
-				<div class="row justify-content-between align-items-center mb-4">
-					<div class="col-sm">
-						<nav aria-label="Bootstrap Pagination Example">
-							<ul class="pagination mb-0">
-								<li class="page-item"><a class="page-link"
-									href="boardList.do"><span
-										class="ml-1 d-none d-xl-inline-block">이전으로</span></a></li>
-							</ul>
-						</nav>
-					</div>
 				</div>
 			</div>
 
@@ -292,7 +251,7 @@
 					}
 				},
 				error : function () {
-					alert("공지사항 등록에 실패했습니다.")
+					alert("공지사항 등록에 실패했습니다.");
 				}
 			}); //end ajax
 		} // end btn click

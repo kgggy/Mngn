@@ -45,9 +45,9 @@ public class TrainerServiceImpl implements TrainerService {
 	}
 
 	@Override
-	public List<TrainerVO> mTrainerSelectList() {
+	public List<TrainerVO> mTrainerSelectList(TrainerVO vo) {
 		// 관리자 페이지 훈련사 전체 조회
-		return trnmap.mtrainerSelectList();
+		return trnmap.mtrainerSelectList(vo);
 	}
 
 	@Override
@@ -66,6 +66,12 @@ public class TrainerServiceImpl implements TrainerService {
 	public int trnCount(TrainerVO vo) {
 		// 전체 훈련사 건수
 		return trnmap.trnCount(vo);
+	}
+
+	@Override
+	public int mtrnCount(TrainerVO vo) {
+		// 관리자 페이지 전체 훈련사 명수
+		return trnmap.mtrnCount(vo);
 	}
 
 }

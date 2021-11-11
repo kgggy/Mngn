@@ -2,59 +2,56 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.mngns.prj.board.map.BoardMapper">
 
-<!-- 	<resultMap type="BoardVO" id="BoardVO">
-		<result column="BOARD_NO" property="board_no"/>
-		<result column="TTL" property="ttl"/>
-		<result column="CNTN" property="cntn"/>
-		<result column="MNGR_ID" property="mngr_id"/>
-		<result column="REG_DT" property="reg_dt" />
-	</resultMap> -->
-	
-	<!-- 공지사항 전체보기 -->
+	<!-- <resultMap type="BoardVO" id="BoardVO"> <result column="BOARD_NO" property="board_no"/> 
+		<result column="TTL" property="ttl"/> <result column="CNTN" property="cntn"/> 
+		<result column="MNGR_ID" property="mngr_id"/> <result column="REG_DT" property="reg_dt" 
+		/> </resultMap> -->
 
+	<!-- 공지사항 전체보기(페이징) -->
 	<select id="boardList" resultType="co.mngns.prj.board.vo.BoardVO">
-		select *
-		from board 
-		order by board_no desc
+		SELECT B.* FROM ( SELECT A.* , ROWNUM RN FROM (
+				select *
+				from board
+				order by board_no desc
+ 	<![CDATA[ 
+          ) A ) B WHERE RN >= #{start} and RN <= #{end}
+          ]]>
 	</select>
-	
+
 	<!-- 공지사항 1건 상세보기 -->
-	<select id="boardSelect" resultType="co.mngns.prj.board.vo.BoardVO">
+	<select id="boardSelect"
+		resultType="co.mngns.prj.board.vo.BoardVO">
 		select *
-		from board 
+		from board
 		<!-- where board_id = #{board_id} -->
 	</select>
-	
+
 	<!-- 공지사항 등록 -->
-	<insert id="boardInsert" parameterType="co.mngns.prj.board.vo.BoardVO">
+	<insert id="boardInsert"
+		parameterType="co.mngns.prj.board.vo.BoardVO">
 		insert into board(board_no, ttl, cntn, mngr_id, reg_dt)
 		values(board_seq.nextval, #{ttl}, #{cntn}, 1004, sysdate)
 	</insert>
-	
+
 	<!-- 공지사항 수정 -->
-	<update id="boardUpdate" parameterType="co.mngns.prj.board.vo.BoardVO">
+	<update id="boardUpdate"
+		parameterType="co.mngns.prj.board.vo.BoardVO">
 		update board set ttl = #{ttl}, cntn = #{cntn}
-		where  board_no = #{board_no}
+		where
+		board_no = #{board_no}
 	</update>
-	
+
 	<!-- 공지사항 삭제 -->
-	<delete id="boardDelete" parameterType="co.mngns.prj.board.vo.BoardVO">
+	<delete id="boardDelete"
+		parameterType="co.mngns.prj.board.vo.BoardVO">
 		delete from board
 		where board_no = #{board_no}
-	
+
 	</delete>
-	
+
 	<!-- 공지사항 전체 건수 -->
 	<select id="bCount" resultType="int">
 		select count(*) from board
 	</select>
-	
-	<!-- 공지사항 페이징 -->
-	<select id="myBoardList" resultType="co.mngns.prj.board.vo.BoardVO">
-		SELECT * 
-		FROM( SELECT T1.*, ROWNUM AS RNUM, COUNT(*) OVER() AS TOTAL_CNT FROM( SELECT * FROM TB_BOARD ORDER BY IDX DESC) T1 ) WHERE RNUM > 0 AND RNUM <= 20
 
-	
-	</select>
-	
 </mapper>

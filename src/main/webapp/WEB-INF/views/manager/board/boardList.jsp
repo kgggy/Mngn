@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="my" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 
 <!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -67,12 +67,17 @@ head
 	$(document).ready(function() {
 		$('#exampleModalCenter').on('show.bs.modal', function(event) {
 			var tr = $(event.relatedTarget).closest('tr') // Button that triggered the modal
+			
+			var data0 = tr.data("id");
 			var data1 = tr.find('td:eq(1)').html()
 			var data3 = tr.find('td:eq(3)').html()
 			var data5 = tr.find('td:eq(5)').html()
-			$(this).find('.modal-body #boardTtl').val(data1)
-			$(this).find('.modal-body #boardDt').val(data3)
-			$(this).find('.modal-body #boardCntn').val(data5)
+			
+			
+			$(this).find('.modal-body #bNo').val(data0)
+			$(this).find('.modal-body #ttl').val(data1)
+			$(this).find('.modal-body #reg_dt').val(data3)
+			$(this).find('.modal-body #cntn').val(data5)
 		})
 	});
 </script>
@@ -82,7 +87,7 @@ head
 	<!-- Header (Topbar) -->
 	<header class="astino-header u-header">
 		<div class="u-header-left">
-			<a class="u-header-logo" href="home.do"> <img
+			<a class="u-header-logo" href="mngMain.do"> <img
 				src="assets/logo.png" width="160">
 			</a>
 		</div>
@@ -90,24 +95,10 @@ head
 		<div class="u-header-middle">
 			<a class="js-sidebar-invoker u-sidebar-invoker" href="#!"
 				data-is-close-all-except-this="true" data-target="#sidebar"> <i
-				class="fa fa-bars u-sidebar-invoker__icon--open"></i> <i
-				class="fa fa-times u-sidebar-invoker__icon--close"></i>
-			</a>
+				class="fa fa-bars u-sidebar-invoker__icon--open"></i>
+			</a> <span class="js-sidebar-invoker u-sidebar-invoker"> 관리자님
+				환영합니다. </span>
 		</div>
-
-		<!-- User Profile -->
-		<div class="astino-user-top-corner dropdown ml-2">
-			<a class="link-muted d-flex align-items-center" href="#!"
-				role="button" id="dropdownMenuLink" aria-haspopup="true"
-				aria-expanded="false" data-toggle="dropdown"> <img
-				class="u-avatar--xs img-fluid rounded-circle mr-2"
-				src="assets/img/avatars/img.png" alt="User Profile"> <span
-				class="d-none d-sm-inline-block"> Criss Donald <small
-					class=""></small>
-			</span>
-			</a>
-		</div>
-		<!-- End User Profile -->
 	</header>
 	<!-- End Header (Topbar) -->
 
@@ -155,8 +146,8 @@ head
 								class="u-sidebar-nav-menu u-sidebar-nav-menu--second-level text-center"
 								style="display: none;">
 								<li class="u-sidebar-nav-menu__item"><a
-									class="u-sidebar-nav-menu__link active" href="cntList.do">
-										<span class="u-sidebar-nav-menu__item-title">사용자 관리</span>
+									class="u-sidebar-nav-menu__link" href="cntList.do"> <span
+										class="u-sidebar-nav-menu__item-title">사용자 관리</span>
 								</a></li>
 								<li class="u-sidebar-nav-menu__item"><a
 									class="u-sidebar-nav-menu__link" href="trnList.do"> <span
@@ -169,38 +160,21 @@ head
 							</ul></li>
 						<!-- End 회원 관리 -->
 
-						<!-- 서비스 관리-->
+						<!-- 훈련사 수당 관리-->
 						<li class="u-sidebar-nav-menu__item"><a
-							class="u-sidebar-nav-menu__link" href="svcList.do"> <i
-								class="fas fa-cogs u-sidebar-nav-menu__item-icon"></i> <span
-								class="u-sidebar-nav-menu__item-title">서비스 관리</span>
+							class="u-sidebar-nav-menu__link" href="salaryList.do"> <i
+								class="fas fa-list-alt u-sidebar-nav-menu__item-icon"></i> <span
+								class="u-sidebar-nav-menu__item-title">훈련사 수당 관리</span>
 						</a></li>
-						<!-- End 서비스 관리 -->
+						<!-- End 훈련사 수당 관리 -->
 
-						<!-- 정산 관리 -->
-						<li class="u-sidebar-nav-menu__item clearfix"><a
-							class="u-sidebar-nav-menu__link" href="salesList.do"
-							data-target="#subMenu2"> <i
-								class="fas fa-ticket-alt u-sidebar-nav-menu__item-icon"></i> <span
-								class="u-sidebar-nav-menu__item-title">판매 및 정산 관리</span> <i
-								class="fa fa-angle-right u-sidebar-nav-menu__item-arrow"></i> <span
-								class="u-sidebar-nav-menu__indicator"></span>
-						</a>
-
-							<ul id="subMenu2"
-								class="u-sidebar-nav-menu u-sidebar-nav-menu--second-level"
-								style="display: none;">
-								<li class="u-sidebar-nav-menu__item"><a
-									class="u-sidebar-nav-menu__link" href="salesList.do"> <span
-										class="u-sidebar-nav-menu__item-title">판매 내역</span>
-								</a></li>
-								<li class="u-sidebar-nav-menu__item"><a
-									class="u-sidebar-nav-menu__link" href="salaryList.do"> <span
-										class="u-sidebar-nav-menu__item-title">정산 내역</span>
-								</a></li>
-							</ul></li>
-						<!-- End 정산 관리 -->
-
+						<!-- 관리자 로그아웃-->
+						<li class="u-sidebar-nav-menu__item"><a
+							class="u-sidebar-nav-menu__link" href="home.do"> <i
+								class="fas fa-cogs u-sidebar-nav-menu__item-icon"></i> <span
+								class="u-sidebar-nav-menu__item-title">로그아웃</span>
+						</a></li>
+						<!-- End 관리자 로그아웃 -->
 					</ul>
 				</nav>
 			</div>
@@ -215,13 +189,15 @@ head
 					<div class="col-md-12 mb-4">
 						<div class="card h-100">
 							<header class="card-header d-flex align-items-center">
-								<h2 class="h2 card-header-title">공지사항 List</h2>
+								<h2 class="h2 card-header-title">공지사항 목록</h2>
 							</header>
 
 							<div class="card-body">
 								<div class="table-responsive">
-									<form action="">
-										<table id="myTable" class="table table-hover">
+									<form action="boardDelete.do" id="bdDelete" name="bdDelete"
+										method="post">
+										<input type="hidden" id="board_no" name="board_no">
+										<table class="table table-hover">
 											<thead>
 												<tr>
 													<th scope="col" class="text-dark">일련번호</th>
@@ -234,7 +210,7 @@ head
 
 											<tbody>
 												<c:forEach var="board" items="${boards}">
-													<tr>
+													<tr data-id= "${board.board_no }">
 														<td>${board.board_no }</td>
 														<td>${board.ttl }</td>
 														<td>관리자</td>
@@ -251,7 +227,7 @@ head
 											</tbody>
 										</table>
 									</form>
-									<my:paging jsFunc="goList" paging="${bpaging }" />
+									<my:paging jsFunc="goList" paging="${paging}" />
 								</div>
 								<br>
 								<div>
@@ -263,20 +239,6 @@ head
 						</div>
 					</div>
 					<!-- End Current Projects -->
-				</div>
-				<div class="row justify-content-between align-items-center mb-4">
-					<div class="col-sm">
-						<nav aria-label="Bootstrap Pagination Example">
-							<ul class="pagination mb-0">
-								<li class="page-item"><a class="page-link"
-									href="mngMain.do"><span
-										class="ml-1 d-none d-xl-inline-block">처음으로</span></a></li>
-								<li class="page-item"><a class="page-link" href="#">1</a></li>
-								<li class="page-item"><a class="page-link" href="#"><span
-										class="mr-1 d-none d-xl-inline-block">다음으로</span></a></li>
-							</ul>
-						</nav>
-					</div>
 				</div>
 			</div>
 
@@ -315,39 +277,39 @@ head
 					<div class="col-md-12 mb-4">
 						<div class="card h-100">
 							<div class="astino-pr-form card-body">
-								<form role="form" action="boardUpdate.do" id="boardModifyForm"
-									name="boardModifyForm" method="post">
+								<form role="form" action="boardUpdate.do" id="bdUpate"
+									name="bdUpate" method="post">
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput">제 목</label> <input
-											type="text" class="form-control" id="boardTtl"
-											placeholder="제목을 입력하세요">
+											type="text" class="form-control" id="ttl" name="ttl"
+											placeholder="제목을 입력하세요" value="boardTtl">
 									</div>
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput2">작성자</label> <input
-											type="text" class="form-control" id="boardMngr"
+											type="text" class="form-control" id="mngr_id" 
 											placeholder="관리자" readonly>
 									</div>
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput3">작성 날짜</label> <input
-											type="date" class="form-control" id="boardDt" readonly>
+											type="date" class="form-control" id="reg_dt" readonly>
 									</div>
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput4">내 용</label>
-										<textarea class="form-control" id="boardCntn"
-											placeholder="내용을 입력하세요"></textarea>
+										<textarea class="form-control" id="cntn" name="cntn"
+											placeholder="내용을 입력하세요" ></textarea>
 									</div>
 									<div style="display: none;">
 										<label for="formGroupExampleInput4">일련번호</label> <input
-											type="text" class="form-control" id="boardNo"></input>
+											type="text" class="form-control" id="bNo" name="board_no"></input>
 									</div>
 								</form>
 							</div>
 						</div>
 						<div class="modal-footer">
-							<input type="button" class="btn btn-outline-danger" value="수정"
-								name="boardUpdate" id="boardUpdate" />
-							<button type="button" class="btn btn-outline-danger"
-								data-dismiss="modal">닫기</button>
+							<a href="#" id="updateBtn"
+								class="btn btn-outline-danger">수정</a> <input type="button"
+								class="btn btn-outline-danger" value="닫기" 
+								data-dismiss="modal"/>
 						</div>
 					</div>
 					<!-- End Current Projects -->
@@ -357,19 +319,46 @@ head
 	</div>
 	<!-- Large Size Modal-->
 	<script>
-		//modal 뜰 때 공지사항 번호 넘기기
-		$('#exampleModalCenter').on('show.bs.modal', function(e) {
-			$('#board_no').val($(event.target).data('boardno'))
+		$("#updateBtn").on("click", function(){
+			var boardNo = $("#bNo").val();
+			var ttl = $("#ttl").val();
+			var cntn = $("#cntn").val();
+			
+			console.log( boardNo + " / " + ttl + " / " + cntn );
+			
+			$.ajax({
+				url : "boardUpdate.do",
+				contentType : 'application/json',
+			    dataType: 'json',
+				type : "post",
+				data : JSON.stringify({ board_no : boardNo , ttl : ttl , cntn : cntn }),
+				success : function(data) {
+					console.log(data);
+					if(data == 1) {
+						alert("공지사항이 수정되었습니다.");
+						location.reload();
+					} else {
+						alert("공지사항 X");
+					}
+				},
+				error : function () {
+					alert("공지사항 수정에 실패했습니다.");
+				}
+			}); //end ajax
+			
 		});
+	
+
 
 		//공지사항 삭제
-		function bDelete(bno) {
+		function bDelete(bid) {
 			alert('정말 삭제하시겠습니까?');
-			myTable.board_no.value = bno
-			$('#myTable').submit();
-			location.reload();
+			console.log(bid);
+			bdDelete.board_no.value = bid;
+			
+			$('#bdDelete').submit();
 		}
-		
+
 		//페이징 처리
 		function goList(p) {
 			location.href = "boardList.do?page=" + p

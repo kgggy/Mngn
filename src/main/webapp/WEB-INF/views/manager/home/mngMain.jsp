@@ -43,12 +43,13 @@
 	height: 70px !important;
 }
 </style>
+
 </head>
 <!-- End Head -->
 <script>
 
 	if ('${param.message}' != '')
-    	alert("${message}");
+    	alert("관리자님 환영합니다.");
 
 </script>
 
@@ -61,33 +62,20 @@
 			</a>
 		</div>
 
-		<div class="u-header-middle">
+		<div class="u-header-middle" >
 			<a class="js-sidebar-invoker u-sidebar-invoker" href="#!"
 				data-is-close-all-except-this="true" data-target="#sidebar"> <i
 				class="fa fa-bars u-sidebar-invoker__icon--open"></i> <i
 				class="fa fa-times u-sidebar-invoker__icon--close"></i>
 			</a>
+				<span class="js-sidebar-invoker u-sidebar-invoker" > 관리자님 환영합니다. </span>
 		</div>
-
-		<!-- User Profile -->
-		<div class="astino-user-top-corner dropdown ml-2">
-			<a class="link-muted d-flex align-items-center" href="#!"
-				role="button" id="dropdownMenuLink" aria-haspopup="true"
-				aria-expanded="false" data-toggle="dropdown"> <img
-				class="u-avatar--xs img-fluid rounded-circle mr-2"
-				src="assets/img/avatars/img.png" alt="User Profile"> <span
-				class="d-none d-sm-inline-block"> Criss Donald <small
-					class=""></small>
-			</span>
-			</a>
-		</div>
-		<!-- End User Profile -->
 	</header>
 	<!-- End Header (Topbar) -->
 
 	<main class="u-main" role="main">
 
-		<!-- Sidebar -->
+				<!-- Sidebar -->
 		<aside id="sidebar" class="astino-sidebar u-sidebar">
 			<div class="u-sidebar-inner">
 				<header class="u-sidebar-header">
@@ -109,8 +97,8 @@
 
 						<!-- 공지사항 관리 -->
 						<li class="u-sidebar-nav-menu__item"><a
-							class="u-sidebar-nav-menu__link" href="boardList.do"> <i
-								class="far fa-edit u-sidebar-nav-menu__item-icon"></i> <span
+							class="u-sidebar-nav-menu__link " href="boardList.do">
+								<i class="far fa-edit u-sidebar-nav-menu__item-icon"></i> <span
 								class="u-sidebar-nav-menu__item-title">공지사항 관리</span>
 						</a></li>
 						<!-- End 공지사항 관리 -->
@@ -143,38 +131,21 @@
 							</ul></li>
 						<!-- End 회원 관리 -->
 
-						<!-- 서비스 관리-->
+						<!-- 훈련사 수당 관리-->
 						<li class="u-sidebar-nav-menu__item"><a
-							class="u-sidebar-nav-menu__link" href="svcList.do"> <i
-								class="fas fa-cogs u-sidebar-nav-menu__item-icon"></i> <span
-								class="u-sidebar-nav-menu__item-title">서비스 관리</span>
+							class="u-sidebar-nav-menu__link" href="salaryList.do"> <i
+								class="fas fa-list-alt u-sidebar-nav-menu__item-icon"></i> <span
+								class="u-sidebar-nav-menu__item-title">훈련사 수당 관리</span>
 						</a></li>
-						<!-- End 서비스 관리 -->
-
-						<!-- 정산 관리 -->
-						<li class="u-sidebar-nav-menu__item clearfix"><a
-							class="u-sidebar-nav-menu__link" href="salesList.do"
-							data-target="#subMenu2"> <i
-								class="fas fa-ticket-alt u-sidebar-nav-menu__item-icon"></i> <span
-								class="u-sidebar-nav-menu__item-title">판매 및 정산 관리</span> <i
-								class="fa fa-angle-right u-sidebar-nav-menu__item-arrow"></i> <span
-								class="u-sidebar-nav-menu__indicator"></span>
-						</a>
-
-							<ul id="subMenu2"
-								class="u-sidebar-nav-menu u-sidebar-nav-menu--second-level"
-								style="display: none;">
-								<li class="u-sidebar-nav-menu__item"><a
-									class="u-sidebar-nav-menu__link" href="salesList.do"> <span
-										class="u-sidebar-nav-menu__item-title">판매 내역</span>
-								</a></li>
-								<li class="u-sidebar-nav-menu__item"><a
-									class="u-sidebar-nav-menu__link" href="salaryList.do"> <span
-										class="u-sidebar-nav-menu__item-title">정산 내역</span>
-								</a></li>
-							</ul></li>
-						<!-- End 정산 관리 -->
-
+						<!-- End 훈련사 수당 관리 -->
+						
+						<!-- 관리자 로그아웃-->
+						<li class="u-sidebar-nav-menu__item"><a
+							class="u-sidebar-nav-menu__link" href="home.do"> <i
+								class="fas fa-cogs u-sidebar-nav-menu__item-icon"></i> <span
+								class="u-sidebar-nav-menu__item-title">로그아웃</span>
+						</a></li>
+						<!-- End 관리자 로그아웃 -->
 					</ul>
 				</nav>
 			</div>

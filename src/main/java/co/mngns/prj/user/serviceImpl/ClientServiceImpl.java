@@ -15,9 +15,9 @@ public class ClientServiceImpl implements ClientService {
 	ClientMapper cntmap;
 
 	@Override
-	public List<ClientVO> clientSelectList() {
+	public List<ClientVO> clientSelectList(ClientVO vo) {
 		// 사용자 목록보기
-		return cntmap.clientSelectList();
+		return cntmap.clientSelectList(vo);
 	}
 
 	@Override
@@ -57,10 +57,18 @@ public class ClientServiceImpl implements ClientService {
 	}
 
 	@Override
-	public List<ClientVO> mclientSelectList() {
+	public List<ClientVO> mclientSelectList(ClientVO vo) {
 		// 관리자 페이지 사용자 목록 페이지
-		return cntmap.mclientSelectList();
+		return cntmap.mclientSelectList(vo);
 	}
+
+	@Override
+	public int cntCount(ClientVO vo) {
+		// 전체 사용자 명수
+		return cntmap.cntCount(vo);
+	}
+
+
 
 	
 

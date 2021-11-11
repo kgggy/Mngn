@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <!-- Head -->
@@ -96,7 +97,7 @@
 	<!-- Header (Topbar) -->
 	<header class="astino-header u-header">
 		<div class="u-header-left">
-			<a class="u-header-logo" href="home.do"> <img
+			<a class="u-header-logo" href="mngMain.do"> <img
 				src="assets/logo.png" width="160">
 			</a>
 		</div>
@@ -104,24 +105,10 @@
 		<div class="u-header-middle">
 			<a class="js-sidebar-invoker u-sidebar-invoker" href="#!"
 				data-is-close-all-except-this="true" data-target="#sidebar"> <i
-				class="fa fa-bars u-sidebar-invoker__icon--open"></i> <i
-				class="fa fa-times u-sidebar-invoker__icon--close"></i>
-			</a>
+				class="fa fa-bars u-sidebar-invoker__icon--open"></i>
+			</a> <span class="js-sidebar-invoker u-sidebar-invoker"> 관리자님
+				환영합니다. </span>
 		</div>
-
-		<!-- User Profile -->
-		<div class="astino-user-top-corner dropdown ml-2">
-			<a class="link-muted d-flex align-items-center" href="#!"
-				role="button" id="dropdownMenuLink" aria-haspopup="true"
-				aria-expanded="false" data-toggle="dropdown"> <img
-				class="u-avatar--xs img-fluid rounded-circle mr-2"
-				src="assets/img/avatars/img.png" alt="User Profile"> <span
-				class="d-none d-sm-inline-block"> Criss Donald <small
-					class=""></small>
-			</span>
-			</a>
-		</div>
-		<!-- End User Profile -->
 	</header>
 	<!-- End Header (Topbar) -->
 
@@ -149,14 +136,14 @@
 
 						<!-- 공지사항 관리 -->
 						<li class="u-sidebar-nav-menu__item"><a
-							class="u-sidebar-nav-menu__link" href="boardList.do"> <i
+							class="u-sidebar-nav-menu__link " href="boardList.do"> <i
 								class="far fa-edit u-sidebar-nav-menu__item-icon"></i> <span
 								class="u-sidebar-nav-menu__item-title">공지사항 관리</span>
 						</a></li>
 						<!-- End 공지사항 관리 -->
 
 						<!-- 회원 관리 -->
-						<li class="u-sidebar-nav-menu__item clearfix"><a
+						<li class="u-sidebar-nav-menu__item "><a
 							class="u-sidebar-nav-menu__link active" href="cntList.do"
 							data-target="#subMenu22"> <i
 								class="fab fa-product-hunt u-sidebar-nav-menu__item-icon"></i> <span
@@ -168,9 +155,9 @@
 							<ul id="subMenu22"
 								class="u-sidebar-nav-menu u-sidebar-nav-menu--second-level text-center"
 								style="display: none;">
-								<li class="u-sidebar-nav-menu__item"><a
-									class="u-sidebar-nav-menu__link active" href="cntList.do">
-										<span class="u-sidebar-nav-menu__item-title">사용자 관리</span>
+								<li class="u-sidebar-nav-menu__item "><a
+									class="u-sidebar-nav-menu__link" href="cntList.do"> <span
+										class="u-sidebar-nav-menu__item-title">사용자 관리</span>
 								</a></li>
 								<li class="u-sidebar-nav-menu__item"><a
 									class="u-sidebar-nav-menu__link" href="trnList.do"> <span
@@ -183,44 +170,26 @@
 							</ul></li>
 						<!-- End 회원 관리 -->
 
-						<!-- 서비스 관리-->
+						<!-- 훈련사 수당 관리-->
 						<li class="u-sidebar-nav-menu__item"><a
-							class="u-sidebar-nav-menu__link" href="svcList.do"> <i
-								class="fas fa-cogs u-sidebar-nav-menu__item-icon"></i> <span
-								class="u-sidebar-nav-menu__item-title">서비스 관리</span>
+							class="u-sidebar-nav-menu__link" href="salaryList.do"> <i
+								class="fas fa-list-alt u-sidebar-nav-menu__item-icon"></i> <span
+								class="u-sidebar-nav-menu__item-title">훈련사 수당 관리</span>
 						</a></li>
-						<!-- End 서비스 관리 -->
+						<!-- End 훈련사 수당 관리 -->
 
-						<!-- 정산 관리 -->
-						<li class="u-sidebar-nav-menu__item clearfix"><a
-							class="u-sidebar-nav-menu__link" href="salesList.do"
-							data-target="#subMenu2"> <i
-								class="fas fa-ticket-alt u-sidebar-nav-menu__item-icon"></i> <span
-								class="u-sidebar-nav-menu__item-title">판매 및 정산 관리</span> <i
-								class="fa fa-angle-right u-sidebar-nav-menu__item-arrow"></i> <span
-								class="u-sidebar-nav-menu__indicator"></span>
-						</a>
-
-							<ul id="subMenu2"
-								class="u-sidebar-nav-menu u-sidebar-nav-menu--second-level"
-								style="display: none;">
-								<li class="u-sidebar-nav-menu__item"><a
-									class="u-sidebar-nav-menu__link" href="salesList.do"> <span
-										class="u-sidebar-nav-menu__item-title">판매 내역</span>
-								</a></li>
-								<li class="u-sidebar-nav-menu__item"><a
-									class="u-sidebar-nav-menu__link" href="salaryList.do"> <span
-										class="u-sidebar-nav-menu__item-title">정산 내역</span>
-								</a></li>
-							</ul></li>
-						<!-- End 정산 관리 -->
-
+						<!-- 관리자 로그아웃-->
+						<li class="u-sidebar-nav-menu__item"><a
+							class="u-sidebar-nav-menu__link" href="home.do"> <i
+								class="fas fa-cogs u-sidebar-nav-menu__item-icon"></i> <span
+								class="u-sidebar-nav-menu__item-title">로그아웃</span>
+						</a></li>
+						<!-- End 관리자 로그아웃 -->
 					</ul>
 				</nav>
 			</div>
 		</aside>
 		<!-- End Sidebar -->
-
 		<div class="u-content">
 			<div class="u-body">
 				<div class="row">
@@ -233,60 +202,48 @@
 
 							<div class="card-body">
 								<div class="table-responsive">
-									<table class="table table-hover">
-										<thead>
-											<tr>
-												<th scope="col" class="text-dark">ID</th>
-												<th scope="col" class="text-dark">이 름</th>
-												<th scope="col" class="text-dark">전화번호</th>
-												<th scope="col" class="text-dark">가입날짜</th>
-												<th scope="col" class="text-dark"></th>
-											</tr>
-										</thead>
-
-										<tbody>
-											<c:forEach var="trainer" items="${trainers}">
+									<form>
+										<table class="table table-hover">
+											<thead>
 												<tr>
-													<td>${trainer.client_id }</td>
-													<td>${trainer.name }</td>
-													<td>${trainer.phone }</td>
-													<td>${trainer.join_dt }</td>
-													<td><input type="button"
-														class="btn btn-outline-danger" value="상세보기" id="btnSearch"
-														data-toggle="modal" data-target="#exampleModalCenter" />
-													</td>
-													<td style="display: none;">${trainer.adres1}</td>
-													<td style="display: none;">${trainer.adres2}</td>
-													<td style="display: none;">${trainer.trn_birth_dt}</td>
-													<td style="display: none;">${trainer.work_loc1}</td>
-													<td style="display: none;">${trainer.work_loc2}</td>
-													<td style="display: none;">${trainer.work_time}</td>
-													<td style="display: none;">${trainer.trn_avrg}</td>
-													<td style="display: none;">${trainer.email}</td>
+													<th scope="col" class="text-dark">ID</th>
+													<th scope="col" class="text-dark">이 름</th>
+													<th scope="col" class="text-dark">전화번호</th>
+													<th scope="col" class="text-dark">가입날짜</th>
+													<th scope="col" class="text-dark"></th>
 												</tr>
-											</c:forEach>
-										</tbody>
-									</table>
+											</thead>
+
+											<tbody>
+												<c:forEach var="trainer" items="${trainers}">
+													<tr>
+														<td>${trainer.client_id }</td>
+														<td>${trainer.name }</td>
+														<td>${trainer.phone }</td>
+														<td>${trainer.join_dt }</td>
+														<td><input type="button"
+															class="btn btn-outline-danger" value="상세보기"
+															id="btnSearch" data-toggle="modal"
+															data-target="#exampleModalCenter" /></td>
+														<td style="display: none;">${trainer.adres1}</td>
+														<td style="display: none;">${trainer.adres2}</td>
+														<td style="display: none;">${trainer.trn_birth_dt}</td>
+														<td style="display: none;">${trainer.work_loc1}</td>
+														<td style="display: none;">${trainer.work_loc2}</td>
+														<td style="display: none;">${trainer.work_time}</td>
+														<td style="display: none;">${trainer.trn_avrg}</td>
+														<td style="display: none;">${trainer.email}</td>
+													</tr>
+												</c:forEach>
+											</tbody>
+										</table>
+									</form>
+									<my:paging jsFunc="goList" paging="${paging}" />
 								</div>
 							</div>
 						</div>
 					</div>
 					<!-- End 훈련사 정보 -->
-
-				</div>
-				<div class="row justify-content-between align-items-center mb-4">
-					<div class="col-sm">
-						<nav aria-label="Bootstrap Pagination Example">
-							<ul class="pagination mb-0">
-								<li class="page-item"><a class="page-link"
-									href="mngMain.do"><span
-										class="ml-1 d-none d-xl-inline-block">이전으로</span></a></li>
-								<li class="page-item"><a class="page-link" href="#">1</a></li>
-								<li class="page-item"><a class="page-link" href="#"><span
-										class="mr-1 d-none d-xl-inline-block">다음으로</span></a></li>
-							</ul>
-						</nav>
-					</div>
 				</div>
 			</div>
 
@@ -306,6 +263,7 @@
 			<!-- End Footer -->
 		</div>
 	</main>
+
 	<!-- Large Size Modal-->
 	<div class="modal fade bd-example-modal-lg" id="exampleModalCenter"
 		tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -328,18 +286,14 @@
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput">아이디</label> <input
 											type="text" class="form-control" id="trnId" readonly>
-									</div>
-									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput2">이 름</label> <input
 											type="text" class="form-control" id="trnName" placeholder=""
 											readonly>
 									</div>
 									<div class="form-group d-flex align-items-center">
-										<label for="formGroupExampleInput4">생일</label> <input
-											type="text" class="form-control" id="trnBdate" placeholder=""
+										<label for="formGroupExampleInput4">서비스평점</label> <input
+											type="text" class="form-control" id="trnStar" placeholder=""
 											readonly>
-									</div>
-									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput4">입사날짜</label> <input
 											type="text" class="form-control" id="trnJdate" placeholder=""
 											readonly>
@@ -348,49 +302,36 @@
 										<label for="formGroupExampleInput4">연락처</label> <input
 											type="text" class="form-control" id="trnPhone" placeholder=""
 											readonly>
-									</div>
-									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput4">이메일</label> <input
 											type="text" class="form-control" id="trnEmail" placeholder=""
 											readonly>
 									</div>
-									<div class="form-group d-flex align-items-center">
-										<label for="formGroupExampleInput4">서비스평점</label> <input
-											type="text" class="form-control" id="trnStar" placeholder=""
-											readonly>
-									</div>
+									
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput4">근무지역1</label> <input
 											type="text" class="form-control" id="trnLoc1" placeholder=""
 											readonly>
-									</div>
-									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput4">근무지역2</label> <input
 											type="text" class="form-control" id="trnLoc2" placeholder=""
 											readonly>
 									</div>
-									<div class="form-group d-flex align-items-center">
+									<!-- <div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput4">휴 무</label> <input
 											type="text" class="form-control" id="trnOff" placeholder=""
 											readonly>
-									</div>
+									</div> -->
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput3">주 소</label> <input
 											type="text" class="form-control" id="trnAdres1"
 											placeholder="" readonly> <input type="text"
 											class="form-control" id="trnAdres2" placeholder="" readonly>
 									</div>
-									<div class="form-group d-flex align-items-center">
-										<label for="formGroupExampleInput5">특이사항</label>
-										<textarea class="form-control" id="formGroupExampleInput5"
-											placeholder="특이사항 table에 column 없음 달님(개), 별님(고양이) 돌봄서비스 자주 이용 고객"></textarea>
-									</div>
 								</form>
 							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-outline-danger btn-sm"
-								data-dismiss="modal">확인</button>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-outline-danger btn-sm"
+									data-dismiss="modal">확인</button>
+							</div>
 						</div>
 					</div>
 					<!-- End Current Projects -->
@@ -399,5 +340,11 @@
 		</div>
 	</div>
 	<!-- End Large Size Modal-->
+	<script>
+		//페이징 처리
+		function goList(p) {
+			location.href = "trnList.do?page=" + p
+		}
+	</script>
 </body>
 </html>

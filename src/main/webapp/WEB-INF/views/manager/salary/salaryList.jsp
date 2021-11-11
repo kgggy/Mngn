@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <!-- Head -->
 
 <head>
-<title>훈련사 정산 목록</title>
+<title>사용자 목록</title>
 
 <!-- Meta -->
 <meta charset="utf-8">
@@ -40,40 +42,74 @@
 	width: 70px !important;
 	height: 70px !important;
 }
+
+/*input 클릭시, label 스타일*/
+#tab1:checked+label {
+	color: #555;
+	border: 1px solid #ddd;
+	border-top: 2px solid #f96436;
+	border-bottom: 1px solid #ffffff;
+	padding: 15px 25px;
+	font-weight: 600;
+	text-align: center;
+}
 </style>
+<!-- Global Vendor -->
+<script src="assets/vendor/jquery/dist/jquery.min.js"></script>
+<script src="assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
+<script src="assets/vendor/popper.js/dist/umd/popper.min.js"></script>
+<script src="assets/vendor/bootstrap/bootstrap.min.js"></script>
+
+<!-- Plugins -->
+<script
+	src="assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="assets/vendor/chart.js/dist/Chart.min.js"></script>
+
+<!-- Initialization  -->
+<script src="assets/js/sidebar-nav.js"></script>
+<script src="assets/js/dashboard-page-scripts.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#exampleModalCenter').on('show.bs.modal', function(event) {
+			var tr = $(event.relatedTarget).closest('tr')
+			var data0 = tr.find('td:eq(0)').html()
+			var data1 = tr.find('td:eq(1)').html()
+			var data2 = tr.find('td:eq(2)').html()
+			var data3 = tr.find('td:eq(3)').html()
+			var data4 = tr.find('td:eq(4)').html()
+			var data7 = tr.find('td:eq(7)').html()
+			var data8 = tr.find('td:eq(8)').html()
+			var data10 = tr.find('td:eq(10)').html()
+			$(this).find('.modal-body #client_id').val(data0)
+			$(this).find('.modal-body #client_id').val(data1)
+			$(this).find('.modal-body #svcDate').val(data2)
+			$(this).find('.modal-body #trnName').val(data3)
+			$(this).find('.modal-body #svcName').val(data4)
+			$(this).find('.modal-body #svcLoc').val(data7)
+			$(this).find('.modal-body #clientNeeds').val(data8)
+			$(this).find('.modal-body #clientName').val(data10)
+		})
+	});
+</script>
 </head>
 <!-- End Head -->
 
-<body class="page-order-all">
+<body class="page-customer-info">
 	<!-- Header (Topbar) -->
 	<header class="astino-header u-header">
 		<div class="u-header-left">
-			<a class="u-header-logo" href="home.do"> <img
-				src="assets/logo.png" width="160"> 
+			<a class="u-header-logo" href="mngMain.do"> <img
+				src="assets/logo.png" width="160">
 			</a>
 		</div>
 
 		<div class="u-header-middle">
 			<a class="js-sidebar-invoker u-sidebar-invoker" href="#!"
 				data-is-close-all-except-this="true" data-target="#sidebar"> <i
-				class="fa fa-bars u-sidebar-invoker__icon--open"></i> <i
-				class="fa fa-times u-sidebar-invoker__icon--close"></i>
-			</a>
+				class="fa fa-bars u-sidebar-invoker__icon--open"></i>
+			</a> <span class="js-sidebar-invoker u-sidebar-invoker"> 관리자님
+				환영합니다. </span>
 		</div>
-
-		<!-- User Profile -->
-		<div class="astino-user-top-corner dropdown ml-2">
-			<a class="link-muted d-flex align-items-center" href="#!"
-				role="button" id="dropdownMenuLink" aria-haspopup="true"
-				aria-expanded="false" data-toggle="dropdown"> <img
-				class="u-avatar--xs img-fluid rounded-circle mr-2"
-				src="assets/img/avatars/img.png" alt="User Profile"> <span
-				class="d-none d-sm-inline-block"> Criss Donald <small
-					class=""></small>
-			</span>
-			</a>
-		</div>
-		<!-- End User Profile -->
 	</header>
 	<!-- End Header (Topbar) -->
 
@@ -101,7 +137,7 @@
 
 						<!-- 공지사항 관리 -->
 						<li class="u-sidebar-nav-menu__item"><a
-							class="u-sidebar-nav-menu__link" href="boardList.do"> <i
+							class="u-sidebar-nav-menu__link " href="boardList.do"> <i
 								class="far fa-edit u-sidebar-nav-menu__item-icon"></i> <span
 								class="u-sidebar-nav-menu__item-title">공지사항 관리</span>
 						</a></li>
@@ -109,7 +145,7 @@
 
 						<!-- 회원 관리 -->
 						<li class="u-sidebar-nav-menu__item clearfix"><a
-							class="u-sidebar-nav-menu__link" href="cntList.do"
+							class="u-sidebar-nav-menu__link " href="cntList.do"
 							data-target="#subMenu22"> <i
 								class="fab fa-product-hunt u-sidebar-nav-menu__item-icon"></i> <span
 								class="u-sidebar-nav-menu__item-title">회원관리</span> <i
@@ -121,8 +157,8 @@
 								class="u-sidebar-nav-menu u-sidebar-nav-menu--second-level text-center"
 								style="display: none;">
 								<li class="u-sidebar-nav-menu__item"><a
-									class="u-sidebar-nav-menu__link active" href="cntList.do">
-										<span class="u-sidebar-nav-menu__item-title">사용자 관리</span>
+									class="u-sidebar-nav-menu__link " href="cntList.do"> <span
+										class="u-sidebar-nav-menu__item-title">사용자 관리</span>
 								</a></li>
 								<li class="u-sidebar-nav-menu__item"><a
 									class="u-sidebar-nav-menu__link" href="trnList.do"> <span
@@ -135,298 +171,85 @@
 							</ul></li>
 						<!-- End 회원 관리 -->
 
-						<!-- 서비스 관리-->
+						<!-- 훈련사 수당 관리-->
 						<li class="u-sidebar-nav-menu__item"><a
-							class="u-sidebar-nav-menu__link" href="svcList.do"> <i
-								class="fas fa-cogs u-sidebar-nav-menu__item-icon"></i> <span
-								class="u-sidebar-nav-menu__item-title">서비스 관리</span>
+							class="u-sidebar-nav-menu__link active" href="salaryList.do">
+								<i class="fas fa-list-alt u-sidebar-nav-menu__item-icon"></i> <span
+								class="u-sidebar-nav-menu__item-title">훈련사 수당 관리</span>
 						</a></li>
-						<!-- End 서비스 관리 -->
+						<!-- End 훈련사 수당 관리 -->
 
-						<!-- 정산 관리 -->
-						<li class="u-sidebar-nav-menu__item clearfix"><a
-							class="u-sidebar-nav-menu__link active" href="salesList.do"
-							data-target="#subMenu2"> <i
-								class="fas fa-ticket-alt u-sidebar-nav-menu__item-icon"></i> <span
-								class="u-sidebar-nav-menu__item-title">판매 및 정산 관리</span> <i
-								class="fa fa-angle-right u-sidebar-nav-menu__item-arrow"></i> <span
-								class="u-sidebar-nav-menu__indicator"></span>
-						</a>
-
-							<ul id="subMenu2"
-								class="u-sidebar-nav-menu u-sidebar-nav-menu--second-level"
-								style="display: none;">
-								<li class="u-sidebar-nav-menu__item"><a
-									class="u-sidebar-nav-menu__link" href="salesList.do"> <span
-										class="u-sidebar-nav-menu__item-title">판매 내역</span>
-								</a></li>
-								<li class="u-sidebar-nav-menu__item"><a
-									class="u-sidebar-nav-menu__link" href="salaryList.do"> <span
-										class="u-sidebar-nav-menu__item-title">정산 내역</span>
-								</a></li>
-							</ul></li>
-						<!-- End 정산 관리 -->
-
+						<!-- 관리자 로그아웃-->
+						<li class="u-sidebar-nav-menu__item"><a
+							class="u-sidebar-nav-menu__link" href="home.do"> <i
+								class="fas fa-cogs u-sidebar-nav-menu__item-icon"></i> <span
+								class="u-sidebar-nav-menu__item-title">로그아웃</span>
+						</a></li>
+						<!-- End 관리자 로그아웃 -->
 					</ul>
 				</nav>
 			</div>
 		</aside>
 		<!-- End Sidebar -->
-
-
 		<div class="u-content">
 			<div class="u-body">
 				<div class="row">
-					<!-- Current Projects -->
 					<div class="col-md-12 mb-4">
 						<div class="card h-100">
 							<header class="card-header d-flex align-items-center">
-								<h2 class="h2 card-header-title">훈련사 수당 목록</h2>
-
-								<!-- Card Header Icon -->
-								<ul class="list-inline ml-auto mb-0">
-								</ul>
-								<!-- End Card Header Icon -->
+								<h2 class="h2 card-header-title">훈련사 활동 목록</h2>
 							</header>
+							<!-- 검색 -->
+							<!-- <form action="salSelect.do" id="trnSearch" name="trnSearchs" method="post">
+								<div align="right" class="form-group d-flex align-items-center">
+									<input type="text" class="form-control" id="trnName" name="trnName"
+										placeholder="훈련사 이름 입력" value="">
+										<input type="button" onclick="getInputValue();" value="검색"
+										class="btn btn-outline-danger delete_board"
+										data-toggle="modal" data-target="#exampleModalCenter">
+								</div>
+							</form>-->
+							<!-- end 검색 -->
 
+							<!-- 사용자 정보 -->
 							<div class="card-body">
 								<div class="table-responsive">
-									<table class="table table-hover">
-										<thead>
-											<tr>
-												<th scope="col" class="text-dark">
-													<div class="custom-control custom-checkbox mb-2">
-														<input id="" class="custom-control-input is-invalid"
-															type="checkbox"> <label
-															class="custom-control-label" for=""><span></span></label>
-													</div>
-												</th>
-												<th scope="col" class="text-dark">Invoicce</th>
-												<th scope="col" class="text-dark">Customer</th>
-												<th scope="col" class="text-dark">Date</th>
-												<th scope="col" class="text-dark">Amount</th>
-												<th scope="col" class="text-dark">Status</th>
-												<th scope="col" class="text-dark">Tracking</th>
-												<th scope="col" class="text-dark"></th>
-											</tr>
-										</thead>
-
-										<tbody>
-											<tr>
-												<td>
-													<div class="custom-control custom-checkbox mb-2">
-														<input id="customCheck2"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck2"><span></span></label>
-													</div>
-												</td>
-												<td class="text-danger">003452</td>
-												<td>Company Name</td>
-												<td>22 June 2020</td>
-												<td class="text-danger">$200.00</td>
-												<td class="text-success bg-soft-success inline">Delivered</td>
-												<td>IN332942</td>
-												<td>
-													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
-                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="custom-control custom-checkbox mb-2">
-														<input id="customCheck3"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck3"><span></span></label>
-													</div>
-												</td>
-												<td class="text-danger">003452</td>
-												<td>Company Name</td>
-												<td>22 June 2020</td>
-												<td class="text-danger">$200.00</td>
-												<td class="text-success bg-soft-success inline">Delivered</td>
-												<td>IN332942</td>
-												<td>
-													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
-                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="custom-control custom-checkbox mb-2">
-														<input id="customCheck4"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck4"><span></span></label>
-													</div>
-												</td>
-												<td class="text-danger">003452</td>
-												<td>Company Name</td>
-												<td>22 June 2020</td>
-												<td class="text-danger">$200.00</td>
-												<td class="text-danger bg-soft-danger inline">Pending</td>
-												<td>IN332942</td>
-												<td>
-													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
-                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="custom-control custom-checkbox mb-2">
-														<input id="customCheck5"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck5"><span></span></label>
-													</div>
-												</td>
-												<td class="text-danger">003452</td>
-												<td>Company Name</td>
-												<td>22 June 2020</td>
-												<td class="text-danger">$200.00</td>
-												<td class="text-danger bg-soft-danger inline">Pending</td>
-												<td>IN332942</td>
-												<td>
-													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
-                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="custom-control custom-checkbox mb-2">
-														<input id="customCheck6"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck6"><span></span></label>
-													</div>
-												</td>
-												<td class="text-danger">003452</td>
-												<td>Company Name</td>
-												<td>22 June 2020</td>
-												<td class="text-danger">$200.00</td>
-												<td class="text-danger bg-soft-danger inline">Pending</td>
-												<td>IN332942</td>
-												<td>
-													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
-                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="custom-control custom-checkbox mb-2">
-														<input id="customCheck7"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck7"><span></span></label>
-													</div>
-												</td>
-												<td class="text-danger">003452</td>
-												<td>Company Name</td>
-												<td>22 June 2020</td>
-												<td class="text-danger">$200.00</td>
-												<td class="text-success bg-soft-success inline">Delivered</td>
-												<td>IN332942</td>
-												<td>
-													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
-                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="custom-control custom-checkbox mb-2">
-														<input id="customCheck8"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck8"><span></span></label>
-													</div>
-												</td>
-												<td class="text-danger">003452</td>
-												<td>Company Name</td>
-												<td>22 June 2020</td>
-												<td class="text-danger">$200.00</td>
-												<td class="text-success bg-soft-success inline">Delivered</td>
-												<td>IN332942</td>
-												<td>
-													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
-                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="custom-control custom-checkbox mb-2">
-														<input id="customCheck9"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck9"><span></span></label>
-													</div>
-												</td>
-												<td class="text-danger">003452</td>
-												<td>Company Name</td>
-												<td>22 June 2020</td>
-												<td class="text-danger">$200.00</td>
-												<td class="text-danger bg-soft-danger inline">Pending</td>
-												<td>IN332942</td>
-												<td>
-													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
-                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="custom-control custom-checkbox mb-2">
-														<input id="customCheck10"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck10"><span></span></label>
-													</div>
-												</td>
-												<td class="text-danger">003452</td>
-												<td>Company Name</td>
-												<td>22 June 2020</td>
-												<td class="text-danger">$200.00</td>
-												<td class="text-danger bg-soft-danger inline">Pending</td>
-												<td>IN332942</td>
-												<td>
-													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
-                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="custom-control custom-checkbox mb-2">
-														<input id="customCheck11"
-															class="custom-control-input is-invalid" type="checkbox">
-														<label class="custom-control-label" for="customCheck11"><span></span></label>
-													</div>
-												</td>
-												<td class="text-danger">003452</td>
-												<td>Company Name</td>
-												<td>22 June 2020</td>
-												<td class="text-danger">$200.00</td>
-												<td class="text-danger bg-soft-danger inline">Pending</td>
-												<td>IN332942</td>
-												<td>
-													<button type="button" data-toggle="modal" href="#exampleModalCenter" 
-                                                    class="btn btn-outline-danger btn-sm">상세보기</button>
-												</td>
-											</tr>
-										</tbody>
-									</table>
+									<form>
+										<table class="table table-hover">
+											<thead>
+												<tr>
+													<th scope="col" class="text-dark">예약번호</th>
+													<th scope="col" class="text-dark">제공날짜</th>
+													<th scope="col" class="text-dark">담당훈련사</th>
+													<th scope="col" class="text-dark">제공지역</th>
+													<th scope="col" class="text-dark">특이사항</th>
+													<th scope="col" class="text-dark">정산여부</th>
+													<th scope="col" class="text-dark"></th>
+												</tr>
+											</thead>
+											<tbody>
+												<c:forEach var="trnSal" items="${trnSals}">
+													<tr>
+														<td>${trnSal.reser_no }</td>
+														<td>${trnSal.reser_dt }</td>
+														<td>${trnSal.name }</td>
+														<td>${trnSal.reser_loc}</td>
+														<td>${trnSal.memo }</td>
+														<td class="text-success">정산완료</td>
+														<td style="display: none;">${trnSal.reser_loc}</td>
+														<td style="display: none;">${trnSal.memo }</td>
+														<td style="display: none;">${trnSal.client.name}</td>
+													</tr>
+												</c:forEach>
+											</tbody>
+										</table>
+									</form>
+									<my:paging jsFunc="goList" paging="${paging}" />
 								</div>
 							</div>
 						</div>
 					</div>
-					<!-- End Current Projects -->
-				</div>
-				<div class="row justify-content-between align-items-center mb-4">
-					<div class="col-sm">
-						<nav aria-label="Bootstrap Pagination Example">
-							<ul class="pagination mb-0">
-								<li class="page-item"><a class="page-link" href="mngMain.do"><span
-										class="ml-1 d-none d-xl-inline-block">이전으로</span></a></li>
-								<li class="page-item"><a class="page-link" href="#">1</a></li>
-								<li class="page-item active"><a class="page-link" href="#">2</a>
-								</li>
-								<li class="page-item"><a class="page-link" href="#">3</a></li>
-								<li class="page-item"><a class="page-link" href="#">4</a></li>
-								<li class="page-item"><a class="page-link" href="#">5</a></li>
-								<li class="page-item"><a class="page-link" href="#"><span
-										class="mr-1 d-none d-xl-inline-block">다음으로</span></a></li>
-							</ul>
-						</nav>
-					</div>
+					<!-- End 사용자 정보 -->
 				</div>
 			</div>
 
@@ -446,77 +269,79 @@
 			<!-- End Footer -->
 		</div>
 	</main>
-	
-				<!-- Large Size Modal-->
-		<div class="modal fade bd-example-modal-lg"  id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-lg" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h3 class="modal-title" id="exampleModalLabel">훈련사 수당 상세정보</h3>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
+
+	<!-- Large Size Modal-->
+	<div class="modal fade bd-example-modal-lg" id="exampleModalCenter"
+		tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title" id="exampleModalLabel">훈련사 활동 상세정보</h3>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<!-- Current Projects -->
+					<div class="col-md-12 mb-4">
+						<div class="card h-100">
+							<form>
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th scope="col" class="text-dark">예약번호</th>
+											<th scope="col" class="text-dark">제공날짜</th>
+											<th scope="col" class="text-dark">담당훈련사</th>
+											<th scope="col" class="text-dark">제공지역</th>
+											<th scope="col" class="text-dark">특이사항</th>
+											<th scope="col" class="text-dark">정산여부</th>
+											<th scope="col" class="text-dark"></th>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach var="trnSal" items="${trnSals}">
+											<tr>
+												<td id="">${trnSal.reser_no }</td>
+												<td>${trnSal.reser_dt }</td>
+												<td>${trnSal.name }</td>
+												<td>${trnSal.reser_loc}</td>
+												<td>${trnSal.memo }</td>
+												<td class="text-success">정산완료</td>
+												<td style="display: none;">${trnSal.reser_loc}</td>
+												<td style="display: none;">${trnSal.memo }</td>
+												<td style="display: none;">${trnSal.client.name}</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-outline-danger btn-sm"
+								data-dismiss="modal">확인</button>
+						</div>
 					</div>
-					<div class="modal-body">
-						<!-- Current Projects -->
-                    <div class="col-md-12 mb-4">
-                        <div class="card h-100">
-                            <div class="astino-pr-form card-body">
-                                <form>
-                                    <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput">아이디</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="heyyolove">
-                                    </div>
-                                    <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput2">이  름</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="고수">
-                                    </div>
-                                    <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput3">주  소</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="대구광역시 동구 안심로">
-                                    </div>
-                                    <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput4">가입날짜</label>
-                                        <span class="form-icon-wrapper">
-                                            <span class="form-icon form-icon--left">
-                                                <i class="fa fa-calendar form-icon__item"></i>
-                                            </span>
-                                            <input id="formGroupExampleInput4" class="form-control exp-date form-icon-input-left datepicker" type="email" placeholder="15 OCT 2021">
-                                        </span>
-                                    </div>
-                                    <div class="form-group d-flex align-items-center">
-                                        <label for="formGroupExampleInput5">특이사항</label>
-                                        <textarea class="form-control" id="formGroupExampleInput5" placeholder="달님(개), 별님(고양이) 돌봄서비스 자주 이용 고객"></textarea>
-                                    </div>
-                                 </form>
-                            </div>
-                        </div>
-                     <div class="modal-footer">
-						<button type="button" class="btn btn-outline-danger btn-sm" herf="" data-dismiss="modal">확인</button>
-					</div>
-                   </div>
-                    <!-- End Current Projects -->
-			    </div>
-			 </div>
-		 </div>
-	  </div>
-		<!-- Large Size Modal-->
+					<!-- End Current Projects -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Large Size Modal-->
+	<script>
+		/* //공지사항 삭제
+		function bDelete(bno) {
+			alert('정말 삭제하시겠습니까?');
+			myTable.board_no.value = bno
+			$('#myTable').submit();
+			location.reload();
+		} */
 
-	
-
-	<!-- Global Vendor -->
-	<script src="assets/vendor/jquery/dist/jquery.min.js"></script>
-	<script src="assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
-	<script src="assets/vendor/popper.js/dist/umd/popper.min.js"></script>
-	<script src="assets/vendor/bootstrap/bootstrap.min.js"></script>
-
-	<!-- Plugins -->
-	<script
-		src="assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
-	<script src="assets/vendor/chart.js/dist/Chart.min.js"></script>
-
-	<!-- Initialization  -->
-	<script src="assets/js/sidebar-nav.js"></script>
-	<script src="assets/js/dashboard-page-scripts.js"></script>
+		//페이징 처리
+		function goList(p) {
+			location.href = "salaryList.do?page=" + p
+		}
+	</script>
 </body>
 </html>
