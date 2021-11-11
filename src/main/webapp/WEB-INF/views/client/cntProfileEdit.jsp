@@ -5,11 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/profile.css">
-<title>내프로필 관리</title>
 <script>
-	function transM() {
-		if ()
-		confirm("훈련사로 전환하시겠습니까?");
+	function eProfile() {
+		alert("수정이 완료되었습니다.");
+		$("#fEdit").submit();
+
 	}
 </script>
 <style>
@@ -33,6 +33,7 @@
 	opacity: 0.8;
 }
 </style>
+<title>내프로필 관리</title>
 </head>
 <body>
 	<div class="bradcam_area breadcam_bg">
@@ -64,24 +65,24 @@
 			</div>
 		</div>
 		<div class="section-top-border">
-			<form action="#">
+			<form id="fEdit" action="editForm.do">
 				<div class="mt-10">
 					<input type="text" name="id" placeholder="id"
 						value="${client.client_id}" onfocus="this.placeholder = ''"
-						onblur="this.placeholder = 'id'" readonly class="single-input">
+						onblur="this.placeholder = 'id'" required class="single-input">
 				</div>
 				<div class="mt-10">
-					<input type="text" name="pwd" placeholder="pwd" readonly
+					<input type="text" name="pwd" placeholder="pwd"
 						value="${client.pwd}" onfocus="this.placeholder = ''"
 						onblur="this.placeholder = 'password'" class="single-input">
 				</div>
 				<div class="mt-10">
-					<input type="text" name="name" placeholder="name" readonly
+					<input type="text" name="name" placeholder="name"
 						value="${client.name}" onfocus="this.placeholder = ''"
 						onblur="this.placeholder = 'Name'" required class="single-input">
 				</div>
 				<div class="mt-10">
-					<input type="text" name="post_no" placeholder="post_no" readonly
+					<input type="text" name="post_no" placeholder="post_no"
 						value="${client.post_no}" onfocus="this.placeholder = ''"
 						onblur="this.placeholder = 'post_no'" required
 						class="single-input">
@@ -90,10 +91,10 @@
 					<div class="icon">
 						<i class="fa fa-thumb-tack" aria-hidden="true"></i>
 					</div>
-					<input type="text" name="adres1" placeholder="adres1" readonly
+					<input type="text" name="adres1" placeholder="adres1"
 						value="${client.adres1}" onfocus="this.placeholder = '주소'"
 						onblur="this.placeholder = 'adres1'" class="single-input">
-					<input type="text" name="adres2" placeholder="adres2" readonly
+					<input type="text" name="adres2" placeholder="adres2"
 						value="${client.adres2}" onfocus="this.placeholder = '주소'"
 						onblur="this.placeholder = 'adres2'" class="single-input">
 				</div>
@@ -108,20 +109,18 @@
                               </div>
                            </div> -->
 				<div class="mt-10">
-					<input type="text" name="phone" placeholder="phone" readonly
+					<input type="text" name="phone" placeholder="phone"
 						value="${client.phone}" onfocus="this.placeholder = ''"
 						onblur="this.placeholder = 'phone'" class="single-input-primary">
 				</div>
 				<div class="mt-10">
-					<input type="text" name="email" placeholder="email" readonly
+					<input type="text" name="email" placeholder="email"
 						value="${client.email}" onfocus="this.placeholder = ''"
 						onblur="this.placeholder = 'email'" class="single-input-primary">
 				</div>
-				<br /> <a id="trans" href="javascript:transM()">훈련사모드 전환</a> <br>
-				<br> <br>
+				<br/><br/><br/>
 				<div align="center">
-					<button type="button" onclick="location.href='cntProfileEdit.do'"
-						class="ebtn">수정</button>
+					<button type="button" class="ebtn" onclick="eProfile()">수정완료</button>
 					<button type="button" class="ebtn">취소</button>
 				</div>
 			</form>

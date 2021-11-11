@@ -219,16 +219,15 @@ span {
 	<!-- testmonial_area_start  -->
 	<div id="light" class="modal">
 		<div class="white_content modal-content" align="center">
-			<form action="pwResv.do" id="form">
+			<form action="pwResv.do" id="form" method="post">
 				<input type="hidden" name="term"> <input type="hidden"
-					name="prc"><input type="hidden" name="svc_id">
+					name="prc"><input type="hidden" name="name" value="${trainer.name }">
 				<div>
 					<div class="time">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<c:forEach items="${serviceTerm }" var="time">
 							<a class="genric-btn danger-border circle arrow" id="term"
-								data-prc="${time.prc}" data-svc_id="${time.svc_id }"
-								data-time="${time.term }">${time.term }시간</a>
+								data-prc="${time.prc}" data-time="${time.term }">${time.term }시간</a>
 						</c:forEach>
 					</div>
 					<div>
@@ -640,6 +639,7 @@ span {
         		 console.log("dd");
         		 $('#abtn').attr({"class": "boxed-btn", "data-toggle":"modal", "data-target":"#light", "data-trnId": "${trainer.client_id }"});
          }
+         
          
    </script>
 </body>

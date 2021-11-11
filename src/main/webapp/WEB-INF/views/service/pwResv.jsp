@@ -8,19 +8,15 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/reservation.css">
 <title>서비스 예약</title>
+<style>
+.notice {
+	font-size: 25px;
+}
+</style>
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 	window.onload = function() {
-		$("#address_kakao").on("click", function() {
-			new daum.Postcode({
-				oncomplete : function(data) { //선택시 입력값 세팅
-					$("#address_kakao").val(data.address); // 주소 넣기
-					$("#input[name='address_detail']").focus();
-				}
-			}).open();
-		});
-
 		$("input[type='checkbox']").on("click", function() {
 			var count = $("input:checked[type='checkbox']").length;
 			if (count > 2) {
@@ -31,13 +27,11 @@
 		$("input[name=svc_bgn_tm]")
 
 		$("input[name='svc_bgn_tm']").on("change", function() {
-			trn();
 		})
 
-		$(".park").on("click", function() {
-			window.open("map.do", "근처공원 선택",
-				"width=1000px,height=700px,scrollbars=yes,left=450px,top=120px");
-		});
+		$(".adres").on("click", function() {
+			alert("주소변경을 원하실 경우 일반 예약 서비스를 이용해주시길 바랍니다.");
+		})
 
 	}
 
@@ -87,26 +81,21 @@
 			<input type="hidden" id="service" name="term" value="${svcVO.term }"
 				readonly> <input type="hidden" id="service" name="prc"
 				value="${svcVO.prc }" readonly> <input type="hidden"
-				id="service" name="svc_id" value="${svcVO.svc_id }" readonly>
-			<input type="hidden" id="bill" name="phone" value="${addList.phone }"
-				readonly> <input type="hidden" id="bill" name="email"
-				value="${addList.email }" readonly>
-			<div class="item">
-				<h3>
-					주소<span class="required">*</span>&nbsp;&nbsp;<small>*입력한
-						주소의 반경 3km를 산책합니다.</small>
-					<button type="button" class="park">근처공원선택</button>
-				</h3>
-				<input type="text" id="address_kakao" name="adres1" readonly
-					value="${addList.adres1 }" /> <input type="text"
-					id="address_detail" name="adres2" value="${addList.adres2 }" />
+				id="bill" name="phone" value="${addList.phone }" readonly> <input
+				type="hidden" id="bill" name="email" value="${addList.email }"
+				readonly>
+			<div>
+				<p class="notice">
+					<a class="adres">${addList.adres1 } ${addList.adres2 }</a>,
+					${trainerVO.name }
+				</p>
 			</div>
+			<br />
+			<br />
 			<div class="input_date date_time">
 				<h3>
-					날짜 및 시간선택<span class="required">*</span>
+					시간선택<span class="required">*</span>
 				</h3>
-				<input type="text" class="datepicker" id="date_1" name="reser_dt"
-					required> <span> <i class="fas fa-calendar-alt"></i></span>
 			</div>
 			<div class="question">
 				<div class="question-answer">

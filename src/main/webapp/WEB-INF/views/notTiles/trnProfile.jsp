@@ -698,8 +698,6 @@ footer p a:hover {
 		</div>
 	</footer>
 	<!-- footer_end  -->
-
-
 	<script
 		src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script
@@ -711,9 +709,5 @@ footer p a:hover {
 		src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
 		integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
 		crossorigin="anonymous"></script>
-
-
-
 </body>
-
 </html>

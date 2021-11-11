@@ -1,38 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.mngns.prj.user.map.ClientMapper">
-	<select resultType="co.mngns.prj.user.vo.ClientVO" id="clientSelectList">
+	<select resultType="co.mngns.prj.user.vo.ClientVO"
+		id="clientSelectList">
 		select * from client
 	</select>
-	
-	<select resultType="co.mngns.prj.user.vo.ClientVO" id="clientSelect">
+
+	<select resultType="co.mngns.prj.user.vo.ClientVO"
+		id="clientSelect">
 		select * from client where client_id = #{client_id}
 	</select>
-	
-	<select resultType="co.mngns.prj.user.vo.ClientVO" id="mclientSelectList">
+
+	<select resultType="co.mngns.prj.user.vo.ClientVO"
+		id="mclientSelectList">
 		select * from client
 	</select>
-	
-
 
 	<insert id="clientInsert">
-	
-	insert into client(client_id, pwd, name, post_no,adres1,adres2, phone, email,join_dt, role)
-				values(#{client_id}, #{pwd}, #{name},#{post_no},#{adres1},#{adres2},#{phone},#{email},sysdate,1)
-	
+
+		insert into client(client_id, pwd, name,
+		post_no,adres1,adres2, phone,
+		email,join_dt, role)
+		values(#{client_id},
+		#{pwd},
+		#{name},#{post_no},#{adres1},#{adres2},#{phone},#{email},sysdate,1)
+
 	</insert>
-	
-		<select id="clientLogin" resultType="co.mngns.prj.user.vo.ClientVO">
-		 select * from users where client_id =#{client_id} and pwd =#{pwd}
-		 
+
+	<select id="clientLogin"
+		resultType="co.mngns.prj.user.vo.ClientVO">
+		select * from users where client_id =#{client_id} and pwd
+		=#{pwd}
+
 	</select>
-	
-	<!-- 
-	<insert id="insertLogin" parameterType="user">
-		INSERT into users (id, password, name, role)
-		VALUES ( #{id},#{password},#{name},#{role} )
-	</insert>
-	 -->
-	
-	
+
+	<update id="clientUpdate">
+		update client set pwd=#{pwd}, name=#{name},
+		post_no=#{post_no},adres1=#{adres1},adres2=#{adres2},phone=#{phone},email=#{email}
+		where client_id = #{client_id}
+	</update>
+
+	<delete id="clientDelete">
+		delete from client where client_id = #{client_id}
+	</delete>
+	<!-- <insert id="insertLogin" parameterType="user"> INSERT into users (id, 
+		password, name, role) VALUES ( #{id},#{password},#{name},#{role} ) </insert> -->
+
+
 </mapper>
