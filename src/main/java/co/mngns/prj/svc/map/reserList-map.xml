@@ -15,7 +15,8 @@
 
 	<select id="serviceTerm" resultType="co.mngns.prj.svc.vo.SvcVO">
 		select prc,term, svc_id
-		from svc
+		from
+		svc
 		where knd=2
 	</select>
 
@@ -24,26 +25,32 @@
 		resultType="co.mngns.prj.svc.vo.ReserListVO">
 		SELECT B.* FROM ( SELECT A.* , ROWNUM RN FROM (
 		select l.*,
-		case l.svc_stts when 1 then '접수 완료' when 2 then
+		case
+		l.svc_stts when 1 then '접수 완료' when 2 then
 		'서비스 완료' else '취소 및 환불'
-		end as status,
+		end
+		as status,
 		c.name,
 		case s.knd when 1 then '돌봄
-		서비스' when 2 then '산책 서비스' else '훈련 서비스' end as
+		서비스' when 2 then '산책 서비스'
+		else '훈련 서비스' end as
 		knd_name,
 		s.term,
 		s.prc,
 		(
-		select count(*) from review r
+		select count(*) from review
+		r
 		where r.reser_no = l.reser_no ) as
 		reviewyn
 
-		from reser_list l, svc s, client c
+		from reser_list l, svc s,
+		client c
 		where l.client_id2 =
 		c.client_id
 		and
 		s.svc_id = l.svc_id
-		and l.client_id1 = #{client_id1}
+		and
+		l.client_id1 = #{client_id1}
 		<![CDATA[ 
 	      ) A ) B WHERE RN >= #{start} and RN <= #{end}
 	      ]]>
@@ -57,9 +64,11 @@
 		Regexp_Substr(work_time,'[^,]+', 1,level)
 		work_time
 		From trainer t
-		where work_time Is Not Null
+		where
+		work_time Is Not Null
 		and t.work_loc1||' '||t.work_loc2 = '대구 달서구'
-		and substr(sun || mon || tue || wed || thu || fri || sat,
+		and
+		substr(sun || mon || tue || wed || thu || fri || sat,
 		to_char(to_date('21-11-17','yy-mm-dd'), 'D'),1 ) = 1
 		Connect By
 		Regexp_Substr('10,11,12,13,14', '[^,]+', 1,level) Is Not Null
@@ -80,40 +89,44 @@
 	</select>
 
 	<insert id="reserInsert">
-	    <selectKey keyProperty="reser_no" resultType="int" order="BEFORE">
-        SELECT reser_seq.nextval FROM dual
-    </selectKey>
+		<selectKey keyProperty="reser_no" resultType="int"
+			order="BEFORE">
+			SELECT reser_seq.nextval FROM dual
+		</selectKey>
 		insert into reser_list(reser_no, reser_dt, memo,
-							   reser_loc, pet_id1, svc_bgn_tm, 
-							   svc_stts, client_id1, svc_id, pet_id2, client_id2, enroll_dt)
+		reser_loc, pet_id1, svc_bgn_tm,
+		svc_stts, client_id1, svc_id, pet_id2, client_id2, enroll_dt)
 		values(#{reser_no}, #{reser_dt}, #{memo},#{adres1}||','||#{adres2},
-		   #{pet_id1}, #{svc_bgn_tm}, 1, #{client_id1}, #{svc_id},#{pet_id2},#{client_id2}, sysdate)
+		#{pet_id1}, #{svc_bgn_tm}, 1, #{client_id1},
+		#{svc_id},#{pet_id2},#{client_id2}, sysdate)
 	</insert>
 
 	<delete id="reserDelete">
 		delete from reser_list where reser_no = #{reser_no}
 	</delete>
-	
-	   <select id="reserCount" resultType="int">
-      select count(*) 
-        from reser_list l, svc s, client c
-       where l.client_id2 = c.client_id
-         and s.svc_id = l.svc_id
-         and l.client_id1 = #{client_id1}
-   </select>
-	
-	    <!-- 훈련사 의뢰목록 -->
-    <select id="trnReserSelectList" resultType="co.mngns.prj.user.vo.TrainerVO">
-       select c.name, 
-             s.* , 
-             case s.knd when 1 then '돌봄 서비스' when 2 then '산책 서비스' else '훈련 서비스' end as knd_name,
-             l.reser_dt, 
-             case l.svc_stts when 1 then '접수 완료' when 2 then '서비스 완료' else '취소 및 환불'
-            end as status
-        from reser_list l, svc s, client c, trainer t
-       where l.client_id2 = t.client_id
-               and l.client_id1 = c.client_id
-               and s.svc_id = l.svc_id
-               and t.client_id = #{client_id}
-    </select>
+
+	<select id="reserCount" resultType="int">
+		select count(*)
+		from reser_list l, svc s, client c
+		where l.client_id2 = c.client_id
+		and s.svc_id = l.svc_id
+		and l.client_id1 = #{client_id1}
+	</select>
+
+	<!-- 훈련사 의뢰목록 -->
+	<select id="trnReserSelectList"
+		resultType="co.mngns.prj.user.vo.TrainerVO">
+		select c.name,
+		s.* ,
+		case s.knd when 1 then '돌봄 서비스' when 2 then '산책 서비스' else '훈련 서비스' end as
+		knd_name,
+		l.reser_dt,
+		case l.svc_stts when 1 then '접수 완료' when 2 then '서비스 완료' else '취소 및 환불'
+		end as status
+		from reser_list l, svc s, client c, trainer t
+		where l.client_id2 = t.client_id
+		and l.client_id1 = c.client_id
+		and s.svc_id = l.svc_id
+		and t.client_id = #{client_id}
+	</select>
 </mapper>
