@@ -62,7 +62,7 @@
 		and substr(sun || mon || tue || wed || thu || fri || sat,
 		to_char(to_date('21-11-17','yy-mm-dd'), 'D'),1 ) = 1
 		Connect By
-		Regexp_Substr('10,11,12,13,14,15', '[^,]+', 1,level) Is Not Null
+		Regexp_Substr('10,11,12,13,14', '[^,]+', 1,level) Is Not Null
 		MINUS
 		select client_id2, Regexp_Substr(svc_bgn_tm,'[^,]+', 1,level)
 		work_time
@@ -101,4 +101,19 @@
          and s.svc_id = l.svc_id
          and l.client_id1 = #{client_id1}
    </select>
+	
+	    <!-- 훈련사 의뢰목록 -->
+    <select id="trnReserSelectList" resultType="co.mngns.prj.user.vo.TrainerVO">
+       select c.name, 
+             s.* , 
+             case s.knd when 1 then '돌봄 서비스' when 2 then '산책 서비스' else '훈련 서비스' end as knd_name,
+             l.reser_dt, 
+             case l.svc_stts when 1 then '접수 완료' when 2 then '서비스 완료' else '취소 및 환불'
+            end as status
+        from reser_list l, svc s, client c, trainer t
+       where l.client_id2 = t.client_id
+               and l.client_id1 = c.client_id
+               and s.svc_id = l.svc_id
+               and t.client_id = #{client_id}
+    </select>
 </mapper>
