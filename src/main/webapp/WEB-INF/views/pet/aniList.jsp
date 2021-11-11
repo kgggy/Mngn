@@ -238,19 +238,19 @@ h4 {
 										<div class="col-4">
 											<div class="mt-3">
 												<h4>나이</h4>
-												<p class="mb-0 text-muted">${pet.age }</p>
+												<p class="mb-0 text-muted">${pet.age }세</p>
+											</div>
+										</div>
+										<div class="col-4">
+											<div class="mt-3">
+												<h4>몸무게</h4>
+												<p class="mb-0 text-muted">${pet.wgt }kg</p>
 											</div>
 										</div>
 										<div class="col-4">
 											<div class="mt-3">
 												<h4>성별</h4>
 												<p class="mb-0 text-muted">${pet.gen_wm }</p>
-											</div>
-										</div>
-										<div class="col-4">
-											<div class="mt-3">
-												<h4>몸무게</h4>
-												<p class="mb-0 text-muted">${pet.wgt }</p>
 											</div>
 										</div>
 										<div align = "center">

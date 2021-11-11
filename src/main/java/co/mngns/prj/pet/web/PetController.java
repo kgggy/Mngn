@@ -52,5 +52,12 @@ public class PetController {
 		petService.PetInsert(pet);
 		return "redirect:petInsert.do";
 	}
+	
+	@RequestMapping(value = "/petUpdate.do")
+	public String petUpdate(HttpSession session, PetVO pet) {
+		pet.setPet_id((Integer) session.getAttribute("id"));
+		petService.PetInsert(pet);
+		return "redirect:petUpdate.do";
+	}
                                                                                                                           
 }

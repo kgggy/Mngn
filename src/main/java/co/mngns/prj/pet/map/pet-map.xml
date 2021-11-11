@@ -9,6 +9,8 @@
 	where p.client_id = c.client_id 
 	and	p.client_id = #{client_id}
 	</select>
+	
+	
 
 	<!-- <select resultType="co.mngns.prj.pet.vo.PetVO" id="petSelect">
 		select * from
@@ -26,8 +28,8 @@
 	
 	<update id = "petUpdate">
 	
-		update pet set ( name, gen, age, wgt,oper,memo,species )
-		where pet_id = #{pet_id};
+		update pet set (file_no,name, gen, age, wgt,oper,memo,species )
+		where pet_id =#{pet_id};
 	
 	</update>
 

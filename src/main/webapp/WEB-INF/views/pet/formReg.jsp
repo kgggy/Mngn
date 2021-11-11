@@ -87,7 +87,7 @@
 			<div class="card card-5">
 				<div class="card-body">
 
-					<form name="loginForm" action="petInsert.do" method="post">
+					<form name="loginForm" action="petUpdate.do" method="post">
 						<input type ="hidden" name="knd" value="2">
 						
 						
