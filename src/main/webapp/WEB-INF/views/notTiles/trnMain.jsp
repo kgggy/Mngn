@@ -27,6 +27,15 @@
 <link rel="stylesheet" href="css/slicknav.css">
 <link rel="stylesheet" href="css/style.css">
 <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+
+<!-- Favicon -->
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+<!-- Components Vendor Styles -->
+<link rel="stylesheet" href="assets/vendor/font-awesome/css/all.min.css">
+
+<!-- Theme Styles -->
+<link rel="stylesheet" href="assets/css/theme.css">
 <style>
 #no {
 	font-weight: bold;
@@ -57,6 +66,18 @@ h3 {
 	margin-left: 170px;
 	border-radius: 30%;
 	cursor: pointer;
+}
+
+.header-area .main-header-area .main-menu ul li a {
+  color: #102955;
+  font-size: 16px;
+  text-transform: capitalize;
+  font-weight: 500;
+  display: inline-block;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+  text-transform: capitalize;
+  padding: 15px;
 }
 </style>
 </head>
@@ -89,6 +110,70 @@ h3 {
 												<li><a href="home.do">로그아웃</a></li>
 
 											</ul></li>
+										<li>
+											<!-- Notifications -->
+											<div class="dropdown mr-4">
+												<a class="link-muted" href="#!" role="button"
+													id="dropdownMenuLink" aria-haspopup="true"
+													aria-expanded="false" data-toggle="dropdown"> <span
+													class="h3"> <i class="far fa-bell"></i>
+												</span> <span
+													class="u-indicator u-indicator-top-right u-indicator--xxs bg-info"></span>
+												</a>
+
+												<div
+													class="dropdown-menu dropdown-menu-right border-0 py-0 mt-4"
+													aria-labelledby="dropdownMenuLink"
+													style="width: 360px;">
+													<div class="card">
+														<div class="card-header d-flex align-items-center py-3">
+															<h2 class="h4 card-header-title">알림 내역</h2>
+														</div>
+
+														<div class="card-body p-0">
+															<div class="list-group list-group-flush">
+																<!-- Notification -->
+																<a class="list-group-item list-group-item-action"
+																	href="#">
+																	<div class="media align-items-center">
+																		<div
+																			class="u-icon u-icon--sm rounded-circle bg-danger text-white mr-3">
+																			<i class="fab fa-dribbble"></i>
+																		</div>
+
+																		<div class="media-body">
+																			<div class="d-flex align-items-center">
+																				<h4 class="mb-1">Dribbble</h4>
+																				<small class="text-muted ml-auto">23 Jan
+																					2018</small>
+																			</div>
+
+																			<p class="text-truncate mb-0"
+																				style="max-width: 250px;">
+																				<span class="text-primary">@htmlstream</span> just
+																				liked your post!
+																			</p>
+																		</div>
+																	</div>
+																</a>
+																<!-- End Notification -->
+															</div>
+														</div>
+
+														<div class="card-footer py-3">
+															<a class="btn btn-block btn-outline-primary" href="#">확인</a>
+														</div>
+													</div>
+												</div>
+											</div> <!-- End Notifications -->
+										</li>
+										<li><a class="link-muted d-flex align-items-center"
+											role="button" id="dropdownMenuLink" aria-haspopup="true"
+											aria-expanded="false" data-toggle="dropdown"> <span
+												class="d-none d-sm-inline-block" style="width: 200px;">
+													<strong>${name }님, 환영합니다!</strong>
+											</span>
+										</a></li>
 									</ul>
 								</nav>
 							</div>
@@ -113,7 +198,7 @@ h3 {
 								<br> <span>HEY, YO!</span>
 							</h3>
 							<p>
-								안녕하세요, OOO훈련사님! <br> 반려동물을 위해 힘써주는 당신을 응원합니다.
+								안녕하세요, ${name }훈련사님! <br> 반려동물을 위해 힘써주는 당신을 응원합니다.
 							</p>
 						</div>
 					</div>
@@ -172,11 +257,13 @@ h3 {
 							현재 온라인에서 제공되고 있는 훈련 교육을 들어보세요. <br /> 반려동물들을 케어하는 데에 있어 더 나은
 							서비스를 제공할 수 있을 것입니다.
 						</p>
-						<small style="color:#ff3500">아래 이미지를 클릭하게 되면 온라인 수강실로 이동합니다.</small>
+						<small style="color: #ff3500">아래 이미지를 클릭하게 되면 온라인 수강실로
+							이동합니다.</small>
 					</div>
 					<div>
 						<img src="img/study.jpg"
-							onclick="location.href='http://www.ebspetedu.co.kr/page.php?menuSeq=529'" id="study">
+							onclick="location.href='http://www.ebspetedu.co.kr/page.php?menuSeq=529'"
+							id="study">
 					</div>
 				</div>
 			</div>
