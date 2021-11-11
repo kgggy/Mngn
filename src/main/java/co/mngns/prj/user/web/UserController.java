@@ -1,6 +1,5 @@
 package co.mngns.prj.user.web;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +13,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import co.mngns.prj.board.service.ReviewService;
 import co.mngns.prj.board.vo.ReviewVO;
 import co.mngns.prj.common.vo.Paging;
+import co.mngns.prj.svc.service.ReserListService;
+import co.mngns.prj.svc.vo.ReserListVO;
 import co.mngns.prj.user.service.ClientService;
 import co.mngns.prj.user.service.TrainerService;
 import co.mngns.prj.user.vo.ClientVO;
@@ -29,6 +30,9 @@ public class UserController {
 	ClientService cntService;
 	@Autowired
 	ReviewService reviewService;
+	
+	@Autowired
+	ReserListService reserService;
 
 	@PostMapping(value = "/login.do") 
 	// 로그인 처리페이지
@@ -131,7 +135,10 @@ public class UserController {
 
 	@RequestMapping(value = "/tDetail.do")
 	// 훈련사 상세보기 페이지
-	public String tDetail(Model model, TrainerVO trn, ReviewVO review) {
+	public String tDetail(@RequestParam(required = false) int client_id, Model model, TrainerVO trn, ReviewVO review, ReserListVO reser) {
+		trn.setClient_id(client_id);
+		review.setClient_id(client_id);
+		model.addAttribute("serviceTerm", reserService.serviceTerm(reser));
 		model.addAttribute("trainer", trnService.TrainerSelect(trn));
 		model.addAttribute("reviews", reviewService.trnReviewList(review));
 		return "client/tDetail";
