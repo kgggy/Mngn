@@ -21,7 +21,9 @@ public class ReserListVO {
 	private String status;
 	private int client_id1;
 	private int svc_id;
-	private String client_id2;
+	private int client_id2;
+	private int client_id;
+	private Date enroll_dt;
 
 	private ClientVO client;
 
