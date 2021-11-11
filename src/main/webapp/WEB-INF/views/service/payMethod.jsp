@@ -29,9 +29,10 @@
 		 alert("결제에 실패하였습니다. 다시 결제하여 주시길 바랍니다.");
 		 }
 		 });
-
-		
 	}
+		function rqPay() {
+		 $("#pmForm").submit();
+		}
 </script>
 <style>
 .div {
@@ -85,7 +86,7 @@ tr {
 				</tr>
 				<tr>
 					<th width="300px">날짜 및 시간</th>
-					<td width="500px">${reser.reser_dt } 🐾 ${reser.svc_bgn_tm }:00</td>
+					<td width="500px">${reser.reser_dt }🐾${reser.svc_bgn_tm }:00</td>
 				</tr>
 				<tr>
 					<th width="300px">대상</th>
@@ -116,6 +117,6 @@ tr {
 		<button type="button" class="boxed-btn3" id="rbtn"
 			onclick="requestPay()">결제하기</button>
 	</div>
-
+	<a href="javascript:rqPay()">req</a>
 </body>
 </html>

@@ -533,9 +533,6 @@ span {
                 
                 return yyyy + "" +  mm + "" + dd;
            }
-             
-             
-         
       }
 
          /**
