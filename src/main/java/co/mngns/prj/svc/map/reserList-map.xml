@@ -56,12 +56,11 @@
 		select distinct client_id ,
 		Regexp_Substr(work_time,'[^,]+', 1,level)
 		work_time
-		From trainer
-		where
-		work_time Is Not Null
-		and substr(mon || tue || wed || thu || fri || sat
-		|| sun,
-		to_char(to_date('21-10-29','yy-mm-dd'), 'D'),1 ) = 1
+		From trainer t
+		where work_time Is Not Null
+		and t.work_loc1||' '||t.work_loc2 = '대구 달서구'
+		and substr(sun || mon || tue || wed || thu || fri || sat,
+		to_char(to_date('21-11-17','yy-mm-dd'), 'D'),1 ) = 1
 		Connect By
 		Regexp_Substr('10,11,12,13,14,15', '[^,]+', 1,level) Is Not Null
 		MINUS
@@ -86,9 +85,9 @@
     </selectKey>
 		insert into reser_list(reser_no, reser_dt, memo,
 							   reser_loc, pet_id1, svc_bgn_tm, 
-							   svc_stts, client_id1, svc_id, pet_id2, client_id2)
+							   svc_stts, client_id1, svc_id, pet_id2, client_id2, enroll_dt)
 		values(#{reser_no}, #{reser_dt}, #{memo},#{adres1}||','||#{adres2},
-		   #{pet_id1}, #{svc_bgn_tm}, 1, #{client_id1}, #{svc_id},#{pet_id2},#{client_id2})
+		   #{pet_id1}, #{svc_bgn_tm}, 1, #{client_id1}, #{svc_id},#{pet_id2},#{client_id2}, sysdate)
 	</insert>
 
 	<delete id="reserDelete">
