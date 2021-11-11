@@ -5,6 +5,59 @@
 <head>
 <meta charset="UTF-8">
 <title>내프로필 관리</title>
+<link rel="stylesheet" href="css/petsitting/style.css">
+<link
+	href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap"
+	rel="stylesheet">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <link rel="manifest" href="site.webmanifest"> -->
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+<!-- Place favicon.ico in the root directory -->
+
+<!-- CSS here -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/magnific-popup.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/themify-icons.css">
+<link rel="stylesheet" href="css/nice-select.css">
+<link rel="stylesheet" href="css/flaticon.css">
+<link rel="stylesheet" href="css/gijgo.css">
+<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="css/slicknav.css">
+<link rel="stylesheet" href="css/style.css">
+<!-- <link rel="stylesheet" href="css/responsive.css"> -->
+
+
+<!-- JS here -->
+<script src="js/vendor/modernizr-3.5.0.min.js"></script>
+<script src="js/vendor/jquery-1.12.4.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/isotope.pkgd.min.js"></script>
+<script src="js/ajax-form.js"></script>
+<script src="js/waypoints.min.js"></script>
+<script src="js/jquery.counterup.min.js"></script>
+<script src="js/imagesloaded.pkgd.min.js"></script>
+<script src="js/scrollIt.js"></script>
+<script src="js/jquery.scrollUp.min.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/nice-select.min.js"></script>
+<script src="js/jquery.slicknav.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/gijgo.min.js"></script>
+
+<!--contact js-->
+<script src="js/contact.js"></script>
+<script src="js/jquery.ajaxchimp.min.js"></script>
+<script src="js/jquery.form.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/mail-script.js"></script>
+
+<script src="js/main.js"></script>
 <style>
 form {
 	width: 50%;
@@ -264,7 +317,6 @@ img.rounded {
 	border-radius: 6px !important;
 }
 
-
 .tab-content>.active {
 	display: block;
 }
@@ -433,12 +485,54 @@ footer p a:hover {
 </head>
 
 <body>
+	<header>
+		<div class="header-area ">
+			<div id="sticky-header" class="main-header-area">
+				<div class="container">
+					<div class="row align-items-center">
+						<div class="col-xl-3 col-lg-3">
+							<div class="logo">
+								<h1 style="font-weight: bolder">
+									<a href="trnMain.do"><img src="img/logo1.png"> HEYYO</a>
+								</h1>
+							</div>
+						</div>
+						<div class="col-xl-9 col-lg-9">
+							<div class="main-menu  d-none d-lg-block">
+								<nav>
+									<ul id="navigation">
+										<li><a href="trnSal.do">의뢰 및 관리</a></li>
+										<li><a>마이페이지<i class="ti-angle-down"></i></a>
+											<ul class="submenu">
+												<li><a href="trnProfile.do">내 프로필 관리</a></li>
+												<li><a href="home.do">로그아웃</a></li>
+
+											</ul></li>
+										<li><a class="link-muted d-flex align-items-center"
+											role="button" id="dropdownMenuLink" aria-haspopup="true"
+											aria-expanded="false" data-toggle="dropdown"> <span
+												class="d-none d-sm-inline-block" style="width: 200px;">
+													<strong>${name }님, 환영합니다!</strong>
+											</span>
+										</a></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="mobile_menu d-block d-lg-none"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
 	<div class="bradcam_area breadcam_bg">
 		<div class="container">
 			<div class="row" id="row">
 				<div class="col-lg-12">
 					<div class="bradcam_text text-center">
-						<h3>${client.name} 프로필 관리</h3>
+						<h3>${client.name}프로필관리</h3>
 					</div>
 				</div>
 			</div>
@@ -457,117 +551,153 @@ footer p a:hover {
 					<div class="name">
 						<h3 class="title">${trainer.intro_ttl}</h3>
 					</div>
-					<div class ="자기소개">
-					<input type ="text" name="">
-					
+					<div class="자기소개">
+						<input type="text" name="">
+
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
 
-	<div class="section-top-border">
-		<form action="#" method="post">
-			<div class="mt-10">
-				<input type="text" name="id" placeholder="id"
-					value="${client.client_id}" onfocus="this.placeholder = ''"
-					onblur="this.placeholder = 'id'" required class="single-input">
-			</div>
-			<div class="mt-10">
-				<input type="text" name="pwd" placeholder="pwd"
-					value="${client.pwd}" onfocus="this.placeholder = ''"
-					onblur="this.placeholder = 'password'" class="single-input">
-			</div>
-			<div class="mt-10">
-				<input type="text" name="name" placeholder="name"
-					value="${client.name}" onfocus="this.placeholder = ''"
-					onblur="this.placeholder = 'Name'" required class="single-input">
-			</div>
-			<div class="mt-10">
-				<input type="number" name="post_no" placeholder="post_no"
-					value="${client.post_no}" onfocus="this.placeholder = ''"
-					onblur="this.placeholder = 'post_no'" required class="single-input">
-			</div>
-			<div class="input-group-icon mt-10">
-				<div class="icon">
-					<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+		<div class="section-top-border">
+			<form action="#" method="post">
+				<div class="mt-10">
+					<input type="text" name="id" placeholder="id"
+						value="${client.client_id}" onfocus="this.placeholder = ''"
+						onblur="this.placeholder = 'id'" required class="single-input">
 				</div>
-				<input type="text" name="adres1" placeholder="adres1"
-					value="${client.adres1}" onfocus="this.placeholder = '주소'"
-					onblur="this.placeholder = 'adres1'" class="single-input">
-				<input type="text" name="adres2" placeholder="adres2"
-					value="${client.adres2}" onfocus="this.placeholder = '주소'"
-					onblur="this.placeholder = 'adres2'" class="single-input">
-			</div>
+				<div class="mt-10">
+					<input type="text" name="pwd" placeholder="pwd"
+						value="${client.pwd}" onfocus="this.placeholder = ''"
+						onblur="this.placeholder = 'password'" class="single-input">
+				</div>
+				<div class="mt-10">
+					<input type="text" name="name" placeholder="name"
+						value="${client.name}" onfocus="this.placeholder = ''"
+						onblur="this.placeholder = 'Name'" required class="single-input">
+				</div>
+				<div class="mt-10">
+					<input type="number" name="post_no" placeholder="post_no"
+						value="${client.post_no}" onfocus="this.placeholder = ''"
+						onblur="this.placeholder = 'post_no'" required
+						class="single-input">
+				</div>
+				<div class="input-group-icon mt-10">
+					<div class="icon">
+						<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+					</div>
+					<input type="text" name="adres1" placeholder="adres1"
+						value="${client.adres1}" onfocus="this.placeholder = '주소'"
+						onblur="this.placeholder = 'adres1'" class="single-input">
+					<input type="text" name="adres2" placeholder="adres2"
+						value="${client.adres2}" onfocus="this.placeholder = '주소'"
+						onblur="this.placeholder = 'adres2'" class="single-input">
+				</div>
 
-			<div class="mt-10">
-				<input type="text" name="phone" placeholder="phone"
-					value="${client.phone}" onfocus="this.placeholder = ''"
-					onblur="this.placeholder = 'phone'" class="single-input-primary">
-			</div>
-			<div class="mt-10">
-				<input type="text" name="email" placeholder="email"
-					value="${client.email}" onfocus="this.placeholder = ''"
-					onblur="this.placeholder = 'email'" class="single-input-primary">
-			</div>
-			<!-- 훈련사 모드전환 했을때 -->
-			<div class="mt-10">
-				<button type = "fileupload">보유자격증추가</button>
-				<input type="text" name="file_no" placeholder="file_no"
-					value="${trainer.file_no}" onfocus="this.placeholder = 'file_no'"
-					onblur="this.placeholder = 'file_no'" class="single-input-primary">
-			</div>
+				<div class="mt-10">
+					<input type="text" name="phone" placeholder="phone"
+						value="${client.phone}" onfocus="this.placeholder = ''"
+						onblur="this.placeholder = 'phone'" class="single-input-primary">
+				</div>
+				<div class="mt-10">
+					<input type="text" name="email" placeholder="email"
+						value="${client.email}" onfocus="this.placeholder = ''"
+						onblur="this.placeholder = 'email'" class="single-input-primary">
+				</div>
+				<!-- 훈련사 모드전환 했을때 -->
+				<div class="mt-10">
+					<button type="fileupload">보유자격증추가</button>
+					<input type="text" name="file_no" placeholder="file_no"
+						value="${trainer.file_no}" onfocus="this.placeholder = 'file_no'"
+						onblur="this.placeholder = 'file_no'" class="single-input-primary">
+				</div>
 
-			<div class="mt-10">
-				<input type="button" name="day_off" placeholder="day_off" value=""
-					onfocus="this.placeholder = ''"
-					onblur="this.placeholder = 'day_off'" class="single-input-primary">
+				<div class="mt-10">
+					<input type="button" name="day_off" placeholder="day_off" value=""
+						onfocus="this.placeholder = ''"
+						onblur="this.placeholder = 'day_off'" class="single-input-primary">
 
-				<button>Mon</button>
-				<button>Tue</button>
-				<button>Wed</button>
-				<button>Thu</button>
-				<button>Fri</button>
-				<button>Sat</button>
-				<button>Sun</button>
-			</div>
+					<button>Mon</button>
+					<button>Tue</button>
+					<button>Wed</button>
+					<button>Thu</button>
+					<button>Fri</button>
+					<button>Sat</button>
+					<button>Sun</button>
+				</div>
 
-			<div class="mt-10">
-				<input type="text" name="제공가능 서비스분야" placeholder="service"
-					value="${trainer.work_time}" onfocus="this.placeholder = ''"
-					onblur="this.placeholder = 'service'" class="single-input-primary">
-			</div>
+				<div class="mt-10">
+					<input type="text" name="제공가능 서비스분야" placeholder="service"
+						value="${trainer.work_time}" onfocus="this.placeholder = ''"
+						onblur="this.placeholder = 'service'" class="single-input-primary">
+				</div>
 
-			<div class="mt-10">
-				<input type="text" name="가능지역" placeholder="possible_area"
-					value="${trainer.work_loc1}" onfocus="this.placeholder = ''"
-					onblur="this.placeholder = 'possible_area'"
-					class="single-input-primary">
-			</div>
-			<div class="mt-10">
-				<input type="text" name="가능지역" placeholder="possible_area"
-					value="${trainer.work_loc2}" onfocus="this.placeholder = ''"
-					onblur="this.placeholder = 'possible_area'"
-					class="single-input-primary">
-			</div>
-		</div>	
+				<div class="mt-10">
+					<input type="text" name="가능지역" placeholder="possible_area"
+						value="${trainer.work_loc1}" onfocus="this.placeholder = ''"
+						onblur="this.placeholder = 'possible_area'"
+						class="single-input-primary">
+				</div>
+				<div class="mt-10">
+					<input type="text" name="가능지역" placeholder="possible_area"
+						value="${trainer.work_loc2}" onfocus="this.placeholder = ''"
+						onblur="this.placeholder = 'possible_area'"
+						class="single-input-primary">
+				</div>
+		</div>
 
-			<br> <br>
+		<br> <br>
 
-			<div align="center">
-				<button type="submit" value="취소">취소</button>
-				&nbsp;
-				<button type="submit" value="수정">수정</button>
-			</div>
-			<br> <br> <br> <br> <br> <br>
-			<div align="center">
-				멍냥꽁냥 회원을 탈퇴하시겠습니까? <a href="mOut.do" class="withdraw">회원탈퇴하기</a>
-			</div>
+		<div align="center">
+			<button type="submit" value="취소">취소</button>
+			&nbsp;
+			<button type="submit" value="수정">수정</button>
+		</div>
+		<br> <br> <br> <br> <br> <br>
+		<div align="center">
+			멍냥꽁냥 회원을 탈퇴하시겠습니까? <a href="mOut.do" class="withdraw">회원탈퇴하기</a>
+		</div>
 
 		</form>
 	</div>
-	
 
+	<!-- footer_start  -->
+	<footer class="footer">
+		<div class="footer_top">
+			<div class="container">
+				<div class="row"></div>
+			</div>
+		</div>
+		<div class="copyright" align="center">
+			<h3>HEYYO</h3>
+			<p>고객센터 문의 : babyofbear@gmail.com</p>
+		</div>
+		<div class="copy-right_text">
+			<div class="container">
+				<div class="bordered_1px"></div>
+				<div class="row">
+					<div class="col-xl-12" align="center">
+						<p class="copy_right text-center">
+						<p>
+							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+							Copyright &copy;
+							<script>
+								document.write(new Date().getFullYear());
+							</script>
+							All rights reserved | This template is made with <i
+								class="ti-heart" aria-hidden="true"></i> by <a
+								href="https://colorlib.com" target="_blank">Colorlib</a>.Downloaded
+							from <a href="https://themeslab.org/" target="_blank">Themeslab</a>
+							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						</p>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- footer_end  -->
 
 
 	<script
@@ -581,6 +711,7 @@ footer p a:hover {
 		src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
 		integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
 		crossorigin="anonymous"></script>
+
 
 
 </body>

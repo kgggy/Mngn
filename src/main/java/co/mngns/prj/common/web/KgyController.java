@@ -1,6 +1,5 @@
 package co.mngns.prj.common.web;
 
-import java.io.Console;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,8 +7,6 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 import co.mngns.prj.board.service.ReviewService;
 import co.mngns.prj.board.vo.ReviewVO;
 import co.mngns.prj.common.vo.FilesVO;
+import co.mngns.prj.svc.service.ReserListService;
+import co.mngns.prj.svc.vo.ReserListVO;
 import co.mngns.prj.user.service.ClientService;
 import co.mngns.prj.user.service.TrainerService;
 import co.mngns.prj.user.vo.TrainerVO;
@@ -31,7 +30,10 @@ public class KgyController {
 	TrainerService trnService;
 	@Autowired
 	ClientService cntService;
-	@Autowired ReviewService reviewService;
+	@Autowired
+	ReviewService reviewService;
+	@Autowired
+	ReserListService reserService;
 
 	@GetMapping("/getSearchList.do")
 	@ResponseBody
@@ -78,5 +80,13 @@ public class KgyController {
 		int a = reviewService.reviewInsert(reviewVo);
 		return a;
 	}
+	
+	@RequestMapping(value="/trnSal.do")
+	public String trnReserSelectList(ReserListVO vo, Model model, HttpSession session) {
+		vo.setClient_id2((Integer)session.getAttribute("id"));
+		model.addAttribute("requestTrn", reserService.trnReserSelectList(vo));
+		return "trnSal";
+	}	
+	
 	
 }

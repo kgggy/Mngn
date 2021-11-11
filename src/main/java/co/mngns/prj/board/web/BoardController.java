@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import co.mngns.prj.board.service.BoardService;
 import co.mngns.prj.board.service.ReviewService;
@@ -60,7 +61,6 @@ public class BoardController {
 			@RequestParam(required = false, defaultValue = "1") int page2, ReviewVO vo, ReserListVO reser) {
 		// 서비스 목록 페이징 처리
 		Paging svcpaging = new Paging();
-		Paging rvpaging = new Paging();
 		svcpaging.setPage(page1);
 		svcpaging.setPageUnit(5);
 		reser.setClient_id1((Integer) session.getAttribute("id"));
@@ -70,8 +70,9 @@ public class BoardController {
 		model.addAttribute("serviceUses", reserService.serviceUse(reser));
 		model.addAttribute("svcPaging", svcpaging);
 		// 이용후기 페이징
+		Paging rvpaging = new Paging();
 		rvpaging.setPage(page2);
-		rvpaging.setPageUnit(5);
+		rvpaging.setPageUnit(3);
 		vo.setClient_id((Integer) session.getAttribute("id"));
 		vo.setStart(rvpaging.getFirst());
 		vo.setEnd(rvpaging.getLast());
@@ -83,14 +84,14 @@ public class BoardController {
 
 	@RequestMapping(value = "/reviewDelete.do")
 	// 리뷰 삭제
-	public String reviewDelete(Model model, ReviewVO vo) {
-		model.addAttribute("rDelete", rService.reviewDelete(vo));
+	public String reviewDelete(Model model, ReviewVO vo, RedirectAttributes re) {
+		re.addAttribute("tab2", rService.reviewDelete(vo));
 		return "redirect:cntReview.do";
 	}
 
-	//파일 다운로드
 	@GetMapping(value = "/download.do", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	@ResponseBody
+	//파일 다운로드
 	public ResponseEntity<Resource> downloadFile(@RequestHeader("User-Agent") String userAgent, String fileName) {
 
 		Resource resource = new FileSystemResource("d:\\fileUp\\" + fileName);
@@ -105,6 +106,14 @@ public class BoardController {
 	         e.printStackTrace();
 	      }
 	      return new ResponseEntity<Resource>(resource, headers, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/reviewUpdate.do")
+	// 리뷰 수정
+	public String reviewUpdate(@RequestParam(required = false) int review_no, Model model, ReviewVO vo) {
+		vo.setReview_no(review_no);
+		model.addAttribute("rUpdate", rService.reviewUpdate(vo));
+		return "redirect:cntReview.do";
 	}
 
 	@RequestMapping(value = "/boardList.do")
@@ -145,16 +154,16 @@ public class BoardController {
 	      return "manager/board/boardList";
 	   }
 	   
-	   @RequestMapping(value = "boarList.do")
-	   //공지사항 페이징 처리
-	   public String boardList(Model model, Paging bpaging, BoardVO vo) {
-	      bpaging.setPageUnit(10);
-	      vo.setStart(bpaging.getFirst());
-	      vo.setEnd(bpaging.getLast());
-	      bpaging.setTotalRecord(bService.bCount(vo));
-	      model.addAttribute("boards", bService.boardList());
-	      return "manager/board/boardList";
-	   }
+//	   @RequestMapping(value = "boarList.do")
+//	   //공지사항 페이징 처리
+//	   public String boardList(Model model, Paging bpaging, BoardVO vo) {
+//	      bpaging.setPageUnit(10);
+//	      vo.setStart(bpaging.getFirst());
+//	      vo.setEnd(bpaging.getLast());
+//	      bpaging.setTotalRecord(bService.bCount(vo));
+//	      model.addAttribute("boards", bService.boardList());
+//	      return "manager/board/boardList";
+//	   }
 
 
 }

@@ -366,32 +366,7 @@ article {
 	background-color: #fff;
 }
 </style>
-<script>
-	$(document).ready(function() {
-		$(".btn-group .btn").click(function() {
-			var inputValue = $(this).find("input").val();
-			if (inputValue != 'all') {
-				var target = $('table tr[data-status="' + inputValue + '"]');
-				$("table tbody tr").not(target).hide();
-				target.fadeIn();
-			} else {
-				$("table tbody tr").fadeIn();
-			}
-		});
-		// Changing the class of status label to support Bootstrap 4
-		var bs = $.fn.tooltip.Constructor.VERSION;
-		var str = bs.split(".");
-		if (str[0] == 4) {
-			$(".label").each(function() {
-				var classStr = $(this).attr("class");
-				var newClassStr = classStr.replace(/label/g, "badge");
-				$(this).removeAttr("class").addClass(newClassStr);
-			});
-		}
-	});
-</script>
 </head>
-
 <body>
 	<div class="bradcam_area breadcam_bg">
 		<div class="container">
@@ -417,11 +392,12 @@ article {
 
 
 	<div class="main">
-		<input id="tab1" type="radio" name="tabs" checked>
 		<!--디폴트 메뉴-->
-		<label id="tab1" for="tab1">서비스 이용 내역 조회</label> <input id="tab2"
-			type="radio" name="tabs"> <label id="tab2" for="tab2">내가
-			작성한 후기</label>
+		<input id="tab1" type="radio" name="tabs" <c:if test="${empty param.tab2 }"> checked </c:if>>
+		<label id="tab1" for="tab1">서비스 이용 내역 조회</label> 
+		
+		<input id="tab2" type="radio" name="tabs" <c:if test="${!empty param.tab2 }"> checked </c:if>> 
+		<label id="tab2" for="tab2">내가	작성한 후기</label>
 		<section id="content1">
 			<select id="stts" name="stts">
 				<option value="접수완료">접수 완료</option>
@@ -463,7 +439,7 @@ article {
 								<td><c:if test="${serUse.reviewyn == '0'}">
 										<a href="#" class="btn btn-sm manage"
 											data-reserno="${serUse. reser_no}" data-toggle="modal"
-											data-target="#reviewModal">후기 작성</a>
+											data-target="#reviewInsert">후기 작성</a>
 									</c:if> <c:if test="${serUse.reviewyn > '0'}">
 										<a class="btn btn-sm complete">작성 완료</a>
 									</c:if></td>
@@ -502,8 +478,8 @@ article {
 									<td>${myReview.cntn }</td>
 									<td>${myReview.star_shape }</td>
 									<td>${myReview.reg_dt }</td>
-									<td><a href="#" class="btn btn-sm manage"
-										data-toggle="modal" data-target="#reviewUpdate">수정</a>&nbsp;&nbsp;
+									<td><a href="#" class="open-ReviewModal btn btn-sm manage"
+										data-toggle="modal" data-target="#reviewUpdate" data-no="${myReview.cntn }">수정</a>&nbsp;&nbsp;
 										<a href="javascript:reviewDelete(${myReview.review_no })"
 										class="btn btn-sm manage">삭제</a></td>
 								</tr>
@@ -518,7 +494,7 @@ article {
 	</div>
 
 	<!-- 후기 등록 Modal 시작 -->
-	<div class="modal first" id="reviewModal" role="dialog">
+	<div class="modal first" id="reviewInsert" role="dialog">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -571,7 +547,7 @@ article {
 	<!-- 후기 등록 Modal 종료 -->
 
 	<!-- 후기 수정 Modal 시작 -->
-	<div class="modal first" id="reviewUpdate">
+	 <div class="modal first" id="reviewUpdate" role="dialog">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -580,38 +556,36 @@ article {
 				</div>
 				<div class="modal-body">
 					<form role="form" id="rvUpdate" name="rvUpdate" method="post">
-						<h2 align="center">
-							<strong>별점과 이용경험을 남겨주세요 :)</strong>
-						</h2>
-						<div class="modalpopup" align="center">
-							<div class="star-rating1">
-								<input type="radio" id="5-stars" name="star_rate1" value="5" />
-								<label for="5-stars" class="star"
-									style="font-size: 30pt; width: 40px; height: 40px">&#9733;</label>
-								<input type="radio" id="4-stars" name="star_rate1" value="4" />
-								<label for="4-stars" class="star"
-									style="font-size: 30pt; width: 40px; height: 40px">&#9733;</label>
-								<input type="radio" id="3-stars" name="star_rate1" value="3" />
-								<label style="font-size: 30pt; width: 40px; height: 40px"
-									for="3-stars" class="star">&#9733;</label> <input type="radio"
-									id="2-stars" name="star_rate1" value="2" /> <label
-									style="font-size: 30pt; width: 40px; height: 40px"
-									for="2-stars" class="star">&#9733;</label> <input type="radio"
-									id="1-star" name="star_rate1" value="1" /> <label for="1-star"
-									class="star" style="font-size: 30pt; width: 40px; height: 40px">&#9733;</label>
+						<input type="hidden" id="review_no" name="review_no">
+							<h2 align="center">
+								<strong>별점과 이용경험을 남겨주세요 :)</strong>
+							</h2>
+							<div class="modalpopup" align="center">
+								<div class="star-rating1">
+									<input type="radio" id="5-stars1" name="star_rate1" value="5" />
+									<label for="5-stars1" class="star" style="font-size: 30pt; width: 40px; height: 40px">&#9733;</label>
+									
+									<input type="radio" id="4-stars1" name="star_rate1" value="4" />
+									<label for="4-stars1" class="star" style="font-size: 30pt; width: 40px; height: 40px">&#9733;</label>
+									
+									<input type="radio" id="3-stars1" name="star_rate1" value="3" />
+									<label style="font-size: 30pt; width: 40px; height: 40px" for="3-stars1" class="star">&#9733;</label> 
+									
+									<input type="radio" id="2-stars1" name="star_rate1" value="2" /> 
+									<label style="font-size: 30pt; width: 40px; height: 40px" for="2-stars1" class="star">&#9733;</label>
+									 
+									<input type="radio" id="1-star1" name="star_rate1" value="1" /> 
+									<label for="1-star1" class="star" style="font-size: 30pt; width: 40px; height: 40px">&#9733;</label>
+								</div>
 							</div>
-						</div>
-						<br> <br>
-						<textarea id="eml_cnt"
-							style="width: 100%; margin-top: 0px; margin-bottom: 0px; height: 286px; resize: none;"
-							name="eml_cnt" rows="10" class="form-control"
-							placeholder="${cntn }"></textarea>
-						<br> <br> <img id="updateC" src="img/camera.png"
-							style="height: 90px; width: 130px"> <input type="file"
-							id="uploadFile" name="uploadFile" accept="image/gif,image/jpeg,image/png"
-							style="display: none;"> <input type="hidden"
-							name="camera">
-					</form>
+							<br> <br>
+							<textarea id="eml_cnt" style="width: 100%; margin-top: 0px; margin-bottom: 0px; height: 286px; resize: none;"
+									name="eml_cnt" rows="10" class="form-control" placeholder=""></textarea>
+							<br> <br> <img id="updateC" src="img/camera.png"
+								style="height: 90px; width: 130px"> <input type="file"
+								id="uploadFile" name="uploadFile" accept="image/gif,image/jpeg,image/png"
+								style="display: none;"> <input type="hidden" name="camera">
+					</form> 
 				</div>
 				<div class="modal-footer">
 					<button type="button" id="okbutton" class="btn btn-success">수정</button>
@@ -619,7 +593,7 @@ article {
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> 
 	<!-- 후기 수정 Modal 종료 -->
 	<script>
 	$('#insertC').click(function (e) {
@@ -634,7 +608,7 @@ article {
 
 	
 	//모달창 뜰때 예약번호 넘기기
-	$('#reviewModal').on('show.bs.modal', function (e) {
+	$('#reviewInsert').on('show.bs.modal', function (e) {
 		$('#reser_no').val($(event.target).data('reserno'))
 	})
 		
@@ -735,8 +709,8 @@ article {
 	function goList2(p) {
 		//searchFrm.page.value=p; //페이지 번호 받아서 폼태그에 넣어서 submit(폼 안에 페이지번호가 히든으로, 검색조건과 정렬방식도 가지고 넘어감)
 		//searchFrm.submit();
-		location.href = "cntReview.do?page2=" + p
-
+		location.href = "cntReview.do?tab2=1&page2=" + p
+		
 	}
 
 	//훈련사 상세보기로 이동
@@ -746,11 +720,21 @@ article {
 	}
 
 	//후기 삭제 처리
-	 function reviewDelete(rid) {
-		 alert('정말 삭제하시겠습니까?');
-		 rvDelete.review_no.value = rid
-		 $('#rvDelete').submit();
+	function reviewDelete(rid) {
+		 if(confirm('정말 삭제하시겠습니까?') == true) {
+			 rvDelete.review_no.value = rid
+			 $('#rvDelete').submit();
+		 } else {
+			 return;
+		 }
 	} 
+	
+	//내용 받아서 모달창 넘기기
+	$('.open-ReviewModal').on("click", function() {
+		var myRvId = $(this).data('no');
+		$('#eml_cnt').attr('placeholder', myRvId);
+	});
+	
 </script>
 
 </body>

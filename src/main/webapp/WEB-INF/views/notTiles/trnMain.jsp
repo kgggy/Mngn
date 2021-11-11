@@ -89,6 +89,13 @@ h3 {
 												<li><a href="home.do">로그아웃</a></li>
 
 											</ul></li>
+										<li><a class="link-muted d-flex align-items-center"
+											role="button" id="dropdownMenuLink" aria-haspopup="true"
+											aria-expanded="false" data-toggle="dropdown"> <span
+												class="d-none d-sm-inline-block" style="width: 200px;">
+													<strong>${name }님, 환영합니다!</strong>
+											</span>
+										</a></li>
 									</ul>
 								</nav>
 							</div>
@@ -172,11 +179,13 @@ h3 {
 							현재 온라인에서 제공되고 있는 훈련 교육을 들어보세요. <br /> 반려동물들을 케어하는 데에 있어 더 나은
 							서비스를 제공할 수 있을 것입니다.
 						</p>
-						<small style="color:#ff3500">아래 이미지를 클릭하게 되면 온라인 수강실로 이동합니다.</small>
+						<small style="color: #ff3500">아래 이미지를 클릭하게 되면 온라인 수강실로
+							이동합니다.</small>
 					</div>
 					<div>
 						<img src="img/study.jpg"
-							onclick="location.href='http://www.ebspetedu.co.kr/page.php?menuSeq=529'" id="study">
+							onclick="location.href='http://www.ebspetedu.co.kr/page.php?menuSeq=529'"
+							id="study">
 					</div>
 				</div>
 			</div>
