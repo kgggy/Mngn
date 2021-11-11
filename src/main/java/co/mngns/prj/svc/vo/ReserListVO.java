@@ -21,9 +21,10 @@ public class ReserListVO {
 	private String status;
 	private int client_id1;
 	private int svc_id;
-	private int client_id2;
-	private int client_id;
-
+	private String client_id2;
+	private Date enroll_dt;
+	private String client_id;
+	
 	private ClientVO client;
 
 	private String name;
@@ -36,6 +37,7 @@ public class ReserListVO {
 	private String reviewyn;
 	private String phone;
 	private String email;
+	private int bill_amt;
 	
 	private int start;
 	private int end;

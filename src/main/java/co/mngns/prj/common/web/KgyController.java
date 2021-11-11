@@ -1,9 +1,15 @@
 package co.mngns.prj.common.web;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import co.mngns.prj.board.service.ReviewService;
 import co.mngns.prj.board.vo.ReviewVO;
 import co.mngns.prj.common.vo.FilesVO;
+import co.mngns.prj.pet.vo.PetVO;
 import co.mngns.prj.svc.service.ReserListService;
 import co.mngns.prj.svc.vo.ReserListVO;
 import co.mngns.prj.user.service.ClientService;
@@ -83,10 +90,28 @@ public class KgyController {
 	
 	@RequestMapping(value="/trnSal.do")
 	public String trnReserSelectList(ReserListVO vo, Model model, HttpSession session) {
-		vo.setClient_id2((Integer)session.getAttribute("id"));
+		vo.setClient_id2(String.valueOf(session.getAttribute("id")));
 		model.addAttribute("requestTrn", reserService.trnReserSelectList(vo));
+		model.addAttribute("rqDetails", reserService.trnSalSelectList(vo));
 		return "trnSal";
 	}	
 	
-	
+	@RequestMapping("ajaxRqDetail.do")
+	@ResponseBody
+	public Map<String, Object> trnsss(Model model, PetVO vo, ReserListVO reser, HttpServletRequest request, HttpServletResponse response) {
+		//모델호출
+		model.addAttribute("trnReser", reserService.trnReserSelect(reser));
+		System.out.println(reser.getReser_no());
+		//map.put에 담기
+		//결과를 json 형태로 
+		List<ReserListVO> list = reserService.trnReserSelect(reser);
+		return Collections.singletonMap("list", list);
+		/*response.getContentType();
+		try {
+			response.getWriter().append("//json변수값");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+	}
 }

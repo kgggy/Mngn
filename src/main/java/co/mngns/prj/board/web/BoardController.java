@@ -110,18 +110,17 @@ public class BoardController {
 	
 	@RequestMapping(value = "/reviewUpdate.do")
 	// 리뷰 수정
-	public String reviewUpdate(@RequestParam(required = false) int review_no, Model model, ReviewVO vo) {
-		vo.setReview_no(review_no);
+	public String reviewUpdate(Model model, ReviewVO vo) {
+		vo.setReview_no((Integer)model.getAttribute("review_no"));
 		model.addAttribute("rUpdate", rService.reviewUpdate(vo));
 		return "redirect:cntReview.do";
 	}
 
-	@RequestMapping(value = "/boardList.do")
-	   // 관리자 공지사항 목록보기
-	   public String boardList(Model model) {
-	      model.addAttribute("boards", bService.boardList());
-	      return "manager/board/boardList";
-	   }
+	/*
+	    * @RequestMapping(value = "/boardList.do") // 관리자 공지사항 목록보기 public String
+	    * boardList(Model model) { model.addAttribute("boards", bService.boardList());
+	    * return "manager/board/boardList"; }
+	    */
 
 	   @GetMapping(value = "/boardForm.do")
 	   // 관리자 공지사항 등록 페이지 호출
@@ -141,29 +140,33 @@ public class BoardController {
 	   @RequestMapping(value = "/boardDelete.do") 
 	   // 공지사항 삭제 
 	   public String boardDelete(Model model, BoardVO vo) {
-	      model.addAttribute("bDelete", bService.boardDelete(vo));
-	      return "manager/board/boardList"; 
+	      model.addAttribute("board", bService.boardDelete(vo));
+	      return "redirect:boardList.do"; 
 	   }
 	   
 	   @RequestMapping(value = "/boardUpdate.do")
+	   @ResponseBody
 	   //공지사항 수정
-	   public String boardUpdate(Model model, BoardVO vo) {
-	      bService.boardUpdate(vo);
-	      model.addAttribute("boardTtl", bService.boardUpdate(vo));
-	      model.addAttribute("boardCntn", bService.boardUpdate(vo));
+	   public int boardUpdate(Model model, @RequestBody BoardVO vo) {
+	      System.out.println("====================>");
+	      System.out.println(vo.toString());
+	      System.out.println("====================>");
+	      
+	      int result = bService.boardUpdate(vo);
+	      
+	      return result;
+	   }
+
+	   @RequestMapping(value = "/boardList.do")
+	   //공지사항 목록 페이징
+	   public String boardList(BoardVO vo, Paging paging, Model model) {
+	      //페이징 처리
+	      paging.setPageUnit(5);
+	      vo.setStart(paging.getFirst());
+	      vo.setEnd(paging.getLast());
+	      paging.setTotalRecord(bService.bCount(vo));
+	      model.addAttribute("boards", bService.boardList(vo));
 	      return "manager/board/boardList";
 	   }
-	   
-//	   @RequestMapping(value = "boarList.do")
-//	   //공지사항 페이징 처리
-//	   public String boardList(Model model, Paging bpaging, BoardVO vo) {
-//	      bpaging.setPageUnit(10);
-//	      vo.setStart(bpaging.getFirst());
-//	      vo.setEnd(bpaging.getLast());
-//	      bpaging.setTotalRecord(bService.bCount(vo));
-//	      model.addAttribute("boards", bService.boardList());
-//	      return "manager/board/boardList";
-//	   }
-
 
 }

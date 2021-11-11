@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.mngns.prj.svc.map.ReserListMapper">
 
+	<!-- 사용자 반려동물 목록 -->
 	<select id="petSelectList"
 		resultType="co.mngns.prj.pet.vo.PetVO">
 		select * from pet where client_id = #{client_id}
@@ -103,17 +104,54 @@
    </select>
 	
 	    <!-- 훈련사 의뢰목록 -->
-    <select id="trnReserSelectList" resultType="co.mngns.prj.user.vo.TrainerVO">
+    <select id="trnReserSelectList" resultType="co.mngns.prj.svc.vo.ReserListVO">
        select c.name, 
+       		 c.client_id,
              s.* , 
              case s.knd when 1 then '돌봄 서비스' when 2 then '산책 서비스' else '훈련 서비스' end as knd_name,
-             l.reser_dt, 
+             l.enroll_dt, 
+		     l.reser_no,
              case l.svc_stts when 1 then '접수 완료' when 2 then '서비스 완료' else '취소 및 환불'
             end as status
         from reser_list l, svc s, client c, trainer t
        where l.client_id2 = t.client_id
                and l.client_id1 = c.client_id
                and s.svc_id = l.svc_id
-               and t.client_id = #{client_id}
+               and t.client_id = #{client_id2}
+    </select>
+    
+    <!-- 훈련사 정산목록 -->
+    <select id="trnSalSelectList" resultType="co.mngns.prj.svc.vo.ReserListVO">
+		select c.name, c.client_id, 
+		         s.* , 
+		         case s.knd when 1 then '돌봄 서비스' when 2 then '산책 서비스' else '훈련 서비스' end as knd_name,
+		         l.reser_dt, 
+		         l.reser_no,
+		         b.bill_amt, 
+		         l.enroll_dt
+		 from reser_list l, svc s, client c, trainer t, bill b
+		where l.client_id2 = t.client_id
+		       and l.client_id1 = c.client_id
+		       and l.reser_no = b.reser_no
+		       and s.svc_id = l.svc_id
+		       and t.client_id = #{client_id2}
+    </select>
+    
+    <!-- 훈련사 의뢰 상세목록보기 -->
+    <select id="trnReserSelect" resultType="co.mngns.prj.svc.vo.ReserListVO">
+    	select distinct s.term , 
+		         case s.knd when 1 then '돌봄 서비스' when 2 then '산책 서비스' else '훈련 서비스' end as knd_name,
+		         l.reser_dt, 
+		         l.svc_bgn_tm, 
+		         l.reser_loc, 
+		         l.memo,
+		         b.bill_amt, 
+		         l.enroll_dt,
+		         p.*
+		 from reser_list l, svc s, bill b, pet p
+		where l.reser_no = b.reser_no
+		       and s.svc_id = l.svc_id
+		       and p.client_id = l.client_id1
+		       and l.reser_no = ${reser_no} and l.client_id1 = ${client_id}
     </select>
 </mapper>

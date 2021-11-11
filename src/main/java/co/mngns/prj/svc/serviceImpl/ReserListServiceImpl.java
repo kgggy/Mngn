@@ -72,4 +72,16 @@ public class ReserListServiceImpl implements ReserListService {
 		return map.trnReserSelectList(reser);
 	}
 
+	@Override
+	public List<ReserListVO> trnSalSelectList(ReserListVO reser) {
+		// 정산 전체 목록
+		return map.trnSalSelectList(reser);
+	}
+
+	@Override
+	public List<ReserListVO> trnReserSelect(ReserListVO reser) {
+		// 의뢰 상세보기
+		return map.trnReserSelect(reser);
+	}
+
 }

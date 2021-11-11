@@ -31,4 +31,9 @@ public interface ReserListMapper {
 	public List<ReserListVO> serviceUse(ReserListVO reser); //서비스 이용내역
 	
 	public int reserCount(ReserListVO reser); //사용자 개인의 예약 건수
+	
+	public List<ReserListVO> trnSalSelectList(ReserListVO reser); //훈련사 정산 리스트
+
+	public List<ReserListVO> trnReserSelect(ReserListVO reser); //훈련사 의뢰 상세보기
+	
 }

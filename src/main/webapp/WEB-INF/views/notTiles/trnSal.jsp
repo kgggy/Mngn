@@ -236,7 +236,7 @@ table.table td .btn.manage {
 
 table.table td .btn.complete {
 	padding: 2px 10px;
-	background: #c2ccd5;
+	background: #ef4419;
 	color: #fff;
 	border-radius: 2px;
 }
@@ -408,6 +408,31 @@ th {
 				$(this).removeAttr("class").addClass(newClassStr);
 			});
 		}
+
+		$("#reserClick").on("click", function() {
+			var reser_no = $('.open-detail').data('reserno');
+			console.log(reser_no);
+		})
+
+		$('#rqDetailModal').on('show.bs.modal', function(e) {
+			var reserno = $(event.target).data('reserno');
+			console.log(reserno);
+		})
+
+		/* $.ajax({
+			url:"ajaxRqDetail.do",
+			type:"post",
+			data: {reser_no : reser_no},
+			dataType: "json",
+			success: function(data) {
+				 let str = "";
+				str += ${data.list[0].memo} 
+				console.log(data);
+			},
+			error: function() {
+				alert("다시 시도해주세요");
+			}
+		}); */
 	});
 </script>
 </head>
@@ -492,35 +517,38 @@ th {
 			<button id="search" onclick="javascript:status()">조회</button>
 			<hr>
 			<input style="font-size: 7pt;">* 기본적으로 최근 3개월간의 자료가 조회되며,
-			6개월이 지나면 정보가 사라집니다. <br> <br> <input name="client_id"
-				type="hidden">
-			<table class="table table-striped table-hover">
-				<thead align="center">
-					<tr>
-						<th>신청자</th>
-						<th>신청서비스</th>
-						<th>신청일</th>
-						<th>상태</th>
-					</tr>
-				</thead>
-				<tbody align="center">
-					<c:forEach items="${requestTrn }" var="rqTrn">
+			6개월이 지나면 정보가 사라집니다. <br> <br>
+			<form id="reserSub" name="reserSub">
+				<table class="table table-striped table-hover">
+					<thead align="center">
 						<tr>
-							<td>${rqTrn.name }</td>
-							<td data-reserno="${rqTrn. reser_no}" data-toggle="modal"
-										data-target="#rqDetailModal">${rqTrn. knd_name}(${rqTrn.term }시간)</td>
-							<td>${rqTrn.reser_dt }</td>
-							<td><span class="label label-warning">${rqTrn.status }</span></td>
-							<td>
-								<a href="#" class="btn btn-sm manage">수락</a>
-								<a class="btn btn-sm complete">거절</a>
-							</td>
+							<th>신청자</th>
+							<th>신청서비스</th>
+							<th>신청일</th>
+							<th>상태</th>
+							<th></th>
 						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-
-
+					</thead>
+					<tbody align="center">
+						<c:forEach items="${requestTrn }" var="rqTrn">
+							<tr id="modalreser" 자바스크립트 함수>
+								<td>${rqTrn.name }</td>
+								<td><a href="#" id="reserClick" class="open-detail"
+									data-reserno="${rqTrn.reser_no}" data-toggle="modal"
+									data-target="#rqDetailModal">${rqTrn.knd_name}(${rqTrn.term }시간)</a></td>
+								<td>${rqTrn.enroll_dt }</td>
+								<td><span class="label label-warning">${rqTrn.status }</span></td>
+								<td><a href="#" class="btn btn-sm manage">수락</a> <a
+									class="btn btn-sm complete">거절</a></td>
+							</tr>
+							<input name="reser_no" id="reser_no" type="hidden"
+								value="${rqTrn.reser_no}">
+							<input type="hidden" id="client_id" name="client_id"
+								value="${rqTrn.client_id }">
+						</c:forEach>
+					</tbody>
+				</table>
+			</form>
 		</section>
 
 		<section id="content2">
@@ -535,20 +563,20 @@ th {
 							<th>총금액</th>
 							<th>예약날짜</th>
 							<th>제공날짜</th>
-							<th>결제방법</th>
 						</tr>
 					</thead>
 					<tbody align="center">
-						<tr data-status="active">
-							<td>1</td>
-							<td>jojo</td>
-							<td>ㅇㅇㅇ</td>
-							<td>돌봄서비스(1시간)</td>
-							<td>18,000원</td>
-							<td>21.10.25</td>
-							<td>21.10.26</td>
-							<td>카드</td>
-						</tr>
+						<c:forEach items="${rqDetails }" var="rqDetail">
+							<tr data-status="active">
+								<td>${rqDetail.reser_no }</td>
+								<td>${rqDetail.client_id }</td>
+								<td>${rqDetail.name }</td>
+								<td>${rqDetail.knd_name}(${rqDetail.term }시간)</td>
+								<td>${rqDetail.bill_amt }원</td>
+								<td>${rqDetail.enroll_dt}</td>
+								<td>${rqDetail.reser_dt}</td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>
@@ -611,41 +639,46 @@ th {
 	<!-- 의뢰 상세보기 Modal 시작 -->
 	<div class="modal first" id="rqDetailModal" role="dialog">
 		<div class="modal-dialog modal-lg">
-			<div class="modal-content" style="margin: auto">
+			<div class="modal-content" style="margin: auto; top: -10px">
 				<div class="modal-header">
 					<h4 class="modal-title" style="text-align: left;">예약 상세정보</h4>
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body">
-					<form role="form" id="signform" name="signform" method="post"
-						action="/email/register" enctype="multipart/form-data">
-						<table>
-							<tr>
-								<th width="180px">서비스 유형</th>
-								<td>돌봄 서비스(3시간)</td>
-							</tr>
-							<tr>
-								<th>날짜 및 시간</th>
-								<td>돌봄 서비스(3시간)</td>
-							</tr>
-							<tr>
-								<th>위치</th>
-								<td>돌봄 서비스(3시간)</td>
-							</tr>
-							<tr>
-								<th>특이사항</th>
-								<td>돌봄 서비스(3시간)</td>
-							</tr>
-							<tr>
-								<th>결제 금액</th>
-								<td>돌봄 서비스(3시간)</td>
-							</tr>
-							<tr>
-								<th>훈련 대상</th>
-								<td></td>
-							</tr>
-						</table>
-					</form>
+					<table>
+						<tr>
+							<th width="180px">서비스 유형</th>
+							<td id = "">dd</td>
+						</tr>
+						<tr>
+							<th>날짜 및 시간</th>
+							<td></td>
+						</tr>
+						<tr>
+							<th>위치</th>
+							<td></td>
+						</tr>
+						<tr>
+							<th>특이사항</th>
+							<td></td>
+						</tr>
+						<tr>
+							<th>결제 금액</th>
+							<td></td>
+						</tr>
+						<%-- <c:forEach items="petList" var="pet">
+								<tr>
+									<th>훈련 대상</th>
+									<td>이름 : ${pet.name }(${pet.knd }, ${pet.species })</td>
+									<td>나이 : ${pet.age }</td>
+									<td>몸무게 : ${pet.wgt }</td>
+									<td>주의사항 : ${pet.memo }</td>
+								</tr>
+								<tr>
+								</tr>
+
+							</c:forEach> --%>
+					</table>
 				</div>
 				<div class="modal-footer">
 					<button type="button" id="okbutton" class="btn btn-success"
@@ -656,5 +689,6 @@ th {
 		</div>
 	</div>
 	<!-- 의뢰 상세보기 Modal 종료 -->
+
 </body>
 </html>
