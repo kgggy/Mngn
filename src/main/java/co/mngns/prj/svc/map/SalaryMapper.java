@@ -8,13 +8,19 @@ import co.mngns.prj.svc.vo.SalaryVO;
 
 @Service
 public interface SalaryMapper {
-	public List<SalaryVO> SalSelectList();
-
-	public int SalSelect(SalaryVO sal);
-
-	public int SalInsert(SalaryVO sal);
-
-	public int SalUpdate(SalaryVO sal);
-
-	public int SalDelete(SalaryVO sal);
+	//관리자 훈련사 수당 페이지 전체보기
+	List<SalaryVO> salSelectList(SalaryVO vo);
+	
+	//관리자 특정 훈련사 수당 페이지 
+	List<SalaryVO> salSelect(SalaryVO vo);
+	
+	//관리자 훈련사 수당 전체 건수
+	int salCount(SalaryVO vo);
+	
+	int salInsert(SalaryVO vo);
+	int salUpdate(SalaryVO vo);
+	int salDelete(SalaryVO vo);
+	
+	
+	
 }

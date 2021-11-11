@@ -45,35 +45,22 @@
 <!-- End Head -->
 
 <body class="page-order-all">
-	<!-- Header (Topbar) -->
+		<!-- Header (Topbar) -->
 	<header class="astino-header u-header">
 		<div class="u-header-left">
-			<a class="u-header-logo" href="home.do"> <img
+			<a class="u-header-logo" href="mngMain.do"> <img
 				src="assets/logo.png" width="160"> 
 			</a>
 		</div>
 
-		<div class="u-header-middle">
+		<div class="u-header-middle" >
 			<a class="js-sidebar-invoker u-sidebar-invoker" href="#!"
 				data-is-close-all-except-this="true" data-target="#sidebar"> <i
 				class="fa fa-bars u-sidebar-invoker__icon--open"></i> <i
 				class="fa fa-times u-sidebar-invoker__icon--close"></i>
 			</a>
+				<span class="js-sidebar-invoker u-sidebar-invoker" > 관리자님 환영합니다. </span>
 		</div>
-
-		<!-- User Profile -->
-		<div class="astino-user-top-corner dropdown ml-2">
-			<a class="link-muted d-flex align-items-center" href="#!"
-				role="button" id="dropdownMenuLink" aria-haspopup="true"
-				aria-expanded="false" data-toggle="dropdown"> <img
-				class="u-avatar--xs img-fluid rounded-circle mr-2"
-				src="assets/img/avatars/img.png" alt="User Profile"> <span
-				class="d-none d-sm-inline-block"> Criss Donald <small
-					class=""></small>
-			</span>
-			</a>
-		</div>
-		<!-- End User Profile -->
 	</header>
 	<!-- End Header (Topbar) -->
 
@@ -271,32 +258,9 @@
 					</div>
 					<!-- End Current Projects -->
 				</div>
-				<div class="row justify-content-between align-items-center mb-4">
-					<div class="col-sm">
-						<nav aria-label="Bootstrap Pagination Example">
-							<ul class="pagination mb-0">
-								<li class="page-item"><a class="page-link" href="mngMain.do"><span
-										class="ml-1 d-none d-xl-inline-block">이전으로</span></a></li>
-							</ul>
-						</nav>
-					</div>
-				</div>
 			</div>
 
 			<!-- Footer -->
-			<footer
-				class="astino-footer u-footer d-md-flex align-items-md-center text-center text-md-left">
-				<p class="h5 mb-2 mb-md-0">
-					Made with love by <a class="text-danger"
-						href="https://themespell.com/" target="_blank">Themespell</a>
-				</p>
-
-				<p class="h5 mb-0 ml-auto">
-					&copy; 2020 <a class="text-danger" href="https://themespell.com/"
-						target="_blank">Themespell</a>. All Rights Reserved.
-				</p>
-			</footer>
-			<!-- End Footer -->
 		</div>
 	</main>
 	

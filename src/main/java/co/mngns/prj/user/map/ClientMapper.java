@@ -3,9 +3,10 @@ package co.mngns.prj.user.map;
 import java.util.List;
 
 import co.mngns.prj.user.vo.ClientVO;
+import co.mngns.prj.user.vo.TrainerVO;
 
 public interface ClientMapper {
-	List<ClientVO> clientSelectList(); // 사용자 전체목록 가져오기
+	List<ClientVO> clientSelectList(ClientVO vo); // 사용자 전체목록 가져오기
 
 	ClientVO clientSelect(ClientVO vo); // 사용자 한명 세부정보 가져오기
 
@@ -19,5 +20,8 @@ public interface ClientMapper {
 
 	boolean idCheck(String str); // 아이디 중복 체크
 	
-	List<ClientVO> mclientSelectList(); // 관리자 페이지 사용자 전체목록 가져오기
+	List<ClientVO> mclientSelectList(ClientVO vo); // 관리자 페이지 사용자 전체목록 가져오기
+	
+	int cntCount(ClientVO vo); //전체 사용자 명수
+	
 }
