@@ -35,15 +35,13 @@
 	function result() {
 
 		var loginForm = document.loginForm;
-		var picture = loginForm.picture.value;
-		var species = loginForm.species.value;
 		var name = loginForm.name.value;
 		var gen = loginForm.gen.value;
 		var age = loginForm.age.value;
 		var wgt = loginForm.wgt.value;
 		var oper = loginForm.oper.value;
 
-		if (!picture || !species || !name || !gen || !age || !wgt || !oper) {
+		if (!file_no || !species || !name || !gen || !age || !wgt || !oper) {
 
 			alert("필수입력창을 모두 입력해주세요.");
 
@@ -56,6 +54,11 @@
 
 	}
 </script>
+
+		
+
+
+
 </head>
 
 
@@ -87,27 +90,27 @@
 			<div class="card card-5">
 				<div class="card-body">
 
-					<form name="loginForm" action="petUpdate.do" method="post">
-						<input type ="hidden" name="knd" value="2">
+					<form name="PetForm" action="" method="post">
+						<input type ="hidden" name="knd" value="${pet.knd }">
 						
 						
 						<div class="form-row">
 							<div class="picture">냥이사진</div>
 							<div class="value">
 								<div class="input-group">
-									<input class="input--style-5" type="file" name="picture"
-										value="">
+									<input class="input--style-5" type="file" name="file_no"
+										value="${pet.file_no } ">
 								</div>
 							</div>
 						</div>
 
 
 						<div class="form-row">
-							<div class="breed">냥이 품종</div>
+							<div class="species">냥이 품종</div>
 							<div class="value">
 								<div class="input-group">
 									<div class="rs-select2 js-select-simple select--no-search">
-										<select name="species">
+										<select name="species" value="${pet.species }">
 
 
 											<option disabled="disabled" selected="selected">Choose
@@ -147,7 +150,7 @@
 							</div>
 						</div>
 						<div class="form-row p-t-20">
-							<label class="gender"> 냥이 성별</label>
+							<label class="gen"> 냥이 성별</label>
 							<div class="p-t-15">
 								<label class="radio-container m-r-55"> 수컷 
 								<input	type="radio" checked="checked" name="gen" value="M" value = "${pet.gen }">
@@ -183,10 +186,10 @@
 							<label class="label label--block"> 중성화 여부 </label>
 							<div class="p-t-15">
 								<label class="radio-container m-r-55"> Y <input
-									type="radio" checked="checked" name="oper" value="1"> <span
+									type="radio" checked="checked" name="oper" value="${pet.oper }"> <span
 									class="checkmark"></span>
 								</label> <label class="radio-container"> N <input type="radio"
-									name="oper" value="0"> <span class="checkmark"></span>
+									name="oper" value="${pet.oper }"> <span class="checkmark"></span>
 								</label>
 							</div>
 						</div>
@@ -202,10 +205,10 @@
 							</div>
 						</div>
 						<div align="center">
-							<button class="btn btn--radius-2 btn--red" type="submit" onclick="location.href ='aniList.do'">
+							<button class="btn btn--radius-2 btn--red" type="button" onclick="location.href ='form.do'">
 								이전</button>
 							<button class="btn btn--radius-2 btn--red" type="button"
-								onclick="result()">수정</button>
+								onclick="">수정</button>
 						</div>
 					</form>
 				</div>

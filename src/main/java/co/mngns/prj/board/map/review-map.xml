@@ -46,6 +46,9 @@
 		    and r.client_id = c.client_id
 		    and t.client_id = #{client_id} 
 </select>
+<update id="reviewUpdate" parameterType="co.mngns.prj.board.vo.ReviewVO">
+   update review set cntn = #{cntn}, star_rate = ${star_rate} where review_no = #{review_no}
+</update>
 
 <delete id="reviewDelete" parameterType="co.mngns.prj.board.vo.ReviewVO">
 	delete from review where review_no = #{review_no}
