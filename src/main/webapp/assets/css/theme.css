@@ -3524,6 +3524,26 @@ input[type="button"].btn-block {
   border-radius: 0.25rem;
 }
 
+.dropdown-menu1 {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 10rem;
+  padding: 0.5rem 0;
+  margin: 0.125rem 0 0;
+  font-size: 0.9375rem;
+  color: #212529;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #eaf2f9;
+  border-radius: 0.25rem;
+}
+
 .dropdown-menu-right {
   right: 0;
   left: auto;

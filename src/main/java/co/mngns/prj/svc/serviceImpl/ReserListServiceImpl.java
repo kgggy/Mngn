@@ -20,12 +20,6 @@ public class ReserListServiceImpl implements ReserListService {
 	ReserListMapper map;
 
 	@Override
-	public List<ReserListVO> reserSelectList(ReserListVO reser) {
-		return map.reserSelectList(reser);
-
-	}
-
-	@Override
 	public ReserListVO reserSelect(ReserListVO reser) {
 		return map.reserSelect(reser);
 	}
@@ -38,31 +32,6 @@ public class ReserListServiceImpl implements ReserListService {
 	@Override
 	public int reserDelete(ReserListVO reser) {
 		return map.reserDelete(reser);
-	}
-
-	@Override
-	public List<SvcVO> serviceSelectList() {
-		return map.serviceSelectList();
-	}
-
-	@Override
-	public SvcVO serviceSelect(SvcVO svc) {
-		return map.serviceSelect(svc);
-	}
-
-	@Override
-	public int serviceInsert(SvcVO svc) {
-		return map.serviceInsert(svc);
-	}
-
-	@Override
-	public int serviceUpdate(SvcVO svc) {
-		return map.serviceUpdate(svc);
-	}
-
-	@Override
-	public int serviceDelete(SvcVO svc) {
-		return map.serviceDelete(svc);
 	}
 
 	@Override
@@ -95,6 +64,24 @@ public class ReserListServiceImpl implements ReserListService {
 	public int reserCount(ReserListVO reser) {
 		// 전체 서비스 이용 내역 건수
 		return map.reserCount(reser);
+	}
+
+	@Override
+	public List<ReserListVO> trnReserSelectList(ReserListVO reser) {
+		// 의뢰 전체 목록
+		return map.trnReserSelectList(reser);
+	}
+
+	@Override
+	public List<ReserListVO> trnSalSelectList(ReserListVO reser) {
+		// 정산 전체 목록
+		return map.trnSalSelectList(reser);
+	}
+
+	@Override
+	public List<ReserListVO> trnReserSelect(ReserListVO reser) {
+		// 의뢰 상세보기
+		return map.trnReserSelect(reser);
 	}
 
 }
