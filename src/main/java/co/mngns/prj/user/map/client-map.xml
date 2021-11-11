@@ -46,5 +46,18 @@
 	</insert>
 	 -->
 	
+	<update id="clientUpdate">
+      update client set pwd=#{pwd}, name=#{name},
+      post_no=#{post_no},adres1=#{adres1},adres2=#{adres2},phone=#{phone},email=#{email}
+      where client_id = #{client_id}
+   </update>
+
+   <delete id="clientDelete">
+      delete from client where client_id = #{client_id}
+   </delete>
+   <!-- <insert id="insertLogin" parameterType="user"> INSERT into users (id, 
+      password, name, role) VALUES ( #{id},#{password},#{name},#{role} ) </insert> -->
+
+	
 	
 </mapper>
