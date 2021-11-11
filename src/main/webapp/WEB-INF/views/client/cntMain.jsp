@@ -5,13 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <script>
-
-if ('${param.message}' != '')
-	 alert("${message}");
-
+	if ('${param.message}' != '')
+		alert("${message}");
 </script>
 </head>
-<body>
 	<!-- slider_area_start -->
 	<div class="slider_area">
 		<div class="single_slider slider_bg_1 d-flex align-items-center">
@@ -23,11 +20,10 @@ if ('${param.message}' != '')
 								<br> <span>HEY, YO!</span>
 							</h3>
 							<p>
-								전문 훈련사가 직접 방문합니다. <br> adipiscing elit, sed do eiusmod.
+								동물을 사랑하는 마음은 물론, 반려동물 관련 자격증 또는 <br> 전문 지식을 갖춘 분들이 전문
+								펫시터로 활동하고 있습니다.
 							</p>
-							<div>
-								<a href="javascript:login()" class="boxed-btn4">자세히 보기</a>
-							</div>
+							<div></div>
 						</div>
 					</div>
 				</div>
@@ -48,8 +44,7 @@ if ('${param.message}' != '')
 						<h3>
 							안심하고 <br>서비스를 이용하세요!
 						</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+						<p>까다로운 펫시터 선발·관리 체계와 안전 시스템을 구축하였습니다</p>
 					</div>
 				</div>
 			</div>
@@ -64,8 +59,9 @@ if ('${param.message}' != '')
 						</div>
 						<div class="service_content text-center">
 							<h3>엄선된 전문 훈련사</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-								sed do eiusmod tempor incididunt ut</p>
+							<p>
+								신분증 사본 제출, 등초본 인증, <br /> 펫시터 계약서로 신원을 검증합니다.
+							</p>
 						</div>
 					</div>
 				</div>
@@ -79,8 +75,9 @@ if ('${param.message}' != '')
 						</div>
 						<div class="service_content text-center">
 							<h3>실시간 사진 및 영상 공유</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-								sed do eiusmod tempor incididunt ut</p>
+							<p>
+								서비스 중의 실시간 사진과 <br /> 영상이 실시간으로 중계됩니다.
+							</p>
 						</div>
 					</div>
 				</div>
@@ -93,9 +90,8 @@ if ('${param.message}' != '')
 							</div>
 						</div>
 						<div class="service_content text-center">
-							<h3>Pet Spa</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-								sed do eiusmod tempor incididunt ut</p>
+							<h3>안전 보상 프로그램</h3>
+							<p>서비스 이용중 예상치 못한 문제 발생시 <br/> 체계적인 안전보상이 적용됩니다.</p>
 						</div>
 					</div>
 				</div>
@@ -103,37 +99,6 @@ if ('${param.message}' != '')
 		</div>
 	</div>
 	<!-- service_area_end -->
-
-	<!-- pet_care_area_start  -->
-	<div class="pet_care_area">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-lg-5 col-md-6">
-					<div class="pet_thumb">
-						<img src="img/about/pet_care.png" alt="">
-					</div>
-				</div>
-				<div class="col-lg-6 offset-lg-1 col-md-6">
-					<div class="pet_info">
-						<div class="section_title">
-							<h3>
-								<span>We care your pet </span> <br> As you care
-							</h3>
-							<p>
-								Lorem ipsum dolor sit , consectetur adipiscing elit, sed do <br>
-								iusmod tempor incididunt ut labore et dolore magna aliqua. <br>
-								Quis ipsum suspendisse ultrices gravida. Risus commodo <br>
-								viverra maecenas accumsan.
-							</p>
-							<a href="javascript:login()" class="boxed-btn3">자세히 보기</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- pet_care_area_end  -->
-
 	<!-- adapt_area_start  -->
 	<div class="adapt_area">
 		<div class="container">
@@ -142,12 +107,10 @@ if ('${param.message}' != '')
 					<div class="adapt_help">
 						<div class="section_title">
 							<h3>
-								<span>We need your</span> help Adopt Us
+								<span>저희와 함께해주신</span> 헤이요 식구들!
 							</h3>
-							<p>Lorem ipsum dolor sit , consectetur adipiscing elit, sed
-								do iusmod tempor incididunt ut labore et dolore magna aliqua.
-								Quis ipsum suspendisse ultrices.</p>
-							<a href="javascript:login()" class="boxed-btn3">자세히 보기</a>
+							<p>지금까지 저희와 함께 해주신 여러분 모두 감사합니다!
+							<br/> 앞으로도 계속 헤이요 이용해주실 거죠?</p>
 						</div>
 					</div>
 				</div>
@@ -158,8 +121,8 @@ if ('${param.message}' != '')
 								<div class="single_adapt text-center">
 									<img src="img/adapt_icon/1.png" alt="">
 									<div class="adapt_content">
-										<h3 class="counter">452</h3>
-										<p>Pets Available</p>
+										<h3 class="counter">875</h3>
+										<p>전체 서비스 이용</p>
 									</div>
 								</div>
 							</div>
@@ -168,18 +131,18 @@ if ('${param.message}' != '')
 									<img src="img/adapt_icon/3.png" alt="">
 									<div class="adapt_content">
 										<h3>
-											<span class="counter">52</span>+
+											<span class="counter">176</span>+
 										</h3>
-										<p>Pets Available</p>
+										<p>후기</p>
 									</div>
 								</div>
 								<div class="single_adapt text-center">
 									<img src="img/adapt_icon/2.png" alt="">
 									<div class="adapt_content">
 										<h3>
-											<span class="counter">52</span>+
+											<span class="counter">10</span>+
 										</h3>
-										<p>Pets Available</p>
+										<p>훈련사님들</p>
 									</div>
 								</div>
 							</div>
@@ -190,37 +153,6 @@ if ('${param.message}' != '')
 		</div>
 	</div>
 	<!-- adapt_area_end  -->
-
-	<!-- pet_care_area_start  -->
-	<div class="pet_care_area">
-		<div class="container">
-			<div class="row align-items-center">
-
-				<div class="col-lg-6 offset-lg-1 col-md-6">
-					<div class="pet_info">
-						<div class="section_title">
-							<h3>
-								<span>We care your pet </span> <br> As you care
-							</h3>
-							<p>
-								Lorem ipsum dolor sit , consectetur adipiscing elit, sed do <br>
-								iusmod tempor incididunt ut labore et dolore magna aliqua. <br>
-								Quis ipsum suspendisse ultrices gravida. Risus commodo <br>
-								viverra maecenas accumsan.
-							</p>
-							<a href="javascript:login()" class="boxed-btn3">자세히 보기</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-5 col-md-6">
-					<div class="pet_thumb">
-						<img src="img/about/pet_care.png" alt="">
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
 	<!-- testmonial_area_start  -->
 
 	<div class="testmonial_area">

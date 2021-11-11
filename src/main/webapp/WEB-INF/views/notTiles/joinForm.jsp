@@ -21,69 +21,53 @@
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 <script>
-	window.onload = function() {
-		document.getElementById("adres1").addEventListener("click", function() { //주소입력칸을 클릭하면
-			//카카오 지도 발생
-			new daum.Postcode({
-				oncomplete : function(data) { //선택시 입력값 세팅
-					console.log(data);
-					document.getElementById("post_no").value = data.zonecode; // 주소 넣기
-					document.getElementById("adres1").value = data.address; // 주소 넣기
-					document.querySelector("input[name=adres2]").focus(); //상세입력 포커싱
-				}
-			}).open();
-		});
+	window.onload = function(){
+	    document.getElementById("adres1").addEventListener("click", function(){ //주소입력칸을 클릭하면
+	        //카카오 지도 발생
+	        new daum.Postcode({
+	            oncomplete: function(data) { //선택시 입력값 세팅
+	    			console.log(data);
+	            	document.getElementById("post_no").value = data.zonecode; // 주소 넣기
+	            	document.getElementById("adres1").value = data.address; // 주소 넣기
+	                document.querySelector("input[name=adres2]").focus(); //상세입력 포커싱
+	            }
+	        }).open();
+	    });
 	}
-</script>
+	
+		
+	</script>
 <script>
-	function result() {
 
-		var joinForm = document.joinForm;
-		var pwd = joinForm.pwd.value;
-		var name = joinForm.name.value;
-		var adres1 = joinForm.adres1.value;
-		var adres2 = joinForm.adres2.value;
-		var phone = joinForm.phone.value;
-		var email = joinForm.email.value;
+function result() {
 
-		if (!client_id || !pwd || !name || !adres1 || !adres2 || !phone
-				|| !email) {
+	var joinForm = document.joinForm;
+	var pwd = joinForm.pwd.value;
+	var name = joinForm.name.value;
+	var adres1 = joinForm.adres1.value;
+	var adres2 = joinForm.adres2.value;
+	var phone = joinForm.phone.value;
+	var email = joinForm.email.value;
 
-			alert("필수입력창을 모두 입력해주세요.");
 
-		} else {
+	if (!client_id ||!pwd || !name || !adres1|| !adres2 || !phone || !email ) {
 
-			alert("등록되었습니다.");
-			joinForm.submit();
+		alert("필수입력창을 모두 입력해주세요.");
 
-		}
+	} else {
+
+		alert("등록되었습니다.");
+		joinForm.submit();
 
 	}
+
+}
 </script>
 
 
 </head>
 <body>
-<div class="bradcam_area breadcam_bg">
-      <div class="container">
-         <div class="row">
-            <div class="col-lg-12">
-               <div class="bradcam_text text-center">
-                  <h3> HEYYO 회원가입 </h3>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   <!-- END nav -->
-   <section>
-      <div class="overlay"></div>
-      <div class="container">
-         <div class="row no-gutters slider-text align-items-end">
-            <div class="col-md-9 ftco-animate pb-5"></div>
-         </div>
-      </div>
-   </section>
+
 
 	<div class="main">
 
@@ -93,7 +77,7 @@
 			<div class="col-md-5 border-right">
 
 				<div class="signup-form">
-					<form method="POST" class="joinForm" id="joinForm" name="joinForm" 	action="cntReg.do">
+					<form method="POST" class="joinForm" id="joinForm" name="joinForm" action ="cntReg.do">
 						<div class="form-row">
 							<div class="form-group">
 
@@ -139,12 +123,12 @@
 									<label for="phone_number" class="required">Phone number</label>
 									<input type="text" name="phone" id="phone" />
 								</div>
+							</div>
 
-								<div class="form-submit">
-									<input type="button" value="Submit" class="submit"
-										onclick="result()" /> <input type="submit" value="Reset"
-										class="submit" />
-								</div>
+							<div class="form-submit">
+								<input type="button" value="Submit" class="submit" 
+									 onclick="result()" /> <input type="submit"
+									value="Reset" class="submit" />
 							</div>
 						</div>
 					</form>

@@ -36,15 +36,15 @@
 
 		var loginForm = document.loginForm;
 		var picture = loginForm.picture.value;
-		var species = loginForm.species.value;
+		var breed = loginForm.breed.value;
 		var name = loginForm.name.value;
-		var gen = loginForm.gen.value;
+		var gender = loginForm.gender.value;
 		var age = loginForm.age.value;
-		var wgt = loginForm.wgt.value;
+		var weight = loginForm.weight.value;
 		var oper = loginForm.oper.value;
 
 
-		if (!picture ||!species || !name || !gen || !age || !wgt || !oper ) {
+		if (!picture ||!breed || !name || !gender || !age || !weight || !oper ) {
 
 			alert("필수입력창을 모두 입력해주세요.");
 
@@ -86,8 +86,7 @@
 
 				<div class="card-body">
 
-					<form name = "loginForm" action = "petInsert.do"  method="post">
-					<input type ="hidden" name="knd" value="1">
+					<form name = "loginForm" action = "aniList.do">
 					<div class="form-row">
 						<div class="picture">멍이사진 *</div>
 						<div class="value">
@@ -104,7 +103,7 @@
 						<div class="value">
 							<div class="input-group">
 								<div class="rs-select2 js-select-simple select--no-search">
-									<select name="species">
+									<select name="breed">
 
 
 										<option disabled="disabled" selected="selected">Choose
@@ -156,10 +155,10 @@
 						<label class="gender"> 멍이 성별 *</label>
 						<div class="p-t-15">
 							<label class="radio-container m-r-55"> 수컷 <input
-								type="radio" checked="checked" name="gen" value="M"> <span
+								type="radio" checked="checked" name="gender"> <span
 								class="checkmark"></span>
 							</label> <label class="radio-container"> 암컷 <input type="radio"
-								name="gen" value="W"> <span class="checkmark"></span>
+								name="gender"> <span class="checkmark"></span>
 							</label>
 						</div>
 					</div>
@@ -177,7 +176,7 @@
 						<div class="weight">몸무게 *</div>
 						<div class="value">
 							<div class="input-group">
-								<input class="input--style-5" type="text" name="wgt"
+								<input class="input--style-5" type="text" name="weight"
 									placeholder="kg">
 							</div>
 						</div>
@@ -187,10 +186,10 @@
 						<label class="oper"> 중성화 여부 *</label>
 						<div class="p-t-15">
 							<label class="radio-container m-r-55"> Y <input
-								type="radio" checked="checked" name="oper" value="1"> <span
+								type="radio" checked="checked" name="oper"> <span
 								class="checkmark"></span>
 							</label> <label class="radio-container"> N <input type="radio"
-								name="oper"value="0"> <span class="checkmark"></span>
+								name="oper"> <span class="checkmark"></span>
 							</label>
 						</div>
 					</div>
@@ -201,7 +200,7 @@
 						<label class="board"> 특이사항 </label>
 						<div class="value">
 							<div class="input-group">
-								<textarea rows="5" cols="180" name="memo"></textarea>
+								<textarea rows="5" cols="180"></textarea>
 							</div>
 						</div>
 					</div>
