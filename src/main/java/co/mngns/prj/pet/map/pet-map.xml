@@ -2,36 +2,45 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.mngns.prj.pet.map.PetMapper">
 
-	<select resultType="co.mngns.prj.pet.vo.PetVO"
-		id="petList">
-	select p.* ,case gen when 'M' then '♂' when 'W' then '♀' end as gen_wm
-	from pet p, client c 
-	where p.client_id = c.client_id 
-	and	p.client_id = #{client_id}
-	</select>
-	
-	
 
-	<!-- <select resultType="co.mngns.prj.pet.vo.PetVO" id="petSelect">
-		select * from
-		pet where pet_id = #{pet_id}
-	</select> -->
+	<select resultType="co.mngns.prj.pet.vo.PetVO" id="petList">
+		select p.* ,case gen when 'M' then '♂' when 'W' then '♀' end as gen_wm
+		from pet p, client c
+		where p.client_id = c.client_id
+		and p.client_id = #{client_id}
+	</select>
+
+	<!--<select resultType="co.mngns.prj.pet.vo.PetVO" id="petSelelct"> select 
+		* from pet where pet_id = #{pet_id} </select> -->
+
 
 	<insert id="petInsert">
 
-		insert into pet(pet_id, knd, name, gen, age, wgt, oper,memo,file_no,
+		insert into pet(pet_id, knd, name, gen, age, wgt,
+		oper,memo,file_no,
 		client_id, species)
-		values(pet_seq.nextval, #{knd},#{name},#{gen}, #{age}, #{wgt}, #{oper}, #{memo}, 0,
+		values(pet_seq.nextval,
+		#{knd},#{name},#{gen}, #{age}, #{wgt}, #{oper}, #{memo}, 0,
 		#{client_id}, #{species})
-
 	</insert>
-	
-	<update id = "petUpdate">
-	
-		update pet set (file_no,name, gen, age, wgt,oper,memo,species )
-		where pet_id =#{pet_id};
-	
+
+	<update id="petUpdate" parameterType="co.mngns.prj.pet.vo.PetVO">
+
+		update pet
+		set
+		name=#{name},
+		gen=#{gen},
+		age=#{age},
+		wgt=#{wgt},
+		oper=#{oper},
+		memo=#{memo},
+		species=#{species}
+		where pet_id =#{pet_id}
+
 	</update>
 
+	<delete id="petDelete" parameterType="co.mngns.prj.pet.vo.PetVO">
+		delete from pet where pet_no = #{pet_no}
+	</delete>
 
 </mapper>
