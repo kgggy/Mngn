@@ -16,30 +16,28 @@ public class PetServiceImpl implements PetService {
 	PetMapper petMapper;
 
 	@Override
-	public List<PetVO> PetList(PetVO pet) {
+	public List<PetVO> petList(PetVO pet) {
 		return petMapper.petList(pet);
 	}
 
 	@Override
-	public PetVO PetSelect(PetVO pet) {
-		// TODO Auto-generated method stub
-		return null;
+	public PetVO petSelect(PetVO pet) {
+		return petMapper.petSelelct(pet);
 	}
 
 	@Override
-	public int PetInsert(PetVO pet) {
+	public int petInsert(PetVO pet) {
 		return petMapper.petInsert(pet);
 	}
 
 	@Override
-	public int PetUpdate(PetVO pet) {
-		return 0;
+	public int petUpdate(PetVO pet) {
+		return petMapper.petUpdate(pet);
 	}
 
 	@Override
-	public int PetDelete(PetVO pet) {
-		return 0;
+	public int petDelete(PetVO pet) {
+		return petMapper.petDelete(pet);
 	}
-
 
 }
