@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import co.mngns.prj.board.service.ReviewService;
@@ -131,7 +132,9 @@ public class UserController {
 
 	@RequestMapping(value = "/tDetail.do")
 	// 훈련사 상세보기 페이지
-	public String tDetail(Model model, TrainerVO trn, ReviewVO review) {
+	public String tDetail(@RequestParam(required = false) int client_id, Model model, TrainerVO trn, ReviewVO review) {
+		trn.setClient_id(client_id);
+		review.setClient_id(client_id);
 		model.addAttribute("trainer", trnService.TrainerSelect(trn));
 		model.addAttribute("reviews", reviewService.trnReviewList(review));
 		return "client/tDetail";
@@ -145,7 +148,7 @@ public class UserController {
 		model.addAttribute("client", cntService.clientSelect(clientvo));
 		model.addAttribute("trainer", trnService.TrainerSelect(trainervo));
 
-		return "client/trnProfile";
+		return "trnProfile";
 	}
 
 }

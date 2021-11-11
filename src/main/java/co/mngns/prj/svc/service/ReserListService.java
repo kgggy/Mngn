@@ -9,34 +9,24 @@ import co.mngns.prj.user.vo.ClientVO;
 import co.mngns.prj.user.vo.TrainerVO;
 
 public interface ReserListService {
-	public List<ReserListVO> reserSelectList(ReserListVO reser);
+	public List<ReserListVO> trnReserSelectList(ReserListVO reser); //훈련사 의뢰 리스트
 
-	public ReserListVO reserSelect(ReserListVO reser);
+	public ReserListVO reserSelect(ReserListVO reser); //예약 단건조회
 
-	public int reserInsert(ReserListVO reser);
+	public int reserInsert(ReserListVO reser); //예약 등록
 
-	public int reserDelete(ReserListVO reser);
+	public int reserDelete(ReserListVO reser); //예약 삭제
 	
-	public List<SvcVO> serviceTerm(ReserListVO reser);
+	public List<SvcVO> serviceTerm(ReserListVO reser); //서비스 시간선택
 
-	public List<SvcVO> serviceSelectList();
-
-	public SvcVO serviceSelect(SvcVO svc);
-
-	public int serviceInsert(SvcVO svc);
-
-	public int serviceUpdate(SvcVO svc);
-
-	public int serviceDelete(SvcVO svc);
+	public List<PetVO> petSelectList(PetVO pet); //펫 리스트
 	
-	public List<PetVO> petSelectList(PetVO pet);
+	public ClientVO clientAdd(ClientVO client); //사용자 주소
 	
-	public ClientVO clientAdd(ClientVO client);
+	public List<TrainerVO> trnSelectList(ReserListVO reser); //훈련사 선택
 	
-	public List<TrainerVO> trnSelectList(ReserListVO reser);
+	public List<ReserListVO> serviceUse(ReserListVO reser); //서비스 이용내역
 	
-	public List<ReserListVO> serviceUse(ReserListVO reser);
-	
-	public int reserCount(ReserListVO reser);
+	public int reserCount(ReserListVO reser); //사용자 개인의 예약 건수
 	
 }

@@ -433,8 +433,14 @@ th {
 											<ul class="submenu">
 												<li><a href="trnProfile.do">내 프로필 관리</a></li>
 												<li><a href="home.do">로그아웃</a></li>
-
 											</ul></li>
+										<li><a class="link-muted d-flex align-items-center"
+											role="button" id="dropdownMenuLink" aria-haspopup="true"
+											aria-expanded="false" data-toggle="dropdown"> <span
+												class="d-none d-sm-inline-block" style="width: 200px;">
+													<strong>${name }님, 환영합니다!</strong>
+											</span>
+										</a></li>
 									</ul>
 								</nav>
 							</div>
@@ -501,16 +507,14 @@ th {
 					<c:forEach items="${requestTrn }" var="rqTrn">
 						<tr>
 							<td>${rqTrn.name }</td>
-							<td>${rqTrn. knd_name}(${rqTrn.term }시간)</td>
+							<td data-reserno="${rqTrn. reser_no}" data-toggle="modal"
+										data-target="#rqDetailModal">${rqTrn. knd_name}(${rqTrn.term }시간)</td>
 							<td>${rqTrn.reser_dt }</td>
 							<td><span class="label label-warning">${rqTrn.status }</span></td>
-						<td><c:if test="${rqTrn.reviewyn == '0'}">
-								<a href="#" class="btn btn-sm manage"
-									data-reserno="${rqTrn. reser_no}" data-toggle="modal"
-									data-target="#reviewModal">후기 작성</a>
-							</c:if> <c:if test="${rqTrn.reviewyn > '0'}">
-								<a class="btn btn-sm complete">작성 완료</a>
-							</c:if></td>
+							<td>
+								<a href="#" class="btn btn-sm manage">수락</a>
+								<a class="btn btn-sm complete">거절</a>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -550,7 +554,7 @@ th {
 			</div>
 		</section>
 
-		<div class="row mt-5">
+		<!-- <div class="row mt-5">
 			<div class="col text-center">
 				<div class="block-27">
 					<ul>
@@ -564,7 +568,7 @@ th {
 					</ul>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 
 	<!-- footer_start  -->
@@ -604,8 +608,8 @@ th {
 	</footer>
 	<!-- footer_end  -->
 
-	<!-- 후기작성 Modal 시작 -->
-	<div class="modal first" id="reviewModal" role="dialog">
+	<!-- 의뢰 상세보기 Modal 시작 -->
+	<div class="modal first" id="rqDetailModal" role="dialog">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content" style="margin: auto">
 				<div class="modal-header">
@@ -651,51 +655,6 @@ th {
 			</div>
 		</div>
 	</div>
-	<!-- 후기작성 Modal 종료 -->
-	<script>
-		function fileCheck(obj) {
-			document.signform.submit();
-		}
-		$('#camera_img').click(
-				function(e) {
-					document.signform.camera.value = document
-							.getElementById('camera_img').src;
-					e.preventDefault();
-					$('#file').click();
-				});
-
-		function rDelete() {
-			window.alert('정말 삭제하시겠습니까?');
-		};
-
-		function status() {//console.log(status.value);
-			// Declare variables
-			var filter, table, tr, i, txtValue;
-			stts = document.getElementById("stts");
-			filter = stts.value;
-			table = document.getElementById("myTable");
-			tbody = table.getElementByTagName("tbody");
-			tr = tbody.getElementsByTagName("tr");
-
-			// Loop through all table rows, and hide those who don't match the search query
-			for (i = 0; i < tr.length; i++) {
-				td = tr[i].getElementsByTagName("td")[0];
-				if (td) {
-					txtValue = td.textContent || td.innerText;
-					if (txtValue.indexOf(filter) > -1) {
-						tr[i].style.display = "";
-					} else {
-						tr[i].style.display = "none";
-					}
-				}
-			}
-		}
-
-		$(document).ready(function() {
-			$('.click_all').click(function() {
-				$('.chbox').prop('checked', this.checked);
-			});
-		});
-	</script>
+	<!-- 의뢰 상세보기 Modal 종료 -->
 </body>
 </html>

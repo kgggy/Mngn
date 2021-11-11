@@ -103,6 +103,7 @@
 
 .cal-table td.tlDate {
    color: #ededec;
+   pointer-events: none;
    
 }
 
@@ -550,9 +551,6 @@ span {
                 
                 return yyyy + "" +  mm + "" + dd;
            }
-             
-             
-         
       }
 
          /**
