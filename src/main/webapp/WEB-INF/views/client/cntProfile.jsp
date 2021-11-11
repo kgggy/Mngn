@@ -215,20 +215,21 @@ p {
 
 .nav-pills .nav-item .nav-link.active {
 	color: #fff;
-	background-color: #9c27b0;
-	box-shadow: 0 5px 20px 0 rgba(0, 0, 0, .2), 0 13px 24px -11px
-		rgba(156, 39, 176, .6);
+	background-color: #ff3500;
+	width: 150px;
+	height: 50px;
+	font-size: 15px;
 }
 
 .nav-pills .nav-item .nav-link {
 	line-height: 24px;
 	font-size: 12px;
-	font-weight: 500;
+	font-weight: bold;
 	min-width: 100px;
 	color: #555;
 	transition: all .3s;
 	border-radius: 30px;
-	padding: 10px 15px;
+	padding: 13px 15px;
 	text-align: center;
 }
 
@@ -238,7 +239,6 @@ p {
 
 .nav-pills .nav-item i {
 	display: block;
-	font-size: 30px;
 	padding: 15px 0;
 }
 
@@ -427,6 +427,14 @@ footer p a:hover {
 	weight: 180px;
 }
 
+#withdraw {
+	float: right;
+	margin-right: 100px;
+}
+
+#mode {
+	float: left;
+}
 </style>
 
 </head>
@@ -444,129 +452,98 @@ footer p a:hover {
 		</div>
 	</div>
 	<!-- END nav -->
-<body>
-	<div class="row">
-		<div class="col-md-6 ml-auto mr-auto">
-			<div class="profile">
-				<div class="avatar" align="center">
-					<img
-						src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTU0NjQzOTk4OTQ4OTkyMzQy/ansel-elgort-poses-for-a-portrait-during-the-baby-driver-premiere-2017-sxsw-conference-and-festivals-on-march-11-2017-in-austin-texas-photo-by-matt-winkelmeyer_getty-imagesfor-sxsw-square.jpg"
-						alt="Circle Image" class="img-raised rounded-circle img-fluid"
-						id="profile-image">
-					<div class="name">
-						<h3 class="title">${client.name}</h3>
+	<br />
+	<br />
+	<br />
+	<div>
+		<div class="row">
+			<div class="col-md-6 ml-auto mr-auto">
+				<div class="profile">
+					<div class="avatar" align="center">
+						<img
+							src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTU0NjQzOTk4OTQ4OTkyMzQy/ansel-elgort-poses-for-a-portrait-during-the-baby-driver-premiere-2017-sxsw-conference-and-festivals-on-march-11-2017-in-austin-texas-photo-by-matt-winkelmeyer_getty-imagesfor-sxsw-square.jpg"
+							alt="Circle Image" class="img-raised rounded-circle img-fluid"
+							id="profile-image">
+						<div class="name">
+							<h3 class="title">${client.name}</h3>
 
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-
-
-	<div class="section-top-border">
-		<form action="#">
-			<div class="mt-10">
-				<input type="text" name="id" placeholder="id"
-					value="${client.client_id}" onfocus="this.placeholder = ''"
-					onblur="this.placeholder = 'id'" required class="single-input">
-			</div>
-			<div class="mt-10">
-				<input type="text" name="pwd" placeholder="pwd"
-					value="${client.pwd}" onfocus="this.placeholder = ''"
-					onblur="this.placeholder = 'password'" class="single-input">
-			</div>
-			<div class="mt-10">
-				<input type="text" name="name" placeholder="name"
-					value="${client.name}" onfocus="this.placeholder = ''"
-					onblur="this.placeholder = 'Name'" required class="single-input">
-			</div>
-			<div class="mt-10">
-				<input type="post_no" name="post_no" placeholder="post_no"
-					value="${client.post_no}" onfocus="this.placeholder = ''"
-					onblur="this.placeholder = 'post_no'" required class="single-input">
-			</div>
-			<div class="input-group-icon mt-10">
-				<div class="icon">
-					<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+		<div class="section-top-border">
+			<form action="#">
+				<div class="mt-10">
+					<input type="text" name="id" placeholder="id"
+						value="${client.client_id}" onfocus="this.placeholder = ''"
+						onblur="this.placeholder = 'id'" required class="single-input">
 				</div>
-				<input type="text" name="adres1" placeholder="adres1"
-					value="${client.adres1}" onfocus="this.placeholder = '주소'"
-					onblur="this.placeholder = 'adres1'" class="single-input">
-				<input type="text" name="adres2" placeholder="adres2"
-					value="${client.adres2}" onfocus="this.placeholder = '주소'"
-					onblur="this.placeholder = 'adres2'" class="single-input">
-			</div>
+				<div class="mt-10">
+					<input type="text" name="pwd" placeholder="pwd"
+						value="${client.pwd}" onfocus="this.placeholder = ''"
+						onblur="this.placeholder = 'password'" class="single-input">
+				</div>
+				<div class="mt-10">
+					<input type="text" name="name" placeholder="name"
+						value="${client.name}" onfocus="this.placeholder = ''"
+						onblur="this.placeholder = 'Name'" required class="single-input">
+				</div>
+				<div class="mt-10">
+					<input type="text" name="post_no" placeholder="post_no"
+						value="${client.post_no}" onfocus="this.placeholder = ''"
+						onblur="this.placeholder = 'post_no'" required
+						class="single-input">
+				</div>
+				<div class="input-group-icon mt-10">
+					<div class="icon">
+						<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+					</div>
+					<input type="text" name="adres1" placeholder="adres1"
+						value="${client.adres1}" onfocus="this.placeholder = '주소'"
+						onblur="this.placeholder = 'adres1'" class="single-input">
+					<input type="text" name="adres2" placeholder="adres2"
+						value="${client.adres2}" onfocus="this.placeholder = '주소'"
+						onblur="this.placeholder = 'adres2'" class="single-input">
+				</div>
 
 
 
-			<!-- For Gradient Border Use -->
-			<!-- <div class="mt-10">
+				<!-- For Gradient Border Use -->
+				<!-- <div class="mt-10">
                               <div class="primary-input">
                                  <input id="primary-input" type="text" name="first_name" placeholder="Primary color" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Primary color'">
                                  <label for="primary-input"></label>
                               </div>
                            </div> -->
-			<div class="mt-10">
-				<input type="text" name="phone" placeholder="phone"
-					value="${client.phone}" onfocus="this.placeholder = ''"
-					onblur="this.placeholder = 'phone'" class="single-input-primary">
-			</div>
-			<div class="mt-10">
-				<input type="text" name="email" placeholder="email"
-					value="${client.email}" onfocus="this.placeholder = ''"
-					onblur="this.placeholder = 'email'" class="single-input-primary">
-			</div>
-
-			<br> <br>
-			
-			<div class="row">
-				<div class="col-md-6 ml-auto mr-auto">
-					<div class="profile-tabs">
-						<ul class="nav nav-pills nav-pills-icons justify-content-center"
-							role="tablist">
-
-							<li class="nav-item"><a class="nav-link active"
-								href="#studio" role="tab" data-toggle="tab"> <i
-									class="material-icons" id="material-icons" onclick="location.href='trnProfile.do'">훈련사모드 로
-										전환하기</i>
-							</a></li>
-
-
-						</ul>
-					</div>
+				<div class="mt-10">
+					<input type="text" name="phone" placeholder="phone"
+						value="${client.phone}" onfocus="this.placeholder = ''"
+						onblur="this.placeholder = 'phone'" class="single-input-primary">
 				</div>
-			</div>
-
-			<div align="center">
-				<button type="submit" value="취소">취소</button>
-				&nbsp;
-				<button type="submit" value="수정">수정</button>
-			</div>
-			<br> <br> <br> <br> <br> <br>
-			<div align="center">
+				<div class="mt-10">
+					<input type="text" name="email" placeholder="email"
+						value="${client.email}" onfocus="this.placeholder = ''"
+						onblur="this.placeholder = 'email'" class="single-input-primary">
+				</div>
+				<br/>
+				<ul class="nav nav-pills nav-pills-icons justify-content-center"
+					role="tablist" id="mode">
+					<li class="nav-item"><a id="nav-item" class="nav-link active"
+						href="trnProfile.do">훈련사모드 전환</a></li>
+				</ul>
+				<br> <br>
+				<div align="center">
+					<button type="submit" value="취소">취소</button>
+					&nbsp;
+					<button type="submit" value="수정">수정</button>
+				</div>
+				<br> <br> <br>
+			</form>
+			<div id="withdraw">
 				멍냥꽁냥 회원을 탈퇴하시겠습니까? <a href="mOut.do" class="withdraw">회원탈퇴하기</a>
 			</div>
-
-		</form>
+		</div>
 	</div>
-	</div>
-	</div>
-	</div>
-
-
-
-	<script
-		src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-	<script
-		src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
-		integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
-		integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
-		crossorigin="anonymous"></script>
-
-
 </body>
 </html>
