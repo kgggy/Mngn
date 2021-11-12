@@ -485,7 +485,7 @@ th {
 							<tr id="modalreser">
 								<td>${rqTrn.name }</td>
 								<td><a href="#" id="reserClick" class="open-detail"
-									data-reserno="${rqTrn.reser_no}" data-toggle="modal"
+									data-reserno="${rqTrn.reser_no}" data-clientid="${rqTrn.client_id}" data-toggle="modal"
 									data-target="#rqDetailModal">${rqTrn.knd_name}(${rqTrn.term }시간)</a></td>
 								<td>${rqTrn.enroll_dt }</td>
 								<td><span class="label label-warning">${rqTrn.status }</span></td>
@@ -502,8 +502,8 @@ th {
 										</c:otherwise>
 									</c:choose></td> 
 							</tr>
-							<input name="reser_no" id="reser_no" type="hidden" value="${rqTrn.reser_no}">
-							<input type="hidden" id="client_id" name="client_id">
+							<input name="reser_no" id="reser_no" type="hidden" value="">
+							<input type="hidden" id="client_id" name="client_id" value="">
 						</c:forEach>
 					</tbody>
 				</table>
@@ -611,7 +611,7 @@ th {
 						</tr>
 						<tr>
 							<th>날짜 및 시간</th>
-							<td></td>
+							<td id="td1"></td>
 						</tr>
 						<tr>
 							<th>위치</th>
@@ -625,17 +625,15 @@ th {
 							<th>결제 금액</th>
 							<td></td>
 						</tr>
-						<%--  <c:forEach items="petList" var="pet"> --%>
-								<tr id="here">
-									<th>훈련 대상</th>
-									<td>이름 : ${pet.name }(${pet.knd }, ${pet.species })</td>
-									<td>나이 : ${pet.age }</td>
-									<td>몸무게 : ${pet.wgt }</td>
-									<td>주의사항 : ${pet.memo }</td>
-								</tr>
-								<tr>
-								</tr>
-							<%-- </c:forEach>  --%>
+						<tr id="here">
+							<th>훈련 대상</th>
+							<td>이름 : ${pet.name }(${pet.knd }, ${pet.species })</td>
+							<td>나이 : ${pet.age }</td>
+							<td>몸무게 : ${pet.wgt }</td>
+							<td>주의사항 : ${pet.memo }</td>
+						</tr>
+						<tr>
+						</tr>
 					</table>
 				</div>
 				<div class="modal-footer">
@@ -652,24 +650,37 @@ th {
 		$(document).ready(function() {
 			$('#rqDetailModal').on('show.bs.modal', function(e) {
 				var reser_no = $(event.target).data('reserno');
-				console.log(reserno);
-			 $.ajax({
-				url:"ajaxRqDetail.do",
-				type:"post",
-				data: {reser_no : reser_no},
-				dataType: "json",
-				success: function(data) {
-					var result = data.rqdetail;
-					let str = "";
-					$.each(result, function(i) {
-						str += '<td>' + ${result[i].name} + '</td>' 
-					});
-					$('#here').append(str);
-				},
-				error: function() {
-					alert("다시 시도해주세요");
-				}
-			});
+				var client_id = $(event.target).data('clientid');
+				console.log(reser_no,client_id);
+				  $.ajax({
+					url:"ajaxRqDetail.do",
+					type:"post",
+					data: {
+						   reser_no : reser_no, 
+						   client_id : client_id
+					},
+					dataType: "json",
+					success: function(data) {
+						//var result = data.rqdetail[0];
+						let str = "";
+						$("#td1").text(data.pets[0]["name"]);
+						var cntpet = data.pets[0]["age"];
+						console.log(cntpet);
+						data.pets.forEach(element, i, arr,function(){
+							//tr 태크 만들어서
+							
+						});
+						function(i) {
+						    str += '<td>' + ${data.pets[i].name} + '</td>'
+							str += '<td>' + ${cntpet.age} + '</td>'
+							console.log(index, val)
+						}); 
+						$('#here').append(str);
+					},
+					error: function() {
+						alert("다시 시도해주세요");
+					}
+				});  
 			});
 	
 	

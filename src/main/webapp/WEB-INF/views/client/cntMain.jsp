@@ -353,7 +353,7 @@
 			<form action="wResv.do" id="form">
 				<div>
 					<div class="time"></div>
-					<div>
+					<div id="modalBody">
 						<span>채팅
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
 						</span>
