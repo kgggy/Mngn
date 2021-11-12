@@ -27,7 +27,7 @@ public class MngrUserController {
 		mtpaging.setPageUnit(3);
 		vo.setStart(mtpaging.getFirst());
 		vo.setEnd(mtpaging.getLast());
-		mtpaging.setTotalRecord(trnService.mtrnCount(vo));
+		mtpaging.setTotalRecord(trnService.trnCount(vo));
 		model.addAttribute("trainers", trnService.mTrainerSelectList(vo));
 		return "manager/user/trnList";
 	}

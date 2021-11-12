@@ -57,7 +57,7 @@
 	<!-- Header (Topbar) -->
 	<header class="astino-header u-header">
 		<div class="u-header-left">
-			<a class="u-header-logo" href="home.do"> <img
+			<a class="u-header-logo" href="mngMain.do"> <img
 				src="assets/logo.png" width="160"> 
 			</a>
 		</div>
@@ -161,9 +161,9 @@
 							<div class="card-body media align-items-center px-xl-3">
 								<div class="u-doughnut u-doughnut--70 mr-3 mr-xl-2">
 									<canvas class="js-doughnut-chart" width="70" height="70"
-										data-set="[65, 35]" data-colors='["#2972fa","#f6f9fc"]'>
+										data-set="[7, 30]" data-colors='["#2972fa","#f6f9fc"]'>
                                     </canvas>
-									<div class="u-doughnut__label text-info">65</div>
+									<div class="u-doughnut__label text-info">80</div>
 								</div>
 
 								<div class="media-body">

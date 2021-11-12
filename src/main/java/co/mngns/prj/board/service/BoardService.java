@@ -14,5 +14,12 @@ public interface BoardService {
 	
 	//페이징 처리(전체 공지사항 건수)
 	int bCount(BoardVO vo); 
+	
+	//관리제 메인페이지 도넛 차트
+	int resvNoInsert(BoardVO vo);
+	int clientNoInsert(BoardVO vo);
+	int trainerNoInsert(BoardVO vo);
+	int cancleNoInsert(BoardVO vo);
+	
 
 }

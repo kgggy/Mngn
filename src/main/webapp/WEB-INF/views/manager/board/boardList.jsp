@@ -82,6 +82,7 @@ head
 	});
 </script>
 
+
 <!-- End Head -->
 <body class="page-order-all">
 	<!-- Header (Topbar) -->
@@ -191,13 +192,20 @@ head
 							<header class="card-header d-flex align-items-center">
 								<h2 class="h2 card-header-title">공지사항 목록</h2>
 							</header>
-
+							
 							<div class="card-body">
-								<div class="table-responsive">
+							
+							<!-- Excel -->
+								<div>
+								<button type="button" onclick="fnExcelReport('table','title');" id="excelbtn" class="btn btn-danger btn-large float-right">Excel Download</button>
+								</div>	
+							<!-- End Excel -->
+								<div class="table-responsive" >
 									<form action="boardDelete.do" id="bdDelete" name="bdDelete"
 										method="post">
 										<input type="hidden" id="board_no" name="board_no">
-										<table class="table table-hover">
+										<div id="excelBoard">
+										<table id="table" class="table table-hover">
 											<thead>
 												<tr>
 													<th scope="col" class="text-dark">일련번호</th>
@@ -226,6 +234,7 @@ head
 												</c:forEach>
 											</tbody>
 										</table>
+										</div>
 									</form>
 									<my:paging jsFunc="goList" paging="${paging}" />
 								</div>
@@ -363,6 +372,24 @@ head
 		function goList(p) {
 			location.href = "boardList.do?page=" + p
 		}
+		
+		//excel download
+		function fnExcelReport(id, title) {
+			var tab_text = '<html xmlns:x="urn:schemas-microsoft-com:office:excel">';
+			tab_text = tab_text + '<head><meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">';
+			tab_text = tab_text + '<xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>'
+			tab_text = tab_text + '<x:Name>Test Sheet</x:Name>';
+			tab_text = tab_text + '<x:WorksheetOptions><x:Panes></x:Panes></x:WorksheetOptions></x:ExcelWorksheet>';
+			tab_text = tab_text + '</x:ExcelWorksheets></x:ExcelWorkbook></xml></head><body>';
+			tab_text = tab_text + "<table border='1px'>";
+			var exportTable = $('#' + id).clone();
+			exportTable.find('input').each(function (index, elem) { $(elem).remove(); });
+			tab_text = tab_text + exportTable.html();
+			tab_text = tab_text + '</table></body></html>';
+			var data_type = 'data:application/vnd.ms-excel';
+			var ua = window.navigator.userAgent;
+			var msie = ua.indexOf("MSIE ");
+		
 	</script>
 </body>
 
