@@ -31,11 +31,11 @@ public class UserController {
 	ClientService cntService;
 	@Autowired
 	ReviewService reviewService;
-	
+
 	@Autowired
 	ReserListService reserService;
 
-	@PostMapping(value = "/login.do") 
+	@PostMapping(value = "/login.do")
 	// 로그인 처리페이지
 	public String login(Model model, ClientVO clientvo, HttpSession session, RedirectAttributes redirectAttributes) {
 		ClientVO vo = cntService.clientLogin(clientvo);
@@ -62,6 +62,7 @@ public class UserController {
 			session.setAttribute("name", vo.getName());
 			session.setAttribute("adres1", vo.getAdres1());
 			session.setAttribute("adres2", vo.getAdres2());
+			session.setAttribute("role", vo.getRole());
 
 		} else {
 			page = "login";
@@ -90,9 +91,9 @@ public class UserController {
 	@RequestMapping(value = "/cntProfile.do")
 	// 사용자 개인 프로필 페이지
 	public String cntProfile(Model model, ClientVO clientvo, HttpSession session) {
-		
-		clientvo.setClient_id((Integer)session.getAttribute("id"));
+		clientvo.setClient_id((Integer) session.getAttribute("id"));
 		model.addAttribute("client", cntService.clientSelect(clientvo));
+		System.out.println(clientvo);
 		return "client/cntProfile";
 	}
 
@@ -136,7 +137,8 @@ public class UserController {
 
 	@RequestMapping(value = "/tDetail.do")
 	// 훈련사 상세보기 페이지
-	public String tDetail(@RequestParam(required = false) int client_id, Model model, TrainerVO trn, ReviewVO review, ReserListVO reser) {
+	public String tDetail(@RequestParam(required = false) int client_id, Model model, TrainerVO trn, ReviewVO review,
+			ReserListVO reser) {
 		trn.setClient_id(client_id);
 		review.setClient_id(client_id);
 		model.addAttribute("serviceTerm", reserService.serviceTerm(reser));
@@ -148,8 +150,8 @@ public class UserController {
 	@RequestMapping(value = "/trnProfile.do")
 	// 훈련사 개인 프로필 페이지
 	public String trnProfile(Model model, ClientVO clientvo, TrainerVO trainervo, HttpSession session) {
-		clientvo.setClient_id((Integer)session.getAttribute("id"));
-		trainervo.setClient_id((Integer)session.getAttribute("id"));
+		clientvo.setClient_id((Integer) session.getAttribute("id"));
+		trainervo.setClient_id((Integer) session.getAttribute("id"));
 		model.addAttribute("client", cntService.clientSelect(clientvo));
 		model.addAttribute("trainer", trnService.TrainerSelect(trainervo));
 

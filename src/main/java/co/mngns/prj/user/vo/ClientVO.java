@@ -2,9 +2,11 @@ package co.mngns.prj.user.vo;
 
 import java.sql.Date;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class ClientVO {
 
 	private int client_id;

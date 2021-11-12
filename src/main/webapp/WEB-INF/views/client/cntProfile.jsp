@@ -7,10 +7,21 @@
 <link rel="stylesheet" href="css/profile.css">
 <title>내프로필 관리</title>
 <script>
-	function transM() {
-		if ()
-		confirm("훈련사로 전환하시겠습니까?");
-	}
+	$(document).ready(function() {
+		$("#trans").on("click", function() {
+			var role = $("input[name=role]").val();
+			if (role == 1) {
+				alert("훈련사 권한이 없습니다.");
+			} else if (role == 2) {
+			var con = confirm("훈련사로 전환하시겠습니까?")
+				if (con == true) {
+					location.href = "trnProfile.do"
+				} else {
+					return;
+				}
+			}
+		});
+	})
 </script>
 <style>
 .ebtn {
@@ -29,8 +40,8 @@
 	cursor: pointer;
 }
 
-.trans:hover {
-	opacity: 0.8;
+#trans:hover {
+	cursor: pointer;
 }
 </style>
 </head>
@@ -56,7 +67,7 @@
 				<div class="profile">
 					<div class="avatar" align="center">
 						<div class="name">
-							<h3 class="title">${client.name}&nbsp;회원님의 정보</h3>
+							<h3 class="title">${client.name}&nbsp;회원님의정보</h3>
 
 						</div>
 					</div>
@@ -65,6 +76,7 @@
 		</div>
 		<div class="section-top-border">
 			<form action="#">
+				<input type="hidden" name="role" value="${client.role }">
 				<div class="mt-10">
 					<input type="text" name="id" placeholder="id"
 						value="${client.client_id}" onfocus="this.placeholder = ''"
@@ -117,8 +129,9 @@
 						value="${client.email}" onfocus="this.placeholder = ''"
 						onblur="this.placeholder = 'email'" class="single-input-primary">
 				</div>
-				<br /> <a id="trans" href="javascript:transM()">훈련사모드 전환</a> <br>
-				<br> <br>
+				<br />
+				<button type="button" id="trans">훈련사모드 전환</button>
+				<br> <br> <br>
 				<div align="center">
 					<button type="button" onclick="location.href='cntProfileEdit.do'"
 						class="ebtn">수정</button>

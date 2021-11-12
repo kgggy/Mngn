@@ -3,9 +3,11 @@ package co.mngns.prj.svc.vo;
 import java.sql.Date;
 
 import co.mngns.prj.user.vo.ClientVO;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class ReserListVO {
 	private int reser_no;
 	private Date reser_dt;

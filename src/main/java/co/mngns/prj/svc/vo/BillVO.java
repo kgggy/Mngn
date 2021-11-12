@@ -1,8 +1,10 @@
 package co.mngns.prj.svc.vo;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class BillVO {
 	private int bill_card;
 	private String bill_phone;

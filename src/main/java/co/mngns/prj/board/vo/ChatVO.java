@@ -1,8 +1,10 @@
 package co.mngns.prj.board.vo;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class ChatVO {
 	private int chat_no;
 	private String user1;
