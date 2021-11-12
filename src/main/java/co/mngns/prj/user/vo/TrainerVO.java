@@ -2,9 +2,11 @@ package co.mngns.prj.user.vo;
 
 import java.sql.Date;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class TrainerVO {
 	private int gen;
 	private Date trn_birth_dt;

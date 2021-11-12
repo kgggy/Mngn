@@ -2,9 +2,11 @@ package co.mngns.prj.board.vo;
 
 import java.sql.Date;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class BoardVO {
 	private int board_no;
 	private String ttl;

@@ -1,12 +1,12 @@
 package co.mngns.prj.board.vo;
 
 import java.util.Date;
-import java.util.List;
 
-import co.mngns.prj.common.vo.FilesVO;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class ReviewVO {
 	private int review_no;
 	private String cntn;

@@ -2,9 +2,11 @@ package co.mngns.prj.common.vo;
 
 import java.util.Date;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class FilesVO {
 	private String org; //파일원본명
 	private int use_yn; //사용여부

@@ -1,8 +1,10 @@
 package co.mngns.prj.svc.vo;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class SvcVO {
 	private int svc_id;
 	private int knd;

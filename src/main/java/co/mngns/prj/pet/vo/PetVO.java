@@ -1,8 +1,10 @@
 package co.mngns.prj.pet.vo;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class PetVO {
 	private Integer pet_id;
 	private Integer knd;
