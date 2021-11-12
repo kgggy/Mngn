@@ -133,11 +133,10 @@ public class SvcController {
 		return "service/ptResv";
 	}
 
-// 	@RequestMapping(value = "/trnSal.do")
-// 	public String trnSal() {
-// 		// 훈련사 의뢰 및 정산 관리 페이지
-// 		return "trnSal";
-// 	}
+	/*
+	 * @RequestMapping(value = "/trnSal.do") public String trnSal() { // 훈련사 의뢰 및 정산
+	 * 관리 페이지 return "trnSal"; }
+	 */
 
 	@RequestMapping(value = "/salesList.do")
 	public String salesList() {

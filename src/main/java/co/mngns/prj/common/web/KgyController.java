@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -99,13 +100,10 @@ public class KgyController {
 	@RequestMapping("ajaxRqDetail.do")
 	@ResponseBody
 	public Map<String, Object> trnsss(Model model, PetVO vo, ReserListVO reser, HttpServletRequest request, HttpServletResponse response) {
-		//모델호출
-		model.addAttribute("trnReser", reserService.trnReserSelect(reser));
-		System.out.println(reser.getReser_no());
-		//map.put에 담기
-		//결과를 json 형태로 
-		List<ReserListVO> list = reserService.trnReserSelect(reser);
-		return Collections.singletonMap("list", list);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("rqdetail", reserService.trnReserSelect(reser));
+		map.put("pets", reserService.petSelectList(vo));
+		return map;
 		/*response.getContentType();
 		try {
 			response.getWriter().append("//json변수값");

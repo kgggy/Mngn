@@ -388,7 +388,7 @@ th {
 </style>
 <script>
 	$(document).ready(function() {
-		$(".btn-group .btn").click(function() {
+		/* $(".btn-group .btn").click(function() {
 			var inputValue = $(this).find("input").val();
 			if (inputValue != 'all') {
 				var target = $('table tr[data-status="' + inputValue + '"]');
@@ -407,32 +407,42 @@ th {
 				var newClassStr = classStr.replace(/label/g, "badge");
 				$(this).removeAttr("class").addClass(newClassStr);
 			});
-		}
-
-		$("#reserClick").on("click", function() {
-			var reser_no = $('.open-detail').data('reserno');
-			console.log(reser_no);
-		})
+		} */
 
 		$('#rqDetailModal').on('show.bs.modal', function(e) {
 			var reserno = $(event.target).data('reserno');
 			console.log(reserno);
-		})
-
-		/* $.ajax({
+		 $.ajax({
 			url:"ajaxRqDetail.do",
 			type:"post",
 			data: {reser_no : reser_no},
 			dataType: "json",
 			success: function(data) {
-				 let str = "";
-				str += ${data.list[0].memo} 
-				console.log(data);
+				var result = data.rqdetail;
+				let str = "";
+				$.each(result, function(i) {
+					str += '<td>' + ${result[i].name} + '</td>' 
+				});
+				$('#here').append(str);
 			},
 			error: function() {
 				alert("다시 시도해주세요");
 			}
-		}); */
+		});
+		});
+
+
+		/* $('#confirm').on('click', function() {
+			if(confirm("수락하시겠습니까?")) {
+				$('#confirm').remove();
+				$('#den').remove();
+				let str="";
+				str+='<button class="btn btn-sm manage">의뢰완료</button>';
+				$('#tdTag').append(str);
+			} else {
+				return;
+			}
+		}) */
 	});
 </script>
 </head>
@@ -531,15 +541,23 @@ th {
 					</thead>
 					<tbody align="center">
 						<c:forEach items="${requestTrn }" var="rqTrn">
-							<tr id="modalreser" 자바스크립트 함수>
+							<tr id="modalreser">
 								<td>${rqTrn.name }</td>
 								<td><a href="#" id="reserClick" class="open-detail"
 									data-reserno="${rqTrn.reser_no}" data-toggle="modal"
 									data-target="#rqDetailModal">${rqTrn.knd_name}(${rqTrn.term }시간)</a></td>
 								<td>${rqTrn.enroll_dt }</td>
 								<td><span class="label label-warning">${rqTrn.status }</span></td>
-								<td><a href="#" class="btn btn-sm manage">수락</a> <a
-									class="btn btn-sm complete">거절</a></td>
+								<td id="tdTag">
+									<%-- <c:choose>
+										<c:when test="${rqTrn.confirm } == '0'">
+											<a class="btn btn-sm manage" id="confirm">수락</a>
+											<a class="btn btn-sm complete" id="den">거절</a>
+										</c:when>
+										<c:when test="${rqTrn.confirm } > '0'">
+											<button class="btn btn-sm manage">의뢰완료</button>
+										</c:when>
+									</c:choose></td> --%>
 							</tr>
 							<input name="reser_no" id="reser_no" type="hidden"
 								value="${rqTrn.reser_no}">
@@ -648,7 +666,7 @@ th {
 					<table>
 						<tr>
 							<th width="180px">서비스 유형</th>
-							<td id = "">dd</td>
+							<td id="">dd</td>
 						</tr>
 						<tr>
 							<th>날짜 및 시간</th>
@@ -666,8 +684,8 @@ th {
 							<th>결제 금액</th>
 							<td></td>
 						</tr>
-						<%-- <c:forEach items="petList" var="pet">
-								<tr>
+						<%--  <c:forEach items="petList" var="pet"> --%>
+								<tr id="here">
 									<th>훈련 대상</th>
 									<td>이름 : ${pet.name }(${pet.knd }, ${pet.species })</td>
 									<td>나이 : ${pet.age }</td>
@@ -676,8 +694,7 @@ th {
 								</tr>
 								<tr>
 								</tr>
-
-							</c:forEach> --%>
+							<%-- </c:forEach>  --%>
 					</table>
 				</div>
 				<div class="modal-footer">
