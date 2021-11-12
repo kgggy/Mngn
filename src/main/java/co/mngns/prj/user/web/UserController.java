@@ -155,7 +155,7 @@ public class UserController {
 		model.addAttribute("client", cntService.clientSelect(clientvo));
 		model.addAttribute("trainer", trnService.TrainerSelect(trainervo));
 
-		return "client/trnProfile";
+		return "trnProfile";
 	}
 
 }
