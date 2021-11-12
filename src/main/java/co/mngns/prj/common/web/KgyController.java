@@ -102,13 +102,6 @@ public class KgyController {
 		map.put("rqdetail", reserService.trnReserSelect(reser));
 		map.put("pets", reserService.petSelectList(vo));
 		return map;
-		/*response.getContentType();
-		try {
-			response.getWriter().append("//json변수값");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
 	}
 	
 	@RequestMapping("ajaxStts.do")
