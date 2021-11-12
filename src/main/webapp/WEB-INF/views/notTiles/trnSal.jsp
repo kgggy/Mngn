@@ -386,65 +386,6 @@ th {
 	height: 30px;
 }
 </style>
-<script>
-	$(document).ready(function() {
-		/* $(".btn-group .btn").click(function() {
-			var inputValue = $(this).find("input").val();
-			if (inputValue != 'all') {
-				var target = $('table tr[data-status="' + inputValue + '"]');
-				$("table tbody tr").not(target).hide();
-				target.fadeIn();
-			} else {
-				$("table tbody tr").fadeIn();
-			}
-		});
-		// Changing the class of status label to support Bootstrap 4
-		var bs = $.fn.tooltip.Constructor.VERSION;
-		var str = bs.split(".");
-		if (str[0] == 4) {
-			$(".label").each(function() {
-				var classStr = $(this).attr("class");
-				var newClassStr = classStr.replace(/label/g, "badge");
-				$(this).removeAttr("class").addClass(newClassStr);
-			});
-		} */
-
-		$('#rqDetailModal').on('show.bs.modal', function(e) {
-			var reserno = $(event.target).data('reserno');
-			console.log(reserno);
-		 $.ajax({
-			url:"ajaxRqDetail.do",
-			type:"post",
-			data: {reser_no : reser_no},
-			dataType: "json",
-			success: function(data) {
-				var result = data.rqdetail;
-				let str = "";
-				$.each(result, function(i) {
-					str += '<td>' + ${result[i].name} + '</td>' 
-				});
-				$('#here').append(str);
-			},
-			error: function() {
-				alert("다시 시도해주세요");
-			}
-		});
-		});
-
-
-		/* $('#confirm').on('click', function() {
-			if(confirm("수락하시겠습니까?")) {
-				$('#confirm').remove();
-				$('#den').remove();
-				let str="";
-				str+='<button class="btn btn-sm manage">의뢰완료</button>';
-				$('#tdTag').append(str);
-			} else {
-				return;
-			}
-		}) */
-	});
-</script>
 </head>
 <body>
 	<header>
@@ -549,15 +490,17 @@ th {
 								<td>${rqTrn.enroll_dt }</td>
 								<td><span class="label label-warning">${rqTrn.status }</span></td>
 								<td id="tdTag">
-									<%-- <c:choose>
-										<c:when test="${rqTrn.confirm } == '0'">
+									 <c:choose>
+										<c:when test="${rqTrn.svc_stts  == '0'}">
 											<a class="btn btn-sm manage" id="confirm">수락</a>
 											<a class="btn btn-sm complete" id="den">거절</a>
 										</c:when>
-										<c:when test="${rqTrn.confirm } > '0'">
+										<c:when test="${rqTrn.svc_stts  == '1'}">
 											<button class="btn btn-sm manage">의뢰완료</button>
 										</c:when>
-									</c:choose></td> --%>
+										<c:otherwise>
+										</c:otherwise>
+									</c:choose></td> 
 							</tr>
 							<input name="reser_no" id="reser_no" type="hidden"
 								value="${rqTrn.reser_no}">
@@ -706,6 +649,42 @@ th {
 		</div>
 	</div>
 	<!-- 의뢰 상세보기 Modal 종료 -->
-
+	
+	<script>
+		$(document).ready(function() {
+			$('#rqDetailModal').on('show.bs.modal', function(e) {
+				var reserno = $(event.target).data('reserno');
+				console.log(reserno);
+			 $.ajax({
+				url:"ajaxRqDetail.do",
+				type:"post",
+				data: {reser_no : reser_no},
+				dataType: "json",
+				success: function(data) {
+					var result = data.rqdetail;
+					let str = "";
+					$.each(result, function(i) {
+						str += '<td>' + ${result[i].name} + '</td>' 
+					});
+					$('#here').append(str);
+				},
+				error: function() {
+					alert("다시 시도해주세요");
+				}
+			});
+			});
+	
+	
+			$.ajax({
+				url:"ajaxStts.do",
+				type:"post",
+				data:{svc_stts : svc_stts},
+				dataType: "json",
+				success: function(data) {
+					if(confirm("수락하시겠습니까?") == true
+				}
+			});
+		});
+	</script>
 </body>
 </html>

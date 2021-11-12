@@ -111,7 +111,8 @@
              case s.knd when 1 then '돌봄 서비스' when 2 then '산책 서비스' else '훈련 서비스' end as knd_name,
              l.enroll_dt, 
 		     l.reser_no,
-             case l.svc_stts when 1 then '접수 완료' when 2 then '서비스 완료' else '취소 및 환불'
+		     l.svc_stts,
+             case l.svc_stts when 0 then '수락한 의뢰' when 1 then '완료한 의뢰' else '거절한 의뢰'
             end as status
         from reser_list l, svc s, client c, trainer t
        where l.client_id2 = t.client_id
