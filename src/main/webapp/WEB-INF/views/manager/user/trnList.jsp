@@ -57,6 +57,12 @@
 <!-- Initialization  -->
 <script src="assets/js/sidebar-nav.js"></script>
 <script src="assets/js/dashboard-page-scripts.js"></script>
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    
+<!-- Excel download  -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="assets/js/jquery.table2excel.min.js"></script>
+
 <script>
 	$(document).ready(function() {
 		$('#exampleModalCenter').on('show.bs.modal', function(event) {
@@ -193,7 +199,7 @@
 		<div class="u-content">
 			<div class="u-body">
 				<div class="row">
-					<!-- 공지사항 목록 -->
+					<!-- 훈련사 목록 -->
 					<div class="col-md-12 mb-4">
 						<div class="card h-100">
 							<header class="card-header d-flex align-items-center">
@@ -203,7 +209,7 @@
 							<div class="card-body">
 								<div class="table-responsive">
 									<form>
-										<table class="table table-hover">
+										<table id="trainerListTable" class="table table-hover">
 											<thead>
 												<tr>
 													<th scope="col" class="text-dark">ID</th>
@@ -237,6 +243,7 @@
 												</c:forEach>
 											</tbody>
 										</table>
+								<button type="button"  id="downloadExcel"  class="btn btn-danger btn-large float-right">Excel Download</button>
 									</form>
 									<my:paging jsFunc="goList" paging="${paging}" />
 								</div>
@@ -345,6 +352,29 @@
 		function goList(p) {
 			location.href = "trnList.do?page=" + p
 		}
+		
+	</script>	
+	<script>
+	
+	$("#downloadExce").table2csv();
+
+	$("#downloadExce").table2csv('output', {
+		  appendTo:'#out'
+		});
+	
+	$("#downloadExce").table2csv({
+		  filename:'excel.csv'
+		});
+
+	
+	$("#downloadExcel").click(function(e){
+	    $("#trainerListTable").table2excel({
+	        exclude: ".excludeThisClass",
+	        name: "Worksheet Name",
+	        filename: "SomeFile.xls", // do include extension
+	        preserveColors: false // set to true if you want background colors and font colors preserved
+	});
+
 	</script>
 </body>
 </html>

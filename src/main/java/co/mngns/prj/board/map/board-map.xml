@@ -46,12 +46,35 @@
 		parameterType="co.mngns.prj.board.vo.BoardVO">
 		delete from board
 		where board_no = #{board_no}
-
 	</delete>
 
 	<!-- 공지사항 전체 건수 -->
 	<select id="bCount" resultType="int">
 		select count(*) from board
 	</select>
+	
+	<!-- 관리자 메인 페이지 도넛 차트 -->
+	<!-- 결제 건수 -->
+	<select id="resvNoInsert" resultType="int">
+		select count(*) from reser_list
+	</select>
+	
+	<!-- 취소 건수 -->
+	<select id="cancleNoInsert" resultType="int">
+		select count(*) from reser_list where svc_stts = 3
+	</select>
+	
+	<!-- 사용자 명수 -->
+	<select id="clientNoInsert" resultType="int">
+		select count(*) from client where role = 1
+	</select>
+	
+	<!-- 훈련사 명수 -->
+	<select id="trainerNoInsert" resultType="int">
+		select count(*) from client where role = 2
+	</select>
+	
+	
+	
 
 </mapper>

@@ -171,5 +171,16 @@ public class BoardController {
 	      model.addAttribute("boards", bService.boardList(vo));
 	      return "manager/board/boardList";
 	   }
+	   
+	   @PostMapping(value = "/resvNoInsert.do")
+	   //예약건수 입력
+	   public int resvNoInsert(Model model, BoardVO vo) {
+		   System.out.println("====================>");
+		   System.out.println(vo.toString());
+		   System.out.println("====================>");
+		   model.addAttribute("resvNo", bService.resvNoInsert(vo));
+		   int result = bService.resvNoInsert(vo);
+		   return result;
+	   }
 
 }
