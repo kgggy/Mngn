@@ -24,27 +24,26 @@
 	<select id="serviceUse"
 		resultType="co.mngns.prj.svc.vo.ReserListVO">
 		SELECT B.* FROM ( SELECT A.* , ROWNUM RN FROM (
-		select l.*,
-		case l.svc_stts when 1 then '접수 완료' when 2 then
-		'서비스 완료' else '취소 및 환불'
-		end as status,
-		c.name,
-		case s.knd when 1 then '돌봄
-		서비스' when 2 then '산책 서비스' else '훈련 서비스' end as
-		knd_name,
-		s.term,
-		s.prc,
-		(
-		select count(*) from review r
-		where r.reser_no = l.reser_no ) as
-		reviewyn
-
-		from reser_list l, svc s, client c
-		where l.client_id2 =
-		c.client_id
-		and
-		s.svc_id = l.svc_id
-		and l.client_id1 = #{client_id1}
+			select l.*,
+					case l.svc_stts when 0 then '대기중' when 1 then '접수 완료' when 2 then
+					'서비스 완료' else '취소 및 환불'
+					end as status,
+					c.name,
+					case s.knd when 1 then '돌봄
+					서비스' when 2 then '산책 서비스' else '훈련 서비스' end as
+					knd_name,
+					s.term,
+					s.prc,
+					(
+					select count(*) from review r
+					where r.reser_no = l.reser_no ) as
+					reviewyn
+	
+			from reser_list l, svc s, client c
+			where l.client_id2 = c.client_id
+					and s.svc_id = l.svc_id
+					and l.client_id1 = #{client_id1}
+			order by l.reser_dt desc
 		<![CDATA[ 
 	      ) A ) B WHERE RN >= #{start} and RN <= #{end}
 	      ]]>
@@ -119,6 +118,7 @@
                and l.client_id1 = c.client_id
                and s.svc_id = l.svc_id
                and t.client_id = #{client_id2}
+        order by l.reser_dt desc
     </select>
     
     <!-- 훈련사 정산목록 -->
@@ -136,6 +136,7 @@
 		       and l.reser_no = b.reser_no
 		       and s.svc_id = l.svc_id
 		       and t.client_id = #{client_id2}
+		order by l.reser_dt desc
     </select>
     
     <!-- 훈련사 의뢰 상세목록보기 -->
