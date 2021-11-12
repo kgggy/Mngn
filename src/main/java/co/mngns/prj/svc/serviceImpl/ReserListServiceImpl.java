@@ -84,4 +84,10 @@ public class ReserListServiceImpl implements ReserListService {
 		return map.trnReserSelect(reser);
 	}
 
+	@Override
+	public int sttsUpdate(ReserListVO reser) {
+		// 수락 후 상태변경
+		return map.sttsUpdate(reser);
+	}
+
 }

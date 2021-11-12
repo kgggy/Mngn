@@ -1,14 +1,18 @@
 package co.mngns.prj.user.web;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import co.mngns.prj.board.service.ReviewService;
@@ -62,7 +66,6 @@ public class UserController {
 			session.setAttribute("name", vo.getName());
 			session.setAttribute("adres1", vo.getAdres1());
 			session.setAttribute("adres2", vo.getAdres2());
-			session.setAttribute("role", vo.getRole());
 
 		} else {
 			page = "login";
@@ -90,11 +93,34 @@ public class UserController {
 
 	@RequestMapping(value = "/cntProfile.do")
 	// 사용자 개인 프로필 페이지
-	public String cntProfile(Model model, ClientVO clientvo, HttpSession session) {
+	public String cntProfile(Model model, @ModelAttribute("client") ClientVO clientvo, HttpSession session) {
 		clientvo.setClient_id((Integer) session.getAttribute("id"));
 		model.addAttribute("client", cntService.clientSelect(clientvo));
-		System.out.println(clientvo);
 		return "client/cntProfile";
+	}
+
+	@RequestMapping(value = "/cntProfileEdit.do")
+	// 사용자 개인 프로필 페이지 수정
+	public String cntProfileEdit(Model model, ClientVO clientvo, HttpSession session) {
+		clientvo.setClient_id((Integer) session.getAttribute("id"));
+		model.addAttribute("client", cntService.clientSelect(clientvo));
+		return "client/cntProfileEdit";
+	}
+
+	@RequestMapping(value = "/editForm.do")
+	// 훈련사 선택
+	public String editForm(Model model, ClientVO clientvo, HttpSession session) {
+		clientvo.setClient_id((Integer) session.getAttribute("id"));
+		cntService.clientUpdate(clientvo);
+		return "redirect:cntProfile.do";
+	}
+	
+	@RequestMapping(value = "/cntDelete.do")
+	// 훈련사 선택
+	public String cntDelete(Model model, ClientVO clientvo, HttpSession session) {
+		clientvo.setClient_id((Integer) session.getAttribute("id"));
+		cntService.clientDelete(clientvo);
+		return "redirect:home.do";
 	}
 
 //	@RequestMapping(value = "/cntList.do")
@@ -138,7 +164,7 @@ public class UserController {
 	@RequestMapping(value = "/tDetail.do")
 	// 훈련사 상세보기 페이지
 	public String tDetail(@RequestParam(required = false) int client_id, Model model, TrainerVO trn, ReviewVO review,
-			ReserListVO reser) {
+			HttpSession session, ReserListVO reser) {
 		trn.setClient_id(client_id);
 		review.setClient_id(client_id);
 		model.addAttribute("serviceTerm", reserService.serviceTerm(reser));
@@ -155,7 +181,7 @@ public class UserController {
 		model.addAttribute("client", cntService.clientSelect(clientvo));
 		model.addAttribute("trainer", trnService.TrainerSelect(trainervo));
 
-		return "client/trnProfile";
+		return "trnProfile";
 	}
 
 }

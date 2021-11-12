@@ -32,5 +32,7 @@ public interface ReserListService {
 	public List<ReserListVO> trnSalSelectList(ReserListVO reser); // 훈련사 정산 리스트
 
 	public List<ReserListVO> trnReserSelect(ReserListVO reser); // 훈련사 의뢰 상세보기
+	
+	public int sttsUpdate(ReserListVO reser); //수락 후 상태변경
 
 }

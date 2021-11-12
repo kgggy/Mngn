@@ -70,7 +70,7 @@
 						<div class="blog-entry align-self-stretch" data-toggle="modal"
 							data-target="#myModal">
 							<div class="text p-4" data-toggle="modal" data-target="#myModal">
-								<a href="blog-single.html" class="block-20 rounded"
+								<a class="block-20 rounded"
 									style="background-image: url('download.do?fileName=${rList.fileorg}');"></a><br>
 								<div class="meta mb-2">
 									<div>${rList.reg_dt }</div>

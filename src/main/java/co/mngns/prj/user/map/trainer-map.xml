@@ -2,96 +2,85 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.mngns.prj.user.map.TrainerMapper">
 
-	<!-- 전체 훈련사 목록조회 -->
-	<select resultType="co.mngns.prj.user.vo.TrainerVO" id="trainerSelectList">
-		SELECT B.* FROM ( SELECT A.* , ROWNUM RN FROM (
-			select trainer.*, client.name 
-			  from trainer left join client on trainer.client_id = client.client_id
-			  <where>
-				 <choose>
-			 	<when test="type !=null and type.equals('name')">
-			 	and c.name = #{keyword}
-			 	</when>
-			 	<when test="type !=null and type.equals('adres')">
-			 	and work_loc2 = #{keyword}
-			 	</when>
-			 	</choose>
-		 </where>
-	  <![CDATA[ 
-	      ) A ) B WHERE RN >= #{start} and RN <= #{end}
-	      ]]>
-	</select>
-	
-	<!-- 훈련사 상세조회 -->
-	<select resultType="co.mngns.prj.user.vo.TrainerVO" id="trainerSelect">
-		  select distinct t.*,
-	     		 case t.gen when 1 then '여자' else '남자' end as gender,
-		       	 c.name
-		    from trainer t, client c, review r, reser_list l 
-		   where t.client_id = c.client_id 
-			    and l.client_id2 = t.client_id
-			    and l.client_id1 = r.client_id
-			    and c.client_id = #{client_id}
-	</select>
-	
-	<!-- 관리자 페이지의 훈련사 전체목록 조회 -->
-	<select resultType="co.mngns.prj.user.vo.TrainerVO" id="mtrainerSelectList">
-		SELECT B.* FROM ( SELECT A.* , ROWNUM RN FROM (
-			select * from client where role = 2
-	  <![CDATA[ 
-	      ) A ) B WHERE RN >= #{start} and RN <= #{end}
-	      ]]>
-	</select>
-	
-	<!-- 관리자 페이지 훈련사 명수 -->
-	<select id="mtrnCount" resultType="int">
-		select count(*) from client where role = 1
-	</select>
-	
-	<!-- 훈련사 검색 -->
-	<select id="getSearchList" resultType="co.mngns.prj.user.vo.TrainerVO">
-		select distinct t. *, c.name
-		  from trainer t, client c
-		 where not exists 
-			 (
-				 select * from client_quit q
-		   		 where c.client_id = q.client_id
-			 )
-		 	and t.client_id = c.client_id 
-		 <choose>
-		 	<when test="type !=null and type.equals('name')">
-		 	and c.name = #{keyword}
-		 	</when>
-		 	<when test="type !=null and type.equals('adres')">
-		 	and work_loc2 = #{keyword}
-		 	</when>
-		 </choose>
-	</select>
-	
-	<!-- 훈련사 휴무일 조회 -->
-	<select resultType="co.mngns.prj.user.vo.TrainerVO" id="nWork">
-		select * 
-		  from trainer
-		 where 
-		 <choose>
-		 <when test="trnWork == 1">
-		 	and substr(mon || tue || wed || thu || fri || sat || sun, to_char(to_date(#{trndate},'yy-mm-dd'), 'D'),1 ) = 1;
-		 </when>
-		 </choose>
-	</select>
-	
-	<select id="trnCount" resultType="int">
-		select count(*) from trainer
-				  <where>
-				 <choose>
-			 	<when test="type !=null and type.equals('name')">
-			 	and c.name = #{keyword}
-			 	</when>
-			 	<when test="type !=null and type.equals('adres')">
-			 	and work_loc2 = #{keyword}
-			 	</when>
-			 	</choose>
-		 </where>
-	</select>
+   <!-- 전체 훈련사 목록조회 -->
+   <select resultType="co.mngns.prj.user.vo.TrainerVO" id="trainerSelectList">
+      SELECT B.* FROM ( SELECT A.* , ROWNUM RN FROM (
+         select trainer.*, client.name 
+           from trainer left join client on trainer.client_id = client.client_id
+           <where>
+             <choose>
+             <when test="type !=null and type.equals('name')">
+             and client.name = #{keyword}
+             </when>
+             <when test="type !=null and type.equals('adres')">
+             and trainer.work_loc2 = #{keyword}
+             </when>
+             </choose>
+       </where>
+     <![CDATA[ 
+         ) A ) B WHERE RN >= #{start} and RN <= #{end}
+         ]]>
+   </select>
+   
+   <!-- 훈련사 상세조회 -->
+   <select resultType="co.mngns.prj.user.vo.TrainerVO" id="trainerSelect">
+        select t.*, c.name,
+               case t.gen when 1 then '여자' else '남자' end as gender
+          from trainer t, client c
+         where t.client_id = c.client_id 
+             and t.client_id = #{client_id}
+   </select>
+   
+   <!-- 관리자 페이지의 훈련사 전체목록 조회 -->
+   <select resultType="co.mngns.prj.user.vo.TrainerVO" id="mtrainerSelectList">
+      select t.*, c.* from trainer t join client c on t.client_id = c.client_id
+   </select>
+   
+   <!-- 훈련사 검색 -->
+   <select id="getSearchList" resultType="co.mngns.prj.user.vo.TrainerVO">
+      select distinct t. *, c.name
+        from trainer t, client c
+       where not exists 
+          (
+             select * from client_quit q
+                where c.client_id = q.client_id
+          )
+          and t.client_id = c.client_id 
+       <choose>
+          <when test="type !=null and type.equals('name')">
+          and c.name = #{keyword}
+          </when>
+          <when test="type !=null and type.equals('adres')">
+          and t.work_loc2 = #{keyword}
+          </when>
+       </choose>
+   </select>
+   
+   <!-- 훈련사 휴무일 조회 -->
+   <select resultType="co.mngns.prj.user.vo.TrainerVO" id="nWork">
+      select * 
+        from trainer
+       where 
+       <choose>
+       <when test="trnWork == 1">
+          and substr(mon || tue || wed || thu || fri || sat || sun, to_char(to_date(#{trndate},'yy-mm-dd'), 'D'),1 ) = 1;
+       </when>
+       </choose>
+   </select>
+   
+   <!-- 전체 훈련사 건수 -->
+   <select id="trnCount" resultType="int">
+      select count(*) from trainer left join client on trainer.client_id = client.client_id
+              <where>
+             <choose>
+             <when test="type !=null and type.equals('name')">
+             and client.name = #{keyword}
+             </when>
+             <when test="type !=null and type.equals('adres')">
+             and trainer.work_loc2 = #{keyword}
+             </when>
+             </choose>
+       </where>
+   </select>
 
 </mapper>
