@@ -62,6 +62,7 @@ public class BoardController {
 			@RequestParam(required = false, defaultValue = "1") int page2, ReviewVO vo, ReserListVO reser) {
 		// 서비스 목록 페이징 처리
 		Paging svcpaging = new Paging();
+		Paging rvpaging = new Paging();
 		svcpaging.setPage(page1);
 		svcpaging.setPageUnit(5);
 		reser.setClient_id1((Integer) session.getAttribute("id"));
