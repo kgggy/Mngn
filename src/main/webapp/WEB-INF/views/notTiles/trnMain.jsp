@@ -36,6 +36,34 @@
 
 <!-- Theme Styles -->
 <link rel="stylesheet" href="assets/css/theme.css">
+<!-- JS here -->
+<script src="js/vendor/modernizr-3.5.0.min.js"></script>
+<script src="js/vendor/jquery-1.12.4.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/isotope.pkgd.min.js"></script>
+<script src="js/ajax-form.js"></script>
+<script src="js/waypoints.min.js"></script>
+<script src="js/jquery.counterup.min.js"></script>
+<script src="js/imagesloaded.pkgd.min.js"></script>
+<script src="js/scrollIt.js"></script>
+<script src="js/jquery.scrollUp.min.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/nice-select.min.js"></script>
+<script src="js/jquery.slicknav.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/gijgo.min.js"></script>
+
+<!--contact js-->
+<script src="js/contact.js"></script>
+<script src="js/jquery.ajaxchimp.min.js"></script>
+<script src="js/jquery.form.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/mail-script.js"></script>
+
+<script src="js/main.js"></script>
 <style>
 #no {
 	font-weight: bold;
@@ -69,17 +97,112 @@ h3 {
 }
 
 .header-area .main-header-area .main-menu ul li a {
-  color: #102955;
-  font-size: 16px;
-  text-transform: capitalize;
-  font-weight: 500;
-  display: inline-block;
-  font-family: "Poppins", sans-serif;
-  position: relative;
-  text-transform: capitalize;
-  padding: 15px;
+	color: #102955;
+	font-size: 16px;
+	text-transform: capitalize;
+	font-weight: 500;
+	display: inline-block;
+	font-family: "Poppins", sans-serif;
+	position: relative;
+	text-transform: capitalize;
+	padding: 15px;
+}
+
+.chat {
+	z-index: 10;
+	position: fixed;
+	right: 0px;
+	bottom: 0px;
+	background-color: #fff;
+	border-top-left-radius: 20px;
+	width: 200px;
+	height: 100px;
+	line-height: 100px;
+	cursor: pointer;
+}
+
+#chatt {
+	cursor: pointer;
+	border: none;
+	outline: none;
+	background-color: #fff;
+}
+
+#foot {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	width: 50px;
+}
+
+.chatting {
+	font-weight: bolder;
+	color: #444;
+	font-size: 20px;
+	line-height: 110px;
+}
+
+.modal {
+	position: fixed;
+	right: 0px;
+	bottom: 0px;
+	width: 400px;
+	height: 600px;
+	border: 3px soild #ff3500;
+}
+
+.modal-content {
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	width: 380px;
+	height: 700px;
+	border: 3px soild #ff3500;
+	background-color: #fdfdfefa;
+	box-shadow: 5px 10px 80px 5px #ea351617;
+	border-radius: 50px;
+}
+
+.close {
+	margin-right: 50px;
+	font-size: 1.5rem;
+	font-weight: 700;
+	line-height: 1;
+	color: #000;
+	text-shadow: 0 1px 0 #fff;
+	opacity: .5;
+	float: right;
 }
 </style>
+<script>
+	$(function() {
+		// Get the modal
+		var modal = document.getElementById("light");
+
+		// Get the button that opens the modal
+		var btn = document.getElementById("chatt");
+
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+
+		// When the user clicks the button, open the modal 
+		btn.onclick = function() {
+			modal.style.display = "block";
+		}
+
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() {
+			modal.style.display = "none";
+		}
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+	});
+</script>
 </head>
 
 <body>
@@ -123,8 +246,7 @@ h3 {
 
 												<div
 													class="dropdown-menu dropdown-menu-right border-0 py-0 mt-4"
-													aria-labelledby="dropdownMenuLink"
-													style="width: 360px;">
+													aria-labelledby="dropdownMenuLink" style="width: 360px;">
 													<div class="card">
 														<div class="card-header d-flex align-items-center py-3">
 															<h2 class="h4 card-header-title">알림 내역</h2>
@@ -391,54 +513,35 @@ h3 {
 		</div>
 	</footer>
 	<!-- footer_end  -->
-
-
-	<!-- JS here -->
-	<script src="js/vendor/modernizr-3.5.0.min.js"></script>
-	<script src="js/vendor/jquery-1.12.4.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/isotope.pkgd.min.js"></script>
-	<script src="js/ajax-form.js"></script>
-	<script src="js/waypoints.min.js"></script>
-	<script src="js/jquery.counterup.min.js"></script>
-	<script src="js/imagesloaded.pkgd.min.js"></script>
-	<script src="js/scrollIt.js"></script>
-	<script src="js/jquery.scrollUp.min.js"></script>
-	<script src="js/wow.min.js"></script>
-	<script src="js/nice-select.min.js"></script>
-	<script src="js/jquery.slicknav.min.js"></script>
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/plugins.js"></script>
-	<script src="js/gijgo.min.js"></script>
-
-	<!--contact js-->
-	<script src="js/contact.js"></script>
-	<script src="js/jquery.ajaxchimp.min.js"></script>
-	<script src="js/jquery.form.js"></script>
-	<script src="js/jquery.validate.min.js"></script>
-	<script src="js/mail-script.js"></script>
-
-	<script src="js/main.js"></script>
-	<script>
-		$('#datepicker').datepicker({
-			iconsLibrary : 'fontawesome',
-			disableDaysOfWeek : [ 0, 0 ],
-		//     icons: {
-		//      rightIcon: '<span class="fa fa-caret-down"></span>'
-		//  }
-		});
-		$('#datepicker2').datepicker({
-			iconsLibrary : 'fontawesome',
-			icons : {
-				rightIcon : '<span class="fa fa-caret-down"></span>'
-			}
-
-		});
-		var timepicker = $('#timepicker').timepicker({
-			format : 'HH.MM'
-		});
-	</script>
+	<div class="chat" align="center">
+		<button type="button" id="chatt">
+			<img src="images/foot.png" id="foot">&nbsp;&nbsp;<span
+				class="chatting">채팅하기</span>
+		</button>
+	</div>
+	<!-- testmonial_area_start  -->
+	<div id="light" class="modal">
+		<div class="white_content modal-content" align="center">
+			<form action="wResv.do" id="form">
+				<div>
+					<div class="time"></div>
+					<div>
+						<span>채팅
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</span>
+						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
+						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
+						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
+						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
+						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
+						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
+						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
+						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
+					</div>
+				</div>
+				<br />
+			</form>
+		</div>
+	</div>
 </body>
 </html>

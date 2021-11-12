@@ -13,7 +13,7 @@
 			if (role == 1) {
 				alert("훈련사 권한이 없습니다.");
 			} else if (role == 2) {
-			var con = confirm("훈련사로 전환하시겠습니까?")
+				var con = confirm("훈련사로 전환하시겠습니까?")
 				if (con == true) {
 					location.href = "trnProfile.do"
 				} else {
@@ -130,12 +130,10 @@
 						onblur="this.placeholder = 'email'" class="single-input-primary">
 				</div>
 				<br />
-				<button type="button" id="trans">훈련사모드 전환</button>
-				<br> <br> <br>
 				<div align="center">
+					<button type="button" id="trans">훈련사모드 전환</button>
 					<button type="button" onclick="location.href='cntProfileEdit.do'"
 						class="ebtn">수정</button>
-					<button type="button" class="ebtn">취소</button>
 				</div>
 			</form>
 			<br> <br>

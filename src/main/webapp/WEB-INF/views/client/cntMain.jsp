@@ -8,7 +8,103 @@
 	if ('${param.message}' != '')
 		alert("${message}");
 </script>
+<style>
+.chat {
+	z-index: 10;
+	position: fixed;
+	right: 0px;
+	bottom: 0px;
+	background-color: #fff;
+	border-top-left-radius: 20px;
+	width: 200px;
+	height: 100px;
+	line-height: 100px;
+	cursor: pointer;
+}
+
+#chatt {
+	cursor: pointer;
+	border: none;
+	background-color: #fff;
+}
+
+#foot {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	width: 50px;
+}
+
+.chatting {
+	font-weight: bolder;
+	color: #444;
+	font-size: 20px;
+	line-height: 110px;
+}
+
+.modal {
+	position: fixed;
+	right: 0px;
+	bottom: 0px;
+	width: 400px;
+	height: 600px;
+	border: 3px soild #ff3500;
+}
+
+.modal-content {
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	width: 380px;
+	height: 700px;
+	border: 3px soild #ff3500;
+	background-color: #fdfdfefa;
+	box-shadow: 5px 10px 80px 5px #ea351617;
+	border-radius: 50px;
+}
+
+.close {
+	margin-right: 50px;
+	font-size: 1.5rem;
+	font-weight: 700;
+	line-height: 1;
+	color: #000;
+	text-shadow: 0 1px 0 #fff;
+	opacity: .5;
+	float: right;
+}
+</style>
+<script>
+	$(function() {
+		// Get the modal
+		var modal = document.getElementById("light");
+
+		// Get the button that opens the modal
+		var btn = document.getElementById("chatt");
+
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+
+		// When the user clicks the button, open the modal 
+		btn.onclick = function() {
+			modal.style.display = "block";
+		}
+
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() {
+			modal.style.display = "none";
+		}
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+	});
+</script>
 </head>
+<body>
 	<!-- slider_area_start -->
 	<div class="slider_area">
 		<div class="single_slider slider_bg_1 d-flex align-items-center">
@@ -20,8 +116,8 @@
 								<br> <span>HEY, YO!</span>
 							</h3>
 							<p>
-								동물을 사랑하는 마음은 물론, 반려동물 관련 자격증 또는 <br> 전문 지식을 갖춘 분들이 전문
-								펫시터로 활동하고 있습니다.
+								동물을 사랑하는 마음은 물론, 반려동물 관련 자격증 또는 <br> 전문 지식을 갖춘 분들이 전문 펫시터로
+								활동하고 있습니다.
 							</p>
 							<div></div>
 						</div>
@@ -91,7 +187,9 @@
 						</div>
 						<div class="service_content text-center">
 							<h3>안전 보상 프로그램</h3>
-							<p>서비스 이용중 예상치 못한 문제 발생시 <br/> 체계적인 안전보상이 적용됩니다.</p>
+							<p>
+								서비스 이용중 예상치 못한 문제 발생시 <br /> 체계적인 안전보상이 적용됩니다.
+							</p>
 						</div>
 					</div>
 				</div>
@@ -109,8 +207,9 @@
 							<h3>
 								<span>저희와 함께해주신</span> 헤이요 식구들!
 							</h3>
-							<p>지금까지 저희와 함께 해주신 여러분 모두 감사합니다!
-							<br/> 앞으로도 계속 헤이요 이용해주실 거죠?</p>
+							<p>
+								지금까지 저희와 함께 해주신 여러분 모두 감사합니다! <br /> 앞으로도 계속 헤이요 이용해주실 거죠?
+							</p>
 						</div>
 					</div>
 				</div>
@@ -239,6 +338,37 @@
 					</div>
 				</div>
 			</div>
+		</div>
+	</div>
+	<div class="chat" align="center">
+		<button type="button" id="chatt">
+			<img src="images/foot.png" id="foot">&nbsp;&nbsp;<span
+				class="chatting">채팅하기</span>
+		</button>
+	</div>
+
+	<!-- testmonial_area_start  -->
+	<div id="light" class="modal">
+		<div class="white_content modal-content" align="center">
+			<form action="wResv.do" id="form">
+				<div>
+					<div class="time"></div>
+					<div>
+						<span>채팅
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</span>
+						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
+						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
+						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
+						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
+						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
+						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
+						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
+						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
+					</div>
+				</div>
+				<br />
+			</form>
 		</div>
 	</div>
 </body>

@@ -4,9 +4,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
-      http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-      http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
@@ -52,6 +54,16 @@
 		<beans:property name="maxInMemorySize"
 			value="200000000" />
 	</beans:bean>
+
+	<beans:bean id="myHandler"
+		class="co.mngns.prj.chat.SpringSocketHandlerJSON" />
+	<websocket:handlers>
+		<websocket:mapping path="/BroadcastingServer.do"
+			handler="myHandler" />
+		<websocket:handshake-interceptors>
+			<beans:bean class="co.mngns.prj.chat.HandshakeInterceptor" />
+		</websocket:handshake-interceptors>
+	</websocket:handlers>
 
 	<context:component-scan base-package="co.mngns" />
 
