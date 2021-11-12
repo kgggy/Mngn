@@ -1,10 +1,7 @@
 package co.mngns.prj.common.web;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -111,5 +108,11 @@ public class KgyController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
+	}
+	
+	@RequestMapping("ajaxStts.do")
+	@ResponseBody
+	public int sttsUpdate(Model model, ReserListVO reser, HttpServletRequest request, HttpServletResponse response) {
+		return reserService.sttsUpdate(reser);
 	}
 }

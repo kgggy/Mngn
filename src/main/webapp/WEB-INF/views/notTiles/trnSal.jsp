@@ -502,10 +502,8 @@ th {
 										</c:otherwise>
 									</c:choose></td> 
 							</tr>
-							<input name="reser_no" id="reser_no" type="hidden"
-								value="${rqTrn.reser_no}">
-							<input type="hidden" id="client_id" name="client_id"
-								value="${rqTrn.client_id }">
+							<input name="reser_no" id="reser_no" type="hidden" value="${rqTrn.reser_no}">
+							<input type="hidden" id="client_id" name="client_id">
 						</c:forEach>
 					</tbody>
 				</table>
@@ -653,7 +651,7 @@ th {
 	<script>
 		$(document).ready(function() {
 			$('#rqDetailModal').on('show.bs.modal', function(e) {
-				var reserno = $(event.target).data('reserno');
+				var reser_no = $(event.target).data('reserno');
 				console.log(reserno);
 			 $.ajax({
 				url:"ajaxRqDetail.do",
@@ -675,14 +673,23 @@ th {
 			});
 	
 	
-			$.ajax({
-				url:"ajaxStts.do",
-				type:"post",
-				data:{svc_stts : svc_stts},
-				dataType: "json",
-				success: function(data) {
-					if(confirm("수락하시겠습니까?") == true
-				}
+			$('#confirm').on('click', function() {
+				var reser_no =  $('input[name=reser_no]').val();
+				 if(confirm("수락하시겠습니까?") == true) {
+					$.ajax({
+						url:"ajaxStts.do",
+						type:"post",
+						data:{reser_no : reser_no},
+						dataType: "json",
+						success: function(data) {
+							alert("수락되었습니다.");	
+							location.reload();
+						},
+						error: function() {
+							alert("다시 시도해주세요.");
+						}
+					});
+				};
 			});
 		});
 	</script>

@@ -155,4 +155,9 @@
 		       and p.client_id = l.client_id1
 		       and l.reser_no = ${reser_no} and l.client_id1 = ${client_id}
     </select>
+    
+    <!-- 훈련사 수락 후 상태변경 -->
+    <update id="sttsUpdate" parameterType="co.mngns.prj.svc.vo.ReserListVO">
+    	update reser_list set svc_stts = 1 where reser_no = #{reser_no}
+    </update>
 </mapper>

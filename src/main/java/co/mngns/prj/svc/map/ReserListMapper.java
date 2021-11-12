@@ -36,4 +36,6 @@ public interface ReserListMapper {
 
 	public List<ReserListVO> trnReserSelect(ReserListVO reser); //훈련사 의뢰 상세보기
 	
+	public int sttsUpdate(ReserListVO reser); //수락 후 상태변경
+	
 }
