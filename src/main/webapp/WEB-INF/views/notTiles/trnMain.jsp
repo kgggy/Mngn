@@ -525,23 +525,28 @@ h3 {
 			<form action="wResv.do" id="form">
 				<div>
 					<div class="time"></div>
-					<div>
-						<span>채팅
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-						</span>
-						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
-						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
-						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
-						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
-						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
-						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
-						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
-						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
+					<div id = "modalBody">
+						
 					</div>
 				</div>
 				<br />
 			</form>
 		</div>
 	</div>
+	
+	<script>
+	$.ajax({
+        url : "chat.do",
+        type : 'POST',
+        data : {
+           client_id : ${sessionScope.id}
+        },
+        dataType : "html",
+        success : function(data) {
+           $("#modalBody").html(data);
+        }
+     });
+
+	</script>
 </body>
 </html>

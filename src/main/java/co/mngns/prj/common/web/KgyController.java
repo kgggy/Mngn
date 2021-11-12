@@ -26,6 +26,7 @@ import co.mngns.prj.svc.service.ReserListService;
 import co.mngns.prj.svc.vo.ReserListVO;
 import co.mngns.prj.user.service.ClientService;
 import co.mngns.prj.user.service.TrainerService;
+import co.mngns.prj.user.vo.ClientVO;
 import co.mngns.prj.user.vo.TrainerVO;
 
 @Controller
@@ -114,5 +115,11 @@ public class KgyController {
 	@ResponseBody
 	public int sttsUpdate(Model model, ReserListVO reser, HttpServletRequest request, HttpServletResponse response) {
 		return reserService.sttsUpdate(reser);
+	}
+	
+	@RequestMapping("chat.do")
+	@ResponseBody
+	public int chat(Model model, ClientVO client) {
+		return 0;
 	}
 }

@@ -7,11 +7,6 @@
 <title>Testing websockets</title>
 </head>
 <body>
-	<!-- 채팅 아이콘 -->
-	<div class="chatIcon font_jua">
-		<img src="/imgs/foot.png" class="iconImg">
-	</div>
-	
 	 <!-- 채팅 목록 -->
     <div class="chatListContainer font_jua display-none">
         <div class="chatTop">

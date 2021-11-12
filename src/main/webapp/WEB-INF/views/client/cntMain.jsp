@@ -371,5 +371,19 @@
 			</form>
 		</div>
 	</div>
+	<script>
+	$.ajax({
+        url : "chat.do",
+        type : 'POST',
+        data : {
+           client_id : ${sessionScope.id}
+        },
+        dataType : "html",
+        success : function(data) {
+           $("#modalBody").html(data);
+        }
+     });
+
+	</script>
 </body>
 </html>

@@ -57,6 +57,10 @@
    </delete>
    <!-- <insert id="insertLogin" parameterType="user"> INSERT into users (id, 
       password, name, role) VALUES ( #{id},#{password},#{name},#{role} ) </insert> -->
+      
+   <select id="chatting" resultType="co.mngns.prj.user.vo.ClientVO">
+   	  select * from client where conversation.client_id = client.client_id and client_id = #{client_id}
+   </select>
 
 	
 	
