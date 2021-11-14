@@ -46,6 +46,7 @@
  	 where l.client_id2 = t.client_id
 		    and l.client_id1 = r.client_id
 		    and r.client_id = c.client_id
+		    and l.reser_no = r.reser_no
 		    and t.client_id = #{client_id} 
 </select>
 <update id="reviewUpdate" parameterType="co.mngns.prj.board.vo.ReviewVO">

@@ -19,8 +19,6 @@
 <link rel="stylesheet" href="css/petsitting/flaticon.css">
 <link rel="stylesheet" href="css/petsitting/style.css">
 
-
-
 <script src="js/petsitting/jquery.min.js"></script>
 <script src="js/petsitting/jquery-migrate-3.0.1.min.js"></script>
 <script src="js/petsitting/popper.min.js"></script>

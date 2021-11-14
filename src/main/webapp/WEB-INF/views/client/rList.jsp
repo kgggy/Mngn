@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="my" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,14 +67,21 @@
 				<c:forEach items="${rLists }" var="rList">
 					<div class="col-md-4 d-flex ftco-animate" data-toggle="modal"
 						data-target="#myModal">
-						<div class="blog-entry align-self-stretch" data-toggle="modal"
+						<div class="blog-entry align-self-stretch1" data-toggle="modal"
 							data-target="#myModal">
 							<div class="text p-4" data-toggle="modal" data-target="#myModal">
-								<a class="block-20 rounded"
-									style="background-image: url('download.do?fileName=${rList.fileorg}');"></a><br>
+								<c:if test="${rList.fileorg > '0'}">
+									<a class="block-20 rounded"
+										style="background-image: url('download.do?fileName=${rList.fileorg}');"></a>
+								</c:if>
+								<c:if test="${empty rList.fileorg}">
+									<a class="block-20 rounded"
+										style="background-image: url('img/dog_default.png');"></a>
+								</c:if>
+								<br>
 								<div class="meta mb-2">
 									<div>${rList.reg_dt }</div>
-									<div>${rList.name } </div>
+									<div>${rList.name }</div>
 									<div>
 										<a class="meta-chat"> ${rList.star_shape }</a>
 									</div>
@@ -128,13 +135,13 @@
 		</div>
 	</div> -->
 
-<script>
-	function goList(p) {
-		//searchFrm.page.value=p; //페이지 번호 받아서 폼태그에 넣어서 submit(폼 안에 페이지번호가 히든으로, 검색조건과 정렬방식도 가지고 넘어감)
-		//searchFrm.submit();
-		location.href="rList.do?page=" + p
-	}
-</script>
+	<script>
+		function goList(p) {
+			//searchFrm.page.value=p; //페이지 번호 받아서 폼태그에 넣어서 submit(폼 안에 페이지번호가 히든으로, 검색조건과 정렬방식도 가지고 넘어감)
+			//searchFrm.submit();
+			location.href = "rList.do?page=" + p
+		}
+	</script>
 
 </body>
 </html>

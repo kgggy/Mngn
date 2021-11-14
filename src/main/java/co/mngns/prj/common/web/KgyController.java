@@ -43,31 +43,31 @@ public class KgyController {
 
 	@GetMapping("/getSearchList.do")
 	@ResponseBody
-	public List<TrainerVO> getSearchList(TrainerVO vo , Model model) throws Exception{
+	public List<TrainerVO> getSearchList(TrainerVO vo, Model model) throws Exception {
 		return trnService.getSearchList(vo);
 	}
-	
-	@RequestMapping(value="/nWork.do")
+
+	@RequestMapping(value = "/nWork.do")
 	public TrainerVO nWork(TrainerVO vo) {
 		return trnService.nWork(vo);
-	}	
-	
+	}
+
 	@RequestMapping(value = "/reviewInsert.do")
 	@ResponseBody
 	// 리뷰 입력
-	public int reviewInsert(MultipartFile[] uploadFile, ReviewVO reviewVo, HttpSession session, Model model) throws Exception {
+	public int reviewInsert(MultipartFile[] uploadFile, ReviewVO reviewVo, HttpSession session, Model model)
+			throws Exception {
 		List<FilesVO> list = new ArrayList<>();
 		String uploadFolder = "d:\\fileUp";
-		
-		reviewVo.setClient_id((Integer)session.getAttribute("id"));
+
+		reviewVo.setClient_id((Integer) session.getAttribute("id"));
 		int file_no = reviewService.rvFilenoSelect();
 		for (MultipartFile multipartFile : uploadFile) {
 			FilesVO filesVO = new FilesVO();
-			if(multipartFile != null && multipartFile.getSize()>0  ) {
+			if (multipartFile != null && multipartFile.getSize() > 0) {
 				String uploadFileName = multipartFile.getOriginalFilename();
-				System.out.println(uploadFileName+"==============");
-				
-				
+				System.out.println(uploadFileName + "==============");
+
 				String fileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
 				File saveFile = new File(uploadFolder, fileName);
 				try {
@@ -86,30 +86,40 @@ public class KgyController {
 		int a = reviewService.reviewInsert(reviewVo);
 		return a;
 	}
-	
-	@RequestMapping(value="/trnSal.do")
+
+	@RequestMapping(value = "/trnSal.do")
 	public String trnReserSelectList(ReserListVO vo, Model model, HttpSession session) {
 		vo.setClient_id2(String.valueOf(session.getAttribute("id")));
 		model.addAttribute("requestTrn", reserService.trnReserSelectList(vo));
 		model.addAttribute("rqDetails", reserService.trnSalSelectList(vo));
 		return "trnSal";
-	}	
-	
+	}
+
+	// 의뢰 상세보기
 	@RequestMapping("ajaxRqDetail.do")
 	@ResponseBody
-	public Map<String, Object> trnsss(Model model, PetVO vo, ReserListVO reser, HttpServletRequest request, HttpServletResponse response) {
+	public Map<String, Object> trnsss(Model model, PetVO vo, ReserListVO reser, HttpServletRequest request,
+			HttpServletResponse response) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("rqdetail", reserService.trnReserSelect(reser));
 		map.put("pets", reserService.petSelectList(vo));
 		return map;
 	}
-	
+
+	// 의뢰 수락처리
 	@RequestMapping("ajaxStts.do")
 	@ResponseBody
-	public int sttsUpdate(Model model, ReserListVO reser, HttpServletRequest request, HttpServletResponse response) {
+	public int sttsUpdate(ReserListVO reser, HttpServletRequest request, HttpServletResponse response) {
 		return reserService.sttsUpdate(reser);
 	}
-	
+
+	// 의뢰 완료처리
+	@RequestMapping("ajaxStts2.do")
+	@ResponseBody
+	public int sttsUpdate2(ReserListVO reser, HttpServletRequest request, HttpServletResponse response) {
+		return reserService.sttsUpdate2(reser);
+	}
+
 	@RequestMapping("chat.do")
 	@ResponseBody
 	public int chat(Model model, ClientVO client) {

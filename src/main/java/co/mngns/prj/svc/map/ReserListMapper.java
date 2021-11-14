@@ -38,4 +38,6 @@ public interface ReserListMapper {
 	
 	public int sttsUpdate(ReserListVO reser); //수락 후 상태변경
 	
+	public int sttsUpdate2(ReserListVO reser); //완료 처리 후 상태변경
+	
 }
