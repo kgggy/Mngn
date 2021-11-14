@@ -6690,6 +6690,12 @@ a.bg-dark:focus, a.bg-dark:hover, button.bg-dark:focus, button.bg-dark:hover
 	align-self: stretch !important
 }
 
+.align-self-stretch1 {
+	-ms-flex-item-align: stretch !important;
+	align-self: stretch !important;
+	width: 345px;
+}
+
 @media ( min-width :576px) {
 	.flex-sm-row {
 		-webkit-box-orient: horizontal !important;

@@ -385,7 +385,37 @@ article {
 th {
 	height: 30px;
 }
+
 </style>
+<link
+	href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap"
+	rel="stylesheet">
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/petsitting/animate.css">
+<link rel="stylesheet" href="css/petsitting/owl.carousel.min.css">
+<link rel="stylesheet" href="css/petsitting/owl.theme.default.min.css">
+<link rel="stylesheet" href="css/petsitting/magnific-popup.css">
+<link rel="stylesheet" href="css/petsitting/flaticon.css">
+<link rel="stylesheet" href="css/petsitting/style.css">
+<script src="js/petsitting/jquery.min.js"></script>
+<script src="js/petsitting/jquery-migrate-3.0.1.min.js"></script>
+<script src="js/petsitting/popper.min.js"></script>
+<script src="js/petsitting/bootstrap.min.js"></script>
+<script src="js/petsitting/jquery.easing.1.3.js"></script>
+<script src="js/petsitting/jquery.waypoints.min.js"></script>
+<script src="js/petsitting/jquery.stellar.min.js"></script>
+<script src="js/petsitting/jquery.animateNumber.min.js"></script>
+<script src="js/petsitting/bootstrap-datepicker.js"></script>
+<script src="js/petsitting/jquery.timepicker.min.js"></script>
+<script src="js/petsitting/owl.carousel.min.js"></script>
+<script src="js/petsitting/jquery.magnific-popup.min.js"></script>
+<script src="js/petsitting/scrollax.min.js"></script>
+<script
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="js/petsitting/google-map.js"></script>
+<script src="js/petsitting/main.js"></script>
 </head>
 <body>
 	<header>
@@ -460,9 +490,10 @@ th {
 			관리</label>
 		<section id="content1">
 			<select id="stts" name="stts">
+				<option value="대기중">대기중</option>
 				<option value="수락한의뢰">수락한 의뢰</option>
-				<option value="거절한의뢰">거절한 의뢰</option>
 				<option value="완료된의뢰">완료된 의뢰</option>
+				<option value="거절한의뢰">취소된 의뢰</option>
 			</select>
 
 			<button id="search" onclick="javascript:status()">조회</button>
@@ -473,9 +504,10 @@ th {
 				<table class="table table-striped table-hover">
 					<thead align="center">
 						<tr>
+							<th>신청일</th>
 							<th>신청자</th>
 							<th>신청서비스</th>
-							<th>신청일</th>
+							<th>서비스 제공일</th>
 							<th>상태</th>
 							<th></th>
 						</tr>
@@ -483,26 +515,30 @@ th {
 					<tbody align="center">
 						<c:forEach items="${requestTrn }" var="rqTrn">
 							<tr id="modalreser">
+								<td>${rqTrn.enroll_dt }</td>
 								<td>${rqTrn.name }</td>
 								<td><a href="#" id="reserClick" class="open-detail"
 									data-reserno="${rqTrn.reser_no}" data-clientid="${rqTrn.client_id}" data-toggle="modal"
 									data-target="#rqDetailModal">${rqTrn.knd_name}(${rqTrn.term }시간)</a></td>
-								<td>${rqTrn.enroll_dt }</td>
+								<td>${rqTrn.reser_dt }</td>
 								<td><span class="label label-warning">${rqTrn.status }</span></td>
 								<td id="tdTag">
-									 <c:choose>
-										<c:when test="${rqTrn.svc_stts  == '0'}">
-											<a class="btn btn-sm manage" id="confirm">수락</a>
-											<a class="btn btn-sm complete" id="den">거절</a>
-										</c:when>
-										<c:when test="${rqTrn.svc_stts  == '1'}">
-											<button class="btn btn-sm manage">의뢰완료</button>
-										</c:when>
-										<c:otherwise>
-										</c:otherwise>
-									</c:choose></td> 
+									<c:choose>
+									<c:when test="${rqTrn.status eq '대기중'}">
+										<a class="btn btn-sm manage" id="confirm">수락</a>
+										<a class="btn btn-sm complete" id="den">거절</a>
+									</c:when>
+									<c:when test="${rqTrn.status eq '수락한 의뢰'}">
+										<a class="btn btn-sm manage" id="complete">의뢰완료</a>
+									</c:when>
+									<c:when test="${rqTrn.status eq '완료된 의뢰'}">
+										<button class="btn btn-sm manage" style="background: #c2ccd5; color: #fff; cursor: default;" disabled="disabled">의뢰완료</button>
+									</c:when>
+									<c:otherwise>
+									</c:otherwise>
+									</c:choose>
 							</tr>
-							<input name="reser_no" id="reser_no" type="hidden" value="">
+							<input name="reser_no" id="reser_no" type="hidden" value="${rqTrn.reser_no}">
 							<input type="hidden" id="client_id" name="client_id" value="">
 						</c:forEach>
 					</tbody>
@@ -511,6 +547,9 @@ th {
 		</section>
 
 		<section id="content2">
+			<div>
+				
+			</div>
 			<div>
 				<table class="table table-striped table-hover">
 					<thead align="center">
@@ -648,7 +687,7 @@ th {
 	
 	<script>
 		$(document).ready(function() {
-			$('#rqDetailModal').on('show.bs.modal', function(e) {
+			/* $('#rqDetailModal').on('show.bs.modal', function(e) {
 				var reser_no = $(event.target).data('reserno');
 				var client_id = $(event.target).data('clientid');
 				console.log(reser_no,client_id);
@@ -681,12 +720,11 @@ th {
 						alert("다시 시도해주세요");
 					}
 				});  
-			});
-	
+			}); */
 	
 			$('#confirm').on('click', function() {
-				var reser_no =  $('input[name=reser_no]').val();
-				 if(confirm("수락하시겠습니까?") == true) {
+				if(confirm("수락하시겠습니까?") == true) {
+					var reser_no =  $('input[name=reser_no]').val();
 					$.ajax({
 						url:"ajaxStts.do",
 						type:"post",
@@ -700,7 +738,31 @@ th {
 							alert("다시 시도해주세요.");
 						}
 					});
-				};
+				} else {
+					return;
+				} 
+			});
+			
+			$('#complete').on('click', function() {
+					var reser_no =  $('input[name=reser_no]').val();
+					console.log(reser_no);
+				/* if(confirm("서비스를 완료하시겠습니까?") == true) {
+					$.ajax({
+						url:"ajaxStts2.do",
+						type:"post",
+						data:{reser_no : reser_no},
+						dataType: "json",
+						success: function(data) {
+							alert("처리되었습니다.");	
+							location.reload();
+						},
+						error: function() {
+							alert("다시 시도해주세요.");
+						}
+					});
+				} else {
+					return;
+				}  */
 			});
 		});
 	</script>

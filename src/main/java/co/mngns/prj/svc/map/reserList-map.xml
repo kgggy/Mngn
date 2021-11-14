@@ -112,7 +112,8 @@
              l.client_id1, 
 		     l.reser_no,
 		     l.svc_stts,
-             case l.svc_stts when 0 then '수락한 의뢰' when 1 then '완료한 의뢰' else '거절한 의뢰'
+		     l.reser_dt,
+             case l.svc_stts when 0 then '대기중' when 1 then '수락한 의뢰' when 2 then '완료된 의뢰' else '취소된 의뢰'
             end as status
         from reser_list l, svc s, client c, trainer t
        where l.client_id2 = t.client_id
@@ -161,5 +162,10 @@
     <!-- 훈련사 수락 후 상태변경 -->
     <update id="sttsUpdate" parameterType="co.mngns.prj.svc.vo.ReserListVO">
     	update reser_list set svc_stts = 1 where reser_no = #{reser_no}
+    </update>
+    
+    <!-- 훈련사 의뢰 완료 처리 후 상태변경 -->
+    <update id="sttsUpdate2" parameterType="co.mngns.prj.svc.vo.ReserListVO">
+    	update reser_list set svc_stts = 2 where reser_no = #{reser_no}
     </update>
 </mapper>

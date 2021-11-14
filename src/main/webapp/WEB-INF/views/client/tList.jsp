@@ -38,7 +38,7 @@
 		<form name="search-form">
 			<div class="form-group">
 				<div class="input-group mb-3">
-					<select name="location">
+					<%-- <select name="location">
 						<option selected value="">선택</option>
 						<option value="loc1" <c:if test="${trainerVO.work_loc2 == 'loc1' }">selected</c:if> >서울특별시</option>
 						<option value="loc2" <c:if test="${trainerVO.work_loc2 == 'loc2' }">selected</c:if>>인천광역시</option>
@@ -47,7 +47,7 @@
 						<option value="loc5" <c:if test="${trainerVO.work_loc2 == 'loc5' }">selected</c:if>>대구광역시</option>
 						<option value="loc6" <c:if test="${trainerVO.work_loc2 == 'loc6' }">selected</c:if>>부산광역시</option>
 						<option value="loc7" <c:if test="${trainerVO.work_loc2 == 'loc7' }">selected</c:if>>울산광역시</option>
-					</select> <select name="type">
+					</select>  --%><select name="type">
 						<option selected value="">선택</option>
 						<option value="name" <c:if test="${trainerVO.type == 'name' }">selected</c:if>>이름</option>
 						<option value="adres" <c:if test="${trainerVO.type == 'adres' }">selected</c:if>>주소</option>
@@ -101,27 +101,7 @@
 			//searchFrm.submit();
 			location.href = "tList.do?page=" + p
 		}
-		/*function search() {
-			// Declare variables
-			var div, filter, span, txtValue;
-			div = document.getElementById("tDiv");
-			span = document.getElementsByTagName("span");
-			filter = document.getElementById('span1').innerHTML;
-			console.log(filter);
-
-			// Loop through all table rows, and hide those who don't match the search query
-			for (i = 0; i < span.length; i++) {
-				td = tr[i].getElementsByTagName("td")[0];
-				if (td) {
-					txtValue = td.textContent || td.innerText;
-					if (txtValue.toUpperCase().indexOf(filter) > -1) {
-						tr[i].style.display = "";
-					} else {
-						tr[i].style.display = "none";
-					}
-				}
-			}
-		} */
+		
 	</script>
 
 </body>
