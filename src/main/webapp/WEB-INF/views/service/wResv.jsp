@@ -61,7 +61,7 @@
             });
 
             $("#date_1").datepicker({
-                dateFormat: "yy-mm-dd",
+                format: "yyyy-mm-dd",
                 minDate: new Date(),
                 onSelect: function (date, datepicker) {
                     trn();

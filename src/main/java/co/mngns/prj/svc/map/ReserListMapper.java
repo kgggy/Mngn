@@ -40,4 +40,6 @@ public interface ReserListMapper {
 	
 	public int sttsUpdate2(ReserListVO reser); //완료 처리 후 상태변경
 	
+	public int sttsUpdate3(ReserListVO reser); //접수 취소 후 상태변경
+	
 }

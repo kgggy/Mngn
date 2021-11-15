@@ -107,8 +107,8 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/editForm.do")
-	// 훈련사 선택
-	public String editForm(Model model, ClientVO clientvo, HttpSession session) {
+	// 프로필 수정
+	public String editForm(ClientVO clientvo, HttpSession session) {
 		clientvo.setClient_id((Integer) session.getAttribute("id"));
 		cntService.clientUpdate(clientvo);
 		return "redirect:cntProfile.do";

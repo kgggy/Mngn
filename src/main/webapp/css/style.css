@@ -2583,13 +2583,9 @@ h3 {
 
 /* line 196, ../../Arafath/CL/january 2020/240. Animal/HTML/scss/_gallery.scss */
 .gj-datepicker input {
-  width: calc(100% - 10px);
-  height: 35px;
-  border: 1px solid #ddd;
-  padding: 17px;
-  font-size: 12px;
-  color: #919191;
   margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
 }
 
 /* line 205, ../../Arafath/CL/january 2020/240. Animal/HTML/scss/_gallery.scss */

@@ -60,7 +60,7 @@
 		where work_time Is Not Null
 		and t.work_loc1||' '||t.work_loc2 = '대구 달서구'
 		and substr(sun || mon || tue || wed || thu || fri || sat,
-		to_char(to_date('21-11-17','yy-mm-dd'), 'D'),1 ) = 1
+		to_char(to_date(#{reser_dt},'yy-mm-dd'), 'D'),1 ) = 1
 		Connect By
 		Regexp_Substr('10,11,12,13,14', '[^,]+', 1,level) Is Not Null
 		MINUS
@@ -162,6 +162,11 @@
     <!-- 훈련사 수락 후 상태변경 -->
     <update id="sttsUpdate" parameterType="co.mngns.prj.svc.vo.ReserListVO">
     	update reser_list set svc_stts = 1 where reser_no = #{reser_no}
+    </update>
+    
+    <!-- 접수 취소 후 상태변경 -->
+    <update id="sttsUpdate3" parameterType="co.mngns.prj.svc.vo.ReserListVO">
+    	update reser_list set svc_stts = 3 where reser_no = #{reser_no}
     </update>
     
     <!-- 훈련사 의뢰 완료 처리 후 상태변경 -->
