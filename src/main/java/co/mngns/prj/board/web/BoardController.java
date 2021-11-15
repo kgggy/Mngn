@@ -113,9 +113,9 @@ public class BoardController {
 	
 	@RequestMapping(value = "/reviewUpdate.do")
 	// 리뷰 수정
-	public String reviewUpdate(Model model, ReviewVO vo) {
-		vo.setReview_no((Integer)model.getAttribute("review_no"));
-		model.addAttribute("rUpdate", rService.reviewUpdate(vo));
+	public String reviewUpdate(RedirectAttributes re, @RequestParam(required = false) int review_no, Model model, ReviewVO vo) {
+		vo.setClient_id(review_no);
+		re.addAttribute("tab2", rService.reviewUpdate(vo)) ;
 		return "redirect:cntReview.do";
 	}
 

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,6 +23,7 @@ import co.mngns.prj.board.service.ReviewService;
 import co.mngns.prj.board.vo.ReviewVO;
 import co.mngns.prj.common.vo.FilesVO;
 import co.mngns.prj.pet.vo.PetVO;
+import co.mngns.prj.svc.service.BillService;
 import co.mngns.prj.svc.service.ReserListService;
 import co.mngns.prj.svc.vo.ReserListVO;
 import co.mngns.prj.user.service.ClientService;
@@ -40,6 +42,8 @@ public class KgyController {
 	ReviewService reviewService;
 	@Autowired
 	ReserListService reserService;
+	@Autowired
+	BillService billService;
 
 	@GetMapping("/getSearchList.do")
 	@ResponseBody
@@ -88,10 +92,13 @@ public class KgyController {
 	}
 
 	@RequestMapping(value = "/trnSal.do")
-	public String trnReserSelectList(ReserListVO vo, Model model, HttpSession session) {
+	public String trnReserSelectList(@RequestParam(required = false) int month, ClientVO client, ReserListVO vo, Model model, HttpSession session) {
 		vo.setClient_id2(String.valueOf(session.getAttribute("id")));
 		model.addAttribute("requestTrn", reserService.trnReserSelectList(vo));
 		model.addAttribute("rqDetails", reserService.trnSalSelectList(vo));
+		//client.setClient_id((Integer)session.getAttribute("id"));
+		//client.setMonth(month);
+		//model.addAttribute("mthFee", billService.monthFee(client));
 		return "trnSal";
 	}
 

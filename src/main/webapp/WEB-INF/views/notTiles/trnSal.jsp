@@ -385,7 +385,6 @@ article {
 th {
 	height: 30px;
 }
-
 </style>
 <link
 	href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap"
@@ -490,13 +489,13 @@ th {
 			관리</label>
 		<section id="content1">
 			<select id="stts" name="stts">
-				<option value="대기중">대기중</option>
-				<option value="수락한의뢰">수락한 의뢰</option>
-				<option value="완료된의뢰">완료된 의뢰</option>
-				<option value="거절한의뢰">취소된 의뢰</option>
+				<option value="0">대기중</option>
+				<option value="1">수락한 의뢰</option>
+				<option value="2">완료된 의뢰</option>
+				<option value="3">취소된 의뢰</option>
 			</select>
 
-			<button id="search" onclick="javascript:status()">조회</button>
+			<button id="search">조회</button>
 			<hr>
 			<input style="font-size: 7pt;">* 기본적으로 최근 3개월간의 자료가 조회되며,
 			6개월이 지나면 정보가 사라집니다. <br> <br>
@@ -518,27 +517,29 @@ th {
 								<td>${rqTrn.enroll_dt }</td>
 								<td>${rqTrn.name }</td>
 								<td><a href="#" id="reserClick" class="open-detail"
-									data-reserno="${rqTrn.reser_no}" data-clientid="${rqTrn.client_id}" data-toggle="modal"
+									data-reserno="${rqTrn.reser_no}"
+									data-clientid="${rqTrn.client_id}" data-toggle="modal"
 									data-target="#rqDetailModal">${rqTrn.knd_name}(${rqTrn.term }시간)</a></td>
 								<td>${rqTrn.reser_dt }</td>
 								<td><span class="label label-warning">${rqTrn.status }</span></td>
-								<td id="tdTag">
-									<c:choose>
-									<c:when test="${rqTrn.status eq '대기중'}">
-										<a class="btn btn-sm manage" id="confirm">수락</a>
-										<a class="btn btn-sm complete" id="den">거절</a>
-									</c:when>
-									<c:when test="${rqTrn.status eq '수락한 의뢰'}">
-										<a class="btn btn-sm manage" id="complete">의뢰완료</a>
-									</c:when>
-									<c:when test="${rqTrn.status eq '완료된 의뢰'}">
-										<button class="btn btn-sm manage" style="background: #c2ccd5; color: #fff; cursor: default;" disabled="disabled">의뢰완료</button>
-									</c:when>
-									<c:otherwise>
-									</c:otherwise>
-									</c:choose>
+								<td id="tdTag"><c:choose>
+										<c:when test="${rqTrn.status eq '대기중'}">
+											<a class="btn btn-sm manage" id="confirm">수락</a>
+											<a class="btn btn-sm complete" id="den">거절</a>
+										</c:when>
+										<c:when test="${rqTrn.status eq '수락한 의뢰'}">
+											<input name="reser_no" id="reser_no1" type="hidden" value="${rqTrn.reser_no}">
+											<a class="btn btn-sm manage" id="complete">의뢰 완료 처리</a>
+										</c:when>
+										<c:when test="${rqTrn.status eq '완료된 의뢰'}">
+											<button class="btn btn-sm manage"
+												style="background: #c2ccd5; color: #fff; cursor: default;"
+												disabled="disabled">의뢰완료</button>
+										</c:when>
+										<c:otherwise>
+										</c:otherwise>
+									</c:choose></td>
 							</tr>
-							<input name="reser_no" id="reser_no" type="hidden" value="${rqTrn.reser_no}">
 							<input type="hidden" id="client_id" name="client_id" value="">
 						</c:forEach>
 					</tbody>
@@ -547,8 +548,9 @@ th {
 		</section>
 
 		<section id="content2">
-			<div>
-				
+			<div><br>
+			<h3 align="center">11월에 지불해야할 총 수수료 비용은 [ 원] 입니다.</h3>
+			<br>
 			</div>
 			<div>
 				<table class="table table-striped table-hover">
@@ -558,9 +560,10 @@ th {
 							<th>주문자ID</th>
 							<th>이름</th>
 							<th>서비스</th>
-							<th>총금액</th>
 							<th>예약날짜</th>
 							<th>제공날짜</th>
+							<th>총금액</th>
+							<th>수수료</th>
 						</tr>
 					</thead>
 					<tbody align="center">
@@ -570,9 +573,10 @@ th {
 								<td>${rqDetail.client_id }</td>
 								<td>${rqDetail.name }</td>
 								<td>${rqDetail.knd_name}(${rqDetail.term }시간)</td>
-								<td>${rqDetail.bill_amt }원</td>
 								<td>${rqDetail.enroll_dt}</td>
 								<td>${rqDetail.reser_dt}</td>
+								<td>${rqDetail.bill_amt }원</td>
+								<td>${rqDetail.fee}원</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -684,7 +688,7 @@ th {
 		</div>
 	</div>
 	<!-- 의뢰 상세보기 Modal 종료 -->
-	
+
 	<script>
 		$(document).ready(function() {
 			/* $('#rqDetailModal').on('show.bs.modal', function(e) {
@@ -721,31 +725,33 @@ th {
 					}
 				});  
 			}); */
-	
+
 			$('#confirm').on('click', function() {
-				if(confirm("수락하시겠습니까?") == true) {
-					var reser_no =  $('input[name=reser_no]').val();
+				if (confirm("수락하시겠습니까?") == true) {
+					var reser_no = $('input[name=reser_no]').val();
 					$.ajax({
-						url:"ajaxStts.do",
-						type:"post",
-						data:{reser_no : reser_no},
-						dataType: "json",
-						success: function(data) {
-							alert("수락되었습니다.");	
+						url : "ajaxStts.do",
+						type : "post",
+						data : {
+							reser_no : reser_no
+						},
+						dataType : "json",
+						success : function(data) {
+							alert("수락되었습니다.");
 							location.reload();
 						},
-						error: function() {
+						error : function() {
 							alert("다시 시도해주세요.");
 						}
 					});
 				} else {
 					return;
-				} 
+				}
 			});
-			
+
 			$('#complete').on('click', function() {
-					var reser_no =  $('input[name=reser_no]').val();
-					console.log(reser_no);
+				var rno = $('input[name=reser_no]').val();
+				console.log(rno);
 				/* if(confirm("서비스를 완료하시겠습니까?") == true) {
 					$.ajax({
 						url:"ajaxStts2.do",
@@ -764,7 +770,25 @@ th {
 					return;
 				}  */
 			});
-		});
+		
+		//서비스 상태 드롭다운 검색
+		/* $('#search').on('click', function() {
+			var target = $("#stts option:selected").val();
+			console.log(target);
+		    $.ajax({
+				url:"svsFilter.do",
+				type:"post",
+				data:{ svc_stts : svc_stts },
+				dataType: "json",
+				success: function(data) {
+					
+				},
+				error: function() {
+					
+				}
+			});
+		}); */
+	});
 	</script>
 </body>
 </html>

@@ -444,7 +444,7 @@ article {
 											data-target="#reviewInsert">후기 작성</a>
 									</c:if> 
 									<c:if test="${serUse.reviewyn > '0'}">
-										<a class="btn btn-sm complete">작성 완료</a>
+										<a class="btn btn-sm complete">후기 작성 완료</a>
 									</c:if>
 									<c:if test="${serUse.status eq '취소 및 환불'}">
 									</c:if>
@@ -486,7 +486,7 @@ article {
 									<td>${myReview.reg_dt }</td>
 									<td><a href="#" class="open-ReviewModal btn btn-sm manage"
 										data-toggle="modal" data-target="#reviewUpdate"
-										data-no="${myReview.cntn }">수정</a>&nbsp;&nbsp; <a
+										data-no="${myReview.cntn }" data-rno="${myReview.review_no }">수정</a>&nbsp;&nbsp; <a
 										href="javascript:reviewDelete(${myReview.review_no })"
 										class="btn btn-sm manage">삭제</a></td>
 								</tr>
@@ -564,8 +564,8 @@ article {
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body">
-					<form role="form" id="rvUpdate" name="rvUpdate" method="post">
-						<input type="hidden" id="review_no" name="review_no">
+					<form action="reviewUpdate.do" id="rvUpdate" name="rvUpdate" method="post">
+						<input type="hidden" id="rno" name="review_no">
 						<h2 align="center">
 							<strong>별점과 이용경험을 남겨주세요 :)</strong>
 						</h2>
@@ -593,7 +593,7 @@ article {
 						<br> <br>
 						<textarea id="eml_cnt"
 							style="width: 100%; margin-top: 0px; margin-bottom: 0px; height: 286px; resize: none;"
-							name="eml_cnt" rows="10" class="form-control" placeholder=""></textarea>
+							name="cntn" rows="10" class="form-control" placeholder=""></textarea>
 						<br> <br> <img id="updateC" src="img/camera.png"
 							style="height: 90px; width: 130px"> <input type="file"
 							id="uploadFile" name="uploadFile"
@@ -602,7 +602,7 @@ article {
 					</form>
 				</div>
 				<div class="modal-footer">
-					<button type="button" id="okbutton" class="btn btn-success">수정</button>
+					<a href="javascript:reviewUpdate()" id="okbutton" class="btn btn-success">수정</a>
 					<button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
 				</div>
 			</div>
@@ -723,15 +723,26 @@ article {
 			if (confirm('정말 삭제하시겠습니까?') == true) {
 				rvDelete.review_no.value = rid
 				$('#rvDelete').submit();
+				alert('삭제가 완료되었습니다.');
 			} else {
 				return;
 			}
 		}
+		//후기 수정 처리
+		function reviewUpdate() {
+			if (confirm('후기를 수정하시겠습니까?') == true) {
+				$('#rvUpdate').submit();
+				alert('수정이 완료되었습니다.');
+			} else {
+				return;
+			}
+		}; 
 
 		//내용 받아서 모달창 넘기기
 		$('.open-ReviewModal').on("click", function() {
 			var myRvId = $(this).data('no');
 			$('#eml_cnt').attr('placeholder', myRvId);
+			$('#rno').val($(event.target).data('rno'))
 		});
 	</script>
 

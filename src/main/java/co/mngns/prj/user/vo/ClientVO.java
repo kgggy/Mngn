@@ -27,4 +27,8 @@ public class ClientVO {
 	
 	private int start;
 	private int end;
+	
+	private String fees;
+	private String bill_amt;
+	private int month;
 }

@@ -43,5 +43,6 @@ public class ReserListVO {
 	
 	private int start;
 	private int end;
+	private String fee;
 	
 }

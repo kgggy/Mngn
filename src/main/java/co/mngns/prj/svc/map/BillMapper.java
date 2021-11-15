@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import co.mngns.prj.svc.vo.BillVO;
+import co.mngns.prj.user.vo.ClientVO;
 
 @Service
 public interface BillMapper {
@@ -15,4 +16,6 @@ public interface BillMapper {
 	public int billInsert(BillVO bill);
 
 	public int billDelete(BillVO bill);
+	
+	public int monthFee(ClientVO client); //훈련사 월별 수수료
 }
