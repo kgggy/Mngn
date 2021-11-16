@@ -89,7 +89,7 @@
 						</a></li>
 						<!-- End 공지사항 관리 -->
 
-						<!-- 회원 관리 -->
+					<!-- 회원 관리 -->
 						<li class="u-sidebar-nav-menu__item clearfix"><a
 							class="u-sidebar-nav-menu__link" href="cntList.do"
 							data-target="#subMenu22"> <i
@@ -109,10 +109,6 @@
 								<li class="u-sidebar-nav-menu__item"><a
 									class="u-sidebar-nav-menu__link" href="trnList.do"> <span
 										class="u-sidebar-nav-menu__item-title">훈련사 관리</span>
-								</a></li>
-								<li class="u-sidebar-nav-menu__item"><a
-									class="u-sidebar-nav-menu__link" href="outList.do"> <span
-										class="u-sidebar-nav-menu__item-title">탈퇴회원 관리</span>
 								</a></li>
 							</ul></li>
 						<!-- End 회원 관리 -->

@@ -147,20 +147,16 @@ head
 								class="u-sidebar-nav-menu u-sidebar-nav-menu--second-level text-center"
 								style="display: none;">
 								<li class="u-sidebar-nav-menu__item"><a
-									class="u-sidebar-nav-menu__link" href="cntList.do"> <span
-										class="u-sidebar-nav-menu__item-title">사용자 관리</span>
+									class="u-sidebar-nav-menu__link active" href="cntList.do">
+										<span class="u-sidebar-nav-menu__item-title">사용자 관리</span>
 								</a></li>
 								<li class="u-sidebar-nav-menu__item"><a
 									class="u-sidebar-nav-menu__link" href="trnList.do"> <span
 										class="u-sidebar-nav-menu__item-title">훈련사 관리</span>
 								</a></li>
-								<li class="u-sidebar-nav-menu__item"><a
-									class="u-sidebar-nav-menu__link" href="outList.do"> <span
-										class="u-sidebar-nav-menu__item-title">탈퇴회원 관리</span>
-								</a></li>
 							</ul></li>
 						<!-- End 회원 관리 -->
-
+						
 						<!-- 훈련사 수당 관리-->
 						<li class="u-sidebar-nav-menu__item"><a
 							class="u-sidebar-nav-menu__link" href="salaryList.do"> <i
@@ -171,7 +167,7 @@ head
 
 						<!-- 관리자 로그아웃-->
 						<li class="u-sidebar-nav-menu__item"><a
-							class="u-sidebar-nav-menu__link" href="home.do"> <i
+							class="u-sidebar-nav-menu__link " href="home.do"> <i
 								class="fas fa-cogs u-sidebar-nav-menu__item-icon"></i> <span
 								class="u-sidebar-nav-menu__item-title">로그아웃</span>
 						</a></li>
@@ -194,12 +190,6 @@ head
 							</header>
 							
 							<div class="card-body">
-							
-							<!-- Excel -->
-								<div>
-								<button type="button" onclick="fnExcelReport('table','title');" id="excelbtn" class="btn btn-danger btn-large float-right">Excel Download</button>
-								</div>	
-							<!-- End Excel -->
 								<div class="table-responsive" >
 									<form action="boardDelete.do" id="bdDelete" name="bdDelete"
 										method="post">
@@ -236,14 +226,12 @@ head
 										</table>
 										</div>
 									</form>
-									<my:paging jsFunc="goList" paging="${paging}" />
-								</div>
-								<br>
 								<div>
 									<input type="button" onClick="window.open('boardForm.do')"
-										class="btn btn-danger btn-large float-right" value="공지사항 등록">
+										class="btn btn-outline-danger btn-large float-right" value="공지사항 등록">
 								</div>
-								<br>
+									<my:paging jsFunc="goList" paging="${paging}" />
+								</div>
 							</div>
 						</div>
 					</div>
@@ -373,22 +361,6 @@ head
 			location.href = "boardList.do?page=" + p
 		}
 		
-		//excel download
-		function fnExcelReport(id, title) {
-			var tab_text = '<html xmlns:x="urn:schemas-microsoft-com:office:excel">';
-			tab_text = tab_text + '<head><meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">';
-			tab_text = tab_text + '<xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>'
-			tab_text = tab_text + '<x:Name>Test Sheet</x:Name>';
-			tab_text = tab_text + '<x:WorksheetOptions><x:Panes></x:Panes></x:WorksheetOptions></x:ExcelWorksheet>';
-			tab_text = tab_text + '</x:ExcelWorksheets></x:ExcelWorkbook></xml></head><body>';
-			tab_text = tab_text + "<table border='1px'>";
-			var exportTable = $('#' + id).clone();
-			exportTable.find('input').each(function (index, elem) { $(elem).remove(); });
-			tab_text = tab_text + exportTable.html();
-			tab_text = tab_text + '</table></body></html>';
-			var data_type = 'data:application/vnd.ms-excel';
-			var ua = window.navigator.userAgent;
-			var msie = ua.indexOf("MSIE ");
 		
 	</script>
 </body>

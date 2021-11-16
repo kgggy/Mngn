@@ -24,4 +24,6 @@ public interface ClientMapper {
 	
 	int cntCount(ClientVO vo); //전체 사용자 명수
 	
+	int mclientUpdate(ClientVO vo); //관리자 페이지 사용자 권한 훈련사로 전환
+	
 }

@@ -64,7 +64,11 @@
    </select>
    
    <!--  -->
+         
+   <update id="mclientUpdate">
+   	update client set role=2
+   	where client_id = #{client_id}
+   </update>
 
-	
 	
 </mapper>
