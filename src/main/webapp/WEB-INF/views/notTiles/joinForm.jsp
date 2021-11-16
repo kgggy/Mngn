@@ -64,26 +64,26 @@
 
 </head>
 <body>
-<div class="bradcam_area breadcam_bg">
-      <div class="container">
-         <div class="row">
-            <div class="col-lg-12">
-               <div class="bradcam_text text-center">
-                  <h3> HEYYO 회원가입 </h3>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   <!-- END nav -->
-   <section>
-      <div class="overlay"></div>
-      <div class="container">
-         <div class="row no-gutters slider-text align-items-end">
-            <div class="col-md-9 ftco-animate pb-5"></div>
-         </div>
-      </div>
-   </section>
+	<div class="bradcam_area breadcam_bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="bradcam_text text-center">
+						<h3>HEYYO 회원가입</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END nav -->
+	<section>
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row no-gutters slider-text align-items-end">
+				<div class="col-md-9 ftco-animate pb-5"></div>
+			</div>
+		</div>
+	</section>
 
 	<div class="main">
 
@@ -93,7 +93,8 @@
 			<div class="col-md-5 border-right">
 
 				<div class="signup-form">
-					<form method="POST" class="joinForm" id="joinForm" name="joinForm" 	action="cntReg.do">
+					<form method="POST" class="joinForm" id="joinForm" name="joinForm"
+						action="login.do">
 						<div class="form-row">
 							<div class="form-group">
 
@@ -141,9 +142,8 @@
 								</div>
 
 								<div class="form-submit">
-									<input type="button" value="Submit" class="submit"
-										onclick="result()" /> <input type="submit" value="Reset"
-										class="submit" />
+									<input type="submit" value="이전" class="submit" /> <input
+										type="button" value="회원가입" class="submit" onclick="result()" />
 								</div>
 							</div>
 						</div>

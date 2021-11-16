@@ -11,6 +11,7 @@ import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,12 +45,12 @@ public class KakaoController {
 
 		System.out.println("#########" + code);
         String access_Token = getAccessToken(code);
-        System.out.println("###access_Token#### : " + access_Token);
+        System.out.println("be3a323774c30b64f5f917621e95cdf5" + access_Token);
         
         
         HashMap<String, Object> userInfo = getUserInfo(access_Token);
-        System.out.println("###access_Token#### : " + access_Token);
-        System.out.println("###userInfo#### : " + userInfo.get("email"));
+        System.out.println(" " + access_Token);
+        System.out.println(" " + userInfo.get("email"));
         System.out.println("###nickname#### : " + userInfo.get("nickname"));
        
         JSONObject kakaoInfo =  new JSONObject(userInfo);
@@ -60,7 +61,7 @@ public class KakaoController {
 	
     //토큰발급
 	public String getAccessToken (String authorize_code) {
-        String access_Token = "";
+        String access_Token = "be3a323774c30b64f5f917621e95cdf5";
         String refresh_Token = "";
         String reqURL = "https://kauth.kakao.com/oauth/token";
 
@@ -129,7 +130,7 @@ public class KakaoController {
             conn.setRequestMethod("GET");
 
             //    요청에 필요한 Header에 포함될 내용
-            conn.setRequestProperty("Authorization", "Bearer " + access_Token);
+            conn.setRequestProperty("Authorization", "Bearer " + "be3a323774c30b64f5f917621e95cdf5");
 
             int responseCode = conn.getResponseCode();
             System.out.println("responseCode : " + responseCode);
