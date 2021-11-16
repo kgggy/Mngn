@@ -2,15 +2,20 @@ package co.mngns.prj;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttribute;
+
+import co.mngns.prj.board.service.BoardService;
 
 @Controller
 public class HomeController {
 
+	@Autowired
+	BoardService bService;
+	
 	@RequestMapping(value = "/home.do")
 	public String home() {
 		return "home";
@@ -26,7 +31,11 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/mngMain.do")
-	public String mngMain() {
+	public String mngMain(Model model) {
+		model.addAttribute("reser", bService.resvNoInsert());
+		model.addAttribute("clientNo", bService.clientNoInsert());
+		model.addAttribute("trainerNo", bService.trainerNoInsert());
+		model.addAttribute("cancelNo", bService.cancleNoInsert());
 		return "manager/home/mngMain";
 	}
 

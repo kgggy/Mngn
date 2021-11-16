@@ -129,10 +129,6 @@
 									class="u-sidebar-nav-menu__link" href="trnList.do"> <span
 										class="u-sidebar-nav-menu__item-title">훈련사 관리</span>
 								</a></li>
-								<li class="u-sidebar-nav-menu__item"><a
-									class="u-sidebar-nav-menu__link" href="outList.do"> <span
-										class="u-sidebar-nav-menu__item-title">탈퇴회원 관리</span>
-								</a></li>
 							</ul></li>
 						<!-- End 회원 관리 -->
 
@@ -223,38 +219,4 @@
 		</div>
 	</main>
 </body>
-<script>
-	$("#uploadBtn").on("click", function(){
-			if($('#ttl').val() == 0) {
-				alert('제목을 입력하세요.');
-				return;
-			}
-			if($('#cntn').var() == 0) {
-				alert('내용을 입력하세요.');
-				return;
-			} 
-			if (!confirm('저장하시겠습니까?'))
-				return;
-			var form = new FormData(insertForm);
-			$.ajax({
-				url : "boardList.do",
-				processData : false,
-				contentType : false,
-				type : "post",
-				data : form,
-				success : function(data) {
-					if(data == 1) {
-						alert("공지사항이 등록되었습니다.");
-						location.reload();
-					} else {
-						alert("공지사항 X");
-					}
-				},
-				error : function () {
-					alert("공지사항 등록에 실패했습니다.");
-				}
-			}); //end ajax
-		} // end btn click
-	}
-</script>
 </html>

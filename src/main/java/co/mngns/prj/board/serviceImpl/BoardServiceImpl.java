@@ -46,23 +46,23 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override //예약 전체 건수
-	public int resvNoInsert(BoardVO vo) {
-		return map.resvNoInsert(vo);
+	public int resvNoInsert() {
+		return map.resvNoInsert();
 	}
 
 	@Override //사용자 전체 명수
-	public int clientNoInsert(BoardVO vo) {
-		return map.clientNoInsert(vo);
+	public int clientNoInsert() {
+		return map.clientNoInsert();
 	}
 
 	@Override //훈련사 전체 명수
-	public int trainerNoInsert(BoardVO vo) {
-		return map.trainerNoInsert(vo);
+	public int trainerNoInsert() {
+		return map.trainerNoInsert();
 	}
 
 	@Override // 취소 건수
-	public int cancleNoInsert(BoardVO vo) {
-		return map.cancleNoInsert(vo);
+	public int cancleNoInsert() {
+		return map.cancleNoInsert();
 	}
 	
 

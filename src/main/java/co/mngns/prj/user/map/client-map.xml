@@ -57,7 +57,11 @@
    </delete>
    <!-- <insert id="insertLogin" parameterType="user"> INSERT into users (id, 
       password, name, role) VALUES ( #{id},#{password},#{name},#{role} ) </insert> -->
+      
+   <update id="mclientUpdate">
+   	update client set role=2
+   	where client_id = #{client_id}
+   </update>
 
-	
 	
 </mapper>

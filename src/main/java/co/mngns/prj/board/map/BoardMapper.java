@@ -13,9 +13,9 @@ public interface BoardMapper {
 	int bCount(BoardVO vo); 			//공지사항 전체 건수
 	
 	//관리제 메인페이지 도넛 차트
-	int resvNoInsert(BoardVO vo);
-	int clientNoInsert(BoardVO vo);
-	int trainerNoInsert(BoardVO vo);
-	int cancleNoInsert(BoardVO vo);
+	int resvNoInsert();
+	int clientNoInsert();
+	int trainerNoInsert();
+	int cancleNoInsert();
 
 }
