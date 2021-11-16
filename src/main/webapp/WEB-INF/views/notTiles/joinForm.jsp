@@ -142,8 +142,8 @@
 								</div>
 
 								<div class="form-submit">
-									<input type="submit" value="이전" class="submit" /> <input
-										type="button" value="회원가입" class="submit" onclick="result()" />
+									<input type="button" value="이전" class="submit" onclick="location.href ='login.do'"/> 
+									<input type="button" value="회원가입" class="submit" onclick="result()" />
 								</div>
 							</div>
 						</div>
@@ -152,7 +152,6 @@
 			</div>
 
 		</div>
-	</div>
 	</div>
 	<!-- JS -->
 	<script src="vendor/jquery/jquery.min.js"></script>

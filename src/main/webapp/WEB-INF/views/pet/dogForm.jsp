@@ -206,7 +206,7 @@
 						</div>
 					</div>
 					<div align="center">
-						<button class="btn btn--radius-2 btn--red" type="submit">
+						<button class="btn btn--radius-2 btn--red" type="button" onclick="location.href ='aniList.do'">
 							이전</button>
 						<button class="btn btn--radius-2 btn--red" type="button"
 							onclick="result()">등록</button>
