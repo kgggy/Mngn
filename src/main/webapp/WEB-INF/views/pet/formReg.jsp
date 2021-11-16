@@ -12,7 +12,7 @@
 <meta name="keywords" content="Colorlib Templates">
 
 <!-- Title Page-->
-<title> 프로필 수정</title>
+<title>프로필 수정</title>
 
 <!-- Icons font CSS-->
 <link href="vendor/mdi-font/css/material-design-iconic-font.min.css"
@@ -33,33 +33,10 @@
 <link href="css/a_r_main.css" rel="stylesheet" media="all">
 <script>
 	function result() {
-
-		var loginForm = document.loginForm;
-		var picture = loginForm.picture.value;
-		var species = loginForm.species.value;
-		var name = loginForm.name.value;
-		var gen = loginForm.gen.value;
-		var age = loginForm.age.value;
-		var wgt = loginForm.wgt.value;
-		var oper = loginForm.oper.value;
-
-		if (!picture || !species || !name || !gen || !age || !wgt || !oper) {
-
-			alert("필수입력창을 모두 입력해주세요.");
-
-		} else {
-
-			alert("등록되었습니다. ");
-			loginForm.submit();
-
-		}
-
+		$("#petForm").submit();
 	}
 </script>
 </head>
-
-
-
 <body>
 	<div class="bradcam_area breadcam_bg">
 		<div class="container">
@@ -87,10 +64,10 @@
 			<div class="card card-5">
 				<div class="card-body">
 
-					<form name="loginForm" action="petInsert.do" method="post">
-						<input type ="hidden" name="knd" value="2">
-						
-						
+					<form id="petForm" action="petUpdate.do" method="post">
+						<input type="hidden" name="knd" value="2">
+
+
 						<div class="form-row">
 							<div class="picture">냥이사진</div>
 							<div class="value">
@@ -107,7 +84,7 @@
 							<div class="value">
 								<div class="input-group">
 									<div class="rs-select2 js-select-simple select--no-search">
-										<select name="species" value ="${pet.species }">
+										<select name="species" value="${petForm.species }">
 
 
 											<option disabled="disabled" selected="selected">Choose
@@ -142,19 +119,18 @@
 							<div class="value">
 								<div class="input-group">
 									<input class="input--style-5" type="text" name="name"
-										placeholder="냥이이름을 입력해주세요." value="${pet.name }">
+										placeholder="냥이이름을 입력해주세요." value="${petForm.name }">
 								</div>
 							</div>
 						</div>
 						<div class="form-row p-t-20">
 							<label class="gender"> 냥이 성별</label>
 							<div class="p-t-15">
-								<label class="radio-container m-r-55"> 수컷 
-								<input	type="radio" checked="checked" name="gen" value="${pet.gen }">
-								 <span
-									class="checkmark" ></span>
+								<label class="radio-container m-r-55"> 수컷 <input
+									type="radio" checked="checked" name="gen" value="${petForm.gen }">
+									<span class="checkmark"></span>
 								</label> <label class="radio-container"> 암컷 <input type="radio"
-									name="gen" value="${pet.gen }"> <span class="checkmark"></span>
+									name="gen" value="${petForm.gen }"> <span class="checkmark"></span>
 								</label>
 							</div>
 						</div>
@@ -164,7 +140,7 @@
 							<div class="value">
 								<div class="input-group">
 									<input class="input--style-5" type="text" name="age"
-										placeholder="살" value = "${pet.age }">
+										placeholder="살" value="${petForm.age }">
 								</div>
 							</div>
 						</div>
@@ -173,7 +149,7 @@
 							<div class="value">
 								<div class="input-group">
 									<input class="input--style-5" type="text" name="wgt"
-										placeholder="kg" value = "${pet.wgt }">
+										placeholder="kg" value="${petForm.wgt }">
 								</div>
 							</div>
 						</div>
@@ -182,10 +158,11 @@
 							<label class="label label--block"> 중성화 여부 </label>
 							<div class="p-t-15">
 								<label class="radio-container m-r-55"> Y <input
-									type="radio" checked="checked" name="oper"value="${pet.oper }"> <span
-									class="checkmark"></span>
+									type="radio" checked="checked" name="oper" value="${petForm.oper }">
+									<span class="checkmark"></span>
 								</label> <label class="radio-container"> N <input type="radio"
-									name="oper" value="${pet.oper }"> <span class="checkmark"></span>
+									name="oper" value="${petForm.oper }"> <span
+									class="checkmark"></span>
 								</label>
 							</div>
 						</div>
@@ -196,33 +173,20 @@
 							<label class="label label--block"> 특이사항 </label>
 							<div class="value">
 								<div class="input-group">
-									<textarea rows="5" cols="180" name="memo" value = "${pet.memo }"></textarea>
+									<textarea rows="5" cols="180" name="memo" value="${petForm.memo }"></textarea>
 								</div>
 							</div>
 						</div>
 						<div align="center">
-							<button class="btn btn--radius-2 btn--red" type="button" onclick="location.href ='aniList.do'">
-								이전</button>
 							<button class="btn btn--radius-2 btn--red" type="button"
-								onclick="result()">등록</button>
+								onclick="location.href ='aniList.do'">이전</button>
+							<button class="btn btn--radius-2 btn--red" type="button"
+								onclick="result()">수정</button>
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
-
-
-	<!-- Jquery JS-->
-	<script src="vendor/a_r_jquery/a_r_jquery.min.js"></script>
-	<!-- Vendor JS-->
-	<script src="vendor/select2/select2.min.js"></script>
-	<script src="vendor/datepicker/moment.min.js"></script>
-	<script src="vendor/datepicker/daterangepicker.js"></script>
-
-	<!-- Main JS-->
-	<script src="js/global.js"></script>
-
-
 </body>
 </html>

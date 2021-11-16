@@ -4,14 +4,19 @@
 
 
 	<select resultType="co.mngns.prj.pet.vo.PetVO" id="petList">
-		select p.* ,case gen when 'M' then '♂' when 'W' then '♀' end as gen_wm
-		from pet p, client c
+		select p.*
+		,case gen when 'M' then '♂' when 'W' then '♀' end as gen_wm
+		from pet p,
+		client c
 		where p.client_id = c.client_id
 		and p.client_id = #{client_id}
 	</select>
 
-	<!--<select resultType="co.mngns.prj.pet.vo.PetVO" id="petSelelct"> select 
-		* from pet where pet_id = #{pet_id} </select> -->
+	<select resultType="co.mngns.prj.pet.vo.PetVO" id="petSelelct">
+		select * from
+		pet
+		where pet_id = #{pet_id}
+	</select>
 
 
 	<insert id="petInsert">
@@ -33,12 +38,14 @@
 		wgt=#{wgt},
 		oper=#{oper},
 		memo=#{memo},
-		where pet_name =#{pet_name} and client_id=#{client_id}		
+		where pet_name
+		=#{pet_name} and client_id=#{client_id}
 
 	</update>
 
 	<delete id="petDelete" parameterType="co.mngns.prj.pet.vo.PetVO">
-		delete from pet where pet_no = #{pet_no}
+		delete from pet where
+		pet_no = #{pet_no}
 	</delete>
 
 </mapper>

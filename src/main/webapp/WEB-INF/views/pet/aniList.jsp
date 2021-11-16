@@ -244,8 +244,7 @@ h4 {
 											</div>
 										</div>
 										<div>
-											<a id="abtn1" class="boxed-btn3"
-												onclick="location.href='formReg.do'">수정</a> <a id="abtn1"
+											<a href="formReg.do" id="abtn1" class="boxed-btn3" >수정</a> <a id="abtn1"
 												class="boxed-btn3" onclick="delete()">삭제</a>
 										</div>
 									</div>

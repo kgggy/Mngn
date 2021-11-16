@@ -23,7 +23,7 @@ public class PetController {
 		model.addAttribute("petForm", petService.petList(pet));
 		return "pet/aniList";
 	}
-                                                                                                                
+
 	@RequestMapping(value = "/dogForm.do")
 	public String dogForm() {
 
@@ -34,16 +34,13 @@ public class PetController {
 	public String catForm() {
 		return "pet/catForm";
 	}
-	
+
 	@RequestMapping(value = "/formReg.do")
 	public String formReg(Model model, PetVO pet, HttpSession session) {
-		
-		pet.setPet_id((Integer)session.getAttribute("id"));
-		model.addAttribute("pet", petService.petList(pet));
-		
+		pet.setClient_id((Integer) session.getAttribute("id"));
+		model.addAttribute("petForm", petService.petSelect(pet));
 		return "pet/formReg";
 	}
-
 
 	@RequestMapping(value = "/mOut.do")
 	public String mOut() {
@@ -57,22 +54,20 @@ public class PetController {
 		petService.petInsert(pet);
 		return "redirect:aniList.do";
 	}
-	
+
 	@RequestMapping(value = "/petUpdate.do")
 	public String petUpdate(HttpSession session, PetVO pet, Model model) {
 		pet.setClient_id((Integer) session.getAttribute("id"));
 		petService.petUpdate(pet);
-		
-		return "redirect:cntList.do";
+		return "redirect:aniList.do";
 	}
-	
+
 	@RequestMapping(value = "/petDelete.do")
 	public String petDelete(HttpSession session, PetVO pet, Model model) {
 		pet.setClient_id((Integer) session.getAttribute("id"));
 		model.addAttribute(petService.petDelete(pet));
-		
+
 		return "redirect:aniList.do";
 	}
-           
-                                                                                                                          
+
 }
