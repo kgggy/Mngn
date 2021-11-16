@@ -198,6 +198,13 @@ table.table td .btn.complete {
 	cursor: default;
 }
 
+table.table td .btn.den {
+	padding: 2px 10px;
+	background: #ef4419;
+	color: #fff;
+	border-radius: 2px;
+}
+
 table.table td .btn.manage:hover {
 	background: #2e9c81;
 }
@@ -420,12 +427,12 @@ article {
 							<th>담당 훈련사</th>
 							<th>금액</th>
 							<th>주문처리상태</th>
-							<th>이용후기</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody align="center">
 						<c:forEach items="${serviceUses }" var="serUse">
-							<tr>
+							<tr class="modalserv">
 								<td>${serUse. reser_no}</td>
 								<td>${serUse. reser_dt}</td>
 								<td>${serUse. knd_name}(${serUse.term }시간)</td>
@@ -434,7 +441,7 @@ article {
 								<td>${serUse. prc}원</td>
 								<td><span class="label label-success">${serUse. status}</span></td>
 								<td><c:if test="${serUse.status eq '대기중'}">
-										<a href="#" class="btn btn-sm manage" style="background:red;">접수 취소</a>
+										<a href="#" class="btn btn-sm den" style="background:red;">접수 취소</a>
 									</c:if> 
 									<c:if test="${serUse.status eq '접수 완료'}">
 									</c:if> 
@@ -450,6 +457,7 @@ article {
 									</c:if>
 									</td>
 							</tr>
+							<input name="reser_no" id="reser_no1" type="hidden" value="${serUse.reser_no}">
 						</c:forEach>
 					</tbody>
 				</table>
@@ -658,49 +666,6 @@ article {
 			}); //ajax
 		}); //btn click
 
-		//이미지 미리보기
-		var sel_file;
-		$("#file1").on("change", handleImgFileSelect);
-		function handleImgFileSelect(e) {
-			var files = e.target.files;
-			var filesArr = Array.prototype.slice.call(files);
-			var reg = /(.*?)\/(jpg|jpeg|png|bmp)$/;
-			filesArr.forEach(function(f) {
-				if (!f.type.match(reg)) {
-					alert("확장자는 이미지 확장자만 가능합니다.");
-					return;
-				}
-				sel_file = f;
-				var reader = new FileReader();
-				reader.onload = function(e) {
-					$("#img").attr("src", e.target.result);
-				}
-				reader.readAsDataURL(f);
-			});
-		}
-		//조회하기 버튼
-		function status() { //console.log(status.value);
-			// Declare variables
-			var filter, table, tr, i, txtValue;
-			stts = document.getElementById("stts");
-			filter = stts.value;
-			table = document.getElementById("myTable");
-			tbody = table.getElementByTagName("tbody");
-			tr = tbody.getElementsByTagName("tr");
-			// Loop through all table rows, and hide those who don't match the search query
-			for (i = 0; i < tr.length; i++) {
-				td = tr[i].getElementsByTagName("td")[0];
-				if (td) {
-					txtValue = td.textContent || td.innerText;
-					if (txtValue.indexOf(filter) > -1) {
-						tr[i].style.display = "";
-					} else {
-						tr[i].style.display = "none";
-					}
-				}
-			}
-		};
-
 		//페이징 처리
 		function goList1(p) {
 			//searchFrm.page.value=p; //페이지 번호 받아서 폼태그에 넣어서 submit(폼 안에 페이지번호가 히든으로, 검색조건과 정렬방식도 가지고 넘어감)
@@ -738,11 +703,33 @@ article {
 			}
 		}; 
 
-		//내용 받아서 모달창 넘기기
+		//내용 받아서 수정 모달창으로 넘기기
 		$('.open-ReviewModal').on("click", function() {
 			var myRvId = $(this).data('no');
 			$('#eml_cnt').attr('placeholder', myRvId);
 			$('#rno').val($(event.target).data('rno'))
+		});
+		
+		//의뢰 취소
+		$('.den').on('click', function(e) {
+			var reser_no = $(e.target).closest('.modalserv').next().val();
+			if(confirm("접수를 취소하시겠습니까?") == true) {
+				$.ajax({
+					url:"ajaxStts3.do",
+					type:"post",
+					data:{reser_no : reser_no},
+					dataType: "json",
+					success: function(data) {
+						alert("취소되었습니다.");	
+						location.reload();
+					},
+					error: function() {
+						alert("다시 시도해주세요.");
+					}
+				});
+			} else {
+				return;
+			}  
 		});
 	</script>
 

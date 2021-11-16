@@ -45,4 +45,10 @@ public class ReserListVO {
 	private int end;
 	private String fee;
 	
+	private String species;
+	private int age;
+	private int wgt;
+	private String dcknd;
+	
+	
 }
