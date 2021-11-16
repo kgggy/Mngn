@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import co.mngns.prj.svc.map.BillMapper;
 import co.mngns.prj.svc.service.BillService;
 import co.mngns.prj.svc.vo.BillVO;
+import co.mngns.prj.user.vo.ClientVO;
 
 @Repository("bill")
 public class BillServiceImpl implements BillService {
@@ -33,6 +34,12 @@ public class BillServiceImpl implements BillService {
 	@Override
 	public int billDelete(BillVO billvo) {
 		return bill.billDelete(billvo);
+	}
+
+	@Override
+	public int monthFee(ClientVO client) {
+		// 훈련사 월별 수수료
+		return bill.monthFee(client);
 	}
 
 }

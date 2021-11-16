@@ -102,7 +102,7 @@
          and l.client_id1 = #{client_id1}
    </select>
 	
-	    <!-- 훈련사 의뢰목록 -->
+	<!-- 훈련사 의뢰목록 -->
     <select id="trnReserSelectList" resultType="co.mngns.prj.svc.vo.ReserListVO">
        select c.name, 
        		 c.client_id,
@@ -123,6 +123,28 @@
         order by l.reser_dt desc
     </select>
     
+    <!-- 훈련사 의뢰목록 필터 -->
+    <select id="trnReserSelectListFilter" resultType="co.mngns.prj.svc.vo.ReserListVO">
+       select c.name, 
+       		 c.client_id,
+             s.* , 
+             case s.knd when 1 then '돌봄 서비스' when 2 then '산책 서비스' else '훈련 서비스' end as knd_name,
+             l.enroll_dt,
+             l.client_id1, 
+		     l.reser_no,
+		     l.svc_stts,
+		     l.reser_dt,
+             case l.svc_stts when 0 then '대기중' when 1 then '수락한 의뢰' when 2 then '완료된 의뢰' else '취소된 의뢰'
+            end as status
+        from reser_list l, svc s, client c, trainer t
+       where l.client_id2 = t.client_id
+               and l.client_id1 = c.client_id
+               and s.svc_id = l.svc_id
+               and t.client_id = #{client_id2}
+               and l.svc_stts = #{svc_stts}
+        order by l.enroll_dt desc
+    </select>
+    
     <!-- 훈련사 정산목록 -->
     <select id="trnSalSelectList" resultType="co.mngns.prj.svc.vo.ReserListVO">
 		select c.name, c.client_id, 
@@ -131,7 +153,8 @@
 		         l.reser_dt, 
 		         l.reser_no,
 		         b.bill_amt, 
-		         l.enroll_dt
+		         l.enroll_dt,
+		         b.bill_amt * 0.1 as fee
 		 from reser_list l, svc s, client c, trainer t, bill b
 		where l.client_id2 = t.client_id
 		       and l.client_id1 = c.client_id
@@ -145,18 +168,37 @@
     <select id="trnReserSelect" resultType="co.mngns.prj.svc.vo.ReserListVO">
     	select distinct s.term , 
 		         case s.knd when 1 then '돌봄 서비스' when 2 then '산책 서비스' else '훈련 서비스' end as knd_name,
-		         l.reser_dt, 
+		        l.reser_dt,
 		         l.svc_bgn_tm, 
 		         l.reser_loc, 
 		         l.memo,
 		         b.bill_amt, 
 		         l.enroll_dt,
-		         p.*
+		         p.*,
+		         case p.knd when 1 then '강아지' else '고양이' end as dcknd
 		 from reser_list l, svc s, bill b, pet p
 		where l.reser_no = b.reser_no
 		       and s.svc_id = l.svc_id
 		       and p.client_id = l.client_id1
-		       and l.reser_no = ${reser_no} and l.client_id1 = ${client_id}
+            and p.pet_id = l.pet_id1
+		       and l.reser_no = #{reser_no}
+               union
+            select distinct s.term , 
+		         case s.knd when 1 then '돌봄 서비스' when 2 then '산책 서비스' else '훈련 서비스' end as knd_name,
+		         l.reser_dt,
+		         l.svc_bgn_tm, 
+		         l.reser_loc, 
+		         l.memo,
+		         b.bill_amt, 
+		         l.enroll_dt,
+		         p.*,
+		         case p.knd when 1 then '강아지' else '고양이' end as dcknd
+		 from reser_list l, svc s, bill b, pet p
+		where l.reser_no = b.reser_no
+		       and s.svc_id = l.svc_id
+		       and p.client_id = l.client_id1
+               and p.pet_id = l.pet_id2
+		       and l.reser_no = #{reser_no}
     </select>
     
     <!-- 훈련사 수락 후 상태변경 -->
@@ -167,5 +209,10 @@
     <!-- 훈련사 의뢰 완료 처리 후 상태변경 -->
     <update id="sttsUpdate2" parameterType="co.mngns.prj.svc.vo.ReserListVO">
     	update reser_list set svc_stts = 2 where reser_no = #{reser_no}
+    </update>
+    
+    <!-- 훈련사 의뢰 거절 후 상태변경 -->
+    <update id="sttsUpdate3" parameterType="co.mngns.prj.svc.vo.ReserListVO">
+    	update reser_list set svc_stts = 3 where reser_no = #{reser_no}
     </update>
 </mapper>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
 <html>
@@ -236,6 +237,20 @@ table.table td .btn.manage {
 
 table.table td .btn.complete {
 	padding: 2px 10px;
+	/* background: #ef4419; */
+	color: #fff;
+	border-radius: 2px;
+}
+
+table.table td .btn.confirm {
+	padding: 2px 10px;
+	/* background: #ef4419; */
+	color: #fff;
+	border-radius: 2px;
+}
+
+table.table td .btn.den {
+	padding: 2px 10px;
 	background: #ef4419;
 	color: #fff;
 	border-radius: 2px;
@@ -385,7 +400,6 @@ article {
 th {
 	height: 30px;
 }
-
 </style>
 <link
 	href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap"
@@ -486,17 +500,17 @@ th {
 		<input id="tab1" type="radio" name="tabs" checked>
 		<!--디폴트 메뉴-->
 		<label id="tab1" for="tab1">의뢰 관리</label> <input id="tab2"
-			type="radio" name="tabs"> <label id="tab2" for="tab2">정산
+			type="radio" name="tabs"> <label id="tab2" for="tab2" onclick="tmonth()">정산
 			관리</label>
 		<section id="content1">
 			<select id="stts" name="stts">
-				<option value="대기중">대기중</option>
-				<option value="수락한의뢰">수락한 의뢰</option>
-				<option value="완료된의뢰">완료된 의뢰</option>
-				<option value="거절한의뢰">취소된 의뢰</option>
+				<option value="0">대기중</option>
+				<option value="1">수락한 의뢰</option>
+				<option value="2">완료된 의뢰</option>
+				<option value="3">취소된 의뢰</option>
 			</select>
 
-			<button id="search" onclick="javascript:status()">조회</button>
+			<button id="search">조회</button>
 			<hr>
 			<input style="font-size: 7pt;">* 기본적으로 최근 3개월간의 자료가 조회되며,
 			6개월이 지나면 정보가 사라집니다. <br> <br>
@@ -514,31 +528,33 @@ th {
 					</thead>
 					<tbody align="center">
 						<c:forEach items="${requestTrn }" var="rqTrn">
-							<tr id="modalreser">
+							<tr class="modalreser">
 								<td>${rqTrn.enroll_dt }</td>
 								<td>${rqTrn.name }</td>
 								<td><a href="#" id="reserClick" class="open-detail"
-									data-reserno="${rqTrn.reser_no}" data-clientid="${rqTrn.client_id}" data-toggle="modal"
+									data-reserno="${rqTrn.reser_no}"
+									data-clientid="${rqTrn.client_id}" data-toggle="modal"
 									data-target="#rqDetailModal">${rqTrn.knd_name}(${rqTrn.term }시간)</a></td>
 								<td>${rqTrn.reser_dt }</td>
 								<td><span class="label label-warning">${rqTrn.status }</span></td>
-								<td id="tdTag">
-									<c:choose>
-									<c:when test="${rqTrn.status eq '대기중'}">
-										<a class="btn btn-sm manage" id="confirm">수락</a>
-										<a class="btn btn-sm complete" id="den">거절</a>
-									</c:when>
-									<c:when test="${rqTrn.status eq '수락한 의뢰'}">
-										<a class="btn btn-sm manage" id="complete">의뢰완료</a>
-									</c:when>
-									<c:when test="${rqTrn.status eq '완료된 의뢰'}">
-										<button class="btn btn-sm manage" style="background: #c2ccd5; color: #fff; cursor: default;" disabled="disabled">의뢰완료</button>
-									</c:when>
-									<c:otherwise>
-									</c:otherwise>
-									</c:choose>
+								<td id="tdTag"><c:choose>
+										<c:when test="${rqTrn.status eq '대기중'}">
+											<a class="btn btn-sm manage confirm">수락</a>
+											<a class="btn btn-sm den">거절</a>
+										</c:when>
+										<c:when test="${rqTrn.status eq '수락한 의뢰'}">
+											<a class="btn btn-sm manage complete" >의뢰 완료 처리</a>
+										</c:when>
+										<c:when test="${rqTrn.status eq '완료된 의뢰'}">
+											<button class="btn btn-sm manage"
+												style="background: #c2ccd5; color: #fff; cursor: default;"
+												disabled="disabled">의뢰완료</button>
+										</c:when>
+										<c:otherwise>
+										</c:otherwise>
+									</c:choose></td>
 							</tr>
-							<input name="reser_no" id="reser_no" type="hidden" value="${rqTrn.reser_no}">
+							<input name="reser_no" id="reser_no1" type="hidden" value="${rqTrn.reser_no}">
 							<input type="hidden" id="client_id" name="client_id" value="">
 						</c:forEach>
 					</tbody>
@@ -547,8 +563,9 @@ th {
 		</section>
 
 		<section id="content2">
-			<div>
-				
+			<div><br>
+			<h3 align="center"><span id="tmonth"></span>월에 지불해야할 총 수수료 비용은 [${mthFee } 원] 입니다.</h3>
+			<br>
 			</div>
 			<div>
 				<table class="table table-striped table-hover">
@@ -558,9 +575,10 @@ th {
 							<th>주문자ID</th>
 							<th>이름</th>
 							<th>서비스</th>
-							<th>총금액</th>
 							<th>예약날짜</th>
 							<th>제공날짜</th>
+							<th>총금액</th>
+							<th>수수료</th>
 						</tr>
 					</thead>
 					<tbody align="center">
@@ -570,9 +588,10 @@ th {
 								<td>${rqDetail.client_id }</td>
 								<td>${rqDetail.name }</td>
 								<td>${rqDetail.knd_name}(${rqDetail.term }시간)</td>
-								<td>${rqDetail.bill_amt }원</td>
 								<td>${rqDetail.enroll_dt}</td>
 								<td>${rqDetail.reser_dt}</td>
+								<td>${rqDetail.bill_amt }원</td>
+								<td>${rqDetail.fee}원</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -596,6 +615,7 @@ th {
 			</div>
 		</div> -->
 	</div>
+	<fmt:formatDate value="" pattern="yyyy-MM-dd"/>
 
 	<!-- footer_start  -->
 	<footer class="footer">
@@ -646,34 +666,31 @@ th {
 					<table>
 						<tr>
 							<th width="180px">서비스 유형</th>
-							<td id="">dd</td>
-						</tr>
-						<tr>
-							<th>날짜 및 시간</th>
 							<td id="td1"></td>
 						</tr>
 						<tr>
+							<th>날짜 및 시간</th>
+							<td id="td2"></td>
+						</tr>
+						<tr>
 							<th>위치</th>
-							<td></td>
+							<td id="td3"></td>
 						</tr>
 						<tr>
 							<th>특이사항</th>
-							<td></td>
+							<td id="td4"></td>
 						</tr>
 						<tr>
 							<th>결제 금액</th>
-							<td></td>
+							<td id="td5"></td>
 						</tr>
-						<tr id="here">
+						<tr class="svcTable">
 							<th>훈련 대상</th>
-							<td>이름 : ${pet.name }(${pet.knd }, ${pet.species })</td>
-							<td>나이 : ${pet.age }</td>
-							<td>몸무게 : ${pet.wgt }</td>
-							<td>주의사항 : ${pet.memo }</td>
-						</tr>
-						<tr>
 						</tr>
 					</table>
+						<div id="here">
+						</div>
+						
 				</div>
 				<div class="modal-footer">
 					<button type="button" id="okbutton" class="btn btn-success"
@@ -684,69 +701,74 @@ th {
 		</div>
 	</div>
 	<!-- 의뢰 상세보기 Modal 종료 -->
-	
+
 	<script>
 		$(document).ready(function() {
-			/* $('#rqDetailModal').on('show.bs.modal', function(e) {
+			$('#rqDetailModal').on('show.bs.modal', function(e) {
 				var reser_no = $(event.target).data('reserno');
-				var client_id = $(event.target).data('clientid');
-				console.log(reser_no,client_id);
+				console.log(reser_no);
 				  $.ajax({
 					url:"ajaxRqDetail.do",
 					type:"post",
 					data: {
-						   reser_no : reser_no, 
-						   client_id : client_id
+						   reser_no : reser_no
 					},
 					dataType: "json",
 					success: function(data) {
-						//var result = data.rqdetail[0];
-						let str = "";
-						$("#td1").text(data.pets[0]["name"]);
-						var cntpet = data.pets[0]["age"];
-						console.log(cntpet);
-						data.pets.forEach(element, i, arr,function(){
-							//tr 태크 만들어서
-							
+						console.log(data);
+						$("#td1").text(data.rqdetail[0].knd_name + "(" + data.rqdetail[0].term + "시간)");
+						$("#td2").text(data.rqdetail[0].reser_dt + ", " + data.rqdetail[0].svc_bgn_tm + "시");
+						$("#td3").text(data.rqdetail[0].reser_loc);
+						$("#td4").text(data.rqdetail[0].memo);
+						$("#td5").text(data.rqdetail[0].bill_amt + "원");
+						console.log(data);
+						
+						var array = data.rqdetail;
+						var str = '';
+						array.forEach(function(rq, i) {
+							str += '<tr>'
+							str += '<td>이름 : ' + rq.name + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>'
+							str += '<td>종 : ' + rq.dcknd + '('+ rq.species + ')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>'
+							str += '<td>나이 : ' + rq.age + '살&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>'
+							str += '<td>몸무게 : ' + rq.wgt + 'kg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>'
+							str += '</tr>'
 						});
-						function(i) {
-						    str += '<td>' + ${data.pets[i].name} + '</td>'
-							str += '<td>' + ${cntpet.age} + '</td>'
-							console.log(index, val)
-						}); 
-						$('#here').append(str);
+						$('#here').html(str);
 					},
 					error: function() {
 						alert("다시 시도해주세요");
 					}
 				});  
-			}); */
-	
-			$('#confirm').on('click', function() {
-				if(confirm("수락하시겠습니까?") == true) {
-					var reser_no =  $('input[name=reser_no]').val();
+			});
+			
+			//의뢰 수락
+			$('.confirm').on('click', function(e) {
+				if (confirm("의뢰를 수락하시겠습니까?") == true) {
+					var reser_no = $(e.target).closest('.modalreser').next().val();
 					$.ajax({
-						url:"ajaxStts.do",
-						type:"post",
-						data:{reser_no : reser_no},
-						dataType: "json",
-						success: function(data) {
-							alert("수락되었습니다.");	
+						url : "ajaxStts.do",
+						type : "post",
+						data : {
+							reser_no : reser_no
+						},
+						dataType : "json",
+						success : function(data) {
+							alert("수락되었습니다.");
 							location.reload();
 						},
-						error: function() {
+						error : function() {
 							alert("다시 시도해주세요.");
 						}
 					});
 				} else {
 					return;
-				} 
+				}
 			});
 			
-			$('#complete').on('click', function() {
-					var reser_no =  $('input[name=reser_no]').val();
-					console.log(reser_no);
-				/* if(confirm("서비스를 완료하시겠습니까?") == true) {
+			//의뢰 완료
+			$('.complete').on('click', function(e) {
+				var reser_no = $(e.target).closest('.modalreser').next().val();
+				if(confirm("서비스를 완료하시겠습니까?") == true) {
 					$.ajax({
 						url:"ajaxStts2.do",
 						type:"post",
@@ -762,9 +784,55 @@ th {
 					});
 				} else {
 					return;
-				}  */
+				}  
 			});
-		});
+			
+			//의뢰 취소
+			$('.den').on('click', function(e) {
+				var reser_no = $(e.target).closest('.modalreser').next().val();
+				if(confirm("의뢰를 거절하시겠습니까?") == true) {
+					$.ajax({
+						url:"ajaxStts3.do",
+						type:"post",
+						data:{reser_no : reser_no},
+						dataType: "json",
+						success: function(data) {
+							alert("거절되었습니다.");	
+							location.reload();
+						},
+						error: function() {
+							alert("다시 시도해주세요.");
+						}
+					});
+				} else {
+					return;
+				}  
+			});
+		
+		//서비스 상태 드롭다운 검색
+		/* $('#search').on('click', function() {
+			var target = $("#stts option:selected").val();
+			console.log(target);
+		    $.ajax({
+				url:"svsFilter.do",
+				type:"post",
+				data:{ svc_stts : svc_stts },
+				dataType: "json",
+				success: function(data) {
+					
+				},
+				error: function() {
+					
+				}
+			});
+		}); */
+		
+		function tmonth() {
+			let today = new Date();
+			let month = today.getMonth() + 1;
+			document.getElementById('tmonth').innerHTML;
+		};
+	});
 	</script>
 </body>
 </html>

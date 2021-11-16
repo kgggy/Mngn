@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,6 +23,7 @@ import co.mngns.prj.board.service.ReviewService;
 import co.mngns.prj.board.vo.ReviewVO;
 import co.mngns.prj.common.vo.FilesVO;
 import co.mngns.prj.pet.vo.PetVO;
+import co.mngns.prj.svc.service.BillService;
 import co.mngns.prj.svc.service.ReserListService;
 import co.mngns.prj.svc.vo.ReserListVO;
 import co.mngns.prj.user.service.ClientService;
@@ -40,6 +42,8 @@ public class KgyController {
 	ReviewService reviewService;
 	@Autowired
 	ReserListService reserService;
+	@Autowired
+	BillService billService;
 
 	@GetMapping("/getSearchList.do")
 	@ResponseBody
@@ -88,39 +92,47 @@ public class KgyController {
 	}
 
 	@RequestMapping(value = "/trnSal.do")
-	public String trnReserSelectList(ReserListVO vo, Model model, HttpSession session) {
+	public String trnReserSelectList(ClientVO client, ReserListVO vo, Model model, HttpSession session) {
 		vo.setClient_id2(String.valueOf(session.getAttribute("id")));
 		model.addAttribute("requestTrn", reserService.trnReserSelectList(vo));
 		model.addAttribute("rqDetails", reserService.trnSalSelectList(vo));
+		client.setClient_id((Integer)session.getAttribute("id"));
+		model.addAttribute("mthFee", billService.monthFee(client));
 		return "trnSal";
 	}
 
 	// 의뢰 상세보기
-	@RequestMapping("ajaxRqDetail.do")
+	@RequestMapping("/ajaxRqDetail.do")
 	@ResponseBody
-	public Map<String, Object> trnsss(Model model, PetVO vo, ReserListVO reser, HttpServletRequest request,
+	public Map<String, Object> trnReserSelect(Model model, ReserListVO reser, HttpServletRequest request,
 			HttpServletResponse response) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("rqdetail", reserService.trnReserSelect(reser));
-		map.put("pets", reserService.petSelectList(vo));
 		return map;
 	}
 
 	// 의뢰 수락처리
-	@RequestMapping("ajaxStts.do")
+	@RequestMapping("/ajaxStts.do")
 	@ResponseBody
 	public int sttsUpdate(ReserListVO reser, HttpServletRequest request, HttpServletResponse response) {
 		return reserService.sttsUpdate(reser);
 	}
 
 	// 의뢰 완료처리
-	@RequestMapping("ajaxStts2.do")
+	@RequestMapping("/ajaxStts2.do")
 	@ResponseBody
 	public int sttsUpdate2(ReserListVO reser, HttpServletRequest request, HttpServletResponse response) {
 		return reserService.sttsUpdate2(reser);
 	}
+	
+	// 의뢰 거절처리
+	@RequestMapping("/ajaxStts3.do")
+	@ResponseBody
+	public int sttsUpdate3(ReserListVO reser, HttpServletRequest request, HttpServletResponse response) {
+		return reserService.sttsUpdate3(reser);
+	}
 
-	@RequestMapping("chat.do")
+	@RequestMapping("/chat.do")
 	@ResponseBody
 	public int chat(Model model, ClientVO client) {
 		return 0;

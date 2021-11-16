@@ -303,12 +303,12 @@ span {
 						</table>
 						<hr>
 						<h3>자기소개</h3>
-						<p class="excert" style="color: black;">${trainer.intro_ttl }</p>
+						<p class="excert" style="color: black;">${trainer.intro_cntn }</p>
 					</div>
 
-					<hr>
+					<!--<hr>
 
-					<h3>경력 및 자격</h3>
+					 <h3>경력 및 자격</h3>
 					<div class="blog-author">
 						<div class="media align-items-center">
 							<img src="img/blog/author.png" alt="">
@@ -341,7 +341,7 @@ span {
 								<p>한국애견협회(KKC)</p>
 							</div>
 						</div>
-					</div>
+					</div> -->
 
 					<div class="comments-area">
 						<h3>고객 후기</h3>
