@@ -83,6 +83,13 @@ public class UserController {
 		return "login";
 
 	}
+	@GetMapping(value = "/callback.do")
+	// 네이버로그인 페이지
+	public String callback(Model model, ClientVO clientvo) {
+		// model.addAttribute("client", cntService.clientSelectList());
+		return "callback";
+	}
+	
 
 	@RequestMapping(value = "/joinForm.do")
 	// 회원가입 페이지

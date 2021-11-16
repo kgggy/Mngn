@@ -19,97 +19,10 @@
 <!-- 카카오 스크립트 -->
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<script>
-	Kakao.init('fd8bf1199af6014c16070f1498a5cfa6'); //발급받은 키 중 javascript키를 사용해준다.
-	console.log(Kakao.isInitialized()); // sdk초기화여부판단
-	//카카오로그인
-	function kakaoLogin() {
-		$.ajax({
-			url : '/login/getKakaoAuthUrl',
-			type : 'get',
-			async : false,
-			dataType : 'text',
-			success : function(res) {
-				location.href = res;
-			}
-		});
-	}
-	$(document).ready(
-			function() {
-
-				var kakaoInfo = '${kakaoInfo}';
-
-				if (kakaoInfo != "") {
-					var data = JSON.parse(kakaoInfo);
-
-					alert("카카오로그인 성공 \n accessToken : " + data['accessToken']);
-					alert("user : \n" + "email : " + data['email']
-							+ "\n nickname : " + data['nickname']);
-				}
-			});
-	a
-</script>
-
 <!-- 네이버 로그인 스크립트 -->
-<script
-	src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js"
-	charset="utf-8"></script>
-
+<script type="text/javascript"
+	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"	charset="utf-8"></script>
 <script>
-	var naverLogin = new naver.LoginWithNaverId({
-		clientId : "FcJJbV7LY4ta0I1OPbFa", //내 애플리케이션 정보에 cliendId를 입력해줍니다.
-		callbackUrl :"http://localhost/naverLogin", // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
-		isPopup : false,
-		callbackHandle : true
-	});
-
-	naverLogin.init();
-
-	window.addEventListener('load', function() {
-		naverLogin.getLoginStatus(function(status) {
-			if (status) {
-				var name = naverLogin.user.getName();
-				var email = naverLogin.user.getEmail(); // 필수로 설정할것을 받아와 아래처럼 조건문을 줍니다.
-
-				console.log(naverLogin.user);
-
-				if (email == undefined || email == null) {
-					alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
-					naverLogin.reprompt();
-					return;
-				}
-			} else {
-				console.log("callback 처리에 실패하였습니다.");
-			}
-		});
-	});
-
-	var testPopUp;
-
-	function openPopUp() {
-		testPopUp = window
-				.open(
-						"https://nid.naver.com/nidlogin.logout",
-						"_blank",
-						"toolbar=yes,scrollbars=yes,resizable=yes,width=800,height=850,top=580,left=580");
-	}
-	function resizePopUp() {
-		window.resizeTo(1400, 740);
-		window.focus();
-	}
-
-	function closePopUp() {
-		testPopUp.close();
-	}
-
-	function naverLogout() {
-		openPopUp();
-		setTimeout(function() {
-			closePopUp();
-		}, 1000);
-
-	}
-
 	function login() {
 
 		var loginForm = document.loginForm;
@@ -117,14 +30,19 @@
 		var pwd = loginForm.pwd.value;
 
 		if (!client_id || !pwd) {
-			alert("id또는 password가 입력해주세요.")
+			alert("id또는 password를 입력해주세요.")
+			
+				
 		} else {
 			loginForm.submit();
 
 		}
 
 	}
+			
 </script>
+
+
 <style>
 .reg {
 	float: right;
@@ -138,6 +56,9 @@
 </style>
 </head>
 <body>
+
+	<!-- //네이버아디디로로그인 Callback페이지 처리 Script -->
+
 	<section class="ftco-section">
 		<div class="container">
 
@@ -168,10 +89,9 @@
 							<div class="social_Login">
 								<img src="img/kakaologin.svg" id="kakao_id_login"
 									onclick="kakaoLogin()"> <img src="img/naverlogin.png"
-									id="naver_id_login" onclick="openPopUp()"> <img
-									src="img/googleLogin.png" id="google_id_login" onclick="">
-								<img src="img/facebookLogin.png" id="facebook_id_login"
-									onclick="">
+									id="naver_id_login"> <img src="img/googleLogin.png"
+									id="google_id_login" onclick=""> <img
+									src="img/facebookLogin.png" id="facebook_id_login" onclick="">
 							</div>
 							<div>
 								회원이 아니신가요?<a href="joinForm.do" class="reg">가입하기</a>
@@ -194,7 +114,56 @@
 	<script src="js/lbootstrap.min.js"></script>
 	<script src="js/lmain.js"></script>
 	<script>
+	var naver_id_login = new naver_id_login("FcJJbV7LY4ta0I1OPbFa", "http://localhost/prj/login.do");
+	var state = naver_id_login.getUniqState();
+	//naver_id_login.setButton("white", 2,40);
+	//naver_id_login.setDomain(".service.com");
+	naver_id_login.setState(state);
+	naver_id_login.setPopup();
+	naver_id_login.init_naver_id_login();
+
+	
+	// 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+	function naverSignInCallback() {
+		// naver_id_login.getProfileData('프로필항목명');
+		// 프로필 항목은 개발가이드를 참고하시기 바랍니다.
+		alert(naver_id_login.getProfileData('email'));
+		alert(naver_id_login.getProfileData('nickname'));
+	//	alert(naver_id_login.getProfileData('age'));
+	}
 		
+
+	// 네이버 사용자 프로필 조회
+	naver_id_login.get_naver_userprofile("naverSignInCallback()");	
+	
+	Kakao.init('fd8bf1199af6014c16070f1498a5cfa6'); //발급받은 키 중 javascript키를 사용해준다.
+	console.log(Kakao.isInitialized()); // sdk초기화여부판단
+	//카카오로그인
+	function kakaoLogin() {
+		$.ajax({
+			url : '/login/getKakaoAuthUrl',
+			type : 'get',
+			async : false,
+			dataType : 'text',
+			success : function(res) {
+				location.href = res;
+			}
+		});
+	}
+	
+	$(document).ready(
+			function() {
+
+				var kakaoInfo = '${kakaoInfo}';
+
+				if (kakaoInfo != "") {
+					var data = JSON.parse(kakaoInfo);
+
+					alert("카카오로그인 성공 \n accessToken : " + data['accessToken']);
+					alert("user : \n" + "email : " + data['email']
+							+ "\n nickname : " + data['nickname']);
+				}
+	});
 	</script>
 
 </body>
