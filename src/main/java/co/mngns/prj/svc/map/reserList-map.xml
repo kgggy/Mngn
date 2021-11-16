@@ -206,11 +206,6 @@
     	update reser_list set svc_stts = 1 where reser_no = #{reser_no}
     </update>
     
-    <!-- 접수 취소 후 상태변경 -->
-    <update id="sttsUpdate3" parameterType="co.mngns.prj.svc.vo.ReserListVO">
-    	update reser_list set svc_stts = 3 where reser_no = #{reser_no}
-    </update>
-    
     <!-- 훈련사 의뢰 완료 처리 후 상태변경 -->
     <update id="sttsUpdate2" parameterType="co.mngns.prj.svc.vo.ReserListVO">
     	update reser_list set svc_stts = 2 where reser_no = #{reser_no}

@@ -500,10 +500,10 @@ th {
 		<input id="tab1" type="radio" name="tabs" checked>
 		<!--디폴트 메뉴-->
 		<label id="tab1" for="tab1">의뢰 관리</label> <input id="tab2"
-			type="radio" name="tabs"> <label id="tab2" for="tab2" onclick="tmonth()">정산
+			type="radio" name="tabs"> <label id="tab2" for="tab2">정산
 			관리</label>
 		<section id="content1">
-			<select id="stts" name="stts">
+			<!-- <select id="stts" name="stts">
 				<option value="0">대기중</option>
 				<option value="1">수락한 의뢰</option>
 				<option value="2">완료된 의뢰</option>
@@ -513,7 +513,7 @@ th {
 			<button id="search">조회</button>
 			<hr>
 			<input style="font-size: 7pt;">* 기본적으로 최근 3개월간의 자료가 조회되며,
-			6개월이 지나면 정보가 사라집니다. <br> <br>
+			6개월이 지나면 정보가 사라집니다. <br> <br> -->
 			<form id="reserSub" name="reserSub">
 				<table class="table table-striped table-hover">
 					<thead align="center">
@@ -564,7 +564,7 @@ th {
 
 		<section id="content2">
 			<div><br>
-			<h3 align="center"><span id="tmonth"></span>월에 지불해야할 총 수수료 비용은 [${mthFee } 원] 입니다.</h3>
+			<h3 align="center"><span id="tmonth"></span>월에 지불해야할 수수료 비용은 총 [${mthFee } 원] 입니다.</h3>
 			<br>
 			</div>
 			<div>
@@ -721,7 +721,6 @@ th {
 						$("#td3").text(data.rqdetail[0].reser_loc);
 						$("#td4").text(data.rqdetail[0].memo);
 						$("#td5").text(data.rqdetail[0].bill_amt + "원");
-						console.log(data);
 						
 						var array = data.rqdetail;
 						var str = '';
@@ -827,12 +826,19 @@ th {
 			});
 		}); */
 		
-		function tmonth() {
+		/* function tmonth() {
 			let today = new Date();
 			let month = today.getMonth() + 1;
 			document.getElementById('tmonth').innerHTML;
-		};
+		}; */
+		
 	});
+		window.onload = function () {
+			let today = new Date();
+			let month = today.getMonth() + 1;
+			console.log(month);
+			document.getElementById('tmonth').innerHTML = month;
+		}
 	</script>
 </body>
 </html>

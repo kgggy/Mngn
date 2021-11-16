@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +13,7 @@
 <meta name="keywords" content="Colorlib Templates">
 
 <!-- Title Page-->
-<title> 프로필 수정</title>
+<title>프로필 수정</title>
 
 <!-- Icons font CSS-->
 <link href="vendor/mdi-font/css/material-design-iconic-font.min.css"
@@ -31,31 +32,6 @@
 
 <!-- Main CSS-->
 <link href="css/a_r_main.css" rel="stylesheet" media="all">
-<script>
-	function result() {
-
-		var loginForm = document.loginForm;
-		var picture = loginForm.picture.value;
-		var species = loginForm.species.value;
-		var name = loginForm.name.value;
-		var gen = loginForm.gen.value;
-		var age = loginForm.age.value;
-		var wgt = loginForm.wgt.value;
-		var oper = loginForm.oper.value;
-
-		if (!picture || !species || !name || !gen || !age || !wgt || !oper) {
-
-			alert("필수입력창을 모두 입력해주세요.");
-
-		} else {
-
-			alert("등록되었습니다. ");
-			loginForm.submit();
-
-		}
-
-	}
-</script>
 </head>
 
 
@@ -87,48 +63,28 @@
 			<div class="card card-5">
 				<div class="card-body">
 
-					<form name="loginForm" action="petInsert.do" method="post">
-						<input type ="hidden" name="knd" value="2">
-						
-						
-						<div class="form-row">
-							<div class="picture">냥이사진</div>
-							<div class="value">
-								<div class="input-group">
-									<input class="input--style-5" type="file" name="picture"
-										value="">
-								</div>
-							</div>
-						</div>
-
-
+					<form name="updateForm" action="petUpdate.do" method="post">
+						<input type="hidden" id="pet_id" name="pet_id">
 						<div class="form-row">
 							<div class="breed">냥이 품종</div>
 							<div class="value">
 								<div class="input-group">
 									<div class="rs-select2 js-select-simple select--no-search">
-										<select name="species" value ="${pet.species }">
-
-
-											<option disabled="disabled" selected="selected">Choose
-												option</option>
-											<optgroup label="고양이">
-
-												<option>코리안숏헤어</option>
-												<option>봄베이</option>
-												<option>먼치킨</option>
-												<option>랙돌</option>
-												<option>러시안블루</option>
-												<option>폴드</option>
-												<option>터키쉬 앙고라</option>
-												<option>엑죠틱</option>
-												<option>벵갈</option>
-												<option>페르시안</option>
-												<option>노르웨이숲</option>
-												<option>아비시니안</option>
-												<option>샴</option>
-											</optgroup>
-
+										<select id="species" name="species">
+											<option disabled="disabled">선택</option>
+											<option>코리안숏헤어</option>
+											<option>봄베이</option>
+											<option>먼치킨</option>
+											<option>랙돌</option>
+											<option>러시안블루</option>
+											<option>폴드</option>
+											<option>터키쉬 앙고라</option>
+											<option>엑죠틱</option>
+											<option>벵갈</option>
+											<option>페르시안</option>
+											<option>노르웨이숲</option>
+											<option>아비시니안</option>
+											<option>샴</option>
 										</select>
 										<div class="select-dropdown"></div>
 									</div>
@@ -149,12 +105,12 @@
 						<div class="form-row p-t-20">
 							<label class="gender"> 냥이 성별</label>
 							<div class="p-t-15">
-								<label class="radio-container m-r-55"> 수컷 
-								<input	type="radio" checked="checked" name="gen" value="${pet.gen }">
-								 <span
-									class="checkmark" ></span>
+								
+								<label class="radio-container m-r-55"> 수컷 <input
+									type="radio" name="gen" value="${pet.gen }" <c:if test="${pet.gen eq 'M'}">checked</c:if>>
+									<span class="checkmark"></span>
 								</label> <label class="radio-container"> 암컷 <input type="radio"
-									name="gen" value="${pet.gen }"> <span class="checkmark"></span>
+									name="gen" value="${pet.gen }"<c:if test="${pet.gen eq 'W'}">checked</c:if>> <span class="checkmark"></span>
 								</label>
 							</div>
 						</div>
@@ -164,7 +120,7 @@
 							<div class="value">
 								<div class="input-group">
 									<input class="input--style-5" type="text" name="age"
-										placeholder="살" value = "${pet.age }">
+										placeholder="살" value="${pet.age }">
 								</div>
 							</div>
 						</div>
@@ -173,7 +129,7 @@
 							<div class="value">
 								<div class="input-group">
 									<input class="input--style-5" type="text" name="wgt"
-										placeholder="kg" value = "${pet.wgt }">
+										placeholder="kg" value="${pet.wgt }">
 								</div>
 							</div>
 						</div>
@@ -182,10 +138,11 @@
 							<label class="label label--block"> 중성화 여부 </label>
 							<div class="p-t-15">
 								<label class="radio-container m-r-55"> Y <input
-									type="radio" checked="checked" name="oper"value="${pet.oper }"> <span
-									class="checkmark"></span>
+									type="radio" <c:if test="${pet.oper == '1'}">checked</c:if> name="oper" value="${pet.oper }">
+									<span class="checkmark"></span>
 								</label> <label class="radio-container"> N <input type="radio"
-									name="oper" value="${pet.oper }"> <span class="checkmark"></span>
+									name="oper" value="${pet.oper }" <c:if test="${pet.oper == '0'}">checked</c:if>> <span
+									class="checkmark"></span>
 								</label>
 							</div>
 						</div>
@@ -196,22 +153,22 @@
 							<label class="label label--block"> 특이사항 </label>
 							<div class="value">
 								<div class="input-group">
-									<textarea rows="5" cols="180" name="memo" value = "${pet.memo }"></textarea>
+									<textarea rows="5" cols="180" name="memo">${pet.memo }</textarea>
 								</div>
 							</div>
 						</div>
 						<div align="center">
-							<button class="btn btn--radius-2 btn--red" type="button" onclick="location.href ='aniList.do'">
-								이전</button>
 							<button class="btn btn--radius-2 btn--red" type="button"
-								onclick="result()">등록</button>
+								onclick="location.href ='aniList.do'">이전</button>
+							<button class="btn btn--radius-2 btn--red" type="button"
+								onclick="result(${pet.pet_id})">등록</button>
 						</div>
+
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
-
 
 	<!-- Jquery JS-->
 	<script src="vendor/a_r_jquery/a_r_jquery.min.js"></script>
@@ -223,6 +180,24 @@
 	<!-- Main JS-->
 	<script src="js/global.js"></script>
 
+	<script>
+	function result(pid) {
+		if(confirm("수정하시겠습니까?") == true) {
+			updateForm.pet_id.value = pid
+			updateForm.submit();
+			alert("수정되었습니다. ");
+		} else {
+			alert("다시 시도해주세요.");
+			return;
+		}
+	};
+
+	/* window.onload = function () {
+		var option = $('#species').val();
+		var spce = $('#spcs').val();
+		$('#species').val("먼치킨").prop("selected", true);
+	} */
+</script>
 
 </body>
 </html>

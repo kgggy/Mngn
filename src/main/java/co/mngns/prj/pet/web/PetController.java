@@ -37,10 +37,7 @@ public class PetController {
 	
 	@RequestMapping(value = "/formReg.do")
 	public String formReg(Model model, PetVO pet, HttpSession session) {
-		
-		pet.setPet_id((Integer)session.getAttribute("id"));
-		model.addAttribute("pet", petService.petList(pet));
-		
+		model.addAttribute("pet", petService.petSelect(pet));
 		return "pet/formReg";
 	}
 
@@ -60,10 +57,8 @@ public class PetController {
 	
 	@RequestMapping(value = "/petUpdate.do")
 	public String petUpdate(HttpSession session, PetVO pet, Model model) {
-		pet.setClient_id((Integer) session.getAttribute("id"));
 		petService.petUpdate(pet);
-		
-		return "redirect:cntList.do";
+		return "redirect:aniList.do";
 	}
 	
 	@RequestMapping(value = "/petDelete.do")

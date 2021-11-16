@@ -245,7 +245,7 @@ h4 {
 										</div>
 										<div>
 											<a id="abtn1" class="boxed-btn3"
-												onclick="location.href='formReg.do'">수정</a> <a id="abtn1"
+												onclick="petUpdate('${pet.pet_id}')">수정</a> <a id="abtn1"
 												class="boxed-btn3" onclick="delete()">삭제</a>
 										</div>
 									</div>
@@ -276,5 +276,12 @@ h4 {
 		</div>
 
 	</div>
+	<script>
+	function petUpdate(id) {
+		location.href='formReg.do?pet_id=' + id;
+	};
+	
+	
+	</script>
 </body>
 </html>
