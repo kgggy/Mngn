@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="my" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <!-- Head -->
@@ -67,12 +67,14 @@
 			var data5 = tr.find('td:eq(5)').html()
 			var data6 = tr.find('td:eq(6)').html()
 			var data7 = tr.find('td:eq(7)').html()
-			$(this).find('.modal-body #clientId').val(data0)
+			var data8 = tr.find('td:eq(8)').html()
+			$(this).find('.modal-body #cId').val(data0)
 			$(this).find('.modal-body #clientName').val(data1)
 			$(this).find('.modal-body #clientPhone').val(data2)
 			$(this).find('.modal-body #clientAdres').val(data5)
 			$(this).find('.modal-body #clientJdate').val(data6)
 			$(this).find('.modal-body #clientEmail').val(data7)
+			$(this).find('.modal-body #cRole').val(data8)
 		})
 	});
 </script>
@@ -84,23 +86,23 @@
 	<header class="astino-header u-header">
 		<div class="u-header-left">
 			<a class="u-header-logo" href="mngMain.do"> <img
-				src="assets/logo.png" width="160"> 
+				src="assets/logo.png" width="160">
 			</a>
 		</div>
 
-		<div class="u-header-middle" >
+		<div class="u-header-middle">
 			<a class="js-sidebar-invoker u-sidebar-invoker" href="#!"
 				data-is-close-all-except-this="true" data-target="#sidebar"> <i
-				class="fa fa-bars u-sidebar-invoker__icon--open"></i> 
-			</a>
-				<span class="js-sidebar-invoker u-sidebar-invoker" > 관리자님 환영합니다. </span>
+				class="fa fa-bars u-sidebar-invoker__icon--open"></i>
+			</a> <span class="js-sidebar-invoker u-sidebar-invoker"> 관리자님
+				환영합니다. </span>
 		</div>
 	</header>
 	<!-- End Header (Topbar) -->
 
 	<main class="u-main" role="main">
 
-				<!-- Sidebar -->
+		<!-- Sidebar -->
 		<aside id="sidebar" class="astino-sidebar u-sidebar">
 			<div class="u-sidebar-inner">
 				<header class="u-sidebar-header">
@@ -122,8 +124,8 @@
 
 						<!-- 공지사항 관리 -->
 						<li class="u-sidebar-nav-menu__item"><a
-							class="u-sidebar-nav-menu__link " href="boardList.do">
-								<i class="far fa-edit u-sidebar-nav-menu__item-icon"></i> <span
+							class="u-sidebar-nav-menu__link " href="boardList.do"> <i
+								class="far fa-edit u-sidebar-nav-menu__item-icon"></i> <span
 								class="u-sidebar-nav-menu__item-title">공지사항 관리</span>
 						</a></li>
 						<!-- End 공지사항 관리 -->
@@ -142,16 +144,12 @@
 								class="u-sidebar-nav-menu u-sidebar-nav-menu--second-level text-center"
 								style="display: none;">
 								<li class="u-sidebar-nav-menu__item"><a
-									class="u-sidebar-nav-menu__link " href="cntList.do">
-										<span class="u-sidebar-nav-menu__item-title">사용자 관리</span>
+									class="u-sidebar-nav-menu__link " href="cntList.do"> <span
+										class="u-sidebar-nav-menu__item-title">사용자 관리</span>
 								</a></li>
 								<li class="u-sidebar-nav-menu__item"><a
 									class="u-sidebar-nav-menu__link" href="trnList.do"> <span
 										class="u-sidebar-nav-menu__item-title">훈련사 관리</span>
-								</a></li>
-								<li class="u-sidebar-nav-menu__item"><a
-									class="u-sidebar-nav-menu__link" href="outList.do"> <span
-										class="u-sidebar-nav-menu__item-title">탈퇴회원 관리</span>
 								</a></li>
 							</ul></li>
 						<!-- End 회원 관리 -->
@@ -163,7 +161,7 @@
 								class="u-sidebar-nav-menu__item-title">훈련사 수당 관리</span>
 						</a></li>
 						<!-- End 훈련사 수당 관리 -->
-						
+
 						<!-- 관리자 로그아웃-->
 						<li class="u-sidebar-nav-menu__item"><a
 							class="u-sidebar-nav-menu__link" href="home.do"> <i
@@ -182,43 +180,51 @@
 				<div class="row">
 					<div class="col-md-12 mb-4">
 						<div class="card h-100">
-				<header class="card-header d-flex align-items-center">
-					<h2 class="h2 card-header-title">사용자 목록</h2>
-				</header>
-					<!-- 사용자 정보 -->
+							<header class="card-header d-flex align-items-center">
+								<h2 class="h2 card-header-title">사용자 목록</h2>
+							</header>
+							<!-- 사용자 정보 -->
 							<div class="card-body">
 								<div class="table-responsive">
-								  <form>
-									<table class="table table-hover">
-										<thead>
-											<tr>
-												<th scope="col" class="text-dark">ID</th>
-												<th scope="col" class="text-dark">이 름</th>
-												<th scope="col" class="text-dark">전화번호</th>
-												<th scope="col" class="text-dark">상 태</th>
-												<th scope="col" class="text-dark"></th>
-											</tr>
-										</thead>
-
-										<tbody>
-											<c:forEach var="client" items="${clients}">
+									<form>
+										<table id="table" class="table table-hover">
+											<thead>
 												<tr>
-													<td>${client.client_id }</td>
-													<td>${client.name }</td>
-													<td>${client.phone }</td>
-													<td class="text-success">활동중</td>
-													<td>
-														<input type="button"
-														class="btn btn-outline-danger" value="상세보기" id="btnSearch"
-														data-toggle="modal" data-target="#exampleModalCenter" />
-													</td>
-													<td style="display: none;">${client.adres1} ${client.adres2}</td>
-													<td style="display: none;">${client.join_dt }</td>
-													<td style="display: none;">${client.email}</td>
+													<th scope="col" class="text-dark">ID</th>
+													<th scope="col" class="text-dark">이 름</th>
+													<th scope="col" class="text-dark">전화번호</th>
+													<th scope="col" class="text-dark">상 태</th>
+													<th scope="col" class="text-dark"></th>
+													<th style="display: none;" scope="col" class="text-dark">주소</th>
+													<th style="display: none;" scope="col" class="text-dark">가입날짜</th>
+													<th style="display: none;" scope="col" class="text-dark">이메일</th>
+													<th style="display: none;" scope="col" class="text-dark">권한</th>
 												</tr>
-											</c:forEach>
-										</tbody>
-									</table>
+											</thead>
+
+											<tbody>
+												<c:forEach var="client" items="${clients}">
+													<tr>
+														<td>${client.client_id }</td>
+														<td>${client.name }</td>
+														<td>${client.phone }</td>
+														<td class="text-success">활동중</td>
+														<td><input type="button"
+															class="btn btn-outline-danger" value="상세보기"
+															id="btnSearch" data-toggle="modal"
+															data-target="#exampleModalCenter" /></td>
+														<td style="display: none;">${client.adres1}</td>
+														<td style="display: none;">${client.join_dt }</td>
+														<td style="display: none;">${client.email}</td>
+														<td style="display: none;">${client.role}</td>
+													</tr>
+												</c:forEach>
+											</tbody>
+										</table>
+										<button type="button"
+											class="btn btn-danger btn-large float-right"
+											onclick="fnExcelReport('table','clientList');">Excel
+											Download</button>
 									</form>
 									<my:paging jsFunc="goList" paging="${paging}" />
 								</div>
@@ -264,13 +270,13 @@
 					<div class="col-md-12 mb-4">
 						<div class="card h-100">
 							<div class="astino-pr-form card-body">
-								<form>
+								<form action="mclientUpdate.do" role="form" id="transForm"
+									name="transForm" method="post">
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput">아이디</label> <input
-											type="text" class="form-control" id="clientId"
-											placeholder="" readonly>
-										<label for="formGroupExampleInput2">이 름</label> <input
-											type="text" class="form-control" id="clientName"
+											type="text" class="form-control" id="cId" placeholder=""
+											readonly> <label for="formGroupExampleInput2">이
+											름</label> <input type="text" class="form-control" id="clientName"
 											placeholder="" readonly>
 									</div>
 									<div class="form-group d-flex align-items-center">
@@ -293,17 +299,17 @@
 											type="text" class="form-control" id="clientJdate"
 											placeholder="" readonly>
 									</div>
-								<!-- 	<div class="form-group d-flex align-items-center">
-										<label for="formGroupExampleInput5">특이사항</label>
-										<textarea class="form-control" id="formGroupExampleInput5"
-											placeholder="특이사항 table에 column 없음 달님(개), 별님(고양이) 돌봄서비스 자주 이용 고객"></textarea>
-									</div> -->
+									<div style="display: none;">
+										<label for="formGroupExampleInput4">권한</label> <input
+											type="text" class="form-control" id="cRole"></input>
+									</div>
 								</form>
 							</div>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-outline-danger btn-sm"
-								data-dismiss="modal">확인</button>
+							<a href="#" id="clientUpdate" class="btn btn-outline-danger">권한바꾸기</a>
+							<button type="button" class="btn btn-outline-danger"
+								data-dismiss="modal">닫기</button>
 						</div>
 					</div>
 					<!-- End Current Projects -->
@@ -312,20 +318,90 @@
 		</div>
 	</div>
 	<!-- Large Size Modal-->
-	<script>
 
-		/* //공지사항 삭제
-		function bDelete(bno) {
-			alert('정말 삭제하시겠습니까?');
-			myTable.board_no.value = bno
-			$('#myTable').submit();
-			location.reload();
-		} */
-		
+	<script>
+		//사용자 권한 훈련사로 수정
+		$("#clientUpdate").on("click", function() {
+			var clientId = $("#cId").val();
+			var clientRole = $("#cRole").val();
+
+			console.log( clientId + " / " + clientRole );
+			
+			$.ajax({
+				url : "mclientUpdate.do",
+				contentType : 'application/json',
+				dataType : 'json',
+				type : "post",
+				data : JSON.stringify({
+					client_id : clientId,
+					role : clientRole
+				}),
+				success : function(data) {
+					console.log(data);
+					if (data == 1) {
+						alert("권한이 수정되었습니다.");
+						location.reload();
+					} else {
+						alert("권한 X");
+					}
+				},
+				error : function() {
+					alert("권한 수정에 실패했습니다.");
+				}
+			}); //end ajax
+
+		});
+
 		//페이징 처리
 		function goList(p) {
 			location.href = "cntList.do?page=" + p
 		}
 	</script>
+	<script>
+		function fnExcelReport(id, clientList) {
+			var tab_text = '<html xmlns:x="urn:schemas-microsoft-com:office:excel">';
+			tab_text = tab_text
+					+ '<head><meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">';
+			tab_text = tab_text
+					+ '<xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>'
+			tab_text = tab_text + '<x:Name>Trainer Sheet</x:Name>';
+			tab_text = tab_text
+					+ '<x:WorksheetOptions><x:Panes></x:Panes></x:WorksheetOptions></x:ExcelWorksheet>';
+			tab_text = tab_text
+					+ '</x:ExcelWorksheets></x:ExcelWorkbook></xml></head><body>';
+			tab_text = tab_text + "<table border='1px'>";
+			var exportTable = $('#' + id).clone();
+			exportTable.find('input').each(function(index, elem) {
+				$(elem).remove();
+			});
+			tab_text = tab_text + exportTable.html();
+			tab_text = tab_text + '</table></body></html>';
+			var data_type = 'data:application/vnd.ms-excel';
+			var ua = window.navigator.userAgent;
+			var msie = ua.indexOf("MSIE ");
+			var fileName = clientList + '.xls';
+			//Explorer 환경에서 다운로드
+			if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+				if (window.navigator.msSaveBlob) {
+					var blob = new Blob([ tab_text ], {
+						type : "application/csv;charset=utf-8;"
+					});
+					navigator.msSaveBlob(blob, fileName);
+				}
+			} else {
+				var blob2 = new Blob([ tab_text ], {
+					type : "application/csv;charset=utf-8;"
+				});
+				var filename = fileName;
+				var elem = window.document.createElement('a');
+				elem.href = window.URL.createObjectURL(blob2);
+				elem.download = filename;
+				document.body.appendChild(elem);
+				elem.click();
+				document.body.removeChild(elem);
+			}
+		}
+	</script>
+
 </body>
 </html>

@@ -58,10 +58,6 @@
 <script src="assets/js/sidebar-nav.js"></script>
 <script src="assets/js/dashboard-page-scripts.js"></script>
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-    
-<!-- Excel download  -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="assets/js/jquery.table2excel.min.js"></script>
 
 <script>
 	$(document).ready(function() {
@@ -86,12 +82,12 @@
 			$(this).find('.modal-body #trnJdate').val(data3)
 			$(this).find('.modal-body #trnAdres1').val(data5)
 			$(this).find('.modal-body #trnAdres2').val(data6)
-			$(this).find('.modal-body #trnBdate').val(data7)
+			$(this).find('.modal-body #trnEmail').val(data7)
 			$(this).find('.modal-body #trnLoc1').val(data8)
 			$(this).find('.modal-body #trnLoc2').val(data9)
 			//$(this).find('.modal-body #').val(data10)
-			$(this).find('.modal-body #trnStar').val(data11)
-			$(this).find('.modal-body #trnEmail').val(data12)
+			$(this).find('.modal-body #trnWork').val(data11)
+			$(this).find('.modal-body #trnStar').val(data12)
 
 		})
 	});
@@ -149,7 +145,7 @@
 						<!-- End 공지사항 관리 -->
 
 						<!-- 회원 관리 -->
-						<li class="u-sidebar-nav-menu__item "><a
+						<li class="u-sidebar-nav-menu__item clearfix"><a
 							class="u-sidebar-nav-menu__link active" href="cntList.do"
 							data-target="#subMenu22"> <i
 								class="fab fa-product-hunt u-sidebar-nav-menu__item-icon"></i> <span
@@ -161,17 +157,13 @@
 							<ul id="subMenu22"
 								class="u-sidebar-nav-menu u-sidebar-nav-menu--second-level text-center"
 								style="display: none;">
-								<li class="u-sidebar-nav-menu__item "><a
-									class="u-sidebar-nav-menu__link" href="cntList.do"> <span
-										class="u-sidebar-nav-menu__item-title">사용자 관리</span>
+								<li class="u-sidebar-nav-menu__item"><a
+									class="u-sidebar-nav-menu__link " href="cntList.do">
+										<span class="u-sidebar-nav-menu__item-title">사용자 관리</span>
 								</a></li>
 								<li class="u-sidebar-nav-menu__item"><a
 									class="u-sidebar-nav-menu__link" href="trnList.do"> <span
 										class="u-sidebar-nav-menu__item-title">훈련사 관리</span>
-								</a></li>
-								<li class="u-sidebar-nav-menu__item"><a
-									class="u-sidebar-nav-menu__link" href="outList.do"> <span
-										class="u-sidebar-nav-menu__item-title">탈퇴회원 관리</span>
 								</a></li>
 							</ul></li>
 						<!-- End 회원 관리 -->
@@ -209,7 +201,8 @@
 							<div class="card-body">
 								<div class="table-responsive">
 									<form>
-										<table id="trainerListTable" class="table table-hover">
+									<div id="excelBoard">
+										<table id="table" class="table table-hover">
 											<thead>
 												<tr>
 													<th scope="col" class="text-dark">ID</th>
@@ -217,6 +210,14 @@
 													<th scope="col" class="text-dark">전화번호</th>
 													<th scope="col" class="text-dark">가입날짜</th>
 													<th scope="col" class="text-dark"></th>
+													<th style="display: none;" scope="col" class="text-dark">주소1</th>
+													<th style="display: none;" scope="col" class="text-dark">주소2</th>
+													<th style="display: none;" scope="col" class="text-dark">이메일</th>
+													<th style="display: none;" scope="col" class="text-dark">생년월일</th>
+													<th style="display: none;" scope="col" class="text-dark">근무지1</th>
+													<th style="display: none;" scope="col" class="text-dark">근무지2</th>
+													<th style="display: none;" scope="col" class="text-dark">근무요일</th>
+													<th style="display: none;" scope="col" class="text-dark">평균별점</th>
 												</tr>
 											</thead>
 
@@ -233,17 +234,18 @@
 															data-target="#exampleModalCenter" /></td>
 														<td style="display: none;">${trainer.adres1}</td>
 														<td style="display: none;">${trainer.adres2}</td>
+														<td style="display: none;">${trainer.email}</td>
 														<td style="display: none;">${trainer.trn_birth_dt}</td>
 														<td style="display: none;">${trainer.work_loc1}</td>
 														<td style="display: none;">${trainer.work_loc2}</td>
 														<td style="display: none;">${trainer.work_time}</td>
 														<td style="display: none;">${trainer.trn_avrg}</td>
-														<td style="display: none;">${trainer.email}</td>
 													</tr>
 												</c:forEach>
 											</tbody>
 										</table>
-								<button type="button"  id="downloadExcel"  class="btn btn-danger btn-large float-right">Excel Download</button>
+										</div>
+										<button type="button" class="btn btn-danger btn-large float-right" onclick="fnExcelReport('table','trainerList');">Excel Download</button>
 									</form>
 									<my:paging jsFunc="goList" paging="${paging}" />
 								</div>
@@ -300,27 +302,24 @@
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput4">서비스평점</label> <input
 											type="text" class="form-control" id="trnStar" placeholder=""
-											readonly>
-										<label for="formGroupExampleInput4">입사날짜</label> <input
-											type="text" class="form-control" id="trnJdate" placeholder=""
-											readonly>
+											readonly> <label for="formGroupExampleInput4">입사날짜</label>
+										<input type="text" class="form-control" id="trnJdate"
+											placeholder="" readonly>
 									</div>
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput4">연락처</label> <input
 											type="text" class="form-control" id="trnPhone" placeholder=""
-											readonly>
-										<label for="formGroupExampleInput4">이메일</label> <input
-											type="text" class="form-control" id="trnEmail" placeholder=""
-											readonly>
+											readonly> <label for="formGroupExampleInput4">이메일</label>
+										<input type="text" class="form-control" id="trnEmail"
+											placeholder="" readonly>
 									</div>
-									
+
 									<div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput4">근무지역1</label> <input
 											type="text" class="form-control" id="trnLoc1" placeholder=""
-											readonly>
-										<label for="formGroupExampleInput4">근무지역2</label> <input
-											type="text" class="form-control" id="trnLoc2" placeholder=""
-											readonly>
+											readonly> <label for="formGroupExampleInput4">근무지역2</label>
+										<input type="text" class="form-control" id="trnLoc2"
+											placeholder="" readonly>
 									</div>
 									<!-- <div class="form-group d-flex align-items-center">
 										<label for="formGroupExampleInput4">휴 무</label> <input
@@ -352,29 +351,51 @@
 		function goList(p) {
 			location.href = "trnList.do?page=" + p
 		}
-		
-	</script>	
+	</script>
 	<script>
-	
-	$("#downloadExce").table2csv();
-
-	$("#downloadExce").table2csv('output', {
-		  appendTo:'#out'
-		});
-	
-	$("#downloadExce").table2csv({
-		  filename:'excel.csv'
-		});
-
-	
-	$("#downloadExcel").click(function(e){
-	    $("#trainerListTable").table2excel({
-	        exclude: ".excludeThisClass",
-	        name: "Worksheet Name",
-	        filename: "SomeFile.xls", // do include extension
-	        preserveColors: false // set to true if you want background colors and font colors preserved
-	});
-
+		function fnExcelReport(id, trainerList) {
+			var tab_text = '<html xmlns:x="urn:schemas-microsoft-com:office:excel">';
+			tab_text = tab_text
+					+ '<head><meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">';
+			tab_text = tab_text
+					+ '<xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>'
+			tab_text = tab_text + '<x:Name>Trainer Sheet</x:Name>';
+			tab_text = tab_text
+					+ '<x:WorksheetOptions><x:Panes></x:Panes></x:WorksheetOptions></x:ExcelWorksheet>';
+			tab_text = tab_text
+					+ '</x:ExcelWorksheets></x:ExcelWorkbook></xml></head><body>';
+			tab_text = tab_text + "<table border='1px'>";
+			var exportTable = $('#' + id).clone();
+			exportTable.find('input').each(function(index, elem) {
+				$(elem).remove();
+			});
+			tab_text = tab_text + exportTable.html();
+			tab_text = tab_text + '</table></body></html>';
+			var data_type = 'data:application/vnd.ms-excel';
+			var ua = window.navigator.userAgent;
+			var msie = ua.indexOf("MSIE ");
+			var fileName = trainerList + '.xls';
+			//Explorer 환경에서 다운로드
+			if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+				if (window.navigator.msSaveBlob) {
+					var blob = new Blob([ tab_text ], {
+						type : "application/csv;charset=utf-8;"
+					});
+					navigator.msSaveBlob(blob, fileName);
+				}
+			} else {
+				var blob2 = new Blob([ tab_text ], {
+					type : "application/csv;charset=utf-8;"
+				});
+				var filename = fileName;
+				var elem = window.document.createElement('a');
+				elem.href = window.URL.createObjectURL(blob2);
+				elem.download = filename;
+				document.body.appendChild(elem);
+				elem.click();
+				document.body.removeChild(elem);
+			}
+		}
 	</script>
 </body>
 </html>

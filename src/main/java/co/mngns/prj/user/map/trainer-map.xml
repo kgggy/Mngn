@@ -33,7 +33,11 @@
    
    <!-- 관리자 페이지의 훈련사 전체목록 조회 -->
    <select resultType="co.mngns.prj.user.vo.TrainerVO" id="mtrainerSelectList">
-      select t.*, c.* from trainer t join client c on t.client_id = c.client_id
+      SELECT B.* FROM ( SELECT A.* , ROWNUM RN FROM (
+			select * from client where role = 2
+	  <![CDATA[ 
+	      ) A ) B WHERE RN >= #{start} and RN <= #{end}
+	      ]]>
    </select>
    
    <!-- 훈련사 검색 -->

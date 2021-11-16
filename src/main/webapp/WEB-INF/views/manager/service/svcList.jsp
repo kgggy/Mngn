@@ -115,10 +115,6 @@
 									class="u-sidebar-nav-menu__link" href="trnList.do"> <span
 										class="u-sidebar-nav-menu__item-title">훈련사 관리</span>
 								</a></li>
-								<li class="u-sidebar-nav-menu__item"><a
-									class="u-sidebar-nav-menu__link" href="outList.do"> <span
-										class="u-sidebar-nav-menu__item-title">탈퇴회원 관리</span>
-								</a></li>
 							</ul></li>
 						<!-- End 회원 관리 -->
 

@@ -67,6 +67,12 @@ public class ClientServiceImpl implements ClientService {
 		// 전체 사용자 명수
 		return cntmap.cntCount(vo);
 	}
+	
+	@Override
+	public int mclientUpdate(ClientVO vo) {
+		//관리자 페이지 사용자 권한 훈련사로 전환
+		return cntmap.mclientUpdate(vo);
+	}
 
 
 

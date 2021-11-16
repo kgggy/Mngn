@@ -119,12 +119,6 @@ public class BoardController {
 		return "redirect:cntReview.do";
 	}
 
-	   /*
-	    * @RequestMapping(value = "/boardList.do") // 관리자 공지사항 목록보기 public String
-	    * boardList(Model model) { model.addAttribute("boards", bService.boardList());
-	    * return "manager/board/boardList"; }
-	    */
-
 	   @GetMapping(value = "/boardForm.do")
 	   // 관리자 공지사항 등록 페이지 호출
 	   public String boardInsertForm(Model model) {
@@ -172,15 +166,5 @@ public class BoardController {
 	      return "manager/board/boardList";
 	   }
 	   
-	   @PostMapping(value = "/resvNoInsert.do")
-	   //예약건수 입력
-	   public int resvNoInsert(Model model, BoardVO vo) {
-		   System.out.println("====================>");
-		   System.out.println(vo.toString());
-		   System.out.println("====================>");
-		   model.addAttribute("resvNo", bService.resvNoInsert(vo));
-		   int result = bService.resvNoInsert(vo);
-		   return result;
-	   }
 
 }

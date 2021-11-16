@@ -145,7 +145,7 @@
 
 						<!-- 회원 관리 -->
 						<li class="u-sidebar-nav-menu__item clearfix"><a
-							class="u-sidebar-nav-menu__link " href="cntList.do"
+							class="u-sidebar-nav-menu__link" href="cntList.do"
 							data-target="#subMenu22"> <i
 								class="fab fa-product-hunt u-sidebar-nav-menu__item-icon"></i> <span
 								class="u-sidebar-nav-menu__item-title">회원관리</span> <i
@@ -157,16 +157,12 @@
 								class="u-sidebar-nav-menu u-sidebar-nav-menu--second-level text-center"
 								style="display: none;">
 								<li class="u-sidebar-nav-menu__item"><a
-									class="u-sidebar-nav-menu__link " href="cntList.do"> <span
-										class="u-sidebar-nav-menu__item-title">사용자 관리</span>
+									class="u-sidebar-nav-menu__link active" href="cntList.do">
+										<span class="u-sidebar-nav-menu__item-title">사용자 관리</span>
 								</a></li>
 								<li class="u-sidebar-nav-menu__item"><a
 									class="u-sidebar-nav-menu__link" href="trnList.do"> <span
 										class="u-sidebar-nav-menu__item-title">훈련사 관리</span>
-								</a></li>
-								<li class="u-sidebar-nav-menu__item"><a
-									class="u-sidebar-nav-menu__link" href="outList.do"> <span
-										class="u-sidebar-nav-menu__item-title">탈퇴회원 관리</span>
 								</a></li>
 							</ul></li>
 						<!-- End 회원 관리 -->
@@ -215,7 +211,7 @@
 							<div class="card-body">
 								<div class="table-responsive">
 									<form>
-										<table class="table table-hover">
+										<table id="table" class="table table-hover">
 											<thead>
 												<tr>
 													<th scope="col" class="text-dark">예약번호</th>
@@ -224,7 +220,9 @@
 													<th scope="col" class="text-dark">제공지역</th>
 													<th scope="col" class="text-dark">특이사항</th>
 													<th scope="col" class="text-dark">정산여부</th>
-													<th scope="col" class="text-dark"></th>
+													<th style="display: none;" scope="col" class="text-dark">주소1</th>
+													<th style="display: none;" scope="col" class="text-dark">특이사항</th>
+													<th style="display: none;" scope="col" class="text-dark">회원이름</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -244,6 +242,7 @@
 											</tbody>
 										</table>
 									</form>
+									<button type="button" class="btn btn-danger btn-large float-right" onclick="fnExcelReport('table','trainerSalary');">Excel Download</button>
 									<my:paging jsFunc="goList" paging="${paging}" />
 								</div>
 							</div>
@@ -341,6 +340,51 @@
 		//페이징 처리
 		function goList(p) {
 			location.href = "salaryList.do?page=" + p
+		}
+	</script>
+	<script>
+		function fnExcelReport(id, trainerSalary) {
+			var tab_text = '<html xmlns:x="urn:schemas-microsoft-com:office:excel">';
+			tab_text = tab_text
+					+ '<head><meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">';
+			tab_text = tab_text
+					+ '<xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>'
+			tab_text = tab_text + '<x:Name>Trainer Sheet</x:Name>';
+			tab_text = tab_text
+					+ '<x:WorksheetOptions><x:Panes></x:Panes></x:WorksheetOptions></x:ExcelWorksheet>';
+			tab_text = tab_text
+					+ '</x:ExcelWorksheets></x:ExcelWorkbook></xml></head><body>';
+			tab_text = tab_text + "<table border='1px'>";
+			var exportTable = $('#' + id).clone();
+			exportTable.find('input').each(function(index, elem) {
+				$(elem).remove();
+			});
+			tab_text = tab_text + exportTable.html();
+			tab_text = tab_text + '</table></body></html>';
+			var data_type = 'data:application/vnd.ms-excel';
+			var ua = window.navigator.userAgent;
+			var msie = ua.indexOf("MSIE ");
+			var fileName = trainerSalary + '.xls';
+			//Explorer 환경에서 다운로드
+			if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+				if (window.navigator.msSaveBlob) {
+					var blob = new Blob([ tab_text ], {
+						type : "application/csv;charset=utf-8;"
+					});
+					navigator.msSaveBlob(blob, fileName);
+				}
+			} else {
+				var blob2 = new Blob([ tab_text ], {
+					type : "application/csv;charset=utf-8;"
+				});
+				var filename = fileName;
+				var elem = window.document.createElement('a');
+				elem.href = window.URL.createObjectURL(blob2);
+				elem.download = filename;
+				document.body.appendChild(elem);
+				elem.click();
+				document.body.removeChild(elem);
+			}
 		}
 	</script>
 </body>

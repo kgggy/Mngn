@@ -15,7 +15,7 @@ public class BoardVO {
 	private Date reg_dt;
 	
 	//관리자 메인 페이지 도넛 차트
-   private int resvNo;
+   private int reser;
    private int clientNo;
    private int trainerNo;
    private int cancelNo;
