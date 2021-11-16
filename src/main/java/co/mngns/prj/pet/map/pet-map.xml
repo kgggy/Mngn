@@ -29,13 +29,11 @@
 		update pet
 		set
 		name=#{name},
-		gen=#{gen},
 		age=#{age},
 		wgt=#{wgt},
 		oper=#{oper},
 		memo=#{memo},
-		species=#{species}
-		where pet_id =#{pet_id}
+		where pet_name =#{pet_name} and client_id=#{client_id}		
 
 	</update>
 

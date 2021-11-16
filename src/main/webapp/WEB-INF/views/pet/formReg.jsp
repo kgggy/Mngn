@@ -12,7 +12,7 @@
 <meta name="keywords" content="Colorlib Templates">
 
 <!-- Title Page-->
-<title> 펫 프로필 등록 수정</title>
+<title> 프로필 수정</title>
 
 <!-- Icons font CSS-->
 <link href="vendor/mdi-font/css/material-design-iconic-font.min.css"
@@ -35,30 +35,27 @@
 	function result() {
 
 		var loginForm = document.loginForm;
+		var picture = loginForm.picture.value;
+		var species = loginForm.species.value;
 		var name = loginForm.name.value;
 		var gen = loginForm.gen.value;
 		var age = loginForm.age.value;
 		var wgt = loginForm.wgt.value;
 		var oper = loginForm.oper.value;
 
-		if (!file_no || !species || !name || !gen || !age || !wgt || !oper) {
+		if (!picture || !species || !name || !gen || !age || !wgt || !oper) {
 
 			alert("필수입력창을 모두 입력해주세요.");
 
 		} else {
 
-			alert("수정되었습니다. ");
+			alert("등록되었습니다. ");
 			loginForm.submit();
 
 		}
 
 	}
 </script>
-
-		
-
-
-
 </head>
 
 
@@ -69,7 +66,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="bradcam_text text-center">
-						<h3> ${pet.name} 프로필 등록 수정</h3>
+						<h3>고양이 ${pet.name} 프로필등록수정</h3>
 					</div>
 				</div>
 			</div>
@@ -90,27 +87,27 @@
 			<div class="card card-5">
 				<div class="card-body">
 
-					<form name="PetForm" action="" method="post">
-						<input type ="hidden" name="knd" value="${pet.knd }">
+					<form name="loginForm" action="petInsert.do" method="post">
+						<input type ="hidden" name="knd" value="2">
 						
 						
 						<div class="form-row">
 							<div class="picture">냥이사진</div>
 							<div class="value">
 								<div class="input-group">
-									<input class="input--style-5" type="file" name="file_no"
-										value="${pet.file_no } ">
+									<input class="input--style-5" type="file" name="picture"
+										value="">
 								</div>
 							</div>
 						</div>
 
 
 						<div class="form-row">
-							<div class="species">냥이 품종</div>
+							<div class="breed">냥이 품종</div>
 							<div class="value">
 								<div class="input-group">
 									<div class="rs-select2 js-select-simple select--no-search">
-										<select name="species" value="${pet.species }">
+										<select name="species" value ="${pet.species }">
 
 
 											<option disabled="disabled" selected="selected">Choose
@@ -145,19 +142,19 @@
 							<div class="value">
 								<div class="input-group">
 									<input class="input--style-5" type="text" name="name"
-										value="${pet.name }">
+										placeholder="냥이이름을 입력해주세요." value="${pet.name }">
 								</div>
 							</div>
 						</div>
 						<div class="form-row p-t-20">
-							<label class="gen"> 냥이 성별</label>
+							<label class="gender"> 냥이 성별</label>
 							<div class="p-t-15">
 								<label class="radio-container m-r-55"> 수컷 
-								<input	type="radio" checked="checked" name="gen" value="M" value = "${pet.gen }">
+								<input	type="radio" checked="checked" name="gen" value="${pet.gen }">
 								 <span
 									class="checkmark" ></span>
 								</label> <label class="radio-container"> 암컷 <input type="radio"
-									name="gen" value="W" value="${pet.gen }"> <span class="checkmark"></span>
+									name="gen" value="${pet.gen }"> <span class="checkmark"></span>
 								</label>
 							</div>
 						</div>
@@ -167,8 +164,7 @@
 							<div class="value">
 								<div class="input-group">
 									<input class="input--style-5" type="text" name="age"
-										value = "${pet.age }"
-										placeholder="살">
+										placeholder="살" value = "${pet.age }">
 								</div>
 							</div>
 						</div>
@@ -176,8 +172,8 @@
 							<div class="weight">몸무게</div>
 							<div class="value">
 								<div class="input-group">
-									<input class="input--style-5" type="text" name="wgt" value = "${pet.wgt }"
-										placeholder="kg">
+									<input class="input--style-5" type="text" name="wgt"
+										placeholder="kg" value = "${pet.wgt }">
 								</div>
 							</div>
 						</div>
@@ -186,7 +182,7 @@
 							<label class="label label--block"> 중성화 여부 </label>
 							<div class="p-t-15">
 								<label class="radio-container m-r-55"> Y <input
-									type="radio" checked="checked" name="oper" value="${pet.oper }"> <span
+									type="radio" checked="checked" name="oper"value="${pet.oper }"> <span
 									class="checkmark"></span>
 								</label> <label class="radio-container"> N <input type="radio"
 									name="oper" value="${pet.oper }"> <span class="checkmark"></span>
@@ -205,10 +201,10 @@
 							</div>
 						</div>
 						<div align="center">
-							<button class="btn btn--radius-2 btn--red" type="button" onclick="location.href ='form.do'">
+							<button class="btn btn--radius-2 btn--red" type="button" onclick="location.href ='aniList.do'">
 								이전</button>
 							<button class="btn btn--radius-2 btn--red" type="button"
-								onclick="">수정</button>
+								onclick="result()">등록</button>
 						</div>
 					</form>
 				</div>
