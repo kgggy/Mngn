@@ -82,5 +82,7 @@
              </choose>
        </where>
    </select>
+   
+   <update id="trainerUpdate"></update>
 
 </mapper>

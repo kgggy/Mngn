@@ -1,7 +1,5 @@
 package co.mngns.prj.user.web;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -113,7 +111,7 @@ public class UserController {
 		cntService.clientUpdate(clientvo);
 		return "redirect:cntProfile.do";
 	}
-	
+
 	@RequestMapping(value = "/cntDelete.do")
 	// 훈련사 선택
 	public String cntDelete(Model model, ClientVO clientvo, HttpSession session) {

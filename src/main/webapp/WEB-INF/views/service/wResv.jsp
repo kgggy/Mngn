@@ -15,6 +15,7 @@
             function trn() {
                 var date = $("#date_1").val();
                 var svc = $("input[name=svc_bgn_tm]:checked").val();
+                var adres = $("input[name=adres1]").val();
                 if (!date || !svc) {
                     return;
                 }
@@ -23,7 +24,8 @@
                         type: "get",
                         data: {
                             reser_dt: date,
-                            work_time: svc
+                            work_time: svc,
+                            adres1: adres
                         },
                         dataType: "json",
                         success: function (data) {

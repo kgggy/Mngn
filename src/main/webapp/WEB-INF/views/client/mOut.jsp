@@ -13,6 +13,22 @@ h1 {
 form {
 	border: #ff3500;
 }
+
+.ebtn {
+	padding: 8px 15px;
+	font-size: 20px;
+	border: 1px solid #ff3500;
+	color: #ff3500;
+	background-color: #fff;
+	border-radius: 10px;
+	margin: 0 30px;
+}
+
+.ebtn:hover {
+	color: #fff;
+	background-color: #f45f26;
+	cursor: pointer;
+}
 </style>
 <script>
 	function cntD() {
@@ -50,11 +66,14 @@ form {
 				남아있습니다. <br> <br> - 삭제를 원하는 게시물 탈퇴 전 삭제 바람.
 			</p>
 			<br> <br>
-			<button type="button" onclick="location.href='cntProfile.do'">프로필로
-				돌아가기</button>
-			<button type="button" onclick="cntD()">탈퇴하기</button>
+			<button type="button" class="ebtn"
+				onclick="location.href='cntProfile.do'">프로필로 돌아가기</button>
+			<button type="button" class="ebtn" onclick="cntD()">탈퇴하기</button>
 		</form>
-		<br/><br/><br/><br/>
+		<br />
+		<br />
+		<br />
+		<br />
 	</div>
 </body>
 </html>
