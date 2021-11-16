@@ -270,11 +270,11 @@
 									<img src="img/testmonial/1.png" alt="">
 								</div>
 								<div class="test_content">
-									<h4>Jhon Walker</h4>
-									<span>Head of web design</span>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-										elit, sed do eiusmod tempor incididunt ut labore et dolore
-										magna aliqua. Ut enim ad minim veniam, quis nostrud exerci.</p>
+									<h4>이지은</h4>
+									<span>21-11-01</span>
+									<p>
+										사진 너무 귀엽게 찍어주셔서 감사해요. <br />달이가 좋아하는게 보여서 저도 웃을수 있었어요!
+									</p>
 								</div>
 							</div>
 						</div>
@@ -284,11 +284,11 @@
 									<img src="img/testmonial/1.png" alt="">
 								</div>
 								<div class="test_content">
-									<h4>Jhon Walker</h4>
-									<span>Head of web design</span>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-										elit, sed do eiusmod tempor incididunt ut labore et dolore
-										magna aliqua. Ut enim ad minim veniam, quis nostrud exerci.</p>
+									<h4>강호동</h4>
+									<span>21-11-14</span>
+									<p>
+										요새 종종 출장갈 일이 많은데 자주 이용할 것 같아요. <br />훈련사님 감사합니다 :)
+									</p>
 								</div>
 							</div>
 						</div>
@@ -298,11 +298,11 @@
 									<img src="img/testmonial/1.png" alt="">
 								</div>
 								<div class="test_content">
-									<h4>Jhon Walker</h4>
-									<span>Head of web design</span>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-										elit, sed do eiusmod tempor incididunt ut labore et dolore
-										magna aliqua. Ut enim ad minim veniam, quis nostrud exerci.</p>
+									<h4>강새벽</h4>
+									<span>21-11-10</span>
+									<p>
+										훈련사님이 너무 친절하세요~~ <br />훈련하는 방식 전부 잘 알려주셔서 교육 시킬 때 너무 편했어요!!
+									</p>
 								</div>
 							</div>
 						</div>

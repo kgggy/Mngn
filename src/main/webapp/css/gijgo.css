@@ -127,20 +127,6 @@
 	vertical-align: middle;
 }
 
-.gj-textbox-md {
-	border: none;
-	display: block;
-	font-family: "Helvetica", "Arial", sans-serif;
-	font-size: 16px;
-	line-height: 16px;
-	padding: 4px 0px;
-	margin: 0;
-	width: 100%;
-	background: 0 0;
-	text-align: left;
-	color: rgba(0, 0, 0, .87);
-}
-
 .gj-textbox-md:focus, .gj-textbox-md:active {
 	outline: none;
 }

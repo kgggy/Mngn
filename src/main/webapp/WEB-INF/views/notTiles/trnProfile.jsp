@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -25,6 +26,7 @@
 <link rel="stylesheet" href="css/animate.css">
 <link rel="stylesheet" href="css/slicknav.css">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/profile.css">
 <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 
 <!-- Favicon -->
@@ -32,10 +34,6 @@
 
 <!-- Components Vendor Styles -->
 <link rel="stylesheet" href="assets/vendor/font-awesome/css/all.min.css">
-
-<!-- Theme Styles -->
-<link rel="stylesheet" href="assets/css/theme.css">
-<!-- Theme Styles -->
 
 <!-- JS here -->
 <script src="js/vendor/modernizr-3.5.0.min.js"></script>
@@ -84,6 +82,28 @@
 	
 </script>
 <style>
+#span {
+	padding-left: 10px;
+}
+
+label {
+	font-size: 20px;
+	margin-right: 20px;
+}
+
+input[type=checkbox] {
+	
+}
+
+form {
+	width: 100%;
+}
+
+#profile-image {
+	width: 200px;
+	height: 200px;
+}
+
 #no {
 	font-weight: bold;
 	font-size: 35px;
@@ -129,6 +149,9 @@ h3 {
 
 #cntn {
 	border: none;
+	font-size: 20px;
+	text-align: center;
+	outline: none;
 }
 
 .ebtn {
@@ -149,6 +172,28 @@ h3 {
 
 #trans:hover {
 	cursor: pointer;
+}
+
+#ttl {
+	font-size: 30px;
+	font-family: "Roboto Slab", "Times New Roman", serif;
+	font-weight: bold;
+	width: 500px;
+	border: none;
+	padding-left: 10px;
+	font-family: "Roboto Slab", "Times New Roman", serif;
+	outline: none;
+}
+
+.mt-101 {
+	color: #444;
+	padding-right: 20px;
+}
+
+#work {
+	float: left;
+	font-weight: bold;
+	margin-bottom: 10px;
 }
 </style>
 <script>
@@ -275,8 +320,11 @@ h3 {
 			</div>
 		</div>
 	</div>
+	<br />
+	<br />
+	<br />
+	<br />
 	<!-- END nav -->
-<body>
 	<div class="row" align="center">
 		<div class="col-md-6 ml-auto mr-auto">
 			<div class="profile">
@@ -285,10 +333,11 @@ h3 {
 						src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTU0NjQzOTk4OTQ4OTkyMzQy/ansel-elgort-poses-for-a-portrait-during-the-baby-driver-premiere-2017-sxsw-conference-and-festivals-on-march-11-2017-in-austin-texas-photo-by-matt-winkelmeyer_getty-imagesfor-sxsw-square.jpg"
 						alt="Circle Image" class="img-raised rounded-circle img-fluid"
 						id="profile-image">
-					<div>
-						<h3 class="title">${trainer.intro_ttl}</h3>
-						<input type="text" name="intro_cntn" id="cntn"
-							value="${trainer.intro_cntn }" readonly>
+					<p>
+					<div align="center">
+						<input type="text" class="title" id="ttl"
+							value="${trainer.intro_ttl}" readonly> <br /> <br /> 
+						<textarea rows="5" cols="80" readonly id="cntn">${trainer.intro_cntn }</textarea>
 					</div>
 				</div>
 			</div>
@@ -296,95 +345,157 @@ h3 {
 			<div class="section-top-border" align="center">
 				<form action="#" method="post">
 					<div class="mt-10">
-						<input type="text" name="id" placeholder="id"
-							value="${client.client_id}" onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'id'" required class="single-input">
+						<span id="work">아이디</span> <input type="text" name="id"
+							placeholder="id" value="${client.client_id}"
+							onfocus="this.placeholder = ''" onblur="this.placeholder = 'id'"
+							readonly class="single-input">
 					</div>
 					<div class="mt-10">
-						<input type="password" name="pwd" placeholder="pwd"
-							value="${client.pwd}" onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'password'" class="single-input">
-					</div>
-					<div class="mt-10">
-						<input type="text" name="name" placeholder="name"
-							value="${client.name}" onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'Name'" required class="single-input">
-					</div>
-					<div class="mt-10">
-						<input type="number" name="post_no" placeholder="post_no"
-							value="${client.post_no}" onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'post_no'" required
+						<span id="work">비밀번호</span> <input type="password" name="pwd"
+							placeholder="pwd" value="${client.pwd}"
+							onfocus="this.placeholder = ''"
+							onblur="this.placeholder = 'password'" readonly
 							class="single-input">
 					</div>
+					<div class="mt-10">
+						<span id="work">이름</span> <input type="text" name="name"
+							placeholder="name" value="${client.name}"
+							onfocus="this.placeholder = ''"
+							onblur="this.placeholder = 'Name'" readonly class="single-input">
+					</div>
+					<div class="mt-10">
+						<span id="work">우편번호</span> <input type="number" name="post_no"
+							placeholder="post_no" value="${client.post_no}"
+							onfocus="this.placeholder = ''"
+							onblur="this.placeholder = 'post_no'" readonly
+							class="single-input"> <br />
+					</div>
+					<span id="work">주소</span><br />
 					<div class="input-group-icon mt-10">
 						<div class="icon">
 							<i class="fa fa-thumb-tack" aria-hidden="true"></i>
 						</div>
 						<input type="text" name="adres1" placeholder="adres1"
 							value="${client.adres1}" onfocus="this.placeholder = '주소'"
-							onblur="this.placeholder = 'adres1'" class="single-input">
-						<input type="text" name="adres2" placeholder="adres2"
-							value="${client.adres2}" onfocus="this.placeholder = '주소'"
-							onblur="this.placeholder = 'adres2'" class="single-input">
+							onblur="this.placeholder = 'adres1'" readonly
+							class="single-input"> <input type="text" name="adres2"
+							placeholder="adres2" value="${client.adres2}"
+							onfocus="this.placeholder = '주소'"
+							onblur="this.placeholder = 'adres2'" readonly
+							class="single-input">
 					</div>
 
 					<div class="mt-10">
-						<input type="text" name="phone" placeholder="phone"
-							value="${client.phone}" onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'phone'" class="single-input-primary">
-					</div>
-					<div class="mt-10">
-						<input type="text" name="email" placeholder="email"
-							value="${client.email}" onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'email'" class="single-input-primary">
-					</div>
-					<!-- 훈련사 모드전환 했을때 -->
-					<div class="mt-10">
-						<button type="fileupload">보유자격증추가</button>
-						<input type="text" name="file_no" placeholder="file_no"
-							value="${trainer.file_no}" onfocus="this.placeholder = 'file_no'"
-							onblur="this.placeholder = 'file_no'"
-							class="single-input-primary">
-					</div>
-
-					<div class="mt-10">
-						<input type="button" name="day_off" placeholder="day_off" value=""
+						<span id="work">휴대전화</span> <input type="text" name="phone"
+							placeholder="phone" value="${client.phone}"
 							onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'day_off'"
-							class="single-input-primary">
-
-						<button>Mon</button>
-						<button>Tue</button>
-						<button>Wed</button>
-						<button>Thu</button>
-						<button>Fri</button>
-						<button>Sat</button>
-						<button>Sun</button>
-					</div>
-
-					<div class="mt-10">
-						<input type="text" name="제공가능 서비스분야" placeholder="service"
-							value="${trainer.work_time}" onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'service'"
-							class="single-input-primary">
-					</div>
-
-					<div class="mt-10">
-						<input type="text" name="가능지역" placeholder="possible_area"
-							value="${trainer.work_loc1}" onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'possible_area'"
+							onblur="this.placeholder = 'phone'" readonly
 							class="single-input-primary">
 					</div>
 					<div class="mt-10">
-						<input type="text" name="가능지역" placeholder="possible_area"
-							value="${trainer.work_loc2}" onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'possible_area'"
+						<span id="work">이메일</span> <input type="text" name="email"
+							placeholder="email" value="${client.email}"
+							onfocus="this.placeholder = ''"
+							onblur="this.placeholder = 'email'" readonly
+							class="single-input-primary"> <br />
+					</div>
+
+					<!-- 훈련사 모드전환 했을때 -->
+					<span id="work">근무요일</span>
+					<div class="mt-101">
+						<c:if test="${trainer.sun == 1}">
+							<label for="checkbox_1" class="checkbox"><input
+								type="checkbox" name="sun" id="checkbox_1"
+								value="${trainer.sun }" checked readonly> <span
+								id="span">일</span></label>
+						</c:if>
+						<c:if test="${trainer.sun == 0}">
+							<label for="checkbox_1" class="checkbox"><input
+								type="checkbox" name="sun" id="checkbox_1"
+								value="${trainer.sun }" readonly> <span id="span">일</span></label>
+						</c:if>
+						<c:if test="${trainer.mon == 1}">
+							<label for="checkbox_2" class="checkbox"><input
+								type="checkbox" name="mon" id="checkbox_2"
+								value="${trainer.mon }" checked readonly> <span
+								id="span">월</span></label>
+						</c:if>
+						<c:if test="${trainer.mon == 0}">
+							<label for="checkbox_2" class="checkbox"><input
+								type="checkbox" name="mon" id="checkbox_2"
+								value="${trainer.mon }" readonly> <span id="span">월</span></label>
+						</c:if>
+						<c:if test="${trainer.tue == 1}">
+							<label for="checkbox_3" class="checkbox"><input
+								type="checkbox" name="tue" id="checkbox_3"
+								value="${trainer.tue }" checked readonly> <span
+								id="span">화</span></label>
+						</c:if>
+						<c:if test="${trainer.tue == 0}">
+							<label for="checkbox_3" class="checkbox"><input
+								type="checkbox" name="tue" id="checkbox_3"
+								value="${trainer.tue }" readonly> <span id="span">화</span></label>
+						</c:if>
+						<c:if test="${trainer.wed == 1}">
+							<label for="checkbox_4" class="checkbox"><input
+								type="checkbox" name="wed" id="checkbox_4"
+								value="${trainer.wed }" checked readonly><span id="span">수</span></label>
+						</c:if>
+						<c:if test="${trainer.wed == 0}">
+							<label for="checkbox_4" class="checkbox"><input
+								type="checkbox" name="wed" id="checkbox_4"
+								value="${trainer.wed }" readonly><span id="span">수</span></label>
+						</c:if>
+						<c:if test="${trainer.thu == 1}">
+							<label for="checkbox_5" class="checkbox"><input
+								type="checkbox" name="thu" id="checkbox_5"
+								value="${trainer.thu }" checked readonly> <span
+								id="span">목</span></label>
+						</c:if>
+						<c:if test="${trainer.thu == 0}">
+							<label for="checkbox_5" class="checkbox"><input
+								type="checkbox" name="thu" id="checkbox_5"
+								value="${trainer.thu }" readonly> <span id="span">목</span></label>
+						</c:if>
+						<c:if test="${trainer.fri == 1}">
+							<label for="checkbox_6" class="checkbox"><input
+								type="checkbox" name="fri" id="checkbox_6"
+								value="${trainer.fri }" checked readonly><span id="span">금</span></label>
+						</c:if>
+						<c:if test="${trainer.fri == 0}">
+							<label for="checkbox_6" class="checkbox"><input
+								type="checkbox" name="fri" id="checkbox_6"
+								value="${trainer.fri }" readonly><span id="span">금</span></label>
+						</c:if>
+						<c:if test="${trainer.sat == 1}">
+							<label for="checkbox_7" class="checkbox"><input
+								type="checkbox" name="sat" id="checkbox_7"
+								value="${trainer.sat }" checked readonly> <span
+								id="span">토</span></label>
+						</c:if>
+						<c:if test="${trainer.sat == 0}">
+							<label for="checkbox_7" class="checkbox"><input
+								type="checkbox" name="sat" id="checkbox_7"
+								value="${trainer.sat }" readonly> <span id="span">토</span></label>
+						</c:if>
+					</div>
+					<div class="mt-10">
+						<span id="work">근무 가능지역</span> <br /> <br /> <input type="text"
+							style="width: 450px; float: left;" name="work_loc1"
+							placeholder="possible_area" value="${trainer.work_loc1}"
+							onfocus="this.placeholder = ''"
+							onblur="this.placeholder = 'possible_area'" readonly
+							class="single-input-primary"> <input type="text"
+							style="width: 450px;" name="work_loc2"
+							placeholder="possible_area" value="${trainer.work_loc2}"
+							onfocus="this.placeholder = ''"
+							onblur="this.placeholder = 'possible_area'" readonly
 							class="single-input-primary">
 					</div>
 					<br>
 					<div align="center">
 						<button type="button" id="trans">사용자모드 전환</button>
-						<button type="button" onclick="location.href='cntProfileEdit.do'"
+						<button type="button" onclick="location.href='trnProfileEdit.do'"
 							class="ebtn">수정</button>
 					</div>
 				</form>
@@ -432,6 +543,4 @@ h3 {
 	</footer>
 	<!-- footer_end  -->
 </body>
-
-
 </html>
