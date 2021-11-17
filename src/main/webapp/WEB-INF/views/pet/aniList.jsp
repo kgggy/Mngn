@@ -181,6 +181,29 @@ h4 {
          }
       }
    });
+   
+   //펫 삭제 처리
+	function petDelete(pet_id) {
+		if (confirm('정말 삭제하시겠습니까?') == true) {
+			
+			$('#pet_id').val(pet_id);
+			//petDelete.pet_id.value = pet_id;
+			$('#petDelete').submit();
+			alert('삭제가 완료되었습니다.');
+		} else {
+			return redirect:aniList;
+		}
+	}
+   
+	//펫 수정 처리
+	function petUpdate() {
+		if (confirm('펫 정보를 수정하시겠습니까?') == true) {
+			$('#petUpdate').submit();
+			alert('수정이 완료되었습니다.');
+		} else {
+			return;
+		}
+	}; 
 </script>
 
 </head>
@@ -204,6 +227,10 @@ h4 {
 	<br />
 	<!-- END nav -->
 	<a id="abtn" class="boxed-btn3">Add Pet</a>
+	
+	<form action="petDelete.do" id="petDelete" name="petDelete"
+					method="post">
+	<input type="hidden" name="pet_id" id="pet_id">
 	<div class="content">
 		<div class="container">
 			<div class="row">
@@ -245,8 +272,9 @@ h4 {
 										</div>
 										<div>
 											<a id="abtn1" class="boxed-btn3"
-												onclick="petUpdate('${pet.pet_id}')">수정</a> <a id="abtn1"
-												class="boxed-btn3" onclick="delete()">삭제</a>
+												onclick="petUpdate('${pet.pet_id}')">수정</a> 
+											<a id="abtn1" class="boxed-btn3"
+												 href="javascript:petDelete('${pet.pet_id }')"> 삭제</a>
 										</div>
 									</div>
 								</div>
@@ -260,6 +288,7 @@ h4 {
 		<!-- container -->
 	</div>
 	<!-- testmonial_area_start  -->
+	</form>
 	<div id="light" class="modal">
 		<div class="white_content modal-content" align="center">
 			<div>
