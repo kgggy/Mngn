@@ -12,7 +12,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import co.mngns.prj.pet.service.PetService;
 import co.mngns.prj.pet.vo.PetVO;
-import co.mngns.prj.user.vo.ClientVO;
 
 @Controller
 public class PetController {
@@ -45,6 +44,7 @@ public class PetController {
 		model.addAttribute("petForm", petService.petSelect(pet));
 		return "pet/DformReg";
 	}
+
 	@RequestMapping(value = "/CformReg.do")
 	//고양이 프로필 수정
 	public String CformReg(Model model, PetVO pet, HttpSession session) {
@@ -52,6 +52,7 @@ public class PetController {
 		model.addAttribute("petForm", petService.petSelect(pet));
 		return "pet/CformReg";
 	}
+
 
 	@RequestMapping(value = "/mOut.do")
 	//회원 탈퇴
@@ -68,6 +69,7 @@ public class PetController {
 	}
 
 	@RequestMapping(value = "/petUpdate.do")
+
 	//펫 수정, 정보 업데이트
 	public String petUpdate(HttpSession session, PetVO pet, Model model,@RequestParam("profileImqUrl") MultipartFile multipartFile ,RedirectAttributes redirectAttributes) {
 		pet.setClient_id((Integer) session.getAttribute("id"));
@@ -75,6 +77,7 @@ public class PetController {
 		redirectAttributes.addAttribute("pet_id", pet.getPet_id());
 		return "redirect:aniList.do";
 	}
+	
 
 	@RequestMapping(value = "/petDelete.do")
 	//펫 삭제

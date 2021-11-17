@@ -273,6 +273,7 @@ h4 {
 											<a href="DformReg.do" id="abtn1" class="boxed-btn3" >수정</a>
 											 <a href="javascript:petDelete(${pet.pet_id }
 												id= "abtn1" class="boxed-btn3" >삭제</a>
+
 										</div>
 									</div>
 								</div>
@@ -303,5 +304,12 @@ h4 {
 		</div>
 
 	</div>
+	<script>
+	function petUpdate(id) {
+		location.href='formReg.do?pet_id=' + id;
+	};
+	
+	
+	</script>
 </body>
 </html>
