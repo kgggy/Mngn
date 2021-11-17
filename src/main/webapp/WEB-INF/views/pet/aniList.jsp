@@ -182,17 +182,19 @@ h4 {
       }
    });
    
-    //펫 삭제 처리
+   //펫 삭제 처리
 	function petDelete(pet_id) {
 		if (confirm('정말 삭제하시겠습니까?') == true) {
-			petDelete.pet_id.value = pet_id
+			
+			$('#pet_id').val(pet_id);
+			//petDelete.pet_id.value = pet_id;
 			$('#petDelete').submit();
 			alert('삭제가 완료되었습니다.');
 		} else {
 			return;
 		}
 	}
-	    
+   
 	//펫 수정 처리
 	function petUpdate() {
 		if (confirm('펫 정보를 수정하시겠습니까?') == true) {
@@ -207,7 +209,6 @@ h4 {
 </head>
 
 <body>
-
 	<div class="bradcam_area breadcam_bg">
 		<div class="container">
 			<div class="row">
@@ -270,10 +271,10 @@ h4 {
 											</div>
 										</div>
 										<div>
-											<a href="DformReg.do" id="abtn1" class="boxed-btn3" >수정</a>
-											 <a href="javascript:petDelete(${pet.pet_id }
-												id= "abtn1" class="boxed-btn3" >삭제</a>
-
+											<a id="abtn1" class="boxed-btn3"
+												onclick="petUpdate('${pet.pet_id}')">수정</a> 
+											<a id="abtn1" class="boxed-btn3"
+												 href="javascript:petDelete('${pet.pet_id }')"> 삭제</a>
 										</div>
 									</div>
 								</div>
@@ -286,8 +287,8 @@ h4 {
 		</div>
 		<!-- container -->
 	</div>
-	</form>
 	<!-- testmonial_area_start  -->
+	</form>
 	<div id="light" class="modal">
 		<div class="white_content modal-content" align="center">
 			<div>
@@ -306,7 +307,7 @@ h4 {
 	</div>
 	<script>
 	function petUpdate(id) {
-		location.href='DformReg.do?pet_id=' + id;
+		location.href='formReg.do?pet_id=' + id;
 	};
 	
 	
