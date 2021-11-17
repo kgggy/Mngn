@@ -306,7 +306,7 @@ h4 {
 	</div>
 	<script>
 	function petUpdate(id) {
-		location.href='formReg.do?pet_id=' + id;
+		location.href='DformReg.do?pet_id=' + id;
 	};
 	
 	
