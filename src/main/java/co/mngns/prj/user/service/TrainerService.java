@@ -18,4 +18,6 @@ public interface TrainerService {
 	int trnCount(TrainerVO vo); // 전체 훈련사 건수
 
 	int mtrnCount(TrainerVO vo); // 관리자 페이지 전체 훈련사 건수
+
+	int trainerUpdate(TrainerVO vo); // 훈련사 수정
 }

@@ -150,7 +150,7 @@ h3 {
 #cntn {
 	border: none;
 	font-size: 20px;
-	width: 500px;
+	width: 700px;
 	text-align: center;
 	outline: none;
 }
@@ -208,6 +208,10 @@ h3 {
 			}
 		});
 	})
+	function pfProfile() {
+		alert("수정이 완료되었습니다.");
+		$("#pfEdit").submit();
+	}
 </script>
 </head>
 
@@ -328,49 +332,48 @@ h3 {
 	<!-- END nav -->
 	<div class="row" align="center">
 		<div class="col-md-6 ml-auto mr-auto">
-			<div class="profile">
-				<div class="avatar" align="center">
-					<img
-						src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTU0NjQzOTk4OTQ4OTkyMzQy/ansel-elgort-poses-for-a-portrait-during-the-baby-driver-premiere-2017-sxsw-conference-and-festivals-on-march-11-2017-in-austin-texas-photo-by-matt-winkelmeyer_getty-imagesfor-sxsw-square.jpg"
-						alt="Circle Image" class="img-raised rounded-circle img-fluid"
-						id="profile-image">
-					<p>
-					<div align="center">
-						<input type="text" class="title" id="ttl"
-							value="${trainer.intro_ttl}" readonly> <br /> <br /> <input
-							type="text" name="intro_cntn" id="cntn"
-							value="${trainer.intro_cntn }" readonly>
+			<form action="trnEditForm.do" id="pfEdit" method="post">
+				<div class="profile">
+					<div class="avatar" align="center">
+						<img
+							src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTU0NjQzOTk4OTQ4OTkyMzQy/ansel-elgort-poses-for-a-portrait-during-the-baby-driver-premiere-2017-sxsw-conference-and-festivals-on-march-11-2017-in-austin-texas-photo-by-matt-winkelmeyer_getty-imagesfor-sxsw-square.jpg"
+							alt="Circle Image" class="img-raised rounded-circle img-fluid"
+							id="profile-image">
+						<p>
+						<div align="center">
+							<input type="text" class="title" id="ttl" name="intro_ttl"
+								value="${trainer.intro_ttl}" readonly> <br /> <br />
+							<textarea rows="5" cols="150" readonly id="cntn" name="intro_cntn">${trainer.intro_cntn }</textarea>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<div class="section-top-border" align="center">
-				<form action="#" method="post">
+				<div class="section-top-border" align="center">
+
 					<div class="mt-10">
-						<span id="work">아이디</span> <input type="text" name="id"
+						<span id="work">아이디</span> <input type="text" name="client_id"
 							placeholder="id" value="${client.client_id}"
 							onfocus="this.placeholder = ''" onblur="this.placeholder = 'id'"
-							readonly class="single-input">
+							class="single-input">
 					</div>
 					<div class="mt-10">
 						<span id="work">비밀번호</span> <input type="password" name="pwd"
 							placeholder="pwd" value="${client.pwd}"
 							onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'password'" readonly
-							class="single-input">
+							onblur="this.placeholder = 'password'" class="single-input">
 					</div>
 					<div class="mt-10">
 						<span id="work">이름</span> <input type="text" name="name"
 							placeholder="name" value="${client.name}"
 							onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'Name'" readonly class="single-input">
+							onblur="this.placeholder = 'Name'" class="single-input" readonly>
 					</div>
 					<div class="mt-10">
 						<span id="work">우편번호</span> <input type="number" name="post_no"
 							placeholder="post_no" value="${client.post_no}"
 							onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'post_no'" readonly
-							class="single-input"> <br />
+							onblur="this.placeholder = 'post_no'" class="single-input">
+						<br />
 					</div>
 					<span id="work">주소</span><br />
 					<div class="input-group-icon mt-10">
@@ -379,27 +382,24 @@ h3 {
 						</div>
 						<input type="text" name="adres1" placeholder="adres1"
 							value="${client.adres1}" onfocus="this.placeholder = '주소'"
-							onblur="this.placeholder = 'adres1'" readonly
-							class="single-input"> <input type="text" name="adres2"
-							placeholder="adres2" value="${client.adres2}"
-							onfocus="this.placeholder = '주소'"
-							onblur="this.placeholder = 'adres2'" readonly
-							class="single-input">
+							onblur="this.placeholder = 'adres1'" class="single-input">
+						<input type="text" name="adres2" placeholder="adres2"
+							value="${client.adres2}" onfocus="this.placeholder = '주소'"
+							onblur="this.placeholder = 'adres2'" class="single-input">
 					</div>
 
 					<div class="mt-10">
 						<span id="work">휴대전화</span> <input type="text" name="phone"
 							placeholder="phone" value="${client.phone}"
 							onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'phone'" readonly
-							class="single-input-primary">
+							onblur="this.placeholder = 'phone'" class="single-input-primary">
 					</div>
 					<div class="mt-10">
 						<span id="work">이메일</span> <input type="text" name="email"
 							placeholder="email" value="${client.email}"
 							onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'email'" readonly
-							class="single-input-primary"> <br />
+							onblur="this.placeholder = 'email'" class="single-input-primary">
+						<br />
 					</div>
 
 					<!-- 훈련사 모드전환 했을때 -->
@@ -408,8 +408,7 @@ h3 {
 						<c:if test="${trainer.sun == 1}">
 							<label for="checkbox_1" class="checkbox"><input
 								type="checkbox" name="sun" id="checkbox_1"
-								value="${trainer.sun }" checked readonly> <span
-								id="span">일</span></label>
+								value="${trainer.sun }" checked> <span id="span">일</span></label>
 						</c:if>
 						<c:if test="${trainer.sun == 0}">
 							<label for="checkbox_1" class="checkbox"><input
@@ -482,22 +481,21 @@ h3 {
 							style="width: 450px; float: left;" name="work_loc1"
 							placeholder="possible_area" value="${trainer.work_loc1}"
 							onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'possible_area'" readonly
+							onblur="this.placeholder = 'possible_area'"
 							class="single-input-primary"> <input type="text"
 							style="width: 450px;" name="work_loc2"
 							placeholder="possible_area" value="${trainer.work_loc2}"
 							onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'possible_area'" readonly
+							onblur="this.placeholder = 'possible_area'"
 							class="single-input-primary">
 					</div>
 					<br>
 					<div align="center">
-						<button type="button" id="trans">사용자모드 전환</button>
-						<button type="button" onclick="location.href='trnProfileEdit.do'"
-							class="ebtn">수정</button>
+						<button type="button" class="ebtn" onclick="pfProfile()">수정완료</button>
+						<button type="reset" class="ebtn">취소</button>
 					</div>
-				</form>
-			</div>
+				</div>
+			</form>
 			<br> <br>
 		</div>
 	</div>
