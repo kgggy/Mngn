@@ -56,7 +56,7 @@
 		select distinct client_id ,
 		Regexp_Substr(work_time,'[^,]+', 1,level)
 		work_time
-		From trainer t, client c
+		From trainer t
 		where work_time Is Not Null
 		and t.work_loc1||' '||t.work_loc2 = #{adres1}
 		and substr(sun || mon || tue || wed || thu || fri || sat,
