@@ -86,7 +86,7 @@
 
 				<div class="card-body">
 
-					<form name = "loginForm" action = "petInsert.do"  method="post">
+					<form name = "loginForm" action = "petInsert.do"  method="post" enctype="multipart/form-data">
 					<input type ="hidden" name="knd" value="1">
 					<div class="form-row">
 						<div class="picture">멍이사진 *</div>

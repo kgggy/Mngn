@@ -18,7 +18,7 @@
 		where pet_id = #{pet_id}
 	</select>
 
-
+	<!-- 펫등록 -->
 	<insert id="petInsert">
 
 		insert into pet(pet_id, knd, name, gen, age, wgt,
@@ -29,6 +29,7 @@
 		#{client_id}, #{species})
 	</insert>
 
+	<!-- 펫 수정 -->
 	<update id="petUpdate" parameterType="co.mngns.prj.pet.vo.PetVO">
 
 		update pet
@@ -43,9 +44,10 @@
 
 	</update>
 
+	<!-- 펫 삭제 -->
 	<delete id="petDelete" parameterType="co.mngns.prj.pet.vo.PetVO">
-		delete from pet where
-		pet_no = #{pet_no}
+		delete from pet
+		where pet_id= #{pet_id}
 	</delete>
 
 </mapper>

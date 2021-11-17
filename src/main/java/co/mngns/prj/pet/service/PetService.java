@@ -2,6 +2,8 @@ package co.mngns.prj.pet.service;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import co.mngns.prj.pet.vo.PetVO;
 
 public interface PetService {
@@ -12,7 +14,7 @@ public interface PetService {
 
 	int petInsert(PetVO pet);
 
-	int petUpdate(PetVO pet);
+	int petUpdate(PetVO pet, MultipartFile multipartFile);
 
 	int petDelete(PetVO pet);
 
