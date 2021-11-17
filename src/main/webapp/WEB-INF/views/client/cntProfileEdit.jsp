@@ -121,7 +121,7 @@
 				<br/><br/><br/>
 				<div align="center">
 					<button type="button" class="ebtn" onclick="eProfile()">수정완료</button>
-					<button type="button" class="ebtn">취소</button>
+					<button type="reset" class="ebtn">취소</button>
 				</div>
 			</form>
 			<br> <br>

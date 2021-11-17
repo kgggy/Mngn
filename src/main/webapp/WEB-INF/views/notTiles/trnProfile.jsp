@@ -178,7 +178,7 @@ h3 {
 	font-size: 30px;
 	font-family: "Roboto Slab", "Times New Roman", serif;
 	font-weight: bold;
-	width: 500px;
+	width: 700px;
 	border: none;
 	padding-left: 10px;
 	font-family: "Roboto Slab", "Times New Roman", serif;

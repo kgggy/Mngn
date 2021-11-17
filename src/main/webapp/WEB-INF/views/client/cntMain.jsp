@@ -340,37 +340,6 @@
 			</div>
 		</div>
 	</div>
-	<div class="chat" align="center">
-		<button type="button" id="chatt">
-			<img src="images/foot.png" id="foot">&nbsp;&nbsp;<span
-				class="chatting">채팅하기</span>
-		</button>
-	</div>
-
-	<!-- testmonial_area_start  -->
-	<div id="light" class="modal">
-		<div class="white_content modal-content" align="center">
-			<form action="wResv.do" id="form">
-				<div>
-					<div class="time"></div>
-					<div id="modalBody">
-						<span>채팅
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-						</span>
-						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
-						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
-						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
-						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
-						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
-						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
-						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
-						<p>채팅채팅채팅채팅채팅채팅채팅채팅</p>
-					</div>
-				</div>
-				<br />
-			</form>
-		</div>
-	</div>
 	<script>
 	$.ajax({
         url : "chat.do",

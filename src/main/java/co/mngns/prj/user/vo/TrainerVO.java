@@ -32,7 +32,8 @@ public class TrainerVO {
 	private String adres1;
 	private String adres2;
 
-	
+	public int post_no;
+	public String pwd;
 	public String name;
 	public String gender;
 	public String cntn;
