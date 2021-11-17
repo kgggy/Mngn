@@ -375,7 +375,7 @@ article {
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="bradcam_text text-center">
-						<h3>내가 작성한 후기</h3>
+						<h3>이용 조회 및 후기</h3>
 					</div>
 				</div>
 			</div>

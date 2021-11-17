@@ -12,12 +12,16 @@
 
 	<!-- 훈련사 월별 수수료 비용 -->
    <select id="monthFee" resultType="int">
-   	select sum(b.bill_amt * 0.1) as fees
+   	select nvl(sum(b.bill_amt * 0.1),0) as fees
 	  from bill b, reser_list l, client c
-	 where c.client_id = l.client_id2
+	 where 
+	 <![CDATA[ 
+	 	   c.client_id = l.client_id2
 	       and l.reser_no = b.reser_no
+	       and l.svc_stts <> 3
            and c.client_id = #{client_id}
        	   and to_char(to_date(l.enroll_dt, 'yy-mm-dd'),'MM') = to_char(to_date(sysdate, 'yy-mm-dd'),'MM')
+     ]]>
    </select>
 
 </mapper>
