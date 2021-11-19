@@ -81,13 +81,13 @@ public class UserController {
 		return "login";
 
 	}
+
 	@GetMapping(value = "/callback.do")
 	// 네이버로그인 페이지
 	public String callback(Model model, ClientVO clientvo) {
 		// model.addAttribute("client", cntService.clientSelectList());
 		return "callback";
 	}
-	
 
 	@RequestMapping(value = "/joinForm.do")
 	// 회원가입 페이지
@@ -188,4 +188,23 @@ public class UserController {
 		return "trnProfile";
 	}
 
+	@RequestMapping(value = "/trnProfileEdit.do")
+	// 훈련사 개인 프로필 페이지
+	public String trnProfileEdit(Model model, ClientVO clientvo, TrainerVO trainervo, HttpSession session) {
+		clientvo.setClient_id((Integer) session.getAttribute("id"));
+		trainervo.setClient_id((Integer) session.getAttribute("id"));
+		model.addAttribute("client", cntService.clientSelect(clientvo));
+		model.addAttribute("trainer", trnService.TrainerSelect(trainervo));
+
+		return "trnProfileEdit";
+	}
+
+	@RequestMapping(value = "/trnEditForm.do")
+	// 프로필 수정
+	public String trnEditForm(ClientVO clientvo, HttpSession session, TrainerVO trainervo) {
+		clientvo.setClient_id((Integer) session.getAttribute("id"));
+		trainervo.setClient_id((Integer) session.getAttribute("id"));
+		trnService.trainerUpdate(trainervo);
+		return "redirect:trnProfile.do";
+	}
 }

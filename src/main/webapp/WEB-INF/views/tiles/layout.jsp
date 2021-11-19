@@ -71,9 +71,7 @@
 		<tiles:insertAttribute name="body" />
 	</div>
 	<section id="home"></section>
-	<footer class="footer">
 		<tiles:insertAttribute name="footer" />
-	</footer>
 
 
 

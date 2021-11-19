@@ -56,7 +56,7 @@
 		select distinct client_id ,
 		Regexp_Substr(work_time,'[^,]+', 1,level)
 		work_time
-		From trainer t, client c
+		From trainer t
 		where work_time Is Not Null
 		and t.work_loc1||' '||t.work_loc2 = #{adres1}
 		and substr(sun || mon || tue || wed || thu || fri || sat,
@@ -156,11 +156,15 @@
 		         l.enroll_dt,
 		         b.bill_amt * 0.1 as fee
 		 from reser_list l, svc s, client c, trainer t, bill b
-		where l.client_id2 = t.client_id
+		where 
+		<![CDATA[ 
+			   l.client_id2 = t.client_id
 		       and l.client_id1 = c.client_id
 		       and l.reser_no = b.reser_no
 		       and s.svc_id = l.svc_id
+		       and l.svc_stts <> 3
 		       and t.client_id = #{client_id2}
+		]]>
 		order by l.reser_dt desc
     </select>
     
@@ -168,7 +172,7 @@
     <select id="trnReserSelect" resultType="co.mngns.prj.svc.vo.ReserListVO">
     	select distinct s.term , 
 		         case s.knd when 1 then '돌봄 서비스' when 2 then '산책 서비스' else '훈련 서비스' end as knd_name,
-		        l.reser_dt,
+		         to_char(l.reser_dt, 'yyyy-mm-dd') as fmtDate,
 		         l.svc_bgn_tm, 
 		         l.reser_loc, 
 		         l.memo,
@@ -185,7 +189,7 @@
                union
             select distinct s.term , 
 		         case s.knd when 1 then '돌봄 서비스' when 2 then '산책 서비스' else '훈련 서비스' end as knd_name,
-		         l.reser_dt,
+		         to_char(l.reser_dt, 'yyyy-mm-dd') as fmtDate,
 		         l.svc_bgn_tm, 
 		         l.reser_loc, 
 		         l.memo,

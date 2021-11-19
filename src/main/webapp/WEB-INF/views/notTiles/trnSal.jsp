@@ -615,7 +615,6 @@ th {
 			</div>
 		</div> -->
 	</div>
-	<fmt:formatDate value="" pattern="yyyy-MM-dd"/>
 
 	<!-- footer_start  -->
 	<footer class="footer">
@@ -701,7 +700,6 @@ th {
 		</div>
 	</div>
 	<!-- 의뢰 상세보기 Modal 종료 -->
-
 	<script>
 		$(document).ready(function() {
 			$('#rqDetailModal').on('show.bs.modal', function(e) {
@@ -717,11 +715,10 @@ th {
 					success: function(data) {
 						console.log(data);
 						$("#td1").text(data.rqdetail[0].knd_name + "(" + data.rqdetail[0].term + "시간)");
-						$("#td2").text(data.rqdetail[0].reser_dt + ", " + data.rqdetail[0].svc_bgn_tm + "시");
+						$("#td2").text(data.rqdetail[0].fmtDate + ", " + data.rqdetail[0].svc_bgn_tm + "시");
 						$("#td3").text(data.rqdetail[0].reser_loc);
 						$("#td4").text(data.rqdetail[0].memo);
 						$("#td5").text(data.rqdetail[0].bill_amt + "원");
-						
 						var array = data.rqdetail;
 						var str = '';
 						array.forEach(function(rq, i) {
