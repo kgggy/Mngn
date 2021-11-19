@@ -136,6 +136,16 @@ h4 {
 
 #abtn {
 	top: 100px;
+	color: #fff;
+}
+
+#abtn:hover {
+	cursor: pointer;
+	opacity: 0.8;
+}
+
+#abtn1 {
+	color: #fff;
 }
 </style>
 
@@ -152,13 +162,17 @@ h4 {
 
 		// When the user clicks the button, open the modal 
 		btn.onclick = function() {
-			modal.style.display = "block";
-			$('.maincontent').on('scroll touchmove mousewheel',
-					function(event) {
-						event.preventDefault();
-						event.stopPropagation();
-						return false;
-					});
+			if ($(".col-lg-4").length >= 5) {
+				alert("최대 5마리까지만 등록 가능합니다.");
+			} else {
+				modal.style.display = "block";
+				$('.maincontent').on('scroll touchmove mousewheel',
+						function(event) {
+							event.preventDefault();
+							event.stopPropagation();
+							return false;
+						});
+			}
 		}
 		$(".genric-btn").on("click", function() {
 			$(".genric-btn").removeClass("focus")
@@ -219,8 +233,6 @@ h4 {
 			</div>
 		</div>
 	</div>
-	<br />
-	<br />
 	<br />
 	<br />
 	<br />
