@@ -330,9 +330,9 @@
 						</div>
 						<div
 							class="contact_btn d-flex align-items-center justify-content-center">
-							<a href="javascript:login()" class="boxed-btn4">지원하기</a>
+							<a href="https://forms.gle/SGayRaf59nBayMoh6" class="boxed-btn4">지원하기</a>
 							<p>
-								Or <a href="#"> +880 4664 216</a>
+								Or <a href=""> +880 4664 216</a>
 							</p>
 						</div>
 					</div>
