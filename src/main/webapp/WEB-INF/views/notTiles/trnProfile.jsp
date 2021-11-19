@@ -180,9 +180,9 @@ h3 {
 	font-weight: bold;
 	width: 700px;
 	border: none;
-	padding-left: 10px;
 	font-family: "Roboto Slab", "Times New Roman", serif;
 	outline: none;
+	text-align:center;
 }
 
 .mt-101 {
