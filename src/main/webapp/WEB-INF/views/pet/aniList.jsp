@@ -135,66 +135,65 @@ h4 {
 }
 
 #abtn {
-	float: right;
 	top: 100px;
 }
 </style>
 
 <script>
-   $(function() {
-      // Get the modal
-      var modal = document.getElementById("light");
+	$(function() {
+		// Get the modal
+		var modal = document.getElementById("light");
 
-      // Get the button that opens the modal
-      var btn = document.getElementById("abtn");
+		// Get the button that opens the modal
+		var btn = document.getElementById("abtn");
 
-      // Get the <span> element that closes the modal
-      var span = document.getElementsByClassName("close")[0];
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
 
-      // When the user clicks the button, open the modal 
-      btn.onclick = function() {
-         modal.style.display = "block";
-         $('.maincontent').on('scroll touchmove mousewheel',
-               function(event) {
-                  event.preventDefault();
-                  event.stopPropagation();
-                  return false;
-               });
-      }
-      $(".genric-btn").on("click", function() {
-         $(".genric-btn").removeClass("focus")
-         $(this).addClass("focus")
-      })
+		// When the user clicks the button, open the modal 
+		btn.onclick = function() {
+			modal.style.display = "block";
+			$('.maincontent').on('scroll touchmove mousewheel',
+					function(event) {
+						event.preventDefault();
+						event.stopPropagation();
+						return false;
+					});
+		}
+		$(".genric-btn").on("click", function() {
+			$(".genric-btn").removeClass("focus")
+			$(this).addClass("focus")
+		})
 
-      // When the user clicks on <span> (x), close the modal
-      span.onclick = function() {
-         modal.style.display = "none";
-         $('.maincontent').off('scroll touchmove mousewheel');
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() {
+			modal.style.display = "none";
+			$('.maincontent').off('scroll touchmove mousewheel');
 
-      }
+		}
 
-      // When the user clicks anywhere outside of the modal, close it
-      window.onclick = function(event) {
-         if (event.target == modal) {
-            $('.maincontent').off('scroll touchmove mousewheel');
-            modal.style.display = "none";
-         }
-      }
-   });
-   
-   //펫 삭제 처리
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				$('.maincontent').off('scroll touchmove mousewheel');
+				modal.style.display = "none";
+			}
+		}
+	});
+
+	//펫 삭제 처리
 	function petDelete(pet_id) {
 		if (confirm('정말 삭제하시겠습니까?') == true) {
-			
+
 			$('#pet_id').val(pet_id);
 			//petDelete.pet_id.value = pet_id;
 			$('#petDelete').submit();
 			alert('삭제가 완료되었습니다.');
 		} else {
-			return ;
+			return;
 		}
 	}
-   
+
 	//펫 수정 처리
 	function petUpdate() {
 		if (confirm('펫 정보를 수정하시겠습니까?') == true) {
@@ -203,7 +202,7 @@ h4 {
 		} else {
 			return;
 		}
-	}; 
+	};
 </script>
 
 </head>
@@ -226,68 +225,71 @@ h4 {
 	<br />
 	<br />
 	<!-- END nav -->
-	<a id="abtn" class="boxed-btn3">Add Pet</a>
-	
+	<div align="center">
+		<a id="abtn" class="boxed-btn3">+ 등록하기</a>
+	</div>
+	<br />
+	<br />
 	<form action="petDelete.do" id="petDelete" name="petDelete"
-					method="post">
-	<input type="hidden" name="pet_id" id="pet_id">
-	<div class="content">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-4"></div>
-				<!-- end col -->
-			</div>
-			<!-- end row -->
-			<div class="row">
-				<c:forEach items="${petForm }" var="pet">
-					<div class="col-lg-4">
-						<div class="text-center card-box">
-							<div class="member-card pt-2 pb-2">
-								<div class="thumb-lg member-thumb mx-auto">
-									<img src="https://bootdey.com/img/Content/avatar/avatar2.png"
-										class="rounded-circle img-thumbnail" alt="profile-image">
-								</div>
-								<div class="">
-									<h4>${pet.name }</h4>
-								</div>
-								<div class="mt-4">
-									<div class="row">
-										<div class="col-4">
-											<div class="mt-3">
-												<h4>나이</h4>
-												<p class="mb-0 text-muted">${pet.age }세</p>
+		method="post">
+		<input type="hidden" name="pet_id" id="pet_id">
+		<div class="content">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-4"></div>
+					<!-- end col -->
+				</div>
+				<!-- end row -->
+				<div class="row">
+					<c:forEach items="${petForm }" var="pet">
+						<div class="col-lg-4">
+							<div class="text-center card-box">
+								<div class="member-card pt-2 pb-2">
+									<div class="thumb-lg member-thumb mx-auto">
+										<img src="https://bootdey.com/img/Content/avatar/avatar2.png"
+											class="rounded-circle img-thumbnail" alt="profile-image">
+									</div>
+									<div class="">
+										<h4>${pet.name }</h4>
+									</div>
+									<div class="mt-4">
+										<div class="row">
+											<div class="col-4">
+												<div class="mt-3">
+													<h4>나이</h4>
+													<p class="mb-0 text-muted">${pet.age }세</p>
+												</div>
 											</div>
-										</div>
-										<div class="col-4">
-											<div class="mt-3">
-												<h4>성별</h4>
-												<p class="mb-0 text-muted">${pet.gen_wm }</p>
+											<div class="col-4">
+												<div class="mt-3">
+													<h4>성별</h4>
+													<p class="mb-0 text-muted">${pet.gen_wm }</p>
+												</div>
 											</div>
-										</div>
-										<div class="col-4">
-											<div class="mt-3">
-												<h4>몸무게</h4>
-												<p class="mb-0 text-muted">${pet.wgt }kg</p>
+											<div class="col-4">
+												<div class="mt-3">
+													<h4>몸무게</h4>
+													<p class="mb-0 text-muted">${pet.wgt }kg</p>
+												</div>
 											</div>
-										</div>
-										<div>
-											<a id="abtn1" class="boxed-btn3"
-												onclick="petUpdate('${pet.pet_id}')">수정</a> 
-											<a id="abtn1" class="boxed-btn3"
-												 href="javascript:petDelete('${pet.pet_id }')"> 삭제</a>
+											<div>
+												<a id="abtn1" class="boxed-btn3"
+													onclick="petUpdate('${pet.pet_id}')">수정</a> <a id="abtn1"
+													class="boxed-btn3"
+													href="javascript:petDelete('${pet.pet_id }')"> 삭제</a>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<!-- end col -->
-				</c:forEach>
+						<!-- end col -->
+					</c:forEach>
+				</div>
 			</div>
+			<!-- container -->
 		</div>
-		<!-- container -->
-	</div>
-	<!-- testmonial_area_start  -->
+		<!-- testmonial_area_start  -->
 	</form>
 	<div id="light" class="modal">
 		<div class="white_content modal-content" align="center">
@@ -306,11 +308,9 @@ h4 {
 
 	</div>
 	<script>
-	function petUpdate(id) {
-		location.href='formReg.do?pet_id=' + id;
-	};
-	
-	
+		function petUpdate(id) {
+			location.href = 'formReg.do?pet_id=' + id;
+		};
 	</script>
 </body>
 </html>
