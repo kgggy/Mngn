@@ -49,6 +49,7 @@ public class ReserListVO {
 	private int age;
 	private int wgt;
 	private String dcknd;
+	private String fmtDate;
 	
 	
 }

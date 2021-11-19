@@ -375,7 +375,7 @@ article {
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="bradcam_text text-center">
-						<h3>내가 작성한 후기</h3>
+						<h3>이용 조회 및 후기</h3>
 					</div>
 				</div>
 			</div>
@@ -402,17 +402,17 @@ article {
 			<c:if test="${!empty param.tab2 }"> checked </c:if>> <label
 			id="tab2" for="tab2">내가 작성한 후기</label>
 		<section id="content1">
-			<select id="stts" name="stts">
+			<!-- <select id="stts" name="stts">
 				<option value="대기중">대기중</option>
 				<option value="접수완료">접수 완료</option>
 				<option value="서비스완료">서비스 완료</option>
 				<option value="취소및환불">취소 및 환불</option>
-			</select>
+			</select> 
 
-			<button id="search" onclick="javascript:status()">조회</button>
-			<hr>
+			<button id="search" onclick="javascript:status()">조회</button>-->
 			<input style="font-size: 7pt;">* 후기 작성 버튼을 클릭하시면 해당 서비스에 대한
-			후기를 작성하실 수 있으며, 자세한 내역은 내가 작성한 후기 탭에서 확인하실 수 있습니다.<br> <br>
+			후기를 작성하실 수 있으며, 자세한 내역은 내가 작성한 후기 탭에서 확인하실 수 있습니다.
+			<hr><br>
 
 			<form action="tDetail.do" id="tlistForm" name="tlistForm"
 				method="post">

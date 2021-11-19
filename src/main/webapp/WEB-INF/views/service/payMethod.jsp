@@ -90,7 +90,7 @@ tr {
 				</tr>
 				<tr>
 					<th width="300px">대상</th>
-					<td width="500px">${reser.pet_name[0] }${reser.pet_name[1] }</td>
+					<td width="500px">${reser.pet_name[0] } 🐶 ${reser.pet_name[1] }</td>
 				</tr>
 				<tr>
 					<th width="300px">훈련사</th>

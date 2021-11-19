@@ -56,4 +56,10 @@ public class TrainerServiceImpl implements TrainerService {
 		return trnmap.mtrnCount(vo);
 	}
 
+	@Override
+	public int trainerUpdate(TrainerVO vo) {
+		// 훈련사 수정
+		return trnmap.trainerUpdate(vo);
+	}
+
 }
