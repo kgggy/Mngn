@@ -167,7 +167,7 @@
 
 												<div class="media-body">
 													<h2 class="h3 text-muted text-uppercase mb-2">
-														예약 건수 <i class="fa fa-arrow-up text-success ml-1"></i>
+														예약 건수 <i class=" text-success ml-1"></i>
 													</h2>
 												</div>
 											</div>
@@ -178,9 +178,8 @@
 											<p class="card-text">
 											<h3>HEYYO</h3>
 											<ul class="typing">
-												<li>&nbsp&nbsp&nbsp돌봄서비스</li>
-												<li>&nbsp&nbsp&nbsp산책서비스</li>
-												<li>&nbsp&nbsp&nbsp훈련서비스</li>
+												<br>
+												<li>&nbsp&nbsp&nbsp총 ${reser}건의 서비스가 예약되었습니다.</li>
 											</ul>
 											</p>
 										</div>
@@ -208,7 +207,7 @@
 
 												<div class="media-body">
 													<h5 class="h3 text-muted text-uppercase mb-2">
-														가입 회원수 <i class="fa fa-arrow-up text-success ml-1"></i>
+														가입 회원수 <i class="text-success ml-1"></i>
 													</h5>
 												</div>
 											</div>
@@ -216,14 +215,11 @@
 									</div>
 									<div class="col-8">
 										<div class="card-body">
-											<h3>주간 회원 유입 현황</h3>
+											<h3>서비스 사용자 현황</h3>
 											<ul class="typing">
 												<br>
-												<li>&nbsp&nbsp&nbsp지난 주 동시간 대비 ${clientNo}명의 회원이
-													유입되었습니다.</li>
-												<li><a class="btn btn-outline-danger float-right"
-													href="cntList.do"> <span>훈련사 전환 하기</span>
-												</a></li>
+												<li>&nbsp&nbsp&nbsp총 ${clientNo}명의 회원이
+													활동중입니다.</li>
 											</ul>
 
 										</div>
@@ -291,7 +287,7 @@
 
 												<div class="media-body">
 													<h5 class="h3 text-muted text-uppercase mb-2">
-														취소 건수 <i class="fa fa-arrow-down text-danger ml-1"></i>
+														취소 건수 <i class=" text-danger ml-1"></i>
 													</h5>
 												</div>
 											</div>
