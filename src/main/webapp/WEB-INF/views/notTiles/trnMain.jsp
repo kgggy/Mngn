@@ -34,8 +34,6 @@
 <!-- Components Vendor Styles -->
 <link rel="stylesheet" href="assets/vendor/font-awesome/css/all.min.css">
 
-<!-- Theme Styles -->
-<link rel="stylesheet" href="assets/css/theme.css">
 <!-- JS here -->
 <script src="js/vendor/modernizr-3.5.0.min.js"></script>
 <script src="js/vendor/jquery-1.12.4.min.js"></script>
@@ -233,62 +231,6 @@ h3 {
 												<li><a href="home.do">로그아웃</a></li>
 
 											</ul></li>
-										<li>
-											<!-- Notifications -->
-											<div class="dropdown mr-4">
-												<a class="link-muted" href="#!" role="button"
-													id="dropdownMenuLink" aria-haspopup="true"
-													aria-expanded="false" data-toggle="dropdown"> <span
-													class="h3"> <i class="far fa-bell"></i>
-												</span> <span
-													class="u-indicator u-indicator-top-right u-indicator--xxs bg-info"></span>
-												</a>
-
-												<div
-													class="dropdown-menu dropdown-menu-right border-0 py-0 mt-4"
-													aria-labelledby="dropdownMenuLink" style="width: 360px;">
-													<div class="card">
-														<div class="card-header d-flex align-items-center py-3">
-															<h2 class="h4 card-header-title">알림 내역</h2>
-														</div>
-
-														<div class="card-body p-0">
-															<div class="list-group list-group-flush">
-																<!-- Notification -->
-																<a class="list-group-item list-group-item-action"
-																	href="#">
-																	<div class="media align-items-center">
-																		<div
-																			class="u-icon u-icon--sm rounded-circle bg-danger text-white mr-3">
-																			<i class="fab fa-dribbble"></i>
-																		</div>
-
-																		<div class="media-body">
-																			<div class="d-flex align-items-center">
-																				<h4 class="mb-1">Dribbble</h4>
-																				<small class="text-muted ml-auto">23 Jan
-																					2018</small>
-																			</div>
-
-																			<p class="text-truncate mb-0"
-																				style="max-width: 250px;">
-																				<span class="text-primary">@htmlstream</span> just
-																				liked your post!
-																			</p>
-																		</div>
-																	</div>
-																</a>
-																<!-- End Notification -->
-															</div>
-														</div>
-
-														<div class="card-footer py-3">
-															<a class="btn btn-block btn-outline-primary" href="#">확인</a>
-														</div>
-													</div>
-												</div>
-											</div> <!-- End Notifications -->
-										</li>
 										<li><a class="link-muted d-flex align-items-center"
 											role="button" id="dropdownMenuLink" aria-haspopup="true"
 											aria-expanded="false" data-toggle="dropdown"> <span
@@ -391,66 +333,9 @@ h3 {
 			</div>
 		</div>
 	</div>
+	<br>
+	<br>
 	<!-- pet_care_area_end  -->
-	<div class="testmonial_area">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-lg-10">
-					<div class="pet_info">
-						<div class="section_title" align="center" style="padding: 50px">
-							<h3>실시간 후기</h3>
-						</div>
-					</div>
-					<div class="textmonial_active owl-carousel">
-						<div class="testmonial_wrap">
-							<div class="single_testmonial d-flex align-items-center">
-								<div class="test_thumb">
-									<img src="img/testmonial/1.png" alt="">
-								</div>
-								<div class="test_content">
-									<h4>Jhon Walker</h4>
-									<span>Head of web design</span>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-										elit, sed do eiusmod tempor incididunt ut labore et dolore
-										magna aliqua. Ut enim ad minim veniam, quis nostrud exerci.</p>
-								</div>
-							</div>
-						</div>
-						<div class="testmonial_wrap">
-							<div class="single_testmonial d-flex align-items-center">
-								<div class="test_thumb">
-									<img src="img/testmonial/1.png" alt="">
-								</div>
-								<div class="test_content">
-									<h4>Jhon Walker</h4>
-									<span>Head of web design</span>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-										elit, sed do eiusmod tempor incididunt ut labore et dolore
-										magna aliqua. Ut enim ad minim veniam, quis nostrud exerci.</p>
-								</div>
-							</div>
-						</div>
-						<div class="testmonial_wrap">
-							<div class="single_testmonial d-flex align-items-center">
-								<div class="test_thumb">
-									<img src="img/testmonial/1.png" alt="">
-								</div>
-								<div class="test_content">
-									<h4>Jhon Walker</h4>
-									<span>Head of web design</span>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-										elit, sed do eiusmod tempor incididunt ut labore et dolore
-										magna aliqua. Ut enim ad minim veniam, quis nostrud exerci.</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</div>
-	<!-- testmonial_area_end  -->
 
 	<!-- team_area_start  -->
 
