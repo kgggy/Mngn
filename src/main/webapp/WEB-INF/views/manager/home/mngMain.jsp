@@ -178,9 +178,8 @@
 											<p class="card-text">
 											<h3>HEYYO</h3>
 											<ul class="typing">
-												<li>&nbsp&nbsp&nbsp돌봄서비스</li>
-												<li>&nbsp&nbsp&nbsp산책서비스</li>
-												<li>&nbsp&nbsp&nbsp훈련서비스</li>
+												<br>
+												<li>&nbsp&nbsp&nbsp총 ${reser}건의 서비스가 예약되었습니다.</li>
 											</ul>
 											</p>
 										</div>
@@ -219,11 +218,7 @@
 											<h3>주간 회원 유입 현황</h3>
 											<ul class="typing">
 												<br>
-												<li>&nbsp&nbsp&nbsp지난 주 동시간 대비 ${clientNo}명의 회원이
-													유입되었습니다.</li>
-												<li><a class="btn btn-outline-danger float-right"
-													href="cntList.do"> <span>훈련사 전환 하기</span>
-												</a></li>
+												<li>&nbsp&nbsp&nbsp총 ${clientNo}명의 회원이 활동중입니다.</li>
 											</ul>
 
 										</div>
@@ -261,7 +256,7 @@
 											<h3>활동 가능 훈련사</h3>
 											<ul class="typing">
 												<br>
-												<li>&nbsp&nbsp&nbsp돌봄, 산책, 훈련 서비스 제공 가능한 훈련사 총
+												<li>&nbsp&nbsp&nbsp돌봄, 산책, 훈련 서비스 제공 가능한 훈련사는 총
 													${trainerNo}명 입니다.</li>
 												<li><a class="btn btn-outline-danger float-right"
 													href="https://docs.google.com/forms/d/1JD-xjZs1GrrhWyR2PdfutfdlKbFt7b5TxSrRhmq6-r8/edit?usp=sharing"> <span>지원서 결과 보기</span>

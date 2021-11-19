@@ -208,7 +208,7 @@
 														<td>${client.client_id }</td>
 														<td>${client.name }</td>
 														<td>${client.phone }</td>
-														<td class="text-success">활동중</td>
+														<td  style="display: none;" class="text-success">활동중</td>
 														<td><input type="button"
 															class="btn btn-outline-danger" value="상세보기"
 															id="btnSearch" data-toggle="modal"
