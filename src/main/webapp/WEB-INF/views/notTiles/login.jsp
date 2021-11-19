@@ -82,10 +82,7 @@
 
 							<div class="social_Login">
 								<img src="img/kakaologin.svg" id="kakao_id_login"
-									onclick="kakaoLogin()"> <img src="img/naverlogin.png"
-									id="naver_id_login" onclick="naverlogin()"> <img src="img/googleLogin.png"
-									id="google_id_login" onclick=""> <img
-									src="img/facebookLogin.png" id="facebook_id_login" onclick="">
+									onclick="kakaoLogin()"> 
 							</div>
 							<div>
 								회원이 아니신가요?<a href="joinForm.do" class="reg">가입하기</a>
@@ -148,37 +145,8 @@
 	</script>
 
 
-	<!-- 네이버아디디로로그인 초기화 Script -->
-	<script type="text/javascript">
-	funtion(){
-	var naver_id_login = new naver_id_login("FcJJbV7LY4ta0I1OPbFa", "http://localhost/prj/cntMain.do");
-	var state = naver_id_login.getUniqState();
-	naver_id_login.setButton("white", 2,40);
-	naver_id_login.setDomain(".service.com");
-	naver_id_login.setState(state);
-	naver_id_login.setPopup();
-	naver_id_login.init_naver_id_login();
-	  var naver_id_login = new naver_id_login("FcJJbV7LY4ta0I1OPbFa", "http://localhost/prj/cntMain.do");
-	  // 접근 토큰 값 출력
-	  alert(naver_id_login.oauthParams.access_token);
-	  // 네이버 사용자 프로필 조회
-	  naver_id_login.get_naver_userprofile("naverSignInCallback()");
-	  // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
-	  function naverSignInCallback() {
-
-		  
-		alert(naver_id_login.getProfileData('name'));  
-	    alert(naver_id_login.getProfileData('email'))
-		alert(naver_id_login.getProfileData('gender'));
-		alert(naver_id_login.getProfileData('phone'));
-
-	   // alert(naver_id_login.getProfileData('nickname'));
-	   // alert(naver_id_login.getProfileData('age'));
-	    
-	    window.close();
-	  }
+	
 		
-	</script>
 
 
 </body>

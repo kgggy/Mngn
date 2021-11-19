@@ -40,7 +40,7 @@
 	</update>
 
 	<delete id="petDelete" parameterType="co.mngns.prj.pet.vo.PetVO">
-		delete from pet where pet_no = #{pet_no}
+		delete from pet where pet_id = #{pet_id}
 	</delete>
 
 </mapper>

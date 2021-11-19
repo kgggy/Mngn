@@ -191,7 +191,7 @@ h4 {
 			$('#petDelete').submit();
 			alert('삭제가 완료되었습니다.');
 		} else {
-			return redirect:aniList;
+			return ;
 		}
 	}
    

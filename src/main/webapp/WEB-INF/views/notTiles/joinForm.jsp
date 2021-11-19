@@ -99,10 +99,10 @@
 							<div class="form-group">
 
 								<div class="form-input">
-									<label for="first_name" class="required"> ID </label> <input
-										type="text" name="client_id" id="client_id" /> <label
-										for="client_idCheck" class="required"> 중복확인 </label> <input
-										type="button" name="client_idCheck" id="client_idCheck" />
+									<label for="first_name" class="required"> ID </label> 
+									<input type="text" name="client_id" id="client_id" /> 
+									
+									 <input type="hidden" name="idDuplication" value="idUncheck" />
 								</div>
 
 								<div class="form-input">
