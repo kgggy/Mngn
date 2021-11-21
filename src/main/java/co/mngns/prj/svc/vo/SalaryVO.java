@@ -33,6 +33,7 @@ public class SalaryVO {
 	private String email;
 	private Date join_dt;
 	private int role;
+	private int bill_amt;
 	
 	
 	private int start;

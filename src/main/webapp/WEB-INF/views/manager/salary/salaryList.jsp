@@ -218,8 +218,7 @@
 													<th scope="col" class="text-dark">제공날짜</th>
 													<th scope="col" class="text-dark">담당훈련사</th>
 													<th scope="col" class="text-dark">제공지역</th>
-													<th scope="col" class="text-dark">특이사항</th>
-													<th style="display: none;"scope="col" class="text-dark">정산여부</th>
+													<th scope="col" class="text-dark">결제금액</th>
 													<th style="display: none;" scope="col" class="text-dark">주소1</th>
 													<th style="display: none;" scope="col" class="text-dark">특이사항</th>
 													<th style="display: none;" scope="col" class="text-dark">회원이름</th>
@@ -232,8 +231,7 @@
 														<td>${trnSal.reser_dt }</td>
 														<td>${trnSal.name }</td>
 														<td>${trnSal.reser_loc}</td>
-														<td>${trnSal.memo }</td>
-														<td style="display: none;"class="text-success">정산완료</td>
+														<td>${trnSal.bill_amt }원</td>
 														<td style="display: none;">${trnSal.reser_loc}</td>
 														<td style="display: none;">${trnSal.memo }</td>
 														<td style="display: none;">${trnSal.client.name}</td>

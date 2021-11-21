@@ -7,10 +7,10 @@
 		resultType="co.mngns.prj.svc.vo.SalaryVO">
 		SELECT B.* FROM ( SELECT A.* , ROWNUM RN FROM (
 		select distinct c.name, c.join_dt, r.svc_id, r.client_id1, r.client_id2,
-		r.reser_no, r.reser_dt, r.reser_loc, r.memo
-		from client c, reser_list
-		r, trainer t
+		r.reser_no, r.reser_dt, r.reser_loc, r.memo, b.bill_amt
+		from client c, reser_list r, trainer t, bill b
 		where c.client_id = r.client_id2
+        and r.reser_no = b.reser_no
  	<![CDATA[ 
           ) A ) B WHERE RN >= #{start} and RN <= #{end}
           ]]>
