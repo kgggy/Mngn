@@ -24,10 +24,14 @@
 
 ## 개발환경
 ```
-* 게시판 CRUD기능 구현
+본 프로젝트는 springFramework를 기반으로 MVC 모델을 적용하여 모델-화면-컨트롤러로 분리하여 개발을 하였다.
+또한 Oracle Database를 기반으로 AWS와 연결하여 개발을 진행하게 되었다.
 ```
-|제목 셀1|제목 셀2|
+|개발환경||
 |---|---|
-|개발언어|java|
-|데이터베이스|oracle|
-|형상관리|git|
+|개발언어|Spring, BootStrap4, HTML5, Javascript, Jquery, Ajax, CSS, Mybatis|
+|데이터베이스|Oracle Database|
+|서버|TOMCAT 9.0|
+|IDE|Eclipse, SQL Developer|
+|빌드 배포|Maven|
+|형상관리|Github|
