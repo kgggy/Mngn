@@ -35,3 +35,10 @@
 |IDE|Eclipse, SQL Developer|
 |빌드 배포|Maven|
 |형상관리|Github|
+
+*사용 API*
+- Kakao 지도 API (https://apis.map.kakao.com/)
+- iamport 결제 API (https://www.iamport.kr/)
+
+## 주요기능
+
